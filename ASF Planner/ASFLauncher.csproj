@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>ASF_Planner</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="PerkPlanningForm.cs" />
+    <Compile Remove="PerkPlanningForm.Designer.cs" />
+    <Compile Remove="VPerkCollectionControl.cs" />
+    <Compile Remove="VPerkCollectionControl.Designer.cs" />
+    <Compile Remove="VPerkControl.cs" />
+    <Compile Remove="VPerkControl.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="PerkPlanningForm.resx" />
+    <EmbeddedResource Remove="VPerkCollectionControl.resx" />
+    <EmbeddedResource Remove="VPerkControl.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VUserInterface\VUserInterface.csproj" />
+  </ItemGroup>
+
+</Project>

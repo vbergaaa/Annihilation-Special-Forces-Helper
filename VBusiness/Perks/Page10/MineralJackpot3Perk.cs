@@ -1,0 +1,19 @@
+﻿namespace VBusiness.Perks
+{
+	public class MineralJackpot3Perk : Perk
+	{
+		public override string Description => "Gain a 0.2% chance to gain 100 minerals on each kill";
+
+		public override byte Page => 10;
+
+		public override byte Position => 5;
+
+		public override int StartingCost => 1000;
+
+		public override int IncrementCost => 100;
+
+		public override short MaxLevel => 30;
+
+		protected override string name => "Mineral Jackpot III";
+	}
+}

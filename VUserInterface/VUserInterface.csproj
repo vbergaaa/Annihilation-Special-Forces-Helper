@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VBusiness\VBusiness.csproj" />
+    <ProjectReference Include="..\VEnitity\VModel.csproj" />
+  </ItemGroup>
+
+</Project>
