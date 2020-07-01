@@ -8,8 +8,4 @@
     <PackageReference Include="NUnit" Version="3.12.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Loadouts\" />
-  </ItemGroup>
-
 </Project>
