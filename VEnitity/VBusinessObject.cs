@@ -16,5 +16,7 @@ namespace VModel
 				PropertyChanged(this, e);
 			}
 		}
+
+		public abstract string Name { get; }
 	}
 }
