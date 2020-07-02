@@ -1,5 +1,7 @@
 using System;
 using System.Windows.Forms;
+using VBusiness.Loadouts;
+using VData;
 
 namespace ASF_Planner
 {
@@ -11,6 +13,12 @@ namespace ASF_Planner
 		[STAThread]
 		static void Main()
 		{
+#if DEBUG
+			// this is to test the xmlwriter works
+			var perk = new Loadout();
+			var xmlWriter = new VXMLWriter();
+			xmlWriter.Write(perk);
+#endif
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);

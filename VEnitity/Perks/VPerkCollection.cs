@@ -101,13 +101,22 @@
 		}
 		int fPage;
 
+
+		[VXML(include: false)]
 		public abstract VPerk Perk1 { get; }
+		[VXML(include: false)]
 		public abstract VPerk Perk2 { get; }
+		[VXML(include: false)]
 		public abstract VPerk Perk3 { get; }
+		[VXML(include: false)]
 		public abstract VPerk Perk4 { get; }
+		[VXML(include: false)]
 		public abstract VPerk Perk5 { get; }
+		[VXML(include: false)]
 		public abstract VPerk Perk6 { get; }
 		public abstract string PageTitle { get; }
+
+		public override string BizoName => "PerkCollection";
 	}
 }
 		

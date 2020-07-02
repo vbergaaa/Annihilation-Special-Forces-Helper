@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using VModel;
 
@@ -40,17 +42,36 @@ namespace VData
 
 		private void WriteXML(XmlWriter writer, VBusinessObject bizo)
 		{
+			if (bizo != null)
+			{
+				writer.WriteStartElement(bizo.BizoName);
+				foreach (var property in bizo.GetType().GetProperties())
+				{
+					if (typeof(VBusinessObject).IsAssignableFrom(property.PropertyType))
+					{
+						var xmlAttribute = (VXMLAttribute)property.GetCustomAttribute(typeof(VXMLAttribute));
+						if (xmlAttribute == null || xmlAttribute.ShouldInclude)
+						{
+							WriteXML(writer, (VBusinessObject)property.GetValue(bizo));
+						}
+					}
+					else
+					{
+						if(property.GetCustomAttribute(typeof(VXMLAttribute)) != null)
+						{
+							writer.WriteStartElement(property.Name);
+							writer.WriteString(property.GetValue(bizo).ToString());
+							writer.WriteEndElement();
+						}
+					}
+				}
+				writer.WriteEndElement();
+			}
 		}
 
 		string GetFileNameWithExtension(string path)
 		{
-			var incrementor = 1;
-			var completePath = $"{path}Loadout{incrementor}.xml";
-			while (Directory.Exists(completePath))
-			{
-				incrementor++;
-			}
-			return $"Loadout{incrementor}.xml";
+			return "Loadout1.xml";
 		}
 
 		private string GetFilePath()

@@ -26,12 +26,15 @@ namespace VModel
 
 		public string Name => $"{name} Perk";
 
+		[VXML(include: true)]
 		public string Code => $"{Page}_{Position}";
 
 		public short CurrentLevel { get; set; }
 
 		#region DesiredLevel
 
+
+		[VXML(include:true)]
 		public virtual short DesiredLevel
 		{
 			get { return fDesiredLevel; }
@@ -69,6 +72,8 @@ namespace VModel
 		{
 			return $"{Code}, {Name}";
 		}
+
+		public override string BizoName => "Perk";
 
 		#endregion
 	}

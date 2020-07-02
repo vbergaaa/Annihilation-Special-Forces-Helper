@@ -4,10 +4,11 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using VBusiness.Perks;
 using VModel;
+using VModel.Loadouts;
 
 namespace VBusiness.Loadouts
 {
-	public class Loadout
+	public class Loadout : VLoadout
 	{
 		public Loadout()
 		{

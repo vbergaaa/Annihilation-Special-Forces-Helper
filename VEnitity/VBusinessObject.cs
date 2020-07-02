@@ -17,6 +17,6 @@ namespace VModel
 			}
 		}
 
-		public abstract string Name { get; }
+		public abstract string BizoName { get; }
 	}
 }

@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\VData\VData.csproj" />
     <ProjectReference Include="..\VUserInterface\VUserInterface.csproj" />
   </ItemGroup>
 
