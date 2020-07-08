@@ -8,9 +8,9 @@ using VModel;
 
 namespace VData
 {
-	public class VXMLWriter
+	class VXMLWriter
 	{
-		public bool Write(VBusinessObject bizo)
+		internal bool Write(VBusinessObject bizo)
 		{
 			var succeeded = false;
 			try
@@ -37,6 +37,8 @@ namespace VData
 		private XmlWriter GetXmlWriter(Stream stream)
 		{
 			var xmlSettings = new XmlWriterSettings();
+			xmlSettings.Indent = true;
+			xmlSettings.CloseOutput = true;
 			return XmlWriter.Create(stream, xmlSettings);
 		}
 
@@ -47,17 +49,13 @@ namespace VData
 				writer.WriteStartElement(bizo.BizoName);
 				foreach (var property in bizo.GetType().GetProperties())
 				{
-					if (typeof(VBusinessObject).IsAssignableFrom(property.PropertyType))
+					if (property.IncludeInVXml())
 					{
-						var xmlAttribute = (VXMLAttribute)property.GetCustomAttribute(typeof(VXMLAttribute));
-						if (xmlAttribute == null || xmlAttribute.ShouldInclude)
+						if (property.IsBusinessObject())
 						{
 							WriteXML(writer, (VBusinessObject)property.GetValue(bizo));
 						}
-					}
-					else
-					{
-						if(property.GetCustomAttribute(typeof(VXMLAttribute)) != null)
+						else
 						{
 							writer.WriteStartElement(property.Name);
 							writer.WriteString(property.GetValue(bizo).ToString());

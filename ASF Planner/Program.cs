@@ -14,15 +14,18 @@ namespace ASF_Planner
 		static void Main()
 		{
 #if DEBUG
-			// this is to test the xmlwriter works
-			var perk = new Loadout();
-			var xmlWriter = new VXMLWriter();
-			xmlWriter.Write(perk);
+			//this is to test the xmlwriter works
+			var loadout = new Loadout();
+			loadout.Perks.Attack.DesiredLevel = 4;
+			new VDataContext().SaveAsXML(loadout);
+
+			// this is to test the xmlreader works
+			var bizo = new VDataContext().ReadFromXML<Loadout>("Loadout1.xml");
 #endif
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new PerkPlanningForm());
+			Application.Run(new PerkPlanningForm(bizo));
 		}
 	}
 }
