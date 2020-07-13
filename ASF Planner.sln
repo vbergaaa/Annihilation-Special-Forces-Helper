@@ -5,13 +5,11 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASFLauncher", "ASF Planner\ASFLauncher.csproj", "{201BD686-933C-4ADD-9D48-790DF87085FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VModel", "VEnitity\VModel.csproj", "{B744893D-B4D8-4587-B769-A096D2684DCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VEntityFramework", "VEnitity\VEntityFramework.csproj", "{B744893D-B4D8-4587-B769-A096D2684DCF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VBusiness", "VBusiness\VBusiness.csproj", "{9AC76B63-546C-43A9-9676-4E144770587E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VUserInterface", "VUserInterface\VUserInterface.csproj", "{6F02BA14-DAEE-401F-81C0-AB6550BA5455}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VData", "VData\VData.csproj", "{9CAA1E4A-4F14-49A7-8988-BB669EE4DAAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{6F02BA14-DAEE-401F-81C0-AB6550BA5455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F02BA14-DAEE-401F-81C0-AB6550BA5455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F02BA14-DAEE-401F-81C0-AB6550BA5455}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9CAA1E4A-4F14-49A7-8988-BB669EE4DAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CAA1E4A-4F14-49A7-8988-BB669EE4DAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CAA1E4A-4F14-49A7-8988-BB669EE4DAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CAA1E4A-4F14-49A7-8988-BB669EE4DAAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

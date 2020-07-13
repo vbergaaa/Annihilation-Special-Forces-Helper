@@ -1,9 +1,6 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using VBusiness.Perks;
-using VModel;
+using VEntityFramework.Model;
 
 namespace VBusiness.Perks
 {

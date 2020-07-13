@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace VData
+namespace VEntityFramework.Data
 {
 	[Serializable]
 	internal class DeveloperException : Exception

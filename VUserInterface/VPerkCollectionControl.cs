@@ -7,9 +7,9 @@ using System.Text;
 using System.Windows.Forms;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
-using VModel;
+using VEntityFramework;
 
-namespace ASF_Planner
+namespace VUserInterface
 {
 	public partial class VPerkCollectionControl : GroupBox
 	{

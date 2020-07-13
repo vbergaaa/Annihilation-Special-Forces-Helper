@@ -5,9 +5,9 @@ using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
-using VModel;
+using VEntityFramework;
 
-namespace VData
+namespace VEntityFramework.Data
 {
 	public static class PropertyInfoExtensions
 	{

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 using VBusiness.Perks;
-using VModel;
-using VModel.Loadouts;
+using VEntityFramework.Model;
 
 namespace VBusiness.Loadouts
 {

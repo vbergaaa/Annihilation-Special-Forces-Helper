@@ -1,5 +1,5 @@
 ﻿
-using VModel;
+using VEntityFramework;
 
 namespace VBusiness.Perks
 {

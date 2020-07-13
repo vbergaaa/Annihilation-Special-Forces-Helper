@@ -4,9 +4,9 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Xml;
-using VModel;
+using VEntityFramework;
 
-namespace VData
+namespace VEntityFramework.Data
 {
 	class VXMLWriter
 	{

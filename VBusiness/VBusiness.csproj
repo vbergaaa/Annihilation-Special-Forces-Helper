@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VEnitity\VModel.csproj" />
+    <ProjectReference Include="..\VEnitity\VEntityFramework.csproj" />
   </ItemGroup>
 
   <ItemGroup>

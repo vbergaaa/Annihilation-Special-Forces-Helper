@@ -1,14 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using VBusiness.Loadouts;
-using VModel.Loadouts;
+using VUserInterface;
 
-namespace ASF_Planner
+namespace VUserInterface
 {
-	public partial class PerkPlanningForm : Form
+	public partial class PerkPlanningForm : VForm
 	{
-		public PerkPlanningForm(Loadout loadout)
+		public PerkPlanningForm(Loadout loadout) : base(loadout)
 		{
 			InitializeComponent();
 			Loadout = loadout ?? new Loadout();

@@ -1,9 +1,9 @@
 ﻿using System;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
-using VModel;
+using VEntityFramework;
 
-namespace ASF_Planner
+namespace VUserInterface
 {
 	partial class VPerkCollectionControl
 	{

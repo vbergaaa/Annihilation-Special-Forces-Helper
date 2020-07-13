@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using System.Windows.Forms;
-using VModel;
+using VEntityFramework.Model;
 
-namespace ASF_Planner
+namespace VUserInterface
 {
 	public partial class VPerkControl : GroupBox
 	{

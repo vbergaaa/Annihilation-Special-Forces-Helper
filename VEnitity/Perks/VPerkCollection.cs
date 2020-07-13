@@ -1,4 +1,6 @@
-﻿namespace VModel
+﻿using VEntityFramework.Data;
+
+namespace VEntityFramework.Model
 {
 	public abstract class VPerkCollection : VBusinessObject
 	{

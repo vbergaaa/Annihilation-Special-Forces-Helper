@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using VModel;
+using VEntityFramework;
 
-namespace VData
+namespace VEntityFramework.Data
 {
 	public class VDataContext
 	{

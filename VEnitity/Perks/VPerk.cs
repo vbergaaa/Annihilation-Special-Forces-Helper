@@ -1,6 +1,6 @@
-﻿using System;
+﻿using VEntityFramework.Data;
 
-namespace VModel
+namespace VEntityFramework.Model
 {
 	public abstract class VPerk : VBusinessObject
 	{

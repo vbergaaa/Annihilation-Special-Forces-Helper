@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VModel
+namespace VEntityFramework.Data
 {
 	public class VXMLAttribute : Attribute
 	{

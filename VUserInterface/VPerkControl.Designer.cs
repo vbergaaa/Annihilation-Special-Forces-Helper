@@ -1,9 +1,10 @@
 ﻿using System.Reflection.Emit;
 using System.Windows.Forms.VisualStyles;
 using VBusiness.Perks;
-using VModel;
+using VEntityFramework;
+using VEntityFramework.Model;
 
-namespace ASF_Planner
+namespace VUserInterface
 {
 	partial class VPerkControl
 	{

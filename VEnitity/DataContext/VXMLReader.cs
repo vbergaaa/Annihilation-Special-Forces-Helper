@@ -6,9 +6,9 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
-using VModel;
+using VEntityFramework;
 
-namespace VData
+namespace VEntityFramework.Data
 {
 	class VXMLReader
 	{

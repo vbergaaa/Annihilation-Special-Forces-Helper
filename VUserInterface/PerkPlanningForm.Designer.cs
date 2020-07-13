@@ -2,8 +2,9 @@
 using System.Windows.Forms;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
+using VUserInterface;
 
-namespace ASF_Planner
+namespace VUserInterface
 {
 	partial class PerkPlanningForm
 	{
@@ -53,13 +54,12 @@ namespace ASF_Planner
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(PerkPageControl);
-			this.Text = "PerkPlanningForm";
 			((ISupportInitialize)this.perkPageBindingSource).EndInit();
 		}
 
 		#endregion
 
-		private ASF_Planner.VPerkCollectionControl PerkPageControl;
+		private VUserInterface.VPerkCollectionControl PerkPageControl;
 		private System.Windows.Forms.BindingSource perkPageBindingSource;
 	}
 }

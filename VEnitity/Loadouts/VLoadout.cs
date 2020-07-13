@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using VEntityFramework.Data;
 
-namespace VModel.Loadouts
+namespace VEntityFramework.Model
 {
 	public abstract class VLoadout : VBusinessObject
 	{

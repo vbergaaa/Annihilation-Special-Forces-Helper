@@ -23,8 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VData\VData.csproj" />
     <ProjectReference Include="..\VUserInterface\VUserInterface.csproj" />
+    <ProjectReference Include="..\VEnitity\VEntityFramework.csproj" />
   </ItemGroup>
 
 </Project>
