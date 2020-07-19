@@ -32,6 +32,8 @@ namespace VUserInterface
 		void SaveButton_Click(object sender, EventArgs e)
 		{
 			var succeeded = Parent.Save();
+			OnSaved?.Invoke(this, e);
+
 			if (succeeded)
 			{
 				MessageBox.Show("Save Successful");
@@ -50,15 +52,8 @@ namespace VUserInterface
 				Close();
 			}
 		}
-	}
 
-	public class TestForm : VForm
-	{
-		public TestForm()
-			: base(new Loadout())
-		{
-
-		}
+		public event EventHandler<EventArgs> OnSaved;
 	}
 }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
@@ -12,10 +13,25 @@ namespace VEntityFramework.Data
 {
 	class VXMLReader
 	{
+		#region GetAllLoadoutNames
+
+		internal string[] GetAllLoadoutNames()
+		{
+			var path = GetLoadoutsDirectory();
+			var files = Directory.GetFiles(path);
+			return files.Where(fileName => fileName.EndsWith(".xml"))
+				.Select(fileName => Path.GetFileNameWithoutExtension(fileName)).ToArray();
+		}
+
+		#endregion
+
+		#region Read
+
 		internal T Read<T>(string fileName) where T : VBusinessObject
 		{
 			try
 			{
+				EnsureFileNameHasXMLExtension(ref fileName);
 				if (CheckFileExists(fileName))
 				{
 					return ReadXML<T>(fileName);
@@ -33,6 +49,7 @@ namespace VEntityFramework.Data
 			var xml = new XmlDocument();
 			xml.Load(GetFullPath(fileName));
 			var bizo = (T)CreateBizoFromXML(typeof(T), xml.DocumentElement);
+			bizo.OnLoadedFromXML(new OnLoadedEventArgs(Path.GetFileNameWithoutExtension(fileName)));
 			return bizo;
 		}
 
@@ -50,12 +67,34 @@ namespace VEntityFramework.Data
 			return File.Exists(GetFullPath(fileName));
 		}
 
-		string GetFullPath(string fileName)
+		void EnsureFileNameHasXMLExtension(ref string fileName)
+		{
+			var extension = Path.GetExtension(fileName);
+			if (extension != "xml")
+			{
+				if (extension != "")
+				{
+					throw new DeveloperException("What type is this extension?");
+				}
+				else
+				{
+					fileName += ".xml";
+				}
+			}
+		}
+
+		internal string GetFullPath(string fileName)
+		{
+			return GetLoadoutsDirectory() + fileName;
+		}
+
+		string GetLoadoutsDirectory()
 		{
 			var rootDirectory = Directory.GetCurrentDirectory();
-			var directory = rootDirectory + "/Loadouts/";
-			return directory + fileName;
+			return rootDirectory + "/Loadouts/";
 		}
+
+		#endregion
 	}
 
 	internal class VBizoXMLReader

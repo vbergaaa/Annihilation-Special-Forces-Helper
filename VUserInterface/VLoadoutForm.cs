@@ -4,22 +4,22 @@ using VUserInterface;
 
 namespace VUserInterface
 {
-	public partial class PerkPlanningForm : VForm
+	public partial class VLoadoutForm : VForm
 	{
-		public PerkPlanningForm(Loadout loadout) : base(loadout)
+		public VLoadoutForm(Loadout loadout) : base(loadout)
 		{
 			InitializeComponent();
 			Loadout = loadout ?? new Loadout();
 			AddNewBindings();
 		}
-		public PerkPlanningForm()
+		public VLoadoutForm()
 			: this(null)
 		{
 		}
 
 		private void AddNewBindings()
 		{
-			this.perkPageBindingSource.DataSource = Loadout;
+			this.LoadoutBindingSource.DataSource = Loadout;
 		}
 
 		public Loadout Loadout { get; set; }

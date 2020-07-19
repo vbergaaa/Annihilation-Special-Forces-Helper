@@ -14,12 +14,10 @@ namespace ASFLauncher
 		[STAThread]
 		static void Main()
 		{
-			var existingLoadout = new VDataContext().ReadFromXML<Loadout>("Loadout1.xml");
-
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new PerkPlanningForm(existingLoadout ?? new Loadout()));
+			Application.Run(new MainForm());
 		}
 	}
 }

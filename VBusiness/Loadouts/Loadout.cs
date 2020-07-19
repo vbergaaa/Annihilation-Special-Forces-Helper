@@ -10,6 +10,7 @@ namespace VBusiness.Loadouts
 		{
 			Perks = new PerkCollection();
 		}
+
 		public VPerkCollection Perks { get; set; }
 	}
 }

@@ -1,40 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Xml;
-using VEntityFramework;
+using VEntityFramework.Model;
 
 namespace VEntityFramework.Data
 {
 	class VXMLWriter
 	{
-		internal bool Write(VBusinessObject bizo)
+		internal bool Write(VBusinessObject bizo, string existingName)
 		{
-			var succeeded = false;
-			try
-			{
-				var path = GetFilePath();
-				var name = GetFileNameWithExtension(path);
-				var directory = path + name;
+			var directory = RenameFileIfNeccessary(bizo, existingName);
 
-				using (var stream = File.Create(directory))
-				using (var writer = GetXmlWriter(stream))
-				{
-					WriteXML(writer, bizo);
-				}
-				succeeded = true;
-			}
-			catch
+			using (var stream = File.Create(directory))
+			using (var writer = GetXmlWriter(stream))
 			{
-				throw new IOException("Something went wrong writing the xml.");
+				WriteXML(writer, bizo);
 			}
 
-			return succeeded;
+			return true;
 		}
 
-		private XmlWriter GetXmlWriter(Stream stream)
+		string RenameFileIfNeccessary(VBusinessObject bizo, string existingName)
+		{
+			var newNameWithPath = GetFileNameWithExtension(bizo);
+
+			if (existingName != null && existingName != GetXmlNameFromBizo(bizo))
+			{
+				var oldNameWithPath = GetOldFilePathWithName(existingName);
+				File.Move(oldNameWithPath, newNameWithPath);
+			}
+
+			return newNameWithPath;
+		}
+
+		string GetOldFilePathWithName(string existingName)
+		{
+			return GetFilePath() + existingName + ".xml";
+		}
+
+		XmlWriter GetXmlWriter(Stream stream)
 		{
 			var xmlSettings = new XmlWriterSettings();
 			xmlSettings.Indent = true;
@@ -42,7 +46,7 @@ namespace VEntityFramework.Data
 			return XmlWriter.Create(stream, xmlSettings);
 		}
 
-		private void WriteXML(XmlWriter writer, VBusinessObject bizo)
+		void WriteXML(XmlWriter writer, VBusinessObject bizo)
 		{
 			if (bizo != null)
 			{
@@ -58,7 +62,7 @@ namespace VEntityFramework.Data
 						else
 						{
 							writer.WriteStartElement(property.Name);
-							writer.WriteString(property.GetValue(bizo).ToString());
+							writer.WriteString(property.GetValue(bizo)?.ToString() ?? "");
 							writer.WriteEndElement();
 						}
 					}
@@ -67,12 +71,27 @@ namespace VEntityFramework.Data
 			}
 		}
 
-		string GetFileNameWithExtension(string path)
+		string GetFileNameWithExtension(VBusinessObject bizo)
 		{
-			return "Loadout1.xml";
+			return GetFilePath() + GetXmlNameFromBizo(bizo) + ".xml";
 		}
 
-		private string GetFilePath()
+		string GetXmlNameFromBizo(VBusinessObject bizo)
+		{
+			if (bizo is VLoadout loadout)
+			{
+				loadout.Name = loadout.Name == "" || loadout.Name == null 
+					? $"Loadout{loadout.Slot}" 
+					: loadout.Name;
+				return $"{loadout.Slot}-{loadout.Name}";
+			}
+			else
+			{
+				throw new DeveloperException("what name do you want this bizo to save as?");
+			}
+		}
+
+		string GetFilePath()
 		{
 			var rootDirectory = Directory.GetCurrentDirectory();
 			var desiredPath = rootDirectory + "/Loadouts/";

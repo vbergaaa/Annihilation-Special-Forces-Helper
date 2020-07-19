@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 
 namespace VEntityFramework.Data
@@ -14,6 +16,28 @@ namespace VEntityFramework.Data
 
 		public VDataContext Context { get; set; }
 
+		public abstract string BizoName { get; }
+
+		public bool Save()
+		{
+			Context.SaveAsXML(this, GetExistingXMLFileName);
+			UpdateExistingXMLName();
+			return true;
+		}
+
+		public void Delete()
+		{
+			Context.DeleteXML(this, GetExistingXMLFileName);
+		}
+
+		protected virtual void UpdateExistingXMLName() { }
+
+		protected virtual string GetExistingXMLFileName => null;
+
+		#region Events
+
+		#region PropertyChanged
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		protected void OnPropertyChanged(PropertyChangedEventArgs e)
@@ -24,11 +48,19 @@ namespace VEntityFramework.Data
 			}
 		}
 
-		public abstract string BizoName { get; }
+		#endregion
 
-		public bool Save()
+		#region LoadedFromXML
+
+		internal event EventHandler<EventArgs> LoadedFromXML;
+
+		public virtual void OnLoadedFromXML(OnLoadedEventArgs e)
 		{
-			return Context.SaveAsXML(this);
+			LoadedFromXML?.Invoke(this, e);
 		}
+
+		#endregion
+
+		#endregion
 	}
 }
