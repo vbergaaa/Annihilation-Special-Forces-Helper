@@ -68,6 +68,7 @@ namespace VEntityFramework.Data
 					}
 				}
 				writer.WriteEndElement();
+				bizo.HasChanges = false;
 			}
 		}
 

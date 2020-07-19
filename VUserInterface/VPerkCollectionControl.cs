@@ -24,6 +24,7 @@ namespace VUserInterface
 		{
 			base.OnBindingContextChanged(e);
 			this.perksBindingSource.DataSource = Perks;
+			SetButtonReadonlyStatus();
 		}
 
 		protected override void OnParentBindingContextChanged(EventArgs e)
@@ -43,12 +44,31 @@ namespace VUserInterface
 		}
 
 
-		private void UpdatePage(object sender, EventArgs e)
+		void UpdatePage(object sender, EventArgs e)
 		{
-			if (sender is Button button && int.TryParse(button.Text, out var page))
+			if (sender is Button button)
 			{
-				Perks.Page = page;
+				if (int.TryParse(button.Text, out var page))
+				{
+					Perks.Page = page;
+				}
+				else if (button.Text == "<")
+				{
+					Perks.Page--;
+				}
+				else if (button.Text == ">")
+				{
+					Perks.Page++;
+				}
 			}
+
+			SetButtonReadonlyStatus();
+		}
+
+		void SetButtonReadonlyStatus()
+		{
+			previousPageButton.Enabled = Perks != null && Perks.Page != 1;
+			nextPageButton.Enabled = Perks != null && Perks.Page != 11;
 		}
 	}
 }

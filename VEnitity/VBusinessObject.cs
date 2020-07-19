@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
+using System.Linq;
+using System.Reflection;
+using System.Reflection.Emit;
 
 namespace VEntityFramework.Data
 {
@@ -34,7 +35,76 @@ namespace VEntityFramework.Data
 
 		protected virtual string GetExistingXMLFileName => null;
 
+		#region Children
+
+		protected IEnumerable<VBusinessObject> Children
+		{
+			get
+			{
+				if (fChildren == null)
+				{
+					fChildren = GetType()
+						.GetProperties()
+						.Where(prop => prop.IsBusinessObject())
+						.Select(prop => prop.GetValue(this))
+						.Where(child => child != null)
+						.Cast<VBusinessObject>();
+				}
+				return fChildren;
+			}
+		}
+		IEnumerable<VBusinessObject> fChildren;
+
+		#endregion
+
+		#region HasChanges
+
+		public void CascadeHasChanges()
+		{
+			if (!fHasCascadedHasChanges)
+			{
+				foreach (var child in Children)
+				{
+					child.HasChangesChanged += OnHasChangesChanged;
+					child.CascadeHasChanges();
+				}
+			}
+		}
+		bool fHasCascadedHasChanges;
+
+		public bool HasChanges
+		{
+			get
+			{
+				return fHasChanges || Children.Any(child => child.HasChanges);
+			}
+			set
+			{
+				if (!SuspendSettingHasChanges && fHasChanges != value)
+				{
+					fHasChanges = value;
+					OnHasChangesChanged(this, new HasChangesEventArgs { HasChanges = value });
+				}
+			}
+		}
+		bool fHasChanges;
+
+		internal bool SuspendSettingHasChanges { get; set; }
+
+		#endregion
+
 		#region Events
+
+		#region OnChanged
+
+		public event EventHandler<HasChangesEventArgs> HasChangesChanged;
+
+		void OnHasChangesChanged(object sender, HasChangesEventArgs e)
+		{
+			HasChangesChanged?.Invoke(this, e);
+		}
+
+		#endregion
 
 		#region PropertyChanged
 
@@ -42,17 +112,14 @@ namespace VEntityFramework.Data
 
 		protected void OnPropertyChanged(PropertyChangedEventArgs e)
 		{
-			if (PropertyChanged != null)
-			{
-				PropertyChanged(this, e);
-			}
+			PropertyChanged?.Invoke(this, e);
 		}
 
 		#endregion
 
 		#region LoadedFromXML
 
-		internal event EventHandler<EventArgs> LoadedFromXML;
+		internal event EventHandler<OnLoadedEventArgs> LoadedFromXML;
 
 		public virtual void OnLoadedFromXML(OnLoadedEventArgs e)
 		{

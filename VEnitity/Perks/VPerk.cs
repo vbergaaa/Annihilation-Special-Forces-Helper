@@ -26,7 +26,7 @@ namespace VEntityFramework.Model
 
 		public string Name => $"{name} Perk";
 
-		[VXML(include: true)]
+		[VXML(true)]
 		public string Code => $"{Page}_{Position}";
 
 		public short CurrentLevel { get; set; }
@@ -34,7 +34,7 @@ namespace VEntityFramework.Model
 		#region DesiredLevel
 
 
-		[VXML(include:true)]
+		[VXML(true)]
 		public virtual short DesiredLevel
 		{
 			get { return fDesiredLevel; }
@@ -55,6 +55,7 @@ namespace VEntityFramework.Model
 						fDesiredLevel = value;
 					}
 					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DesiredLevel)));
+					HasChanges = true;
 				}
 			}
 		}

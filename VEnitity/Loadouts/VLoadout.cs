@@ -8,10 +8,34 @@ namespace VEntityFramework.Model
 		public override string BizoName => "Loadout";
 
 		[VXML(true)]
-		public string Name { get; set; }
+		public string Name
+		{
+			get => fName ?? (fName = "");
+			set
+			{
+				if (value != fName)
+				{
+					HasChanges = true;
+				}
+				fName = value;
+			}
+		}
+		string fName;
 
 		[VXML(true)]
-		public int Slot { get; set; }
+		public string Slot
+		{
+			get => fSlot ?? (fSlot = "");
+			set
+			{
+				if (value != fSlot)
+				{
+					HasChanges = true;
+				}
+				fSlot = value;
+			}
+		}
+		string fSlot;
 
 		public override void OnLoadedFromXML(OnLoadedEventArgs e)
 		{

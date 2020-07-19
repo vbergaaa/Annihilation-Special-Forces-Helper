@@ -37,7 +37,7 @@ namespace VUserInterface
 			if (loadout != null)
 			{
 				var form = new VLoadoutForm(loadout);
-				form.Disposed += LoadoutFormSaved;
+				form.OnSaved += LoadoutFormSaved;
 				form.Show();
 			}
 		}

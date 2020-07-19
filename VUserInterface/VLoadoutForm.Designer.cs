@@ -49,33 +49,33 @@ namespace VUserInterface
 			//
 			// LoadoutNameLabel
 			//
-			this.LoadoutNameLabel.Location = new System.Drawing.Point(250, 20);
+			this.LoadoutNameLabel.Location = new System.Drawing.Point(350, 60);
 			this.LoadoutNameLabel.Size = new System.Drawing.Size(120, 20);
 			this.LoadoutNameLabel.Text = "Loadout Name";
 			//
 			// LoadoutNameTextBox
 			//
 			this.LoadoutNameTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Name");
-			this.LoadoutNameTextBox.Location = new System.Drawing.Point(370, 20);
+			this.LoadoutNameTextBox.Location = new System.Drawing.Point(470, 60);
 			this.LoadoutNameTextBox.Size = new System.Drawing.Size(100, 20);
 			this.LoadoutNameTextBox.TextAlign = HorizontalAlignment.Center;
 			//
 			// SlotNumberLabel
 			//
-			this.SlotNumberLabel.Location = new System.Drawing.Point(100, 20);
+			this.SlotNumberLabel.Location = new System.Drawing.Point(200, 60);
 			this.SlotNumberLabel.Size = new System.Drawing.Size(70, 20);
-			this.SlotNumberLabel.Text = "Number";
+			this.SlotNumberLabel.Text = "Save Slot";
 			//
 			// SlotNumberTextBox
 			//
 			this.SlotNumberTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Slot");
-			this.SlotNumberTextBox.Location = new System.Drawing.Point(171, 20);
+			this.SlotNumberTextBox.Location = new System.Drawing.Point(271, 60);
 			this.SlotNumberTextBox.Size = new System.Drawing.Size(30, 20);
 			this.SlotNumberTextBox.TextAlign = HorizontalAlignment.Center;
 			//
 			// PerkPageControl
 			//
-			this.PerkPageControl.Location = new System.Drawing.Point(10, 50);
+			this.PerkPageControl.Location = new System.Drawing.Point(105, 90);
 			this.PerkPageControl.DataBindings.Add("Perks", this.LoadoutBindingSource, "Perks");
 			this.PerkPageControl.DataBindings.Add("Text", this.LoadoutBindingSource, "Perks.PageTitle");
 			//

@@ -91,7 +91,14 @@ namespace VEntityFramework.Data
 		string GetLoadoutsDirectory()
 		{
 			var rootDirectory = Directory.GetCurrentDirectory();
-			return rootDirectory + "/Loadouts/";
+			var loadoutsDirectory = rootDirectory + "/Loadouts/";
+
+			if (!Directory.Exists(loadoutsDirectory))
+			{
+				Directory.CreateDirectory(loadoutsDirectory);
+			}
+
+			return loadoutsDirectory;
 		}
 
 		#endregion
@@ -101,6 +108,8 @@ namespace VEntityFramework.Data
 	{
 		public void PopulateFromXML(VBusinessObject bizo, XmlNode documentElement)
 		{
+			bizo.SuspendSettingHasChanges = true;
+
 			foreach (XmlNode childNode in documentElement.ChildNodes)
 			{
 				var matchingProperty = GetMatchingProperty(bizo.GetType(), childNode);
@@ -123,6 +132,7 @@ namespace VEntityFramework.Data
 					}
 				}
 			}
+			bizo.SuspendSettingHasChanges = false;
 		}
 
 		string[] XmlKeys => xmlKeys ?? (xmlKeys = GetXmlKeys());

@@ -38,6 +38,7 @@ namespace VUserInterface
 			//
 			// SaveButton
 			//
+			this.SaveButton.Enabled = false;
 			this.SaveButton.Location = new System.Drawing.Point(620, 420);
 			this.SaveButton.Size = new System.Drawing.Size(80, 25);
 			this.SaveButton.Text = "Save";
@@ -47,7 +48,7 @@ namespace VUserInterface
 			//
 			this.CancelButton.Location = new System.Drawing.Point(710, 420);
 			this.CancelButton.Size = new System.Drawing.Size(80, 25);
-			this.CancelButton.Text = "Cancel";
+			this.CancelButton.Text = "Close";
 			this.CancelButton.Click += CancelButton_Click;
 			//
 			// this

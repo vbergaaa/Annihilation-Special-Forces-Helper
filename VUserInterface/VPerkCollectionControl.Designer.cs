@@ -52,6 +52,8 @@ namespace VUserInterface
 			this.page9Button = new System.Windows.Forms.Button();
 			this.page10Button = new System.Windows.Forms.Button();
 			this.page11Button = new System.Windows.Forms.Button();
+			this.previousPageButton = new System.Windows.Forms.Button();
+			this.nextPageButton = new System.Windows.Forms.Button();
 			this.costOfPageLabel = new System.Windows.Forms.Label();
 			this.costOfPageCaptionLabel = new System.Windows.Forms.Label();
 			this.totalCostCaptionLabel = new System.Windows.Forms.Label();
@@ -60,33 +62,39 @@ namespace VUserInterface
 			//
 			// Perk1Control
 			//
-			this.Perk1Control.Location = new System.Drawing.Point(5, 40);
+			this.Perk1Control.Location = new System.Drawing.Point(35, 40);
 			this.Perk1Control.DataBindings.Add("Perk", this.perksBindingSource, "Perk1");
+			this.Perk1Control.TabIndex = 2;
 			//
 			// Perk2Control
 			//
-			this.Perk2Control.Location = new System.Drawing.Point(178, 40);
+			this.Perk2Control.Location = new System.Drawing.Point(208, 40);
 			this.Perk2Control.DataBindings.Add("Perk", this.perksBindingSource, "Perk2");
+			this.Perk2Control.TabIndex = 3;
 			//
 			// Perk3Control
 			//
-			this.Perk3Control.Location = new System.Drawing.Point(351, 40);
+			this.Perk3Control.Location = new System.Drawing.Point(381, 40);
 			this.Perk3Control.DataBindings.Add("Perk", this.perksBindingSource, "Perk3");
+			this.Perk3Control.TabIndex = 4;
 			//
 			// Perk4Control
 			//
-			this.Perk4Control.Location = new System.Drawing.Point(5, 127);
+			this.Perk4Control.Location = new System.Drawing.Point(35, 127);
 			this.Perk4Control.DataBindings.Add("Perk", this.perksBindingSource, "Perk4");
+			this.Perk4Control.TabIndex = 5;
 			//
 			// Perk5Control
 			//
-			this.Perk5Control.Location = new System.Drawing.Point(178, 127);
+			this.Perk5Control.Location = new System.Drawing.Point(208, 127);
 			this.Perk5Control.DataBindings.Add("Perk", this.perksBindingSource, "Perk5");
+			this.Perk5Control.TabIndex = 6;
 			//
 			// Perk6Control
 			//
-			this.Perk6Control.Location = new System.Drawing.Point(351, 127);
+			this.Perk6Control.Location = new System.Drawing.Point(381, 127);
 			this.Perk6Control.DataBindings.Add("Perk", this.perksBindingSource, "Perk6");
+			this.Perk6Control.TabIndex = 7;
 			// 
 			// perksBindingSource
 			// 
@@ -95,13 +103,13 @@ namespace VUserInterface
 			// costOfPageValueLabel
 			//
 			this.costOfPageLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perksBindingSource, "CostForPage"));
-			this.costOfPageLabel.Location = new System.Drawing.Point(131, 20);
+			this.costOfPageLabel.Location = new System.Drawing.Point(161, 20);
 			this.costOfPageLabel.Size = new System.Drawing.Size(129, 20);
 			this.costOfPageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// costOfPageCaptionLabel
 			//
-			this.costOfPageCaptionLabel.Location = new System.Drawing.Point(1, 20);
+			this.costOfPageCaptionLabel.Location = new System.Drawing.Point(31, 20);
 			this.costOfPageCaptionLabel.Size = new System.Drawing.Size(129, 20);
 			this.costOfPageCaptionLabel.Text = "Cost of Page:";
 			this.costOfPageCaptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -109,13 +117,13 @@ namespace VUserInterface
 			// totalCostValueLabel
 			//
 			this.totalCostValueLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perksBindingSource, "Cost"));
-			this.totalCostValueLabel.Location = new System.Drawing.Point(391, 20);
+			this.totalCostValueLabel.Location = new System.Drawing.Point(421, 20);
 			this.totalCostValueLabel.Size = new System.Drawing.Size(126, 20);
 			this.totalCostValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// totalCostCaptionLabel
 			//
-			this.totalCostCaptionLabel.Location = new System.Drawing.Point(261, 20);
+			this.totalCostCaptionLabel.Location = new System.Drawing.Point(291, 20);
 			this.totalCostCaptionLabel.Size = new System.Drawing.Size(129, 20);
 			this.totalCostCaptionLabel.Text = "Total Cost:";
 			this.totalCostCaptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -123,79 +131,95 @@ namespace VUserInterface
 			// page1Button
 			//
 			this.page1Button.Click += UpdatePage;
-			this.page1Button.Location = new System.Drawing.Point(6, 198);
-			this.page1Button.Size = new System.Drawing.Size(23, 23);
+			this.page1Button.Location = new System.Drawing.Point(96, 204);
+			this.page1Button.Size = new System.Drawing.Size(27, 27);
 			this.page1Button.Text = "1";
 			//
 			// page2Button
 			//
 			this.page2Button.Click += UpdatePage;
-			this.page2Button.Location = new System.Drawing.Point(36, 198);
-			this.page2Button.Size = new System.Drawing.Size(23, 23);
+			this.page2Button.Location = new System.Drawing.Point(132, 204);
+			this.page2Button.Size = new System.Drawing.Size(27, 27);
 			this.page2Button.Text = "2";
 			//
 			// page3Button
 			//
 			this.page3Button.Click += UpdatePage;
-			this.page3Button.Location = new System.Drawing.Point(66, 198);
-			this.page3Button.Size = new System.Drawing.Size(23, 23);
+			this.page3Button.Location = new System.Drawing.Point(168, 204);
+			this.page3Button.Size = new System.Drawing.Size(27, 27);
 			this.page3Button.Text = "3";
 			//
 			// page4Button
 			//
 			this.page4Button.Click += UpdatePage;
-			this.page4Button.Location = new System.Drawing.Point(96, 198);
-			this.page4Button.Size = new System.Drawing.Size(23, 23);
+			this.page4Button.Location = new System.Drawing.Point(204, 204);
+			this.page4Button.Size = new System.Drawing.Size(27, 27);
 			this.page4Button.Text = "4";
 			//
 			// page5Button
 			//
 			this.page5Button.Click += UpdatePage;
-			this.page5Button.Location = new System.Drawing.Point(126, 198);
-			this.page5Button.Size = new System.Drawing.Size(23, 23);
+			this.page5Button.Location = new System.Drawing.Point(240, 204);
+			this.page5Button.Size = new System.Drawing.Size(27, 27);
 			this.page5Button.Text = "5";
 			//
 			// page6Button
 			//
 			this.page6Button.Click += UpdatePage;
-			this.page6Button.Location = new System.Drawing.Point(156, 198);
-			this.page6Button.Size = new System.Drawing.Size(23, 23);
+			this.page6Button.Location = new System.Drawing.Point(276, 204);
+			this.page6Button.Size = new System.Drawing.Size(27, 27);
 			this.page6Button.Text = "6";
 			//
 			// page7Button
 			//
 			this.page7Button.Click += UpdatePage;
-			this.page7Button.Location = new System.Drawing.Point(186, 198);
-			this.page7Button.Size = new System.Drawing.Size(23, 23);
+			this.page7Button.Location = new System.Drawing.Point(312, 204);
+			this.page7Button.Size = new System.Drawing.Size(27, 27);
 			this.page7Button.Text = "7";
 			//
 			// page8Button
 			//
 			this.page8Button.Click += UpdatePage;
-			this.page8Button.Location = new System.Drawing.Point(216, 198);
-			this.page8Button.Size = new System.Drawing.Size(23, 23);
+			this.page8Button.Location = new System.Drawing.Point(348, 204);
+			this.page8Button.Size = new System.Drawing.Size(27, 27);
 			this.page8Button.Text = "8";
 			//
 			// page9Button
 			//
 			this.page9Button.Click += UpdatePage;
-			this.page9Button.Location = new System.Drawing.Point(246, 198);
-			this.page9Button.Size = new System.Drawing.Size(23, 23);
+			this.page9Button.Location = new System.Drawing.Point(384, 204);
+			this.page9Button.Size = new System.Drawing.Size(27, 27);
 			this.page9Button.Text = "9";
 			//
 			// page10Button
 			//
 			this.page10Button.Click += UpdatePage;
-			this.page10Button.Location = new System.Drawing.Point(276, 198);
-			this.page10Button.Size = new System.Drawing.Size(23, 23);
+			this.page10Button.Location = new System.Drawing.Point(420, 204);
+			this.page10Button.Size = new System.Drawing.Size(27, 27);
 			this.page10Button.Text = "10";
 			//
 			// page11Button
 			//
 			this.page11Button.Click += UpdatePage;
-			this.page11Button.Location = new System.Drawing.Point(306, 198);
-			this.page11Button.Size = new System.Drawing.Size(23, 23);
+			this.page11Button.Location = new System.Drawing.Point(456, 204);
+			this.page11Button.Size = new System.Drawing.Size(27, 27);
 			this.page11Button.Text = "11";
+			//
+			// previousPageButton
+			//
+			this.previousPageButton.Click += UpdatePage;
+			this.previousPageButton.Location = new System.Drawing.Point(3, 70);
+			this.previousPageButton.Size = new System.Drawing.Size(27, 90);
+			this.previousPageButton.TabIndex = 1;
+			this.previousPageButton.Text = "<";
+			//
+			// nextPageButton
+			//
+			this.nextPageButton.Click += UpdatePage;
+			this.nextPageButton.Location = new System.Drawing.Point(554, 70);
+			this.nextPageButton.Size = new System.Drawing.Size(27, 90);
+			this.nextPageButton.TabIndex = 8;
+			this.nextPageButton.Text = ">";
 			//
 			// VPerkPageControl
 			//
@@ -220,7 +244,9 @@ namespace VUserInterface
 			this.Controls.Add(page9Button);
 			this.Controls.Add(page10Button);
 			this.Controls.Add(page11Button);
-			this.Size = new System.Drawing.Size(519, 227);
+			this.Controls.Add(previousPageButton);
+			this.Controls.Add(nextPageButton);
+			this.Size = new System.Drawing.Size(589, 247);
 			((System.ComponentModel.ISupportInitialize)(this.perksBindingSource)).EndInit();
 		}
 
@@ -248,5 +274,7 @@ namespace VUserInterface
 		private System.Windows.Forms.Button page9Button;
 		private System.Windows.Forms.Button page10Button;
 		private System.Windows.Forms.Button page11Button;
+		private System.Windows.Forms.Button previousPageButton;
+		private System.Windows.Forms.Button nextPageButton;
 	}
 }

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using VBusiness.Loadouts;
+using VEntityFramework;
 using VEntityFramework.Data;
 
 namespace VUserInterface
@@ -20,11 +15,18 @@ namespace VUserInterface
 			}
 
 			Parent = parent;
+			Parent.HasChangesChanged += UpdateSaveButtons;
 		}
 
 		VForm()
 		{
 			InitializeComponent();
+		}
+
+		private void UpdateSaveButtons(object sender, HasChangesEventArgs e)
+		{
+			SaveButton.Enabled = e.HasChanges;
+			CancelButton.Text = e.HasChanges ? "Cancel" : "Close";
 		}
 
 		public new VBusinessObject Parent { get; set; }
@@ -46,11 +48,16 @@ namespace VUserInterface
 
 		void CancelButton_Click(object sender, EventArgs e)
 		{
-			var result = MessageBox.Show("Are you sure you wish to close this form? Unsaved changes will be lost", "Cancel?", MessageBoxButtons.YesNo);
-			if (result == DialogResult.Yes)
+			if (Parent.HasChanges)
 			{
-				Close();
+				var result = MessageBox.Show("You have unsaved changes, are you sure you wish to cancel?", "Confirm Cancel", MessageBoxButtons.YesNo);
+				if (result == DialogResult.No)
+				{
+					return;
+				}
 			}
+
+			Close();
 		}
 
 		public event EventHandler<EventArgs> OnSaved;
