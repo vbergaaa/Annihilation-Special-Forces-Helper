@@ -15,10 +15,5 @@
 		public override short MaxLevel => 10;
 
 		protected override string name => "Trifecta Power";
-
-		public override short DesiredLevel { 
-			get => base.DesiredLevel;
-			set => base.DesiredLevel = value;
-		}
 	}
 }
