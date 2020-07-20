@@ -14,7 +14,7 @@ namespace VUserInterface
 		{
 			InitializeComponent();
 			context = new VDataContext();
-			PopulateLoadouts();
+			RefreshLoadouts();
 		}
 
 		readonly VDataContext context;
@@ -33,7 +33,7 @@ namespace VUserInterface
 
 		void OpenLoadout_Click(object sender, EventArgs e)
 		{
-			var loadout = (Loadout)LoadoutsListBox.SelectedValue;
+			var loadout = new VDataContext().ReadFromXML<Loadout>((string)LoadoutsListBox.SelectedValue);
 			if (loadout != null)
 			{
 				var form = new VLoadoutForm(loadout);
@@ -55,55 +55,18 @@ namespace VUserInterface
 			RefreshLoadouts();
 		}
 
-		void PopulateLoadouts()
-		{
-			var loadouts = context.GetAllLoadoutNames().OrderBy(name => name);
-			foreach (var loadout in loadouts)
-			{
-				LoadoutsCollection.Add(new KeyValuePair<string, Loadout>(loadout, context.ReadFromXML<Loadout>(loadout)));
-			}
-		}
-
 		void RefreshLoadouts()
 		{
-			ClearRemovedOrRenamedLoadouts();
-			AddNewOrRenamedLoadouts();
-		}
-
-		void AddNewOrRenamedLoadouts()
-		{
-			var loadoutNames = context.GetAllLoadoutNames().OrderBy(name => name).ToArray();
-			for (var i = 0; i < loadoutNames.Count(); i++)
+			LoadoutsCollection.Clear();
+			var loadouts = context.GetAllLoadoutNames().OrderBy(name => name).ToList();
+			foreach (var loadout in loadouts)
 			{
-				var loadout = loadoutNames[i];
-				if (!LoadoutsCollection.Select(k => k.Key).Contains(loadout))
-				{
-					LoadoutsCollection.Insert(i, new KeyValuePair<string, Loadout>(loadout, context.ReadFromXML<Loadout>(loadout)));
-				}
+				LoadoutsCollection.Add(loadout);
 			}
 		}
 
-		void ClearRemovedOrRenamedLoadouts()
-		{
-			var loadoutsToRemove = new List<KeyValuePair<string, Loadout>>();
-			var loadoutNames = context.GetAllLoadoutNames();
-
-			foreach (var loadout in LoadoutsCollection)
-			{
-				if (!loadoutNames.Contains(loadout.Key))
-				{
-					loadoutsToRemove.Add(loadout);
-				}
-			}
-
-			foreach (var loadout in loadoutsToRemove)
-			{
-				LoadoutsCollection.Remove(loadout);
-			}
-		}
-
-		public BindingList<KeyValuePair<string, Loadout>> LoadoutsCollection => fLoadoutsCollection ?? (fLoadoutsCollection = new BindingList<KeyValuePair<string, Loadout>>());
-		BindingList<KeyValuePair<string, Loadout>> fLoadoutsCollection;
+		public BindingList<string> LoadoutsCollection => fLoadoutsCollection ?? (fLoadoutsCollection = new BindingList<string>());
+		BindingList<string> fLoadoutsCollection;
 
 		#endregion
 	}

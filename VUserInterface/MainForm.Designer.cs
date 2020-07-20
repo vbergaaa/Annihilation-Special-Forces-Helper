@@ -40,7 +40,6 @@ namespace VUserInterface
 			// 
 			// LoadoutsListBox
 			// 
-			this.LoadoutsListBox.DisplayMember = "Key";
 			this.LoadoutsListBox.DataSource = this.LoadoutsCollection;
 			this.LoadoutsListBox.FormattingEnabled = true;
 			this.LoadoutsListBox.ItemHeight = 15;
@@ -49,7 +48,6 @@ namespace VUserInterface
 			this.LoadoutsListBox.Size = new System.Drawing.Size(275, 94);
 			this.LoadoutsListBox.Sorted = true;
 			this.LoadoutsListBox.TabIndex = 0;
-			this.LoadoutsListBox.ValueMember = "Value";
 			// 
 			// LoadoutsLabel
 			// 
