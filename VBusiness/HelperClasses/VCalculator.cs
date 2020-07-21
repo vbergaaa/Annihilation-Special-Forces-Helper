@@ -13,7 +13,7 @@
 			var c = startingCost + incrementCost * b;
 			var d = c * (maxLevel - currentLevel);
 
-			return (int)((startingCost + incrementCost * (maxLevel - currentLevel - 1f) / 2) * (maxLevel - currentLevel));
+			return (int)((2 * startingCost + incrementCost * (desiredLevel + currentLevel - 1)) / 2f * (desiredLevel - currentLevel));
 		}
 	}
 }
