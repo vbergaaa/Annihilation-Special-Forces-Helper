@@ -2,17 +2,12 @@
 {
 	public static class VCalculator
 	{
-		public static int Calculate(int startingCost, int incrementCost, int currentLevel, int maxLevel)
+		public static int Calculate(int startingCost, int incrementCost, int currentLevel, int desiredLevel)
 		{
-			if (currentLevel >= maxLevel)
+			if (currentLevel >= desiredLevel)
 			{
 				return 0;
 			}
-			var a = maxLevel - currentLevel - 1f;
-			var b = a / 2;
-			var c = startingCost + incrementCost * b;
-			var d = c * (maxLevel - currentLevel);
-
 			return (int)((2 * startingCost + incrementCost * (desiredLevel + currentLevel - 1)) / 2f * (desiredLevel - currentLevel));
 		}
 	}
