@@ -35,15 +35,6 @@ namespace VUserInterface
 		{
 			var succeeded = Parent.Save();
 			OnSaved?.Invoke(this, e);
-
-			if (succeeded)
-			{
-				MessageBox.Show("Save Successful");
-			}
-			else
-			{
-				MessageBox.Show("Save Failed");
-			}
 		}
 
 		void CancelButton_Click(object sender, EventArgs e)
