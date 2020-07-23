@@ -7,9 +7,19 @@ namespace VBusiness.Perks
 	{
 		public Perk() { }
 
-		public override int Cost
+		public override int RemainingCost
 		{
-			get => this.GetCost();
+			get => this.GetRemainingCost();
+		}
+
+		public override int CurrentCost
+		{
+			get => this.GetCurrentCost();
+		}
+
+		public override int TotalCost
+		{
+			get => this.GetTotalCost();
 		}
 	}
 }

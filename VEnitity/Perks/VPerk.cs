@@ -29,7 +29,36 @@ namespace VEntityFramework.Model
 		[VXML(true)]
 		public string Code => $"{Page}_{Position}";
 
-		public short CurrentLevel { get; set; }
+		#region CurrentLevel
+
+		[VXML(true)]
+		public virtual short CurrentLevel
+		{
+			get { return fCurrentLevel; }
+			set
+			{
+				if (value != fCurrentLevel)
+				{
+					if (value > MaxLevel)
+					{
+						fCurrentLevel = MaxLevel;
+					}
+					else if (value < 0)
+					{
+						fCurrentLevel = 0;
+					}
+					else
+					{
+						fCurrentLevel = value;
+					}
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
+					HasChanges = true;
+				}
+			}
+		}
+		short fCurrentLevel;
+
+		#endregion
 
 		#region DesiredLevel
 
@@ -61,9 +90,13 @@ namespace VEntityFramework.Model
 		}
 		short fDesiredLevel;
 
-		public abstract int Cost { get; }
-
 		#endregion
+
+		public abstract int RemainingCost { get; }
+
+		public abstract int TotalCost { get; }
+
+		public abstract int CurrentCost { get; }
 
 		#endregion
 
