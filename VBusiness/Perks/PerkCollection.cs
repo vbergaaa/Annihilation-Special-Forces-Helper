@@ -788,9 +788,11 @@ namespace VBusiness.Perks
 
 		#region Cost
 
-		public override int Cost => allPerks.Sum(p => p.Cost);
+		public override int RemainingCost => allPerks.Sum(p => p.RemainingCost);
 
-		public override int CostForPage => allPerks.Where(p => p.Page == Page).Sum(p => p.Cost);
+		public override int TotalCost => allPerks.Sum(p => p.TotalCost);
+
+		public override int CurrentCost => allPerks.Sum(p => p.CurrentCost);
 
 		#endregion
 

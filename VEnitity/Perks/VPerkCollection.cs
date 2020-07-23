@@ -75,8 +75,9 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		public abstract int Cost { get; }
-		public abstract int CostForPage { get; }
+		public abstract int RemainingCost { get; }
+		public abstract int CurrentCost { get; }
+		public abstract int TotalCost { get; }
 
 		public virtual int Page
 		{
@@ -96,8 +97,6 @@ namespace VEntityFramework.Model
 					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Perk5)));
 					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Perk6)));
 					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(PageTitle)));
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Cost)));
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CostForPage)));
 				}
 			}
 		}

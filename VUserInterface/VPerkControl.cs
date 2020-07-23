@@ -48,7 +48,35 @@ namespace VUserInterface
 			UpdateBindingIfDataSourceChanged();
 		}
 
-		private void DecrementButton_Click(object sender, EventArgs e)
+		private void DecrementCurrentButton_Click(object sender, EventArgs e)
+		{
+			if (Control.ModifierKeys == Keys.Shift)
+			{
+				Perk.CurrentLevel -= 10;
+			}
+			else
+			{
+				Perk.CurrentLevel -= 1;
+			}
+			LockButtonsIfRequired();
+			RefreshParentsBinding();
+		}
+
+		private void IncrementCurrentButton_Click(object sender, EventArgs e)
+		{
+			if (Control.ModifierKeys == Keys.Shift)
+			{
+				Perk.CurrentLevel += 10;
+			}
+			else
+			{
+				Perk.CurrentLevel += 1;
+			}
+			LockButtonsIfRequired();
+			RefreshParentsBinding();
+		}
+
+		private void DecrementDesiredButton_Click(object sender, EventArgs e)
 		{
 			if (Control.ModifierKeys == Keys.Shift)
 			{
@@ -62,7 +90,7 @@ namespace VUserInterface
 			RefreshParentsBinding();
 		}
 
-		private void IncrementButton_Click(object sender, EventArgs e)
+		private void IncrementDesiredButton_Click(object sender, EventArgs e)
 		{
 			if (Control.ModifierKeys == Keys.Shift)
 			{
@@ -78,8 +106,10 @@ namespace VUserInterface
 
 		void LockButtonsIfRequired()
 		{
-			IncrementButton.Enabled = Perk.DesiredLevel < Perk.MaxLevel;
-			DecrementButton.Enabled = Perk.DesiredLevel > 0;
+			IncrementDesiredButton.Enabled = Perk.DesiredLevel < Perk.MaxLevel;
+			DecrementDesiredButton.Enabled = Perk.DesiredLevel > 0;
+			IncrementCurrentButton.Enabled = Perk.CurrentLevel < Perk.MaxLevel;
+			DecrementCurrentButton.Enabled = Perk.CurrentLevel > 0;
 		}
 
 		private void RefreshParentsBinding()
