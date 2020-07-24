@@ -29,17 +29,10 @@ namespace VEntityFramework.Data
 
 		internal T Read<T>(string fileName) where T : VBusinessObject
 		{
-			try
+			EnsureFileNameHasXMLExtension(ref fileName);
+			if (CheckFileExists(fileName))
 			{
-				EnsureFileNameHasXMLExtension(ref fileName);
-				if (CheckFileExists(fileName))
-				{
-					return ReadXML<T>(fileName);
-				}
-			}
-			catch
-			{
-				throw new IOException("Unable to load xml");
+				return ReadXML<T>(fileName);
 			}
 			return null;
 		}

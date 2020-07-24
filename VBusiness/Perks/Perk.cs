@@ -1,4 +1,5 @@
-﻿using VBusiness.HelperClasses;
+﻿using System;
+using VBusiness.HelperClasses;
 using VEntityFramework.Model;
 
 namespace VBusiness.Perks
@@ -6,6 +7,8 @@ namespace VBusiness.Perks
 	public abstract class Perk : VPerk
 	{
 		public Perk() { }
+
+		#region Cost
 
 		public override int RemainingCost
 		{
@@ -21,5 +24,16 @@ namespace VBusiness.Perks
 		{
 			get => this.GetTotalCost();
 		}
+
+		#endregion
+
+		#region Stats
+
+		protected override Action<VStats> GetStatsModifier(int levelDifference)
+		{
+			return null;
+		}
+
+		#endregion
 	}
 }

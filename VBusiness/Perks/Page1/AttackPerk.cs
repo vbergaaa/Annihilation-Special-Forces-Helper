@@ -1,4 +1,5 @@
-﻿using VEntityFramework;
+﻿using System;
+using VEntityFramework.Model;
 
 namespace VBusiness.Perks
 {
@@ -17,5 +18,10 @@ namespace VBusiness.Perks
 		public override int IncrementCost => 10;
 
 		public override short MaxLevel => 10;
+
+		protected override Action<VStats> GetStatsModifier(int levelDifference)
+		{
+			return (stats) => { stats.Attack += 3 * levelDifference; };
+		}
 	}
 }

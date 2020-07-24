@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Data;
+﻿using System;
+using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
@@ -19,6 +20,31 @@ namespace VEntityFramework.Model
 		public abstract int IncrementCost { get; }
 
 		public abstract short MaxLevel { get; }
+
+		public abstract int RemainingCost { get; }
+
+		public abstract int TotalCost { get; }
+
+		public abstract int CurrentCost { get; }
+
+		protected int LevelChange { get; set; }
+
+		#endregion
+
+		#region Events
+
+		public event EventHandler<StatsEventArgs> PerkLevelChanged;
+
+		void OnPerkLevelChanged(int newLevel, int oldLevel)
+		{
+			var e = new StatsEventArgs();
+			e.Modification = GetStatsModifier(newLevel - oldLevel);
+
+			if (e.Modification != null)
+			{
+				PerkLevelChanged?.Invoke(this, e);
+			}
+		}
 
 		#endregion
 
@@ -71,6 +97,8 @@ namespace VEntityFramework.Model
 			{
 				if (value != fDesiredLevel)
 				{
+					var oldValue = fDesiredLevel;
+
 					if (value > MaxLevel)
 					{
 						fDesiredLevel = MaxLevel;
@@ -83,8 +111,15 @@ namespace VEntityFramework.Model
 					{
 						fDesiredLevel = value;
 					}
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DesiredLevel)));
-					HasChanges = true;
+
+					var newValue = fDesiredLevel;
+
+					if (newValue != oldValue)
+					{
+						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DesiredLevel)));
+						OnPerkLevelChanged(newValue, oldValue);
+						HasChanges = true;
+					}
 				}
 			}
 		}
@@ -92,15 +127,15 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		public abstract int RemainingCost { get; }
+		#endregion
 
-		public abstract int TotalCost { get; }
+		#region Methods
 
-		public abstract int CurrentCost { get; }
+		protected abstract Action<VStats> GetStatsModifier(int levelDifference);
 
 		#endregion
 
-		#region object Overrides
+		#region Overrides
 
 		public override string ToString()
 		{

@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Data;
+﻿using System;
+using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
@@ -118,6 +119,17 @@ namespace VEntityFramework.Model
 		public abstract string PageTitle { get; }
 
 		public override string BizoName => "PerkCollection";
+
+		#region PerkLevelChanged
+
+		protected void OnPerkLevelChanged(object sender, StatsEventArgs e)
+		{
+			PerkLevelChanged?.Invoke(sender, e);
+		}
+
+		public event EventHandler<StatsEventArgs> PerkLevelChanged;
+
+		#endregion
 	}
 }
 		

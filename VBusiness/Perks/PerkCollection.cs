@@ -758,6 +758,11 @@ namespace VBusiness.Perks
 				Alacrity2
 			};
 
+			foreach (var perk in perks)
+			{
+				perk.PerkLevelChanged += OnPerkLevelChanged;
+			}
+
 			allPerks = perks;
 		}
 

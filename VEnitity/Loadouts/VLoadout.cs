@@ -49,5 +49,10 @@ namespace VEntityFramework.Model
 		}
 		protected override string GetExistingXMLFileName => existingXMLFileName;
 		string existingXMLFileName;
+
+		[VXML(false)]
+		public VStats Stats { get; set; }
+
+		public virtual VPerkCollection Perks { get; set; }
 	}
 }
