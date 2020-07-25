@@ -15,5 +15,14 @@
 		public override short MaxLevel => 10;
 
 		protected override string name => "Super Rush";
+
+		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		{
+			return (stats) => {
+				stats.Attack += 1 * levelDifference;
+				stats.AttackSpeed += 1 * levelDifference;
+				stats.CriticalChance += 0.5 * levelDifference;
+			};
+		}
 	}
 }

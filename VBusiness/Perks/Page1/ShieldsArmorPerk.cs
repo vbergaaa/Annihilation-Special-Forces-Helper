@@ -15,5 +15,10 @@
 		public override int IncrementCost => 20;
 
 		public override short MaxLevel => 10;
+
+		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		{
+			return (stats) => { stats.ShieldsArmor += 2 * levelDifference; };
+		}
 	}
 }

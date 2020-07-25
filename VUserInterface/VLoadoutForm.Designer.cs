@@ -41,6 +41,7 @@ namespace VUserInterface
 			this.LoadoutNameTextBox = new TextBox();
 			this.SlotNumberLabel = new Label();
 			this.SlotNumberTextBox = new TextBox();
+			this.StatsControl = new VStatsControl();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
 			//
 			// LoadoutBindingSource
@@ -49,35 +50,40 @@ namespace VUserInterface
 			//
 			// LoadoutNameLabel
 			//
-			this.LoadoutNameLabel.Location = new System.Drawing.Point(350, 60);
+			this.LoadoutNameLabel.Location = new System.Drawing.Point(270, 60);
 			this.LoadoutNameLabel.Size = new System.Drawing.Size(120, 20);
 			this.LoadoutNameLabel.Text = "Loadout Name";
 			//
 			// LoadoutNameTextBox
 			//
 			this.LoadoutNameTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Name");
-			this.LoadoutNameTextBox.Location = new System.Drawing.Point(470, 60);
+			this.LoadoutNameTextBox.Location = new System.Drawing.Point(390, 60);
 			this.LoadoutNameTextBox.Size = new System.Drawing.Size(100, 20);
 			this.LoadoutNameTextBox.TextAlign = HorizontalAlignment.Center;
 			//
 			// SlotNumberLabel
 			//
-			this.SlotNumberLabel.Location = new System.Drawing.Point(200, 60);
+			this.SlotNumberLabel.Location = new System.Drawing.Point(120, 60);
 			this.SlotNumberLabel.Size = new System.Drawing.Size(70, 20);
 			this.SlotNumberLabel.Text = "Save Slot";
 			//
 			// SlotNumberTextBox
 			//
 			this.SlotNumberTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Slot");
-			this.SlotNumberTextBox.Location = new System.Drawing.Point(271, 60);
+			this.SlotNumberTextBox.Location = new System.Drawing.Point(191, 60);
 			this.SlotNumberTextBox.Size = new System.Drawing.Size(30, 20);
 			this.SlotNumberTextBox.TextAlign = HorizontalAlignment.Center;
 			//
 			// PerkPageControl
 			//
-			this.PerkPageControl.Location = new System.Drawing.Point(105, 90);
+			this.PerkPageControl.Location = new System.Drawing.Point(25, 90);
 			this.PerkPageControl.DataBindings.Add("Perks", this.LoadoutBindingSource, "Perks");
 			this.PerkPageControl.DataBindings.Add("Text", this.LoadoutBindingSource, "Perks.PageTitle");
+			//
+			// StatsControl
+			//
+			this.StatsControl.DataBindings.Add("Stats", this.LoadoutBindingSource, "Stats");
+			this.StatsControl.Location = new System.Drawing.Point(620, 50);
 			//
 			// PerkPlanningForm
 			//
@@ -88,6 +94,7 @@ namespace VUserInterface
 			this.Controls.Add(PerkPageControl);
 			this.Controls.Add(SlotNumberLabel);
 			this.Controls.Add(SlotNumberTextBox);
+			this.Controls.Add(StatsControl);
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
 		}
@@ -100,5 +107,6 @@ namespace VUserInterface
 		private System.Windows.Forms.TextBox LoadoutNameTextBox;
 		private VUserInterface.VPerkCollectionControl PerkPageControl;
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;
+		private VStatsControl StatsControl;
 	}
 }

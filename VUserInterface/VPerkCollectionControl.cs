@@ -27,11 +27,6 @@ namespace VUserInterface
 			SetButtonReadonlyStatus();
 		}
 
-		protected override void OnParentBindingContextChanged(EventArgs e)
-		{
-			base.OnParentBindingContextChanged(e);
-		}
-
 		public override BindingContext BindingContext 
 		{ 
 			get => base.BindingContext; 

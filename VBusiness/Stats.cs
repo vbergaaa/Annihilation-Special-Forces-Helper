@@ -2,7 +2,24 @@
 
 namespace VBusiness
 {
-	class Stats : VStats
+	public class Stats : VStats
 	{
+		public Stats() : base()
+		{
+			SetDefaultValues();
+		}
+
+		private void SetDefaultValues()
+		{
+			Attack = 100;
+			AttackSpeed = 100;
+			CriticalChance = 0;
+			CriticalDamage = 100;
+			Health = 100;
+			HealthArmor = 100;
+			Shields = 100;
+			ShieldsArmor = 100;
+			DamageReduction = 0;
+		}
 	}
 }

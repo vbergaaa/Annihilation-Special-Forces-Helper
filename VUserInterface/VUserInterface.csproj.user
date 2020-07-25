@@ -17,5 +17,8 @@
     <Compile Update="VPerkControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="VStatsControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

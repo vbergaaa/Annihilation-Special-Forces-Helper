@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms;
 using VBusiness.Loadouts;
-using VUserInterface;
 
 namespace VUserInterface
 {

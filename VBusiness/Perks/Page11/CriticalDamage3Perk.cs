@@ -15,5 +15,10 @@
 		public override short MaxLevel => 45;
 
 		protected override string name => "Critical Damage III";
+
+		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		{
+			return (stats) => { stats.CriticalDamage += 1 * levelDifference; };
+		}
 	}
 }

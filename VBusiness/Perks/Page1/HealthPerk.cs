@@ -15,5 +15,10 @@
 		public override int IncrementCost => 15;
 
 		public override short MaxLevel => 10;
+
+		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		{
+			return (stats) => { stats.Health += 2.5 * levelDifference; };
+		}
 	}
 }

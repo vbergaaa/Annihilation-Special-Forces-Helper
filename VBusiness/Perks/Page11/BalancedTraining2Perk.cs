@@ -15,5 +15,17 @@
 		public override short MaxLevel => 20;
 
 		protected override string name => "Balanced Training II";
+
+		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		{
+			return (stats) => {
+				stats.Attack += 1 * levelDifference;
+				stats.AttackSpeed += 1 * levelDifference;
+				stats.Health += 1 * levelDifference;
+				stats.HealthArmor += 1 * levelDifference;
+				stats.Shields += 1 * levelDifference;
+				stats.ShieldsArmor += 1 * levelDifference;
+			};
+		}
 	}
 }
