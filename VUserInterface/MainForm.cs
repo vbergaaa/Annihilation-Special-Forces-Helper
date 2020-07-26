@@ -23,22 +23,30 @@ namespace VUserInterface
 
 		private void DeleteLoadout_Click(object sender, EventArgs e)
 		{
-			var loadout = (Loadout)LoadoutsListBox.SelectedValue;
-			if (loadout != null)
+			var loadoutName = (string)LoadoutsListBox.SelectedValue;
+			if (loadoutName != null)
 			{
-				loadout.Delete();
-				RefreshLoadouts();
+				var loadout = new VDataContext().ReadFromXML<Loadout>(loadoutName);
+				if (loadout != null)
+				{
+					loadout.Delete();
+					RefreshLoadouts();
+				}
 			}
 		}
 
 		void OpenLoadout_Click(object sender, EventArgs e)
 		{
-			var loadout = new VDataContext().ReadFromXML<Loadout>((string)LoadoutsListBox.SelectedValue);
-			if (loadout != null)
+			var loadoutName = (string)LoadoutsListBox.SelectedValue;
+			if (loadoutName != null)
 			{
-				var form = new VLoadoutForm(loadout);
-				form.OnSaved += LoadoutFormSaved;
-				form.Show();
+				var loadout = new VDataContext().ReadFromXML<Loadout>(loadoutName);
+				if (loadout != null)
+				{
+					var form = new VLoadoutForm(loadout);
+					form.OnSaved += LoadoutFormSaved;
+					form.Show();
+				}
 			}
 		}
 
