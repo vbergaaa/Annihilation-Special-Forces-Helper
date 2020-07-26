@@ -41,5 +41,35 @@ namespace VBusiness.Loadouts
 				Perks.PerkLevelChanged -= UpdateStats;
 			}
 		}
+
+		#region Validation
+
+		public override bool RunPreSaveValidation(out string errorMessage)
+		{
+			errorMessage = null;
+
+			if (CheckInvalidLoadoutName())
+			{
+				errorMessage = "Please enter a name for this loadout.";
+			}
+			else if (CheckInvalidSlotNumber())
+			{
+				errorMessage = "Please enter a Save slot that is greater than 0.";
+			}
+
+			return errorMessage == null ? base.RunPreSaveValidation(out errorMessage) : false;
+		}
+
+		bool CheckInvalidSlotNumber()
+		{
+			return Slot <= 0;
+		}
+
+		bool CheckInvalidLoadoutName()
+		{
+			return Name == "";
+		}
+
+		#endregion
 	}
 }

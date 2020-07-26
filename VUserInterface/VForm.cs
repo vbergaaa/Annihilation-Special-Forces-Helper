@@ -33,8 +33,16 @@ namespace VUserInterface
 
 		void SaveButton_Click(object sender, EventArgs e)
 		{
-			var succeeded = Parent.Save();
-			OnSaved?.Invoke(this, e);
+			var canSave = Parent.RunPreSaveValidation(out var errorMessage);
+			if (!canSave)
+			{
+				MessageBox.Show(errorMessage, "Error");
+			}
+			else
+			{
+				Parent.Save();
+				OnSaved?.Invoke(this, e);
+			}
 		}
 
 		void CancelButton_Click(object sender, EventArgs e)

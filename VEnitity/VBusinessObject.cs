@@ -35,6 +35,12 @@ namespace VEntityFramework.Data
 
 		protected virtual string GetExistingXMLFileName => null;
 
+		public virtual bool RunPreSaveValidation(out string errorMessage)
+		{
+			errorMessage = null;
+			return true;
+		}
+
 		#region Children
 
 		protected IEnumerable<VBusinessObject> Children

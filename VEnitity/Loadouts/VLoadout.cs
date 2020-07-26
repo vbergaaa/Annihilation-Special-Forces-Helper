@@ -23,9 +23,9 @@ namespace VEntityFramework.Model
 		string fName;
 
 		[VXML(true)]
-		public string Slot
+		public int Slot
 		{
-			get => fSlot ?? (fSlot = "");
+			get => fSlot;
 			set
 			{
 				if (value != fSlot)
@@ -35,7 +35,7 @@ namespace VEntityFramework.Model
 				fSlot = value;
 			}
 		}
-		string fSlot;
+		int fSlot;
 
 		public override void OnLoadedFromXML(OnLoadedEventArgs e)
 		{
