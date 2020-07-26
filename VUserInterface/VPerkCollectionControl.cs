@@ -16,6 +16,16 @@ namespace VUserInterface
 		public VPerkCollectionControl()
 		{
 			InitializeComponent();
+			SimplifyControl();
+		}
+
+		void SimplifyControl()
+		{
+			totalCurrentCostCaption.Visible = false;
+			totalCurrentCostLabel.Visible = false;
+			totalDesiredCostCaption.Visible = false;
+			totalDesiredCostLabel.Visible = false;
+			remainingCostCaption.Text = "Total Cost:";
 		}
 
 		public PerkCollection Perks { get; set; }

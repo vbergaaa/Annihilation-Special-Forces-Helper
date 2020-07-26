@@ -54,7 +54,7 @@ namespace VEntityFramework.Model
 				var totalDamageRequiredToKillUnit = b / 2;
 				var totalToughness = totalDamageRequiredToKillUnit / (1 - fDamageReduction / 100);
 				var normalisedToughness = totalToughness / 650 * 100;
-				return normalisedToughness;
+				return Math.Round(normalisedToughness, 2);
 			}
 		}
 		public double Recovery { get => fHealth; }

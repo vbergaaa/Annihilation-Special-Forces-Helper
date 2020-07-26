@@ -10,6 +10,19 @@ namespace VUserInterface
 		public VPerkControl()
 		{
 			InitializeComponent();
+			SimplifyControl();
+		}
+
+		private void SimplifyControl()
+		{
+			this.CurrentLevelCaption.Visible = false;
+			this.CurrentLevelLabel.Visible = false;
+			this.DecrementCurrentButton.Visible = false;
+			this.IncrementCurrentButton.Visible = false;
+			this.DesiredLevelCaption.Visible = false;
+			this.DecrementDesiredButton.Location = new System.Drawing.Point(39, 30);
+			this.DesiredLevelLabel.Location = new System.Drawing.Point(68, 30);
+			this.IncrementDesiredButton.Location = new System.Drawing.Point(97, 30);
 		}
 
 		public VPerk Perk
