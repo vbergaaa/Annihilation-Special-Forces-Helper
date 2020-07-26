@@ -284,9 +284,6 @@ namespace VUserInterface
 			this.Controls.Add(HealthArmorCaption);
 			this.Controls.Add(ShieldsCaption);
 			this.Controls.Add(ShieldsArmorCaption);
-			this.Controls.Add(DamageLabel);
-			this.Controls.Add(ToughnessLabel);
-			this.Controls.Add(RecoveryLabel);
 			this.Controls.Add(AttackLabel);
 			this.Controls.Add(AttackSpeedLabel);
 			this.Controls.Add(CriticalDamageLabel);
