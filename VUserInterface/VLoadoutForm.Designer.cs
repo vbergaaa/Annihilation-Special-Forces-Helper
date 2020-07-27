@@ -42,6 +42,8 @@ namespace VUserInterface
 			this.SlotNumberLabel = new Label();
 			this.SlotNumberTextBox = new TextBox();
 			this.StatsControl = new VStatsControl();
+			this.PerksButton = new Button();
+			this.GemsButton = new Button();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
 			//
 			// LoadoutBindingSource
@@ -50,27 +52,27 @@ namespace VUserInterface
 			//
 			// LoadoutNameLabel
 			//
-			this.LoadoutNameLabel.Location = new System.Drawing.Point(270, 60);
+			this.LoadoutNameLabel.Location = new System.Drawing.Point(270, 20);
 			this.LoadoutNameLabel.Size = new System.Drawing.Size(120, 20);
 			this.LoadoutNameLabel.Text = "Loadout Name";
 			//
 			// LoadoutNameTextBox
 			//
 			this.LoadoutNameTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Name");
-			this.LoadoutNameTextBox.Location = new System.Drawing.Point(390, 60);
+			this.LoadoutNameTextBox.Location = new System.Drawing.Point(390, 20);
 			this.LoadoutNameTextBox.Size = new System.Drawing.Size(100, 20);
 			this.LoadoutNameTextBox.TextAlign = HorizontalAlignment.Center;
 			//
 			// SlotNumberLabel
 			//
-			this.SlotNumberLabel.Location = new System.Drawing.Point(120, 60);
+			this.SlotNumberLabel.Location = new System.Drawing.Point(120, 20);
 			this.SlotNumberLabel.Size = new System.Drawing.Size(70, 20);
 			this.SlotNumberLabel.Text = "Save Slot";
 			//
 			// SlotNumberTextBox
 			//
 			this.SlotNumberTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Slot");
-			this.SlotNumberTextBox.Location = new System.Drawing.Point(191, 60);
+			this.SlotNumberTextBox.Location = new System.Drawing.Point(191, 20);
 			this.SlotNumberTextBox.Size = new System.Drawing.Size(30, 20);
 			this.SlotNumberTextBox.TextAlign = HorizontalAlignment.Center;
 			//
@@ -85,6 +87,22 @@ namespace VUserInterface
 			this.StatsControl.DataBindings.Add("Stats", this.LoadoutBindingSource, "Stats");
 			this.StatsControl.Location = new System.Drawing.Point(620, 50);
 			//
+			// PerksButton
+			//
+			this.PerksButton.Location = new System.Drawing.Point(30, 55);
+			this.PerksButton.Size = new System.Drawing.Size(120, 25);
+			this.PerksButton.Text = "Perks";
+			this.PerksButton.FlatStyle = FlatStyle.Flat;
+			this.PerksButton.Click += ControlVisibilityToggled;
+			//
+			// GemsButton
+			//
+			this.GemsButton.Location = new System.Drawing.Point(170, 55);
+			this.GemsButton.Size = new System.Drawing.Size(120, 25);
+			this.GemsButton.Text = "Gems";
+			this.GemsButton.FlatStyle = FlatStyle.Flat;
+			this.GemsButton.Click += ControlVisibilityToggled;
+			//
 			// PerkPlanningForm
 			//
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -95,12 +113,16 @@ namespace VUserInterface
 			this.Controls.Add(SlotNumberLabel);
 			this.Controls.Add(SlotNumberTextBox);
 			this.Controls.Add(StatsControl);
+			this.Controls.Add(PerksButton);
+			this.Controls.Add(GemsButton);
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
 		}
 
 		#endregion
 
+		private System.Windows.Forms.Button PerksButton;
+		private System.Windows.Forms.Button GemsButton;
 		private System.Windows.Forms.Label SlotNumberLabel;
 		private System.Windows.Forms.Label LoadoutNameLabel;
 		private System.Windows.Forms.TextBox SlotNumberTextBox;
