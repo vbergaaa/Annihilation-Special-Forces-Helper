@@ -54,5 +54,7 @@ namespace VEntityFramework.Model
 		public VStats Stats { get; set; }
 
 		public virtual VPerkCollection Perks { get; set; }
+
+		public virtual VGemCollection Gems { get; set; }
 	}
 }
