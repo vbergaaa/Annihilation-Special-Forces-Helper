@@ -132,7 +132,7 @@ namespace VEntityFramework.Data
 		string[] xmlKeys;
 		string[] GetXmlKeys()
 		{
-			return new string[] { "Code" };
+			return new string[] { "Code", "Key" };
 		}
 
 		PropertyInfo GetMatchingProperty(Type type, XmlNode child)
@@ -140,9 +140,24 @@ namespace VEntityFramework.Data
 			switch (child.Name)
 			{
 				case "PerkCollection": return type.GetProperty("Perks");
+				case "GemCollection": return type.GetProperty("Gems");
+				case "Gem": return GetGem(type, child);
 				case "Perk": return GetPerkFromCode(type, child);
 				default: return type.GetProperty(child.Name);
 			}
+		}
+
+		private PropertyInfo GetGem(Type type, XmlNode node)
+		{
+			var name = "";
+			foreach (XmlNode child in node.ChildNodes)
+			{
+				if (child.Name == "Key")
+				{
+					name = child.InnerText.Replace(" ", "") + "Gem";
+				}
+			}
+			return type.GetProperty(name);
 		}
 
 		private PropertyInfo GetPerkFromCode(Type type, XmlNode node)

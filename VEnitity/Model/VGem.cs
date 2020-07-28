@@ -8,8 +8,7 @@ namespace VEntityFramework.Model
 	public abstract class VGem : VBusinessObject
 	{
 		#region Abstract Properties
-
-		[VXML(true)]
+		
 		public abstract string Name { get; }
 
 		public abstract int[] Costs { get; }
@@ -40,6 +39,9 @@ namespace VEntityFramework.Model
 			}
 		}
 		short fCurrentLevel;
+
+		[VXML(true)]
+		public string Key => Name;
 
 		#endregion
 

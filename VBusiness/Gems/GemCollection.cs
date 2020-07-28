@@ -56,7 +56,7 @@ namespace VBusiness.Gems
 
 		#region Shields
 
-		public override VGem ShieldGem
+		public override VGem ShieldsGem
 		{
 			get => fShieldsGem ?? (fShieldsGem = new ShieldsGem());
 			set => fShieldsGem = value;
@@ -67,7 +67,7 @@ namespace VBusiness.Gems
 
 		#region ShieldsArmor
 
-		public override VGem ShieldArmorGem
+		public override VGem ShieldsArmorGem
 		{
 			get => fShieldsArmorGem ?? (fShieldsArmorGem = new ShieldsArmorGem());
 			set => fShieldsArmorGem = value;
@@ -120,8 +120,8 @@ namespace VBusiness.Gems
 					fGems = new VGem[] {
 						AttackGem,
 						AttackSpeedGem,
-						ShieldGem,
-						ShieldArmorGem,
+						ShieldsGem,
+						ShieldsArmorGem,
 						HealthGem,
 						HealthArmorGem,
 						CriticalChanceGem,

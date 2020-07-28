@@ -13,8 +13,8 @@ namespace VEntityFramework.Model
 		public abstract VGem AttackSpeedGem { get; set; }
 		public abstract VGem HealthGem { get; set; }
 		public abstract VGem HealthArmorGem { get; set; }
-		public abstract VGem ShieldGem { get; set; }
-		public abstract VGem ShieldArmorGem { get; set; }
+		public abstract VGem ShieldsGem { get; set; }
+		public abstract VGem ShieldsArmorGem { get; set; }
 		public abstract VGem DoubleWarpGem { get; set; }
 		public abstract VGem CriticalDamageGem { get; set; }
 		public abstract VGem CriticalChanceGem { get; set; }
