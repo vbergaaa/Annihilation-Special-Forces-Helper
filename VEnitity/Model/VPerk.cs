@@ -57,7 +57,7 @@ namespace VEntityFramework.Model
 
 		#region CurrentLevel
 
-		[VXML(true)]
+		[VXML(false)]
 		public virtual short CurrentLevel
 		{
 			get { return fCurrentLevel; }
