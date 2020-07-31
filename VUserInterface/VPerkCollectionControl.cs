@@ -37,12 +37,6 @@ namespace VUserInterface
 			SetButtonReadonlyStatus();
 		}
 
-		public override BindingContext BindingContext 
-		{ 
-			get => base.BindingContext; 
-			set => base.BindingContext = value;
-		}
-
 		internal void RefreshBindings()
 		{
 			this.perksBindingSource.ResetBindings(false);

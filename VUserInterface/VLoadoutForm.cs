@@ -47,7 +47,7 @@ namespace VUserInterface
 
 		void ShowGems(bool visibility)
 		{
-			//GemsControl.Visible = visibility;
+			GemsControl.Visible = visibility;
 		}
 
 		#endregion

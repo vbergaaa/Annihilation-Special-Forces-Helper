@@ -1,4 +1,6 @@
-﻿namespace VBusiness.Gems
+﻿using System;
+
+namespace VBusiness.Gems
 {
 	class AttackGem : Gem
 	{
@@ -18,5 +20,7 @@
 
 			return costs;
 		}
+
+		protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.Attack += levelDifference; };
 	}
 }

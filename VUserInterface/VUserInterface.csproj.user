@@ -5,8 +5,14 @@
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="GemControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="VForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="VGemCollectionControl.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Update="VLoadoutForm.cs">
       <SubType>Form</SubType>

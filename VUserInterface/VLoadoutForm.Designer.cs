@@ -44,6 +44,7 @@ namespace VUserInterface
 			this.StatsControl = new VStatsControl();
 			this.PerksButton = new Button();
 			this.GemsButton = new Button();
+			this.GemsControl = new VGemCollectionControl();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
 			//
 			// LoadoutBindingSource
@@ -82,6 +83,12 @@ namespace VUserInterface
 			this.PerkPageControl.DataBindings.Add("Perks", this.LoadoutBindingSource, "Perks");
 			this.PerkPageControl.DataBindings.Add("Text", this.LoadoutBindingSource, "Perks.PageTitle");
 			//
+			// GemsControl
+			//
+			this.GemsControl.Location = new System.Drawing.Point(25, 90);
+			this.GemsControl.DataBindings.Add("Gems", this.LoadoutBindingSource, "Gems");
+			this.GemsControl.Text = "Gem";
+			//
 			// StatsControl
 			//
 			this.StatsControl.DataBindings.Add("Stats", this.LoadoutBindingSource, "Stats");
@@ -115,6 +122,7 @@ namespace VUserInterface
 			this.Controls.Add(StatsControl);
 			this.Controls.Add(PerksButton);
 			this.Controls.Add(GemsButton);
+			this.Controls.Add(GemsControl);
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
 		}
@@ -128,6 +136,7 @@ namespace VUserInterface
 		private System.Windows.Forms.TextBox SlotNumberTextBox;
 		private System.Windows.Forms.TextBox LoadoutNameTextBox;
 		private VUserInterface.VPerkCollectionControl PerkPageControl;
+		private VUserInterface.VGemCollectionControl GemsControl;
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;
 		private VStatsControl StatsControl;
 	}

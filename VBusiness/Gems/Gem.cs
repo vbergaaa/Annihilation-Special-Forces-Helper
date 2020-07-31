@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using VEntityFramework.Model;
 
 namespace VBusiness.Gems
@@ -14,5 +15,7 @@ namespace VBusiness.Gems
 		{
 			return Costs[CurrentLevel];
 		}
+
+		protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => null;
 	}
 }

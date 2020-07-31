@@ -8,14 +8,23 @@ namespace VBusiness.Gems
 {
 	public class GemCollection : VGemCollection
 	{
-		#region Gems
+		public GemCollection()
+		{
+			LoadGems();
+		}
+
+		void LoadGems()
+		{
+			_ = Gems;
+		}
+
+		#region Properties
 
 		#region Attack
 
 		public override VGem AttackGem
 		{
 			get => fAttackGem ?? (fAttackGem = new AttackGem());
-			set => fAttackGem = value;
 		}
 		VGem fAttackGem;
 
@@ -26,7 +35,6 @@ namespace VBusiness.Gems
 		public override VGem AttackSpeedGem
 		{
 			get => fAttackSpeedGem ?? (fAttackSpeedGem = new AttackSpeedGem());
-			set => fAttackSpeedGem = value;
 		}
 		VGem fAttackSpeedGem;
 
@@ -37,7 +45,6 @@ namespace VBusiness.Gems
 		public override VGem HealthGem
 		{
 			get => fHealthGem ?? (fHealthGem = new HealthGem());
-			set => fHealthGem = value;
 		}
 		VGem fHealthGem;
 
@@ -48,7 +55,6 @@ namespace VBusiness.Gems
 		public override VGem HealthArmorGem
 		{
 			get => fHealthArmorGem ?? (fHealthArmorGem = new HealthArmorGem());
-			set => fHealthArmorGem = value;
 		}
 		VGem fHealthArmorGem;
 
@@ -59,7 +65,6 @@ namespace VBusiness.Gems
 		public override VGem ShieldsGem
 		{
 			get => fShieldsGem ?? (fShieldsGem = new ShieldsGem());
-			set => fShieldsGem = value;
 		}
 		VGem fShieldsGem;
 
@@ -70,7 +75,6 @@ namespace VBusiness.Gems
 		public override VGem ShieldsArmorGem
 		{
 			get => fShieldsArmorGem ?? (fShieldsArmorGem = new ShieldsArmorGem());
-			set => fShieldsArmorGem = value;
 		}
 		VGem fShieldsArmorGem;
 
@@ -81,7 +85,6 @@ namespace VBusiness.Gems
 		public override VGem CriticalChanceGem
 		{
 			get => fCriticalChanceGem ?? (fCriticalChanceGem = new CriticalChanceGem());
-			set => fCriticalChanceGem = value;
 		}
 		VGem fCriticalChanceGem;
 
@@ -92,7 +95,6 @@ namespace VBusiness.Gems
 		public override VGem CriticalDamageGem
 		{
 			get => fCriticalDamageGem ?? (fCriticalDamageGem = new CriticalDamageGem());
-			set => fCriticalDamageGem = value;
 		}
 		VGem fCriticalDamageGem;
 
@@ -103,13 +105,12 @@ namespace VBusiness.Gems
 		public override VGem DoubleWarpGem
 		{
 			get => fDoubleWarpGem ?? (fDoubleWarpGem = new DoubleWarpGem());
-			set => fDoubleWarpGem = value;
 		}
 		VGem fDoubleWarpGem;
 
 		#endregion
 
-		#endregion
+		#region Gems
 
 		public override VGem[] Gems
 		{
@@ -128,10 +129,21 @@ namespace VBusiness.Gems
 						CriticalDamageGem,
 						DoubleWarpGem
 					};
+
+					foreach (var gem in fGems)
+					{
+						gem.GemLevelChanged += OnGemCollectionLevelUpdated;
+					}
 				}
+
 				return fGems;
 			}
 		}
 		VGem[] fGems;
+
+		#endregion
+
+		#endregion
+
 	}
 }

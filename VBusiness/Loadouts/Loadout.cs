@@ -14,6 +14,17 @@ namespace VBusiness.Loadouts
 			Gems = new GemCollection();
 		}
 
+		public override VGemCollection Gems
+		{
+			get => base.Gems;
+			set
+			{
+				UnHookStatsEvents();
+				base.Gems = value;
+				HookStatsEvents();
+			}
+		}
+
 		public override VPerkCollection Perks 
 		{ 
 			get => base.Perks;
@@ -32,7 +43,14 @@ namespace VBusiness.Loadouts
 
 		public void HookStatsEvents()
 		{
-			Perks.PerkLevelChanged += UpdateStats;
+			if (Perks != null)
+			{
+				Perks.PerkLevelChanged += UpdateStats;
+			}
+			if (Gems != null)
+			{
+				Gems.GemCollectionLevelUpdated += UpdateStats;
+			}
 		}
 
 		public void UnHookStatsEvents()
@@ -40,6 +58,10 @@ namespace VBusiness.Loadouts
 			if (Perks != null)
 			{
 				Perks.PerkLevelChanged -= UpdateStats;
+			}
+			if (Gems != null)
+			{
+				Gems.GemCollectionLevelUpdated -= UpdateStats;
 			}
 		}
 

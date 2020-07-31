@@ -25,6 +25,8 @@ namespace VEntityFramework.Model
 			{
 				if (value != fCurrentLevel)
 				{
+					var oldValue = fCurrentLevel;
+
 					if (value < 0)
 					{
 						fCurrentLevel = 0;
@@ -33,8 +35,13 @@ namespace VEntityFramework.Model
 					{
 						fCurrentLevel = value;
 					}
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
-					HasChanges = true;
+
+					if (fCurrentLevel != oldValue)
+					{
+						OnPerkLevelChanged(fCurrentLevel, oldValue);
+						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
+						HasChanges = true;
+					}
 				}
 			}
 		}
@@ -43,6 +50,8 @@ namespace VEntityFramework.Model
 		[VXML(true)]
 		public string Key => Name;
 
+		public int NextLevelCost => GetCostOfNextLevel();
+
 		#endregion
 
 		#region Abstract Methods
@@ -50,6 +59,25 @@ namespace VEntityFramework.Model
 		public abstract int GetTotalCost();
 
 		public abstract int GetCostOfNextLevel();
+
+		protected abstract Action<VStats> GetStatsModifier(int levelDifference);
+
+		#endregion
+
+		#region Events
+
+		public event EventHandler<StatsEventArgs> GemLevelChanged;
+
+		void OnPerkLevelChanged(int newLevel, int oldLevel)
+		{
+			var e = new StatsEventArgs();
+			e.Modification = GetStatsModifier(newLevel - oldLevel);
+
+			if (e.Modification != null)
+			{
+				GemLevelChanged?.Invoke(this, e);
+			}
+		}
 
 		#endregion
 

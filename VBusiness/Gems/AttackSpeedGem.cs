@@ -23,5 +23,7 @@ namespace VBusiness.Gems
 
 			return costs;
 		}
+
+		protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.AttackSpeed += levelDifference; };
 	}
 }
