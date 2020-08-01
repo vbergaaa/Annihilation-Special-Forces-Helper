@@ -13,9 +13,7 @@ namespace VUserInterface
 			{
 				throw new ArgumentException("Vform parent must always exist");
 			}
-
 			Parent = parent;
-			Parent.HasChangesChanged += UpdateSaveButtons;
 		}
 
 		VForm()
@@ -23,13 +21,34 @@ namespace VUserInterface
 			InitializeComponent();
 		}
 
-		private void UpdateSaveButtons(object sender, HasChangesEventArgs e)
+		void UpdateSaveButtons(object sender, HasChangesEventArgs e)
 		{
 			SaveButton.Enabled = e.HasChanges;
 			CancelButton.Text = e.HasChanges ? "Cancel" : "Close";
 		}
 
-		public new VBusinessObject Parent { get; set; }
+		public new VBusinessObject Parent
+		{
+			get => fParent;
+			set
+			{
+				if (fParent != null)
+				{
+					fParent.HasChangesChanged -= UpdateSaveButtons;
+				}
+
+				fParent = value;
+
+				if (fParent != null)
+				{
+					fParent.HasChangesChanged += UpdateSaveButtons;
+					fParent.CascadeHasChanges();
+				}
+
+				UpdateSaveButtons(fParent, new HasChangesEventArgs { HasChanges = fParent != null && fParent.HasChanges });
+			}
+		}
+		VBusinessObject fParent;
 
 		void SaveButton_Click(object sender, EventArgs e)
 		{

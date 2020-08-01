@@ -26,16 +26,16 @@ namespace VEntityFramework.Data
 
 			if (existingName != null && existingName != GetXmlNameFromBizo(bizo))
 			{
-				var oldNameWithPath = GetOldFilePathWithName(existingName);
+				var oldNameWithPath = GetOldFilePathWithName(bizo.BizoName, existingName);
 				File.Move(oldNameWithPath, newNameWithPath);
 			}
 
 			return newNameWithPath;
 		}
 
-		string GetOldFilePathWithName(string existingName)
+		string GetOldFilePathWithName(string bizoName, string existingName)
 		{
-			return GetFilePath() + existingName + ".xml";
+			return GetFilePath(bizoName) + existingName + ".xml";
 		}
 
 		XmlWriter GetXmlWriter(Stream stream)
@@ -74,17 +74,18 @@ namespace VEntityFramework.Data
 
 		string GetFileNameWithExtension(VBusinessObject bizo)
 		{
-			return GetFilePath() + GetXmlNameFromBizo(bizo) + ".xml";
+			return GetFilePath(bizo.BizoName) + GetXmlNameFromBizo(bizo) + ".xml";
 		}
 
 		string GetXmlNameFromBizo(VBusinessObject bizo)
 		{
 			if (bizo is VLoadout loadout)
 			{
-				loadout.Name = loadout.Name == "" || loadout.Name == null 
-					? $"Loadout{loadout.Slot}" 
-					: loadout.Name;
 				return $"{loadout.Slot}-{loadout.Name}";
+			}
+			else if (bizo is VSoul soul)
+			{
+				return $"{soul.SaveSlot}-{soul.UniqueName}";
 			}
 			else
 			{
@@ -92,10 +93,10 @@ namespace VEntityFramework.Data
 			}
 		}
 
-		string GetFilePath()
+		string GetFilePath(string bizoName)
 		{
 			var rootDirectory = Directory.GetCurrentDirectory();
-			var desiredPath = rootDirectory + "/Loadouts/";
+			var desiredPath = rootDirectory + $"/{bizoName}s/";
 
 			if (!Directory.Exists(desiredPath))
 			{

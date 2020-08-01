@@ -69,6 +69,7 @@ namespace VEntityFramework.Data
 		{
 			if (!fHasCascadedHasChanges)
 			{
+				fHasCascadedHasChanges = true;
 				foreach (var child in Children)
 				{
 					child.HasChangesChanged += OnHasChangesChanged;
@@ -95,7 +96,7 @@ namespace VEntityFramework.Data
 		}
 		bool fHasChanges;
 
-		internal bool SuspendSettingHasChanges { get; set; }
+		public bool SuspendSettingHasChanges { get; set; }
 
 		#endregion
 

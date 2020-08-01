@@ -9,7 +9,6 @@ namespace VUserInterface
 		{
 			InitializeComponent();
 			Loadout = loadout;
-			Loadout.CascadeHasChanges();
 			AddNewBindings();
 		}
 		public VLoadoutForm()
