@@ -5,9 +5,12 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
+using System.Runtime.Loader;
 using System.Text;
 using System.Xml;
+using System.Xml.XPath;
 using VEntityFramework;
+using VEntityFramework.Model;
 
 namespace VEntityFramework.Data
 {
@@ -30,7 +33,7 @@ namespace VEntityFramework.Data
 		internal T Read<T>(string fileName) where T : VBusinessObject
 		{
 			EnsureFileNameHasXMLExtension(ref fileName);
-			if (CheckFileExists(fileName))
+			if (CheckFileExists(typeof(T), fileName))
 			{
 				return ReadXML<T>(fileName);
 			}
@@ -40,7 +43,7 @@ namespace VEntityFramework.Data
 		T ReadXML<T>(string fileName) where T : VBusinessObject
 		{
 			var xml = new XmlDocument();
-			xml.Load(GetFullPath(fileName));
+			xml.Load(GetFullPath(typeof(T), fileName));
 			var bizo = (T)CreateBizoFromXML(typeof(T), xml.DocumentElement);
 			bizo.OnLoadedFromXML(new OnLoadedEventArgs(Path.GetFileNameWithoutExtension(fileName)));
 			return bizo;
@@ -48,16 +51,42 @@ namespace VEntityFramework.Data
 
 		VBusinessObject CreateBizoFromXML(Type type, XmlElement documentElement)
 		{
-			var bizo = (VBusinessObject)type.Assembly.CreateInstance(type.FullName);
+			var bizo = CreateInstance(type, documentElement);
 			var reader = new VBizoXMLReader();
-
 			reader.PopulateFromXML(bizo, documentElement);
 			return bizo;
 		}
 
-		bool CheckFileExists(string fileName)
+		private VBusinessObject CreateInstance(Type type, XmlElement documentElement)
 		{
-			return File.Exists(GetFullPath(fileName));
+			if (typeof(VSoul).IsAssignableFrom(type))
+			{
+				var typeName = GetTypeNameForSoul(documentElement);
+				var myAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(Directory.GetCurrentDirectory() + "/VBusiness.dll");
+				var myType = myAssembly.GetType(typeName);
+				return (VBusinessObject)type.Assembly.CreateInstance(myType.FullName);
+			}
+			return (VBusinessObject)type.Assembly.CreateInstance(type.FullName);
+		}
+
+		string GetTypeNameForSoul(XmlElement documentElement)
+		{
+			var soulType = "";
+			foreach (XmlNode xmlNode in documentElement.ChildNodes)
+			{
+				if (xmlNode.Name == "Type")
+				{
+					soulType = xmlNode.InnerText;
+					break;
+				}
+			}
+
+			return $"VBusiness.Souls.{soulType}Soul";
+		}
+
+		bool CheckFileExists(Type bizoType, string fileName)
+		{
+			return File.Exists(GetFullPath(bizoType, fileName));
 		}
 
 		void EnsureFileNameHasXMLExtension(ref string fileName)
@@ -76,9 +105,20 @@ namespace VEntityFramework.Data
 			}
 		}
 
-		internal string GetFullPath(string fileName)
+		internal string GetFullPath(Type bizoType, string fileName)
 		{
-			return GetLoadoutsDirectory() + fileName;
+			if (typeof(VLoadout).IsAssignableFrom(bizoType))
+			{
+				return GetLoadoutsDirectory() + fileName;
+			}
+			else if (typeof(VSoul).IsAssignableFrom(bizoType))
+			{
+				return GetSoulsDirectory() + fileName;
+			}
+			else
+			{
+				throw new DeveloperException($"Cannot read for type ${bizoType}");
+			}
 		}
 
 		string GetLoadoutsDirectory()
@@ -92,6 +132,19 @@ namespace VEntityFramework.Data
 			}
 
 			return loadoutsDirectory;
+		}
+
+		string GetSoulsDirectory()
+		{
+			var rootDirectory = Directory.GetCurrentDirectory();
+			var soulsDirectory = rootDirectory + "/Souls/";
+
+			if (!Directory.Exists(soulsDirectory))
+			{
+				Directory.CreateDirectory(soulsDirectory);
+			}
+
+			return soulsDirectory;
 		}
 
 		#endregion
@@ -132,7 +185,7 @@ namespace VEntityFramework.Data
 		string[] xmlKeys;
 		string[] GetXmlKeys()
 		{
-			return new string[] { "Code", "Key" };
+			return new string[] { "Code", "Key", "Type" };
 		}
 
 		PropertyInfo GetMatchingProperty(Type type, XmlNode child)

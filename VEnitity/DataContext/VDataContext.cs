@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using VEntityFramework;
+using VEntityFramework.Model;
 
 namespace VEntityFramework.Data
 {
@@ -33,7 +34,7 @@ namespace VEntityFramework.Data
 		{
 			if (getExistingXMLFileName != null)
 			{
-				var path = new VXMLReader().GetFullPath(getExistingXMLFileName) + ".xml";
+				var path = new VXMLReader().GetFullPath(vBusinessObject.GetType(), getExistingXMLFileName) + ".xml";
 				if (File.Exists(path))
 				{
 					File.Delete(path);

@@ -11,10 +11,12 @@ namespace VEntityFramework.Model
 
 		public int SaveSlot { get; set; }
 
+		[VXML(true)]
 		public abstract SoulType Type { get; }
 
 		#region Attack
 
+		[VXML(true)]
 		public virtual int Attack
 		{
 			get => fAttack;
@@ -35,6 +37,7 @@ namespace VEntityFramework.Model
 
 		#region AttackSpeed
 
+		[VXML(true)]
 		public virtual int AttackSpeed
 		{
 			get => fAttackSpeed;
@@ -55,6 +58,7 @@ namespace VEntityFramework.Model
 
 		#region CriticalChance
 
+		[VXML(true)]
 		public virtual int CriticalChance
 		{
 			get => fCriticalChance;
@@ -75,6 +79,7 @@ namespace VEntityFramework.Model
 
 		#region CriticalDamage
 
+		[VXML(true)]
 		public virtual int CriticalDamage
 		{
 			get => fCriticalDamage;
@@ -95,6 +100,7 @@ namespace VEntityFramework.Model
 
 		#region Vitals
 
+		[VXML(true)]
 		public virtual int Vitals
 		{
 			get => fVitals;
@@ -115,6 +121,7 @@ namespace VEntityFramework.Model
 
 		#region Armor
 
+		[VXML(true)]
 		public virtual int Armor
 		{
 			get => fArmor;
@@ -135,6 +142,7 @@ namespace VEntityFramework.Model
 
 		#region Minerals
 
+		[VXML(true)]
 		public virtual int Minerals
 		{
 			get => fMinerals;
@@ -155,6 +163,7 @@ namespace VEntityFramework.Model
 
 		#region Kills
 
+		[VXML(true)]
 		public virtual int Kills
 		{
 			get => fKills;
