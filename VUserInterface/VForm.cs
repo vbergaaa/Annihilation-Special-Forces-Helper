@@ -52,16 +52,28 @@ namespace VUserInterface
 
 		void SaveButton_Click(object sender, EventArgs e)
 		{
-			var canSave = Parent.RunPreSaveValidation(out var errorMessage);
-			if (!canSave)
+			Parent.RunPreSaveValidation();
+
+			if (Parent.Notifications.HasErrors())
 			{
-				MessageBox.Show(errorMessage, "Error");
+				MessageBox.Show(Parent.Notifications.Errors[0], "Error");
+				return;
 			}
-			else
+
+			if (Parent.Notifications.HasPrompt())
 			{
-				Parent.Save();
-				OnSaved?.Invoke(this, e);
+				foreach (var prompt in Parent.Notifications.Prompts)
+				{
+					var result = MessageBox.Show(prompt, "Continue?", MessageBoxButtons.YesNo);
+					if (result == DialogResult.No)
+					{
+						return;
+					}
+				}
 			}
+
+			Parent.Save();
+			OnSaved?.Invoke(this, e);
 		}
 
 		void CancelButton_Click(object sender, EventArgs e)

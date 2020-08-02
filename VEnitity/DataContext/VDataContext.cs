@@ -30,6 +30,11 @@ namespace VEntityFramework.Data
 			return new VXMLReader().GetAllLoadoutNames();
 		}
 
+		public string[] GetAllSoulNames()
+		{
+			return new VXMLReader().GetAllSoulNames();
+		}
+
 		internal void DeleteXML(VBusinessObject vBusinessObject, string getExistingXMLFileName)
 		{
 			if (getExistingXMLFileName != null)

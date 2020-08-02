@@ -19,11 +19,10 @@ namespace VEntityFramework.Data
 
 		public abstract string BizoName { get; }
 
-		public bool Save()
+		public void Save()
 		{
 			Context.SaveAsXML(this, GetExistingXMLFileName);
 			UpdateExistingXMLName();
-			return true;
 		}
 
 		public void Delete()
@@ -35,11 +34,16 @@ namespace VEntityFramework.Data
 
 		protected virtual string GetExistingXMLFileName => null;
 
-		public virtual bool RunPreSaveValidation(out string errorMessage)
+		public virtual void RunPreSaveValidation()
 		{
-			errorMessage = null;
-			return true;
+			Notifications.Clear();
 		}
+
+		public NotificationManager Notifications
+		{
+			get => fNotifications ?? (fNotifications = new NotificationManager());
+		}
+		NotificationManager fNotifications;
 
 		#region Children
 

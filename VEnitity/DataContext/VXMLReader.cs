@@ -16,11 +16,18 @@ namespace VEntityFramework.Data
 {
 	class VXMLReader
 	{
-		#region GetAllLoadoutNames
+		#region GetAllNames
 
 		internal string[] GetAllLoadoutNames()
 		{
 			var path = GetLoadoutsDirectory();
+			var files = Directory.GetFiles(path);
+			return files.Where(fileName => fileName.EndsWith(".xml"))
+				.Select(fileName => Path.GetFileNameWithoutExtension(fileName)).ToArray();
+		}
+		internal string[] GetAllSoulNames()
+		{
+			var path = GetSoulsDirectory();
 			var files = Directory.GetFiles(path);
 			return files.Where(fileName => fileName.EndsWith(".xml"))
 				.Select(fileName => Path.GetFileNameWithoutExtension(fileName)).ToArray();

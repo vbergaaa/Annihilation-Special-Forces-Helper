@@ -67,30 +67,28 @@ namespace VBusiness.Loadouts
 
 		#region Validation
 
-		public override bool RunPreSaveValidation(out string errorMessage)
+		public override void RunPreSaveValidation()
 		{
-			errorMessage = null;
+			base.RunPreSaveValidation();
 
-			if (CheckInvalidLoadoutName())
-			{
-				errorMessage = "Please enter a name for this loadout.";
-			}
-			else if (CheckInvalidSlotNumber())
-			{
-				errorMessage = "Please enter a Save slot that is greater than 0.";
-			}
-
-			return errorMessage == null ? base.RunPreSaveValidation(out errorMessage) : false;
+			CheckLoadoutName();
+			CheckSlotNumber();
 		}
 
-		bool CheckInvalidSlotNumber()
+		void CheckSlotNumber()
 		{
-			return Slot <= 0;
+			if (Slot <= 0)
+			{
+				Notifications.AddError("Please enter a Save slot that is greater than 0.");
+			}
 		}
 
-		bool CheckInvalidLoadoutName()
+		void CheckLoadoutName()
 		{
-			return Name == "";
+			if (Name == "")
+			{
+				Notifications.AddError("Please enter a name for this loadout.");
+			}
 		}
 
 		#endregion

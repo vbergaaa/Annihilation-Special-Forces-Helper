@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using VEntityFramework.Model;
 
@@ -354,6 +355,61 @@ namespace VBusiness.Souls
 				_ => throw new Exception($"Invalid Property Name: {property}. Soul.IsMin()"),
 			};
 		}
+
+		#region
+
+		protected override string GetExistingXMLFileName
+		{
+			get
+			{
+				var saveSlots = Context.GetAllSoulNames().Select(name => new KeyValuePair<string, string>(name.Split('-')[0], name));
+
+				foreach (var slot in saveSlots)
+				{
+					if (slot.Key == SaveSlot.ToString())
+					{
+						return slot.Value;
+					}
+				}
+
+				return base.GetExistingXMLFileName;
+			}
+		}
+		#endregion
+
+		#region Validation
+
+		public override void RunPreSaveValidation()
+		{
+			base.RunPreSaveValidation();
+
+			CheckIfDuplicateSaveSlotAndPromptOverride();
+			CheckValidSoulSlot();
+		}
+
+		void CheckValidSoulSlot()
+		{
+			if (SaveSlot <= 0)
+			{
+				Notifications.AddError("Use a valid save slot");
+			}
+		}
+
+		void CheckIfDuplicateSaveSlotAndPromptOverride()
+		{
+			if (CheckIfDuplicateSaveSlot())
+			{
+				Notifications.AddPrompt("There is already a soul saved in this soul slot. Would you like to override it?");
+			}
+		}
+
+		bool CheckIfDuplicateSaveSlot()
+		{
+			var usedSoulSlots = Context.GetAllSoulNames().Select(name => int.Parse(name.Split('-')[0]));
+			return usedSoulSlots.Contains(SaveSlot);
+		}
+
+		#endregion
 
 		#endregion
 	}
