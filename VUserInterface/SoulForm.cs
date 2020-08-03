@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+using System.Linq;
 using System.Windows.Forms;
 using VBusiness.Souls;
 using VEntityFramework.Data;
@@ -15,14 +12,35 @@ namespace VUserInterface
 	{
 		public SoulForm(VBusinessObject bizo) : base(bizo)
 		{
-			if (bizo is Soul)
+			if (bizo != null && !(bizo is Soul))
 			{
-				InitializeComponent();
-				UpdateButtonsReadonly();
+				throw new InvalidOperationException("Soul form must only accept a soul bizo");
 			}
 			else
 			{
-				throw new InvalidOperationException("Soul form must only accept a soul bizo");
+				InitializeComponent();
+				InitializeParent(bizo);
+				UpdateButtonsReadonly();
+			}
+		}
+
+		private void InitializeParent(VBusinessObject bizo)
+		{
+			if (bizo != null)
+			{
+				Parent = (Soul)bizo;
+				RefreshSoulTypeList();
+			}
+		}
+
+		private void RefreshSoulTypeList()
+		{
+			if (Parent != null)
+			{
+				TypeComboBox.SelectedValueChanged -= TypeComboBox_SelectionChanged;
+				var items = TypeComboBox.Items;
+				TypeComboBox.SelectedIndex = (int)Parent.Type;
+				TypeComboBox.SelectedValueChanged += TypeComboBox_SelectionChanged;
 			}
 		}
 
@@ -31,8 +49,13 @@ namespace VUserInterface
 			get => fSoul;
 			set
 			{
+				var oldSaveSlot = fSoul?.SaveSlot;
 				base.Parent = value;
 				fSoul = value;
+				if (fSoul != null && oldSaveSlot.HasValue)
+				{
+					fSoul.SaveSlot = oldSaveSlot.Value;
+				}
 				UpdatingBindingSource();
 				UpdateButtonsReadonly();
 			}

@@ -9,6 +9,7 @@ namespace VEntityFramework.Model
 	{
 		public override string BizoName => "Soul";
 
+		[VXML(true)]
 		public int SaveSlot { get; set; }
 
 		[VXML(true)]

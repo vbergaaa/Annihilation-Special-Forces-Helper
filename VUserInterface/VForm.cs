@@ -9,10 +9,6 @@ namespace VUserInterface
 	{
 		protected VForm(VBusinessObject parent) : this()
 		{
-			if (parent == null)
-			{
-				throw new ArgumentException("Vform parent must always exist");
-			}
 			Parent = parent;
 		}
 
@@ -78,7 +74,7 @@ namespace VUserInterface
 
 		void CancelButton_Click(object sender, EventArgs e)
 		{
-			if (Parent.HasChanges)
+			if (Parent != null && Parent.HasChanges)
 			{
 				var result = MessageBox.Show("You have unsaved changes, are you sure you wish to cancel?", "Confirm Cancel", MessageBoxButtons.YesNo);
 				if (result == DialogResult.No)
