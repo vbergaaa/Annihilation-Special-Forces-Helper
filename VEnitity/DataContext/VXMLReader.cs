@@ -201,6 +201,7 @@ namespace VEntityFramework.Data
 			{
 				case "PerkCollection": return type.GetProperty("Perks");
 				case "GemCollection": return type.GetProperty("Gems");
+				case "SoulCollection": return type.GetProperty("Souls");
 				case "Gem": return GetGem(type, child);
 				case "Perk": return GetPerkFromCode(type, child);
 				default: return type.GetProperty(child.Name);

@@ -1,5 +1,6 @@
 ﻿using VBusiness.Gems;
 using VBusiness.Perks;
+using VBusiness.Souls;
 using VEntityFramework;
 using VEntityFramework.Model;
 
@@ -12,6 +13,7 @@ namespace VBusiness.Loadouts
 			Stats = new Stats();
 			Perks = new PerkCollection();
 			Gems = new GemCollection();
+			Souls = new SoulCollection();
 		}
 
 		public override VGemCollection Gems
