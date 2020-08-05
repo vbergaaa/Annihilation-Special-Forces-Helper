@@ -58,6 +58,7 @@ namespace VUserInterface
 			// Soul3Control
 			//
 			this.Soul3Control.DataBindings.Add("Soul", bindingSource, "Soul3");
+			this.Soul3Control.Enabled = false;
 			this.Soul3Control.Location = new System.Drawing.Point(381, 40);
 			this.Soul3Control.OnSoulChanged += Soul3Control_OnSoulChanged;
 			//

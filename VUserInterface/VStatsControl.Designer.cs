@@ -260,7 +260,7 @@ namespace VUserInterface
 			this.DisclaimerLabel.Location = new System.Drawing.Point(5, 80);
 			this.DisclaimerLabel.Name = "DisclaimerLabel";
 			this.DisclaimerLabel.Size = new System.Drawing.Size(150, 20);
-			this.DisclaimerLabel.Text = "Calculations Disclaimer";
+			this.DisclaimerLabel.Text = "What's this?";
 			this.DisclaimerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.DisclaimerLabel.ForeColor = System.Drawing.Color.Blue;
 			this.DisclaimerLabel.Font = new System.Drawing.Font(this.DisclaimerLabel.Font, System.Drawing.FontStyle.Underline);
@@ -274,8 +274,6 @@ namespace VUserInterface
 			this.Controls.Add(DamageLabel);
 			this.Controls.Add(ToughnessCaption);
 			this.Controls.Add(ToughnessLabel);
-			//this.Controls.Add(RecoveryLabel);
-			//this.Controls.Add(RecoveryCaption);
 			this.Controls.Add(AttackCaption);
 			this.Controls.Add(AttackSpeedCaption);
 			this.Controls.Add(CriticalDamageCaption);

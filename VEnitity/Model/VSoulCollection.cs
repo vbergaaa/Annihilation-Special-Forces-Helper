@@ -36,9 +36,11 @@ namespace VEntityFramework.Model
 		public virtual VSoul Soul1
 		{
 			get => fSoul1;
-			set
+			protected set
 			{
+				OnSoulDeactivated(fSoul1?.DeactivateStats);
 				fSoul1 = value;
+				OnSoulActivated(fSoul1?.ActivateStats);
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Soul1)));
 			}
 		}
@@ -67,9 +69,11 @@ namespace VEntityFramework.Model
 		public virtual VSoul Soul2
 		{
 			get => fSoul2;
-			set
+			protected set
 			{
+				OnSoulDeactivated(fSoul2?.DeactivateStats);
 				fSoul2 = value;
+				OnSoulActivated(fSoul2?.ActivateStats);
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Soul2)));
 			}
 		}
@@ -98,13 +102,41 @@ namespace VEntityFramework.Model
 		public virtual VSoul Soul3
 		{
 			get => fSoul3;
-			set
+			protected set
 			{
+				OnSoulDeactivated(fSoul3?.DeactivateStats);
 				fSoul3 = value;
+				OnSoulActivated(fSoul3?.ActivateStats);
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Soul3)));
 			}
 		}
 		VSoul fSoul3;
+
+		#endregion
+
+		#region Events
+
+		void OnSoulActivated(Action<VStats> modification)
+		{
+			if (modification != null)
+			{
+				var e = new StatsEventArgs() { Modification = modification };
+				SoulActivated?.Invoke(this, e); 
+			}
+		}
+
+		void OnSoulDeactivated(Action<VStats> modification)
+		{
+			if (modification != null)
+			{
+				var e = new StatsEventArgs() { Modification = modification };
+				SoulDeactivated?.Invoke(this, e); 
+			}
+		}
+
+		public event EventHandler<StatsEventArgs> SoulActivated;
+
+		public event EventHandler<StatsEventArgs> SoulDeactivated;
 
 		#endregion
 

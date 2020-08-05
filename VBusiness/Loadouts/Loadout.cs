@@ -21,20 +21,31 @@ namespace VBusiness.Loadouts
 			get => base.Gems;
 			set
 			{
-				UnHookStatsEvents();
+				UnHookGemStats();
 				base.Gems = value;
-				HookStatsEvents();
+				HookGemStats();
 			}
 		}
 
-		public override VPerkCollection Perks 
-		{ 
+		public override VPerkCollection Perks
+		{
 			get => base.Perks;
 			set
 			{
-				UnHookStatsEvents();
+				UnHookPerkStats();
 				base.Perks = value;
-				HookStatsEvents();
+				HookPerkStats();
+			}
+		}
+
+		public override VSoulCollection Souls
+		{
+			get => base.Souls;
+			set
+			{
+				UnHookSoulStats();
+				base.Souls = value;
+				HookSoulStats();
 			}
 		}
 
@@ -43,27 +54,53 @@ namespace VBusiness.Loadouts
 			e.Modification(Stats);
 		}
 
-		public void HookStatsEvents()
+		void HookPerkStats()
 		{
 			if (Perks != null)
 			{
 				Perks.PerkLevelChanged += UpdateStats;
 			}
+		}
+
+		void HookGemStats()
+		{
 			if (Gems != null)
 			{
 				Gems.GemCollectionLevelUpdated += UpdateStats;
 			}
 		}
 
-		public void UnHookStatsEvents()
+		void UnHookPerkStats()
 		{
 			if (Perks != null)
 			{
 				Perks.PerkLevelChanged -= UpdateStats;
 			}
+		}
+
+		void UnHookGemStats()
+		{
 			if (Gems != null)
 			{
 				Gems.GemCollectionLevelUpdated -= UpdateStats;
+			}
+		}
+
+		void UnHookSoulStats()
+		{
+			if (Souls != null)
+			{
+				Souls.SoulActivated -= UpdateStats;
+				Souls.SoulDeactivated -= UpdateStats;
+			}
+		}
+
+		void HookSoulStats()
+		{
+			if (Souls != null)
+			{
+				Souls.SoulActivated += UpdateStats;
+				Souls.SoulDeactivated += UpdateStats;
 			}
 		}
 

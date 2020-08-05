@@ -4,7 +4,7 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Gems
 {
-	abstract class Gem : VEntityFramework.Model.VGem
+	abstract class Gem : VGem
 	{
 		public override int GetTotalCost()
 		{
@@ -16,6 +16,6 @@ namespace VBusiness.Gems
 			return Costs[CurrentLevel];
 		}
 
-		protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => null;
+		protected override Action<VStats> GetStatsModifier(int levelDifference) => null;
 	}
 }

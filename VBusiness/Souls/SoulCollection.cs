@@ -30,7 +30,7 @@ namespace VBusiness.Souls
 		public override VSoul Soul1
 		{
 			get => base.Soul1 ?? (base.Soul1 = new EmptySoul());
-			set => base.Soul1 = value;
+			protected set => base.Soul1 = value;
 		}
 
 		public override int SoulSlot1
@@ -39,10 +39,17 @@ namespace VBusiness.Souls
 			set
 			{
 				base.SoulSlot1 = value;
-				
-				var soul = Souls.TryGetValue(value, out var soulName)
-					? Context.ReadFromXML<Soul>(soulName)
-					: null;
+				Soul soul;
+				if (value == 0)
+				{
+					soul = new EmptySoul();
+				}
+				else
+				{
+					soul = Souls.TryGetValue(value, out var soulName)
+						? Context.ReadFromXML<Soul>(soulName)
+						: null;
+				}
 				Soul1 = soul;
 			}
 		}
@@ -50,7 +57,7 @@ namespace VBusiness.Souls
 		public override VSoul Soul2
 		{
 			get => base.Soul2 ?? (base.Soul2 = new EmptySoul());
-			set => base.Soul2 = value;
+			protected set => base.Soul2 = value;
 		}
 
 		public override int SoulSlot2
@@ -58,10 +65,18 @@ namespace VBusiness.Souls
 			get => base.SoulSlot2;
 			set
 			{
-				base.SoulSlot2 = value; 
-				var soul = Souls.TryGetValue(value, out var soulName)
-					? Context.ReadFromXML<Soul>(soulName)
-					: null;
+				base.SoulSlot2 = value;
+				Soul soul;
+				if (value == 0)
+				{
+					soul = new EmptySoul();
+				}
+				else
+				{
+					soul = Souls.TryGetValue(value, out var soulName)
+						? Context.ReadFromXML<Soul>(soulName)
+						: null;
+				}
 				Soul2 = soul;
 			}
 		}
@@ -69,7 +84,7 @@ namespace VBusiness.Souls
 		public override VSoul Soul3
 		{
 			get => base.Soul3 ?? (base.Soul3 = new EmptySoul());
-			set => base.Soul3 = value;
+			protected set => base.Soul3 = value;
 		}
 
 		public override int SoulSlot3
@@ -78,9 +93,17 @@ namespace VBusiness.Souls
 			set
 			{
 				base.SoulSlot3 = value;
-				var soul = Souls.TryGetValue(value, out var soulName)
-					? Context.ReadFromXML<Soul>(soulName)
-					: null;
+				Soul soul;
+				if (value == 0)
+				{
+					soul = new EmptySoul();
+				}
+				else
+				{
+					soul = Souls.TryGetValue(value, out var soulName)
+						? Context.ReadFromXML<Soul>(soulName)
+						: null;
+				}
 				Soul3 = soul;
 			}
 		}

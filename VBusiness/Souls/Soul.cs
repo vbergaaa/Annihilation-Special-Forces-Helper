@@ -305,6 +305,46 @@ namespace VBusiness.Souls
 
 		#endregion
 
+		#region Stats
+
+		public override Action<VStats> ActivateStats
+		{
+			get
+			{
+				return (stats) =>
+				{
+					stats.Attack += Attack;
+					stats.AttackSpeed += AttackSpeed;
+					stats.HealthArmor += Armor;
+					stats.ShieldsArmor += Armor;
+					stats.Health += Vitals;
+					stats.Shields += Vitals;
+					stats.CriticalChance += CriticalChance;
+					stats.CriticalDamage += CriticalDamage;
+				};
+			}
+		}
+
+		public override Action<VStats> DeactivateStats
+		{
+			get
+			{
+				return (stats) =>
+				{
+					stats.Attack -= Attack;
+					stats.AttackSpeed -= AttackSpeed;
+					stats.HealthArmor -= Armor;
+					stats.ShieldsArmor -= Armor;
+					stats.Health -= Vitals;
+					stats.Shields -= Vitals;
+					stats.CriticalChance -= CriticalChance;
+					stats.CriticalDamage -= CriticalDamage;
+				};
+			}
+		}
+
+		#endregion
+
 		#region Set Default Values
 
 		void SetDefaultValues()
@@ -320,61 +360,7 @@ namespace VBusiness.Souls
 			Minerals = MinMinerals;
 			SuspendSettingHasChanges = false;
 		}
-		#endregion
 
-		#region overrides
-
-		public override bool IsMax(string property)
-		{
-			return property switch
-			{
-				(nameof(Attack)) => Attack == MaxAttack,
-				(nameof(AttackSpeed)) => AttackSpeed == MaxAttackSpeed,
-				(nameof(Vitals)) => Vitals == MaxVitals,
-				(nameof(Armor)) => Armor == MaxArmor,
-				(nameof(CriticalChance)) => CriticalChance == MaxCriticalChance,
-				(nameof(CriticalDamage)) => CriticalDamage == MaxCriticalDamage,
-				(nameof(Kills)) => Kills == MaxKills,
-				(nameof(Minerals)) => Minerals == MaxMinerals,
-				_ => throw new Exception($"Invalid Property Name: {property}. Soul.IsMax()"),
-			};
-		}
-
-		public override bool IsMin(string property)
-		{
-			return property switch
-			{
-				(nameof(Attack)) => Attack == MinAttack,
-				(nameof(AttackSpeed)) => AttackSpeed == MinAttackSpeed,
-				(nameof(Vitals)) => Vitals == MinVitals,
-				(nameof(Armor)) => Armor == MinArmor,
-				(nameof(CriticalChance)) => CriticalChance == MinCriticalChance,
-				(nameof(CriticalDamage)) => CriticalDamage == MinCriticalDamage,
-				(nameof(Kills)) => Kills == MinKills,
-				(nameof(Minerals)) => Minerals == MinMinerals,
-				_ => throw new Exception($"Invalid Property Name: {property}. Soul.IsMin()"),
-			};
-		}
-
-		#region
-
-		protected override string GetExistingXMLFileName
-		{
-			get
-			{
-				var saveSlots = Context.GetAllSoulNames().Select(name => new KeyValuePair<string, string>(name.Split('-')[0], name));
-
-				foreach (var slot in saveSlots)
-				{
-					if (slot.Key == SaveSlot.ToString())
-					{
-						return slot.Value;
-					}
-				}
-
-				return base.GetExistingXMLFileName;
-			}
-		}
 		#endregion
 
 		#region Validation
@@ -410,6 +396,58 @@ namespace VBusiness.Souls
 		}
 
 		#endregion
+
+		#region Implementation
+
+		public override bool IsMax(string property)
+		{
+			return property switch
+			{
+				(nameof(Attack)) => Attack == MaxAttack,
+				(nameof(AttackSpeed)) => AttackSpeed == MaxAttackSpeed,
+				(nameof(Vitals)) => Vitals == MaxVitals,
+				(nameof(Armor)) => Armor == MaxArmor,
+				(nameof(CriticalChance)) => CriticalChance == MaxCriticalChance,
+				(nameof(CriticalDamage)) => CriticalDamage == MaxCriticalDamage,
+				(nameof(Kills)) => Kills == MaxKills,
+				(nameof(Minerals)) => Minerals == MaxMinerals,
+				_ => throw new Exception($"Invalid Property Name: {property}. Soul.IsMax()"),
+			};
+		}
+
+		public override bool IsMin(string property)
+		{
+			return property switch
+			{
+				(nameof(Attack)) => Attack == MinAttack,
+				(nameof(AttackSpeed)) => AttackSpeed == MinAttackSpeed,
+				(nameof(Vitals)) => Vitals == MinVitals,
+				(nameof(Armor)) => Armor == MinArmor,
+				(nameof(CriticalChance)) => CriticalChance == MinCriticalChance,
+				(nameof(CriticalDamage)) => CriticalDamage == MinCriticalDamage,
+				(nameof(Kills)) => Kills == MinKills,
+				(nameof(Minerals)) => Minerals == MinMinerals,
+				_ => throw new Exception($"Invalid Property Name: {property}. Soul.IsMin()"),
+			};
+		}
+
+		protected override string GetExistingXMLFileName
+		{
+			get
+			{
+				var saveSlots = Context.GetAllSoulNames().Select(name => new KeyValuePair<string, string>(name.Split('-')[0], name));
+
+				foreach (var slot in saveSlots)
+				{
+					if (slot.Key == SaveSlot.ToString())
+					{
+						return slot.Value;
+					}
+				}
+
+				return base.GetExistingXMLFileName;
+			}
+		}
 
 		#endregion
 	}

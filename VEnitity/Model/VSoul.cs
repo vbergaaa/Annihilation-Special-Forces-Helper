@@ -183,10 +183,26 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		public virtual string UniqueName => $"Regular_{Type}";
+		#region Stats
+
+		public abstract Action<VStats> ActivateStats { get; }
+
+		public abstract Action<VStats> DeactivateStats { get; }
+
+		#endregion
+
+		#region IsMin / IsMin
 
 		public abstract bool IsMax(string property);
 		public abstract bool IsMin(string property);
+
+		#endregion
+
+		#region Implementation
+
+		public virtual string UniqueName => $"Regular_{Type}";
+
+		#endregion
 	}
 
 	public enum SoulType

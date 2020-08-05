@@ -25,8 +25,16 @@ namespace VUserInterface
 			{
 				fSoul = value;
 				UpdateBindings();
+				if (SoulComboBox.SelectedItem.ToString() != $"{fSoul.SaveSlot}-{fSoul.UniqueName}")
+				{
+					SoulComboBox.SelectedItem = $"{fSoul.SaveSlot}-{fSoul.UniqueName}";
+				}
+				hasSoulBeenSet = true;
 			}
 		}
+
+		bool hasSoulBeenSet;
+
 		Soul fSoul;
 
 		void UpdateBindings()
@@ -59,10 +67,10 @@ namespace VUserInterface
 
 		void SoulChanged(object sender, EventArgs e)
 		{
-			var soulName = (string)SoulComboBox.SelectedItem;
-			if (soulName != "None")
+			if (hasSoulBeenSet)
 			{
-				var soulSlot = int.Parse(soulName.Split("-")[0]);
+				var soulName = (string)SoulComboBox.SelectedItem;
+				var soulSlot = soulName != "None" ? int.Parse(soulName.Split("-")[0]) : 0;
 				var eventArgs = new SoulChangedEventArgs() { SoulSlot = soulSlot };
 				OnSoulChanged?.Invoke(this, eventArgs);
 			}
