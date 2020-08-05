@@ -8,21 +8,9 @@ namespace VBusiness.Gems
 	{
 		public override string Name => "Attack Speed";
 
-		public override int[] Costs => fCosts = (fCosts = GetCosts());
+		protected override decimal baseCost => 1.5m;
 
-		private int[] fCosts;
-
-		private int[] GetCosts()
-		{
-			var costs = new int[100];
-
-			for (var i = 0; i < 100; i++)
-			{
-				costs[i] = (i + 6) / 4;
-			}
-
-			return costs;
-		}
+		protected override decimal incrementCost => 0.25m;
 
 		protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.AttackSpeed += levelDifference; };
 	}

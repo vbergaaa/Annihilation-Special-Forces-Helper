@@ -11,8 +11,6 @@ namespace VEntityFramework.Model
 		
 		public abstract string Name { get; }
 
-		public abstract int[] Costs { get; }
-
 		#endregion
 
 		#region Properties

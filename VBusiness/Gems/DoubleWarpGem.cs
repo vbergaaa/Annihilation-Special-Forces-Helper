@@ -6,23 +6,11 @@ namespace VBusiness.Gems
 {
 	class DoubleWarpGem : Gem
 	{
-		public override int[] Costs => fCosts ?? (fCosts = GetCosts());
-
 		public override string Name => "Double Warp";
 
-		int[] fCosts;
+		protected override decimal baseCost => 2.5m;
 
-		private int[] GetCosts()
-		{
-			var costs = new int[100];
-
-			for (var i = 0; i < 100; i++)
-			{
-				costs[i] = (int)(.33 * i + 2.5);
-			}
-
-			return costs;
-		}
+		protected override decimal incrementCost => .33m;
 
 		//protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.DoubleWarp += levelDifference; };
 	}

@@ -8,20 +8,9 @@ namespace VBusiness.Gems
 	{
 		public override string Name => "Critical Chance";
 
-		public override int[] Costs => fCosts ?? (fCosts = GetCosts());
-		int[] fCosts;
+		protected override decimal baseCost => 4.49m;
 
-		private int[] GetCosts()
-		{
-			var costs = new int[100];
-
-			for (var i = 0; i < 100; i++)
-			{
-				costs[i] = (int)(.45 * i + 4.49);
-			}
-
-			return costs;
-		}
+		protected override decimal incrementCost => .45m;
 
 		protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.CriticalChance += levelDifference; };
 	}
