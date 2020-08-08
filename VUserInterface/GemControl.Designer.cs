@@ -45,15 +45,15 @@ namespace VUserInterface
 			// 
 			this.CostCaption.Location = new System.Drawing.Point(5, 50);
 			this.CostCaption.Name = "CostCaption";
-			this.CostCaption.Size = new System.Drawing.Size(100, 23);
+			this.CostCaption.Size = new System.Drawing.Size(110, 23);
 			this.CostCaption.TabIndex = 6;
-			this.CostCaption.Text = "Next Level Cost:";
+			this.CostCaption.Text = "Next Lvl Cost:";
 			this.CostCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// CostLabel
 			// 
 			this.CostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gemBindingSource, "NextLevelCost"));
-			this.CostLabel.Location = new System.Drawing.Point(115, 50);
+			this.CostLabel.Location = new System.Drawing.Point(116, 50);
 			this.CostLabel.Name = "CostLabel";
 			this.CostLabel.Size = new System.Drawing.Size(40, 23);
 			this.CostLabel.TabIndex = 6;
