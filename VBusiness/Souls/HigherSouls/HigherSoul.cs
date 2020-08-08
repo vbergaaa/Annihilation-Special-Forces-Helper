@@ -9,6 +9,8 @@ namespace VBusiness.Souls
 	{
 		public override SoulType Type => SoulType.Higher;
 
+		protected sealed override SoulType Rarity => SoulType.Higher;
+
 		protected override int MaxAttack => 20;
 
 		protected override int MinAttack => 10;

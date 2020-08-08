@@ -5,9 +5,11 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Souls
 {
-	public class MidSoul : Soul
+	public class HighSoul : Soul
 	{
-		public override SoulType Type => SoulType.Mid;
+		public override SoulType Type => SoulType.High;
+
+		protected sealed override SoulType Rarity => SoulType.High;
 
 		protected override int MaxAttack => 20;
 
@@ -37,8 +39,8 @@ namespace VBusiness.Souls
 
 		protected override int MinMinerals => 1000;
 
-		protected override int MaxKills => 0;
+		protected override int MaxKills => 100;
 
-		protected override int MinKills => 0;
+		protected override int MinKills => 100;
 	}
 }

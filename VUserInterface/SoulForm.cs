@@ -93,33 +93,63 @@ namespace VUserInterface
 
 		#region SoulTypeList
 
-		List<SoulType> SoulTypeList
+		List<KeyValuePair<string, SoulType>> SoulTypeList
 		{
 			get
 			{
 				if (fSoulTypeList == null)
 				{
-					var list = new List<SoulType>
-					{
-						SoulType.None,
-						SoulType.Lowest,
-						SoulType.Lower,
-						SoulType.Low,
-						SoulType.Mid,
-						SoulType.High,
-						SoulType.Higher,
-						SoulType.Highest,
-						SoulType.Night,
-						SoulType.Tormented,
-						SoulType.Demonic,
-						SoulType.Titan,
-					};
-					fSoulTypeList = list;
+					var list = new Dictionary<string, SoulType>();
+					list.Add("None", SoulType.None);
+					list.Add($"{SoulType.Lowest.GetDescription()} Soul", SoulType.Lowest);
+					list.Add($"{SoulType.Lower.GetDescription()} Soul", SoulType.Lower);
+					list.Add($"{SoulType.Low.GetDescription()} Soul", SoulType.Low);
+					list.Add($"{SoulType.Mid.GetDescription()} Soul", SoulType.Mid);
+					list.Add($"{SoulType.High.GetDescription()} Soul", SoulType.High);
+					list.Add($"{SoulType.Higher.GetDescription()} Soul", SoulType.Higher);
+					list.Add($"{SoulType.Highest.GetDescription()} Soul", SoulType.Highest);
+					list.Add($"{SoulType.Night.GetDescription()} Soul", SoulType.Night);
+					list.Add($"{SoulType.Tormented.GetDescription()} Soul", SoulType.Tormented);
+					list.Add($"{SoulType.Demonic.GetDescription()} Soul", SoulType.Demonic);
+					list.Add($"{SoulType.Titan.GetDescription()} Soul", SoulType.Titan);
+					list.Add($"Lowest Soul of {SoulType.Bronze.GetDescription()}", SoulType.Bronze);
+					list.Add($"Lowest Soul of {SoulType.Mirrors.GetDescription()}", SoulType.Mirrors);
+					list.Add($"Lowest Soul of {SoulType.Hunter.GetDescription()}", SoulType.Hunter);
+					list.Add($"Lower Soul of {SoulType.Silver.GetDescription()}", SoulType.Silver);
+					list.Add($"Lower Soul of {SoulType.Reflection.GetDescription()}", SoulType.Reflection);
+					list.Add($"Lower Soul of {SoulType.Veterancy.GetDescription()}", SoulType.Veterancy);
+					list.Add($"Low Soul of {SoulType.Urusy.GetDescription()}", SoulType.Urusy);
+					list.Add($"Low Soul of {SoulType.Scavenger.GetDescription()}", SoulType.Scavenger);
+					list.Add($"Low Soul of {SoulType.Hunger.GetDescription()}", SoulType.Hunger);
+					list.Add($"Mid Soul of {SoulType.Luck.GetDescription()}", SoulType.Luck);
+					list.Add($"Mid Soul of {SoulType.Greed.GetDescription()}", SoulType.Greed);
+					list.Add($"Mid Soul of {SoulType.Sharing.GetDescription()}", SoulType.Sharing);
+					list.Add($"High Soul of {SoulType.Convenience.GetDescription()}", SoulType.Convenience);
+					list.Add($"High Soul of {SoulType.Promotion.GetDescription()}", SoulType.Promotion);
+					list.Add($"High Soul of {SoulType.Status.GetDescription()}", SoulType.Status);
+					list.Add($"Higher Soul of {SoulType.Predestination.GetDescription()}", SoulType.Predestination);
+					list.Add($"Higher Soul of {SoulType.RapidMutation.GetDescription()}", SoulType.RapidMutation);
+					list.Add($"Higher Soul of {SoulType.Sales.GetDescription()}", SoulType.Sales);
+					list.Add($"Highest Soul of {SoulType.GlowingDetermination.GetDescription()}", SoulType.GlowingDetermination);
+					list.Add($"Highest Soul of {SoulType.WellAmplification.GetDescription()}", SoulType.WellAmplification);
+					list.Add($"Highest Soul of {SoulType.AccelleratedAdvancement.GetDescription()}", SoulType.AccelleratedAdvancement);
+					list.Add($"Night Soul of {SoulType.GhostForce.GetDescription()}", SoulType.GhostForce);
+					list.Add($"Night Soul of {SoulType.Training.GetDescription()}", SoulType.Training);
+					list.Add($"Night Soul of {SoulType.PowerWarping.GetDescription()}", SoulType.PowerWarping);
+					list.Add($"Tormented Soul of {SoulType.Demolition.GetDescription()}", SoulType.Demolition);
+					list.Add($"Tormented Soul of {SoulType.Tanking.GetDescription()}", SoulType.Tanking);
+					list.Add($"Tormented Soul of {SoulType.Unchained.GetDescription()}", SoulType.Unchained);
+					list.Add($"Demonic Soul of {SoulType.Draining.GetDescription()}", SoulType.Draining);
+					list.Add($"Demonic Soul of {SoulType.Alacrity.GetDescription()}", SoulType.Alacrity);
+					list.Add($"Demonic Soul of {SoulType.Stats.GetDescription()}", SoulType.Stats);
+					list.Add($"Titan Soul of {SoulType.StridingTitan.GetDescription()}", SoulType.StridingTitan);
+					list.Add($"Titan Soul of {SoulType.UnboundReflection.GetDescription()}", SoulType.UnboundReflection);
+					fSoulTypeList = list.ToList();
 				}
 				return fSoulTypeList;
 			}
 		}
-		List<SoulType> fSoulTypeList;
+		private List<KeyValuePair<string, SoulType>> fSoulTypeList;
 
 		#endregion
 
@@ -127,10 +157,11 @@ namespace VUserInterface
 
 		void TypeComboBox_SelectionChanged(object sender, EventArgs e)
 		{
-			var newType = (SoulType)TypeComboBox.SelectedValue;
-			if (Parent == null || newType != Parent.Type)
+			var value = TypeComboBox.SelectedValue;
+
+			if (value is SoulType type && (Parent == null || Parent.Type != type))
 			{
-				Parent = Soul.New(newType);
+				Parent = Soul.New(type);
 			}
 		}
 

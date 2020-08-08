@@ -19,7 +19,7 @@ namespace VBusiness.Souls
 		{
 			return type switch
 			{
-				(SoulType.None) => null,
+				(SoulType.None) => new EmptySoul(),
 				(SoulType.Lowest) => new LowestSoul(),
 				(SoulType.Lower) => new LowerSoul(),
 				(SoulType.Low) => new LowSoul(),
@@ -31,6 +31,38 @@ namespace VBusiness.Souls
 				(SoulType.Tormented) => new TormentedSoul(),
 				(SoulType.Demonic) => new DemonicSoul(),
 				(SoulType.Titan) => new TitanSoul(),
+				(SoulType.Bronze) => new BronzeSoul(),
+				(SoulType.Mirrors) => new MirrorsSoul(),
+				(SoulType.Hunter) => new HunterSoul(),
+				(SoulType.Silver) => new SilverSoul(),
+				(SoulType.Reflection) => new ReflectionSoul(),
+				(SoulType.Veterancy) => new VeterancySoul(),
+				(SoulType.Urusy) => new UrusySoul(),
+				(SoulType.Scavenger) => new ScavengerSoul(),
+				(SoulType.Hunger) => new HungerSoul(),
+				(SoulType.Luck) => new LuckSoul(),
+				(SoulType.Greed) => new GreedSoul(),
+				(SoulType.Sharing) => new SharingSoul(),
+				(SoulType.Convenience) => new ConvenienceSoul(),
+				(SoulType.Promotion) => new PromotionSoul(),
+				(SoulType.Status) => new StatusSoul(),
+				(SoulType.Predestination) => new PredestinationSoul(),
+				(SoulType.RapidMutation) => new RapidMutationSoul(),
+				(SoulType.Sales) => new SalesSoul(),
+				(SoulType.GlowingDetermination) => new GlowingDeterminationSoul(),
+				(SoulType.WellAmplification) => new WellAmplificationSoul(),
+				(SoulType.AccelleratedAdvancement) => new AccelleratedAdvancementSoul(),
+				(SoulType.GhostForce) => new GhostForceSoul(),
+				(SoulType.Training) => new TrainingSoul(),
+				(SoulType.PowerWarping) => new PowerWarpingSoul(),
+				(SoulType.Demolition) => new DemolitionSoul(),
+				(SoulType.Tanking) => new TankingSoul(),
+				(SoulType.Unchained) => new UnchainedSoul(),
+				(SoulType.Draining) => new DrainingSoul(),
+				(SoulType.Alacrity) => new AlacritySoul(),
+				(SoulType.Stats) => new StatsSoul(),
+				(SoulType.StridingTitan) => new StridingTitanSoul(),
+				(SoulType.UnboundReflection) => new UnboundReflectionSoul(),
 				_ => throw new Exception($"Soul Type: {type} has not been properly configured"),
 			};
 		}
@@ -298,6 +330,18 @@ namespace VBusiness.Souls
 						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Minerals)));
 					}
 				}
+			}
+		}
+
+		#endregion
+
+		#region IsUnique
+
+		protected override bool IsUnique
+		{
+			get
+			{
+				return Type != Rarity;
 			}
 		}
 

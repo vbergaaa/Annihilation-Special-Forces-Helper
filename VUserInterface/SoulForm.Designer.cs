@@ -410,11 +410,13 @@ namespace VUserInterface
 			// 
 			this.TypeComboBox.SelectedValueChanged += TypeComboBox_SelectionChanged;
 			this.TypeComboBox.FormattingEnabled = true;
-			this.TypeComboBox.Location = new System.Drawing.Point(127, 60);
+			this.TypeComboBox.Location = new System.Drawing.Point(34, 91);
 			this.TypeComboBox.BindingContext = new BindingContext();
+			this.TypeComboBox.DisplayMember = "Key";
+			this.TypeComboBox.ValueMember = "Value";
 			this.TypeComboBox.DataSource = SoulTypeList;
 			this.TypeComboBox.Name = "TypeComboBox";
-			this.TypeComboBox.Size = new System.Drawing.Size(98, 23);
+			this.TypeComboBox.Size = new System.Drawing.Size(191, 23);
 			this.TypeComboBox.TabIndex = 9;
 			// 
 			// SoulForm

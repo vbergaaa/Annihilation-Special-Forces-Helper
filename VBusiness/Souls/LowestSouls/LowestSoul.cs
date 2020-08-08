@@ -5,19 +5,19 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Souls
 {
-	public sealed class EmptySoul : Soul
+	public class LowestSoul : Soul
 	{
-		public override SoulType Type => SoulType.None;
+		public override SoulType Type => SoulType.Lowest;
 
-		protected sealed override SoulType Rarity => SoulType.None;
+		protected sealed override SoulType Rarity => SoulType.Lowest;
 
-		protected override int MaxAttack => 0;
+		protected override int MaxAttack => 10;
 
-		protected override int MinAttack => 0;
+		protected override int MinAttack => 1;
 
-		protected override int MaxAttackSpeed => 0;
+		protected override int MaxAttackSpeed => 5;
 
-		protected override int MinAttackSpeed => 0;
+		protected override int MinAttackSpeed => 1;
 
 		protected override int MaxCriticalChance => 0;
 
@@ -42,11 +42,5 @@ namespace VBusiness.Souls
 		protected override int MaxKills => 0;
 
 		protected override int MinKills => 0;
-
-		public override void RunPreSaveValidation()
-		{
-			Notifications.AddError("Cannot save an empty soul - Please change the soul type");
-			base.RunPreSaveValidation();
-		}
 	}
 }
