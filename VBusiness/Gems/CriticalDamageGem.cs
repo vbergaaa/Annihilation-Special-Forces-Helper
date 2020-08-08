@@ -8,9 +8,9 @@ namespace VBusiness.Gems
 	{
 		public override string Name => "Critical Damage";
 
-		protected override decimal baseCost => 2.5m;
+		protected override decimal BaseCost => 2.5m;
 
-		protected override decimal incrementCost => .35m;
+		protected override decimal IncrementCost => .35m;
 
 		protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.CriticalDamage += levelDifference; };
 	}

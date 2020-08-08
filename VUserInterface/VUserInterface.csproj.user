@@ -2,6 +2,12 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="SoulControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="SoulForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -22,6 +28,9 @@
     </Compile>
     <Compile Update="VPerkControl.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="VSoulCollectionControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="VStatsControl.cs">
       <SubType>Component</SubType>

@@ -9,7 +9,6 @@ namespace VUserInterface
 		{
 			InitializeComponent();
 			Loadout = loadout;
-			Loadout.CascadeHasChanges();
 			AddNewBindings();
 		}
 		public VLoadoutForm()
@@ -38,6 +37,7 @@ namespace VUserInterface
 		{
 			ShowPerks(text == "Perks");
 			ShowGems(text == "Gems");
+			ShowSouls(text == "Souls");
 		}
 
 		void ShowPerks(bool visibility)
@@ -48,6 +48,11 @@ namespace VUserInterface
 		void ShowGems(bool visibility)
 		{
 			GemsControl.Visible = visibility;
+		}
+
+		void ShowSouls(bool visibility)
+		{
+			SoulsControl.Visible = visibility;
 		}
 
 		#endregion

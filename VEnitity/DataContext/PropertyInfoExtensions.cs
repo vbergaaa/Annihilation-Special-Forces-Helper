@@ -55,6 +55,7 @@ namespace VEntityFramework.Data
 				throw ex;
 			}
 		}
+
 		public static bool IsBusinessObject(this PropertyInfo info)
 		{
 			return typeof(VBusinessObject).IsAssignableFrom(info?.PropertyType);

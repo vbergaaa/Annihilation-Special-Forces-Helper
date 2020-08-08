@@ -56,5 +56,7 @@ namespace VEntityFramework.Model
 		public virtual VPerkCollection Perks { get; set; }
 
 		public virtual VGemCollection Gems { get; set; }
+
+		public virtual VSoulCollection Souls { get; set; }
 	}
 }

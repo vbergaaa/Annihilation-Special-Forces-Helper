@@ -44,7 +44,9 @@ namespace VUserInterface
 			this.StatsControl = new VStatsControl();
 			this.PerksButton = new Button();
 			this.GemsButton = new Button();
+			this.SoulsButton = new Button();
 			this.GemsControl = new VGemCollectionControl();
+			this.SoulsControl = new VSoulCollectionControl();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
 			//
 			// LoadoutBindingSource
@@ -89,6 +91,12 @@ namespace VUserInterface
 			this.GemsControl.DataBindings.Add("Gems", this.LoadoutBindingSource, "Gems");
 			this.GemsControl.Text = "Gem";
 			//
+			// SoulsControl
+			//
+			this.SoulsControl.Location = new System.Drawing.Point(25, 90);
+			this.SoulsControl.DataBindings.Add("Souls", this.LoadoutBindingSource, "Souls");
+			this.SoulsControl.Text = "Soul";
+			//
 			// StatsControl
 			//
 			this.StatsControl.DataBindings.Add("Stats", this.LoadoutBindingSource, "Stats");
@@ -110,6 +118,14 @@ namespace VUserInterface
 			this.GemsButton.FlatStyle = FlatStyle.Flat;
 			this.GemsButton.Click += ControlVisibilityToggled;
 			//
+			// SoulsButton
+			//
+			this.SoulsButton.Location = new System.Drawing.Point(310, 55);
+			this.SoulsButton.Size = new System.Drawing.Size(120, 25);
+			this.SoulsButton.Text = "Souls";
+			this.SoulsButton.FlatStyle = FlatStyle.Flat;
+			this.SoulsButton.Click += ControlVisibilityToggled;
+			//
 			// PerkPlanningForm
 			//
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,7 +138,9 @@ namespace VUserInterface
 			this.Controls.Add(StatsControl);
 			this.Controls.Add(PerksButton);
 			this.Controls.Add(GemsButton);
+			this.Controls.Add(SoulsButton);
 			this.Controls.Add(GemsControl);
+			this.Controls.Add(SoulsControl);
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
 		}
@@ -131,12 +149,14 @@ namespace VUserInterface
 
 		private System.Windows.Forms.Button PerksButton;
 		private System.Windows.Forms.Button GemsButton;
+		private System.Windows.Forms.Button SoulsButton;
 		private System.Windows.Forms.Label SlotNumberLabel;
 		private System.Windows.Forms.Label LoadoutNameLabel;
 		private System.Windows.Forms.TextBox SlotNumberTextBox;
 		private System.Windows.Forms.TextBox LoadoutNameTextBox;
 		private VUserInterface.VPerkCollectionControl PerkPageControl;
 		private VUserInterface.VGemCollectionControl GemsControl;
+		private VUserInterface.VSoulCollectionControl SoulsControl;
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;
 		private VStatsControl StatsControl;
 	}

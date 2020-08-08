@@ -38,6 +38,7 @@ namespace VUserInterface
 			//
 			// SaveButton
 			//
+			this.SaveButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 			this.SaveButton.Enabled = false;
 			this.SaveButton.Location = new System.Drawing.Point(620, 420);
 			this.SaveButton.Size = new System.Drawing.Size(80, 25);
@@ -46,6 +47,7 @@ namespace VUserInterface
 			//
 			// CancelButton
 			//
+			this.CancelButton.Anchor = AnchorStyles.Bottom  | AnchorStyles.Right;
 			this.CancelButton.Location = new System.Drawing.Point(710, 420);
 			this.CancelButton.Size = new System.Drawing.Size(80, 25);
 			this.CancelButton.Text = "Close";

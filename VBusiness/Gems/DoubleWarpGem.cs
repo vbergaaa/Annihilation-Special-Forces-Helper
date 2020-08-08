@@ -8,9 +8,9 @@ namespace VBusiness.Gems
 	{
 		public override string Name => "Double Warp";
 
-		protected override decimal baseCost => 2.5m;
+		protected override decimal BaseCost => 2.5m;
 
-		protected override decimal incrementCost => .33m;
+		protected override decimal IncrementCost => .33m;
 
 		//protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.DoubleWarp += levelDifference; };
 	}

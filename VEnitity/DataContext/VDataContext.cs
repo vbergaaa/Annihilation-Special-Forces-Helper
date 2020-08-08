@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using VEntityFramework;
+using VEntityFramework.Model;
 
 namespace VEntityFramework.Data
 {
@@ -29,11 +30,16 @@ namespace VEntityFramework.Data
 			return new VXMLReader().GetAllLoadoutNames();
 		}
 
+		public string[] GetAllSoulNames()
+		{
+			return new VXMLReader().GetAllSoulNames();
+		}
+
 		internal void DeleteXML(VBusinessObject vBusinessObject, string getExistingXMLFileName)
 		{
 			if (getExistingXMLFileName != null)
 			{
-				var path = new VXMLReader().GetFullPath(getExistingXMLFileName) + ".xml";
+				var path = new VXMLReader().GetFullPath(vBusinessObject.GetType(), getExistingXMLFileName) + ".xml";
 				if (File.Exists(path))
 				{
 					File.Delete(path);

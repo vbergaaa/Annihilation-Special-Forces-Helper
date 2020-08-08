@@ -6,9 +6,9 @@ namespace VBusiness.Gems
 	{
 		public override string Name => "Attack";
 
-		protected override decimal incrementCost => 0.2m;
+		protected override decimal IncrementCost => 0.2m;
 
-		protected override decimal baseCost => 1.4m;
+		protected override decimal BaseCost => 1.4m;
 
 		protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.Attack += levelDifference; };
 	}

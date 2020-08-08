@@ -9,13 +9,7 @@ namespace VUserInterface
 	{
 		protected VForm(VBusinessObject parent) : this()
 		{
-			if (parent == null)
-			{
-				throw new ArgumentException("Vform parent must always exist");
-			}
-
 			Parent = parent;
-			Parent.HasChangesChanged += UpdateSaveButtons;
 		}
 
 		VForm()
@@ -23,31 +17,64 @@ namespace VUserInterface
 			InitializeComponent();
 		}
 
-		private void UpdateSaveButtons(object sender, HasChangesEventArgs e)
+		void UpdateSaveButtons(object sender, HasChangesEventArgs e)
 		{
 			SaveButton.Enabled = e.HasChanges;
 			CancelButton.Text = e.HasChanges ? "Cancel" : "Close";
 		}
 
-		public new VBusinessObject Parent { get; set; }
+		public new VBusinessObject Parent
+		{
+			get => fParent;
+			set
+			{
+				if (fParent != null)
+				{
+					fParent.HasChangesChanged -= UpdateSaveButtons;
+				}
+
+				fParent = value;
+
+				if (fParent != null)
+				{
+					fParent.HasChangesChanged += UpdateSaveButtons;
+					fParent.CascadeHasChanges();
+				}
+
+				UpdateSaveButtons(fParent, new HasChangesEventArgs { HasChanges = fParent != null && fParent.HasChanges });
+			}
+		}
+		VBusinessObject fParent;
 
 		void SaveButton_Click(object sender, EventArgs e)
 		{
-			var canSave = Parent.RunPreSaveValidation(out var errorMessage);
-			if (!canSave)
+			Parent.RunPreSaveValidation();
+
+			if (Parent.Notifications.HasErrors())
 			{
-				MessageBox.Show(errorMessage, "Error");
+				MessageBox.Show(Parent.Notifications.Errors[0], "Error");
+				return;
 			}
-			else
+
+			if (Parent.Notifications.HasPrompt())
 			{
-				Parent.Save();
-				OnSaved?.Invoke(this, e);
+				foreach (var prompt in Parent.Notifications.Prompts)
+				{
+					var result = MessageBox.Show(prompt, "Continue?", MessageBoxButtons.YesNo);
+					if (result == DialogResult.No)
+					{
+						return;
+					}
+				}
 			}
+
+			Parent.Save();
+			OnSaved?.Invoke(this, e);
 		}
 
 		void CancelButton_Click(object sender, EventArgs e)
 		{
-			if (Parent.HasChanges)
+			if (Parent != null && Parent.HasChanges)
 			{
 				var result = MessageBox.Show("You have unsaved changes, are you sure you wish to cancel?", "Confirm Cancel", MessageBoxButtons.YesNo);
 				if (result == DialogResult.No)

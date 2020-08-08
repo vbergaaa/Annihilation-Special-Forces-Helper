@@ -1,5 +1,6 @@
 ﻿using VBusiness.Gems;
 using VBusiness.Perks;
+using VBusiness.Souls;
 using VEntityFramework;
 using VEntityFramework.Model;
 
@@ -12,6 +13,7 @@ namespace VBusiness.Loadouts
 			Stats = new Stats();
 			Perks = new PerkCollection();
 			Gems = new GemCollection();
+			Souls = new SoulCollection();
 		}
 
 		public override VGemCollection Gems
@@ -19,20 +21,31 @@ namespace VBusiness.Loadouts
 			get => base.Gems;
 			set
 			{
-				UnHookStatsEvents();
+				UnHookGemStats();
 				base.Gems = value;
-				HookStatsEvents();
+				HookGemStats();
 			}
 		}
 
-		public override VPerkCollection Perks 
-		{ 
+		public override VPerkCollection Perks
+		{
 			get => base.Perks;
 			set
 			{
-				UnHookStatsEvents();
+				UnHookPerkStats();
 				base.Perks = value;
-				HookStatsEvents();
+				HookPerkStats();
+			}
+		}
+
+		public override VSoulCollection Souls
+		{
+			get => base.Souls;
+			set
+			{
+				UnHookSoulStats();
+				base.Souls = value;
+				HookSoulStats();
 			}
 		}
 
@@ -41,56 +54,80 @@ namespace VBusiness.Loadouts
 			e.Modification(Stats);
 		}
 
-		public void HookStatsEvents()
+		void HookPerkStats()
 		{
 			if (Perks != null)
 			{
 				Perks.PerkLevelChanged += UpdateStats;
 			}
+		}
+
+		void HookGemStats()
+		{
 			if (Gems != null)
 			{
 				Gems.GemCollectionLevelUpdated += UpdateStats;
 			}
 		}
 
-		public void UnHookStatsEvents()
+		void UnHookPerkStats()
 		{
 			if (Perks != null)
 			{
 				Perks.PerkLevelChanged -= UpdateStats;
 			}
+		}
+
+		void UnHookGemStats()
+		{
 			if (Gems != null)
 			{
 				Gems.GemCollectionLevelUpdated -= UpdateStats;
 			}
 		}
 
+		void UnHookSoulStats()
+		{
+			if (Souls != null)
+			{
+				Souls.SoulActivated -= UpdateStats;
+				Souls.SoulDeactivated -= UpdateStats;
+			}
+		}
+
+		void HookSoulStats()
+		{
+			if (Souls != null)
+			{
+				Souls.SoulActivated += UpdateStats;
+				Souls.SoulDeactivated += UpdateStats;
+			}
+		}
+
 		#region Validation
 
-		public override bool RunPreSaveValidation(out string errorMessage)
+		public override void RunPreSaveValidation()
 		{
-			errorMessage = null;
+			base.RunPreSaveValidation();
 
-			if (CheckInvalidLoadoutName())
-			{
-				errorMessage = "Please enter a name for this loadout.";
-			}
-			else if (CheckInvalidSlotNumber())
-			{
-				errorMessage = "Please enter a Save slot that is greater than 0.";
-			}
-
-			return errorMessage == null ? base.RunPreSaveValidation(out errorMessage) : false;
+			CheckLoadoutName();
+			CheckSlotNumber();
 		}
 
-		bool CheckInvalidSlotNumber()
+		void CheckSlotNumber()
 		{
-			return Slot <= 0;
+			if (Slot <= 0)
+			{
+				Notifications.AddError("Please enter a Save slot that is greater than 0.");
+			}
 		}
 
-		bool CheckInvalidLoadoutName()
+		void CheckLoadoutName()
 		{
-			return Name == "";
+			if (Name == "")
+			{
+				Notifications.AddError("Please enter a name for this loadout.");
+			}
 		}
 
 		#endregion
