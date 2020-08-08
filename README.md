@@ -16,12 +16,9 @@ Once you have dotnet installed, download <b>ASF.zip</b> from the releases page [
 Once you have downloaded the zip file, extract the files and run ASFLauncher.exe.
 
 ### Current feature roadmap:
-1. Adding support for souls, including saving souls and attaching them to a loadout
-2. Adding support for challenge points
-3. Adding support for unit ranks
+1. Adding support for unit ranks
 
 ### Potiential future features
-- Incorporating unit stats and costs into the helper
 - Adding a helper that suggests different perks to increase stats with best stats/cost ratio
 - Same as above but for economics
 - Adding a Profile page, including name, rank, current RP, mod score, gem count, souls, etc.
