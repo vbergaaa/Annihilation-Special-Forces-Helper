@@ -30,7 +30,19 @@ namespace VEntityFramework.Model
 		#region UnitRank
 
 		[VXML(true)]
-		public virtual UnitRank UnitRank { get; set; }
+		public virtual UnitRank UnitRank
+		{
+			get => fUnitRank;
+			set
+			{
+				if (fUnitRank != value)
+				{
+					fUnitRank = value;
+					HasChanges = true;
+				}
+			}
+		}
+		UnitRank fUnitRank;
 
 		#endregion
 
