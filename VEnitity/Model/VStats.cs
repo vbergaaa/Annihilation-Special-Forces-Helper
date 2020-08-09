@@ -17,7 +17,8 @@ namespace VEntityFramework.Model
 				var redCritChance = HasRedCrits ? fCriticalChance / 200 : 0;
 				var critChance = 1 - regAtkChance - redCritChance;
 
-				var damage = (regAtkChance * fAttack) + (critChance * (fAttack + fCriticalDamage)) + (redCritChance * (fAttack + 2 * fCriticalDamage));
+				var coreDamage = (regAtkChance * fAttack) + (critChance * (fAttack + fCriticalDamage)) + (redCritChance * (fAttack + 2 * fCriticalDamage));
+				var damage = coreDamage * (1 + DamageIncrease / 100);
 				return Math.Round(damage * fAttackSpeed / 100, 2);
 			}
 		}
@@ -197,6 +198,22 @@ namespace VEntityFramework.Model
 
 		#region DamageReduction
 
+		public double DamageIncrease
+		{
+			get => fDamageIncrease;
+			set
+			{
+				fDamageIncrease = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageIncrease)));
+			}
+		}
+		double fDamageIncrease;
+
+		#endregion
+
+		#region DamageReduction
+
 		public double DamageReduction
 		{
 			get => fDamageReduction;
@@ -213,6 +230,10 @@ namespace VEntityFramework.Model
 		#endregion
 
 		public bool HasRedCrits { get; set; }
+
+		public double MoveSpeed { get; set; }
+
+		public double CooldownReduction { get; set; }
 
 		#endregion
 

@@ -19,7 +19,7 @@
 		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
 		{
 			return (stats) => {
-				stats.Attack += 2 * levelDifference;
+				stats.DamageIncrease += 2 * levelDifference;
 				stats.DamageReduction += 1 * levelDifference;
 			};
 		}
