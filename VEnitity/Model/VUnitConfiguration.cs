@@ -66,7 +66,7 @@ namespace VEntityFramework.Model
 
 		#region Implementation
 
-		public override string BizoName => "Rank";
+		public override string BizoName => "UnitConfiguration";
 		
 		#endregion
 	}

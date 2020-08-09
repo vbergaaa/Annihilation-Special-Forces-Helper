@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using VEntityFramework;
+using VEntityFramework.Model;
 
 namespace VEntityFramework.Data
 {
@@ -42,6 +43,10 @@ namespace VEntityFramework.Data
 				else if (property.PropertyType.Name == "String")
 				{
 					property.SetValue(bizo, value);
+				}
+				else if (property.PropertyType.Name == "UnitRank")
+				{
+					property.SetValue(bizo, VRank.GetUnitRankFromString(value));
 				}
 				else
 				{

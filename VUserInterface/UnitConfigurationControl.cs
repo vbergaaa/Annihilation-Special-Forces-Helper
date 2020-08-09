@@ -18,7 +18,27 @@ namespace VUserInterface
 			InitializeComponent();
 		}
 
-		public UnitConfiguration Unit { get; set; }
+		public UnitConfiguration Unit
+		{
+			get => fUnit;
+			set
+			{
+				fUnit = value;
+				UpdateRankComboBox();
+			}
+		}
+
+		private void UpdateRankComboBox()
+		{
+			if (fUnit != null)
+			{
+				RankComboBox.SelectedValueChanged -= RankChanged;
+				RankComboBox.SelectedIndex = (int)fUnit.UnitRank;
+				RankComboBox.SelectedValueChanged += RankChanged;
+			}
+		}
+
+		UnitConfiguration fUnit;
 
 		void RankChanged(object sender, EventArgs e)
 		{
