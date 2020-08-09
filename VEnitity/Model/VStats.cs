@@ -248,6 +248,7 @@ namespace VEntityFramework.Model
 		public double ShieldsForBinding => Math.Round(Shields, 2);
 		public double ShieldsArmorForBinding => Math.Round(ShieldsArmor, 2);
 		public double DamageReductionForBinding => Math.Round(DamageReduction, 2);
+		public double DamageIncreaseForBinding => Math.Round(DamageIncrease, 2);
 
 		#endregion
 

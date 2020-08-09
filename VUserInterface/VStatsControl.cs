@@ -6,6 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using VEntityFramework.Model;
+using System.Threading;
 
 namespace VUserInterface
 {
@@ -24,24 +25,22 @@ namespace VUserInterface
 
 		public VStats Stats { get; set; }
 
-		private void DisclaimerLabel_Click(object sender, System.EventArgs e)
+		private void DisclaimerLabel_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show(@"
-The 'Damage' and 'Toughness' stats above are estimations of a units total attack and defence, and take all the base stats into consideration. Theoretically, by maximizing these value, you would have a stronger unit in game.
+This sidebar represents the stats page that you can view in game. 
 
-The 'Toughness' rating should be treated as a guideline, and will not be accurate for all units, considering each unit has different amounts of health, shields, and armor.
+The first two stats, 'Damage' and 'Toughness', are estimations of a units total attack and defence, and take all the base stats into consideration. Theoretically, by maximizing these value, you would have a stronger unit in game. However, the 'Toughness' stat cannot be accurately measured without knowing what unit you are using, so should only be treated as a guideline, and the 'Damage' stat does not consider spells or area of affect damage, and as such both of these values may not be completely accurate for the unit you are using.
 
-The 'Damage' rating is more accurate, however it does not consider damage dealt from abilities, passives, or area of affect.
-
-Finally, all stats on this page include unit specific stats. So if you have the perk 'trifecta power' selected, it will assume your unit has SSS, and add those stats to the sidebar.");
+All stats on this page also include unit specific stats. For example, if you have a perk like 'Trifecta Power', that increases the stats of individual units, or if you have a rank selected in the 'Unit' tab, these stats are included in this sidebar.");
 		}
 
-		private void DisclaimerLabel_MouseHover(object sender, System.EventArgs e)
+		private void DisclaimerLabel_MouseHover(object sender, EventArgs e)
 		{
 			Cursor.Current = Cursors.Hand;
 		}
 
-		private void DisclaimerLabel_MouseMove(object sender, System.EventArgs e)
+		private void DisclaimerLabel_MouseMove(object sender, EventArgs e)
 		{
 			Cursor.Current = Cursors.Hand;
 		}

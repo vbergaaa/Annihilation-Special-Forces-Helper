@@ -55,6 +55,8 @@ namespace VUserInterface
 			this.ShieldsArmorLabel = new System.Windows.Forms.Label();
 			this.DamageReductionCaption = new System.Windows.Forms.Label();
 			this.DamageReductionLabel = new System.Windows.Forms.Label();
+			this.DamageIncreaseCaption = new System.Windows.Forms.Label();
+			this.DamageIncreaseLabel = new System.Windows.Forms.Label();
 			this.statsBindingSource = new System.Windows.Forms.BindingSource();
 			this.DisclaimerLabel = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.statsBindingSource)).BeginInit();
@@ -110,6 +112,22 @@ namespace VUserInterface
 			this.RecoveryLabel.Name = "RecoveryLabel";
 			this.RecoveryLabel.Size = new System.Drawing.Size(50, 20);
 			this.RecoveryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// DamageIncreaseCaption
+			// 
+			this.DamageIncreaseCaption.Location = new System.Drawing.Point(5, 80);
+			this.DamageIncreaseCaption.Name = "DamageIncreaseCaption";
+			this.DamageIncreaseCaption.Size = new System.Drawing.Size(105, 20);
+			this.DamageIncreaseCaption.Text = "Dmg Increase:";
+			this.DamageIncreaseCaption.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// DamageIncreaseLabel
+			// 
+			this.DamageIncreaseLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "DamageIncrease"));
+			this.DamageIncreaseLabel.Location = new System.Drawing.Point(110, 80);
+			this.DamageIncreaseLabel.Name = "DamageIncreaseLabel";
+			this.DamageIncreaseLabel.Size = new System.Drawing.Size(50, 20);
+			this.DamageIncreaseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// AttackCaption
 			// 
@@ -257,9 +275,9 @@ namespace VUserInterface
 			// 
 			// DisclaimerLabel
 			// 
-			this.DisclaimerLabel.Location = new System.Drawing.Point(5, 80);
+			this.DisclaimerLabel.Location = new System.Drawing.Point(25, 60);
 			this.DisclaimerLabel.Name = "DisclaimerLabel";
-			this.DisclaimerLabel.Size = new System.Drawing.Size(150, 20);
+			this.DisclaimerLabel.Size = new System.Drawing.Size(130, 20);
 			this.DisclaimerLabel.Text = "What's this?";
 			this.DisclaimerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.DisclaimerLabel.ForeColor = System.Drawing.Color.Blue;
@@ -292,6 +310,8 @@ namespace VUserInterface
 			this.Controls.Add(ShieldsArmorLabel);
 			this.Controls.Add(DamageReductionCaption);
 			this.Controls.Add(DamageReductionLabel);
+			this.Controls.Add(DamageIncreaseCaption);
+			this.Controls.Add(DamageIncreaseLabel);
 			this.Controls.Add(DisclaimerLabel);
 			this.Size = new System.Drawing.Size(170, 290);
 			this.Text = "Stats";
@@ -324,6 +344,8 @@ namespace VUserInterface
 		private System.Windows.Forms.Label ShieldsLabel;
 		private System.Windows.Forms.Label ShieldsArmorLabel;
 		private System.Windows.Forms.Label DamageReductionLabel;
+		private System.Windows.Forms.Label DamageIncreaseCaption;
+		private System.Windows.Forms.Label DamageIncreaseLabel;
 		private System.Windows.Forms.BindingSource statsBindingSource;
 		private System.Windows.Forms.Label DisclaimerLabel;
 	}
