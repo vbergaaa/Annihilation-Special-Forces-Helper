@@ -7,13 +7,54 @@ namespace VBusiness.Ranks
 {
 	public abstract class Rank : VRank
 	{
+		#region New
+
+		public static VRank New(UnitRank rank)
+		{
+			return rank switch
+			{
+				(UnitRank.None) => new EmptyRank(),
+				(UnitRank.D) => new RankD(),
+				(UnitRank.C) => new RankC(),
+				(UnitRank.B) => new RankB(),
+				(UnitRank.A) => new RankA(),
+				(UnitRank.S) => new RankS(),
+				(UnitRank.SD) => new RankSD(),
+				(UnitRank.SC) => new RankSC(),
+				(UnitRank.SB) => new RankSB(),
+				(UnitRank.SA) => new RankSA(),
+				(UnitRank.SS) => new RankSS(),
+				(UnitRank.SSD) => new RankSSD(),
+				(UnitRank.SSC) => new RankSSC(),
+				(UnitRank.SSB) => new RankSSB(),
+				(UnitRank.SSA) => new RankSSA(),
+				(UnitRank.SSS) => new RankSSS(),
+				(UnitRank.X) => new RankX(),
+				(UnitRank.SX) => new RankSX(),
+				(UnitRank.SSX) => new RankSSX(),
+				(UnitRank.SSSX) => new RankSSSX(),
+				(UnitRank.XX) => new RankXX(),
+				(UnitRank.XD) => new RankXD(),
+				(UnitRank.SXD) => new RankSXD(),
+				(UnitRank.Z) => new RankZ(),
+				(UnitRank.SZ) => new RankSZ(),
+				(UnitRank.SSZ) => new RankSSZ(),
+				(UnitRank.SSSZ) => new RankSSSZ(),
+				(UnitRank.XZ) => new RankXZ(),
+				(UnitRank.XDZ) => new RankXDZ(),
+				(UnitRank.SXDZ) => new RankSXDZ(),
+				(UnitRank.XYZ) => new RankXYZ(),
+				_ => null,
+			};
+		}
+
+		#endregion
+
 		#region Buffs
 
-		public override Action<VStats> ActivateMegaBuff => null;
-		public override Action<VStats> ActivateSuperMegaBuff => null;
-		public override Action<VStats> ActivateGodBuff => null;
-		public override Action<VStats> ActivateSuperGodBuff => null;
-		public override Action<VStats> ActivateDivineBuff
+		public override Action<VStats> ActivateMegaBuff => (stats) => { };
+		public override Action<VStats> ActivateSuperMegaBuff => (stats) => { };
+		public override Action<VStats> ActivateGodBuff
 		{
 			get
 			{
@@ -24,8 +65,7 @@ namespace VBusiness.Ranks
 				};
 			}
 		}
-
-		public override Action<VStats> ActivateSuperDivineBuff
+		public override Action<VStats> ActivateSuperGodBuff
 		{
 			get
 			{
@@ -36,6 +76,9 @@ namespace VBusiness.Ranks
 				};
 			}
 		}
+		public override Action<VStats> ActivateDivineBuff => (stats) => { };
+
+		public override Action<VStats> ActivateSuperDivineBuff => (stats) => { };
 
 		public override Action<VStats> ActivateOmegaBuff
 		{
@@ -73,13 +116,14 @@ namespace VBusiness.Ranks
 			}
 		}
 
-		public override Action<VStats> ActivateQuasarBuff => null;
-		public override Action<VStats> ActivateVoidBuff => null;
+		public override Action<VStats> ActivateQuasarBuff => (stats) => { };
+		public override Action<VStats> ActivateVoidBuff => (stats) => { };
 
-		public override Action<VStats> DeactivateMegaBuff => null;
-		public override Action<VStats> DeactivateSuperMegaBuff => null;
-		public override Action<VStats> DeactivateGodBuff => null;
-		public override Action<VStats> DeactivateSuperGodBuff => null; public override Action<VStats> DeactivateDivineBuff
+		public override Action<VStats> DeactivateMegaBuff => (stats) => { };
+		public override Action<VStats> DeactivateSuperMegaBuff => (stats) => { };
+		public override Action<VStats> DeactivateDivineBuff => (stats) => { };
+		public override Action<VStats> DeactivateSuperDivineBuff => (stats) => { }; 
+		public override Action<VStats> DeactivateGodBuff
 		{
 			get
 			{
@@ -91,7 +135,7 @@ namespace VBusiness.Ranks
 			}
 		}
 
-		public override Action<VStats> DeactivateSuperDivineBuff
+		public override Action<VStats> DeactivateSuperGodBuff
 		{
 			get
 			{
@@ -138,8 +182,8 @@ namespace VBusiness.Ranks
 				};
 			}
 		}
-		public override Action<VStats> DeactivateQuasarBuff => null;
-		public override Action<VStats> DeactivateVoidBuff => null;
+		public override Action<VStats> DeactivateQuasarBuff => (stats) => { };
+		public override Action<VStats> DeactivateVoidBuff => (stats) => { };
 
 		#endregion
 

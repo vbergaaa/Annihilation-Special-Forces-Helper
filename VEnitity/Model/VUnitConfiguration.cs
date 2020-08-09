@@ -11,11 +11,11 @@ namespace VEntityFramework.Model
 
 		#region Rank
 
-		[VXML(true)]
+		[VXML(false)]
 		public VRank Rank
 		{
 			get => fRank;
-			set
+			protected set
 			{
 				DeactivateRank(fRank);
 				fRank = value;
@@ -24,6 +24,13 @@ namespace VEntityFramework.Model
 		}
 
 		VRank fRank;
+
+		#endregion
+
+		#region UnitRank
+
+		[VXML(true)]
+		public virtual UnitRank UnitRank { get; set; }
 
 		#endregion
 
@@ -37,14 +44,20 @@ namespace VEntityFramework.Model
 
 		void DeactivateRank(VRank rank)
 		{
-			var e = new StatsEventArgs() { Modification = rank?.DeactivateRank };
-			OnRankChanged?.Invoke(this, e);
+			if (rank != null)
+			{
+				var e = new StatsEventArgs() { Modification = rank.DeactivateRank };
+				OnRankChanged?.Invoke(this, e);
+			}
 		}
 
 		void ActivateRank(VRank rank)
 		{
-			var e = new StatsEventArgs() { Modification = rank?.ActivateRank };
-			OnRankChanged?.Invoke(this, e);
+			if (rank != null)
+			{
+				var e = new StatsEventArgs() { Modification = rank.ActivateRank };
+				OnRankChanged?.Invoke(this, e); 
+			}
 		}
 
 		#endregion

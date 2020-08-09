@@ -13,6 +13,11 @@ namespace VEntityFramework.Data
 		public VBusinessObject()
 		{
 			Context = new VDataContext();
+			SetDefaultValues();
+		}
+
+		protected virtual void SetDefaultValues()
+		{
 		}
 
 		public VDataContext Context { get; set; }

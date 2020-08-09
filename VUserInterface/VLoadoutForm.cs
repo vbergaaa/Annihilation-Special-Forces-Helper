@@ -38,11 +38,17 @@ namespace VUserInterface
 			ShowPerks(text == "Perks");
 			ShowGems(text == "Gems");
 			ShowSouls(text == "Souls");
+			ShowUnit(text == "Unit");
 		}
 
 		void ShowPerks(bool visibility)
 		{
 			PerkPageControl.Visible = visibility;
+		}
+
+		void ShowUnit(bool visibility)
+		{
+			UnitControl.Visible = visibility;
 		}
 
 		void ShowGems(bool visibility)

@@ -10,10 +10,15 @@ namespace VBusiness.Loadouts
 	{
 		public Loadout()
 		{
+		}
+
+		protected override void SetDefaultValues()
+		{
 			Stats = new Stats();
 			Perks = new PerkCollection();
 			Gems = new GemCollection();
 			Souls = new SoulCollection();
+			UnitConfiguration = new UnitConfiguration();
 		}
 
 		public override VGemCollection Gems
@@ -46,6 +51,17 @@ namespace VBusiness.Loadouts
 				UnHookSoulStats();
 				base.Souls = value;
 				HookSoulStats();
+			}
+		}
+
+		public override VUnitConfiguration UnitConfiguration
+		{
+			get => base.UnitConfiguration;
+			set
+			{
+				UnHookRankStats();
+				base.UnitConfiguration = value;
+				HookRankStats();
 			}
 		}
 
@@ -101,6 +117,22 @@ namespace VBusiness.Loadouts
 			{
 				Souls.SoulActivated += UpdateStats;
 				Souls.SoulDeactivated += UpdateStats;
+			}
+		}
+
+		void UnHookRankStats()
+		{
+			if (UnitConfiguration != null)
+			{
+				UnitConfiguration.OnRankChanged -= UpdateStats;
+			}
+		}
+
+		void HookRankStats()
+		{
+			if (UnitConfiguration != null)
+			{
+				UnitConfiguration.OnRankChanged += UpdateStats;
 			}
 		}
 
