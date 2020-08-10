@@ -20,6 +20,8 @@ namespace VEntityFramework.Data
 		{
 		}
 
+		public bool ExistsInXML { get; set; }
+
 		public VDataContext Context { get; set; }
 
 		public abstract string BizoName { get; }
@@ -27,6 +29,11 @@ namespace VEntityFramework.Data
 		public void Save()
 		{
 			Context.SaveAsXML(this, GetExistingXMLFileName);
+			OnSaved();
+		}
+
+		protected virtual void OnSaved()
+		{
 			UpdateExistingXMLName();
 		}
 

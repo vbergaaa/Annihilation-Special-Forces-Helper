@@ -10,7 +10,22 @@ namespace VEntityFramework.Model
 		public override string BizoName => "Soul";
 
 		[VXML(true)]
-		public int SaveSlot { get; set; }
+		public virtual int SaveSlot
+		{
+			get => fSaveSlot;
+			set
+			{
+				if (fSaveSlot != value)
+				{
+					if (!SuspendSettingHasChanges)
+					{
+						HasChanges = true;
+					}
+					fSaveSlot = value;
+				}
+			}
+		}
+		int fSaveSlot;
 
 		[VXML(true)]
 		public abstract SoulType Type { get; }

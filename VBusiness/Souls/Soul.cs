@@ -12,7 +12,6 @@ namespace VBusiness.Souls
 
 		public Soul()
 		{
-			SetDefaultValues();
 		}
 
 		public static Soul New(SoulType type)
@@ -347,6 +346,23 @@ namespace VBusiness.Souls
 
 		#endregion
 
+		#region SaveSlot
+
+		public override int SaveSlot
+		{
+			get => base.SaveSlot;
+			set
+			{
+				if (base.SaveSlot != value && !SuspendSettingHasChanges)
+				{
+					saveSlotHasChanges = true;
+				}
+				base.SaveSlot = value;
+			}
+		}
+
+		#endregion
+
 		#endregion
 
 		#region Stats
@@ -391,7 +407,7 @@ namespace VBusiness.Souls
 
 		#region Set Default Values
 
-		void SetDefaultValues()
+		protected override void SetDefaultValues()
 		{
 			SuspendSettingHasChanges = true;
 			Attack = MinAttack;
@@ -436,7 +452,8 @@ namespace VBusiness.Souls
 		bool CheckIfDuplicateSaveSlot()
 		{
 			var usedSoulSlots = Context.GetAllSoulNames().Select(name => int.Parse(name.Split('-')[0]));
-			return usedSoulSlots.Contains(SaveSlot);
+			var hasSoulInSpot = usedSoulSlots.Contains(SaveSlot);
+			return hasSoulInSpot && (!ExistsInXML || saveSlotHasChanges);
 		}
 
 		#endregion
@@ -492,6 +509,14 @@ namespace VBusiness.Souls
 				return base.GetExistingXMLFileName;
 			}
 		}
+
+		protected override void OnSaved()
+		{
+			base.OnSaved();
+			saveSlotHasChanges = false;
+		}
+
+		bool saveSlotHasChanges;
 
 		#endregion
 	}

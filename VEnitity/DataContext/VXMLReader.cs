@@ -186,6 +186,7 @@ namespace VEntityFramework.Data
 				}
 			}
 			bizo.SuspendSettingHasChanges = false;
+			bizo.ExistsInXML = true;
 		}
 
 		string[] XmlKeys => xmlKeys ?? (xmlKeys = GetXmlKeys());
