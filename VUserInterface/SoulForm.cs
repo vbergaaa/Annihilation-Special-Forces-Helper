@@ -41,8 +41,10 @@ namespace VUserInterface
 				var items = TypeComboBox.Items;
 				TypeComboBox.SelectedIndex = (int)Parent.Type;
 				TypeComboBox.SelectedValueChanged += TypeComboBox_SelectionChanged;
+				isParentInitialised = true;
 			}
 		}
+		bool isParentInitialised;
 
 		public new Soul Parent
 		{
@@ -52,7 +54,7 @@ namespace VUserInterface
 				var oldSaveSlot = fSoul?.SaveSlot;
 				base.Parent = value;
 				fSoul = value;
-				if (fSoul != null && oldSaveSlot.HasValue)
+				if (fSoul != null && oldSaveSlot.HasValue && isParentInitialised)
 				{
 					fSoul.SaveSlot = oldSaveSlot.Value;
 				}
