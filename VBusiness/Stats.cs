@@ -6,10 +6,9 @@ namespace VBusiness
 	{
 		public Stats() : base()
 		{
-			SetDefaultValues();
 		}
 
-		private void SetDefaultValues()
+		protected override void SetDefaultValues()
 		{
 			Attack = 100;
 			AttackSpeed = 100;

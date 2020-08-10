@@ -18,14 +18,7 @@
 
 		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
 		{
-			return (stats) => {
-				stats.Attack += 1.5 * levelDifference;
-				stats.AttackSpeed += 1.5 * levelDifference;
-				stats.Health += 1.5 * levelDifference;
-				stats.HealthArmor += 1 * levelDifference;
-				stats.Shields += 1.5 * levelDifference;
-				stats.ShieldsArmor += 1 * levelDifference;
-			};
+			return (stats) => stats.TrifectaStacks += levelDifference;
 		}
 	}
 }

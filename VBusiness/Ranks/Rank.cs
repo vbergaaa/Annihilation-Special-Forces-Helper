@@ -205,6 +205,7 @@ namespace VBusiness.Ranks
 					stats.DamageReduction += DamageReduction;
 					stats.CooldownReduction += Speed;
 					stats.MoveSpeed += Speed;
+					stats.Rank = Rank;
 
 					ActivateMegaBuffs(stats);
 					ActivateGodBuffs(stats);

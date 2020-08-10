@@ -235,6 +235,87 @@ namespace VEntityFramework.Model
 
 		public double CooldownReduction { get; set; }
 
+		#region Trifecta Power
+
+		public int TrifectaStacks
+		{
+			get => fTrifectaStacks;
+			set
+			{
+				var oldValue = fTrifectaStacks;
+				fTrifectaStacks = value;
+				var diff = fTrifectaStacks - oldValue;
+				if (Rank >= UnitRank.SSS)
+				{
+					AddTrifectaStacks(diff);
+				}
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+			}
+		}
+
+		int fTrifectaStacks;
+
+		void AddTrifectaStacks(int diff)
+		{
+			Attack += 1.5 * diff;
+			AttackSpeed += 1.5 * diff;
+			Health += 1.5 * diff;
+			HealthArmor += 1 * diff;
+			Shields += 1.5 * diff;
+			ShieldsArmor += 1 * diff;
+		}
+
+		#endregion
+
+		#region UnitRank
+
+		public UnitRank Rank
+		{
+			get => fRank;
+			set
+			{
+				var oldRank = fRank;
+				fRank = value;
+				if (oldRank < UnitRank.SSS && fRank >= UnitRank.SSS)
+				{
+					ActivateTrifectaPower();
+				}
+				else if (oldRank >= UnitRank.SSS && fRank < UnitRank.SSS)
+				{
+					DeactivateTrifectaPower();
+				}
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+			}
+		}
+
+		private void DeactivateTrifectaPower()
+		{
+			Attack -= 1.5 * TrifectaStacks;
+			AttackSpeed -= 1.5 * TrifectaStacks;
+			Health -= 1.5 * TrifectaStacks;
+			HealthArmor -= 1 * TrifectaStacks;
+			Shields -= 1.5 * TrifectaStacks;
+			ShieldsArmor -= 1 * TrifectaStacks;
+		}
+
+		private void ActivateTrifectaPower()
+		{
+			Attack += 1.5 * TrifectaStacks;
+			AttackSpeed += 1.5 * TrifectaStacks;
+			Health += 1.5 * TrifectaStacks;
+			HealthArmor += 1 * TrifectaStacks;
+			Shields += 1.5 * TrifectaStacks;
+			ShieldsArmor += 1 * TrifectaStacks;
+		}
+
+		UnitRank fRank;
+
+		#endregion
+
 		#endregion
 
 		#region StatsForBinding
