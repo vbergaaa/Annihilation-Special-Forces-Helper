@@ -358,6 +358,7 @@ namespace VBusiness.Souls
 					saveSlotHasChanges = true;
 				}
 				base.SaveSlot = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(SaveSlot)));
 			}
 		}
 

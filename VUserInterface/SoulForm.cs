@@ -26,11 +26,8 @@ namespace VUserInterface
 
 		private void InitializeParent(VBusinessObject bizo)
 		{
-			if (bizo != null)
-			{
-				Parent = (Soul)bizo;
-				RefreshSoulTypeList();
-			}
+			Parent = (Soul)bizo ?? new EmptySoul();
+			RefreshSoulTypeList();
 		}
 
 		private void RefreshSoulTypeList()
@@ -48,27 +45,33 @@ namespace VUserInterface
 
 		public new Soul Parent
 		{
-			get => fSoul;
+			get => (Soul)base.Parent;
 			set
 			{
-				var oldSaveSlot = fSoul?.SaveSlot;
+				int oldSaveSlot = GetSaveSlotFromTextBoxSafe();
 				base.Parent = value;
-				fSoul = value;
-				if (fSoul != null && oldSaveSlot.HasValue && isParentInitialised)
+				if (base.Parent != null && isParentInitialised)
 				{
-					fSoul.SaveSlot = oldSaveSlot.Value;
+					((Soul)base.Parent).SaveSlot = oldSaveSlot;
 				}
 				UpdatingBindingSource();
 				UpdateButtonsReadonly();
 			}
 		}
-		Soul fSoul;
+
+		private int GetSaveSlotFromTextBoxSafe()
+		{
+			return int.TryParse(SaveSlotTextBox.Text, out var saveSlot)
+				? saveSlot
+				: 0;
+		}
 
 		private void UpdatingBindingSource()
 		{
 			if (Parent != null)
 			{
 				this.BindingSource.DataSource = Parent;
+				this.BindingSource.ResetBindings(false);
 			}
 		}
 
