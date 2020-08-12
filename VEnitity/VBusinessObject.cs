@@ -28,27 +28,32 @@ namespace VEntityFramework.Data
 
 		public void Save()
 		{
-			Context.SaveAsXML(this, GetExistingXMLFileName);
+			OnSaving();
+			Context.SaveAsXML(this);
 			OnSaved();
+		}
+
+		protected virtual void OnSaving()
+		{
 		}
 
 		protected virtual void OnSaved()
 		{
-			UpdateExistingXMLName();
 		}
 
 		public void Delete()
 		{
-			Context.DeleteXML(this, GetExistingXMLFileName);
+			Context.DeleteXML(this);
 		}
 
-		protected virtual void UpdateExistingXMLName() { }
-
-		protected virtual string GetExistingXMLFileName => null;
-
-		public virtual void RunPreSaveValidation()
+		public void RunPreSaveValidation()
 		{
 			Notifications.Clear();
+			RunPreSaveValidationCore();
+		}
+
+		protected virtual void RunPreSaveValidationCore()
+		{
 		}
 
 		public NotificationManager Notifications
@@ -113,6 +118,13 @@ namespace VEntityFramework.Data
 		bool fHasChanges;
 
 		public bool SuspendSettingHasChanges { get; set; }
+
+		protected internal virtual string GetSaveNameForXML()
+		{
+			return null;
+		}
+
+		internal string XmlLocation { get; set; }
 
 		#endregion
 

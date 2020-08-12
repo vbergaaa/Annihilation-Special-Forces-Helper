@@ -425,9 +425,9 @@ namespace VBusiness.Souls
 
 		#region Validation
 
-		public override void RunPreSaveValidation()
+		protected override void RunPreSaveValidationCore()
 		{
-			base.RunPreSaveValidation();
+			base.RunPreSaveValidationCore();
 
 			CheckIfDuplicateSaveSlotAndPromptOverride();
 			CheckValidSoulSlot();
@@ -492,21 +492,19 @@ namespace VBusiness.Souls
 			};
 		}
 
-		protected override string GetExistingXMLFileName
+		protected override string GetSaveNameForXML() => $"{SaveSlot}-{UniqueName}";
+
+		protected override void OnSaving()
 		{
-			get
+			DeleteSoulsInSaveSlot();
+		}
+
+		void DeleteSoulsInSaveSlot()
+		{
+			var soulsNamesToDelete = Context.GetAllSoulNames().Where(name => int.Parse(name.Split('-')[0]) == SaveSlot);
+			foreach (var name in soulsNamesToDelete)
 			{
-				var saveSlots = Context.GetAllSoulNames().Select(name => new KeyValuePair<string, string>(name.Split('-')[0], name));
-
-				foreach (var slot in saveSlots)
-				{
-					if (slot.Key == SaveSlot.ToString())
-					{
-						return slot.Value;
-					}
-				}
-
-				return base.GetExistingXMLFileName;
+				Context.ReadFromXML<Soul>(name).Delete();
 			}
 		}
 

@@ -37,18 +37,7 @@ namespace VEntityFramework.Model
 		}
 		int fSlot;
 
-		public override void OnLoadedFromXML(OnLoadedEventArgs e)
-		{
-			base.OnLoadedFromXML(e);
-			existingXMLFileName = e.FileName;
-		}
-
-		protected override void UpdateExistingXMLName()
-		{
-			existingXMLFileName = $"{Slot}-{Name}";
-		}
-		protected override string GetExistingXMLFileName => existingXMLFileName;
-		string existingXMLFileName;
+		protected internal override string GetSaveNameForXML()=> $"{Slot}-{Name}";
 
 		[VXML(false)]
 		public VStats Stats { get; set; }

@@ -12,12 +12,7 @@ namespace VEntityFramework.Data
 	{
 		public bool SaveAsXML(VBusinessObject bizo)
 		{
-			return SaveAsXML(bizo, null);
-		}
-
-		public bool SaveAsXML(VBusinessObject bizo, string existingName)
-		{
-			return new VXMLWriter().Write(bizo, existingName);
+			return new VXMLWriter().Write(bizo);
 		}
 
 		public T ReadFromXML<T>(string fileName) where T:VBusinessObject
@@ -35,11 +30,11 @@ namespace VEntityFramework.Data
 			return new VXMLReader().GetAllSoulNames();
 		}
 
-		internal void DeleteXML(VBusinessObject vBusinessObject, string getExistingXMLFileName)
+		internal void DeleteXML(VBusinessObject bizo)
 		{
-			if (getExistingXMLFileName != null)
+			if (bizo.XmlLocation != null)
 			{
-				var path = new VXMLReader().GetFullPath(vBusinessObject.GetType(), getExistingXMLFileName) + ".xml";
+				var path = bizo.XmlLocation;
 				if (File.Exists(path))
 				{
 					File.Delete(path);

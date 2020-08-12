@@ -7,27 +7,27 @@ namespace VEntityFramework.Data
 {
 	class VXMLWriter
 	{
-		internal bool Write(VBusinessObject bizo, string existingName)
+		internal bool Write(VBusinessObject bizo)
 		{
-			var directory = RenameFileIfNeccessary(bizo, existingName);
+			var directory = RenameFileIfNeccessary(bizo);
 
 			using (var stream = File.Create(directory))
 			using (var writer = GetXmlWriter(stream))
 			{
 				WriteXML(writer, bizo);
 			}
+			bizo.XmlLocation = directory;
 
 			return true;
 		}
 
-		string RenameFileIfNeccessary(VBusinessObject bizo, string existingName)
+		string RenameFileIfNeccessary(VBusinessObject bizo)
 		{
 			var newNameWithPath = GetFileNameWithExtension(bizo);
 
-			if (existingName != null && existingName != GetXmlNameFromBizo(bizo))
+			if (bizo.XmlLocation != null && bizo.XmlLocation != newNameWithPath)
 			{
-				var oldNameWithPath = GetOldFilePathWithName(bizo.BizoName, existingName);
-				File.Move(oldNameWithPath, newNameWithPath);
+				File.Move(bizo.XmlLocation, newNameWithPath); ;
 			}
 
 			return newNameWithPath;
@@ -74,23 +74,7 @@ namespace VEntityFramework.Data
 
 		string GetFileNameWithExtension(VBusinessObject bizo)
 		{
-			return GetFilePath(bizo.BizoName) + GetXmlNameFromBizo(bizo) + ".xml";
-		}
-
-		string GetXmlNameFromBizo(VBusinessObject bizo)
-		{
-			if (bizo is VLoadout loadout)
-			{
-				return $"{loadout.Slot}-{loadout.Name}";
-			}
-			else if (bizo is VSoul soul)
-			{
-				return $"{soul.SaveSlot}-{soul.UniqueName}";
-			}
-			else
-			{
-				throw new DeveloperException("what name do you want this bizo to save as?");
-			}
+			return GetFilePath(bizo.BizoName) + bizo.GetSaveNameForXML() + ".xml";
 		}
 
 		string GetFilePath(string bizoName)

@@ -7,7 +7,7 @@ namespace VBusiness.Souls
 {
 	public class HighestSoul : Soul
 	{
-		public override SoulType Type => SoulType.Night;
+		public override SoulType Type => SoulType.Highest;
 
 		protected sealed override SoulType Rarity => SoulType.Highest;
 

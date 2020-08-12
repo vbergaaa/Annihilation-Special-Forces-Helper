@@ -138,9 +138,9 @@ namespace VBusiness.Loadouts
 
 		#region Validation
 
-		public override void RunPreSaveValidation()
+		protected override void RunPreSaveValidationCore()
 		{
-			base.RunPreSaveValidation();
+			base.RunPreSaveValidationCore();
 
 			CheckLoadoutName();
 			CheckSlotNumber();

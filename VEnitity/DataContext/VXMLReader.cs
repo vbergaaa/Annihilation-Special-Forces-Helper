@@ -50,9 +50,11 @@ namespace VEntityFramework.Data
 		T ReadXML<T>(string fileName) where T : VBusinessObject
 		{
 			var xml = new XmlDocument();
-			xml.Load(GetFullPath(typeof(T), fileName));
+			var xmlPath = GetFullPath(typeof(T), fileName);
+			xml.Load(xmlPath);
 			var bizo = (T)CreateBizoFromXML(typeof(T), xml.DocumentElement);
 			bizo.OnLoadedFromXML(new OnLoadedEventArgs(Path.GetFileNameWithoutExtension(fileName)));
+			bizo.XmlLocation = xmlPath;
 			return bizo;
 		}
 
