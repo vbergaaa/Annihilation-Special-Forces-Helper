@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using VBusiness.Souls;
 using VEntityFramework.Data;
 using VEntityFramework;
+using VBusiness.HelperClasses;
 
 namespace VUserInterface
 {
@@ -57,7 +58,7 @@ namespace VUserInterface
 				{
 					var souls = new List<string>();
 					souls.Add("None");
-					souls.AddRange(new VDataContext().GetAllSoulNames());
+					souls.AddRange(OrderHelper.OrderNamesByKey(new VDataContext().GetAllSoulNames()));
 					fSoulList = souls;
 				}
 				return fSoulList;

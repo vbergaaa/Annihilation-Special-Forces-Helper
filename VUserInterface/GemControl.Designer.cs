@@ -81,9 +81,9 @@ namespace VUserInterface
 			// 
 			this.IncrementCurrentButton.Click += IncrementCurrentButton_Click;
 			this.IncrementCurrentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.IncrementCurrentButton.Location = new System.Drawing.Point(96, 20);
+			this.IncrementCurrentButton.Location = new System.Drawing.Point(95, 19);
 			this.IncrementCurrentButton.Name = "IncrementCurrentButton";
-			this.IncrementCurrentButton.Size = new System.Drawing.Size(23, 23);
+			this.IncrementCurrentButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementCurrentButton.TabIndex = 5;
 			this.IncrementCurrentButton.Text = "+";
 			// 
@@ -91,9 +91,9 @@ namespace VUserInterface
 			// 
 			this.DecrementCurrentButton.Click += DecrementCurrentButton_Click;
 			this.DecrementCurrentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.DecrementCurrentButton.Location = new System.Drawing.Point(38, 20);
+			this.DecrementCurrentButton.Location = new System.Drawing.Point(37, 18);
 			this.DecrementCurrentButton.Name = "DecrementCurrentButton";
-			this.DecrementCurrentButton.Size = new System.Drawing.Size(23, 23);
+			this.DecrementCurrentButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementCurrentButton.TabIndex = 4;
 			this.DecrementCurrentButton.Text = "-";
 			// 

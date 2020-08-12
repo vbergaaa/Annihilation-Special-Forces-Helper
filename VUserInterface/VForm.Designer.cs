@@ -55,7 +55,7 @@ namespace VUserInterface
 			//
 			// this
 			//
-			this.Text = "Annihilation Special Forces Companion Application";
+			this.Text = "Annihilation Special Forces Companion App";
 			this.Controls.Add(this.SaveButton);
 			this.Controls.Add(this.CancelButton);
 		}

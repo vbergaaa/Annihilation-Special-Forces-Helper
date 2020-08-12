@@ -110,7 +110,7 @@ namespace VUserInterface
 			this.CriticalChanceCaption.Name = "CriticalChanceCaption";
 			this.CriticalChanceCaption.Size = new System.Drawing.Size(87, 15);
 			this.CriticalChanceCaption.TabIndex = 3;
-			this.CriticalChanceCaption.Text = "Critical Chance";
+			this.CriticalChanceCaption.Text = "Crit Chance";
 			// 
 			// CriticalDamageCaption
 			// 
@@ -119,7 +119,7 @@ namespace VUserInterface
 			this.CriticalDamageCaption.Name = "CriticalDamageCaption";
 			this.CriticalDamageCaption.Size = new System.Drawing.Size(88, 15);
 			this.CriticalDamageCaption.TabIndex = 4;
-			this.CriticalDamageCaption.Text = "CriticalDamage";
+			this.CriticalDamageCaption.Text = "Crit Damage";
 			// 
 			// MineralCaption
 			// 
@@ -144,7 +144,7 @@ namespace VUserInterface
 			this.IncrementVitalsButton.Click += IncrementVitalsButton_Click;
 			this.IncrementVitalsButton.Location = new System.Drawing.Point(200, 181);
 			this.IncrementVitalsButton.Name = "IncrementVitalsButton";
-			this.IncrementVitalsButton.Size = new System.Drawing.Size(25, 25);
+			this.IncrementVitalsButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementVitalsButton.TabIndex = 6;
 			this.IncrementVitalsButton.Text = "+";
 			this.IncrementVitalsButton.UseVisualStyleBackColor = true;
@@ -154,7 +154,7 @@ namespace VUserInterface
 			this.IncrementArmorButton.Click += IncrementArmorButton_Click;
 			this.IncrementArmorButton.Location = new System.Drawing.Point(200, 212);
 			this.IncrementArmorButton.Name = "IncrementArmorButton";
-			this.IncrementArmorButton.Size = new System.Drawing.Size(25, 25);
+			this.IncrementArmorButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementArmorButton.TabIndex = 8;
 			this.IncrementArmorButton.Text = "+";
 			this.IncrementArmorButton.UseVisualStyleBackColor = true;
@@ -164,7 +164,7 @@ namespace VUserInterface
 			this.IncrementCriticalChanceButton.Click += IncrementCriticalChanceButton_Click;
 			this.IncrementCriticalChanceButton.Location = new System.Drawing.Point(200, 243);
 			this.IncrementCriticalChanceButton.Name = "IncrementCriticalChanceButton";
-			this.IncrementCriticalChanceButton.Size = new System.Drawing.Size(25, 25);
+			this.IncrementCriticalChanceButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementCriticalChanceButton.TabIndex = 10;
 			this.IncrementCriticalChanceButton.Text = "+";
 			this.IncrementCriticalChanceButton.UseVisualStyleBackColor = true;
@@ -174,7 +174,7 @@ namespace VUserInterface
 			this.IncrementCriticalDamageButton.Click += IncrementCriticalDamageButton_Click;
 			this.IncrementCriticalDamageButton.Location = new System.Drawing.Point(200, 276);
 			this.IncrementCriticalDamageButton.Name = "IncrementCriticalDamageButton";
-			this.IncrementCriticalDamageButton.Size = new System.Drawing.Size(25, 25);
+			this.IncrementCriticalDamageButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementCriticalDamageButton.TabIndex = 12;
 			this.IncrementCriticalDamageButton.Text = "+";
 			this.IncrementCriticalDamageButton.UseVisualStyleBackColor = true;
@@ -184,7 +184,7 @@ namespace VUserInterface
 			this.IncrementMineralsButton.Click += IncrementMineralsButton_Click;
 			this.IncrementMineralsButton.Location = new System.Drawing.Point(200, 305);
 			this.IncrementMineralsButton.Name = "IncrementMineralsButton";
-			this.IncrementMineralsButton.Size = new System.Drawing.Size(25, 25);
+			this.IncrementMineralsButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementMineralsButton.TabIndex = 14;
 			this.IncrementMineralsButton.Text = "+";
 			this.IncrementMineralsButton.UseVisualStyleBackColor = true;
@@ -194,7 +194,7 @@ namespace VUserInterface
 			this.IncrementKillsButton.Click += IncrementKillsButton_Click;
 			this.IncrementKillsButton.Location = new System.Drawing.Point(200, 336);
 			this.IncrementKillsButton.Name = "IncrementKillsButton";
-			this.IncrementKillsButton.Size = new System.Drawing.Size(25, 25);
+			this.IncrementKillsButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementKillsButton.TabIndex = 16;
 			this.IncrementKillsButton.Text = "+";
 			this.IncrementKillsButton.UseVisualStyleBackColor = true;
@@ -204,7 +204,7 @@ namespace VUserInterface
 			this.DecrementVitalsButton.Click += DecrementVitalsButton_Click;
 			this.DecrementVitalsButton.Location = new System.Drawing.Point(127, 181);
 			this.DecrementVitalsButton.Name = "DecrementVitalsButton";
-			this.DecrementVitalsButton.Size = new System.Drawing.Size(25, 25);
+			this.DecrementVitalsButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementVitalsButton.TabIndex = 5;
 			this.DecrementVitalsButton.Text = "-";
 			this.DecrementVitalsButton.UseVisualStyleBackColor = true;
@@ -214,7 +214,7 @@ namespace VUserInterface
 			this.DecrementArmorButton.Click += DecrementArmorButton_Click;
 			this.DecrementArmorButton.Location = new System.Drawing.Point(127, 212);
 			this.DecrementArmorButton.Name = "DecrementArmorButton";
-			this.DecrementArmorButton.Size = new System.Drawing.Size(25, 25);
+			this.DecrementArmorButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementArmorButton.TabIndex = 7;
 			this.DecrementArmorButton.Text = "-";
 			this.DecrementArmorButton.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@ namespace VUserInterface
 			this.DecrementCriticalChanceButton.Click += DecrementCriticalChanceButton_Click;
 			this.DecrementCriticalChanceButton.Location = new System.Drawing.Point(127, 243);
 			this.DecrementCriticalChanceButton.Name = "DecrementCriticalChanceButton";
-			this.DecrementCriticalChanceButton.Size = new System.Drawing.Size(25, 25);
+			this.DecrementCriticalChanceButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementCriticalChanceButton.TabIndex = 9;
 			this.DecrementCriticalChanceButton.Text = "-";
 			this.DecrementCriticalChanceButton.UseVisualStyleBackColor = true;
@@ -234,7 +234,7 @@ namespace VUserInterface
 			this.DecrementCriticalDamageButton.Click += DecrementCriticalDamageButton_Click;
 			this.DecrementCriticalDamageButton.Location = new System.Drawing.Point(127, 274);
 			this.DecrementCriticalDamageButton.Name = "DecrementCriticalDamageButton";
-			this.DecrementCriticalDamageButton.Size = new System.Drawing.Size(25, 25);
+			this.DecrementCriticalDamageButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementCriticalDamageButton.TabIndex = 11;
 			this.DecrementCriticalDamageButton.Text = "-";
 			this.DecrementCriticalDamageButton.UseVisualStyleBackColor = true;
@@ -244,7 +244,7 @@ namespace VUserInterface
 			this.DecrementKillsButton.Click += DecrementKillsButton_Click;
 			this.DecrementKillsButton.Location = new System.Drawing.Point(127, 336);
 			this.DecrementKillsButton.Name = "DecrementKillsButton";
-			this.DecrementKillsButton.Size = new System.Drawing.Size(25, 25);
+			this.DecrementKillsButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementKillsButton.TabIndex = 15;
 			this.DecrementKillsButton.Text = "-";
 			this.DecrementKillsButton.UseVisualStyleBackColor = true;
@@ -254,7 +254,7 @@ namespace VUserInterface
 			this.DecrementMineralsButton.Click += DecrementMineralsButton_Click;
 			this.DecrementMineralsButton.Location = new System.Drawing.Point(127, 305);
 			this.DecrementMineralsButton.Name = "DecrementMineralsButton";
-			this.DecrementMineralsButton.Size = new System.Drawing.Size(25, 25);
+			this.DecrementMineralsButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementMineralsButton.TabIndex = 13;
 			this.DecrementMineralsButton.Text = "-";
 			this.DecrementMineralsButton.UseVisualStyleBackColor = true;
@@ -264,7 +264,7 @@ namespace VUserInterface
 			this.DecrementAttackSpeedButton.Click += DecrementAttackSpeedButton_Click;
 			this.DecrementAttackSpeedButton.Location = new System.Drawing.Point(127, 150);
 			this.DecrementAttackSpeedButton.Name = "DecrementAttackSpeedButton";
-			this.DecrementAttackSpeedButton.Size = new System.Drawing.Size(25, 25);
+			this.DecrementAttackSpeedButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementAttackSpeedButton.TabIndex = 3;
 			this.DecrementAttackSpeedButton.Text = "-";
 			this.DecrementAttackSpeedButton.UseVisualStyleBackColor = true;
@@ -274,7 +274,7 @@ namespace VUserInterface
 			this.DecrementAttackButton.Click += DecrementAttackButton_Click;
 			this.DecrementAttackButton.Location = new System.Drawing.Point(127, 119);
 			this.DecrementAttackButton.Name = "DecrementAttackButton";
-			this.DecrementAttackButton.Size = new System.Drawing.Size(25, 25);
+			this.DecrementAttackButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementAttackButton.TabIndex = 1;
 			this.DecrementAttackButton.Text = "-";
 			this.DecrementAttackButton.UseVisualStyleBackColor = true;
@@ -284,7 +284,7 @@ namespace VUserInterface
 			this.IncrementAttackSpeedButton.Click += IncrementAttackSpeedButton_Click;
 			this.IncrementAttackSpeedButton.Location = new System.Drawing.Point(200, 150);
 			this.IncrementAttackSpeedButton.Name = "IncrementAttackSpeedButton";
-			this.IncrementAttackSpeedButton.Size = new System.Drawing.Size(25, 25);
+			this.IncrementAttackSpeedButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementAttackSpeedButton.TabIndex = 4;
 			this.IncrementAttackSpeedButton.Text = "+";
 			this.IncrementAttackSpeedButton.UseVisualStyleBackColor = true;
@@ -294,7 +294,7 @@ namespace VUserInterface
 			this.IncrementAttackButton.Click += IncrementAttackButton_Click;
 			this.IncrementAttackButton.Location = new System.Drawing.Point(200, 119);
 			this.IncrementAttackButton.Name = "IncrementAttackButton";
-			this.IncrementAttackButton.Size = new System.Drawing.Size(25, 25);
+			this.IncrementAttackButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementAttackButton.TabIndex = 2;
 			this.IncrementAttackButton.Text = "+";
 			this.IncrementAttackButton.UseVisualStyleBackColor = true;

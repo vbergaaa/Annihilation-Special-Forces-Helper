@@ -51,7 +51,6 @@ namespace VUserInterface
 			this.LoadoutsListBox.Location = new System.Drawing.Point(83, 52);
 			this.LoadoutsListBox.Name = "LoadoutsListBox";
 			this.LoadoutsListBox.Size = new System.Drawing.Size(275, 94);
-			this.LoadoutsListBox.Sorted = true;
 			this.LoadoutsListBox.TabIndex = 0;
 			// 
 			// LoadoutsLabel
@@ -101,7 +100,6 @@ namespace VUserInterface
 			this.SoulsListBox.Location = new System.Drawing.Point(83, 232);
 			this.SoulsListBox.Name = "SoulsListBox";
 			this.SoulsListBox.Size = new System.Drawing.Size(275, 94);
-			this.SoulsListBox.Sorted = true;
 			this.SoulsListBox.TabIndex = 0;
 			// 
 			// SoulsLabel

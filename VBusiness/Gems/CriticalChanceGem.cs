@@ -6,7 +6,7 @@ namespace VBusiness.Gems
 {
 	class CriticalChanceGem : Gem
 	{
-		public override string Name => "Critical Chance";
+		public override string Name => "Crit Chance";
 
 		protected override decimal BaseCost => 4.49m;
 

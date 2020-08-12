@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using VBusiness.HelperClasses;
 using VBusiness.Loadouts;
 using VBusiness.Souls;
 using VEntityFramework.Data;
@@ -25,7 +27,7 @@ namespace VUserInterface
 
 		private void DeleteLoadout_Click(object sender, EventArgs e)
 		{
-			var loadoutName = (string)LoadoutsListBox.SelectedValue;
+			var loadoutName = (string)LoadoutsListBox.SelectedItem;
 			if (loadoutName != null)
 			{
 				var loadout = new VDataContext().ReadFromXML<Loadout>(loadoutName);
@@ -39,7 +41,7 @@ namespace VUserInterface
 
 		void OpenLoadout_Click(object sender, EventArgs e)
 		{
-			var loadoutName = (string)LoadoutsListBox.SelectedValue;
+			var loadoutName = (string)LoadoutsListBox.SelectedItem;
 			if (loadoutName != null)
 			{
 				var loadout = new VDataContext().ReadFromXML<Loadout>(loadoutName);
@@ -68,7 +70,8 @@ namespace VUserInterface
 		void RefreshLoadouts()
 		{
 			LoadoutsCollection.Clear();
-			var loadouts = context.GetAllLoadoutNames().OrderBy(name => name).ToList();
+			var loadouts = context.GetAllLoadoutNames();
+			loadouts = OrderHelper.OrderNamesByKey(loadouts);
 			foreach (var loadout in loadouts)
 			{
 				LoadoutsCollection.Add(loadout);
@@ -84,7 +87,7 @@ namespace VUserInterface
 
 		private void DeleteSoul_Click(object sender, EventArgs e)
 		{
-			var SoulName = (string)SoulsListBox.SelectedValue;
+			var SoulName = (string)SoulsListBox.SelectedItem;
 			if (SoulName != null)
 			{
 				var Soul = new VDataContext().ReadFromXML<Soul>(SoulName);
@@ -98,7 +101,7 @@ namespace VUserInterface
 
 		void OpenSoul_Click(object sender, EventArgs e)
 		{
-			var SoulName = (string)SoulsListBox.SelectedValue;
+			var SoulName = (string)SoulsListBox.SelectedItem;
 			if (SoulName != null)
 			{
 				var Soul = new VDataContext().ReadFromXML<Soul>(SoulName);
@@ -126,8 +129,9 @@ namespace VUserInterface
 		void RefreshSouls()
 		{
 			SoulsCollection.Clear();
-			var Souls = context.GetAllSoulNames().OrderBy(name => name).ToList();
-			foreach (var Soul in Souls)
+			var souls = context.GetAllSoulNames();
+			souls = OrderHelper.OrderNamesByKey(souls);
+			foreach (var Soul in souls)
 			{
 				SoulsCollection.Add(Soul);
 			}

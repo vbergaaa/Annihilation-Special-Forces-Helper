@@ -8,8 +8,4 @@
     <ProjectReference Include="..\VEnitity\VEntityFramework.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="HelperClasses\" />
-  </ItemGroup>
-
 </Project>

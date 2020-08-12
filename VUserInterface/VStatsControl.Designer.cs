@@ -150,7 +150,7 @@ namespace VUserInterface
 			this.AttackSpeedCaption.Location = new System.Drawing.Point(5, 120);
 			this.AttackSpeedCaption.Name = "AttackSpeedCaption";
 			this.AttackSpeedCaption.Size = new System.Drawing.Size(100, 20);
-			this.AttackSpeedCaption.Text = "AttackSpeed:";
+			this.AttackSpeedCaption.Text = "Attack Speed:";
 			this.AttackSpeedCaption.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// AttackSpeedLabel
@@ -166,7 +166,7 @@ namespace VUserInterface
 			this.CriticalChanceCaption.Location = new System.Drawing.Point(5, 140);
 			this.CriticalChanceCaption.Name = "CriticalChanceCaption";
 			this.CriticalChanceCaption.Size = new System.Drawing.Size(100, 20);
-			this.CriticalChanceCaption.Text = "Critical Chance:";
+			this.CriticalChanceCaption.Text = "Crit Chance:";
 			this.CriticalChanceCaption.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// CriticalChanceLabel
@@ -182,7 +182,7 @@ namespace VUserInterface
 			this.CriticalDamageCaption.Location = new System.Drawing.Point(5, 160);
 			this.CriticalDamageCaption.Name = "CriticalDamageCaption";
 			this.CriticalDamageCaption.Size = new System.Drawing.Size(100, 20);
-			this.CriticalDamageCaption.Text = "Critical Damage:";
+			this.CriticalDamageCaption.Text = "Crit Damage:";
 			this.CriticalDamageCaption.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// CriticalDamageLabel
