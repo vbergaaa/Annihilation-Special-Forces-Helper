@@ -493,7 +493,7 @@ namespace VBusiness.Souls
 			};
 		}
 
-		protected override string GetSaveNameForXML() => $"{SaveSlot}-{UniqueName}";
+		public override string GetSaveNameForXML() => $"{SaveSlot}-{UniqueName}";
 
 		protected override void OnSaving()
 		{

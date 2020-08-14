@@ -26,9 +26,9 @@ namespace VUserInterface
 			{
 				fSoul = value;
 				UpdateBindings();
-				if (SoulComboBox.SelectedItem.ToString() != $"{fSoul.SaveSlot}-{fSoul.UniqueName}")
+				if (!(fSoul is EmptySoul) && SoulComboBox.SelectedItem.ToString() != fSoul.GetSaveNameForXML())
 				{
-					SoulComboBox.SelectedItem = $"{fSoul.SaveSlot}-{fSoul.UniqueName}";
+					SoulComboBox.SelectedItem = FormatHelper.ReplaceWhiteSpace(fSoul.GetSaveNameForXML());
 				}
 				hasSoulBeenSet = true;
 			}
