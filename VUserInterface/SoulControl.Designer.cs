@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
@@ -33,22 +34,22 @@ namespace VUserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.AttackSpeedCaption = new System.Windows.Forms.Label();
-			this.VitalsCaption = new System.Windows.Forms.Label();
-			this.ArmorCaption = new System.Windows.Forms.Label();
-			this.CriticalChanceCaption = new System.Windows.Forms.Label();
-			this.CriticalDamageCaption = new System.Windows.Forms.Label();
-			this.MineralCaption = new System.Windows.Forms.Label();
-			this.KillsCaption = new System.Windows.Forms.Label();
-			this.AttackCaption = new System.Windows.Forms.Label();
-			this.AttackLabel = new System.Windows.Forms.Label();
-			this.AttackSpeedLabel = new System.Windows.Forms.Label();
-			this.VitalsLabel = new System.Windows.Forms.Label();
-			this.ArmorLabel = new System.Windows.Forms.Label();
-			this.CriticalChanceLabel = new System.Windows.Forms.Label();
-			this.CriticalDamageLabel = new System.Windows.Forms.Label();
-			this.MineralsLabel = new System.Windows.Forms.Label();
-			this.KillsLabel = new System.Windows.Forms.Label();
+			this.AttackSpeedCaption = new VLabel();
+			this.VitalsCaption = new VLabel();
+			this.ArmorCaption = new VLabel();
+			this.CriticalChanceCaption = new VLabel();
+			this.CriticalDamageCaption = new VLabel();
+			this.MineralCaption = new VLabel();
+			this.KillsCaption = new VLabel();
+			this.AttackCaption = new VLabel();
+			this.AttackLabel = new VLabel();
+			this.AttackSpeedLabel = new VLabel();
+			this.VitalsLabel = new VLabel();
+			this.ArmorLabel = new VLabel();
+			this.CriticalChanceLabel = new VLabel();
+			this.CriticalDamageLabel = new VLabel();
+			this.MineralsLabel = new VLabel();
+			this.KillsLabel = new VLabel();
 			this.SoulComboBox = new System.Windows.Forms.ComboBox();
 			this.BindingSource = new BindingSource();
 			((ISupportInitialize)this.BindingSource).BeginInit();
@@ -61,72 +62,64 @@ namespace VUserInterface
 			// AttackSpeedCaption
 			// 
 			this.AttackSpeedCaption.AutoSize = true;
-			this.AttackSpeedCaption.Location = new System.Drawing.Point(20, 80);
+			this.AttackSpeedCaption.Location = new System.Drawing.Point(15, 80);
 			this.AttackSpeedCaption.Name = "AttackSpeedCaption";
-			this.AttackSpeedCaption.Size = new System.Drawing.Size(76, 15);
 			this.AttackSpeedCaption.TabIndex = 0;
 			this.AttackSpeedCaption.Text = "Attack Speed";
 			// 
 			// VitalsCaption
 			// 
 			this.VitalsCaption.AutoSize = true;
-			this.VitalsCaption.Location = new System.Drawing.Point(20, 100);
+			this.VitalsCaption.Location = new System.Drawing.Point(15, 100);
 			this.VitalsCaption.Name = "VitalsCaption";
-			this.VitalsCaption.Size = new System.Drawing.Size(35, 15);
 			this.VitalsCaption.TabIndex = 1;
 			this.VitalsCaption.Text = "Vitals";
 			// 
 			// ArmorCaption
 			// 
 			this.ArmorCaption.AutoSize = true;
-			this.ArmorCaption.Location = new System.Drawing.Point(20, 120);
+			this.ArmorCaption.Location = new System.Drawing.Point(15, 120);
 			this.ArmorCaption.Name = "ArmorCaption";
-			this.ArmorCaption.Size = new System.Drawing.Size(41, 15);
 			this.ArmorCaption.TabIndex = 2;
 			this.ArmorCaption.Text = "Armor";
 			// 
 			// CriticalChanceCaption
 			// 
 			this.CriticalChanceCaption.AutoSize = true;
-			this.CriticalChanceCaption.Location = new System.Drawing.Point(20, 140);
+			this.CriticalChanceCaption.Location = new System.Drawing.Point(15, 140);
 			this.CriticalChanceCaption.Name = "CriticalChanceCaption";
-			this.CriticalChanceCaption.Size = new System.Drawing.Size(87, 15);
 			this.CriticalChanceCaption.TabIndex = 3;
-			this.CriticalChanceCaption.Text = "Critical Chance";
+			this.CriticalChanceCaption.Text = "Crit Chance";
 			// 
 			// CriticalDamageCaption
 			// 
 			this.CriticalDamageCaption.AutoSize = true;
-			this.CriticalDamageCaption.Location = new System.Drawing.Point(20, 160);
+			this.CriticalDamageCaption.Location = new System.Drawing.Point(15, 160);
 			this.CriticalDamageCaption.Name = "CriticalDamageCaption";
-			this.CriticalDamageCaption.Size = new System.Drawing.Size(88, 15);
 			this.CriticalDamageCaption.TabIndex = 4;
-			this.CriticalDamageCaption.Text = "Critical Damage";
+			this.CriticalDamageCaption.Text = "Crit Damage";
 			// 
 			// MineralCaption
 			// 
 			this.MineralCaption.AutoSize = true;
-			this.MineralCaption.Location = new System.Drawing.Point(20, 180);
+			this.MineralCaption.Location = new System.Drawing.Point(15, 180);
 			this.MineralCaption.Name = "MineralCaption";
-			this.MineralCaption.Size = new System.Drawing.Size(52, 15);
 			this.MineralCaption.TabIndex = 5;
 			this.MineralCaption.Text = "Minerals";
 			// 
 			// KillsCaption
 			// 
 			this.KillsCaption.AutoSize = true;
-			this.KillsCaption.Location = new System.Drawing.Point(20, 200);
+			this.KillsCaption.Location = new System.Drawing.Point(15, 200);
 			this.KillsCaption.Name = "KillsCaption";
-			this.KillsCaption.Size = new System.Drawing.Size(28, 15);
 			this.KillsCaption.TabIndex = 6;
 			this.KillsCaption.Text = "Kills";
 			//
 			// AttackCaption
 			//
 			this.AttackCaption.AutoSize = true;
-			this.AttackCaption.Location = new System.Drawing.Point(20, 60);
+			this.AttackCaption.Location = new System.Drawing.Point(15, 60);
 			this.AttackCaption.Name = "AttackCaption";
-			this.AttackCaption.Size = new System.Drawing.Size(41, 15);
 			this.AttackCaption.TabIndex = 0;
 			this.AttackCaption.Text = "Attack";
 			// 
@@ -136,7 +129,6 @@ namespace VUserInterface
 			this.AttackLabel.DataBindings.Add("Text", BindingSource, "Attack");
 			this.AttackLabel.Location = new System.Drawing.Point(128, 60);
 			this.AttackLabel.Name = "AttackLabel";
-			this.AttackLabel.Size = new System.Drawing.Size(0, 15);
 			this.AttackLabel.TabIndex = 0;
 			// 
 			// AttackSpeedLabel
@@ -145,7 +137,6 @@ namespace VUserInterface
 			this.AttackSpeedLabel.DataBindings.Add("Text", BindingSource, "AttackSpeed");
 			this.AttackSpeedLabel.Location = new System.Drawing.Point(128, 80);
 			this.AttackSpeedLabel.Name = "AttackSpeedLabel";
-			this.AttackSpeedLabel.Size = new System.Drawing.Size(0, 15);
 			this.AttackSpeedLabel.TabIndex = 0;
 			// 
 			// VitalsLabel
@@ -154,7 +145,6 @@ namespace VUserInterface
 			this.VitalsLabel.DataBindings.Add("Text", BindingSource, "Vitals");
 			this.VitalsLabel.Location = new System.Drawing.Point(128, 100);
 			this.VitalsLabel.Name = "VitalsLabel";
-			this.VitalsLabel.Size = new System.Drawing.Size(0, 15);
 			this.VitalsLabel.TabIndex = 0;
 			// 
 			// ArmorLabel
@@ -163,7 +153,6 @@ namespace VUserInterface
 			this.ArmorLabel.DataBindings.Add("Text", BindingSource, "Armor");
 			this.ArmorLabel.Location = new System.Drawing.Point(128, 120);
 			this.ArmorLabel.Name = "ArmorLabel";
-			this.ArmorLabel.Size = new System.Drawing.Size(0, 15);
 			this.ArmorLabel.TabIndex = 0;
 			// 
 			// CriticalChanceLabel
@@ -172,7 +161,6 @@ namespace VUserInterface
 			this.CriticalChanceLabel.DataBindings.Add("Text", BindingSource, "CriticalChance");
 			this.CriticalChanceLabel.Location = new System.Drawing.Point(128, 140);
 			this.CriticalChanceLabel.Name = "CriticalChanceLabel";
-			this.CriticalChanceLabel.Size = new System.Drawing.Size(0, 15);
 			this.CriticalChanceLabel.TabIndex = 0;
 			// 
 			// CriticalDamageLabel
@@ -181,7 +169,6 @@ namespace VUserInterface
 			this.CriticalDamageLabel.DataBindings.Add("Text", BindingSource, "CriticalDamage");
 			this.CriticalDamageLabel.Location = new System.Drawing.Point(128, 160);
 			this.CriticalDamageLabel.Name = "CriticalDamageLabel";
-			this.CriticalDamageLabel.Size = new System.Drawing.Size(0, 15);
 			this.CriticalDamageLabel.TabIndex = 0;
 			// 
 			// MineralsLabel
@@ -190,7 +177,6 @@ namespace VUserInterface
 			this.MineralsLabel.DataBindings.Add("Text", BindingSource, "Minerals");
 			this.MineralsLabel.Location = new System.Drawing.Point(128, 180);
 			this.MineralsLabel.Name = "MineralsLabel";
-			this.MineralsLabel.Size = new System.Drawing.Size(0, 15);
 			this.MineralsLabel.TabIndex = 0;
 			// 
 			// KillsLabel
@@ -199,13 +185,12 @@ namespace VUserInterface
 			this.KillsLabel.DataBindings.Add("Text", BindingSource, "Kills");
 			this.KillsLabel.Location = new System.Drawing.Point(128, 200);
 			this.KillsLabel.Name = "KillsLabel";
-			this.KillsLabel.Size = new System.Drawing.Size(0, 15);
 			this.KillsLabel.TabIndex = 0;
 			//
 			// SoulComboBox
 			//
-			this.SoulComboBox.Location = new System.Drawing.Point(20, 30);
-			this.SoulComboBox.Size = new System.Drawing.Size(130, 25);
+			this.SoulComboBox.Location = new System.Drawing.Point(15, 30);
+			this.SoulComboBox.Size = new System.Drawing.Size(135, 25);
 			this.SoulComboBox.DataSource = SoulList;
 			this.SoulComboBox.SelectedValueChanged += SoulChanged;
 			// 

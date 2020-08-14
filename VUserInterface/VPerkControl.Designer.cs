@@ -3,6 +3,7 @@ using System.Windows.Forms.VisualStyles;
 using VBusiness.Perks;
 using VEntityFramework;
 using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
@@ -35,16 +36,16 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.CostLabel = new System.Windows.Forms.Label();
-			this.CurrentLevelCaption = new System.Windows.Forms.Label();
-			this.CurrentLevelLabel = new System.Windows.Forms.Label();
+			this.CostLabel = new VLabel();
+			this.CurrentLevelCaption = new VLabel();
+			this.CurrentLevelLabel = new VLabel();
 			this.DecrementDesiredButton = new System.Windows.Forms.Button();
-			this.DesiredLevelCaption = new System.Windows.Forms.Label();
-			this.DesiredLevelLabel = new System.Windows.Forms.Label();
+			this.DesiredLevelCaption = new VLabel();
+			this.DesiredLevelLabel = new VLabel();
 			this.IncrementCurrentButton = new System.Windows.Forms.Button();
 			this.DecrementCurrentButton = new System.Windows.Forms.Button();
 			this.IncrementDesiredButton = new System.Windows.Forms.Button();
-			this.CostCaption = new System.Windows.Forms.Label();
+			this.CostCaption = new VLabel();
 			this.perkBindingSource = new System.Windows.Forms.BindingSource();
 			((System.ComponentModel.ISupportInitialize)(this.perkBindingSource)).BeginInit();
 			// 
@@ -60,11 +61,10 @@ namespace VUserInterface
 			// CostLabel
 			// 
 			this.CostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perkBindingSource, "RemainingCost"));
-			this.CostLabel.Location = new System.Drawing.Point(80, 69);
+			this.CostLabel.Location = new System.Drawing.Point(70, 69);
 			this.CostLabel.Name = "CostLabel";
-			this.CostLabel.Size = new System.Drawing.Size(50, 23);
+			this.CostLabel.Size = new System.Drawing.Size(70, 23);
 			this.CostLabel.TabIndex = 6;
-			this.CostLabel.Text = "aoeu";
 			this.CostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// CurrentLevelCaption
@@ -83,14 +83,13 @@ namespace VUserInterface
 			this.CurrentLevelLabel.Name = "CurrentLevelLabel";
 			this.CurrentLevelLabel.Size = new System.Drawing.Size(23, 23);
 			this.CurrentLevelLabel.TabIndex = 2;
-			this.CurrentLevelLabel.Text = "aoeu";
 			this.CurrentLevelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// DecrementDesiredButton
 			// 
 			this.DecrementDesiredButton.Click += DecrementDesiredButton_Click;
 			this.DecrementDesiredButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.DecrementDesiredButton.Location = new System.Drawing.Point(60, 41);
+			this.DecrementDesiredButton.Location = new System.Drawing.Point(30, 41);
 			this.DecrementDesiredButton.Name = "DecrementDesiredButton";
 			this.DecrementDesiredButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementDesiredButton.TabIndex = 4;
@@ -108,11 +107,10 @@ namespace VUserInterface
 			// DesiredLevelLabel
 			// 
 			this.DesiredLevelLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perkBindingSource, "DesiredLevel"));
-			this.DesiredLevelLabel.Location = new System.Drawing.Point(91, 43);
+			this.DesiredLevelLabel.Location = new System.Drawing.Point(61, 43);
 			this.DesiredLevelLabel.Name = "DesiredLevelLabel";
-			this.DesiredLevelLabel.Size = new System.Drawing.Size(23, 23);
+			this.DesiredLevelLabel.Size = new System.Drawing.Size(43, 23);
 			this.DesiredLevelLabel.TabIndex = 0;
-			this.DesiredLevelLabel.Text = "aoeu";
 			this.DesiredLevelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// IncrementCurrentButton
@@ -139,7 +137,7 @@ namespace VUserInterface
 			// 
 			this.IncrementDesiredButton.Click += IncrementDesiredButton_Click;
 			this.IncrementDesiredButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.IncrementDesiredButton.Location = new System.Drawing.Point(118, 41);
+			this.IncrementDesiredButton.Location = new System.Drawing.Point(110, 41);
 			this.IncrementDesiredButton.Name = "IncrementDesiredButton";
 			this.IncrementDesiredButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementDesiredButton.TabIndex = 5;

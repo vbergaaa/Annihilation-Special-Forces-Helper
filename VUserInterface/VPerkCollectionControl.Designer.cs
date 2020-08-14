@@ -2,6 +2,7 @@
 using VBusiness.Loadouts;
 using VBusiness.Perks;
 using VEntityFramework;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
@@ -54,12 +55,12 @@ namespace VUserInterface
 			this.page11Button = new System.Windows.Forms.Button();
 			this.previousPageButton = new System.Windows.Forms.Button();
 			this.nextPageButton = new System.Windows.Forms.Button();
-			this.totalCurrentCostLabel = new System.Windows.Forms.Label();
-			this.totalCurrentCostCaption = new System.Windows.Forms.Label();
-			this.totalDesiredCostCaption = new System.Windows.Forms.Label();
-			this.totalDesiredCostLabel = new System.Windows.Forms.Label();
-			this.remainingCostCaption = new System.Windows.Forms.Label();
-			this.remainingCostLabel = new System.Windows.Forms.Label();
+			this.totalCurrentCostLabel = new VLabel();
+			this.totalCurrentCostCaption = new VLabel();
+			this.totalDesiredCostCaption = new VLabel();
+			this.totalDesiredCostLabel = new VLabel();
+			this.remainingCostCaption = new VLabel();
+			this.remainingCostLabel = new VLabel();
 			((System.ComponentModel.ISupportInitialize)(this.perksBindingSource)).BeginInit();
 			//
 			// Perk1Control
@@ -106,7 +107,7 @@ namespace VUserInterface
 			//
 			this.totalCurrentCostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perksBindingSource, "CurrentCost"));
 			this.totalCurrentCostLabel.Location = new System.Drawing.Point(121, 20);
-			this.totalCurrentCostLabel.Size = new System.Drawing.Size(50, 20);
+			this.totalCurrentCostLabel.Size = new System.Drawing.Size(70, 20);
 			this.totalCurrentCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// totalCurrentCostCaption
@@ -120,7 +121,7 @@ namespace VUserInterface
 			//
 			this.remainingCostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perksBindingSource, "RemainingCost"));
 			this.remainingCostLabel.Location = new System.Drawing.Point(301, 20);
-			this.remainingCostLabel.Size = new System.Drawing.Size(50, 20);
+			this.remainingCostLabel.Size = new System.Drawing.Size(70, 20);
 			this.remainingCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// remainingCostCaption
@@ -134,7 +135,7 @@ namespace VUserInterface
 			//
 			this.totalDesiredCostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perksBindingSource, "TotalCost"));
 			this.totalDesiredCostLabel.Location = new System.Drawing.Point(501, 20);
-			this.totalDesiredCostLabel.Size = new System.Drawing.Size(50, 20);
+			this.totalDesiredCostLabel.Size = new System.Drawing.Size(70, 20);
 			this.totalDesiredCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// totalDesiredCostCaption

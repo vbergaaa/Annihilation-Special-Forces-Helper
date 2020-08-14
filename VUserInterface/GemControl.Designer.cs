@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
@@ -32,10 +33,10 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.CostCaption = new System.Windows.Forms.Label();
-			this.CostLabel = new System.Windows.Forms.Label();
-			this.CurrentLevelLabel = new System.Windows.Forms.Label();
-			this.CurrentLevelCaption = new Label();
+			this.CostCaption = new VLabel();
+			this.CostLabel = new VLabel();
+			this.CurrentLevelLabel = new VLabel();
+			this.CurrentLevelCaption = new VLabel();
 			this.IncrementCurrentButton = new System.Windows.Forms.Button();
 			this.DecrementCurrentButton = new System.Windows.Forms.Button();
 			this.gemBindingSource = new System.Windows.Forms.BindingSource();
@@ -71,9 +72,9 @@ namespace VUserInterface
 			// CurrentLevelLabel
 			// 
 			this.CurrentLevelLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gemBindingSource, "CurrentLevel"));
-			this.CurrentLevelLabel.Location = new System.Drawing.Point(67, 21);
+			this.CurrentLevelLabel.Location = new System.Drawing.Point(57, 21);
 			this.CurrentLevelLabel.Name = "CurrentLevelLabel";
-			this.CurrentLevelLabel.Size = new System.Drawing.Size(23, 23);
+			this.CurrentLevelLabel.Size = new System.Drawing.Size(43, 23);
 			this.CurrentLevelLabel.TabIndex = 2;
 			this.CurrentLevelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
@@ -81,7 +82,7 @@ namespace VUserInterface
 			// 
 			this.IncrementCurrentButton.Click += IncrementCurrentButton_Click;
 			this.IncrementCurrentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.IncrementCurrentButton.Location = new System.Drawing.Point(95, 19);
+			this.IncrementCurrentButton.Location = new System.Drawing.Point(105, 19);
 			this.IncrementCurrentButton.Name = "IncrementCurrentButton";
 			this.IncrementCurrentButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementCurrentButton.TabIndex = 5;
@@ -91,7 +92,7 @@ namespace VUserInterface
 			// 
 			this.DecrementCurrentButton.Click += DecrementCurrentButton_Click;
 			this.DecrementCurrentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.DecrementCurrentButton.Location = new System.Drawing.Point(37, 18);
+			this.DecrementCurrentButton.Location = new System.Drawing.Point(27, 18);
 			this.DecrementCurrentButton.Name = "DecrementCurrentButton";
 			this.DecrementCurrentButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementCurrentButton.TabIndex = 4;

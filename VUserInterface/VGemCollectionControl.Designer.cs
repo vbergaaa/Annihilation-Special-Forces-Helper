@@ -1,4 +1,5 @@
 ﻿using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
@@ -41,8 +42,8 @@ namespace VUserInterface
 			this.CriticalDamageGemControl = new GemControl();
 			this.DoubleWarpGemControl = new GemControl();
 			this.gemsBindingSource = new System.Windows.Forms.BindingSource();
-			this.TotalCostCaption = new System.Windows.Forms.Label();
-			this.TotalCostLabel = new System.Windows.Forms.Label();
+			this.TotalCostCaption = new VLabel();
+			this.TotalCostLabel = new VLabel();
 			((System.ComponentModel.ISupportInitialize)(this.gemsBindingSource)).BeginInit();
 			//
 			// AttackControl

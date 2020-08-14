@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using VBusiness.Souls;
 using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
@@ -36,7 +37,7 @@ namespace VUserInterface
 			components = new System.ComponentModel.Container();
 			this.bindingSource = new BindingSource();
 			this.RankComboBox = new ComboBox();
-			this.RankCaption = new Label();
+			this.RankCaption = new VLabel();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource

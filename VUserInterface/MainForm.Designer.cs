@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
@@ -32,12 +33,12 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			this.LoadoutsListBox = new System.Windows.Forms.ListBox();
-			this.LoadoutsLabel = new System.Windows.Forms.Label();
+			this.LoadoutsLabel = new VLabel();
 			this.DeleteLoadoutButton = new System.Windows.Forms.Button();
 			this.NewLoadoutButton = new System.Windows.Forms.Button();
 			this.OpenLoadoutButton = new System.Windows.Forms.Button();
 			this.SoulsListBox = new System.Windows.Forms.ListBox();
-			this.SoulsLabel = new System.Windows.Forms.Label();
+			this.SoulsLabel = new VLabel();
 			this.DeleteSoulButton = new System.Windows.Forms.Button();
 			this.NewSoulButton = new System.Windows.Forms.Button();
 			this.OpenSoulButton = new System.Windows.Forms.Button();

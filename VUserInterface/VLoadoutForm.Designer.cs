@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
 using VUserInterface;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
@@ -37,9 +38,9 @@ namespace VUserInterface
 			this.components = new System.ComponentModel.Container();
 			this.PerkPageControl = new VPerkCollectionControl();
 			this.LoadoutBindingSource = new System.Windows.Forms.BindingSource();
-			this.LoadoutNameLabel = new Label();
+			this.LoadoutNameLabel = new VLabel();
 			this.LoadoutNameTextBox = new TextBox();
-			this.SlotNumberLabel = new Label();
+			this.SlotNumberLabel = new VLabel();
 			this.SlotNumberTextBox = new TextBox();
 			this.StatsControl = new VStatsControl();
 			this.PerksButton = new Button();
