@@ -37,7 +37,7 @@ namespace VEntityFramework.Model
 		}
 		int fSlot;
 
-		public override string GetSaveNameForXML()=> $"{Slot}-{Name}";
+		protected internal override string GetSaveNameForXML()=> $"{Slot}-{Name}";
 
 		[VXML(false)]
 		public VStats Stats { get; set; }

@@ -119,7 +119,7 @@ namespace VEntityFramework.Data
 
 		public bool SuspendSettingHasChanges { get; set; }
 
-		public virtual string GetSaveNameForXML()
+		protected internal virtual string GetSaveNameForXML()
 		{
 			return null;
 		}
