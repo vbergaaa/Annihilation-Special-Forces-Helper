@@ -17,8 +17,8 @@ namespace VEntityFramework.Model
 		public abstract VGem ShieldsGem { get; }
 		public abstract VGem ShieldsArmorGem { get; }
 		public abstract VGem DoubleWarpGem { get; }
-		public abstract VGem CriticalDamageGem { get; }
-		public abstract VGem CriticalChanceGem { get; }
+		public abstract VGem CritDamageGem { get; }
+		public abstract VGem CritChanceGem { get; }
 
 		public abstract VGem[] Gems { get; }
 

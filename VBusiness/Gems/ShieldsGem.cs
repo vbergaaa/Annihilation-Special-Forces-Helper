@@ -13,6 +13,6 @@ namespace VBusiness.Gems
 
 		protected override decimal IncrementCost => 0.2m;
 
-		protected override Action<VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.Attack += levelDifference; };
+		protected override Action<VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.Shields += levelDifference; };
 	}
 }

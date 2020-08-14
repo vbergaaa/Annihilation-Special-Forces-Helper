@@ -82,7 +82,7 @@ namespace VBusiness.Gems
 
 		#region CriticalChance
 
-		public override VGem CriticalChanceGem
+		public override VGem CritChanceGem
 		{
 			get => fCriticalChanceGem ?? (fCriticalChanceGem = new CriticalChanceGem());
 		}
@@ -92,7 +92,7 @@ namespace VBusiness.Gems
 
 		#region CriticalDamage
 
-		public override VGem CriticalDamageGem
+		public override VGem CritDamageGem
 		{
 			get => fCriticalDamageGem ?? (fCriticalDamageGem = new CriticalDamageGem());
 		}
@@ -125,8 +125,8 @@ namespace VBusiness.Gems
 						ShieldsArmorGem,
 						HealthGem,
 						HealthArmorGem,
-						CriticalChanceGem,
-						CriticalDamageGem,
+						CritChanceGem,
+						CritDamageGem,
 						DoubleWarpGem
 					};
 

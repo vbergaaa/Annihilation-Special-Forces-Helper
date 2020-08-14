@@ -84,13 +84,13 @@ namespace VUserInterface
 			// CriticalChanceControl
 			//
 			this.CriticalChanceGemControl.Location = new System.Drawing.Point(35, 207);
-			this.CriticalChanceGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "CriticalChanceGem");
+			this.CriticalChanceGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "CritChanceGem");
 			this.CriticalChanceGemControl.TabIndex = 8;
 			//
 			// CriticalDamageControl
 			//
 			this.CriticalDamageGemControl.Location = new System.Drawing.Point(208, 207);
-			this.CriticalDamageGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "CriticalDamageGem");
+			this.CriticalDamageGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "CritDamageGem");
 			this.CriticalDamageGemControl.TabIndex = 9;
 			//
 			// DoubleWarpControl

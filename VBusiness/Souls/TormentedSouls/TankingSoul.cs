@@ -17,8 +17,6 @@ namespace VBusiness.Souls
 				{
 					base.ActivateStats(stats);
 					stats.DamageReduction += 5;
-					stats.HealthArmor += 3;
-					stats.HealthArmor += 3;
 				};
 			}
 		}
@@ -31,8 +29,6 @@ namespace VBusiness.Souls
 				{
 					base.DeactivateStats(stats);
 					stats.DamageReduction -= 5;
-					stats.HealthArmor -= 3;
-					stats.HealthArmor -= 3;
 				};
 			}
 		}

@@ -15,7 +15,7 @@ namespace VBusiness.Souls
 
 		protected override int MinAttack => 10;
 
-		protected override int MaxAttackSpeed => 12;
+		protected override int MaxAttackSpeed => 15;
 
 		protected override int MinAttackSpeed => 10;
 
