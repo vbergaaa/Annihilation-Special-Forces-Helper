@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
     public class AlacrityPerk : Perk
     {
-        public override string Description => "Accelerate units by 1%";
+		public AlacrityPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		public override string Description => "Accelerate units by 1%";
 
         public override byte Page => 8;
 
@@ -14,6 +20,6 @@
 
         public override short MaxLevel => 10;
 
-        protected override string name => "Alacrity";
+        protected override string PerkName => "Alacrity";
     }
 }

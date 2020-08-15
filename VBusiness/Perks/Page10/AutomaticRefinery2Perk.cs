@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
     public class AutomaticRefinery2Perk : Perk
     {
-        public override string Description => "Create a mineral field every 10 minutes near the well (subsequent upgrades reduce time in between by 20 seconds)";
+		public AutomaticRefinery2Perk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		public override string Description => "Create a mineral field every 10 minutes near the well (subsequent upgrades reduce time in between by 20 seconds)";
 
         public override byte Page => 10;
 
@@ -14,6 +20,6 @@
 
         public override short MaxLevel => 10;
 
-        protected override string name => "Automatic Refinery II";
+        protected override string PerkName => "Automatic Refinery II";
     }
 }

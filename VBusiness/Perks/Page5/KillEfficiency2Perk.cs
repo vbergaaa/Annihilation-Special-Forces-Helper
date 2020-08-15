@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
     public class KillEfficiency2Perk : Perk
     {
-        public override string Description => "Grants a 3% chance to gain an extra kill upon killing an enemy unit";
+		public KillEfficiency2Perk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		public override string Description => "Grants a 3% chance to gain an extra kill upon killing an enemy unit";
 
         public override byte Page => 5;
 
@@ -14,6 +20,6 @@
 
         public override short MaxLevel => 20;
 
-        protected override string name => "Kill Efficiency II";
+        protected override string PerkName => "Kill Efficiency II";
     }
 }

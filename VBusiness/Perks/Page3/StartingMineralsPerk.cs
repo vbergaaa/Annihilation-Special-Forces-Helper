@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
     public class StartingMineralsPerk : Perk
     {
-        public override string Description => "Gain 1000 Minerals";
+		public StartingMineralsPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		public override string Description => "Gain 1000 Minerals";
 
         public override byte Page => 3;
 
@@ -14,6 +20,6 @@
 
         public override short MaxLevel => 20;
 
-        protected override string name => "Starting Minerals";
+        protected override string PerkName => "Starting Minerals";
     }
 }

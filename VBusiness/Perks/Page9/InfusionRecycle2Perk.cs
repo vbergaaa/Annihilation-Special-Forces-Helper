@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
     public class InfusionRecycle2Perk : Perk
     {
-        public override string Description => "Infusing a unit stores 5 kills";
+		public InfusionRecycle2Perk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		public override string Description => "Infusing a unit stores 5 kills";
 
         public override byte Page => 9;
 
@@ -14,6 +20,6 @@
 
         public override short MaxLevel => 10;
 
-        protected override string name => "Infusion Recycle II";
+        protected override string PerkName => "Infusion Recycle II";
     }
 }

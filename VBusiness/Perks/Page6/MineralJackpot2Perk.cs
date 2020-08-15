@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
     public class MineralJackpot2Perk : Perk
     {
-        public override string Description => "Gain a 0.2% chance to gain 100 minerals on each kill";
+		public MineralJackpot2Perk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		public override string Description => "Gain a 0.2% chance to gain 100 minerals on each kill";
 
         public override byte Page => 6;
 
@@ -14,6 +20,6 @@
 
         public override short MaxLevel => 20;
 
-        protected override string name => "Mineral Jackpot II";
+        protected override string PerkName => "Mineral Jackpot II";
     }
 }

@@ -1,7 +1,13 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class TrifectaPowerPerk : Perk
 	{
+		public TrifectaPowerPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "Increases stats by 1.5% and armor by 1% while unit is at or above SSS";
 
 		public override byte Page => 7;
@@ -14,11 +20,11 @@
 
 		public override short MaxLevel => 10;
 
-		protected override string name => "Trifecta Power";
+		protected override string PerkName => "Trifecta Power";
 
-		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		protected override void OnLevelChanged(int difference)
 		{
-			return (stats) => stats.TrifectaStacks += levelDifference;
+			PerkCollection.Loadout.Stats.TrifectaStacks += difference;
 		}
 	}
 }

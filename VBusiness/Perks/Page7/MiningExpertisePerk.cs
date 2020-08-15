@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
     public class MiningExpertisePerk : Perk
     {
-        public override string Description => "Probes gain one kill every time they mine";
+		public MiningExpertisePerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		public override string Description => "Probes gain one kill every time they mine";
 
         public override byte Page => 7;
 
@@ -14,6 +20,6 @@
 
         public override short MaxLevel => 4;
 
-        protected override string name => "Mining Expertise";
+        protected override string PerkName => "Mining Expertise";
     }
 }

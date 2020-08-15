@@ -1,7 +1,13 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class DoubleWarp3Perk : Perk
 	{
+		public DoubleWarp3Perk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "Grants a 1% chance to warp in duplicates when buying units";
 
 		public override byte Page => 10;
@@ -14,6 +20,6 @@
 
 		public override short MaxLevel => 30;
 
-		protected override string name => "Double Warp III";
+		protected override string PerkName => "Double Warp III";
 	}
 }

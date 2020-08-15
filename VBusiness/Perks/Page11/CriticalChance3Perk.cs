@@ -1,7 +1,13 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class CriticalChance3Perk : Perk
 	{
+		public CriticalChance3Perk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "Grants 1% chance to critical hit with any attack";
 
 		public override byte Page => 11;
@@ -14,11 +20,11 @@
 
 		public override short MaxLevel => 30;
 
-		protected override string name => "Critical Chance III";
+		protected override string PerkName => "Critical Chance III";
 
-		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		protected override void OnLevelChanged(int difference)
 		{
-			return (stats) => { stats.CriticalChance += 1 * levelDifference; };
+			PerkCollection.Loadout.Stats.CriticalChance += 1 * difference;
 		}
 	}
 }

@@ -50,7 +50,6 @@ namespace VEntityFramework.Model
 		{
 			return rank switch
 			{
-				("None") => UnitRank.None,
 				("D") => UnitRank.D,
 				("C") => UnitRank.C,
 				("B") => UnitRank.B,
@@ -84,40 +83,5 @@ namespace VEntityFramework.Model
 				_ => UnitRank.None
 			};
 		}
-	}
-
-	public enum UnitRank
-	{
-		None,
-		D,
-		C,
-		B,
-		A,
-		S,
-		SD,
-		SC,
-		SB,
-		SA,
-		SS,
-		SSD,
-		SSC,
-		SSB,
-		SSA,
-		SSS,
-		X,
-		SX,
-		SSX,
-		SSSX,
-		XX,
-		XD,
-		SXD,
-		Z,
-		SZ,
-		SSZ,
-		SSSZ,
-		XZ,
-		XDZ,
-		SXDZ,
-		XYZ
 	}
 }

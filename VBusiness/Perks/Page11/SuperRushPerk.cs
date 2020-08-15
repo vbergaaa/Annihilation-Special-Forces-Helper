@@ -1,7 +1,13 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class SuperRushPerk : Perk
 	{
+		public SuperRushPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "Increases Adrenaline Rush bonus by 10%";
 
 		public override byte Page => 11;
@@ -14,15 +20,13 @@
 
 		public override short MaxLevel => 10;
 
-		protected override string name => "Super Rush";
+		protected override string PerkName => "Super Rush";
 
-		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		protected override void OnLevelChanged(int difference)
 		{
-			return (stats) => {
-				stats.Attack += 1 * levelDifference;
-				stats.AttackSpeed += 1 * levelDifference;
-				stats.CriticalChance += 0.5 * levelDifference;
-			};
+				PerkCollection.Loadout.Stats.Attack += 1 * difference;
+				PerkCollection.Loadout.Stats.AttackSpeed += 1 * difference;
+				PerkCollection.Loadout.Stats.CriticalChance += 0.5 * difference;
 		}
 	}
 }

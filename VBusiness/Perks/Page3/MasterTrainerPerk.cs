@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
     public class MasterTrainerPerk : Perk
     {
-        public override string Description => "Gain 200 kills";
+		public MasterTrainerPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		public override string Description => "Gain 200 kills";
 
         public override byte Page => 3;
 
@@ -14,6 +20,6 @@
 
         public override short MaxLevel => 10;
 
-        protected override string name => "Master Trainer";
+        protected override string PerkName => "Master Trainer";
     }
 }

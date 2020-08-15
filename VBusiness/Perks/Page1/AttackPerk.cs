@@ -5,7 +5,11 @@ namespace VBusiness.Perks
 {
 	public class AttackPerk : Perk
 	{
-		protected override string name => "Attack";
+		public AttackPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		protected override string PerkName => "Attack";
 
 		public override string Description => "Increased Damage of your units by 3%";
 
@@ -19,9 +23,9 @@ namespace VBusiness.Perks
 
 		public override short MaxLevel => 10;
 
-		protected override Action<VStats> GetStatsModifier(int levelDifference)
+		protected override void OnLevelChanged(int difference)
 		{
-			return (stats) => { stats.Attack += 3 * levelDifference; };
+			PerkCollection.Loadout.Stats.Attack += 3 * difference;
 		}
 	}
 }

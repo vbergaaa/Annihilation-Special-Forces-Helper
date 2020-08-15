@@ -5,7 +5,15 @@ namespace VEntityFramework.Model
 {
 	public abstract class VLoadout : VBusinessObject
 	{
+		#region Properties
+
+		#region BizoName
+
 		public override string BizoName => "Loadout";
+
+		#endregion
+
+		#region Name
 
 		[VXML(true)]
 		public string Name
@@ -16,11 +24,15 @@ namespace VEntityFramework.Model
 				if (value != fName)
 				{
 					HasChanges = true;
+					fName = value;
 				}
-				fName = value;
 			}
 		}
 		string fName;
+
+		#endregion
+
+		#region Slot
 
 		[VXML(true)]
 		public int Slot
@@ -31,18 +43,31 @@ namespace VEntityFramework.Model
 				if (value != fSlot)
 				{
 					HasChanges = true;
+					fSlot = value;
 				}
-				fSlot = value;
 			}
 		}
 		int fSlot;
+
+		#endregion
+
+		#endregion
 
 		protected internal override string GetSaveNameForXML()=> $"{Slot}-{Name}";
 
 		[VXML(false)]
 		public VStats Stats { get; set; }
 
-		public virtual VPerkCollection Perks { get; set; }
+		public virtual VPerkCollection Perks
+		{
+			get => fPerks;
+			set
+			{
+				fPerks = value;
+				RegisterChild(fPerks);
+			}
+		}
+		VPerkCollection fPerks;
 
 		public virtual VGemCollection Gems { get; set; }
 

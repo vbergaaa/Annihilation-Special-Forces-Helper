@@ -1,7 +1,13 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class CriticalHarvest2Perk : Perk
 	{
+		public CriticalHarvest2Perk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "Grants 1% chance to gain double minerals when a probe returns to your nexus";
 
 		public override byte Page => 10;
@@ -14,6 +20,6 @@
 
 		public override short MaxLevel => 30;
 
-		protected override string name => "Critical Harvest II";
+		protected override string PerkName => "Critical Harvest II";
 	}
 }

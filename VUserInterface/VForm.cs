@@ -38,7 +38,6 @@ namespace VUserInterface
 				if (fParent != null)
 				{
 					fParent.HasChangesChanged += UpdateSaveButtons;
-					fParent.CascadeHasChanges();
 				}
 
 				UpdateSaveButtons(fParent, new HasChangesEventArgs { HasChanges = fParent != null && fParent.HasChanges });

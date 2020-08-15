@@ -1,7 +1,13 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class RedCritsPerk : Perk
 	{
+		public RedCritsPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "Your critical hits have a 50% chance to deal double damage";
 
 		public override byte Page => 8;
@@ -14,11 +20,11 @@
 
 		public override short MaxLevel => 1;
 
-		protected override string name => "Red Crits";
+		protected override string PerkName => "Red Crits";
 
-		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		protected override void OnLevelChanged(int difference)
 		{
-			return (stats) => { stats.HasRedCrits = levelDifference > 0 ? true : false; };
+			PerkCollection.Loadout.Stats.HasRedCrits = difference > 0 ? true : false;
 		}
 	}
 }

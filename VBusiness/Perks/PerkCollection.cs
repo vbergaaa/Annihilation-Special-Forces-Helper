@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using VBusiness.Loadouts;
 using VEntityFramework.Model;
 
 namespace VBusiness.Perks
@@ -8,7 +10,7 @@ namespace VBusiness.Perks
 	{
 		#region Constructor
 
-		public PerkCollection()
+		public PerkCollection(VLoadout loadout) : base(loadout)
 		{
 			PopulateAllPerks();
 			Page = 1;
@@ -18,665 +20,1199 @@ namespace VBusiness.Perks
 
 		#region Properties
 
+		#region Loadouts
+
+
+
+		#endregion
+
 		#region Perks
 
 		#region Attack
 
-		public override VPerk Attack
+		public VPerk Attack
 		{
-			get => attack ?? (attack = new AttackPerk());
+			get
+			{
+				if (fAttack == null)
+				{
+					fAttack = new AttackPerk(this);
+					RegisterChild(fAttack);
+				}
+				return fAttack;
+			}
 		}
-		VPerk attack;
+		VPerk fAttack;
 
 		#endregion
 
 		#region AttackSpeed
 
-		public override VPerk AttackSpeed
+		public VPerk AttackSpeed
 		{
-			get => attackSpeed ?? (attackSpeed = new AttackSpeedPerk());
+			get
+			{
+				if (fAttackSpeed == null)
+				{
+					fAttackSpeed = new AttackSpeedPerk(this);
+					RegisterChild(fAttackSpeed);
+				}
+				return fAttackSpeed;
+			}
 		}
-		VPerk attackSpeed;
+		VPerk fAttackSpeed;
 
 		#endregion
 
 		#region Health
 
-		public override VPerk Health
+		public VPerk Health
 		{
-			get => health ?? (health = new HealthPerk());
+			get
+			{
+				if (fHealth == null)
+				{
+					fHealth = new HealthPerk(this);
+					RegisterChild(fHealth);
+				}
+				return fHealth;
+			}
 		}
-		VPerk health;
+		VPerk fHealth;
 
 		#endregion
 
 		#region HealthArmor
 
-		public override VPerk HealthArmor
+		public VPerk HealthArmor
 		{
-			get => healthArmor ?? (healthArmor = new HealthArmorPerk());
+			get
+			{
+				if (fHealthArmor == null)
+				{
+					fHealthArmor = new HealthArmorPerk(this);
+					RegisterChild(fHealthArmor);
+				}
+				return fHealthArmor;
+			}
 		}
-		VPerk healthArmor;
+		VPerk fHealthArmor;
 
 		#endregion
 
 		#region Shields
 
-		public override VPerk Shields
+		public VPerk Shields
 		{
-			get => shields ?? (shields = new ShieldsPerk());
+			get
+			{
+				if (fShields == null)
+				{
+					fShields = new ShieldsPerk(this);
+					RegisterChild(fShields);
+				}
+				return fShields;
+			}
 		}
-		VPerk shields;
+		VPerk fShields;
 
 		#endregion
 
 		#region ShieldsArmor
 
-		public override VPerk ShieldsArmor
+		public VPerk ShieldsArmor
 		{
-			get => shieldsArmor ?? (shieldsArmor = new ShieldsArmorPerk());
+			get
+			{
+				if (fShieldsArmor == null)
+				{
+					fShieldsArmor = new ShieldsArmorPerk(this);
+					RegisterChild(fShieldsArmor);
+				}
+				return fShieldsArmor;
+			}
 		}
-		VPerk shieldsArmor;
+		VPerk fShieldsArmor;
 
 		#endregion
 
 		#region KillEfficiency
 
-		public override VPerk KillEfficiency
+		public VPerk KillEfficiency
 		{
-			get => killEfficiency ?? (killEfficiency = new KillEfficiencyPerk());
+			get
+			{
+				if (fKillEfficiency == null)
+				{
+					fKillEfficiency = new KillEfficiencyPerk(this);
+					RegisterChild(fKillEfficiency);
+				}
+				return fKillEfficiency;
+			}
 		}
-		VPerk killEfficiency;
+		VPerk fKillEfficiency;
 
 		#endregion
 
 		#region KillRecycle
 
-		public override VPerk KillRecycle
+		public VPerk KillRecycle
 		{
-			get => killRecycle ?? (killRecycle = new KillRecyclePerk());
+			get
+			{
+				if (fKillRecycle == null)
+				{
+					fKillRecycle = new KillRecyclePerk(this);
+					RegisterChild(fKillRecycle);
+				}
+				return fKillRecycle;
+			}
 		}
-		VPerk killRecycle;
+		VPerk fKillRecycle;
 
 		#endregion
 
 		#region MaximumPotiential
 
-		public override VPerk MaximumPotiential
+		public VPerk MaximumPotiential
 		{
-			get => maximumPotiential ?? (maximumPotiential = new MaximumPotientialPerk());
+			get
+			{
+				if (fMaximumPotiential == null)
+				{
+					fMaximumPotiential = new MaximumPotientialPerk(this);
+					RegisterChild(fMaximumPotiential);
+				}
+				return fMaximumPotiential;
+			}
 		}
-		VPerk maximumPotiential;
+		VPerk fMaximumPotiential;
 
 		#endregion
 
 		#region Veterancy
 
-		public override VPerk Veterancy
+		public VPerk Veterancy
 		{
-			get => veterancy ?? (veterancy = new VeterancyPerk());
+			get
+			{
+				if (fVeterancy == null)
+				{
+					fVeterancy = new VeterancyPerk(this);
+					RegisterChild(fVeterancy);
+				}
+				return fVeterancy;
+			}
 		}
-		VPerk veterancy;
+		VPerk fVeterancy;
 
 		#endregion
 
 		#region Rank
 
-		public override VPerk Rank
+		public VPerk Rank
 		{
-			get => rank ?? (rank = new RankPerk());
+			get
+			{
+				if (fRank == null)
+				{
+					fRank = new RankPerk(this);
+					RegisterChild(fRank);
+				}
+				return fRank;
+			}
 		}
-		VPerk rank;
+		VPerk fRank;
 
 		#endregion
 
 		#region InfusionRecycle
 
-		public override VPerk InfusionRecycle
+		public VPerk InfusionRecycle
 		{
-			get => infusionRecycle ?? (infusionRecycle = new BaseInfusionRecyclePerk());
+			get
+			{
+				if (fInfusionRecycle == null)
+				{
+					fInfusionRecycle = new InfusionRecyclePerk(this);
+					RegisterChild(fInfusionRecycle);
+				}
+				return fInfusionRecycle;
+			}
 		}
-		VPerk infusionRecycle;
+		VPerk fInfusionRecycle;
 
 		#endregion
 
 		#region DoubleWarp
 
-		public override VPerk DoubleWarp
+		public VPerk DoubleWarp
 		{
-			get => doubleWarp ?? (doubleWarp = new BaseDoubleWarpPerk());
+			get
+			{
+				if (fDoubleWarp == null)
+				{
+					fDoubleWarp = new DoubleWarpPerk(this);
+					RegisterChild(fDoubleWarp);
+				}
+				return fDoubleWarp;
+			}
 		}
-		VPerk doubleWarp;
+		VPerk fDoubleWarp;
 
 		#endregion
 
 		#region StartingMinerals
 
-		public override VPerk StartingMinerals
+		public VPerk StartingMinerals
 		{
-			get => startingMinerals ?? (startingMinerals = new StartingMineralsPerk());
+			get
+			{
+				if (fStartingMinerals == null)
+				{
+					fStartingMinerals = new StartingMineralsPerk(this);
+					RegisterChild(fStartingMinerals);
+				}
+				return fStartingMinerals;
+			}
 		}
-		VPerk startingMinerals;
+		VPerk fStartingMinerals;
 
 		#endregion
 
 		#region MasterTrainer
 
-		public override VPerk MasterTrainer
+		public VPerk MasterTrainer
 		{
-			get => masterTrainer ?? (masterTrainer = new MasterTrainerPerk());
+			get
+			{
+				if (fMasterTrainer == null)
+				{
+					fMasterTrainer = new MasterTrainerPerk(this);
+					RegisterChild(fMasterTrainer);
+				}
+				return fMasterTrainer;
+			}
 		}
-		VPerk masterTrainer;
+		VPerk fMasterTrainer;
 
 		#endregion
 
 		#region ExtraSupply
 
-		public override VPerk ExtraSupply
+		public VPerk ExtraSupply
 		{
-			get => extraSupply ?? (extraSupply = new ExtraSupplyPerk());
+			get
+			{
+				if (fExtraSupply == null)
+				{
+					fExtraSupply = new ExtraSupplyPerk(this);
+					RegisterChild(fExtraSupply);
+				}
+				return fExtraSupply;
+			}
 		}
-		VPerk extraSupply;
+		VPerk fExtraSupply;
 
 		#endregion
 
 		#region MineralJackpot
 
-		public override VPerk MineralJackpot
+		public VPerk MineralJackpot
 		{
-			get => mineralJackpot ?? (mineralJackpot = new MineralJackpotPerk());
+			get
+			{
+				if (fMineralJackpot == null)
+				{
+					fMineralJackpot = new MineralJackpotPerk(this);
+					RegisterChild(fMineralJackpot);
+				}
+				return fMineralJackpot;
+			}
 		}
-		VPerk mineralJackpot;
+		VPerk fMineralJackpot;
 
 		#endregion
 
 		#region AutomaticRefinery
 
-		public override VPerk AutomaticRefinery
+		public VPerk AutomaticRefinery
 		{
-			get => automaticRefinery ?? (automaticRefinery = new AutomaticRefineryPerk());
+			get
+			{
+				if (fAutomaticRefinery == null)
+				{
+					fAutomaticRefinery = new AutomaticRefineryPerk(this);
+					RegisterChild(fAutomaticRefinery);
+				}
+				return fAutomaticRefinery;
+			}
 		}
-		VPerk automaticRefinery;
+		VPerk fAutomaticRefinery;
 
 		#endregion
 
 		#region AdrenalineRush
 
-		public override VPerk AdrenalineRush
+		public VPerk AdrenalineRush
 		{
-			get => adrenalineRush ?? (adrenalineRush = new AdrenalineRushPerk());
+			get
+			{
+				if (fAdrenalineRush == null)
+				{
+					fAdrenalineRush = new AdrenalineRushPerk(this);
+					RegisterChild(fAdrenalineRush);
+				}
+				return fAdrenalineRush;
+			}
 		}
-		VPerk adrenalineRush;
+		VPerk fAdrenalineRush;
 
 		#endregion
 
 		#region CriticalChance
 
-		public override VPerk CriticalChance
+		public VPerk CriticalChance
 		{
-			get => criticalChance ?? (criticalChance = new CriticalChancePerk());
+			get
+			{
+				if (fCriticalChance == null)
+				{
+					fCriticalChance = new CriticalChancePerk(this);
+					RegisterChild(fCriticalChance);
+				}
+				return fCriticalChance;
+			}
 		}
-		VPerk criticalChance;
+		VPerk fCriticalChance;
 
 		#endregion
 
 		#region CriticalDamage
 
-		public override VPerk CriticalDamage
+		public VPerk CriticalDamage
 		{
-			get => criticalDamage ?? (criticalDamage = new CriticalDamagePerk());
+			get
+			{
+				if (fCriticalDamage == null)
+				{
+					fCriticalDamage = new CriticalDamagePerk(this);
+					RegisterChild(fCriticalDamage);
+				}
+				return fCriticalDamage;
+			}
 		}
-		VPerk criticalDamage;
+		VPerk fCriticalDamage;
 
 		#endregion
 
 		#region DamageReduction
 
-		public override VPerk DamageReduction
+		public VPerk DamageReduction
 		{
-			get => damageReduction ?? (damageReduction = new DamageReductionPerk());
+			get
+			{
+				if (fDamageReduction == null)
+				{
+					fDamageReduction = new DamageReductionPerk(this);
+					RegisterChild(fDamageReduction);
+				}
+				return fDamageReduction;
+			}
 		}
-		VPerk damageReduction;
+		VPerk fDamageReduction;
 
 		#endregion
 
 		#region OverSpeed
 
-		public override VPerk OverSpeed
+		public VPerk OverSpeed
 		{
-			get => overSpeed ?? (overSpeed = new OverSpeedPerk());
+			get
+			{
+				if (fOverSpeed == null)
+				{
+					fOverSpeed = new OverSpeedPerk(this);
+					RegisterChild(fOverSpeed);
+				}
+				return fOverSpeed;
+			}
 		}
-		VPerk overSpeed;
+		VPerk fOverSpeed;
 
 		#endregion
 
 		#region UnitSpecialization
 
-		public override VPerk UnitSpecialization
+		public VPerk UnitSpecialization
 		{
-			get => unitSpecialization ?? (unitSpecialization = new UnitSpecializationPerk());
+			get
+			{
+				if (fUnitSpecialization == null)
+				{
+					fUnitSpecialization = new UnitSpecializationPerk(this);
+					RegisterChild(fUnitSpecialization);
+				}
+				return fUnitSpecialization;
+			}
 		}
-		VPerk unitSpecialization;
+		VPerk fUnitSpecialization;
 
 		#endregion
 
 		#region KillEfficiency2
 
-		public override VPerk KillEfficiency2
+		public VPerk KillEfficiency2
 		{
-			get => killEfficiency2 ?? (killEfficiency2 = new KillEfficiency2Perk());
+			get
+			{
+				if (fKillEfficiency2 == null)
+				{
+					fKillEfficiency2 = new KillEfficiency2Perk(this);
+					RegisterChild(fKillEfficiency2);
+				}
+				return fKillEfficiency2;
+			}
 		}
-		VPerk killEfficiency2;
+		VPerk fKillEfficiency2;
 
 		#endregion
 
 		#region MaximumGather
 
-		public override VPerk MaximumGather
+		public VPerk MaximumGather
 		{
-			get => maximumGather ?? (maximumGather = new MaximumGatherPerk());
+			get
+			{
+				if (fMaximumGather == null)
+				{
+					fMaximumGather = new MaximumGatherPerk(this);
+					RegisterChild(fMaximumGather);
+				}
+				return fMaximumGather;
+			}
 		}
-		VPerk maximumGather;
+		VPerk fMaximumGather;
 
 		#endregion
 
 		#region MaximumPotiential2
 
-		public override VPerk MaximumPotiential2
+		public VPerk MaximumPotiential2
 		{
-			get => maximumPotiential2 ?? (maximumPotiential2 = new MaximumPotiential2Perk());
+			get
+			{
+				if (fMaximumPotiential2 == null)
+				{
+					fMaximumPotiential2 = new MaximumPotiential2Perk(this);
+					RegisterChild(fMaximumPotiential2);
+				}
+				return fMaximumPotiential2;
+			}
 		}
-		VPerk maximumPotiential2;
+		VPerk fMaximumPotiential2;
 
 		#endregion
 
 		#region QuickStart
 
-		public override VPerk QuickStart
+		public VPerk QuickStart
 		{
-			get => quickStart ?? (quickStart = new QuickStartPerk());
+			get
+			{
+				if (fQuickStart == null)
+				{
+					fQuickStart = new QuickStartPerk(this);
+					RegisterChild(fQuickStart);
+				}
+				return fQuickStart;
+			}
 		}
-		VPerk quickStart;
+		VPerk fQuickStart;
 
 		#endregion
 
 		#region RankRevision
 
-		public override VPerk RankRevision
+		public VPerk RankRevision
 		{
-			get => rankRevision ?? (rankRevision = new RankRevisionPerk());
+			get
+			{
+				if (fRankRevision == null)
+				{
+					fRankRevision = new RankRevisionPerk(this);
+					RegisterChild(fRankRevision);
+				}
+				return fRankRevision;
+			}
 		}
-		VPerk rankRevision;
+		VPerk fRankRevision;
 
 		#endregion
 
 		#region Veterancy2
 
-		public override VPerk Veterancy2
+		public VPerk Veterancy2
 		{
-			get => veterancy2 ?? (veterancy2 = new Veterancy2Perk());
+			get
+			{
+				if (fVeterancy2 == null)
+				{
+					fVeterancy2 = new Veterancy2Perk(this);
+					RegisterChild(fVeterancy2);
+				}
+				return fVeterancy2;
+			}
 		}
-		VPerk veterancy2;
+		VPerk fVeterancy2;
 
 		#endregion
 
 		#region BuildingRecycle
 
-		public override VPerk BuildingRecycle
+		public VPerk BuildingRecycle
 		{
-			get => buildingRecycle ?? (buildingRecycle = new BuildingRecyclePerk());
+			get
+			{
+				if (fBuildingRecycle == null)
+				{
+					fBuildingRecycle = new BuildingRecyclePerk(this);
+					RegisterChild(fBuildingRecycle);
+				}
+				return fBuildingRecycle;
+			}
 		}
-		VPerk buildingRecycle;
+		VPerk fBuildingRecycle;
 
 		#endregion
 
 		#region CriticalCollection
 
-		public override VPerk CriticalCollection
+		public VPerk CriticalCollection
 		{
-			get => criticalCollection ?? (criticalCollection = new CriticalCollectionPerk());
+			get
+			{
+				if (fCriticalCollection == null)
+				{
+					fCriticalCollection = new CriticalCollectionPerk(this);
+					RegisterChild(fCriticalCollection);
+				}
+				return fCriticalCollection;
+			}
 		}
-		VPerk criticalCollection;
+		VPerk fCriticalCollection;
 
 		#endregion
 
 		#region CriticalHarvest
 
-		public override VPerk CriticalHarvest
+		public VPerk CriticalHarvest
 		{
-			get => crititcalHarvest ?? (crititcalHarvest = new CriticalHarvestPerk());
+			get
+			{
+				if (fCriticalHarvest == null)
+				{
+					fCriticalHarvest = new CriticalHarvestPerk(this);
+					RegisterChild(fCriticalHarvest);
+				}
+				return fCriticalHarvest;
+			}
 		}
-		VPerk crititcalHarvest;
+		VPerk fCriticalHarvest;
 
 		#endregion
 
 		#region DoubleWarp2
 
-		public override VPerk DoubleWarp2
+		public VPerk DoubleWarp2
 		{
-			get => doubleWarp2 ?? (doubleWarp2 = new DoubleWarp2Perk());
+			get
+			{
+				if (fDoubleWarp2 == null)
+				{
+					fDoubleWarp2 = new DoubleWarp2Perk(this);
+					RegisterChild(fDoubleWarp2);
+				}
+				return fDoubleWarp2;
+			}
 		}
-		VPerk doubleWarp2;
+		VPerk fDoubleWarp2;
 
 		#endregion
 
 		#region ExpertMiner
 
-		public override VPerk ExpertMiner
+		public VPerk ExpertMiner
 		{
-			get => expertMiner ?? (expertMiner = new ExpertMinerPerk());
+			get
+			{
+				if (fExpertMiner == null)
+				{
+					fExpertMiner = new ExpertMinerPerk(this);
+					RegisterChild(fExpertMiner);
+				}
+				return fExpertMiner;
+			}
 		}
-		VPerk expertMiner;
+		VPerk fExpertMiner;
 
 		#endregion
 
 		#region MineralJackpot2
 
-		public override VPerk MineralJackpot2
+		public VPerk MineralJackpot2
 		{
-			get => mineralJackpot2 ?? (mineralJackpot2 = new MineralJackpot2Perk());
+			get
+			{
+				if (fMineralJackpot2 == null)
+				{
+					fMineralJackpot2 = new MineralJackpot2Perk(this);
+					RegisterChild(fMineralJackpot2);
+				}
+				return fMineralJackpot2;
+			}
 		}
-		VPerk mineralJackpot2;
+		VPerk fMineralJackpot2;
 
 		#endregion
 
 		#region AcceleratedFusion
 
-		public override VPerk AcceleratedFusion
+		public VPerk AcceleratedFusion
 		{
-			get => acceleratedFusion ?? (acceleratedFusion = new AcceleratedFusionPerk());
+			get
+			{
+				if (fAcceleratedFusion == null)
+				{
+					fAcceleratedFusion = new AcceleratedFusionPerk(this);
+					RegisterChild(fAcceleratedFusion);
+				}
+				return fAcceleratedFusion;
+			}
 		}
-		VPerk acceleratedFusion;
+		VPerk fAcceleratedFusion;
 
 		#endregion
 
 		#region FastLearner
 
-		public override VPerk FastLearner
+		public VPerk FastLearner
 		{
-			get => fastLearner ?? (fastLearner = new FastLearnerPerk());
+			get
+			{
+				if (fFastLearner == null)
+				{
+					fFastLearner = new FastLearnerPerk(this);
+					RegisterChild(fFastLearner);
+				}
+				return fFastLearner;
+			}
 		}
-		VPerk fastLearner;
+		VPerk fFastLearner;
 
 		#endregion
 
 		#region MiningExpertise
 
-		public override VPerk MiningExpertise
+		public VPerk MiningExpertise
 		{
-			get => miningExpertise ?? (miningExpertise = new MiningExpertisePerk());
+			get
+			{
+				if (fMiningExpertise == null)
+				{
+					fMiningExpertise = new MiningExpertisePerk(this);
+					RegisterChild(fMiningExpertise);
+				}
+				return fMiningExpertise;
+			}
 		}
-		VPerk miningExpertise;
+		VPerk fMiningExpertise;
 
 		#endregion
 
 		#region TrainingCenter
 
-		public override VPerk TrainingCenter
+		public VPerk TrainingCenter
 		{
-			get => trainingCenter ?? (trainingCenter = new TrainingCenterPerk());
+			get
+			{
+				if (fTrainingCenter == null)
+				{
+					fTrainingCenter = new TrainingCenterPerk(this);
+					RegisterChild(fTrainingCenter);
+				}
+				return fTrainingCenter;
+			}
 		}
-		VPerk trainingCenter;
+		VPerk fTrainingCenter;
 
 		#endregion
 
 		#region TrifectaPower
 
-		public override VPerk TrifectaPower
+		public VPerk TrifectaPower
 		{
-			get => trifectaPower ?? (trifectaPower = new TrifectaPowerPerk());
+			get
+			{
+				if (fTrifectaPower == null)
+				{
+					fTrifectaPower = new TrifectaPowerPerk(this);
+					RegisterChild(fTrifectaPower);
+				}
+				return fTrifectaPower;
+			}
 		}
-		VPerk trifectaPower;
+		VPerk fTrifectaPower;
 
 		#endregion
 
 		#region UnitStorage
 
-		public override VPerk UnitStorage
+		public VPerk UnitStorage
 		{
-			get => unitStorage ?? (unitStorage = new UnitStoragePerk());
+			get
+			{
+				if (fUnitStorage == null)
+				{
+					fUnitStorage = new UnitStoragePerk(this);
+					RegisterChild(fUnitStorage);
+				}
+				return fUnitStorage;
+			}
 		}
-		VPerk unitStorage;
+		VPerk fUnitStorage;
 
 		#endregion
 
 		#region Alacrity
 
-		public override VPerk Alacrity
+		public VPerk Alacrity
 		{
-			get => alacrity ?? (alacrity = new AlacrityPerk());
+			get
+			{
+				if (fAlacrity == null)
+				{
+					fAlacrity = new AlacrityPerk(this);
+					RegisterChild(fAlacrity);
+				}
+				return fAlacrity;
+			}
 		}
-		VPerk alacrity;
+		VPerk fAlacrity;
 
 		#endregion
 
 		#region BalancedTraining
 
-		public override VPerk BalancedTraining
+		public VPerk BalancedTraining
 		{
-			get => balancedTraining ?? (balancedTraining = new BalancedTrainingPerk());
+			get
+			{
+				if (fBalancedTraining == null)
+				{
+					fBalancedTraining = new BalancedTrainingPerk(this);
+					RegisterChild(fBalancedTraining);
+				}
+				return fBalancedTraining;
+			}
 		}
-		VPerk balancedTraining;
+		VPerk fBalancedTraining;
 
 		#endregion
 
 		#region CooldownSpeed
 
-		public override VPerk CooldownSpeed
+		public VPerk CooldownSpeed
 		{
-			get => cooldownSpeed ?? (cooldownSpeed = new CooldownSpeedPerk());
+			get
+			{
+				if (fCooldownSpeed == null)
+				{
+					fCooldownSpeed = new CooldownSpeedPerk(this);
+					RegisterChild(fCooldownSpeed);
+				}
+				return fCooldownSpeed;
+			}
 		}
-		VPerk cooldownSpeed;
+		VPerk fCooldownSpeed;
 
 		#endregion
 
 		#region CriticalChance2
 
-		public override VPerk CriticalChance2
+		public VPerk CriticalChance2
 		{
-			get => criticalChance2 ?? (criticalChance2 = new CriticalChance2Perk());
+			get
+			{
+				if (fCriticalChance2 == null)
+				{
+					fCriticalChance2 = new CriticalChance2Perk(this);
+					RegisterChild(fCriticalChance2);
+				}
+				return fCriticalChance2;
+			}
 		}
-		VPerk criticalChance2;
+		VPerk fCriticalChance2;
 
 		#endregion
 
 		#region CriticalDamage2
 
-		public override VPerk CriticalDamage2
+		public VPerk CriticalDamage2
 		{
-			get => criticalDamage2 ?? (criticalDamage2 = new CriticalDamage2Perk());
+			get
+			{
+				if (fCriticalDamage2 == null)
+				{
+					fCriticalDamage2 = new CriticalDamage2Perk(this);
+					RegisterChild(fCriticalDamage2);
+				}
+				return fCriticalDamage2;
+			}
 		}
-		VPerk criticalDamage2;
+		VPerk fCriticalDamage2;
 
 		#endregion
 
 		#region RedCrits
 
-		public override VPerk RedCrits
+		public VPerk RedCrits
 		{
-			get => redCrits ?? (redCrits = new RedCritsPerk());
+			get
+			{
+				if (fRedCrits == null)
+				{
+					fRedCrits = new RedCritsPerk(this);
+					RegisterChild(fRedCrits);
+				}
+				return fRedCrits;
+			}
 		}
-		VPerk redCrits;
+		VPerk fRedCrits;
 
 		#endregion
 
 		#region InfusionRecycle2
 
-		public override VPerk InfusionRecycle2
+		public VPerk InfusionRecycle2
 		{
-			get => infusionRecycle2 ?? (infusionRecycle2 = new InfusionRecycle2Perk());
+			get
+			{
+				if (fInfusionRecycle2 == null)
+				{
+					fInfusionRecycle2 = new InfusionRecycle2Perk(this);
+					RegisterChild(fInfusionRecycle2);
+				}
+				return fInfusionRecycle2;
+			}
 		}
-		VPerk infusionRecycle2;
+		VPerk fInfusionRecycle2;
 
 		#endregion
 
 		#region KillHarvest
 
-		public override VPerk KillHarvest
+		public VPerk KillHarvest
 		{
-			get => killHarvest ?? (killHarvest = new KillHarvestPerk());
+			get
+			{
+				if (fKillHarvest == null)
+				{
+					fKillHarvest = new KillHarvestPerk(this);
+					RegisterChild(fKillHarvest);
+				}
+				return fKillHarvest;
+			}
 		}
-		VPerk killHarvest;
+		VPerk fKillHarvest;
 
 		#endregion
 
 		#region MaximumGather2
 
-		public override VPerk MaximumGather2
+		public VPerk MaximumGather2
 		{
-			get => maximumGather2 ?? (maximumGather2 = new MaximumGather2Perk());
+			get
+			{
+				if (fMaximumGather2 == null)
+				{
+					fMaximumGather2 = new MaximumGather2Perk(this);
+					RegisterChild(fMaximumGather2);
+				}
+				return fMaximumGather2;
+			}
 		}
-		VPerk maximumGather2;
+		VPerk fMaximumGather2;
 
 		#endregion
 
 		#region MaximumPotiental3
 
-		public override VPerk MaximumPotiental3
+		public VPerk MaximumPotiental3
 		{
-			get => maximumPotiential3 ?? (maximumPotiential3 = new MaximumPotiental3Perk());
+			get
+			{
+				if (fMaximumPotiental3 == null)
+				{
+					fMaximumPotiental3 = new MaximumPotiental3Perk(this);
+					RegisterChild(fMaximumPotiental3);
+				}
+				return fMaximumPotiental3;
+			}
 		}
-		VPerk maximumPotiential3;
+		VPerk fMaximumPotiental3;
 
 		#endregion
 
 		#region RankRevision2
 
-		public override VPerk RankRevision2
+		public VPerk RankRevision2
 		{
-			get => rankRevision2 ?? (rankRevision2 = new RankRevision2Perk());
+			get
+			{
+				if (fRankRevision2 == null)
+				{
+					fRankRevision2 = new RankRevision2Perk(this);
+					RegisterChild(fRankRevision2);
+				}
+				return fRankRevision2;
+			}
 		}
-		VPerk rankRevision2;
+		VPerk fRankRevision2;
 
 		#endregion
 
 		#region Veterancy3
 
-		public override VPerk Veterancy3
+		public VPerk Veterancy3
 		{
-			get => veterancy3 ?? (veterancy3 = new Veterancy3Perk());
+			get
+			{
+				if (fVeterancy3 == null)
+				{
+					fVeterancy3 = new Veterancy3Perk(this);
+					RegisterChild(fVeterancy3);
+				}
+				return fVeterancy3;
+			}
 		}
-		VPerk veterancy3;
+		VPerk fVeterancy3;
 
 		#endregion
 
 		#region AutomaticRefinery2
 
-		public override VPerk AutomaticRefinery2
+		public VPerk AutomaticRefinery2
 		{
-			get => automaticRefinery2 ?? (automaticRefinery2 = new AutomaticRefinery2Perk());
+			get
+			{
+				if (fAutomaticRefinery2 == null)
+				{
+					fAutomaticRefinery2 = new AutomaticRefinery2Perk(this);
+					RegisterChild(fAutomaticRefinery2);
+				}
+				return fAutomaticRefinery2;
+			}
 		}
-		VPerk automaticRefinery2;
+		VPerk fAutomaticRefinery2;
 
 		#endregion
 
 		#region CriticalHarvest2
 
-		public override VPerk CriticalHarvest2
+		public VPerk CriticalHarvest2
 		{
-			get => criticalHarvest2 ?? (criticalHarvest2 = new CriticalHarvest2Perk());
+			get
+			{
+				if (fCriticalHarvest2 == null)
+				{
+					fCriticalHarvest2 = new CriticalHarvest2Perk(this);
+					RegisterChild(fCriticalHarvest2);
+				}
+				return fCriticalHarvest2;
+			}
 		}
-		VPerk criticalHarvest2;
+		VPerk fCriticalHarvest2;
 
 		#endregion
 
 		#region DoubleWarp3
 
-		public override VPerk DoubleWarp3
+		public VPerk DoubleWarp3
 		{
-			get => doubleWarp3 ?? (doubleWarp3 = new DoubleWarp3Perk());
+			get
+			{
+				if (fDoubleWarp3 == null)
+				{
+					fDoubleWarp3 = new DoubleWarp3Perk(this);
+					RegisterChild(fDoubleWarp3);
+				}
+				return fDoubleWarp3;
+			}
 		}
-		VPerk doubleWarp3;
+		VPerk fDoubleWarp3;
 
 		#endregion
 
 		#region MineralJackpot3
 
-		public override VPerk MineralJackpot3
+		public VPerk MineralJackpot3
 		{
-			get => mineralJackpot3 ?? (mineralJackpot3 = new MineralJackpot3Perk());
+			get
+			{
+				if (fMineralJackpot3 == null)
+				{
+					fMineralJackpot3 = new MineralJackpot3Perk(this);
+					RegisterChild(fMineralJackpot3);
+				}
+				return fMineralJackpot3;
+			}
 		}
-		VPerk mineralJackpot3;
+		VPerk fMineralJackpot3;
 
 		#endregion
 
 		#region SuperJackpot
 
-		public override VPerk SuperJackpot
+		public VPerk SuperJackpot
 		{
-			get => superJackpot ?? (superJackpot = new SuperJackpotPerk());
+			get
+			{
+				if (fSuperJackpot == null)
+				{
+					fSuperJackpot = new SuperJackpotPerk(this);
+					RegisterChild(fSuperJackpot);
+				}
+				return fSuperJackpot;
+			}
 		}
-		VPerk superJackpot;
+		VPerk fSuperJackpot;
 
 		#endregion
 
 		#region TripleWarp
 
-		public override VPerk TripleWarp
+		public VPerk TripleWarp
 		{
-			get => tripleWarp ?? (tripleWarp = new TripleWarpPerk());
+			get
+			{
+				if (fTripleWarp == null)
+				{
+					fTripleWarp = new TripleWarpPerk(this);
+					RegisterChild(fTripleWarp);
+				}
+				return fTripleWarp;
+			}
 		}
-		VPerk tripleWarp;
+		VPerk fTripleWarp;
 
 		#endregion
 
 		#region Alacrity2
 
-		public override VPerk Alacrity2
+		public VPerk Alacrity2
 		{
-			get => alacrity2 ?? (alacrity2 = new Alacrity2Perk());
+			get
+			{
+				if (fAlacrity2 == null)
+				{
+					fAlacrity2 = new Alacrity2Perk(this);
+					RegisterChild(fAlacrity2);
+				}
+				return fAlacrity2;
+			}
 		}
-		VPerk alacrity2;
+		VPerk fAlacrity2;
 
 		#endregion
 
 		#region BalancedTraining2
 
-		public override VPerk BalancedTraining2
+		public VPerk BalancedTraining2
 		{
-			get => balancedTraining2 ?? (balancedTraining2 = new BalancedTraining2Perk());
+			get
+			{
+				if (fBalancedTraining2 == null)
+				{
+					fBalancedTraining2 = new BalancedTraining2Perk(this);
+					RegisterChild(fBalancedTraining2);
+				}
+				return fBalancedTraining2;
+			}
 		}
-		VPerk balancedTraining2;
+		VPerk fBalancedTraining2;
 
 		#endregion
 
 		#region CriticalChance3
 
-		public override VPerk CriticalChance3
+		public VPerk CriticalChance3
 		{
-			get => criticalChance3 ?? (criticalChance3 = new CriticalChance3Perk());
+			get
+			{
+				if (fCriticalChance3 == null)
+				{
+					fCriticalChance3 = new CriticalChance3Perk(this);
+					RegisterChild(fCriticalChance3);
+				}
+				return fCriticalChance3;
+			}
 		}
-		VPerk criticalChance3;
+		VPerk fCriticalChance3;
 
 		#endregion
 
 		#region CriticalDamage3
 
-		public override VPerk CriticalDamage3
+		public VPerk CriticalDamage3
 		{
-			get => criticalDamage3 ?? (criticalDamage3 = new CriticalDamage3Perk());
+			get
+			{
+				if (fCriticalDamage3 == null)
+				{
+					fCriticalDamage3 = new CriticalDamage3Perk(this);
+					RegisterChild(fCriticalDamage3);
+				}
+				return fCriticalDamage3;
+			}
 		}
-		VPerk criticalDamage3;
+		VPerk fCriticalDamage3;
 
 		#endregion
 
 		#region DamageReduction2
 
-		public override VPerk DamageReduction2
+		public VPerk DamageReduction2
 		{
-			get => damageReduction2 ?? (damageReduction2 = new DamageReduction2Perk());
+			get
+			{
+				if (fDamageReduction2 == null)
+				{
+					fDamageReduction2 = new DamageReduction2Perk(this);
+					RegisterChild(fDamageReduction2);
+				}
+				return fDamageReduction2;
+			}
 		}
-		VPerk damageReduction2;
+		VPerk fDamageReduction2;
 
 		#endregion
 
 		#region SuperRush
 
-		public override VPerk SuperRush
+		public VPerk SuperRush
 		{
-			get => superRush ?? (superRush = new SuperRushPerk());
+			get
+			{
+				if (fSuperRush == null)
+				{
+					fSuperRush = new SuperRushPerk(this);
+					RegisterChild(fSuperRush);
+				}
+				return fSuperRush;
+			}
 		}
-		VPerk superRush;
+		VPerk fSuperRush;
 
 		#endregion
 
@@ -758,11 +1294,6 @@ namespace VBusiness.Perks
 				Alacrity2
 			};
 
-			foreach (var perk in perks)
-			{
-				perk.PerkLevelChanged += OnPerkLevelChanged;
-			}
-
 			allPerks = perks;
 		}
 
@@ -789,6 +1320,7 @@ namespace VBusiness.Perks
 		public override VPerk Perk6 => allPerks.Where(p => p.Page == Page && p.Position == 6).FirstOrDefault();
 
 		public VPerk[] OrderedPerksForDebug => allPerks.OrderBy(p => p.Page).ThenBy(p => p.Position).ToArray();
+
 		#endregion
 
 		#region Cost

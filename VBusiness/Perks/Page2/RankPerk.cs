@@ -1,7 +1,13 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class RankPerk : Perk
 	{
+		public RankPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "Allows units to be ranked to increase power even further";
 
 		public override byte Page => 2;
@@ -14,6 +20,6 @@
 
 		public override short MaxLevel => 1;
 
-		protected override string name => "Rank";
+		protected override string PerkName => "Rank";
 	}
 }

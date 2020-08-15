@@ -1,7 +1,13 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class DamageReductionPerk : Perk
 	{
+		public DamageReductionPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "Reduce damage taken by your units by 1% (additive with itself)";
 
 		public override byte Page => 4;
@@ -14,11 +20,11 @@
 
 		public override short MaxLevel => 10;
 
-		protected override string name => "Damage Reduction";
+		protected override string PerkName => "Damage Reduction";
 
-		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		protected override void OnLevelChanged(int difference)
 		{
-			return (stats) => { stats.DamageReduction += 1 * levelDifference; };
+			PerkCollection.Loadout.Stats.DamageReduction += 1 * difference;
 		}
 	}
 }

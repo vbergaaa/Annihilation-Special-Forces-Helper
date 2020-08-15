@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class HealthPerk : Perk
 	{
-		protected override string name => "Health";
+		public HealthPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		protected override string PerkName => "Health";
 
 		public override string Description => "Increases Health and Health Regen of all units by 2.5%";
 
@@ -16,9 +22,9 @@
 
 		public override short MaxLevel => 10;
 
-		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		protected override void OnLevelChanged(int difference)
 		{
-			return (stats) => { stats.Health += 2.5 * levelDifference; };
+			PerkCollection.Loadout.Stats.Health += 2.5 * difference;
 		}
 	}
 }

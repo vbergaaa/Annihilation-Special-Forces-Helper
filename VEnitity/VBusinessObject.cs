@@ -64,41 +64,17 @@ namespace VEntityFramework.Data
 
 		#region Children
 
-		protected IEnumerable<VBusinessObject> Children
+		protected IList<VBusinessObject> Children => fChildren ?? (fChildren = new List<VBusinessObject>());
+		IList<VBusinessObject> fChildren;
+
+		protected void RegisterChild(VBusinessObject bizo)
 		{
-			get
-			{
-				if (fChildren == null)
-				{
-					fChildren = GetType()
-						.GetProperties()
-						.Where(prop => prop.IsBusinessObject())
-						.Select(prop => prop.GetValue(this))
-						.Where(child => child != null)
-						.Cast<VBusinessObject>();
-				}
-				return fChildren;
-			}
+			Children.Add(bizo);
 		}
-		IEnumerable<VBusinessObject> fChildren;
 
 		#endregion
 
 		#region HasChanges
-
-		public void CascadeHasChanges()
-		{
-			if (!fHasCascadedHasChanges)
-			{
-				fHasCascadedHasChanges = true;
-				foreach (var child in Children)
-				{
-					child.HasChangesChanged += OnHasChangesChanged;
-					child.CascadeHasChanges();
-				}
-			}
-		}
-		bool fHasCascadedHasChanges;
 
 		public bool HasChanges
 		{

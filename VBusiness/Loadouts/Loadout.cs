@@ -15,7 +15,7 @@ namespace VBusiness.Loadouts
 		protected override void SetDefaultValues()
 		{
 			Stats = new Stats();
-			Perks = new PerkCollection();
+			Perks = new PerkCollection(this);
 			Gems = new GemCollection();
 			Souls = new SoulCollection();
 			UnitConfiguration = new UnitConfiguration();
@@ -39,7 +39,7 @@ namespace VBusiness.Loadouts
 			{
 				UnHookPerkStats();
 				base.Perks = value;
-				HookPerkStats();
+				//HookPerkStats();
 			}
 		}
 

@@ -1,7 +1,13 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class KillHarvestPerk : Perk
 	{
+		public KillHarvestPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "Grants a 3% chance to gain an extra kill when Kill Efficiency triggers";
 
 		public override byte Page => 9;
@@ -14,6 +20,6 @@
 
 		public override short MaxLevel => 20;
 
-		protected override string name => "Kill Harvest";
+		protected override string PerkName => "Kill Harvest";
 	}
 }

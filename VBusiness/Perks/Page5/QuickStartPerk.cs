@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
     public class QuickStartPerk : Perk
     {
-        public override string Description => "The first unit that you buy will obtain +3 instantly (additional points also gives it to extra units";
+		public QuickStartPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		public override string Description => "The first unit that you buy will obtain +3 instantly (additional points also gives it to extra units";
 
         public override byte Page => 5;
 
@@ -14,6 +20,6 @@
 
         public override short MaxLevel => 3;
 
-        protected override string name => "Quick Start";
+        protected override string PerkName => "Quick Start";
     }
 }

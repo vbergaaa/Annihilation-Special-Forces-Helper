@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
     public class CriticalCollectionPerk : Perk
     {
-        public override string Description => "Gain a 1% chance to gain 2 kill resource when probes return to your nexus";
+		public CriticalCollectionPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		public override string Description => "Gain a 1% chance to gain 2 kill resource when probes return to your nexus";
 
         public override byte Page => 6;
 
@@ -14,6 +20,6 @@
 
         public override short MaxLevel => 20;
 
-        protected override string name => "Critical Harvest";
+        protected override string PerkName => "Critical Harvest";
     }
 }

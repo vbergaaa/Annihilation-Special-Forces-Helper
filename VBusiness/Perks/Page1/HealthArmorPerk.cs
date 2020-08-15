@@ -1,10 +1,15 @@
 ﻿using VEntityFramework;
+using VEntityFramework.Model;
 
 namespace VBusiness.Perks
 {
 	public class HealthArmorPerk : Perk
 	{
-		protected override string name => "Health Armor";
+		public HealthArmorPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		protected override string PerkName => "Health Armor";
 
 		public override string Description => "Increase Health Armor by 2%";
 
@@ -18,9 +23,9 @@ namespace VBusiness.Perks
 
 		public override short MaxLevel => 10;
 
-		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		protected override void OnLevelChanged(int difference)
 		{
-			return (stats) => { stats.HealthArmor += 2 * levelDifference; };
+			PerkCollection.Loadout.Stats.HealthArmor += 2 * difference;
 		}
 	}
 }

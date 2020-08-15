@@ -1,9 +1,14 @@
 ﻿using VEntityFramework;
+using VEntityFramework.Model;
 
 namespace VBusiness.Perks
 {
 	public class SuperJackpotPerk : Perk
 	{
+		public SuperJackpotPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "Increase mineral jackpot reward by 10 minerals and 1 kill";
 
 		public override byte Page => 10;
@@ -16,6 +21,6 @@ namespace VBusiness.Perks
 
 		public override short MaxLevel => 10;
 
-		protected override string name => "Super Jackpot";
+		protected override string PerkName => "Super Jackpot";
 	}
 }

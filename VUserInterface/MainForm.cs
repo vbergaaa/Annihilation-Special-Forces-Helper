@@ -45,6 +45,7 @@ namespace VUserInterface
 			if (loadoutName != null)
 			{
 				var loadout = new VDataContext().ReadFromXML<Loadout>(loadoutName);
+				bool test = loadout.HasChanges;
 				if (loadout != null)
 				{
 					var form = new VLoadoutForm(loadout);

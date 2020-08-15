@@ -1,11 +1,16 @@
 ﻿
 using VEntityFramework;
+using VEntityFramework.Model;
 
 namespace VBusiness.Perks
 {
 	public class AttackSpeedPerk : Perk
 	{
-		protected override string name => "Attack Speed";
+		public AttackSpeedPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		protected override string PerkName => "Attack Speed";
 
 		public override string Description => "Increase Attack Speed of all your units by 2%";
 
@@ -19,9 +24,9 @@ namespace VBusiness.Perks
 
 		public override short MaxLevel => 10;
 
-		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		protected override void OnLevelChanged(int difference)
 		{
-			return (stats) => { stats.AttackSpeed += 2 * levelDifference; };
+			PerkCollection.Loadout.Stats.AttackSpeed += 2 * difference;
 		}
 	}
 }

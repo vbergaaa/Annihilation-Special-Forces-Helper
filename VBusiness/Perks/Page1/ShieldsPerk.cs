@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class ShieldsPerk : Perk
 	{
-		protected override string name => "Shields";
+		public ShieldsPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		protected override string PerkName => "Shields";
 		
 		public override string Description => "Increase Shields and Shields Regen of all your units by 2.5%";
 
@@ -16,9 +22,9 @@
 
 		public override short MaxLevel => 10;
 
-		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		protected override void OnLevelChanged(int difference)
 		{
-			return (stats) => { stats.Shields += 2.5 * levelDifference; };
+			PerkCollection.Loadout.Stats.Shields += 2.5 * difference;
 		}
 	}
 }

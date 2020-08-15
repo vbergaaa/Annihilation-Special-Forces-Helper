@@ -1,8 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
     public class AcceleratedFusionPerk : Perk
     {
-        public override string Description => "Reduce infusion and evolution time by 5%";
+		public AcceleratedFusionPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
+		public override string Description => "Reduce infusion and evolution time by 5%";
 
         public override byte Page => 7;
 
@@ -14,6 +20,6 @@
 
         public override short MaxLevel => 15;
 
-        protected override string name => "Accelerated Fusion";
+        protected override string PerkName => "Accelerated Fusion";
     }
 }

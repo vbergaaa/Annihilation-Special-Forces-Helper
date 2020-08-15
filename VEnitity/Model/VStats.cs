@@ -229,7 +229,19 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		public bool HasRedCrits { get; set; }
+		#region RedCrits
+
+		public bool HasRedCrits {
+			get => fHasRedCrits;
+			set
+			{
+				fHasRedCrits = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+			}
+		}
+		bool fHasRedCrits;
+
+		#endregion
 
 		public double MoveSpeed { get; set; }
 
@@ -332,6 +344,5 @@ namespace VEntityFramework.Model
 		public double DamageIncreaseForBinding => Math.Round(DamageIncrease, 2);
 
 		#endregion
-
 	}
 }

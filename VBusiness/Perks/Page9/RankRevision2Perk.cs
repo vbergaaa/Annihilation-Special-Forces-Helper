@@ -1,7 +1,13 @@
-﻿namespace VBusiness.Perks
+﻿using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class RankRevision2Perk : Perk
 	{
+		public RankRevision2Perk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "Increases the chance to successfully rank up a unit by 5%";
 
 		public override byte Page => 9;
@@ -14,6 +20,6 @@
 
 		public override short MaxLevel => 5;
 
-		protected override string name => "Rank Revision II";
+		protected override string PerkName => "Rank Revision II";
 	}
 }

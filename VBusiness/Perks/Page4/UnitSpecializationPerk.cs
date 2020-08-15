@@ -1,7 +1,14 @@
-﻿namespace VBusiness.Perks
+﻿using Microsoft.VisualBasic;
+using VEntityFramework.Model;
+
+namespace VBusiness.Perks
 {
 	public class UnitSpecializationPerk : Perk
 	{
+		public UnitSpecializationPerk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "A random unit (excluding probes) cost 2% * L less, and it as well as any unit formed from it gain 2% * L Damage Increase and 1% * L Damage Reduction, but all other units cost 100% - 10% * L more";
 
 		public override byte Page => 4;
@@ -14,14 +21,12 @@
 
 		public override short MaxLevel => 10;
 
-		protected override string name => "Unit Specialization";
+		protected override string PerkName => "Unit Specialization";
 
-		protected override System.Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference)
+		protected override void OnLevelChanged(int difference)
 		{
-			return (stats) => {
-				stats.DamageIncrease += 2 * levelDifference;
-				stats.DamageReduction += 1 * levelDifference;
-			};
+			PerkCollection.Loadout.Stats.DamageIncrease += 2 * difference;
+			PerkCollection.Loadout.Stats.DamageReduction += 1 * difference;
 		}
 	}
 }
