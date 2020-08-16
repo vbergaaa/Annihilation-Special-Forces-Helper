@@ -7,6 +7,10 @@ namespace VBusiness.Souls
 {
 	public class HigherSoul : Soul
 	{
+		public HigherSoul(VSoulCollection collection) : base(collection)
+		{
+		}
+
 		public override SoulType Type => SoulType.Higher;
 
 		protected sealed override SoulType Rarity => SoulType.Higher;

@@ -73,7 +73,8 @@ namespace VEntityFramework.Data
 				var typeName = GetTypeNameForSoul(documentElement);
 				var myAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(Directory.GetCurrentDirectory() + "/VBusiness.dll");
 				var myType = myAssembly.GetType(typeName);
-				return (VBusinessObject)type.Assembly.CreateInstance(myType.FullName);
+				var ctor = myType.GetConstructors()[0];
+				return (VBusinessObject)ctor.Invoke(new object[] { null });
 			}
 			return (VBusinessObject)type.Assembly.CreateInstance(type.FullName);
 		}

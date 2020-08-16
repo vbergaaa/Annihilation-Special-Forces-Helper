@@ -10,58 +10,58 @@ namespace VBusiness.Souls
 	{
 		#region Constructor
 
-		public Soul()
+		public Soul(VSoulCollection collection) : base(collection)
 		{
 		}
 
-		public static Soul New(SoulType type)
+		public static Soul New(SoulType type, VSoulCollection collection)
 		{
 			return type switch
 			{
-				(SoulType.None) => new EmptySoul(),
-				(SoulType.Lowest) => new LowestSoul(),
-				(SoulType.Lower) => new LowerSoul(),
-				(SoulType.Low) => new LowSoul(),
-				(SoulType.Mid) => new MidSoul(),
-				(SoulType.High) => new HighSoul(),
-				(SoulType.Higher) => new HigherSoul(),
-				(SoulType.Highest) => new HighestSoul(),
-				(SoulType.Night) => new NightSoul(),
-				(SoulType.Tormented) => new TormentedSoul(),
-				(SoulType.Demonic) => new DemonicSoul(),
-				(SoulType.Titan) => new TitanSoul(),
-				(SoulType.Bronze) => new BronzeSoul(),
-				(SoulType.Mirrors) => new MirrorsSoul(),
-				(SoulType.Hunter) => new HunterSoul(),
-				(SoulType.Silver) => new SilverSoul(),
-				(SoulType.Reflection) => new ReflectionSoul(),
-				(SoulType.Veterancy) => new VeterancySoul(),
-				(SoulType.Urusy) => new UrusySoul(),
-				(SoulType.Scavenger) => new ScavengerSoul(),
-				(SoulType.Hunger) => new HungerSoul(),
-				(SoulType.Luck) => new LuckSoul(),
-				(SoulType.Greed) => new GreedSoul(),
-				(SoulType.Sharing) => new SharingSoul(),
-				(SoulType.Convenience) => new ConvenienceSoul(),
-				(SoulType.Promotion) => new PromotionSoul(),
-				(SoulType.Status) => new StatusSoul(),
-				(SoulType.Predestination) => new PredestinationSoul(),
-				(SoulType.RapidMutation) => new RapidMutationSoul(),
-				(SoulType.Sales) => new SalesSoul(),
-				(SoulType.GlowingDetermination) => new GlowingDeterminationSoul(),
-				(SoulType.WellAmplification) => new WellAmplificationSoul(),
-				(SoulType.AccelleratedAdvancement) => new AccelleratedAdvancementSoul(),
-				(SoulType.GhostForce) => new GhostForceSoul(),
-				(SoulType.Training) => new TrainingSoul(),
-				(SoulType.PowerWarping) => new PowerWarpingSoul(),
-				(SoulType.Demolition) => new DemolitionSoul(),
-				(SoulType.Tanking) => new TankingSoul(),
-				(SoulType.Unchained) => new UnchainedSoul(),
-				(SoulType.Draining) => new DrainingSoul(),
-				(SoulType.Alacrity) => new AlacritySoul(),
-				(SoulType.Stats) => new StatsSoul(),
-				(SoulType.StridingTitan) => new StridingTitanSoul(),
-				(SoulType.UnboundReflection) => new UnboundReflectionSoul(),
+				SoulType.None => new EmptySoul(),
+				SoulType.Lowest => new LowestSoul(collection),
+				SoulType.Lower => new LowerSoul(collection),
+				SoulType.Low => new LowSoul(collection),
+				SoulType.Mid => new MidSoul(collection),
+				SoulType.High => new HighSoul(collection),
+				SoulType.Higher => new HigherSoul(collection),
+				SoulType.Highest => new HighestSoul(collection),
+				SoulType.Night => new NightSoul(collection),
+				SoulType.Tormented => new TormentedSoul(collection),
+				SoulType.Demonic => new DemonicSoul(collection),
+				SoulType.Titan => new TitanSoul(collection),
+				SoulType.Bronze => new BronzeSoul(collection),
+				SoulType.Mirrors => new MirrorsSoul(collection),
+				SoulType.Hunter => new HunterSoul(collection),
+				SoulType.Silver => new SilverSoul(collection),
+				SoulType.Reflection => new ReflectionSoul(collection),
+				SoulType.Veterancy => new VeterancySoul(collection),
+				SoulType.Urusy => new UrusySoul(collection),
+				SoulType.Scavenger => new ScavengerSoul(collection),
+				SoulType.Hunger => new HungerSoul(collection),
+				SoulType.Luck => new LuckSoul(collection),
+				SoulType.Greed => new GreedSoul(collection),
+				SoulType.Sharing => new SharingSoul(collection),
+				SoulType.Convenience => new ConvenienceSoul(collection),
+				SoulType.Promotion => new PromotionSoul(collection),
+				SoulType.Status => new StatusSoul(collection),
+				SoulType.Predestination => new PredestinationSoul(collection),
+				SoulType.RapidMutation => new RapidMutationSoul(collection),
+				SoulType.Sales => new SalesSoul(collection),
+				SoulType.GlowingDetermination => new GlowingDeterminationSoul(collection),
+				SoulType.WellAmplification => new WellAmplificationSoul(collection),
+				SoulType.AccelleratedAdvancement => new AccelleratedAdvancementSoul(collection),
+				SoulType.GhostForce => new GhostForceSoul(collection),
+				SoulType.Training => new TrainingSoul(collection),
+				SoulType.PowerWarping => new PowerWarpingSoul(collection),
+				SoulType.Demolition => new DemolitionSoul(collection),
+				SoulType.Tanking => new TankingSoul(collection),
+				SoulType.Unchained => new UnchainedSoul(collection),
+				SoulType.Draining => new DrainingSoul(collection),
+				SoulType.Alacrity => new AlacritySoul(collection),
+				SoulType.Stats => new StatsSoul(collection),
+				SoulType.StridingTitan => new StridingTitanSoul(collection),
+				SoulType.UnboundReflection => new UnboundReflectionSoul(collection),
 				_ => throw new Exception($"Soul Type: {type} has not been properly configured"),
 			};
 		}
@@ -368,40 +368,31 @@ namespace VBusiness.Souls
 
 		#region Stats
 
-		public override Action<VStats> ActivateStats
+		protected override void ActivateSoulCore()
 		{
-			get
+			if (SoulCollection?.Loadout?.Stats != null)
 			{
-				return (stats) =>
-				{
-					stats.Attack += Attack;
-					stats.AttackSpeed += AttackSpeed;
-					stats.HealthArmor += Armor;
-					stats.ShieldsArmor += Armor;
-					stats.Health += Vitals;
-					stats.Shields += Vitals;
-					stats.CriticalChance += CriticalChance;
-					stats.CriticalDamage += CriticalDamage;
-				};
+				SoulCollection.Loadout.Stats.Attack += Attack;
+				SoulCollection.Loadout.Stats.AttackSpeed += AttackSpeed;
+				SoulCollection.Loadout.Stats.HealthArmor += Armor;
+				SoulCollection.Loadout.Stats.ShieldsArmor += Armor;
+				SoulCollection.Loadout.Stats.Health += Vitals;
+				SoulCollection.Loadout.Stats.Shields += Vitals;
+				SoulCollection.Loadout.Stats.CriticalChance += CriticalChance;
+				SoulCollection.Loadout.Stats.CriticalDamage += CriticalDamage;
 			}
 		}
 
-		public override Action<VStats> DeactivateStats
+		protected override void DeactivateSoulCore()
 		{
-			get
-			{
-				return (stats) =>
-				{
-					stats.Attack -= Attack;
-					stats.AttackSpeed -= AttackSpeed;
-					stats.HealthArmor -= Armor;
-					stats.ShieldsArmor -= Armor;
-					stats.Health -= Vitals;
-					stats.Shields -= Vitals;
-					stats.CriticalChance -= CriticalChance;
-					stats.CriticalDamage -= CriticalDamage;
-				};
-			}
+			SoulCollection.Loadout.Stats.Attack -= Attack;
+			SoulCollection.Loadout.Stats.AttackSpeed -= AttackSpeed;
+			SoulCollection.Loadout.Stats.HealthArmor -= Armor;
+			SoulCollection.Loadout.Stats.ShieldsArmor -= Armor;
+			SoulCollection.Loadout.Stats.Health -= Vitals;
+			SoulCollection.Loadout.Stats.Shields -= Vitals;
+			SoulCollection.Loadout.Stats.CriticalChance -= CriticalChance;
+			SoulCollection.Loadout.Stats.CriticalDamage -= CriticalDamage;
 		}
 
 		#endregion

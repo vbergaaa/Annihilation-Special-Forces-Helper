@@ -7,6 +7,10 @@ namespace VBusiness.Souls
 {
 	public class DemonicSoul : Soul
 	{
+		public DemonicSoul(VSoulCollection collection) : base(collection)
+		{
+		}
+
 		public override SoulType Type => SoulType.Demonic;
 
 		protected sealed override SoulType Rarity => SoulType.Demonic;

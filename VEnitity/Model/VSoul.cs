@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Text;
 using VEntityFramework.Data;
 
@@ -7,7 +8,25 @@ namespace VEntityFramework.Model
 {
 	public abstract class VSoul : VBusinessObject
 	{
-		public override string BizoName => "Soul";
+		#region	Constructors
+
+		public VSoul(VSoulCollection soulCollection)
+		{
+			SoulCollection = soulCollection;
+		}
+
+		#endregion
+
+		#region Properties
+
+		#region SoulCollection
+
+		[VXML(false)]
+		public VSoulCollection SoulCollection { get; set; }
+
+		#endregion
+
+		#region SaveSlot
 
 		[VXML(true)]
 		public virtual int SaveSlot
@@ -27,9 +46,20 @@ namespace VEntityFramework.Model
 		}
 		int fSaveSlot;
 
+		#endregion
+
+		#region Type
+
 		[VXML(true)]
 		public abstract SoulType Type { get; }
+
+		#endregion
+
+		#region Rarity
+
 		protected abstract SoulType Rarity { get; }
+
+		#endregion
 
 		#region Attack
 
@@ -199,14 +229,6 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region Stats
-
-		public abstract Action<VStats> ActivateStats { get; }
-
-		public abstract Action<VStats> DeactivateStats { get; }
-
-		#endregion
-
 		#region IsMin / IsMin
 
 		public abstract bool IsMax(string property);
@@ -220,101 +242,42 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region Implementation
+		#region UniqueName
 
 		public string UniqueName => IsUnique ? $"{Rarity} Soul of {Type.GetDescription()}" : $"Regular {Rarity} Soul";
 
 		#endregion
-	}
 
-	public enum SoulType
-	{
-		None,
-		Lowest,
-		Lower,
-		Low,
-		Mid,
-		High,
-		Higher,
-		Highest,
-		Night,
-		Tormented,
-		Demonic,
-		Titan,
+		#endregion
 
-		// Uniques
-		// Lowest
-		Bronze,
-		Mirrors,
-		Hunter,
-		
-		// Lower
-		Silver,
-		Reflection,
-		Veterancy,
+		#region Activate / Deactivate
 
-		// Low
-		Urusy,
-		Scavenger,
-		Hunger,
-
-		// Mid
-		Luck,
-		Greed,
-		Sharing,
-
-		// High
-		Convenience,
-		Promotion,
-		Status,
-
-		// Higher
-		Predestination,
-		RapidMutation,
-		Sales,
-
-		// Highest
-		GlowingDetermination,
-		WellAmplification,
-		AccelleratedAdvancement,
-
-		// Night
-		GhostForce,
-		Training,
-		PowerWarping,
-
-		// Tormented
-		Demolition,
-		Tanking,
-		Unchained,
-
-		// Demonic
-		Draining,
-		Alacrity,
-		Stats,
-
-		// Titan
-		StridingTitan,
-		UnboundReflection,
-	}
-
-	public static class SoulTypeExtentions
-	{
-		public static string GetDescription(this SoulType type)
+		public void ActivateSoul()
 		{
-			return type switch
+			if (SoulCollection?.Loadout?.Stats != null)
 			{
-				(SoulType.Hunter) => "The Hunter",
-				(SoulType.RapidMutation) => "Rapid Mutation",
-				(SoulType.GlowingDetermination) => "Glowing Determination",
-				(SoulType.WellAmplification) => "Well Amplification",
-				(SoulType.AccelleratedAdvancement) => "Accellerated Advancement",
-				(SoulType.GhostForce) => "Ghost Force",
-				(SoulType.PowerWarping) => "Power Warping",
-				(SoulType.StridingTitan) => "The Striding Titan",
-				(SoulType.UnboundReflection) => "Unbound Reflection",
-				_ => type.ToString(),
-			};
+				ActivateSoulCore();
+			}
 		}
+
+		protected virtual void ActivateSoulCore() { }
+
+		public void DeactivateSoul()
+		{
+			if (SoulCollection?.Loadout?.Stats != null)
+			{
+				DeactivateSoulCore();
+			}
+		}
+
+		protected virtual void DeactivateSoulCore() { } 
+
+		#endregion
+
+		#region Implementation
+
+		public override string BizoName => "Soul";
+
+		#endregion
 	}
 }

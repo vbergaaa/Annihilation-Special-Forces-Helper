@@ -1,4 +1,5 @@
-﻿using VBusiness.Gems;
+﻿using System.Buffers.Text;
+using VBusiness.Gems;
 using VBusiness.Perks;
 using VBusiness.Souls;
 using VEntityFramework;
@@ -15,9 +16,7 @@ namespace VBusiness.Loadouts
 		protected override void SetDefaultValues()
 		{
 			Stats = new Stats();
-			Perks = new PerkCollection(this);
 			Gems = new GemCollection();
-			Souls = new SoulCollection();
 			UnitConfiguration = new UnitConfiguration();
 		}
 
@@ -34,24 +33,14 @@ namespace VBusiness.Loadouts
 
 		public override VPerkCollection Perks
 		{
-			get => base.Perks;
-			set
-			{
-				UnHookPerkStats();
-				base.Perks = value;
-				//HookPerkStats();
-			}
+			get => base.Perks ?? (base.Perks = new PerkCollection(this));
+			set => base.Perks = value;
 		}
 
 		public override VSoulCollection Souls
 		{
-			get => base.Souls;
-			set
-			{
-				UnHookSoulStats();
-				base.Souls = value;
-				HookSoulStats();
-			}
+			get => base.Souls ?? (base.Souls = new SoulCollection(this));
+			set => base.Souls = value;
 		}
 
 		public override VUnitConfiguration UnitConfiguration
@@ -99,24 +88,6 @@ namespace VBusiness.Loadouts
 			if (Gems != null)
 			{
 				Gems.GemCollectionLevelUpdated -= UpdateStats;
-			}
-		}
-
-		void UnHookSoulStats()
-		{
-			if (Souls != null)
-			{
-				Souls.SoulActivated -= UpdateStats;
-				Souls.SoulDeactivated -= UpdateStats;
-			}
-		}
-
-		void HookSoulStats()
-		{
-			if (Souls != null)
-			{
-				Souls.SoulActivated += UpdateStats;
-				Souls.SoulDeactivated += UpdateStats;
 			}
 		}
 

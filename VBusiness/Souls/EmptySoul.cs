@@ -7,6 +7,10 @@ namespace VBusiness.Souls
 {
 	public sealed class EmptySoul : Soul
 	{
+		public EmptySoul() : base(null)
+		{
+		}
+
 		public override SoulType Type => SoulType.None;
 
 		protected sealed override SoulType Rarity => SoulType.None;

@@ -69,9 +69,18 @@ namespace VEntityFramework.Model
 		}
 		VPerkCollection fPerks;
 
-		public virtual VGemCollection Gems { get; set; }
+		public virtual VSoulCollection Souls
+		{
+			get => fSouls;
+			set
+			{
+				fSouls = value;
+				RegisterChild(fSouls);
+			}
+		}
+		VSoulCollection fSouls;
 
-		public virtual VSoulCollection Souls { get; set; }
+		public virtual VGemCollection Gems { get; set; }
 
 		public virtual VUnitConfiguration UnitConfiguration { get; set; }
 	}

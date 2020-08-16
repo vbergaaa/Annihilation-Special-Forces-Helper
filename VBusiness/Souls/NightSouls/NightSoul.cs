@@ -7,6 +7,10 @@ namespace VBusiness.Souls
 {
 	public class NightSoul : Soul
 	{
+		public NightSoul(VSoulCollection collection) : base(collection)
+		{
+		}
+
 		public override SoulType Type => SoulType.Night;
 
 		protected sealed override SoulType Rarity => SoulType.Night;

@@ -6,21 +6,28 @@ namespace VBusiness.Souls
 {
 	public sealed class StridingTitanSoul : TitanSoul
 	{
+		public StridingTitanSoul(VSoulCollection collection) : base(collection)
+		{
+		}
+
 		public override SoulType Type => SoulType.StridingTitan;
 
-		public override Action<VStats> ActivateStats
+		protected override void ActivateSoulCore()
 		{
-			get
-			{
-				return (stats) =>
-				{
-					base.ActivateStats(stats);
-					stats.Attack += 20;
-					stats.AttackSpeed += 20;
-					stats.Health += 20;
-					stats.Shields += 20;
-				};
-			}
+			base.ActivateSoulCore();
+			SoulCollection.Loadout.Stats.Attack += 20;
+			SoulCollection.Loadout.Stats.AttackSpeed += 20;
+			SoulCollection.Loadout.Stats.Health += 20;
+			SoulCollection.Loadout.Stats.Shields += 20;
+		}
+
+		protected override void DeactivateSoulCore()
+		{
+			base.DeactivateSoulCore();
+			SoulCollection.Loadout.Stats.Attack -= 20;
+			SoulCollection.Loadout.Stats.AttackSpeed -= 20;
+			SoulCollection.Loadout.Stats.Health -= 20;
+			SoulCollection.Loadout.Stats.Shields -= 20;
 		}
 	}
 }

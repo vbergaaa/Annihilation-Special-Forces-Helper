@@ -9,9 +9,26 @@ namespace VEntityFramework.Model
 {
 	public abstract class VSoulCollection : VBusinessObject
 	{
+		#region Constructor
+
+		public VSoulCollection(VLoadout loadout)
+		{
+			Loadout = loadout ?? throw new ArgumentException(nameof(loadout));
+		}
+
+		#endregion
+
+		#region Properties
+
+		#region Loadout
+
+		public VLoadout Loadout { get; private set; }
+
+		#endregion
+
 		#region Souls
 
-		public virtual Dictionary<int, string> Souls { get; }
+		public virtual Dictionary<int, string> SavedSouls { get; }
 
 		#endregion
 
@@ -38,9 +55,9 @@ namespace VEntityFramework.Model
 			get => fSoul1;
 			protected set
 			{
-				OnSoulDeactivated(fSoul1?.DeactivateStats);
+				fSoul1?.DeactivateSoul();
 				fSoul1 = value;
-				OnSoulActivated(fSoul1?.ActivateStats);
+				fSoul1?.ActivateSoul();
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Soul1)));
 			}
 		}
@@ -71,9 +88,9 @@ namespace VEntityFramework.Model
 			get => fSoul2;
 			protected set
 			{
-				OnSoulDeactivated(fSoul2?.DeactivateStats);
+				fSoul2?.DeactivateSoul();
 				fSoul2 = value;
-				OnSoulActivated(fSoul2?.ActivateStats);
+				fSoul2?.ActivateSoul();
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Soul2)));
 			}
 		}
@@ -104,9 +121,9 @@ namespace VEntityFramework.Model
 			get => fSoul3;
 			protected set
 			{
-				OnSoulDeactivated(fSoul3?.DeactivateStats);
+				fSoul3?.DeactivateSoul();
 				fSoul3 = value;
-				OnSoulActivated(fSoul3?.ActivateStats);
+				fSoul3?.ActivateSoul();
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Soul3)));
 			}
 		}
@@ -114,32 +131,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region Events
-
-		void OnSoulActivated(Action<VStats> modification)
-		{
-			if (modification != null)
-			{
-				var e = new StatsEventArgs() { Modification = modification };
-				SoulActivated?.Invoke(this, e); 
-			}
-		}
-
-		void OnSoulDeactivated(Action<VStats> modification)
-		{
-			if (modification != null)
-			{
-				var e = new StatsEventArgs() { Modification = modification };
-				SoulDeactivated?.Invoke(this, e); 
-			}
-		}
-
-		public event EventHandler<StatsEventArgs> SoulActivated;
-
-		public event EventHandler<StatsEventArgs> SoulDeactivated;
-
 		#endregion
 
+		#region Implementation
+
 		public override string BizoName => "SoulCollection";
+
+		#endregion
 	}
 }

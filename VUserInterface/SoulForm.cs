@@ -166,7 +166,7 @@ namespace VUserInterface
 
 			if (value is SoulType type && (Parent == null || Parent.Type != type))
 			{
-				Parent = Soul.New(type);
+				Parent = Soul.New(type, null);
 			}
 		}
 

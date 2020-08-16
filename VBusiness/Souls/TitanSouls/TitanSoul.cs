@@ -7,6 +7,10 @@ namespace VBusiness.Souls
 {
 	public class TitanSoul : Soul
 	{
+		public TitanSoul(VSoulCollection collection) : base(collection)
+		{
+		}
+
 		public override SoulType Type => SoulType.Titan;
 
 		protected sealed override SoulType Rarity => SoulType.Titan;

@@ -7,6 +7,10 @@ namespace VBusiness.Souls
 {
 	public class TormentedSoul : Soul
 	{
+		public TormentedSoul(VSoulCollection collection) : base(collection)
+		{
+		}
+
 		public override SoulType Type => SoulType.Tormented;
 
 		protected sealed override SoulType Rarity => SoulType.Tormented;

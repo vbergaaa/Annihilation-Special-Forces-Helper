@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VEntityFramework.Model;
 
 namespace VBusiness.Souls
 {
 	public class StatsSoul : DemonicSoul
 	{
+		public StatsSoul(VSoulCollection collection) : base(collection)
+		{
+		}
+
 		public override VEntityFramework.Model.SoulType Type => VEntityFramework.Model.SoulType.Stats;
 
 		protected override int MinMinerals => 10000;
