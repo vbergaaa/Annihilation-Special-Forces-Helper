@@ -10,21 +10,31 @@ namespace VEntityFramework.Data
 {
 	public abstract class VBusinessObject : INotifyPropertyChanged
 	{
+		#region Constructor
+
 		public VBusinessObject()
 		{
 			Context = new VDataContext();
 			SetDefaultValues();
 		}
 
+		#endregion
+
+		#region SetDefaultValues
+
 		protected virtual void SetDefaultValues()
 		{
 		}
 
-		public bool ExistsInXML { get; set; }
+		#endregion
+
+		#region DataContext
 
 		public VDataContext Context { get; set; }
 
-		public abstract string BizoName { get; }
+		#endregion
+
+		#region Saving
 
 		public void Save()
 		{
@@ -41,11 +51,6 @@ namespace VEntityFramework.Data
 		{
 		}
 
-		public void Delete()
-		{
-			Context.DeleteXML(this);
-		}
-
 		public void RunPreSaveValidation()
 		{
 			Notifications.Clear();
@@ -56,11 +61,41 @@ namespace VEntityFramework.Data
 		{
 		}
 
+		public bool ExistsInXML { get; set; }
+
+		internal string XmlLocation { get; set; }
+
+		protected internal virtual string GetSaveNameForXML()
+		{
+			return null;
+		}
+
+		#endregion
+
+		#region Notifications
+
 		public NotificationManager Notifications
 		{
 			get => fNotifications ?? (fNotifications = new NotificationManager());
 		}
 		NotificationManager fNotifications;
+
+		#endregion
+
+		#region Delete
+
+		public void Delete()
+		{
+			Context.DeleteXML(this);
+		}
+
+		#endregion
+
+		#region Abstract Members
+
+		public abstract string BizoName { get; }
+
+		#endregion
 
 		#region Children
 
@@ -70,7 +105,15 @@ namespace VEntityFramework.Data
 		protected void RegisterChild(VBusinessObject bizo)
 		{
 			Children.Add(bizo);
+			bizo.Parent = this;
 		}
+
+		#endregion
+
+		#region Parent
+
+		[VXML(false)]
+		internal VBusinessObject Parent { get; set; }
 
 		#endregion
 
@@ -87,7 +130,7 @@ namespace VEntityFramework.Data
 				if (!SuspendSettingHasChanges && fHasChanges != value)
 				{
 					fHasChanges = value;
-					OnHasChangesChanged(this, new HasChangesEventArgs { HasChanges = value });
+					RefreshHasChanges();
 				}
 			}
 		}
@@ -95,27 +138,15 @@ namespace VEntityFramework.Data
 
 		public bool SuspendSettingHasChanges { get; set; }
 
-		protected internal virtual string GetSaveNameForXML()
+		void RefreshHasChanges()
 		{
-			return null;
+			OnPropertyChanged(new PropertyChangedEventArgs(nameof(HasChanges)));
+			Parent?.RefreshHasChanges();
 		}
-
-		internal string XmlLocation { get; set; }
 
 		#endregion
 
 		#region Events
-
-		#region OnChanged
-
-		public event EventHandler<HasChangesEventArgs> HasChangesChanged;
-
-		void OnHasChangesChanged(object sender, HasChangesEventArgs e)
-		{
-			HasChangesChanged?.Invoke(this, e);
-		}
-
-		#endregion
 
 		#region PropertyChanged
 

@@ -7,7 +7,7 @@ namespace VBusiness.Gems
 {
 	abstract class Gem : VGem
 	{
-		#region Consructor
+		#region Constructor
 
 		public Gem(VGemCollection collection) : base(collection)
 		{

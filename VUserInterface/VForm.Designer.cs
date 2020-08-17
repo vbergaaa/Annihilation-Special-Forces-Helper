@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using VEntityFramework.Data;
 
 namespace VUserInterface
 {
@@ -33,13 +34,18 @@ namespace VUserInterface
 			this.components = new System.ComponentModel.Container();
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.BindingSource = new BindingSource();
 			this.SaveButton = new Button();
 			this.CancelButton = new Button();
+			//
+			// BindingSource
+			//
+			this.BindingSource.DataSource = typeof(VBusinessObject);
 			//
 			// SaveButton
 			//
 			this.SaveButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-			this.SaveButton.Enabled = false;
+			this.SaveButton.DataBindings.Add(new Binding("Enabled", BindingSource, "HasChanges"));
 			this.SaveButton.Location = new System.Drawing.Point(620, 420);
 			this.SaveButton.Size = new System.Drawing.Size(80, 25);
 			this.SaveButton.Text = "Save";
@@ -63,5 +69,6 @@ namespace VUserInterface
 
 		private Button SaveButton;
 		private new Button CancelButton;
+		private new BindingSource BindingSource;
 	}
 }

@@ -20,6 +20,7 @@ namespace VEntityFramework.Model
 
 		#region Loadout
 
+		[VXML(false)]
 		public VLoadout Loadout { get; private set; }
 
 		#endregion

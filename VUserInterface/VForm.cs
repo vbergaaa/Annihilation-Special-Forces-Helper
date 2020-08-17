@@ -17,30 +17,16 @@ namespace VUserInterface
 			InitializeComponent();
 		}
 
-		void UpdateSaveButtons(object sender, HasChangesEventArgs e)
-		{
-			SaveButton.Enabled = e.HasChanges;
-			CancelButton.Text = e.HasChanges ? "Cancel" : "Close";
-		}
-
 		public new VBusinessObject Parent
 		{
 			get => fParent;
 			set
 			{
-				if (fParent != null)
-				{
-					fParent.HasChangesChanged -= UpdateSaveButtons;
-				}
-
 				fParent = value;
-
 				if (fParent != null)
 				{
-					fParent.HasChangesChanged += UpdateSaveButtons;
+					this.BindingSource.DataSource = fParent;
 				}
-
-				UpdateSaveButtons(fParent, new HasChangesEventArgs { HasChanges = fParent != null && fParent.HasChanges });
 			}
 		}
 		VBusinessObject fParent;

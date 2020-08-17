@@ -18,6 +18,7 @@ namespace VEntityFramework.Model
 
 		#region Loadout
 
+		[VXML(false)]
 		public VLoadout Loadout
 		{
 			get => fLoadout;

@@ -20,6 +20,7 @@ namespace VEntityFramework.Model
 
 		#region GemCollection
 
+		[VXML(false)]
 		public VGemCollection GemCollection { get; private set; }
 
 		#endregion

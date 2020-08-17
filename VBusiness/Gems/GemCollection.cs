@@ -22,7 +22,15 @@ namespace VBusiness.Gems
 
 		public override VGem AttackGem
 		{
-			get => fAttackGem ?? (fAttackGem = new AttackGem(this));
+			get
+			{
+				if (fAttackGem == null)
+				{
+					fAttackGem = new AttackGem(this);
+					RegisterChild(fAttackGem);
+				}
+				return fAttackGem;
+			}
 		}
 		VGem fAttackGem;
 
@@ -32,29 +40,17 @@ namespace VBusiness.Gems
 
 		public override VGem AttackSpeedGem
 		{
-			get => fAttackSpeedGem ?? (fAttackSpeedGem = new AttackSpeedGem(this));
+			get
+			{
+				if (fAttackSpeedGem == null)
+				{
+					fAttackSpeedGem = new AttackSpeedGem(this);
+					RegisterChild(fAttackSpeedGem);
+				}
+				return fAttackSpeedGem;
+			}
 		}
 		VGem fAttackSpeedGem;
-
-		#endregion
-
-		#region Health
-
-		public override VGem HealthGem
-		{
-			get => fHealthGem ?? (fHealthGem = new HealthGem(this));
-		}
-		VGem fHealthGem;
-
-		#endregion
-
-		#region HealthArmor
-
-		public override VGem HealthArmorGem
-		{
-			get => fHealthArmorGem ?? (fHealthArmorGem = new HealthArmorGem(this));
-		}
-		VGem fHealthArmorGem;
 
 		#endregion
 
@@ -62,7 +58,15 @@ namespace VBusiness.Gems
 
 		public override VGem ShieldsGem
 		{
-			get => fShieldsGem ?? (fShieldsGem = new ShieldsGem(this));
+			get
+			{
+				if (fShieldsGem == null)
+				{
+					fShieldsGem = new ShieldsGem(this);
+					RegisterChild(fShieldsGem);
+				}
+				return fShieldsGem;
+			}
 		}
 		VGem fShieldsGem;
 
@@ -72,29 +76,89 @@ namespace VBusiness.Gems
 
 		public override VGem ShieldsArmorGem
 		{
-			get => fShieldsArmorGem ?? (fShieldsArmorGem = new ShieldsArmorGem(this));
+			get
+			{
+				if (fShieldsArmorGem == null)
+				{
+					fShieldsArmorGem = new ShieldsArmorGem(this);
+					RegisterChild(fShieldsArmorGem);
+				}
+				return fShieldsArmorGem;
+			}
 		}
 		VGem fShieldsArmorGem;
 
 		#endregion
 
-		#region CriticalChance
+		#region Health
 
-		public override VGem CritChanceGem
+		public override VGem HealthGem
 		{
-			get => fCriticalChanceGem ?? (fCriticalChanceGem = new CriticalChanceGem(this));
+			get
+			{
+				if (fHealthGem == null)
+				{
+					fHealthGem = new HealthGem(this);
+					RegisterChild(fHealthGem);
+				}
+				return fHealthGem;
+			}
 		}
-		VGem fCriticalChanceGem;
+		VGem fHealthGem;
 
 		#endregion
 
-		#region CriticalDamage
+		#region HealthArmor
+
+		public override VGem HealthArmorGem
+		{
+			get
+			{
+				if (fHealthArmorGem == null)
+				{
+					fHealthArmorGem = new HealthArmorGem(this);
+					RegisterChild(fHealthArmorGem);
+				}
+				return fHealthArmorGem;
+			}
+		}
+		VGem fHealthArmorGem;
+
+		#endregion
+
+		#region CritChance
+
+		public override VGem CritChanceGem
+		{
+			get
+			{
+				if (fCritChanceGem == null)
+				{
+					fCritChanceGem = new CriticalChanceGem(this);
+					RegisterChild(fCritChanceGem);
+				}
+				return fCritChanceGem;
+			}
+		}
+		VGem fCritChanceGem;
+
+		#endregion
+
+		#region CritDamage
 
 		public override VGem CritDamageGem
 		{
-			get => fCriticalDamageGem ?? (fCriticalDamageGem = new CriticalDamageGem(this));
+			get
+			{
+				if (fCritDamageGem == null)
+				{
+					fCritDamageGem = new CriticalDamageGem(this);
+					RegisterChild(fCritDamageGem);
+				}
+				return fCritDamageGem;
+			}
 		}
-		VGem fCriticalDamageGem;
+		VGem fCritDamageGem;
 
 		#endregion
 
@@ -102,7 +166,15 @@ namespace VBusiness.Gems
 
 		public override VGem DoubleWarpGem
 		{
-			get => fDoubleWarpGem ?? (fDoubleWarpGem = new DoubleWarpGem(this));
+			get
+			{
+				if (fDoubleWarpGem == null)
+				{
+					fDoubleWarpGem = new DoubleWarpGem(this);
+					RegisterChild(fDoubleWarpGem);
+				}
+				return fDoubleWarpGem;
+			}
 		}
 		VGem fDoubleWarpGem;
 

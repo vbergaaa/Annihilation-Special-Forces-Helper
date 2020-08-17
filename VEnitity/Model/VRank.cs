@@ -1,4 +1,5 @@
 ﻿using System;
+using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
@@ -17,6 +18,7 @@ namespace VEntityFramework.Model
 
 		#region Unit Configuration
 
+		[VXML(false)]
 		public VUnitConfiguration UnitConfiguration { get; private set; }
 
 		#endregion
