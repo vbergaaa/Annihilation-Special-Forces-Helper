@@ -5,6 +5,9 @@ namespace VBusiness.Ranks
 {
 	public class RankSSD : Rank
 	{
+		public RankSSD(VUnitConfiguration config) : base(config)
+		{
+		}
 
 		public override UnitRank Rank => UnitRank.SSD;
 

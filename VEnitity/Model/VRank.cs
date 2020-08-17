@@ -4,8 +4,27 @@ namespace VEntityFramework.Model
 {
 	public abstract class VRank
 	{
-		public abstract Action<VStats> ActivateRank { get; }
-		public abstract Action<VStats> DeactivateRank { get; }
+		#region Constructor 
+
+		public VRank(VUnitConfiguration config)
+		{
+			UnitConfiguration = config;
+		}
+
+		#endregion
+
+		#region Properties
+
+		#region Unit Configuration
+
+		public VUnitConfiguration UnitConfiguration { get; private set; }
+
+		#endregion
+
+		#endregion
+
+		public abstract void ActivateRank();
+		public abstract void DeactivateRank();
 
 
 		#region Stats
@@ -18,31 +37,6 @@ namespace VEntityFramework.Model
 		public abstract double Vitals { get; }
 		public abstract double Armor { get; }
 		public abstract double Speed { get; }
-
-		#endregion
-
-		#region Buffs
-
-		public abstract Action<VStats> ActivateMegaBuff { get; }
-		public abstract Action<VStats> ActivateSuperMegaBuff { get; }
-		public abstract Action<VStats> ActivateGodBuff { get; }
-		public abstract Action<VStats> ActivateSuperGodBuff { get; }
-		public abstract Action<VStats> ActivateDivineBuff { get; }
-		public abstract Action<VStats> ActivateSuperDivineBuff { get; }
-		public abstract Action<VStats> ActivateOmegaBuff { get; }
-		public abstract Action<VStats> ActivateSuperOmegaBuff { get; }
-		public abstract Action<VStats> ActivateQuasarBuff { get; }
-		public abstract Action<VStats> ActivateVoidBuff { get; }
-		public abstract Action<VStats> DeactivateMegaBuff { get; }
-		public abstract Action<VStats> DeactivateSuperMegaBuff { get; }
-		public abstract Action<VStats> DeactivateGodBuff { get; }
-		public abstract Action<VStats> DeactivateSuperGodBuff { get; }
-		public abstract Action<VStats> DeactivateDivineBuff { get; }
-		public abstract Action<VStats> DeactivateSuperDivineBuff { get; }
-		public abstract Action<VStats> DeactivateOmegaBuff { get; }
-		public abstract Action<VStats> DeactivateSuperOmegaBuff { get; }
-		public abstract Action<VStats> DeactivateQuasarBuff { get; }
-		public abstract Action<VStats> DeactivateVoidBuff { get; }
 
 		#endregion
 

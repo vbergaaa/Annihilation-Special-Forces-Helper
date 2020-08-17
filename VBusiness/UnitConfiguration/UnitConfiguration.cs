@@ -8,14 +8,30 @@ namespace VBusiness
 {
 	public class UnitConfiguration : VUnitConfiguration
 	{
+		#region Constructor
+
+		public UnitConfiguration(VLoadout loadout) : base(loadout)
+		{
+		}
+
+		#endregion
+
+		#region Properties
+
+		#region Unit Configuration
+
 		public override UnitRank UnitRank
 		{
 			get => base.UnitRank;
 			set
 			{
 				base.UnitRank = value;
-				Rank = Ranks.Rank.New(UnitRank);
+				Rank = Ranks.Rank.New(UnitRank, this);
 			}
 		}
+
+		#endregion
+
+		#endregion
 	}
 }

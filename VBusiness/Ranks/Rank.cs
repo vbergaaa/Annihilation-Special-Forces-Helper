@@ -7,43 +7,51 @@ namespace VBusiness.Ranks
 {
 	public abstract class Rank : VRank
 	{
+		#region Constructor
+
+		public Rank(VUnitConfiguration config) : base(config)
+		{
+		}
+
+		#endregion
+
 		#region New
 
-		public static VRank New(UnitRank rank)
+		public static VRank New(UnitRank rank, VUnitConfiguration config)
 		{
 			return rank switch
 			{
-				(UnitRank.None) => new EmptyRank(),
-				(UnitRank.D) => new RankD(),
-				(UnitRank.C) => new RankC(),
-				(UnitRank.B) => new RankB(),
-				(UnitRank.A) => new RankA(),
-				(UnitRank.S) => new RankS(),
-				(UnitRank.SD) => new RankSD(),
-				(UnitRank.SC) => new RankSC(),
-				(UnitRank.SB) => new RankSB(),
-				(UnitRank.SA) => new RankSA(),
-				(UnitRank.SS) => new RankSS(),
-				(UnitRank.SSD) => new RankSSD(),
-				(UnitRank.SSC) => new RankSSC(),
-				(UnitRank.SSB) => new RankSSB(),
-				(UnitRank.SSA) => new RankSSA(),
-				(UnitRank.SSS) => new RankSSS(),
-				(UnitRank.X) => new RankX(),
-				(UnitRank.SX) => new RankSX(),
-				(UnitRank.SSX) => new RankSSX(),
-				(UnitRank.SSSX) => new RankSSSX(),
-				(UnitRank.XX) => new RankXX(),
-				(UnitRank.XD) => new RankXD(),
-				(UnitRank.SXD) => new RankSXD(),
-				(UnitRank.Z) => new RankZ(),
-				(UnitRank.SZ) => new RankSZ(),
-				(UnitRank.SSZ) => new RankSSZ(),
-				(UnitRank.SSSZ) => new RankSSSZ(),
-				(UnitRank.XZ) => new RankXZ(),
-				(UnitRank.XDZ) => new RankXDZ(),
-				(UnitRank.SXDZ) => new RankSXDZ(),
-				(UnitRank.XYZ) => new RankXYZ(),
+				UnitRank.None => new EmptyRank(config),
+				UnitRank.D => new RankD(config),
+				UnitRank.C => new RankC(config),
+				UnitRank.B => new RankB(config),
+				UnitRank.A => new RankA(config),
+				UnitRank.S => new RankS(config),
+				UnitRank.SD => new RankSD(config),
+				UnitRank.SC => new RankSC(config),
+				UnitRank.SB => new RankSB(config),
+				UnitRank.SA => new RankSA(config),
+				UnitRank.SS => new RankSS(config),
+				UnitRank.SSD => new RankSSD(config),
+				UnitRank.SSC => new RankSSC(config),
+				UnitRank.SSB => new RankSSB(config),
+				UnitRank.SSA => new RankSSA(config),
+				UnitRank.SSS => new RankSSS(config),
+				UnitRank.X => new RankX(config),
+				UnitRank.SX => new RankSX(config),
+				UnitRank.SSX => new RankSSX(config),
+				UnitRank.SSSX => new RankSSSX(config),
+				UnitRank.XX => new RankXX(config),
+				UnitRank.XD => new RankXD(config),
+				UnitRank.SXD => new RankSXD(config),
+				UnitRank.Z => new RankZ(config),
+				UnitRank.SZ => new RankSZ(config),
+				UnitRank.SSZ => new RankSSZ(config),
+				UnitRank.SSSZ => new RankSSSZ(config),
+				UnitRank.XZ => new RankXZ(config),
+				UnitRank.XDZ => new RankXDZ(config),
+				UnitRank.SXDZ => new RankSXDZ(config),
+				UnitRank.XYZ => new RankXYZ(config),
 				_ => null,
 			};
 		}
@@ -52,344 +60,370 @@ namespace VBusiness.Ranks
 
 		#region Buffs
 
-		public override Action<VStats> ActivateMegaBuff => (stats) => { };
-		public override Action<VStats> ActivateSuperMegaBuff => (stats) => { };
-		public override Action<VStats> ActivateGodBuff
-		{
-			get
-			{
-				return (stats) =>
-				{
-					stats.CriticalChance += 5;
-					stats.CriticalDamage += 10;
-				};
-			}
-		}
-		public override Action<VStats> ActivateSuperGodBuff
-		{
-			get
-			{
-				return (stats) =>
-				{
-					stats.CriticalChance += 10;
-					stats.CriticalDamage += 20;
-				};
-			}
-		}
-		public override Action<VStats> ActivateDivineBuff => (stats) => { };
+		#region MegaBuffs
 
-		public override Action<VStats> ActivateSuperDivineBuff => (stats) => { };
+		public void ActivateMegaBuff() { }
 
-		public override Action<VStats> ActivateOmegaBuff
-		{
-			get
-			{
-				return (stats) =>
-				{
-					stats.Attack += 50;
-					stats.AttackSpeed += 50;
-					stats.Health += 50;
-					stats.HealthArmor += 50;
-					stats.Shields += 50;
-					stats.ShieldsArmor += 50;
-					stats.CriticalChance += 5;
-					stats.CriticalDamage += 10;
-				};
-			}
-		}
+		public void ActivateSuperMegaBuff() { }
 
-		public override Action<VStats> ActivateSuperOmegaBuff
-		{
-			get
-			{
-				return (stats) =>
-				{
-					stats.Attack += 100;
-					stats.AttackSpeed += 100;
-					stats.Health += 100;
-					stats.HealthArmor += 100;
-					stats.Shields += 100;
-					stats.ShieldsArmor += 100;
-					stats.CriticalChance += 10;
-					stats.CriticalDamage += 20;
-				};
-			}
-		}
+		public void DeactivateMegaBuff() { }
 
-		public override Action<VStats> ActivateQuasarBuff => (stats) => { };
-		public override Action<VStats> ActivateVoidBuff => (stats) => { };
-
-		public override Action<VStats> DeactivateMegaBuff => (stats) => { };
-		public override Action<VStats> DeactivateSuperMegaBuff => (stats) => { };
-		public override Action<VStats> DeactivateDivineBuff => (stats) => { };
-		public override Action<VStats> DeactivateSuperDivineBuff => (stats) => { }; 
-		public override Action<VStats> DeactivateGodBuff
-		{
-			get
-			{
-				return (stats) =>
-				{
-					stats.CriticalChance -= 5;
-					stats.CriticalDamage -= 10;
-				};
-			}
-		}
-
-		public override Action<VStats> DeactivateSuperGodBuff
-		{
-			get
-			{
-				return (stats) =>
-				{
-					stats.CriticalChance -= 10;
-					stats.CriticalDamage -= 20;
-				};
-			}
-		}
-
-		public override Action<VStats> DeactivateOmegaBuff
-		{
-			get
-			{
-				return (stats) =>
-				{
-					stats.Attack -= 50;
-					stats.AttackSpeed -= 50;
-					stats.Health -= 50;
-					stats.HealthArmor -= 50;
-					stats.Shields -= 50;
-					stats.ShieldsArmor -= 50;
-					stats.CriticalChance -= 5;
-					stats.CriticalDamage -= 10;
-				};
-			}
-		}
-
-		public override Action<VStats> DeactivateSuperOmegaBuff
-		{
-			get
-			{
-				return (stats) =>
-				{
-					stats.Attack -= 100;
-					stats.AttackSpeed -= 100;
-					stats.Health -= 100;
-					stats.HealthArmor -= 100;
-					stats.Shields -= 100;
-					stats.ShieldsArmor -= 100;
-					stats.CriticalChance -= 10;
-					stats.CriticalDamage -= 20;
-				};
-			}
-		}
-		public override Action<VStats> DeactivateQuasarBuff => (stats) => { };
-		public override Action<VStats> DeactivateVoidBuff => (stats) => { };
+		public void DeactivateSuperMegaBuff() { }
 
 		#endregion
 
-		#region Activate / Deactivate
+		#region God Buffs
 
-		public override Action<VStats> ActivateRank
+		public void ActivateGodBuff()
 		{
-			get
-			{
-				return (stats) =>
-				{
-					stats.Attack += Attack;
-					stats.AttackSpeed += AttackSpeed;
-					stats.Health += Vitals;
-					stats.HealthArmor += Vitals;
-					stats.Shields += Vitals;
-					stats.ShieldsArmor += Vitals;
-					stats.DamageIncrease += DamageIncrease;
-					stats.DamageReduction += DamageReduction;
-					stats.CooldownReduction += Speed;
-					stats.MoveSpeed += Speed;
-					stats.Rank = Rank;
-
-					ActivateMegaBuffs(stats);
-					ActivateGodBuffs(stats);
-					ActivateDivineBuffs(stats);
-					ActivateOmegaBuffs(stats);
-					ActivateVoidBuffs(stats);
-				};
-			}
+			UnitConfiguration.Loadout.Stats.CriticalChance += 5;
+			UnitConfiguration.Loadout.Stats.CriticalDamage += 10;
 		}
 
-		void ActivateGodBuffs(VStats stats)
+		public void ActivateSuperGodBuff()
 		{
-			if (Rank >= UnitRank.SX)
-			{
-				if (Rank >= UnitRank.SSSX)
-				{
-					ActivateSuperGodBuff(stats);
-				}
-				else
-				{
-					ActivateGodBuff(stats);
-				}
-			}
+			UnitConfiguration.Loadout.Stats.CriticalChance += 10;
+			UnitConfiguration.Loadout.Stats.CriticalDamage += 20;
 		}
 
-		void ActivateDivineBuffs(VStats stats)
+		public void DeactivateGodBuff()
 		{
-			if (Rank >= UnitRank.SXD)
-			{
-				if (Rank >= UnitRank.SZ)
-				{
-					ActivateSuperDivineBuff(stats);
-				}
-				else
-				{
-					ActivateDivineBuff(stats);
-				}
-			}
+			UnitConfiguration.Loadout.Stats.CriticalChance -= 5;
+			UnitConfiguration.Loadout.Stats.CriticalDamage -= 10;
 		}
 
-		void ActivateOmegaBuffs(VStats stats)
+		public void DeactivateSuperGodBuff()
 		{
-			if (Rank >= UnitRank.XZ)
-			{
-				if (Rank >= UnitRank.XDZ)
-				{
-					ActivateSuperOmegaBuff(stats);
-				}
-				else
-				{
-					ActivateOmegaBuff(stats);
-				}
-			}
+			UnitConfiguration.Loadout.Stats.CriticalChance -= 10;
+			UnitConfiguration.Loadout.Stats.CriticalDamage -= 20;
 		}
 
-		void ActivateVoidBuffs(VStats stats)
+		#endregion
+
+		#region DivineBuffs
+
+		public void ActivateDivineBuff() { }
+
+		public void ActivateSuperDivineBuff() { }
+
+		public void DeactivateDivineBuff() { }
+
+		public void DeactivateSuperDivineBuff() { }
+
+		#endregion
+
+		#region Omega Buffs
+
+		public void ActivateOmegaBuff()
 		{
-			if (Rank >= UnitRank.SXDZ)
-			{
-				if (Rank >= UnitRank.XYZ)
-				{
-					ActivateVoidBuff(stats);
-				}
-				else
-				{
-					ActivateQuasarBuff(stats);
-				}
-			}
+			UnitConfiguration.Loadout.Stats.Attack += 50;
+			UnitConfiguration.Loadout.Stats.AttackSpeed += 50;
+			UnitConfiguration.Loadout.Stats.Health += 50;
+			UnitConfiguration.Loadout.Stats.HealthArmor += 50;
+			UnitConfiguration.Loadout.Stats.Shields += 50;
+			UnitConfiguration.Loadout.Stats.ShieldsArmor += 50;
+			UnitConfiguration.Loadout.Stats.CriticalChance += 5;
+			UnitConfiguration.Loadout.Stats.CriticalDamage += 10;
 		}
 
-		private void ActivateMegaBuffs(VStats stats)
+		public void ActivateSuperOmegaBuff()
+		{
+			UnitConfiguration.Loadout.Stats.Attack += 100;
+			UnitConfiguration.Loadout.Stats.AttackSpeed += 100;
+			UnitConfiguration.Loadout.Stats.Health += 100;
+			UnitConfiguration.Loadout.Stats.HealthArmor += 100;
+			UnitConfiguration.Loadout.Stats.Shields += 100;
+			UnitConfiguration.Loadout.Stats.ShieldsArmor += 100;
+			UnitConfiguration.Loadout.Stats.CriticalChance += 10;
+			UnitConfiguration.Loadout.Stats.CriticalDamage += 20;
+		}
+
+		public void DeactivateOmegaBuff()
+		{
+			UnitConfiguration.Loadout.Stats.Attack -= 50;
+			UnitConfiguration.Loadout.Stats.AttackSpeed -= 50;
+			UnitConfiguration.Loadout.Stats.Health -= 50;
+			UnitConfiguration.Loadout.Stats.HealthArmor -= 50;
+			UnitConfiguration.Loadout.Stats.Shields -= 50;
+			UnitConfiguration.Loadout.Stats.ShieldsArmor -= 50;
+			UnitConfiguration.Loadout.Stats.CriticalChance -= 5;
+			UnitConfiguration.Loadout.Stats.CriticalDamage -= 10;
+		}
+
+		public void DeactivateSuperOmegaBuff()
+		{
+			UnitConfiguration.Loadout.Stats.Attack -= 100;
+			UnitConfiguration.Loadout.Stats.AttackSpeed -= 100;
+			UnitConfiguration.Loadout.Stats.Health -= 100;
+			UnitConfiguration.Loadout.Stats.HealthArmor -= 100;
+			UnitConfiguration.Loadout.Stats.Shields -= 100;
+			UnitConfiguration.Loadout.Stats.ShieldsArmor -= 100;
+			UnitConfiguration.Loadout.Stats.CriticalChance -= 10;
+			UnitConfiguration.Loadout.Stats.CriticalDamage -= 20;
+		}
+
+		#endregion
+
+		#region QuasarBuffs
+
+		public void ActivateQuasarBuff() { }
+
+		public void DeactivateQuasarBuff() { }
+
+		#endregion
+
+		#region VoidBuffs
+
+		public void ActivateVoidBuff() { }
+
+		public void DeactivateVoidBuff() { }
+
+		#endregion
+
+		#endregion
+
+		#region Trigger Buffs
+
+		#region Activate
+
+		#region MegaBuffs
+
+		void ActivateMegaBuffs()
 		{
 			if (Rank >= UnitRank.SS)
 			{
 				if (Rank >= UnitRank.SSS)
 				{
-					ActivateSuperMegaBuff(stats);
+					ActivateSuperMegaBuff();
 				}
 				else
 				{
-					ActivateMegaBuff(stats);
+					ActivateMegaBuff();
 				}
 			}
 		}
 
-		public override Action<VStats> DeactivateRank
-		{
-			get
-			{
-				return (stats) =>
-				{
-					stats.Attack -= Attack;
-					stats.AttackSpeed -= AttackSpeed;
-					stats.Health -= Vitals;
-					stats.HealthArmor -= Armor;
-					stats.Shields -= Vitals;
-					stats.ShieldsArmor -= Armor;
-					stats.DamageIncrease -= DamageIncrease;
-					stats.DamageReduction -= DamageReduction;
-					stats.CooldownReduction -= Speed;
-					stats.MoveSpeed -= Speed;
+		#endregion
 
-					DeactivateMegaBuffs(stats);
-					DeactivateGodBuffs(stats);
-					DeactivateDivineBuffs(stats);
-					DeactivateOmegaBuffs(stats);
-					DeactivateVoidBuffs(stats);
-				};
-			}
-		}
+		#region GodBuffs
 
-		void DeactivateGodBuffs(VStats stats)
+		void ActivateGodBuffs()
 		{
 			if (Rank >= UnitRank.SX)
 			{
 				if (Rank >= UnitRank.SSSX)
 				{
-					DeactivateSuperGodBuff(stats);
+					ActivateSuperGodBuff();
 				}
 				else
 				{
-					DeactivateGodBuff(stats);
+					ActivateGodBuff();
 				}
 			}
 		}
 
-		void DeactivateDivineBuffs(VStats stats)
+		#endregion
+
+		#region Divine Buffs
+
+		void ActivateDivineBuffs()
 		{
 			if (Rank >= UnitRank.SXD)
 			{
 				if (Rank >= UnitRank.SZ)
 				{
-					DeactivateSuperDivineBuff(stats);
+					ActivateSuperDivineBuff();
 				}
 				else
 				{
-					DeactivateDivineBuff(stats);
+					ActivateDivineBuff();
 				}
 			}
 		}
 
-		void DeactivateOmegaBuffs(VStats stats)
+		#endregion
+
+		#region OmegaBuffs
+
+		void ActivateOmegaBuffs()
 		{
 			if (Rank >= UnitRank.XZ)
 			{
 				if (Rank >= UnitRank.XDZ)
 				{
-					DeactivateSuperOmegaBuff(stats);
+					ActivateSuperOmegaBuff();
 				}
 				else
 				{
-					DeactivateOmegaBuff(stats);
+					ActivateOmegaBuff();
 				}
 			}
 		}
 
-		void DeactivateVoidBuffs(VStats stats)
+		#endregion
+
+		#region VoidBuffs
+
+		void ActivateVoidBuffs()
 		{
 			if (Rank >= UnitRank.SXDZ)
 			{
-				if (Rank >= UnitRank.XYZ)
-				{
-					DeactivateVoidBuff(stats);
-				}
-				else
-				{
-					DeactivateQuasarBuff(stats);
-				}
+				ActivateQuasarBuff();
+			}
+			if (Rank >= UnitRank.XYZ)
+			{
+				ActivateVoidBuff();
 			}
 		}
 
-		private void DeactivateMegaBuffs(VStats stats)
+		#endregion
+
+		#endregion
+
+		#region Deactivate
+
+		#region MegaBuffs
+
+		void DeactivateMegaBuffs()
 		{
 			if (Rank >= UnitRank.SS)
 			{
 				if (Rank >= UnitRank.SSS)
 				{
-					DeactivateSuperMegaBuff(stats);
+					DeactivateSuperMegaBuff();
 				}
 				else
 				{
-					DeactivateMegaBuff(stats);
+					DeactivateMegaBuff();
 				}
 			}
+		}
+
+		#endregion
+
+		#region GodBuffs
+
+		void DeactivateGodBuffs()
+		{
+			if (Rank >= UnitRank.SX)
+			{
+				if (Rank >= UnitRank.SSSX)
+				{
+					DeactivateSuperGodBuff();
+				}
+				else
+				{
+					DeactivateGodBuff();
+				}
+			}
+		}
+
+		#endregion
+
+		#region Divine Buffs
+
+		void DeactivateDivineBuffs()
+		{
+			if (Rank >= UnitRank.SXD)
+			{
+				if (Rank >= UnitRank.SZ)
+				{
+					DeactivateSuperDivineBuff();
+				}
+				else
+				{
+					DeactivateDivineBuff();
+				}
+			}
+		}
+
+		#endregion
+
+		#region OmegaBuffs
+
+		void DeactivateOmegaBuffs()
+		{
+			if (Rank >= UnitRank.XZ)
+			{
+				if (Rank >= UnitRank.XDZ)
+				{
+					DeactivateSuperOmegaBuff();
+				}
+				else
+				{
+					DeactivateOmegaBuff();
+				}
+			}
+		}
+
+		#endregion
+
+		#region VoidBuffs
+
+		void DeactivateVoidBuffs()
+		{
+			if (Rank >= UnitRank.SXDZ)
+			{
+				DeactivateQuasarBuff();
+			}
+			if (Rank >= UnitRank.XYZ)
+			{
+				DeactivateVoidBuff();
+			}
+		}
+
+		#endregion
+
+		#endregion
+
+		#endregion
+
+		#region Activate
+
+		public override void ActivateRank()
+		{
+			UnitConfiguration.Loadout.Stats.Attack += Attack;
+			UnitConfiguration.Loadout.Stats.AttackSpeed += AttackSpeed;
+			UnitConfiguration.Loadout.Stats.Health += Vitals;
+			UnitConfiguration.Loadout.Stats.HealthArmor += Vitals;
+			UnitConfiguration.Loadout.Stats.Shields += Vitals;
+			UnitConfiguration.Loadout.Stats.ShieldsArmor += Vitals;
+			UnitConfiguration.Loadout.Stats.DamageIncrease += DamageIncrease;
+			UnitConfiguration.Loadout.Stats.DamageReduction += DamageReduction;
+			UnitConfiguration.Loadout.Stats.CooldownReduction += Speed;
+			UnitConfiguration.Loadout.Stats.MoveSpeed += Speed;
+			UnitConfiguration.Loadout.Stats.Rank = Rank;
+
+			ActivateMegaBuffs();
+			ActivateGodBuffs();
+			ActivateDivineBuffs();
+			ActivateOmegaBuffs();
+			ActivateVoidBuffs();
+		}
+
+		#endregion
+
+		#region Deactivate
+
+		public override void DeactivateRank()
+		{
+			UnitConfiguration.Loadout.Stats.Attack -= Attack;
+			UnitConfiguration.Loadout.Stats.AttackSpeed -= AttackSpeed;
+			UnitConfiguration.Loadout.Stats.Health -= Vitals;
+			UnitConfiguration.Loadout.Stats.HealthArmor -= Vitals;
+			UnitConfiguration.Loadout.Stats.Shields -= Vitals;
+			UnitConfiguration.Loadout.Stats.ShieldsArmor -= Vitals;
+			UnitConfiguration.Loadout.Stats.DamageIncrease -= DamageIncrease;
+			UnitConfiguration.Loadout.Stats.DamageReduction -= DamageReduction;
+			UnitConfiguration.Loadout.Stats.CooldownReduction -= Speed;
+			UnitConfiguration.Loadout.Stats.MoveSpeed -= Speed;
+			UnitConfiguration.Loadout.Stats.Rank = Rank;
+
+			DeactivateMegaBuffs();
+			DeactivateGodBuffs();
+			DeactivateDivineBuffs();
+			DeactivateOmegaBuffs();
+			DeactivateVoidBuffs();
 		}
 
 		#endregion

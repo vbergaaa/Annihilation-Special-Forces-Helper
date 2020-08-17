@@ -7,7 +7,22 @@ namespace VEntityFramework.Model
 {
 	public class VUnitConfiguration : VBusinessObject
 	{
+		#region Constructor
+
+		public VUnitConfiguration(VLoadout loadout)
+		{
+			Loadout = loadout;
+		}
+
+		#endregion
+
 		#region Properties
+
+		#region Loadout
+
+		public VLoadout Loadout { get; private set; }
+
+		#endregion
 
 		#region Rank
 
@@ -20,6 +35,7 @@ namespace VEntityFramework.Model
 				DeactivateRank(fRank);
 				fRank = value;
 				ActivateRank(fRank);
+				HasChanges = true;
 			}
 		}
 
@@ -48,27 +64,27 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region Events
+		#region Methods
 
-		#region OnRankChanged
-
-		public event EventHandler<StatsEventArgs> OnRankChanged;
-
-		void DeactivateRank(VRank rank)
-		{
-			if (rank != null)
-			{
-				var e = new StatsEventArgs() { Modification = rank.DeactivateRank };
-				OnRankChanged?.Invoke(this, e);
-			}
-		}
+		#region ActivateRank
 
 		void ActivateRank(VRank rank)
 		{
-			if (rank != null)
+			if (rank != null && Loadout != null)
 			{
-				var e = new StatsEventArgs() { Modification = rank.ActivateRank };
-				OnRankChanged?.Invoke(this, e); 
+				rank.ActivateRank();
+			}
+		}
+
+		#endregion
+
+		#region DeactivateRank
+
+		void DeactivateRank(VRank rank)
+		{
+			if (rank != null && Loadout != null)
+			{
+				rank.DeactivateRank();
 			}
 		}
 

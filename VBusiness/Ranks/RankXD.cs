@@ -4,6 +4,10 @@ namespace VBusiness.Ranks
 {
 	public class RankXD : Rank
 	{
+		public RankXD(VUnitConfiguration config) : base(config)
+		{
+		}
+
 		public override UnitRank Rank => UnitRank.XD;
 
 		public override double DamageIncrease => 44;

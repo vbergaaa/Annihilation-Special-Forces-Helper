@@ -4,6 +4,10 @@ namespace VBusiness.Ranks
 {
 	public class RankSSZ : Rank
 	{
+		public RankSSZ(VUnitConfiguration config) : base(config)
+		{
+		}
+
 		public override UnitRank Rank => UnitRank.SSZ;
 
 		public override double DamageIncrease => 75;

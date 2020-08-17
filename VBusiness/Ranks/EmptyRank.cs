@@ -7,6 +7,10 @@ namespace VBusiness.Ranks
 {
 	public class EmptyRank : Rank
 	{
+		public EmptyRank(VUnitConfiguration config) : base(config)
+		{
+		}
+
 		public override UnitRank Rank => UnitRank.None;
 
 		public override double DamageIncrease => 0;

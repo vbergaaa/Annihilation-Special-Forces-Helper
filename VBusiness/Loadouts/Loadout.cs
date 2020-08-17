@@ -9,15 +9,17 @@ namespace VBusiness.Loadouts
 {
 	public class Loadout : VLoadout
 	{
+		#region Constructor
+
 		public Loadout()
 		{
 		}
 
-		protected override void SetDefaultValues()
-		{
-			Stats = new Stats();
-			UnitConfiguration = new UnitConfiguration();
-		}
+		#endregion
+
+		#region Properties
+
+		#region Gems
 
 		public override VGemCollection Gems
 		{
@@ -25,11 +27,19 @@ namespace VBusiness.Loadouts
 			set => base.Gems = value;
 		}
 
+		#endregion
+
+		#region Perks
+
 		public override VPerkCollection Perks
 		{
 			get => base.Perks ?? (base.Perks = new PerkCollection(this));
 			set => base.Perks = value;
 		}
+
+		#endregion
+
+		#region Souls
 
 		public override VSoulCollection Souls
 		{
@@ -37,37 +47,19 @@ namespace VBusiness.Loadouts
 			set => base.Souls = value;
 		}
 
+		#endregion
+
+		#region UnitConfiguration
+
 		public override VUnitConfiguration UnitConfiguration
 		{
-			get => base.UnitConfiguration;
-			set
-			{
-				UnHookRankStats();
-				base.UnitConfiguration = value;
-				HookRankStats();
-			}
+			get => base.UnitConfiguration ?? (base.UnitConfiguration = new UnitConfiguration(this));
+			set => base.UnitConfiguration = value;
 		}
 
-		void UpdateStats(object sender, StatsEventArgs e)
-		{
-			e.Modification(Stats);
-		}
+		#endregion
 
-		void UnHookRankStats()
-		{
-			if (UnitConfiguration != null)
-			{
-				UnitConfiguration.OnRankChanged -= UpdateStats;
-			}
-		}
-
-		void HookRankStats()
-		{
-			if (UnitConfiguration != null)
-			{
-				UnitConfiguration.OnRankChanged += UpdateStats;
-			}
-		}
+		#endregion
 
 		#region Validation
 
@@ -93,6 +85,15 @@ namespace VBusiness.Loadouts
 			{
 				Notifications.AddError("Please enter a name for this loadout.");
 			}
+		}
+
+		#endregion
+
+		#region Implementation
+
+		protected override void SetDefaultValues()
+		{
+			Stats = new Stats();
 		}
 
 		#endregion

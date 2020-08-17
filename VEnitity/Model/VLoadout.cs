@@ -7,12 +7,6 @@ namespace VEntityFramework.Model
 	{
 		#region Properties
 
-		#region BizoName
-
-		public override string BizoName => "Loadout";
-
-		#endregion
-
 		#region Name
 
 		[VXML(true)]
@@ -51,12 +45,14 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#endregion
-
-		protected internal override string GetSaveNameForXML()=> $"{Slot}-{Name}";
+		#region Stats
 
 		[VXML(false)]
 		public VStats Stats { get; set; }
+
+		#endregion
+
+		#region Perks
 
 		public virtual VPerkCollection Perks
 		{
@@ -69,6 +65,10 @@ namespace VEntityFramework.Model
 		}
 		VPerkCollection fPerks;
 
+		#endregion
+
+		#region Souls
+
 		public virtual VSoulCollection Souls
 		{
 			get => fSouls;
@@ -79,6 +79,10 @@ namespace VEntityFramework.Model
 			}
 		}
 		VSoulCollection fSouls;
+
+		#endregion
+
+		#region Gems
 
 		public virtual VGemCollection Gems
 		{
@@ -91,6 +95,39 @@ namespace VEntityFramework.Model
 		}
 		VGemCollection fGems;
 
-		public virtual VUnitConfiguration UnitConfiguration { get; set; }
+		#endregion
+
+		#region UnitConfiguration
+
+		public virtual VUnitConfiguration UnitConfiguration
+		{
+			get => fUnitConfiguration;
+			set
+			{
+				fUnitConfiguration = value;
+				RegisterChild(fUnitConfiguration);
+			}
+		}
+		VUnitConfiguration fUnitConfiguration;
+
+		#endregion
+
+		#endregion
+
+		#region Implementation
+
+		#region GetSaveNameForXML
+
+		protected internal override string GetSaveNameForXML() => $"{Slot}-{Name}";
+
+		#endregion
+
+		#region BizoName
+
+		public override string BizoName => "Loadout";
+
+		#endregion
+
+		#endregion
 	}
 }
