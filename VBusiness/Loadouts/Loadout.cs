@@ -16,19 +16,13 @@ namespace VBusiness.Loadouts
 		protected override void SetDefaultValues()
 		{
 			Stats = new Stats();
-			Gems = new GemCollection();
 			UnitConfiguration = new UnitConfiguration();
 		}
 
 		public override VGemCollection Gems
 		{
-			get => base.Gems;
-			set
-			{
-				UnHookGemStats();
-				base.Gems = value;
-				HookGemStats();
-			}
+			get => base.Gems ?? (base.Gems = new GemCollection(this));
+			set => base.Gems = value;
 		}
 
 		public override VPerkCollection Perks
@@ -57,38 +51,6 @@ namespace VBusiness.Loadouts
 		void UpdateStats(object sender, StatsEventArgs e)
 		{
 			e.Modification(Stats);
-		}
-
-		void HookPerkStats()
-		{
-			if (Perks != null)
-			{
-				Perks.PerkLevelChanged += UpdateStats;
-			}
-		}
-
-		void HookGemStats()
-		{
-			if (Gems != null)
-			{
-				Gems.GemCollectionLevelUpdated += UpdateStats;
-			}
-		}
-
-		void UnHookPerkStats()
-		{
-			if (Perks != null)
-			{
-				Perks.PerkLevelChanged -= UpdateStats;
-			}
-		}
-
-		void UnHookGemStats()
-		{
-			if (Gems != null)
-			{
-				Gems.GemCollectionLevelUpdated -= UpdateStats;
-			}
 		}
 
 		void UnHookRankStats()

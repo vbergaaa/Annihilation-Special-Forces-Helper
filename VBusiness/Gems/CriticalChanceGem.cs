@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VEntityFramework.Model;
 
 namespace VBusiness.Gems
 {
 	class CriticalChanceGem : Gem
 	{
+		public CriticalChanceGem(VGemCollection collection) : base(collection)
+		{
+		}
+
 		public override string Name => "Crit Chance";
 
 		protected override decimal BaseCost => 4.49m;
 
 		protected override decimal IncrementCost => .45m;
 
-		protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.CriticalChance += levelDifference; };
+		protected override void OnPerkLevelChanged(int difference) => GemCollection.Loadout.Stats.CriticalChance += difference;
 	}
 }

@@ -7,13 +7,24 @@ namespace VEntityFramework.Model
 {
 	public abstract class VGem : VBusinessObject
 	{
-		#region Abstract Properties
-		
-		public abstract string Name { get; }
+		#region Constructor
+
+		public VGem(VGemCollection collection)
+		{
+			GemCollection = collection;
+		}
 
 		#endregion
 
 		#region Properties
+
+		#region GemCollection
+
+		public VGemCollection GemCollection { get; private set; }
+
+		#endregion
+
+		#region CurrentLevel
 
 		[VXML(true)]
 		public virtual short CurrentLevel
@@ -36,7 +47,7 @@ namespace VEntityFramework.Model
 
 					if (fCurrentLevel != oldValue)
 					{
-						OnPerkLevelChanged(fCurrentLevel, oldValue);
+						OnPerkLevelChanged(fCurrentLevel - oldValue);
 						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
 						HasChanges = true;
 					}
@@ -45,10 +56,30 @@ namespace VEntityFramework.Model
 		}
 		short fCurrentLevel;
 
+		#endregion
+
+		#region Key
+
 		[VXML(true)]
 		public string Key => Name;
 
+		#endregion
+
+		#region NextLevelCost
+
 		public int NextLevelCost => GetCostOfNextLevel();
+
+		#endregion
+
+		#region Abstract Properties
+
+		public abstract string Name { get; }
+
+		protected abstract decimal BaseCost { get; }
+
+		protected abstract decimal IncrementCost { get; }
+
+		#endregion
 
 		#endregion
 
@@ -58,23 +89,14 @@ namespace VEntityFramework.Model
 
 		public abstract int GetCostOfNextLevel();
 
-		protected abstract Action<VStats> GetStatsModifier(int levelDifference);
-
 		#endregion
 
 		#region Events
 
 		public event EventHandler<StatsEventArgs> GemLevelChanged;
 
-		void OnPerkLevelChanged(int newLevel, int oldLevel)
+		protected virtual void OnPerkLevelChanged(int difference)
 		{
-			var e = new StatsEventArgs();
-			e.Modification = GetStatsModifier(newLevel - oldLevel);
-
-			if (e.Modification != null)
-			{
-				GemLevelChanged?.Invoke(this, e);
-			}
 		}
 
 		#endregion

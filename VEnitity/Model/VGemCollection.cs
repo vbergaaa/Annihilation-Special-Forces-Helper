@@ -8,7 +8,24 @@ namespace VEntityFramework.Model
 {
 	public abstract class VGemCollection : VBusinessObject
 	{
-		public override string BizoName => "GemCollection";
+		#region Constructor
+
+		public VGemCollection(VLoadout loadout)
+		{
+			Loadout = loadout;
+		}
+
+		#endregion
+
+		#region Properties
+
+		#region Loadout
+
+		public VLoadout Loadout { get; private set; }
+
+		#endregion
+
+		#region Abstract Properties
 
 		public abstract VGem AttackGem { get; }
 		public abstract VGem AttackSpeedGem { get; }
@@ -22,17 +39,24 @@ namespace VEntityFramework.Model
 
 		public abstract VGem[] Gems { get; }
 
+		#endregion
+
+		#endregion
+
+		#region Methods
+
+		#region TotalCost
+
 		public int TotalCost { get => Gems.Sum(g => g.GetTotalCost()); }
 
-		#region Events
+		#endregion
 
-		protected void OnGemCollectionLevelUpdated(object sender, VEntityFramework.StatsEventArgs e)
-		{
-			GemCollectionLevelUpdated?.Invoke(sender, e);
-		}
+		#endregion
 
-		public event EventHandler<StatsEventArgs> GemCollectionLevelUpdated;
+		#region Implementation
 
+		public override string BizoName => "GemCollection";
+		
 		#endregion
 	}
 }

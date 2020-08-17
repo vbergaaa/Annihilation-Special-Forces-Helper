@@ -80,7 +80,16 @@ namespace VEntityFramework.Model
 		}
 		VSoulCollection fSouls;
 
-		public virtual VGemCollection Gems { get; set; }
+		public virtual VGemCollection Gems
+		{
+			get => fGems;
+			set
+			{
+				fGems = value;
+				RegisterChild(fGems);
+			}
+		}
+		VGemCollection fGems;
 
 		public virtual VUnitConfiguration UnitConfiguration { get; set; }
 	}

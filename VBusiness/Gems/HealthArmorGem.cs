@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VEntityFramework.Model;
 
 namespace VBusiness.Gems
 {
 	class HealthArmorGem : Gem
 	{
+		public HealthArmorGem(VGemCollection collection) : base(collection)
+		{
+		}
+
 		public override string Name => "Health Armor";
 
 		protected override decimal BaseCost => 1.5m;
 
 		protected override decimal IncrementCost => 0.5m;
-		protected override Action<VEntityFramework.Model.VStats> GetStatsModifier(int levelDifference) => (stats) => { stats.HealthArmor += levelDifference; };
+		protected override void OnPerkLevelChanged(int difference) => GemCollection.Loadout.Stats.HealthArmor += difference; 
+
 	}
 }

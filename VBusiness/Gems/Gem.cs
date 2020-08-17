@@ -7,6 +7,18 @@ namespace VBusiness.Gems
 {
 	abstract class Gem : VGem
 	{
+		#region Consructor
+
+		public Gem(VGemCollection collection) : base(collection)
+		{
+		}
+
+		#endregion
+
+		#region Methods
+
+		#region GetTotalCost
+
 		public override int GetTotalCost()
 		{
 			var ret = 0;
@@ -17,18 +29,16 @@ namespace VBusiness.Gems
 			return ret;
 		}
 
-		public override int GetCostOfNextLevel()
-		{
-			return GetCostOfLevel(CurrentLevel);
-		}
+		#endregion
 
-		int GetCostOfLevel(int level)
-		{
-			return (int)(BaseCost + IncrementCost * level);
-		}
+		#region GetCostOfNextLevel
 
-		protected abstract decimal BaseCost { get; }
-		protected abstract decimal IncrementCost { get; }
-		protected override Action<VStats> GetStatsModifier(int levelDifference) => null;
+		public override int GetCostOfNextLevel() => GetCostOfLevel(CurrentLevel);
+
+		int GetCostOfLevel(int level) => (int)(BaseCost + IncrementCost * level);
+
+		#endregion
+
+		#endregion
 	}
 }
