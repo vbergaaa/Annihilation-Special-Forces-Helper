@@ -16,7 +16,10 @@ namespace VUserInterface
 		protected override void OnBindingContextChanged(EventArgs e)
 		{
 			base.OnBindingContextChanged(e);
-			this.gemsBindingSource.DataSource = Gems;
+			if (Gems != null)
+			{
+				this.gemsBindingSource.DataSource = Gems;
+			}
 		}
 
 		internal void RefreshBindings()

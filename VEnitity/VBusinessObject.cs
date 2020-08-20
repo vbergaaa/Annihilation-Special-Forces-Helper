@@ -150,6 +150,11 @@ namespace VEntityFramework.Data
 
 		#region PropertyChanged
 
+		public void RefreshPropertyBinding(string property)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		protected void OnPropertyChanged(PropertyChangedEventArgs e)

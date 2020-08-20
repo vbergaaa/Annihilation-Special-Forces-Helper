@@ -10,16 +10,6 @@ namespace VUserInterface
 		public VPerkControl()
 		{
 			InitializeComponent();
-			SimplifyControl();
-		}
-
-		private void SimplifyControl()
-		{
-			this.CurrentLevelCaption.Visible = false;
-			this.CurrentLevelLabel.Visible = false;
-			this.DecrementCurrentButton.Visible = false;
-			this.IncrementCurrentButton.Visible = false;
-			this.DesiredLevelCaption.Visible = false;
 		}
 
 		public VPerk Perk
@@ -42,7 +32,6 @@ namespace VUserInterface
 			{
 				this.perkBindingSource.DataSource = Perk;
 				RefreshBinding(true);
-				LockButtonsIfRequired();
 			}
 		}
 
@@ -56,70 +45,6 @@ namespace VUserInterface
 		{
 			base.OnParentBindingContextChanged(e);
 			UpdateBindingIfDataSourceChanged();
-		}
-
-		private void DecrementCurrentButton_Click(object sender, EventArgs e)
-		{
-			if (Control.ModifierKeys == Keys.Shift)
-			{
-				Perk.CurrentLevel -= 10;
-			}
-			else
-			{
-				Perk.CurrentLevel -= 1;
-			}
-			LockButtonsIfRequired();
-			RefreshParentsBinding();
-		}
-
-		private void IncrementCurrentButton_Click(object sender, EventArgs e)
-		{
-			if (Control.ModifierKeys == Keys.Shift)
-			{
-				Perk.CurrentLevel += 10;
-			}
-			else
-			{
-				Perk.CurrentLevel += 1;
-			}
-			LockButtonsIfRequired();
-			RefreshParentsBinding();
-		}
-
-		private void DecrementDesiredButton_Click(object sender, EventArgs e)
-		{
-			if (Control.ModifierKeys == Keys.Shift)
-			{
-				Perk.DesiredLevel -= 10;
-			}
-			else
-			{
-				Perk.DesiredLevel -= 1;
-			}
-			LockButtonsIfRequired();
-			RefreshParentsBinding();
-		}
-
-		private void IncrementDesiredButton_Click(object sender, EventArgs e)
-		{
-			if (Control.ModifierKeys == Keys.Shift)
-			{
-				Perk.DesiredLevel += 10;
-			}
-			else
-			{
-				Perk.DesiredLevel += 1;
-			}
-			LockButtonsIfRequired();
-			RefreshParentsBinding();
-		}
-
-		void LockButtonsIfRequired()
-		{
-			IncrementDesiredButton.Enabled = Perk.DesiredLevel < Perk.MaxLevel;
-			DecrementDesiredButton.Enabled = Perk.DesiredLevel > 0;
-			IncrementCurrentButton.Enabled = Perk.CurrentLevel < Perk.MaxLevel;
-			DecrementCurrentButton.Enabled = Perk.CurrentLevel > 0;
 		}
 
 		void RefreshParentsBinding()

@@ -70,6 +70,7 @@ namespace VEntityFramework.Model
 					HasChanges = true;
 					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DesiredLevel)));
 					OnLevelChanged(fDesiredLevel - oldValue);
+					PerkCollection?.RefreshPropertyBinding(nameof(PerkCollection.RemainingCost));
 				}
 			}
 		}

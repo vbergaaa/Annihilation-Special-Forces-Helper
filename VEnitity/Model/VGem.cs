@@ -51,6 +51,7 @@ namespace VEntityFramework.Model
 						OnPerkLevelChanged(fCurrentLevel - oldValue);
 						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
 						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(NextLevelCost)));
+						GemCollection?.RefreshPropertyBinding(nameof(GemCollection.TotalCost));
 						HasChanges = true;
 					}
 				}

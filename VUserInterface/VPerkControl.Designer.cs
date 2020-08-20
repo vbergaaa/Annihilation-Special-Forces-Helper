@@ -37,14 +37,7 @@ namespace VUserInterface
 		{
 			components = new System.ComponentModel.Container();
 			this.CostLabel = new VLabel();
-			this.CurrentLevelCaption = new VLabel();
-			this.CurrentLevelLabel = new VLabel();
-			this.DecrementDesiredButton = new System.Windows.Forms.Button();
-			this.DesiredLevelCaption = new VLabel();
-			this.DesiredLevelLabel = new VLabel();
-			this.IncrementCurrentButton = new System.Windows.Forms.Button();
-			this.DecrementCurrentButton = new System.Windows.Forms.Button();
-			this.IncrementDesiredButton = new System.Windows.Forms.Button();
+			this.CurrentLevelIncrementor = new VIncrementor();
 			this.CostCaption = new VLabel();
 			this.perkBindingSource = new System.Windows.Forms.BindingSource();
 			((System.ComponentModel.ISupportInitialize)(this.perkBindingSource)).BeginInit();
@@ -66,82 +59,13 @@ namespace VUserInterface
 			this.CostLabel.Size = new System.Drawing.Size(70, 23);
 			this.CostLabel.TabIndex = 6;
 			this.CostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// CurrentLevelCaption
-			// 
-			this.CurrentLevelCaption.Location = new System.Drawing.Point(1, 17);
-			this.CurrentLevelCaption.Name = "CurrentLevelCaption";
-			this.CurrentLevelCaption.Size = new System.Drawing.Size(70, 23);
-			this.CurrentLevelCaption.TabIndex = 3;
-			this.CurrentLevelCaption.Text = "Current:";
-			this.CurrentLevelCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// CurrentLevelLabel
-			// 
-			this.CurrentLevelLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perkBindingSource, "CurrentLevel"));
-			this.CurrentLevelLabel.Location = new System.Drawing.Point(91 , 18);
-			this.CurrentLevelLabel.Name = "CurrentLevelLabel";
-			this.CurrentLevelLabel.Size = new System.Drawing.Size(23, 23);
-			this.CurrentLevelLabel.TabIndex = 2;
-			this.CurrentLevelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// DecrementDesiredButton
-			// 
-			this.DecrementDesiredButton.Click += DecrementDesiredButton_Click;
-			this.DecrementDesiredButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.DecrementDesiredButton.Location = new System.Drawing.Point(30, 41);
-			this.DecrementDesiredButton.Name = "DecrementDesiredButton";
-			this.DecrementDesiredButton.Size = new System.Drawing.Size(27, 27);
-			this.DecrementDesiredButton.TabIndex = 4;
-			this.DecrementDesiredButton.Text = "-";
-			// 
-			// DesiredLevelCaption
-			// 
-			this.DesiredLevelCaption.Location = new System.Drawing.Point(1, 43);
-			this.DesiredLevelCaption.Name = "DesiredLevelCaption";
-			this.DesiredLevelCaption.Size = new System.Drawing.Size(70, 23);
-			this.DesiredLevelCaption.TabIndex = 1;
-			this.DesiredLevelCaption.Text = "Desired:";
-			this.DesiredLevelCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// DesiredLevelLabel
-			// 
-			this.DesiredLevelLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perkBindingSource, "DesiredLevel"));
-			this.DesiredLevelLabel.Location = new System.Drawing.Point(61, 43);
-			this.DesiredLevelLabel.Name = "DesiredLevelLabel";
-			this.DesiredLevelLabel.Size = new System.Drawing.Size(43, 23);
-			this.DesiredLevelLabel.TabIndex = 0;
-			this.DesiredLevelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// IncrementCurrentButton
-			// 
-			this.IncrementCurrentButton.Click += IncrementCurrentButton_Click;
-			this.IncrementCurrentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.IncrementCurrentButton.Location = new System.Drawing.Point(120, 17);
-			this.IncrementCurrentButton.Name = "IncrementCurrentButton";
-			this.IncrementCurrentButton.Size = new System.Drawing.Size(23, 23);
-			this.IncrementCurrentButton.TabIndex = 5;
-			this.IncrementCurrentButton.Text = "+";
-			// 
-			// DecrementCurrentButton
-			// 
-			this.DecrementCurrentButton.Click += DecrementCurrentButton_Click;
-			this.DecrementCurrentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.DecrementCurrentButton.Location = new System.Drawing.Point(62, 17);
-			this.DecrementCurrentButton.Name = "DecrementCurrentButton";
-			this.DecrementCurrentButton.Size = new System.Drawing.Size(23, 23);
-			this.DecrementCurrentButton.TabIndex = 4;
-			this.DecrementCurrentButton.Text = "-";
-			// 
-			// IncrementDesiredButton
-			// 
-			this.IncrementDesiredButton.Click += IncrementDesiredButton_Click;
-			this.IncrementDesiredButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.IncrementDesiredButton.Location = new System.Drawing.Point(110, 41);
-			this.IncrementDesiredButton.Name = "IncrementDesiredButton";
-			this.IncrementDesiredButton.Size = new System.Drawing.Size(27, 27);
-			this.IncrementDesiredButton.TabIndex = 5;
-			this.IncrementDesiredButton.Text = "+";
+			//
+			// CurrentLevelIncrementor
+			//
+			this.CurrentLevelIncrementor.Location = new System.Drawing.Point(27, 30);
+			this.CurrentLevelIncrementor.DataBindings.Add("Value", perkBindingSource, "DesiredLevel");
+			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", perkBindingSource, "MaxLevel");
+			this.CurrentLevelIncrementor.MinValue = 0;
 			// 
 			// perkBindingSource
 			// 
@@ -150,15 +74,8 @@ namespace VUserInterface
 			// VPerkControl
 			// 
 			this.Controls.Add(this.CostLabel);
-			this.Controls.Add(this.IncrementDesiredButton);
-			this.Controls.Add(this.DesiredLevelLabel);
-			this.Controls.Add(this.DecrementDesiredButton);
+			this.Controls.Add(this.CurrentLevelIncrementor);
 			this.Controls.Add(this.CostCaption);
-			this.Controls.Add(this.DesiredLevelCaption);
-			this.Controls.Add(this.CurrentLevelLabel);
-			this.Controls.Add(this.IncrementCurrentButton);
-			this.Controls.Add(this.DecrementCurrentButton);
-			this.Controls.Add(this.CurrentLevelCaption);
 			this.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perkBindingSource, "Name"));
 			this.Size = new System.Drawing.Size(160, 100);
 			((System.ComponentModel.ISupportInitialize)(this.perkBindingSource)).EndInit();
@@ -167,15 +84,8 @@ namespace VUserInterface
 		#endregion
 
 		private System.Windows.Forms.Label CostLabel;
-		private System.Windows.Forms.Label CurrentLevelCaption;
-		private System.Windows.Forms.Label CurrentLevelLabel;
-		private System.Windows.Forms.Button DecrementDesiredButton;
-		private System.Windows.Forms.Label DesiredLevelCaption;
-		private System.Windows.Forms.Label DesiredLevelLabel;
-		private System.Windows.Forms.Button IncrementCurrentButton;
+		private VIncrementor CurrentLevelIncrementor;
 		private System.Windows.Forms.BindingSource perkBindingSource;
-		private System.Windows.Forms.Button DecrementCurrentButton;
-		private System.Windows.Forms.Button IncrementDesiredButton;
 		private System.Windows.Forms.Label CostCaption;
 	}
 }

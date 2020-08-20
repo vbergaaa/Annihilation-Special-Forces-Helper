@@ -20,7 +20,10 @@ namespace VUserInterface
 		protected override void OnBindingContextChanged(EventArgs e)
 		{
 			base.OnBindingContextChanged(e);
-			this.statsBindingSource.DataSource = Stats;
+			if (Stats != null)
+			{
+				this.statsBindingSource.DataSource = Stats;
+			}
 		}
 
 		public VStats Stats { get; set; }

@@ -35,13 +35,31 @@ namespace VUserInterface.CommonControls
 
 		#region MaxValue
 
-		public int? MaxValue { get; set; }
+		public int MaxValue
+		{
+			get => fMaxValue;
+			set
+			{
+				fMaxValue = value;
+				RefreshButtons();
+			}
+		}
+		int fMaxValue = int.MaxValue;
 
 		#endregion
 
 		#region MinValue
 
-		public int MinValue { get; set; }
+		public int MinValue
+		{
+			get => fMinValue;
+			set
+			{
+				fMinValue = value;
+				RefreshButtons();
+			}
+		}
+		int fMinValue;
 
 		#endregion
 
@@ -51,7 +69,7 @@ namespace VUserInterface.CommonControls
 
 		void RefreshButtons()
 		{
-			IncrementButton.Enabled = MaxValue.HasValue ? Value < MaxValue : true;
+			IncrementButton.Enabled = Value < MaxValue;
 			DecrementButton.Enabled = Value > MinValue;
 		}
 
