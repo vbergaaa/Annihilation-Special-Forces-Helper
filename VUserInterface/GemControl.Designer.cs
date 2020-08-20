@@ -35,10 +35,8 @@ namespace VUserInterface
 			components = new System.ComponentModel.Container();
 			this.CostCaption = new VLabel();
 			this.CostLabel = new VLabel();
-			this.CurrentLevelLabel = new VLabel();
 			this.CurrentLevelCaption = new VLabel();
-			this.IncrementCurrentButton = new System.Windows.Forms.Button();
-			this.DecrementCurrentButton = new System.Windows.Forms.Button();
+			this.CurrentLevelIncrementor = new VIncrementor();
 			this.gemBindingSource = new System.Windows.Forms.BindingSource();
 			((System.ComponentModel.ISupportInitialize)(this.gemBindingSource)).BeginInit();
 			// 
@@ -68,35 +66,12 @@ namespace VUserInterface
 			this.CurrentLevelCaption.TabIndex = 3;
 			this.CurrentLevelCaption.Text = "Current:";
 			this.CurrentLevelCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// CurrentLevelLabel
-			// 
-			this.CurrentLevelLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gemBindingSource, "CurrentLevel"));
-			this.CurrentLevelLabel.Location = new System.Drawing.Point(57, 21);
-			this.CurrentLevelLabel.Name = "CurrentLevelLabel";
-			this.CurrentLevelLabel.Size = new System.Drawing.Size(43, 23);
-			this.CurrentLevelLabel.TabIndex = 2;
-			this.CurrentLevelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// IncrementCurrentButton
-			// 
-			this.IncrementCurrentButton.Click += IncrementCurrentButton_Click;
-			this.IncrementCurrentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.IncrementCurrentButton.Location = new System.Drawing.Point(105, 19);
-			this.IncrementCurrentButton.Name = "IncrementCurrentButton";
-			this.IncrementCurrentButton.Size = new System.Drawing.Size(27, 27);
-			this.IncrementCurrentButton.TabIndex = 5;
-			this.IncrementCurrentButton.Text = "+";
-			// 
-			// DecrementCurrentButton
-			// 
-			this.DecrementCurrentButton.Click += DecrementCurrentButton_Click;
-			this.DecrementCurrentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.DecrementCurrentButton.Location = new System.Drawing.Point(27, 18);
-			this.DecrementCurrentButton.Name = "DecrementCurrentButton";
-			this.DecrementCurrentButton.Size = new System.Drawing.Size(27, 27);
-			this.DecrementCurrentButton.TabIndex = 4;
-			this.DecrementCurrentButton.Text = "-";
+			//
+			// this.CurrentLevelIncrementor
+			//
+			this.CurrentLevelIncrementor.Location = new System.Drawing.Point(27, 20);
+			this.CurrentLevelIncrementor.DataBindings.Add("Value", gemBindingSource, "CurrentLevel");
+			this.CurrentLevelIncrementor.MinValue = 0;
 			// 
 			// perkBindingSource
 			// 
@@ -106,9 +81,7 @@ namespace VUserInterface
 			// 
 			this.Controls.Add(this.CostLabel);
 			this.Controls.Add(this.CostCaption);
-			this.Controls.Add(this.CurrentLevelLabel);
-			this.Controls.Add(this.IncrementCurrentButton);
-			this.Controls.Add(this.DecrementCurrentButton);
+			this.Controls.Add(this.CurrentLevelIncrementor);
 			this.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gemBindingSource, "Name"));
 			this.Size = new System.Drawing.Size(160, 75);
 			((System.ComponentModel.ISupportInitialize)(this.gemBindingSource)).EndInit();
@@ -120,8 +93,6 @@ namespace VUserInterface
 		private Label CostCaption;
 		private Label CostLabel;
 		private Label CurrentLevelCaption;
-		private Label CurrentLevelLabel;
-		private Button DecrementCurrentButton;
-		private Button IncrementCurrentButton;
+		private VIncrementor CurrentLevelIncrementor;
 	}
 }

@@ -69,6 +69,6 @@ namespace VUserInterface
 
 		private Button SaveButton;
 		private new Button CancelButton;
-		private new BindingSource BindingSource;
+		private BindingSource BindingSource;
 	}
 }

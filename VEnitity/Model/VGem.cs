@@ -50,6 +50,7 @@ namespace VEntityFramework.Model
 					{
 						OnPerkLevelChanged(fCurrentLevel - oldValue);
 						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
+						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(NextLevelCost)));
 						HasChanges = true;
 					}
 				}
@@ -93,8 +94,6 @@ namespace VEntityFramework.Model
 		#endregion
 
 		#region Events
-
-		public event EventHandler<StatsEventArgs> GemLevelChanged;
 
 		protected virtual void OnPerkLevelChanged(int difference)
 		{

@@ -33,7 +33,6 @@ namespace VUserInterface
 			{
 				this.gemBindingSource.DataSource = Gem;
 				RefreshBinding(true);
-				LockButtonsIfRequired();
 			}
 		}
 
@@ -49,50 +48,9 @@ namespace VUserInterface
 			UpdateBindingIfDataSourceChanged();
 		}
 
-		void DecrementCurrentButton_Click(object sender, EventArgs e)
-		{
-			if (Control.ModifierKeys == Keys.Shift)
-			{
-				Gem.CurrentLevel -= 10;
-			}
-			else
-			{
-				Gem.CurrentLevel -= 1;
-			}
-			LockButtonsIfRequired();
-			RefreshParentsBinding();
-		}
-
-		void LockButtonsIfRequired()
-		{
-			DecrementCurrentButton.Enabled = Gem.CurrentLevel != 0; 
-		}
-
-		void IncrementCurrentButton_Click(object sender, EventArgs e)
-		{
-			if (Control.ModifierKeys == Keys.Shift)
-			{
-				Gem.CurrentLevel += 10;
-			}
-			else
-			{
-				Gem.CurrentLevel += 1;
-			}
-			LockButtonsIfRequired();
-			RefreshParentsBinding();
-		}
-
 		void RefreshBinding(bool updateSchema)
 		{
 			gemBindingSource.ResetBindings(updateSchema);
-		}
-
-		void RefreshParentsBinding()
-		{
-			if (Parent is VGemCollectionControl parent)
-			{
-				parent.RefreshBindings();
-			}
 		}
 	}
 }

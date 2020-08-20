@@ -26,8 +26,11 @@ namespace VUserInterface
 		protected override void OnBindingContextChanged(EventArgs e)
 		{
 			base.OnBindingContextChanged(e);
-			this.bindingSource.DataSource = Souls;
-			//this.bindingSource.ResetBindings(true);
+			if (Souls != null)
+			{
+				this.bindingSource.DataSource = Souls;
+				this.bindingSource.ResetBindings(true);
+			}
 		}
 
 		void Soul1Control_OnSoulChanged(object sender, SoulChangedEventArgs e)

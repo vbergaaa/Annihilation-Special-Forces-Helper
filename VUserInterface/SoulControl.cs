@@ -25,7 +25,7 @@ namespace VUserInterface
 			set
 			{
 				fSoul = value;
-				UpdateBindings();
+				UpdateBindingIfDataSourceChanged();
 				if (SoulComboBox.SelectedItem.ToString() != $"{fSoul.SaveSlot}-{fSoul.UniqueName}")
 				{
 					SoulComboBox.SelectedItem = $"{fSoul.SaveSlot}-{fSoul.UniqueName}";
@@ -38,16 +38,25 @@ namespace VUserInterface
 
 		Soul fSoul;
 
-		void UpdateBindings()
-		{
-			this.BindingSource.DataSource = Soul;
-			this.BindingSource.ResetBindings(false);
-		}
-
 		protected override void OnBindingContextChanged(EventArgs e)
 		{
 			base.OnBindingContextChanged(e);
-			UpdateBindings();
+			UpdateBindingIfDataSourceChanged();
+		}
+
+		protected override void OnParentBindingContextChanged(EventArgs e)
+		{
+			base.OnParentBindingContextChanged(e);
+			UpdateBindingIfDataSourceChanged();
+		}
+
+		void UpdateBindingIfDataSourceChanged()
+		{
+			if (Soul != null && Soul != this.BindingSource.DataSource)
+			{
+				this.BindingSource.DataSource = Soul;
+				this.BindingSource.ResetBindings(true);
+			}
 		}
 
 		List<string> SoulList

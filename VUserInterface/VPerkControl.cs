@@ -122,7 +122,7 @@ namespace VUserInterface
 			DecrementCurrentButton.Enabled = Perk.CurrentLevel > 0;
 		}
 
-		private void RefreshParentsBinding()
+		void RefreshParentsBinding()
 		{
 			if (this.Parent is VPerkCollectionControl parent)
 			{
