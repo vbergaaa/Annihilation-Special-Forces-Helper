@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 
 namespace VUserInterface.CommonControls
@@ -63,6 +59,45 @@ namespace VUserInterface.CommonControls
 
 		#endregion
 
+		#region Caption
+
+		public string Caption
+		{
+			get => fCaption;
+			set
+			{
+				fCaption = value;
+				CaptionLabel.Text = fCaption;
+				CaptionLabel.Visible = !string.IsNullOrEmpty(fCaption);
+				AdjustLabel();
+			}
+		}
+
+		private void AdjustLabel()
+		{
+			var width = CaptionLabel.Width + 5;
+			this.Width += width;
+			this.Left -= width;
+			this.DecrementButton.Left += width;
+			this.IncrementButton.Left += width;
+			this.ValueLabel.Left += width;
+		}
+
+		string fCaption;
+
+		#endregion
+
+		#region Increment Amount
+
+		public int IncrementAmount
+		{
+			get => fIncrementAmount;
+			set => fIncrementAmount = value;
+		}
+		int fIncrementAmount = 1;
+
+		#endregion
+
 		#endregion
 
 		#region Update Buttons
@@ -83,11 +118,11 @@ namespace VUserInterface.CommonControls
 		{
 			if (Control.ModifierKeys == Keys.Shift)
 			{
-				Value += 10;
+				Value += 10 * IncrementAmount;
 			}
 			else
 			{
-				Value += 1;
+				Value += 1 * IncrementAmount;
 			}
 			RefreshButtons();
 		}
@@ -100,11 +135,11 @@ namespace VUserInterface.CommonControls
 		{
 			if (Control.ModifierKeys == Keys.Shift)
 			{
-				Value -= 10;
+				Value -= 10 * IncrementAmount;
 			}
 			else
 			{
-				Value -= 1;
+				Value -= 1 * IncrementAmount;
 			}
 			RefreshButtons();
 		}

@@ -15,36 +15,36 @@ namespace VBusiness.Souls
 
 		protected sealed override SoulType Rarity => SoulType.Demonic;
 
-		protected override int MaxAttack => 40;
+		public override int MaxAttack => 40;
 
-		protected override int MinAttack => 30;
+		public override int MinAttack => 30;
 
-		protected override int MaxAttackSpeed => 25;
+		public override int MaxAttackSpeed => 25;
 
-		protected override int MinAttackSpeed =>15;
+		public override int MinAttackSpeed =>15;
 
-		protected override int MaxCriticalChance => 5;
+		public override int MaxCriticalChance => 5;
 
-		protected override int MinCriticalChance => 2;
+		public override int MinCriticalChance => 2;
 
-		protected override int MaxCriticalDamage => 6;
+		public override int MaxCriticalDamage => 6;
 
-		protected override int MinCriticalDamage => 1;
+		public override int MinCriticalDamage => 1;
 
-		protected override int MaxVitals => 25;
+		public override int MaxVitals => 25;
 
-		protected override int MinVitals => 15;
+		public override int MinVitals => 15;
 
-		protected override int MaxArmor => 18;
+		public override int MaxArmor => 18;
 
-		protected override int MinArmor => 10;
+		public override int MinArmor => 10;
 
-		protected override int MaxMinerals => 10000;
+		public override int MaxMinerals => 10000;
 
-		protected override int MinMinerals => 8000;
+		public override int MinMinerals => 8000;
 
-		protected override int MaxKills => 1000;
+		public override int MaxKills => 1000;
 
-		protected override int MinKills => 800;
+		public override int MinKills => 800;
 	}
 }

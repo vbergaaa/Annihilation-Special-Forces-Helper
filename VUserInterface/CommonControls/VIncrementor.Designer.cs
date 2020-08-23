@@ -29,9 +29,10 @@
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.DecrementButton = new System.Windows.Forms.Button();
-			this.IncrementButton = new System.Windows.Forms.Button();
+			this.DecrementButton = new VButton();
+			this.IncrementButton = new VButton();
 			this.ValueLabel = new VLabel();
+			this.CaptionLabel = new VLabel();
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			//
 			// this.DecrementButton
@@ -51,23 +52,32 @@
 			this.IncrementButton.Location = new System.Drawing.Point(81, 1);
 			this.IncrementButton.Name = "IncrementButton";
 			this.IncrementButton.Size = new System.Drawing.Size(27, 27);
-			this.IncrementButton.TabIndex = 1;
+			this.IncrementButton.TabIndex = 2;
 			this.IncrementButton.Text = "+";
 			//
 			// this.ValueLabel
 			//
 			this.ValueLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this, "Value"));
 			this.ValueLabel.Location = new System.Drawing.Point(33, 1);
-			this.ValueLabel.Name = "DesiredLevelLabel";
+			this.ValueLabel.Name = "ValueLabel";
 			this.ValueLabel.Size = new System.Drawing.Size(43, 23);
 			this.ValueLabel.TabIndex = 0;
 			this.ValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			//
+			// this.CaptionLabel
+			//
+			this.CaptionLabel.AutoSize = true;
+			this.CaptionLabel.Location = new System.Drawing.Point(0, 7);
+			this.CaptionLabel.Name = "CaptionLabel";
+			this.CaptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.CaptionLabel.Visible = false;
 			//
 			// VIncrementor
 			//
 			this.Controls.Add(DecrementButton);
 			this.Controls.Add(IncrementButton);
 			this.Controls.Add(ValueLabel);
+			this.Controls.Add(CaptionLabel);
 			this.DataBindings.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged;
 			this.Size = new System.Drawing.Size(120, 29);
 		}
@@ -77,5 +87,6 @@
 		private System.Windows.Forms.Button DecrementButton;
 		private System.Windows.Forms.Button IncrementButton;
 		private System.Windows.Forms.Label ValueLabel;
+		private System.Windows.Forms.Label CaptionLabel;
 	}
 }

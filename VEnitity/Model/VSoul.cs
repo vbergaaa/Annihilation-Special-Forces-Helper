@@ -77,8 +77,8 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fAttack;
-		protected abstract int MaxAttack { get; }
-		protected abstract int MinAttack { get; }
+		public abstract int MaxAttack { get; }
+		public abstract int MinAttack { get; }
 
 		#endregion
 
@@ -98,8 +98,8 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fAttackSpeed;
-		protected abstract int MaxAttackSpeed { get; }
-		protected abstract int MinAttackSpeed { get; }
+		public abstract int MaxAttackSpeed { get; }
+		public abstract int MinAttackSpeed { get; }
 
 		#endregion
 
@@ -119,8 +119,8 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fCriticalChance;
-		protected abstract int MaxCriticalChance { get; }
-		protected abstract int MinCriticalChance { get; }
+		public abstract int MaxCriticalChance { get; }
+		public abstract int MinCriticalChance { get; }
 
 		#endregion
 
@@ -140,8 +140,8 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fCriticalDamage;
-		protected abstract int MaxCriticalDamage { get; }
-		protected abstract int MinCriticalDamage { get; }
+		public abstract int MaxCriticalDamage { get; }
+		public abstract int MinCriticalDamage { get; }
 
 		#endregion
 
@@ -161,8 +161,8 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fVitals;
-		protected abstract int MaxVitals { get; }
-		protected abstract int MinVitals { get; }
+		public abstract int MaxVitals { get; }
+		public abstract int MinVitals { get; }
 
 		#endregion
 
@@ -182,8 +182,8 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fArmor;
-		protected abstract int MaxArmor { get; }
-		protected abstract int MinArmor { get; }
+		public abstract int MaxArmor { get; }
+		public abstract int MinArmor { get; }
 
 		#endregion
 
@@ -203,8 +203,8 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fMinerals;
-		protected abstract int MaxMinerals { get; }
-		protected abstract int MinMinerals { get; }
+		public abstract int MaxMinerals { get; }
+		public abstract int MinMinerals { get; }
 
 		#endregion
 
@@ -224,8 +224,8 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fKills;
-		protected abstract int MaxKills { get; }
-		protected abstract int MinKills { get; }
+		public abstract int MaxKills { get; }
+		public abstract int MinKills { get; }
 
 		#endregion
 

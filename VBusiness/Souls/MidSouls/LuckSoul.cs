@@ -12,6 +12,6 @@ namespace VBusiness.Souls
 		}
 
 		public override VEntityFramework.Model.SoulType Type => VEntityFramework.Model.SoulType.Luck;
-		protected override int MaxCriticalChance => 2;
+		public override int MaxCriticalChance => 2;
 	}
 }

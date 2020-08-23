@@ -13,7 +13,7 @@ namespace VBusiness.Souls
 
 		public override VEntityFramework.Model.SoulType Type => VEntityFramework.Model.SoulType.Demolition;
 
-		protected override int MinCriticalChance => 6;
-		protected override int MaxCriticalChance => 10;
+		public override int MinCriticalChance => 6;
+		public override int MaxCriticalChance => 10;
 	}
 }
