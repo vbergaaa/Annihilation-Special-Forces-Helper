@@ -5,7 +5,7 @@ using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
-	public class VUnitConfiguration : VBusinessObject
+	public abstract class VUnitConfiguration : VBusinessObject
 	{
 		#region Constructor
 
@@ -60,6 +60,48 @@ namespace VEntityFramework.Model
 			}
 		}
 		UnitRank fUnitRank;
+
+		#endregion
+
+		#region CurrentInfuse
+
+		[VXML(true)]
+		public virtual int CurrentInfusion
+		{
+			get => fCurrentInfuse;
+			set
+			{
+				if (value != fCurrentInfuse)
+				{
+					fCurrentInfuse = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentInfusion)));
+				}
+			}
+		}
+		int fCurrentInfuse;
+
+		#endregion
+
+		#region MaximumKills
+
+		public virtual int MaximumKills
+		{
+			get => fMaximumKills;
+			set
+			{
+				fMaximumKills = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MaximumKills)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MaximumInfusion)));
+			}
+		}
+		int fMaximumKills;
+
+		#endregion
+
+		#region MaximumInfuse
+
+		public virtual int MaximumInfusion { get; }
 
 		#endregion
 

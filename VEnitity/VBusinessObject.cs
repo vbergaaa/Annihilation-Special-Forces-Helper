@@ -22,9 +22,18 @@ namespace VEntityFramework.Data
 
 		#region SetDefaultValues
 
-		protected virtual void SetDefaultValues()
+		void SetDefaultValues()
+		{
+			IsSettingDefaultValues = true;
+			SetDefaultValuesCore();
+			IsSettingDefaultValues = false;
+		}
+
+		protected virtual void SetDefaultValuesCore()
 		{
 		}
+
+		protected bool IsSettingDefaultValues { get; set; }
 
 		#endregion
 

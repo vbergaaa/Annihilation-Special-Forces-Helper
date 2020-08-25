@@ -24,11 +24,34 @@ namespace VUserInterface
 			set
 			{
 				fUnit = value;
+				UpdateBindingIfDataSourceChanged();
 				UpdateRankComboBox();
 			}
 		}
+		UnitConfiguration fUnit;
 
-		private void UpdateRankComboBox()
+		protected override void OnBindingContextChanged(EventArgs e)
+		{
+			base.OnBindingContextChanged(e);
+			UpdateBindingIfDataSourceChanged();
+		}
+
+		protected override void OnParentBindingContextChanged(EventArgs e)
+		{
+			base.OnParentBindingContextChanged(e);
+			UpdateBindingIfDataSourceChanged();
+		}
+
+		void UpdateBindingIfDataSourceChanged()
+		{
+			if (Unit != null && Unit != bindingSource.DataSource)
+			{
+				bindingSource.DataSource = Unit;
+				bindingSource.ResetBindings(false);
+			}
+		}
+
+		void UpdateRankComboBox()
 		{
 			if (fUnit != null)
 			{
@@ -37,8 +60,6 @@ namespace VUserInterface
 				RankComboBox.SelectedValueChanged += RankChanged;
 			}
 		}
-
-		UnitConfiguration fUnit;
 
 		void RankChanged(object sender, EventArgs e)
 		{

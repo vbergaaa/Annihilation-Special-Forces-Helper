@@ -243,9 +243,11 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		public double MoveSpeed { get; set; }
+		public double Acceleration { get; set; } // from what I can tell, you get 1% accel per essence, and it is multiplicative to the 10% accel you get per infuse, so I think it makes sense to store these values separately
 
-		public double CooldownReduction { get; set; }
+		public double MoveSpeed { get; set; } // it looks like the 2.4477% move speed per essence is stacked multiplicatively, so it is exponential, where the 10% move speed from essence is additive (linear) they are multiplied to get the result
+
+		public double CooldownReduction { get; set; } // the tests for accel above were actually done on CDR, so is more accurately on this. not sure if they are the same thing at this stage
 
 		#region Trifecta Power
 

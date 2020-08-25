@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using VBusiness;
 using VBusiness.Souls;
 using VEntityFramework.Model;
 using VUserInterface.CommonControls;
@@ -38,11 +39,12 @@ namespace VUserInterface
 			this.bindingSource = new BindingSource();
 			this.RankComboBox = new ComboBox();
 			this.RankCaption = new VLabel();
+			this.InfusionIncrementor = new VIncrementor();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
 			//
-			this.bindingSource.DataSource = typeof(UnitConfigurationControl);
+			this.bindingSource.DataSource = typeof(UnitConfiguration);
 			//
 			// RankComboBox
 			//
@@ -55,10 +57,18 @@ namespace VUserInterface
 			this.RankCaption.Location = new System.Drawing.Point(35, 40);
 			this.RankCaption.Text = "Rank:";
 			//
+			// Infusion Incrementor
+			//
+			this.InfusionIncrementor.Location = new System.Drawing.Point(125, 70);
+			this.InfusionIncrementor.DataBindings.Add("Value", bindingSource, "CurrentInfusion");
+			this.InfusionIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaximumInfusion");
+			this.InfusionIncrementor.Caption = "Infusion";
+			//
 			// VSoulCollectionControl
 			//
 			this.Controls.Add(RankComboBox);
 			this.Controls.Add(RankCaption);
+			this.Controls.Add(InfusionIncrementor);
 			this.Size = new System.Drawing.Size(589, 292);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
@@ -68,5 +78,6 @@ namespace VUserInterface
 		BindingSource bindingSource;
 		ComboBox RankComboBox;
 		Label RankCaption;
+		VIncrementor InfusionIncrementor;
 	}
 }

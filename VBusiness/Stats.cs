@@ -8,7 +8,7 @@ namespace VBusiness
 		{
 		}
 
-		protected override void SetDefaultValues()
+		protected override void SetDefaultValuesCore()
 		{
 			Attack = 100;
 			AttackSpeed = 100;
