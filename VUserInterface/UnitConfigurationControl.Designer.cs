@@ -40,6 +40,8 @@ namespace VUserInterface
 			this.RankComboBox = new ComboBox();
 			this.RankCaption = new VLabel();
 			this.InfusionIncrementor = new VIncrementor();
+			this.EssenceIncrementor = new VIncrementor();
+			this.SoloBonusCheckBox = new VCheckControl();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
@@ -57,18 +59,33 @@ namespace VUserInterface
 			this.RankCaption.Location = new System.Drawing.Point(35, 40);
 			this.RankCaption.Text = "Rank:";
 			//
-			// Infusion Incrementor
+			// InfusionIncrementor
 			//
 			this.InfusionIncrementor.Location = new System.Drawing.Point(125, 70);
 			this.InfusionIncrementor.DataBindings.Add("Value", bindingSource, "CurrentInfusion");
 			this.InfusionIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaximumInfusion");
-			this.InfusionIncrementor.Caption = "Infusion";
+			this.InfusionIncrementor.Caption = "Infusion:";
+			//
+			// EssenceIncrementor
+			//
+			this.EssenceIncrementor.Location = new System.Drawing.Point(125, 100);
+			this.EssenceIncrementor.DataBindings.Add("Value", bindingSource, "EssenceStacks");
+			this.EssenceIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaximumEssence");
+			this.EssenceIncrementor.Caption = "Essence:";
+			//
+			// SoloBonusCheckBox
+			//
+			this.SoloBonusCheckBox.Location = new System.Drawing.Point(125, 130);
+			this.SoloBonusCheckBox.Caption = "Solo Bonus:";
+			this.SoloBonusCheckBox.DataBindings.Add("Checked", bindingSource, "HasSoloBonus");
 			//
 			// VSoulCollectionControl
 			//
 			this.Controls.Add(RankComboBox);
 			this.Controls.Add(RankCaption);
 			this.Controls.Add(InfusionIncrementor);
+			this.Controls.Add(EssenceIncrementor);
+			this.Controls.Add(SoloBonusCheckBox);
 			this.Size = new System.Drawing.Size(589, 292);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
@@ -79,5 +96,7 @@ namespace VUserInterface
 		ComboBox RankComboBox;
 		Label RankCaption;
 		VIncrementor InfusionIncrementor;
+		VIncrementor EssenceIncrementor;
+		VCheckControl SoloBonusCheckBox;
 	}
 }

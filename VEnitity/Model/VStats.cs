@@ -31,9 +31,9 @@ namespace VEntityFramework.Model
 				/// We then calculate how much damage is required to kill it in 100 attacks
 				/// This is then normalised to a score out of 100
 
-				var healthArmor = fHealthArmor / 20;
+				var healthArmor = (fHealthArmor + AdditiveArmor) / 20;
 				var health = fHealth;
-				var shieldsArmor = fShieldsArmor / 20;
+				var shieldsArmor = (fShieldsArmor + AdditiveArmor) / 20;
 				var shields = fShields / 100 * 50;
 
 				/// To get result I solved the following for X,
@@ -226,6 +226,22 @@ namespace VEntityFramework.Model
 			}
 		}
 		double fDamageReduction;
+
+		#endregion
+
+		#region AdditiveArmor
+
+		public int AdditiveArmor
+		{
+			get => fAdditiveArmor;
+			set
+			{
+				fAdditiveArmor = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+			}
+		}
+		int fAdditiveArmor;
 
 		#endregion
 

@@ -83,6 +83,38 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region MaximumEssence
+
+		public virtual int MaximumInfusion { get; }
+
+		#endregion
+
+		#region CurrentEssence
+
+		[VXML(true)]
+		public virtual int EssenceStacks
+		{
+			get => fCurrentEssence;
+			set
+			{
+				if (value != fCurrentEssence)
+				{
+					fCurrentEssence = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(EssenceStacks)));
+				}
+			}
+		}
+		int fCurrentEssence;
+
+		#endregion
+
+		#region MaximumEssence
+
+		public virtual int MaximumEssence { get; }
+
+		#endregion
+
 		#region MaximumKills
 
 		public virtual int MaximumKills
@@ -93,15 +125,30 @@ namespace VEntityFramework.Model
 				fMaximumKills = value;
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MaximumKills)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MaximumInfusion)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MaximumEssence)));
 			}
 		}
 		int fMaximumKills;
 
 		#endregion
 
-		#region MaximumInfuse
+		#region HasSoloBonus
 
-		public virtual int MaximumInfusion { get; }
+		[VXML(true)]
+		public virtual bool HasSoloBonus
+		{
+			get => fHasSoloBonus;
+			set
+			{
+				if (fHasSoloBonus != value)
+				{
+					fHasSoloBonus = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HasSoloBonus)));
+				}
+			}
+		}
+		bool fHasSoloBonus;
 
 		#endregion
 

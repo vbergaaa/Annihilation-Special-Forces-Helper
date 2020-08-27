@@ -115,5 +115,10 @@ namespace VUserInterface
 			}
 		}
 		List<UnitRank> fRanks;
+
+		private void Button_Click(object sender, EventArgs e)
+		{
+			Unit.HasSoloBonus = !Unit.HasSoloBonus;
+		}
 	}
 }
