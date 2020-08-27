@@ -48,6 +48,10 @@ namespace VEntityFramework.Data
 				{
 					property.SetValue(bizo, VRank.GetUnitRankFromString(value));
 				}
+				else if (property.PropertyType.Name == "Boolean")
+				{
+					property.SetValue(bizo, value.ToLower() == "true" ? true : false);
+				}
 				else
 				{
 #if DEBUG

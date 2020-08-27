@@ -37,21 +37,21 @@ namespace VEntityFramework.Model
 
 		#region CurrentLevel
 
-		[VXML(false)]
-		public virtual short CurrentLevel
-		{
-			get => fCurrentLevel;
-			set
-			{
-				if (value != fCurrentLevel)
-				{
-					fCurrentLevel = value;
-					HasChanges = true;
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
-				}
-			}
-		}
-		short fCurrentLevel;
+		//[VXML(false)]
+		//public virtual short CurrentLevel
+		//{
+		//	get => fCurrentLevel;
+		//	set
+		//	{
+		//		if (value != fCurrentLevel)
+		//		{
+		//			fCurrentLevel = value;
+		//			HasChanges = true;
+		//			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
+		//		}
+		//	}
+		//}
+		//short fCurrentLevel;
 
 		#endregion
 

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VEntityFramework.Model;
-using VBusiness.Ranks;
+﻿using VEntityFramework.Model;
+using VBusiness.Perks;
 
 namespace VBusiness
 {
@@ -191,6 +188,40 @@ namespace VBusiness
 				Loadout.Stats.HealthArmor -= 20;
 				Loadout.Stats.Shields -= 25;
 				Loadout.Stats.ShieldsArmor -= 20;
+			}
+		}
+
+		#endregion
+
+		#region HasUnitSpec
+
+		public override bool HasUnitSpec
+		{
+			get => base.HasUnitSpec;
+			set
+			{
+				if (base.HasUnitSpec != value)
+				{
+					base.HasUnitSpec = value;
+					ToggleSpec(value);
+				}
+			}
+		}
+
+		void ToggleSpec(bool hasSpec)
+		{
+			if (Loadout.Perks is PerkCollection perks && perks.UnitSpecialization.DesiredLevel > 0)
+			{
+				if (hasSpec)
+				{
+					Loadout.Stats.DamageIncrease += 2 * perks.UnitSpecialization.DesiredLevel;
+					Loadout.Stats.DamageReduction += perks.UnitSpecialization.DesiredLevel;
+				}
+				else
+				{
+					Loadout.Stats.DamageIncrease -= 2 * perks.UnitSpecialization.DesiredLevel;
+					Loadout.Stats.DamageReduction -= perks.UnitSpecialization.DesiredLevel;
+				}
 			}
 		}
 

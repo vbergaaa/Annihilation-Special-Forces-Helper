@@ -42,6 +42,7 @@ namespace VUserInterface
 			this.InfusionIncrementor = new VIncrementor();
 			this.EssenceIncrementor = new VIncrementor();
 			this.SoloBonusCheckBox = new VCheckControl();
+			this.UnitSpecCheckBox = new VCheckControl();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
@@ -57,7 +58,9 @@ namespace VUserInterface
 			// RankCaption
 			//
 			this.RankCaption.Location = new System.Drawing.Point(35, 40);
+			this.RankCaption.Size = new System.Drawing.Size(86, 20);
 			this.RankCaption.Text = "Rank:";
+			this.RankCaption.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			//
 			// InfusionIncrementor
 			//
@@ -79,6 +82,12 @@ namespace VUserInterface
 			this.SoloBonusCheckBox.Caption = "Solo Bonus:";
 			this.SoloBonusCheckBox.DataBindings.Add("Checked", bindingSource, "HasSoloBonus");
 			//
+			// UnitSpecCheckBox
+			//
+			this.UnitSpecCheckBox.Location = new System.Drawing.Point(125, 160);
+			this.UnitSpecCheckBox.Caption = "Has Unit Spec:";
+			this.UnitSpecCheckBox.DataBindings.Add("Checked", bindingSource, "HasUnitSpec");
+			//
 			// VSoulCollectionControl
 			//
 			this.Controls.Add(RankComboBox);
@@ -86,6 +95,7 @@ namespace VUserInterface
 			this.Controls.Add(InfusionIncrementor);
 			this.Controls.Add(EssenceIncrementor);
 			this.Controls.Add(SoloBonusCheckBox);
+			this.Controls.Add(UnitSpecCheckBox);
 			this.Size = new System.Drawing.Size(589, 292);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
@@ -98,5 +108,6 @@ namespace VUserInterface
 		VIncrementor InfusionIncrementor;
 		VIncrementor EssenceIncrementor;
 		VCheckControl SoloBonusCheckBox;
+		VCheckControl UnitSpecCheckBox;
 	}
 }

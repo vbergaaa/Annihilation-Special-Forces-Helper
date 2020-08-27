@@ -152,6 +152,26 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region HasUnitSpec
+
+		[VXML(true)]
+		public virtual bool HasUnitSpec
+		{
+			get => fHasUnitSpec;
+			set
+			{
+				if (fHasUnitSpec != value)
+				{
+					fHasUnitSpec = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HasUnitSpec)));
+				}
+			}
+		}
+		bool fHasUnitSpec;
+
+		#endregion
+
 		#endregion
 
 		#region Methods
