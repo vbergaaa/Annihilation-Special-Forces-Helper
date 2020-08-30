@@ -172,6 +172,26 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region HasAdrenalineBuffActive
+
+		[VXML(true)]
+		public virtual bool HasAdrenalineBuffActive
+		{
+			get => fHasAdrenalineBuffActive;
+			set
+			{
+				if (fHasAdrenalineBuffActive != value)
+				{
+					fHasAdrenalineBuffActive = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HasAdrenalineBuffActive)));
+				}
+			}
+		}
+		bool fHasAdrenalineBuffActive;
+
+		#endregion
+
 		#endregion
 
 		#region Methods

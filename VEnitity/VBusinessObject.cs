@@ -25,8 +25,10 @@ namespace VEntityFramework.Data
 		void SetDefaultValues()
 		{
 			IsSettingDefaultValues = true;
+			SuspendSettingHasChanges = true;
 			SetDefaultValuesCore();
 			IsSettingDefaultValues = false;
+			SuspendSettingHasChanges = false;
 		}
 
 		protected virtual void SetDefaultValuesCore()

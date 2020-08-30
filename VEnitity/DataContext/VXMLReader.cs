@@ -178,7 +178,9 @@ namespace VEntityFramework.Data
 				if (matchingProperty.IsBusinessObject())
 				{
 					var childBizo = (VBusinessObject)matchingProperty.GetValue(bizo);
+					childBizo.SuspendSettingHasChanges = true;
 					PopulateFromXML(childBizo, childNode);
+					childBizo.SuspendSettingHasChanges = false;
 				}
 				else
 				{

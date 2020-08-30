@@ -43,6 +43,7 @@ namespace VUserInterface
 			this.EssenceIncrementor = new VIncrementor();
 			this.SoloBonusCheckBox = new VCheckControl();
 			this.UnitSpecCheckBox = new VCheckControl();
+			this.AdrenalineRushCheckBox = new VCheckControl();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
@@ -88,6 +89,12 @@ namespace VUserInterface
 			this.UnitSpecCheckBox.Caption = "Has Unit Spec:";
 			this.UnitSpecCheckBox.DataBindings.Add("Checked", bindingSource, "HasUnitSpec");
 			//
+			// AdrenalineRushCheckBox
+			//
+			this.AdrenalineRushCheckBox.Location = new System.Drawing.Point(125, 190);
+			this.AdrenalineRushCheckBox.Caption = "Adrenaline Rush:";
+			this.AdrenalineRushCheckBox.DataBindings.Add("Checked", bindingSource, "HasAdrenalineBuffActive");
+			//
 			// VSoulCollectionControl
 			//
 			this.Controls.Add(RankComboBox);
@@ -96,6 +103,7 @@ namespace VUserInterface
 			this.Controls.Add(EssenceIncrementor);
 			this.Controls.Add(SoloBonusCheckBox);
 			this.Controls.Add(UnitSpecCheckBox);
+			this.Controls.Add(AdrenalineRushCheckBox);
 			this.Size = new System.Drawing.Size(589, 292);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
@@ -109,5 +117,6 @@ namespace VUserInterface
 		VIncrementor EssenceIncrementor;
 		VCheckControl SoloBonusCheckBox;
 		VCheckControl UnitSpecCheckBox;
+		VCheckControl AdrenalineRushCheckBox;
 	}
 }

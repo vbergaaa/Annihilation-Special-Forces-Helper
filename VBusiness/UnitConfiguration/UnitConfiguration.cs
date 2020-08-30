@@ -1,13 +1,12 @@
 ﻿using VEntityFramework.Model;
 using VBusiness.Perks;
+using System;
 
 namespace VBusiness
 {
 	public class UnitConfiguration : VUnitConfiguration
 	{
 		// Torment Reduction
-
-		// Toggle Spec
 
 		// toggle adrenaline rush
 
@@ -203,16 +202,16 @@ namespace VBusiness
 				if (base.HasUnitSpec != value)
 				{
 					base.HasUnitSpec = value;
-					ToggleSpec(value);
+					ToggleSpec();
 				}
 			}
 		}
 
-		void ToggleSpec(bool hasSpec)
+		void ToggleSpec()
 		{
 			if (Loadout.Perks is PerkCollection perks && perks.UnitSpecialization.DesiredLevel > 0)
 			{
-				if (hasSpec)
+				if (HasUnitSpec)
 				{
 					Loadout.Stats.DamageIncrease += 2 * perks.UnitSpecialization.DesiredLevel;
 					Loadout.Stats.DamageReduction += perks.UnitSpecialization.DesiredLevel;
@@ -221,6 +220,44 @@ namespace VBusiness
 				{
 					Loadout.Stats.DamageIncrease -= 2 * perks.UnitSpecialization.DesiredLevel;
 					Loadout.Stats.DamageReduction -= perks.UnitSpecialization.DesiredLevel;
+				}
+			}
+		}
+
+		#endregion
+
+		#region HasAdrenalineBuffActive
+
+		public override bool HasAdrenalineBuffActive
+		{
+			get => base.HasAdrenalineBuffActive;
+			set
+			{
+				if (base.HasAdrenalineBuffActive != value)
+				{
+					base.HasAdrenalineBuffActive = value;
+					ToggleAdrenalineRush();
+				}
+			}
+		}
+
+		void ToggleAdrenalineRush()
+		{
+			if (Loadout.Perks is PerkCollection perks && perks.AdrenalineRush.DesiredLevel > 0)
+			{
+				var effectiveLevels = perks.AdrenalineRush.DesiredLevel * (1 + (perks.SuperRush.DesiredLevel / 10.0));
+
+				if (HasAdrenalineBuffActive)
+				{
+					Loadout.Stats.Attack += 10.0 / 15 * effectiveLevels;
+					Loadout.Stats.AttackSpeed += 10.0 / 15 * effectiveLevels;
+					Loadout.Stats.CriticalChance += 5.0 / 15 * effectiveLevels;
+				}
+				else
+				{
+					Loadout.Stats.Attack -= 10.0 / 15 * effectiveLevels;
+					Loadout.Stats.AttackSpeed -= 10.0 / 15 * effectiveLevels;
+					Loadout.Stats.CriticalChance -= 5.0 / 15 * effectiveLevels;
 				}
 			}
 		}

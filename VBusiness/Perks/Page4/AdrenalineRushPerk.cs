@@ -24,9 +24,14 @@ namespace VBusiness.Perks
 
 		protected override void OnLevelChanged(int difference)
 		{
-			PerkCollection.Loadout.Stats.Attack += 0.66666 * difference;
-			PerkCollection.Loadout.Stats.AttackSpeed += 0.66666 * difference;
-			PerkCollection.Loadout.Stats.CriticalChance += 0.33333 * difference;
+			if (PerkCollection.Loadout.UnitConfiguration.HasAdrenalineBuffActive)
+			{
+				var superRushBonus = 1 + ((PerkCollection)PerkCollection).SuperRush.DesiredLevel / 10.0;
+
+				PerkCollection.Loadout.Stats.Attack += 10.0 / 15 * difference * superRushBonus;
+				PerkCollection.Loadout.Stats.AttackSpeed += 10.0 / 15 * difference * superRushBonus;
+				PerkCollection.Loadout.Stats.CriticalChance += 5.0 / 15 * difference * superRushBonus;
+			}
 		}
 	}
 }
