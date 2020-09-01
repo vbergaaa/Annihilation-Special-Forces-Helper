@@ -2,7 +2,7 @@
 
 namespace VBusiness.Difficulties
 {
-	public class Brutal : VDifficulty
+	public class Brutal : Difficulty
 	{
 		public override DifficultyLevel Difficulty => DifficultyLevel.Brutal;
 	}

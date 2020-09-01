@@ -1,11 +1,12 @@
-﻿using VEntityFramework.Model;
+﻿using System;
+using VEntityFramework.Model;
 
 namespace VBusiness.Difficulties
 {
-	public class Titanic : VDifficulty
+	public class Titanic : Difficulty
 	{
 		public override DifficultyLevel Difficulty => DifficultyLevel.Titanic;
 
-		public override int TormentReduction => throw new NotImplementedException();
+		public override int TormentReduction => 10;
 	}
 }

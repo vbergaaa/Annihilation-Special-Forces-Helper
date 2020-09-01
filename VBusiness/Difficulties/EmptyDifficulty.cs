@@ -5,7 +5,7 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Difficulties
 {
-	public class EmptyDifficulty : VDifficulty
+	public class EmptyDifficulty : Difficulty
 	{
 		public override DifficultyLevel Difficulty => DifficultyLevel.None;
 	}

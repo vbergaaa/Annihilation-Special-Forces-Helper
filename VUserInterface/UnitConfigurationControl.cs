@@ -25,10 +25,13 @@ namespace VUserInterface
 			get => fUnit;
 			set
 			{
-				fUnit = value;
-				UpdateBindingIfDataSourceChanged();
-				UpdateRankComboBox();
-				UpdateDifficultyComboBox();
+				if (fUnit != value)
+				{
+					fUnit = value;
+					UpdateBindingIfDataSourceChanged();
+					UpdateRankComboBox();
+					UpdateDifficultyComboBox();
+				}
 			}
 		}
 		UnitConfiguration fUnit;
@@ -88,9 +91,9 @@ namespace VUserInterface
 		{
 			if (fUnit != null)
 			{
-				RankDropBox.SelectedValueChanged -= RankChanged;
-				RankDropBox.SelectedIndex = (int)fUnit.UnitRank;
-				RankDropBox.SelectedValueChanged += RankChanged;
+				DifficultyDropBox.SelectedValueChanged -= RankChanged;
+				DifficultyDropBox.SelectedIndex = (int)fUnit.DifficultyLevel;
+				DifficultyDropBox.SelectedValueChanged += RankChanged;
 			}
 		}
 

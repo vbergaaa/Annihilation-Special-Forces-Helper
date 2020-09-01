@@ -3,10 +3,10 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Difficulties
 {
-	public class Hell : VDifficulty
+	public class Hell : Difficulty
 	{
 		public override DifficultyLevel Difficulty => DifficultyLevel.Hell;
 
-		public override int TormentReduction => throw new NotImplementedException();
+		public override int TormentReduction => 7;
 	}
 }

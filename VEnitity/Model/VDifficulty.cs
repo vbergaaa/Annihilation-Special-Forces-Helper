@@ -23,6 +23,34 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Methods
+
+		#region GetDifficultyLevelFromString
+
+		public static DifficultyLevel GetDifficultyLevelFromString(string level)
+		{
+			return level switch
+			{
+				("None") => DifficultyLevel.None,
+				("VeryEasy") => DifficultyLevel.VeryEasy,
+				("Easy") => DifficultyLevel.Easy,
+				("Medium") => DifficultyLevel.Medium,
+				("Hard") => DifficultyLevel.Hard,
+				("VeryHard") => DifficultyLevel.VeryHard,
+				("Brutal") => DifficultyLevel.Brutal,
+				("Insane") => DifficultyLevel.Insane,
+				("Nightmare") => DifficultyLevel.Nightmare,
+				("Torment") => DifficultyLevel.Torment,
+				("Hell") => DifficultyLevel.Hell,
+				("Titanic") => DifficultyLevel.Titanic,
+				("Mythic") => DifficultyLevel.Mythic,
+				_ => throw new NotImplementedException($"Cannot load {level} difficulty"),
+			};
+		}
+
+		#endregion
+
+		#endregion
 		#region Implementation
 
 		public override string BizoName => "Difficulty";
