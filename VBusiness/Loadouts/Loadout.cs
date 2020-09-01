@@ -91,7 +91,7 @@ namespace VBusiness.Loadouts
 
 		#region Implementation
 
-		protected override void SetDefaultValues()
+		protected override void SetDefaultValuesCore()
 		{
 			Stats = new Stats();
 		}

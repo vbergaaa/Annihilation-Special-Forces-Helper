@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using VBusiness;
 using VBusiness.Souls;
 using VEntityFramework.Model;
 using VUserInterface.CommonControls;
@@ -36,23 +37,74 @@ namespace VUserInterface
 		{
 			components = new System.ComponentModel.Container();
 			this.bindingSource = new BindingSource();
-			this.RankComboBox = new VDropBox();
+			this.RankDropBox = new VDropBox();
+			this.InfusionIncrementor = new VIncrementor();
+			this.EssenceIncrementor = new VIncrementor();
+			this.SoloBonusCheckBox = new VCheckControl();
+			this.UnitSpecCheckBox = new VCheckControl();
+			this.AdrenalineRushCheckBox = new VCheckControl();
+			this.DifficultyDropBox = new VDropBox();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
 			//
-			this.bindingSource.DataSource = typeof(UnitConfigurationControl);
+			this.bindingSource.DataSource = typeof(UnitConfiguration);
 			//
 			// RankComboBox
 			//
-			this.RankComboBox.Location = new System.Drawing.Point(125, 40);
-			this.RankComboBox.Caption = "Rank:";
-			this.RankComboBox.List = Ranks;
-			this.RankComboBox.SelectedValueChanged += RankChanged;
+			this.RankDropBox.List = RankList;
+			this.RankDropBox.Location = new System.Drawing.Point(125, 40);
+			this.RankDropBox.SelectedValueChanged += RankChanged;
+			this.RankDropBox.Caption = "Rank:";
+			//
+			// InfusionIncrementor
+			//
+			this.InfusionIncrementor.Location = new System.Drawing.Point(125, 70);
+			this.InfusionIncrementor.DataBindings.Add("Value", bindingSource, "CurrentInfusion");
+			this.InfusionIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaximumInfusion");
+			this.InfusionIncrementor.Caption = "Infusion:";
+			//
+			// EssenceIncrementor
+			//
+			this.EssenceIncrementor.Location = new System.Drawing.Point(125, 100);
+			this.EssenceIncrementor.DataBindings.Add("Value", bindingSource, "EssenceStacks");
+			this.EssenceIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaximumEssence");
+			this.EssenceIncrementor.Caption = "Essence:";
+			//
+			// SoloBonusCheckBox
+			//
+			this.SoloBonusCheckBox.Location = new System.Drawing.Point(125, 130);
+			this.SoloBonusCheckBox.Caption = "Solo Bonus:";
+			this.SoloBonusCheckBox.DataBindings.Add("Checked", bindingSource, "HasSoloBonus");
+			//
+			// UnitSpecCheckBox
+			//
+			this.UnitSpecCheckBox.Location = new System.Drawing.Point(125, 160);
+			this.UnitSpecCheckBox.Caption = "Has Unit Spec:";
+			this.UnitSpecCheckBox.DataBindings.Add("Checked", bindingSource, "HasUnitSpec");
+			//
+			// AdrenalineRushCheckBox
+			//
+			this.AdrenalineRushCheckBox.Location = new System.Drawing.Point(125, 190);
+			this.AdrenalineRushCheckBox.Caption = "Adrenaline Rush:";
+			this.AdrenalineRushCheckBox.DataBindings.Add("Checked", bindingSource, "HasAdrenalineBuffActive");
+			//
+			// DifficutlyComboBox
+			//
+			this.DifficultyDropBox.List = DifficultyList;
+			this.DifficultyDropBox.Location = new System.Drawing.Point(125, 220);
+			this.DifficultyDropBox.SelectedValueChanged += DifficultyChanged;
+			this.DifficultyDropBox.Caption = "Difficulty:";
 			//
 			// VSoulCollectionControl
 			//
-			this.Controls.Add(RankComboBox);
+			this.Controls.Add(RankDropBox);
+			this.Controls.Add(DifficultyDropBox);
+			this.Controls.Add(InfusionIncrementor);
+			this.Controls.Add(EssenceIncrementor);
+			this.Controls.Add(SoloBonusCheckBox);
+			this.Controls.Add(UnitSpecCheckBox);
+			this.Controls.Add(AdrenalineRushCheckBox);
 			this.Size = new System.Drawing.Size(589, 292);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
@@ -60,6 +112,12 @@ namespace VUserInterface
 		#endregion
 
 		BindingSource bindingSource;
-		VDropBox RankComboBox;
+		VDropBox RankDropBox;
+		VDropBox DifficultyDropBox;
+		VIncrementor InfusionIncrementor;
+		VIncrementor EssenceIncrementor;
+		VCheckControl SoloBonusCheckBox;
+		VCheckControl UnitSpecCheckBox;
+		VCheckControl AdrenalineRushCheckBox;
 	}
 }

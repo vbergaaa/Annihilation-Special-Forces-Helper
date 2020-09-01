@@ -37,25 +37,25 @@ namespace VBusiness.Perks
 
 		#region CurrentLevel
 
-		public override short CurrentLevel
-		{
-			get => base.CurrentLevel;
-			set
-			{
-				if (value > MaxLevel)
-				{
-					base.CurrentLevel = MaxLevel;
-				}
-				else if (value < 0)
-				{
-					base.CurrentLevel = 0;
-				}
-				else
-				{
-					base.CurrentLevel = value;
-				}
-			}
-		}
+		//public override short CurrentLevel
+		//{
+		//	get => base.CurrentLevel;
+		//	set
+		//	{
+		//		if (value > MaxLevel)
+		//		{
+		//			base.CurrentLevel = MaxLevel;
+		//		}
+		//		else if (value < 0)
+		//		{
+		//			base.CurrentLevel = 0;
+		//		}
+		//		else
+		//		{
+		//			base.CurrentLevel = value;
+		//		}
+		//	}
+		//}
 
 		#endregion
 

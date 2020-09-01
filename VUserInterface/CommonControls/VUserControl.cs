@@ -29,7 +29,7 @@ namespace VUserInterface.CommonControls
 			}
 		}
 
-		private void AdjustLabel()
+		void AdjustLabel()
 		{
 			var width = CaptionLabel.Width + 5;
 			this.Width += width;

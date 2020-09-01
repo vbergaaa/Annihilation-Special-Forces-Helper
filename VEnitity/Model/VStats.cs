@@ -31,9 +31,9 @@ namespace VEntityFramework.Model
 				/// We then calculate how much damage is required to kill it in 100 attacks
 				/// This is then normalised to a score out of 100
 
-				var healthArmor = fHealthArmor / 20;
+				var healthArmor = (fHealthArmor + AdditiveArmor) / 20;
 				var health = fHealth;
-				var shieldsArmor = fShieldsArmor / 20;
+				var shieldsArmor = (fShieldsArmor + AdditiveArmor) / 20;
 				var shields = fShields / 100 * 50;
 
 				/// To get result I solved the following for X,
@@ -229,6 +229,22 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region AdditiveArmor
+
+		public int AdditiveArmor
+		{
+			get => fAdditiveArmor;
+			set
+			{
+				fAdditiveArmor = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+			}
+		}
+		int fAdditiveArmor;
+
+		#endregion
+
 		#region RedCrits
 
 		public bool HasRedCrits {
@@ -243,9 +259,11 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		public double MoveSpeed { get; set; }
+		public double Acceleration { get; set; } // from what I can tell, you get 1% accel per essence, and it is multiplicative to the 10% accel you get per infuse, so I think it makes sense to store these values separately
 
-		public double CooldownReduction { get; set; }
+		public double MoveSpeed { get; set; } // it looks like the 2.4477% move speed per essence is stacked multiplicatively, so it is exponential, where the 10% move speed from essence is additive (linear) they are multiplied to get the result
+
+		public double CooldownReduction { get; set; } // the tests for accel above were actually done on CDR, so is more accurately on this. not sure if they are the same thing at this stage
 
 		#region Trifecta Power
 

@@ -48,6 +48,14 @@ namespace VEntityFramework.Data
 				{
 					property.SetValue(bizo, VRank.GetUnitRankFromString(value));
 				}
+				else if (property.PropertyType.Name == "DifficultyLevel")
+				{
+					property.SetValue(bizo, VDifficulty.GetDifficultyLevelFromString(value));
+				}
+				else if (property.PropertyType.Name == "Boolean")
+				{
+					property.SetValue(bizo, value.ToLower() == "true" ? true : false);
+				}
 				else
 				{
 #if DEBUG

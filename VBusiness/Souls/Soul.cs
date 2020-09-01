@@ -399,7 +399,7 @@ namespace VBusiness.Souls
 
 		#region Set Default Values
 
-		protected override void SetDefaultValues()
+		protected override void SetDefaultValuesCore()
 		{
 			SuspendSettingHasChanges = true;
 			Attack = MinAttack;

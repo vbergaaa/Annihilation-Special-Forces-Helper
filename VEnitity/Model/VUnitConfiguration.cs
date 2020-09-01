@@ -5,7 +5,7 @@ using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
-	public class VUnitConfiguration : VBusinessObject
+	public abstract class VUnitConfiguration : VBusinessObject
 	{
 		#region Constructor
 
@@ -60,6 +60,174 @@ namespace VEntityFramework.Model
 			}
 		}
 		UnitRank fUnitRank;
+
+		#endregion
+
+		#region CurrentInfuse
+
+		[VXML(true)]
+		public virtual int CurrentInfusion
+		{
+			get => fCurrentInfuse;
+			set
+			{
+				if (value != fCurrentInfuse)
+				{
+					fCurrentInfuse = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentInfusion)));
+				}
+			}
+		}
+		int fCurrentInfuse;
+
+		#endregion
+
+		#region MaximumEssence
+
+		public virtual int MaximumInfusion { get; }
+
+		#endregion
+
+		#region CurrentEssence
+
+		[VXML(true)]
+		public virtual int EssenceStacks
+		{
+			get => fCurrentEssence;
+			set
+			{
+				if (value != fCurrentEssence)
+				{
+					fCurrentEssence = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(EssenceStacks)));
+				}
+			}
+		}
+		int fCurrentEssence;
+
+		#endregion
+
+		#region MaximumEssence
+
+		public virtual int MaximumEssence { get; }
+
+		#endregion
+
+		#region MaximumKills
+
+		public virtual int MaximumKills
+		{
+			get => fMaximumKills;
+			set
+			{
+				fMaximumKills = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MaximumKills)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MaximumInfusion)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MaximumEssence)));
+			}
+		}
+		int fMaximumKills;
+
+		#endregion
+
+		#region HasSoloBonus
+
+		[VXML(true)]
+		public virtual bool HasSoloBonus
+		{
+			get => fHasSoloBonus;
+			set
+			{
+				if (fHasSoloBonus != value)
+				{
+					fHasSoloBonus = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HasSoloBonus)));
+				}
+			}
+		}
+		bool fHasSoloBonus;
+
+		#endregion
+
+		#region HasUnitSpec
+
+		[VXML(true)]
+		public virtual bool HasUnitSpec
+		{
+			get => fHasUnitSpec;
+			set
+			{
+				if (fHasUnitSpec != value)
+				{
+					fHasUnitSpec = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HasUnitSpec)));
+				}
+			}
+		}
+		bool fHasUnitSpec;
+
+		#endregion
+
+		#region HasAdrenalineBuffActive
+
+		[VXML(true)]
+		public virtual bool HasAdrenalineBuffActive
+		{
+			get => fHasAdrenalineBuffActive;
+			set
+			{
+				if (fHasAdrenalineBuffActive != value)
+				{
+					fHasAdrenalineBuffActive = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HasAdrenalineBuffActive)));
+				}
+			}
+		}
+		bool fHasAdrenalineBuffActive;
+
+		#endregion
+
+		#region DifficultyLevel
+
+		[VXML(true)]
+		public virtual DifficultyLevel DifficultyLevel
+		{
+			get => fDifficultyLevel;
+			set
+			{
+				if (fDifficultyLevel != value)
+				{
+					fDifficultyLevel = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DifficultyLevel)));
+				}
+			}
+		}
+		DifficultyLevel fDifficultyLevel;
+
+		#endregion
+
+		#region Difficulty
+
+		public virtual VDifficulty Difficulty
+		{
+			get => fDifficulty;
+			set
+			{
+				if (fDifficulty != value)
+				{
+					fDifficulty = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Difficulty)));
+				}
+			}
+		}
+		VDifficulty fDifficulty;
 
 		#endregion
 

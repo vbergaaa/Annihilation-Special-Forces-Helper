@@ -6,7 +6,7 @@ namespace VBusiness.HelperClasses
 	{
 		public static int GetRemainingCost(this VPerk perk)
 		{
-			return VCalculator.Calculate(perk.StartingCost, perk.IncrementCost, perk.CurrentLevel, perk.DesiredLevel);
+			return VCalculator.Calculate(perk.StartingCost, perk.IncrementCost, 0, perk.DesiredLevel);
 		}
 
 		public static int GetTotalCost(this VPerk perk)
@@ -16,7 +16,7 @@ namespace VBusiness.HelperClasses
 
 		public static int GetCurrentCost(this VPerk perk)
 		{
-			return VCalculator.Calculate(perk.StartingCost, perk.IncrementCost, 0, perk.CurrentLevel);
+			return VCalculator.Calculate(perk.StartingCost, perk.IncrementCost, 0, 0);
 		}
 	}
 }

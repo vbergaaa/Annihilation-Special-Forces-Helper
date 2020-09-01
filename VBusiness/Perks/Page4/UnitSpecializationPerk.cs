@@ -25,8 +25,11 @@ namespace VBusiness.Perks
 
 		protected override void OnLevelChanged(int difference)
 		{
-			PerkCollection.Loadout.Stats.DamageIncrease += 2 * difference;
-			PerkCollection.Loadout.Stats.DamageReduction += 1 * difference;
+			if (PerkCollection.Loadout.UnitConfiguration.HasUnitSpec)
+			{
+				PerkCollection.Loadout.Stats.DamageIncrease += 2 * difference;
+				PerkCollection.Loadout.Stats.DamageReduction += 1 * difference;
+			}
 		}
 	}
 }

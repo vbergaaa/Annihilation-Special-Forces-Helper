@@ -54,6 +54,8 @@ namespace VUserInterface.CommonControls
 			//
 			this.Controls.Add(CheckBox);
 			this.Controls.Add(CaptionLabel);
+			this.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
+			this.Height = 29;
 		}
 
 		#endregion
