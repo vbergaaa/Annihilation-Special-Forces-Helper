@@ -5,11 +5,17 @@
     <Compile Update="CommonControls\VButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="CommonControls\VCheckControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="CommonControls\VIncrementor.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="CommonControls\VLabel.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="CommonControls\VUserControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="SoulControl.cs">
       <SubType>Component</SubType>
