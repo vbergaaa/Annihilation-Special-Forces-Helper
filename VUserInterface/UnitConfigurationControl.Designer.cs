@@ -37,13 +37,13 @@ namespace VUserInterface
 		{
 			components = new System.ComponentModel.Container();
 			this.bindingSource = new BindingSource();
-			this.RankComboBox = new ComboBox();
-			this.RankCaption = new VLabel();
+			this.RankDropBox = new VDropBox();
 			this.InfusionIncrementor = new VIncrementor();
 			this.EssenceIncrementor = new VIncrementor();
 			this.SoloBonusCheckBox = new VCheckControl();
 			this.UnitSpecCheckBox = new VCheckControl();
 			this.AdrenalineRushCheckBox = new VCheckControl();
+			this.DifficultyDropBox = new VDropBox();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
@@ -52,16 +52,10 @@ namespace VUserInterface
 			//
 			// RankComboBox
 			//
-			this.RankComboBox.DataSource = Ranks;
-			this.RankComboBox.Location = new System.Drawing.Point(125, 40);
-			this.RankComboBox.SelectedValueChanged += RankChanged;
-			//
-			// RankCaption
-			//
-			this.RankCaption.Location = new System.Drawing.Point(35, 40);
-			this.RankCaption.Size = new System.Drawing.Size(86, 20);
-			this.RankCaption.Text = "Rank:";
-			this.RankCaption.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.RankDropBox.List = RankList;
+			this.RankDropBox.Location = new System.Drawing.Point(125, 40);
+			this.RankDropBox.SelectedValueChanged += RankChanged;
+			this.RankDropBox.Caption = "Rank:";
 			//
 			// InfusionIncrementor
 			//
@@ -95,10 +89,17 @@ namespace VUserInterface
 			this.AdrenalineRushCheckBox.Caption = "Adrenaline Rush:";
 			this.AdrenalineRushCheckBox.DataBindings.Add("Checked", bindingSource, "HasAdrenalineBuffActive");
 			//
+			// DifficutlyComboBox
+			//
+			this.DifficultyDropBox.List = DifficultyList;
+			this.DifficultyDropBox.Location = new System.Drawing.Point(125, 220);
+			this.DifficultyDropBox.SelectedValueChanged += DifficultyChanged;
+			this.DifficultyDropBox.Caption = "Difficulty:";
+			//
 			// VSoulCollectionControl
 			//
-			this.Controls.Add(RankComboBox);
-			this.Controls.Add(RankCaption);
+			this.Controls.Add(RankDropBox);
+			this.Controls.Add(DifficultyDropBox);
 			this.Controls.Add(InfusionIncrementor);
 			this.Controls.Add(EssenceIncrementor);
 			this.Controls.Add(SoloBonusCheckBox);
@@ -111,8 +112,8 @@ namespace VUserInterface
 		#endregion
 
 		BindingSource bindingSource;
-		ComboBox RankComboBox;
-		Label RankCaption;
+		VDropBox RankDropBox;
+		VDropBox DifficultyDropBox;
 		VIncrementor InfusionIncrementor;
 		VIncrementor EssenceIncrementor;
 		VCheckControl SoloBonusCheckBox;

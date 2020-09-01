@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using VBusiness;
 using VEntityFramework.Model;
 using VBusiness.Ranks;
+using VBusiness.HelperClasses;
+using VBusiness.Difficulties;
 
 namespace VUserInterface
 {
@@ -18,7 +20,7 @@ namespace VUserInterface
 			InitializeComponent();
 		}
 
-		public UnitConfiguration Unit
+		public UnitConfiguration UnitConfiguration
 		{
 			get => fUnit;
 			set
@@ -26,6 +28,7 @@ namespace VUserInterface
 				fUnit = value;
 				UpdateBindingIfDataSourceChanged();
 				UpdateRankComboBox();
+				UpdateDifficultyComboBox();
 			}
 		}
 		UnitConfiguration fUnit;
@@ -44,81 +47,67 @@ namespace VUserInterface
 
 		void UpdateBindingIfDataSourceChanged()
 		{
-			if (Unit != null && Unit != bindingSource.DataSource)
+			if (UnitConfiguration != null && UnitConfiguration != bindingSource.DataSource)
 			{
-				bindingSource.DataSource = Unit;
+				bindingSource.DataSource = UnitConfiguration;
 				bindingSource.ResetBindings(false);
 			}
 		}
+
+		#region Rank
 
 		void UpdateRankComboBox()
 		{
 			if (fUnit != null)
 			{
-				RankComboBox.SelectedValueChanged -= RankChanged;
-				RankComboBox.SelectedIndex = (int)fUnit.UnitRank;
-				RankComboBox.SelectedValueChanged += RankChanged;
+				RankDropBox.SelectedValueChanged -= RankChanged;
+				RankDropBox.SelectedIndex = (int)fUnit.UnitRank;
+				RankDropBox.SelectedValueChanged += RankChanged;
 			}
 		}
 
 		void RankChanged(object sender, EventArgs e)
 		{
-			if (Unit != null && RankComboBox.SelectedValue is UnitRank rank)
+			if (UnitConfiguration != null && RankDropBox.SelectedValue is UnitRank rank)
 			{
-				Unit.UnitRank = rank;
+				UnitConfiguration.UnitRank = rank;
 			}
 		}
 
-		List<UnitRank> Ranks
+		List<object> RankList
 		{
-			get
+			get => fRankList ?? (fRankList = BindingHelper<UnitRank>.ConvertForBinding(new RankLookup().GetRanks()));
+		}
+		List<object> fRankList;
+
+		#endregion
+
+		#region Difficulty
+
+		void UpdateDifficultyComboBox()
+		{
+			if (fUnit != null)
 			{
-				if (fRanks == null)
-				{
-					var ranks = new List<UnitRank>
-					{
-						UnitRank.None,
-						UnitRank.D,
-						UnitRank.C,
-						UnitRank.B,
-						UnitRank.A,
-						UnitRank.S,
-						UnitRank.SD,
-						UnitRank.SC,
-						UnitRank.SB,
-						UnitRank.SA,
-						UnitRank.SS,
-						UnitRank.SSD,
-						UnitRank.SSC,
-						UnitRank.SSB,
-						UnitRank.SSA,
-						UnitRank.SSS,
-						UnitRank.X,
-						UnitRank.SX,
-						UnitRank.SSX,
-						UnitRank.SSSX,
-						UnitRank.XX,
-						UnitRank.XD,
-						UnitRank.SXD,
-						UnitRank.Z,
-						UnitRank.SZ,
-						UnitRank.SSZ,
-						UnitRank.SSSZ,
-						UnitRank.XZ,
-						UnitRank.XDZ,
-						UnitRank.SXDZ,
-						UnitRank.XYZ
-					};
-					fRanks = ranks;
-				}
-				return fRanks;
+				RankDropBox.SelectedValueChanged -= RankChanged;
+				RankDropBox.SelectedIndex = (int)fUnit.UnitRank;
+				RankDropBox.SelectedValueChanged += RankChanged;
 			}
 		}
-		List<UnitRank> fRanks;
 
-		private void Button_Click(object sender, EventArgs e)
+		void DifficultyChanged(object sender, EventArgs e)
 		{
-			Unit.HasSoloBonus = !Unit.HasSoloBonus;
+			if (UnitConfiguration != null && DifficultyDropBox.SelectedValue is DifficultyLevel difficulty)
+			{
+				UnitConfiguration.DifficultyLevel = difficulty;
+			}
 		}
+
+		List<object> DifficultyList
+		{
+			get => fDifficultyList ?? (fDifficultyList = BindingHelper<DifficultyLevel>.ConvertForBinding(new DifficultyLookup().GetDifficulties()));
+		}
+		List<object> fDifficultyList;
+
+		#endregion
 	}
 }

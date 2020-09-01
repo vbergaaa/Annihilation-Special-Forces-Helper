@@ -97,7 +97,7 @@ namespace VUserInterface
 			// UnitControl
 			//
 			this.UnitControl.Location = new System.Drawing.Point(25, 90);
-			this.UnitControl.DataBindings.Add("Unit", this.LoadoutBindingSource, "UnitConfiguration");
+			this.UnitControl.DataBindings.Add("UnitConfiguration", this.LoadoutBindingSource, "UnitConfiguration");
 			this.UnitControl.Text = "Gem";
 			//
 			// SoulsControl

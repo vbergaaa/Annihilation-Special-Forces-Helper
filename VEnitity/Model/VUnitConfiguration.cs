@@ -192,6 +192,45 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region DifficultyLevel
+
+		[VXML(true)]
+		public virtual DifficultyLevel DifficultyLevel
+		{
+			get => fDifficultyLevel;
+			set
+			{
+				if (fDifficultyLevel != value)
+				{
+					fDifficultyLevel = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DifficultyLevel)));
+				}
+			}
+		}
+		DifficultyLevel fDifficultyLevel;
+
+		#endregion
+
+		#region Difficulty
+
+		public virtual VDifficulty Difficulty
+		{
+			get => fDifficulty;
+			set
+			{
+				if (fDifficulty != value)
+				{
+					fDifficulty = value;
+					HasChanges = true;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Difficulty)));
+				}
+			}
+		}
+		VDifficulty fDifficulty;
+
+		#endregion
+
 		#endregion
 
 		#region Methods
