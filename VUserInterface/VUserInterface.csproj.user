@@ -8,6 +8,9 @@
     <Compile Update="CommonControls\VCheckControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="CommonControls\VDropBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="CommonControls\VIncrementor.cs">
       <SubType>UserControl</SubType>
     </Compile>
