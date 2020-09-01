@@ -48,13 +48,13 @@ namespace VUserInterface
 			}
 		}
 
-		List<UnitRank> Ranks
+		List<object> Ranks
 		{
 			get
 			{
 				if (fRanks == null)
 				{
-					var ranks = new List<UnitRank>
+					var ranks = new List<object>
 					{
 						UnitRank.None,
 						UnitRank.D,
@@ -93,6 +93,6 @@ namespace VUserInterface
 				return fRanks;
 			}
 		}
-		List<UnitRank> fRanks;
+		List<object> fRanks;
 	}
 }

@@ -36,8 +36,7 @@ namespace VUserInterface
 		{
 			components = new System.ComponentModel.Container();
 			this.bindingSource = new BindingSource();
-			this.RankComboBox = new ComboBox();
-			this.RankCaption = new VLabel();
+			this.RankComboBox = new VDropBox();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
@@ -46,19 +45,14 @@ namespace VUserInterface
 			//
 			// RankComboBox
 			//
-			this.RankComboBox.DataSource = Ranks;
 			this.RankComboBox.Location = new System.Drawing.Point(125, 40);
+			this.RankComboBox.Caption = "Rank:";
+			this.RankComboBox.List = Ranks;
 			this.RankComboBox.SelectedValueChanged += RankChanged;
-			//
-			// RankCaption
-			//
-			this.RankCaption.Location = new System.Drawing.Point(35, 40);
-			this.RankCaption.Text = "Rank:";
 			//
 			// VSoulCollectionControl
 			//
 			this.Controls.Add(RankComboBox);
-			this.Controls.Add(RankCaption);
 			this.Size = new System.Drawing.Size(589, 292);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
@@ -66,7 +60,6 @@ namespace VUserInterface
 		#endregion
 
 		BindingSource bindingSource;
-		ComboBox RankComboBox;
-		Label RankCaption;
+		VDropBox RankComboBox;
 	}
 }
