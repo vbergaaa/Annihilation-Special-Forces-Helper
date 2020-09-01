@@ -353,7 +353,7 @@ namespace VBusiness.Souls
 			get => base.SaveSlot;
 			set
 			{
-				if (base.SaveSlot != value && !SuspendSettingHasChanges)
+				if (base.SaveSlot != value && !IsSettingHasChangesSuspended)
 				{
 					saveSlotHasChanges = true;
 				}
@@ -401,16 +401,17 @@ namespace VBusiness.Souls
 
 		protected override void SetDefaultValuesCore()
 		{
-			SuspendSettingHasChanges = true;
-			Attack = MinAttack;
-			AttackSpeed = MinAttackSpeed;
-			Vitals = MinVitals;
-			Armor = MinArmor;
-			CriticalChance = MinCriticalChance;
-			CriticalDamage = MinCriticalDamage;
-			Kills = MinKills;
-			Minerals = MinMinerals;
-			SuspendSettingHasChanges = false;
+			using (SuspendSettingHasChanges())
+			{
+				Attack = MinAttack;
+				AttackSpeed = MinAttackSpeed;
+				Vitals = MinVitals;
+				Armor = MinArmor;
+				CriticalChance = MinCriticalChance;
+				CriticalDamage = MinCriticalDamage;
+				Kills = MinKills;
+				Minerals = MinMinerals;
+			}
 		}
 
 		#endregion

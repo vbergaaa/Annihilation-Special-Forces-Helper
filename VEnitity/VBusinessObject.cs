@@ -25,10 +25,8 @@ namespace VEntityFramework.Data
 		void SetDefaultValues()
 		{
 			IsSettingDefaultValues = true;
-			SuspendSettingHasChanges = true;
 			SetDefaultValuesCore();
 			IsSettingDefaultValues = false;
-			SuspendSettingHasChanges = false;
 		}
 
 		protected virtual void SetDefaultValuesCore()
@@ -116,6 +114,10 @@ namespace VEntityFramework.Data
 		protected void RegisterChild(VBusinessObject bizo)
 		{
 			Children.Add(bizo);
+			if (IsSettingHasChangesSuspended)
+			{
+				childHasChangesDisposables.Add(bizo.SuspendSettingHasChanges());
+			}
 			bizo.Parent = this;
 		}
 
@@ -138,7 +140,7 @@ namespace VEntityFramework.Data
 			}
 			set
 			{
-				if (!SuspendSettingHasChanges && fHasChanges != value)
+				if (!IsSettingHasChangesSuspended && fHasChanges != value)
 				{
 					fHasChanges = value;
 					RefreshHasChanges();
@@ -147,7 +149,24 @@ namespace VEntityFramework.Data
 		}
 		bool fHasChanges;
 
-		public bool SuspendSettingHasChanges { get; set; }
+		public IDisposable SuspendSettingHasChanges()
+		{
+			suspendSettingHasChangesIncrement++;
+			childHasChangesDisposables = Children.Select(c => c.SuspendSettingHasChanges()).ToList();
+
+			return new DisposableAction(() => {
+				suspendSettingHasChangesIncrement--;
+
+				foreach (var disposable in childHasChangesDisposables)
+				{
+					disposable.Dispose();
+				}
+			});
+		}
+		List<IDisposable> childHasChangesDisposables;
+
+		public bool IsSettingHasChangesSuspended => suspendSettingHasChangesIncrement > 0;
+		int suspendSettingHasChangesIncrement;
 
 		void RefreshHasChanges()
 		{

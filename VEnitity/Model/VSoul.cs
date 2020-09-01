@@ -36,10 +36,7 @@ namespace VEntityFramework.Model
 			{
 				if (fSaveSlot != value)
 				{
-					if (!SuspendSettingHasChanges)
-					{
-						HasChanges = true;
-					}
+					HasChanges = true;
 					fSaveSlot = value;
 				}
 			}

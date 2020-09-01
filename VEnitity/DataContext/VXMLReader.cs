@@ -164,33 +164,31 @@ namespace VEntityFramework.Data
 	{
 		public void PopulateFromXML(VBusinessObject bizo, XmlNode documentElement)
 		{
-			bizo.SuspendSettingHasChanges = true;
-
-			foreach (XmlNode childNode in documentElement.ChildNodes)
+			using (bizo.SuspendSettingHasChanges())
 			{
-				var matchingProperty = GetMatchingProperty(bizo.GetType(), childNode);
+				foreach (XmlNode childNode in documentElement.ChildNodes)
+				{
+					var matchingProperty = GetMatchingProperty(bizo.GetType(), childNode);
 
-				if (matchingProperty == null)
-				{
-					continue;
-				}
-
-				if (matchingProperty.IsBusinessObject())
-				{
-					var childBizo = (VBusinessObject)matchingProperty.GetValue(bizo);
-					childBizo.SuspendSettingHasChanges = true;
-					PopulateFromXML(childBizo, childNode);
-					childBizo.SuspendSettingHasChanges = false;
-				}
-				else
-				{
-					if (!XmlKeys.Contains(childNode.Name))
+					if (matchingProperty == null)
 					{
-						matchingProperty.CastAndSetValue(childNode.InnerText, bizo);
+						continue;
+					}
+
+					if (matchingProperty.IsBusinessObject())
+					{
+						var childBizo = (VBusinessObject)matchingProperty.GetValue(bizo);
+						PopulateFromXML(childBizo, childNode);
+					}
+					else
+					{
+						if (!XmlKeys.Contains(childNode.Name))
+						{
+							matchingProperty.CastAndSetValue(childNode.InnerText, bizo);
+						}
 					}
 				}
 			}
-			bizo.SuspendSettingHasChanges = false;
 			bizo.ExistsInXML = true;
 		}
 
