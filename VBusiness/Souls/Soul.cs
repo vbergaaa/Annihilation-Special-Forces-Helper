@@ -62,6 +62,7 @@ namespace VBusiness.Souls
 				SoulType.Stats => new StatsSoul(collection),
 				SoulType.StridingTitan => new StridingTitanSoul(collection),
 				SoulType.UnboundReflection => new UnboundReflectionSoul(collection),
+				SoulType.Accelleration => new AccellerationSoul(collection),
 				_ => throw new Exception($"Soul Type: {type} has not been properly configured"),
 			};
 		}

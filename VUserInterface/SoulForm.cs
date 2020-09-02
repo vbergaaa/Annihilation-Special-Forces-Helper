@@ -126,8 +126,9 @@ namespace VUserInterface
 						{ $"Demonic Soul of {SoulType.Draining.GetDescription()}", SoulType.Draining },
 						{ $"Demonic Soul of {SoulType.Alacrity.GetDescription()}", SoulType.Alacrity },
 						{ $"Demonic Soul of {SoulType.Stats.GetDescription()}", SoulType.Stats },
+						{ $"Titan Soul of {SoulType.Accelleration.GetDescription()}", SoulType.Accelleration },
 						{ $"Titan Soul of {SoulType.StridingTitan.GetDescription()}", SoulType.StridingTitan },
-						{ $"Titan Soul of {SoulType.UnboundReflection.GetDescription()}", SoulType.UnboundReflection }
+						{ $"Titan Soul of {SoulType.UnboundReflection.GetDescription()}", SoulType.UnboundReflection },
 					};
 					fSoulTypeList = list.ToList();
 				}
