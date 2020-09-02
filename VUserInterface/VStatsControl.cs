@@ -30,7 +30,7 @@ namespace VUserInterface
 
 		private void DisclaimerLabel_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show(@"This sidebar represents the stats page that you can view in game. 
+			MessageBox.Show(@"This sidebar represents the stats page that you can view in game.
 
 The first two stats, 'Damage' and 'Toughness', are estimations of a units total attack and defence, and take all the base stats into consideration. Theoretically, by maximizing these value, you would have a stronger unit in game. However, the 'Toughness' stat cannot be accurately measured without knowing what unit you are using, and the 'Damage' stat does not consider spells or area of affect damage, and as such both of these values should be only be treated as a guideline to your total strength.
 

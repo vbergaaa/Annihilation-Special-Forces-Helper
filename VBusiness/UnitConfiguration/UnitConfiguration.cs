@@ -71,6 +71,7 @@ namespace VBusiness
 			Loadout.Stats.HealthArmor += 10 * levelDifference;
 			Loadout.Stats.Shields += 10 * levelDifference;
 			Loadout.Stats.ShieldsArmor += 10 * levelDifference;
+			Loadout.Stats.Acceleration += 10 * levelDifference;
 		}
 
 		#endregion
@@ -118,7 +119,7 @@ namespace VBusiness
 			Loadout.Stats.Shields += 5 * levelDifference;
 			Loadout.Stats.AdditiveArmor += 1 * levelDifference;
 			Loadout.Stats.MoveSpeed += 2.5 * levelDifference;
-			Loadout.Stats.CooldownReduction += 1 * levelDifference;
+			Loadout.Stats.Acceleration += 1 * levelDifference;
 		}
 
 		#endregion

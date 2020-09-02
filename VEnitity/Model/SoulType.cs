@@ -73,7 +73,7 @@ namespace VEntityFramework.Model
 		// Titan
 		StridingTitan,
 		UnboundReflection,
-		Accelleration,
+		Acceleration,
 	}
 
 	public static class SoulTypeExtentions

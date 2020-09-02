@@ -58,6 +58,8 @@ namespace VUserInterface
 			this.DamageReductionLabel = new VLabel();
 			this.DamageIncreaseCaption = new VLabel();
 			this.DamageIncreaseLabel = new VLabel();
+			this.AccelCaption = new VLabel();
+			this.AccelLabel = new VLabel();
 			this.statsBindingSource = new System.Windows.Forms.BindingSource();
 			this.DisclaimerLabel = new VLabel();
 			((System.ComponentModel.ISupportInitialize)(this.statsBindingSource)).BeginInit();
@@ -268,11 +270,27 @@ namespace VUserInterface
 			// 
 			// DamageReductionLabel
 			// 
-			this.DamageReductionLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "DamageReduction"));
+			this.DamageReductionLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "DamageReductionForBinding"));
 			this.DamageReductionLabel.Location = new System.Drawing.Point(120, 260);
 			this.DamageReductionLabel.Name = "DamageReductionLabel";
 			this.DamageReductionLabel.Size = new System.Drawing.Size(50, 20);
 			this.DamageReductionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// AccelCaption
+			// 
+			this.AccelCaption.Location = new System.Drawing.Point(5, 280);
+			this.AccelCaption.Name = "AccelCaption";
+			this.AccelCaption.Size = new System.Drawing.Size(110, 20);
+			this.AccelCaption.Text = "Acceleration:";
+			this.AccelCaption.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// AccelLabel
+			// 
+			this.AccelLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "AccelerationForBinding"));
+			this.AccelLabel.Location = new System.Drawing.Point(120, 280);
+			this.AccelLabel.Name = "AccelLabel";
+			this.AccelLabel.Size = new System.Drawing.Size(50, 20);
+			this.AccelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// DisclaimerLabel
 			// 
@@ -313,8 +331,10 @@ namespace VUserInterface
 			this.Controls.Add(DamageReductionLabel);
 			this.Controls.Add(DamageIncreaseCaption);
 			this.Controls.Add(DamageIncreaseLabel);
+			this.Controls.Add(AccelCaption);
+			this.Controls.Add(AccelLabel);
 			this.Controls.Add(DisclaimerLabel);
-			this.Size = new System.Drawing.Size(180, 290);
+			this.Size = new System.Drawing.Size(180, 310);
 			this.Text = "Stats";
 			((System.ComponentModel.ISupportInitialize)(this.statsBindingSource)).EndInit();
 		}
@@ -347,6 +367,8 @@ namespace VUserInterface
 		private System.Windows.Forms.Label DamageReductionLabel;
 		private System.Windows.Forms.Label DamageIncreaseCaption;
 		private System.Windows.Forms.Label DamageIncreaseLabel;
+		private System.Windows.Forms.Label AccelCaption;
+		private System.Windows.Forms.Label AccelLabel;
 		private System.Windows.Forms.BindingSource statsBindingSource;
 		private System.Windows.Forms.Label DisclaimerLabel;
 	}

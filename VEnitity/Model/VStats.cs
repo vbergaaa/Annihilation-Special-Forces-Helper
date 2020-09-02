@@ -259,7 +259,17 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		public double Acceleration { get; set; } // from what I can tell, you get 1% accel per essence, and it is multiplicative to the 10% accel you get per infuse, so I think it makes sense to store these values separately
+		// from what I can tell, you get 1% accel per essence, and it is multiplicative to the 10% accel you get per infuse, so I think it makes sense to store these values separately
+		public double Acceleration
+		{
+			get => fAcceleration;
+			set
+			{
+				fAcceleration = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AccelerationForBinding)));
+			}
+		}
+		double fAcceleration;
 
 		public double MoveSpeed { get; set; } // it looks like the 2.4477% move speed per essence is stacked multiplicatively, so it is exponential, where the 10% move speed from essence is additive (linear) they are multiplied to get the result
 
@@ -360,6 +370,7 @@ namespace VEntityFramework.Model
 		public double ShieldsArmorForBinding => Math.Round(ShieldsArmor, 2);
 		public double DamageReductionForBinding => Math.Round(DamageReduction, 2);
 		public double DamageIncreaseForBinding => Math.Round(DamageIncrease, 2);
+		public double AccelerationForBinding => Math.Round(Acceleration, 2);
 
 		#endregion
 	}

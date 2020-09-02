@@ -5,13 +5,13 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Souls
 {
-	public class AccellerationSoul : TitanSoul
+	public class AccelerationSoul : TitanSoul
 	{
-		public AccellerationSoul(VSoulCollection collection) : base(collection)
+		public AccelerationSoul(VSoulCollection collection) : base(collection)
 		{
 		}
 
-		public override SoulType Type => SoulType.Accelleration;
+		public override SoulType Type => SoulType.Acceleration;
 
 		protected override void ActivateSoulCore()
 		{

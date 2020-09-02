@@ -19,6 +19,7 @@ namespace VBusiness
 			Shields = 100;
 			ShieldsArmor = 100;
 			DamageReduction = 0;
+			Acceleration = 100;
 		}
 	}
 }
