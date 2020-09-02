@@ -17,7 +17,7 @@ If you have already downloaded a previous version of this application, you will 
 
 ### Current feature roadmap:
 1. Adding a challenge point menu to mimic the effects of CP in game
-2. Adding a profile page to store information such as your current rank, pp, name, etc, and making it so that you can view how much pp/gems you have remaining as you configure modify your loadout
+2. Adding a profile page to store information such as your current rank, pp, name, etc, and making it so that you can view how many perk point and gems you have remaining as you configure your loadouts.
 
 ### Potiential future features
 - Adding a helper that suggests different perks or gems to increase stats with best stats/cost ratio
