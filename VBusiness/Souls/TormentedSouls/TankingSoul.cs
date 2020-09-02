@@ -16,13 +16,15 @@ namespace VBusiness.Souls
 
 		protected override void ActivateSoulCore()
 		{
-				base.ActivateSoulCore();
-				SoulCollection.Loadout.Stats.DamageReduction += 5;
+			base.ActivateSoulCore();
+			SoulCollection.Loadout.Stats.AdditiveArmor += 3;
+			SoulCollection.Loadout.Stats.DamageReduction += 5;
 		}
 
 		protected override void DeactivateSoulCore()
 		{
 			base.DeactivateSoulCore();
+			SoulCollection.Loadout.Stats.AdditiveArmor -= 3;
 			SoulCollection.Loadout.Stats.DamageReduction -= 5;
 		}
 	}
