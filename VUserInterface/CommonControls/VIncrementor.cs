@@ -23,6 +23,7 @@ namespace VUserInterface.CommonControls
 				this.ValueLabel.Text = value.ToString();
 				fValue = value;
 				OnValueChanged();
+				RefreshButtons();
 			}
 		}
 		int fValue;
@@ -124,7 +125,6 @@ namespace VUserInterface.CommonControls
 			{
 				Value += 1 * IncrementAmount;
 			}
-			RefreshButtons();
 		}
 
 		#endregion
@@ -141,7 +141,6 @@ namespace VUserInterface.CommonControls
 			{
 				Value -= 1 * IncrementAmount;
 			}
-			RefreshButtons();
 		}
 
 		#endregion
