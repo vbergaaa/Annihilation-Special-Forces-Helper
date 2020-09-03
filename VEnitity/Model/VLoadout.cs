@@ -94,6 +94,20 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region ChallengePoints
+
+		public virtual VPerkCollection ChallengePoints
+		{
+			get => fChallengePoints;
+			set
+			{
+				fChallengePoints = value;
+			}
+		}
+		VPerkCollection fChallengePoints;
+
+		#endregion
+
 		#region UnitConfiguration
 
 		public virtual VUnitConfiguration UnitConfiguration
