@@ -60,7 +60,6 @@ namespace VEntityFramework.Model
 			set
 			{
 				fPerks = value;
-				RegisterChild(fPerks);
 			}
 		}
 		VPerkCollection fPerks;
@@ -75,7 +74,6 @@ namespace VEntityFramework.Model
 			set
 			{
 				fSouls = value;
-				RegisterChild(fSouls);
 			}
 		}
 		VSoulCollection fSouls;
@@ -90,7 +88,6 @@ namespace VEntityFramework.Model
 			set
 			{
 				fGems = value;
-				RegisterChild(fGems);
 			}
 		}
 		VGemCollection fGems;
@@ -105,7 +102,6 @@ namespace VEntityFramework.Model
 			set
 			{
 				fUnitConfiguration = value;
-				RegisterChild(fUnitConfiguration);
 			}
 		}
 		VUnitConfiguration fUnitConfiguration;

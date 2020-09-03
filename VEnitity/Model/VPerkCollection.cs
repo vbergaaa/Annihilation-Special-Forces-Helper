@@ -7,7 +7,7 @@ namespace VEntityFramework.Model
 	{
 		#region Constructor
 
-		public VPerkCollection(VLoadout loadout) : base()
+		public VPerkCollection(VLoadout loadout) : base(loadout)
 		{
 			Loadout = loadout ?? throw new ArgumentException(nameof(loadout));
 		}

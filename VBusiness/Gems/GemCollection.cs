@@ -27,7 +27,6 @@ namespace VBusiness.Gems
 				if (fAttackGem == null)
 				{
 					fAttackGem = new AttackGem(this);
-					RegisterChild(fAttackGem);
 				}
 				return fAttackGem;
 			}
@@ -45,7 +44,6 @@ namespace VBusiness.Gems
 				if (fAttackSpeedGem == null)
 				{
 					fAttackSpeedGem = new AttackSpeedGem(this);
-					RegisterChild(fAttackSpeedGem);
 				}
 				return fAttackSpeedGem;
 			}
@@ -63,7 +61,6 @@ namespace VBusiness.Gems
 				if (fShieldsGem == null)
 				{
 					fShieldsGem = new ShieldsGem(this);
-					RegisterChild(fShieldsGem);
 				}
 				return fShieldsGem;
 			}
@@ -81,7 +78,6 @@ namespace VBusiness.Gems
 				if (fShieldsArmorGem == null)
 				{
 					fShieldsArmorGem = new ShieldsArmorGem(this);
-					RegisterChild(fShieldsArmorGem);
 				}
 				return fShieldsArmorGem;
 			}
@@ -99,7 +95,6 @@ namespace VBusiness.Gems
 				if (fHealthGem == null)
 				{
 					fHealthGem = new HealthGem(this);
-					RegisterChild(fHealthGem);
 				}
 				return fHealthGem;
 			}
@@ -117,7 +112,6 @@ namespace VBusiness.Gems
 				if (fHealthArmorGem == null)
 				{
 					fHealthArmorGem = new HealthArmorGem(this);
-					RegisterChild(fHealthArmorGem);
 				}
 				return fHealthArmorGem;
 			}
@@ -135,7 +129,6 @@ namespace VBusiness.Gems
 				if (fCritChanceGem == null)
 				{
 					fCritChanceGem = new CriticalChanceGem(this);
-					RegisterChild(fCritChanceGem);
 				}
 				return fCritChanceGem;
 			}
@@ -153,7 +146,6 @@ namespace VBusiness.Gems
 				if (fCritDamageGem == null)
 				{
 					fCritDamageGem = new CriticalDamageGem(this);
-					RegisterChild(fCritDamageGem);
 				}
 				return fCritDamageGem;
 			}
@@ -171,7 +163,6 @@ namespace VBusiness.Gems
 				if (fDoubleWarpGem == null)
 				{
 					fDoubleWarpGem = new DoubleWarpGem(this);
-					RegisterChild(fDoubleWarpGem);
 				}
 				return fDoubleWarpGem;
 			}

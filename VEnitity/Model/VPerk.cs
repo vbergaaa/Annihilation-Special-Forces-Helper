@@ -9,7 +9,7 @@ namespace VEntityFramework.Model
 	{
 		#region Constructor
 
-		public VPerk(VPerkCollection collection)
+		public VPerk(VPerkCollection collection) : base(collection)
 		{
 			PerkCollection = collection;
 		}
@@ -32,26 +32,6 @@ namespace VEntityFramework.Model
 
 		[VXML(true)]
 		public string Code => $"{Page}_{Position}";
-
-		#endregion
-
-		#region CurrentLevel
-
-		//[VXML(false)]
-		//public virtual short CurrentLevel
-		//{
-		//	get => fCurrentLevel;
-		//	set
-		//	{
-		//		if (value != fCurrentLevel)
-		//		{
-		//			fCurrentLevel = value;
-		//			HasChanges = true;
-		//			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
-		//		}
-		//	}
-		//}
-		//short fCurrentLevel;
 
 		#endregion
 

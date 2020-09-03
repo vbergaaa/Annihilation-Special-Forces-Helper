@@ -37,7 +37,6 @@ namespace VBusiness.Perks
 				if (fAttack == null)
 				{
 					fAttack = new AttackPerk(this);
-					RegisterChild(fAttack);
 				}
 				return fAttack;
 			}
@@ -55,7 +54,6 @@ namespace VBusiness.Perks
 				if (fAttackSpeed == null)
 				{
 					fAttackSpeed = new AttackSpeedPerk(this);
-					RegisterChild(fAttackSpeed);
 				}
 				return fAttackSpeed;
 			}
@@ -73,7 +71,6 @@ namespace VBusiness.Perks
 				if (fHealth == null)
 				{
 					fHealth = new HealthPerk(this);
-					RegisterChild(fHealth);
 				}
 				return fHealth;
 			}
@@ -91,7 +88,6 @@ namespace VBusiness.Perks
 				if (fHealthArmor == null)
 				{
 					fHealthArmor = new HealthArmorPerk(this);
-					RegisterChild(fHealthArmor);
 				}
 				return fHealthArmor;
 			}
@@ -109,7 +105,6 @@ namespace VBusiness.Perks
 				if (fShields == null)
 				{
 					fShields = new ShieldsPerk(this);
-					RegisterChild(fShields);
 				}
 				return fShields;
 			}
@@ -127,7 +122,6 @@ namespace VBusiness.Perks
 				if (fShieldsArmor == null)
 				{
 					fShieldsArmor = new ShieldsArmorPerk(this);
-					RegisterChild(fShieldsArmor);
 				}
 				return fShieldsArmor;
 			}
@@ -145,7 +139,6 @@ namespace VBusiness.Perks
 				if (fKillEfficiency == null)
 				{
 					fKillEfficiency = new KillEfficiencyPerk(this);
-					RegisterChild(fKillEfficiency);
 				}
 				return fKillEfficiency;
 			}
@@ -163,7 +156,6 @@ namespace VBusiness.Perks
 				if (fKillRecycle == null)
 				{
 					fKillRecycle = new KillRecyclePerk(this);
-					RegisterChild(fKillRecycle);
 				}
 				return fKillRecycle;
 			}
@@ -181,7 +173,6 @@ namespace VBusiness.Perks
 				if (fMaximumPotiential == null)
 				{
 					fMaximumPotiential = new MaximumPotientialPerk(this);
-					RegisterChild(fMaximumPotiential);
 				}
 				return fMaximumPotiential;
 			}
@@ -199,7 +190,6 @@ namespace VBusiness.Perks
 				if (fVeterancy == null)
 				{
 					fVeterancy = new VeterancyPerk(this);
-					RegisterChild(fVeterancy);
 				}
 				return fVeterancy;
 			}
@@ -217,7 +207,6 @@ namespace VBusiness.Perks
 				if (fRank == null)
 				{
 					fRank = new RankPerk(this);
-					RegisterChild(fRank);
 				}
 				return fRank;
 			}
@@ -235,7 +224,6 @@ namespace VBusiness.Perks
 				if (fInfusionRecycle == null)
 				{
 					fInfusionRecycle = new InfusionRecyclePerk(this);
-					RegisterChild(fInfusionRecycle);
 				}
 				return fInfusionRecycle;
 			}
@@ -253,7 +241,6 @@ namespace VBusiness.Perks
 				if (fDoubleWarp == null)
 				{
 					fDoubleWarp = new DoubleWarpPerk(this);
-					RegisterChild(fDoubleWarp);
 				}
 				return fDoubleWarp;
 			}
@@ -271,7 +258,6 @@ namespace VBusiness.Perks
 				if (fStartingMinerals == null)
 				{
 					fStartingMinerals = new StartingMineralsPerk(this);
-					RegisterChild(fStartingMinerals);
 				}
 				return fStartingMinerals;
 			}
@@ -289,7 +275,6 @@ namespace VBusiness.Perks
 				if (fMasterTrainer == null)
 				{
 					fMasterTrainer = new MasterTrainerPerk(this);
-					RegisterChild(fMasterTrainer);
 				}
 				return fMasterTrainer;
 			}
@@ -307,7 +292,6 @@ namespace VBusiness.Perks
 				if (fExtraSupply == null)
 				{
 					fExtraSupply = new ExtraSupplyPerk(this);
-					RegisterChild(fExtraSupply);
 				}
 				return fExtraSupply;
 			}
@@ -325,7 +309,6 @@ namespace VBusiness.Perks
 				if (fMineralJackpot == null)
 				{
 					fMineralJackpot = new MineralJackpotPerk(this);
-					RegisterChild(fMineralJackpot);
 				}
 				return fMineralJackpot;
 			}
@@ -343,7 +326,6 @@ namespace VBusiness.Perks
 				if (fAutomaticRefinery == null)
 				{
 					fAutomaticRefinery = new AutomaticRefineryPerk(this);
-					RegisterChild(fAutomaticRefinery);
 				}
 				return fAutomaticRefinery;
 			}
@@ -361,7 +343,6 @@ namespace VBusiness.Perks
 				if (fAdrenalineRush == null)
 				{
 					fAdrenalineRush = new AdrenalineRushPerk(this);
-					RegisterChild(fAdrenalineRush);
 				}
 				return fAdrenalineRush;
 			}
@@ -379,7 +360,6 @@ namespace VBusiness.Perks
 				if (fCriticalChance == null)
 				{
 					fCriticalChance = new CriticalChancePerk(this);
-					RegisterChild(fCriticalChance);
 				}
 				return fCriticalChance;
 			}
@@ -397,7 +377,6 @@ namespace VBusiness.Perks
 				if (fCriticalDamage == null)
 				{
 					fCriticalDamage = new CriticalDamagePerk(this);
-					RegisterChild(fCriticalDamage);
 				}
 				return fCriticalDamage;
 			}
@@ -415,7 +394,6 @@ namespace VBusiness.Perks
 				if (fDamageReduction == null)
 				{
 					fDamageReduction = new DamageReductionPerk(this);
-					RegisterChild(fDamageReduction);
 				}
 				return fDamageReduction;
 			}
@@ -433,7 +411,6 @@ namespace VBusiness.Perks
 				if (fOverSpeed == null)
 				{
 					fOverSpeed = new OverSpeedPerk(this);
-					RegisterChild(fOverSpeed);
 				}
 				return fOverSpeed;
 			}
@@ -451,7 +428,6 @@ namespace VBusiness.Perks
 				if (fUnitSpecialization == null)
 				{
 					fUnitSpecialization = new UnitSpecializationPerk(this);
-					RegisterChild(fUnitSpecialization);
 				}
 				return fUnitSpecialization;
 			}
@@ -469,7 +445,6 @@ namespace VBusiness.Perks
 				if (fKillEfficiency2 == null)
 				{
 					fKillEfficiency2 = new KillEfficiency2Perk(this);
-					RegisterChild(fKillEfficiency2);
 				}
 				return fKillEfficiency2;
 			}
@@ -487,7 +462,6 @@ namespace VBusiness.Perks
 				if (fMaximumGather == null)
 				{
 					fMaximumGather = new MaximumGatherPerk(this);
-					RegisterChild(fMaximumGather);
 				}
 				return fMaximumGather;
 			}
@@ -505,7 +479,6 @@ namespace VBusiness.Perks
 				if (fMaximumPotiential2 == null)
 				{
 					fMaximumPotiential2 = new MaximumPotiential2Perk(this);
-					RegisterChild(fMaximumPotiential2);
 				}
 				return fMaximumPotiential2;
 			}
@@ -523,7 +496,6 @@ namespace VBusiness.Perks
 				if (fQuickStart == null)
 				{
 					fQuickStart = new QuickStartPerk(this);
-					RegisterChild(fQuickStart);
 				}
 				return fQuickStart;
 			}
@@ -541,7 +513,6 @@ namespace VBusiness.Perks
 				if (fRankRevision == null)
 				{
 					fRankRevision = new RankRevisionPerk(this);
-					RegisterChild(fRankRevision);
 				}
 				return fRankRevision;
 			}
@@ -559,7 +530,6 @@ namespace VBusiness.Perks
 				if (fVeterancy2 == null)
 				{
 					fVeterancy2 = new Veterancy2Perk(this);
-					RegisterChild(fVeterancy2);
 				}
 				return fVeterancy2;
 			}
@@ -577,7 +547,6 @@ namespace VBusiness.Perks
 				if (fBuildingRecycle == null)
 				{
 					fBuildingRecycle = new BuildingRecyclePerk(this);
-					RegisterChild(fBuildingRecycle);
 				}
 				return fBuildingRecycle;
 			}
@@ -595,7 +564,6 @@ namespace VBusiness.Perks
 				if (fCriticalCollection == null)
 				{
 					fCriticalCollection = new CriticalCollectionPerk(this);
-					RegisterChild(fCriticalCollection);
 				}
 				return fCriticalCollection;
 			}
@@ -613,7 +581,7 @@ namespace VBusiness.Perks
 				if (fCriticalHarvest == null)
 				{
 					fCriticalHarvest = new CriticalHarvestPerk(this);
-					RegisterChild(fCriticalHarvest);
+					
 				}
 				return fCriticalHarvest;
 			}
@@ -631,7 +599,6 @@ namespace VBusiness.Perks
 				if (fDoubleWarp2 == null)
 				{
 					fDoubleWarp2 = new DoubleWarp2Perk(this);
-					RegisterChild(fDoubleWarp2);
 				}
 				return fDoubleWarp2;
 			}
@@ -649,7 +616,6 @@ namespace VBusiness.Perks
 				if (fExpertMiner == null)
 				{
 					fExpertMiner = new ExpertMinerPerk(this);
-					RegisterChild(fExpertMiner);
 				}
 				return fExpertMiner;
 			}
@@ -667,7 +633,6 @@ namespace VBusiness.Perks
 				if (fMineralJackpot2 == null)
 				{
 					fMineralJackpot2 = new MineralJackpot2Perk(this);
-					RegisterChild(fMineralJackpot2);
 				}
 				return fMineralJackpot2;
 			}
@@ -685,7 +650,6 @@ namespace VBusiness.Perks
 				if (fAcceleratedFusion == null)
 				{
 					fAcceleratedFusion = new AcceleratedFusionPerk(this);
-					RegisterChild(fAcceleratedFusion);
 				}
 				return fAcceleratedFusion;
 			}
@@ -703,7 +667,6 @@ namespace VBusiness.Perks
 				if (fFastLearner == null)
 				{
 					fFastLearner = new FastLearnerPerk(this);
-					RegisterChild(fFastLearner);
 				}
 				return fFastLearner;
 			}
@@ -721,7 +684,6 @@ namespace VBusiness.Perks
 				if (fMiningExpertise == null)
 				{
 					fMiningExpertise = new MiningExpertisePerk(this);
-					RegisterChild(fMiningExpertise);
 				}
 				return fMiningExpertise;
 			}
@@ -739,7 +701,6 @@ namespace VBusiness.Perks
 				if (fTrainingCenter == null)
 				{
 					fTrainingCenter = new TrainingCenterPerk(this);
-					RegisterChild(fTrainingCenter);
 				}
 				return fTrainingCenter;
 			}
@@ -757,7 +718,6 @@ namespace VBusiness.Perks
 				if (fTrifectaPower == null)
 				{
 					fTrifectaPower = new TrifectaPowerPerk(this);
-					RegisterChild(fTrifectaPower);
 				}
 				return fTrifectaPower;
 			}
@@ -775,7 +735,6 @@ namespace VBusiness.Perks
 				if (fUnitStorage == null)
 				{
 					fUnitStorage = new UnitStoragePerk(this);
-					RegisterChild(fUnitStorage);
 				}
 				return fUnitStorage;
 			}
@@ -793,7 +752,6 @@ namespace VBusiness.Perks
 				if (fAlacrity == null)
 				{
 					fAlacrity = new AlacrityPerk(this);
-					RegisterChild(fAlacrity);
 				}
 				return fAlacrity;
 			}
@@ -811,7 +769,6 @@ namespace VBusiness.Perks
 				if (fBalancedTraining == null)
 				{
 					fBalancedTraining = new BalancedTrainingPerk(this);
-					RegisterChild(fBalancedTraining);
 				}
 				return fBalancedTraining;
 			}
@@ -829,7 +786,6 @@ namespace VBusiness.Perks
 				if (fCooldownSpeed == null)
 				{
 					fCooldownSpeed = new CooldownSpeedPerk(this);
-					RegisterChild(fCooldownSpeed);
 				}
 				return fCooldownSpeed;
 			}
@@ -847,7 +803,6 @@ namespace VBusiness.Perks
 				if (fCriticalChance2 == null)
 				{
 					fCriticalChance2 = new CriticalChance2Perk(this);
-					RegisterChild(fCriticalChance2);
 				}
 				return fCriticalChance2;
 			}
@@ -865,7 +820,6 @@ namespace VBusiness.Perks
 				if (fCriticalDamage2 == null)
 				{
 					fCriticalDamage2 = new CriticalDamage2Perk(this);
-					RegisterChild(fCriticalDamage2);
 				}
 				return fCriticalDamage2;
 			}
@@ -883,7 +837,6 @@ namespace VBusiness.Perks
 				if (fRedCrits == null)
 				{
 					fRedCrits = new RedCritsPerk(this);
-					RegisterChild(fRedCrits);
 				}
 				return fRedCrits;
 			}
@@ -901,7 +854,6 @@ namespace VBusiness.Perks
 				if (fInfusionRecycle2 == null)
 				{
 					fInfusionRecycle2 = new InfusionRecycle2Perk(this);
-					RegisterChild(fInfusionRecycle2);
 				}
 				return fInfusionRecycle2;
 			}
@@ -919,7 +871,6 @@ namespace VBusiness.Perks
 				if (fKillHarvest == null)
 				{
 					fKillHarvest = new KillHarvestPerk(this);
-					RegisterChild(fKillHarvest);
 				}
 				return fKillHarvest;
 			}
@@ -937,7 +888,6 @@ namespace VBusiness.Perks
 				if (fMaximumGather2 == null)
 				{
 					fMaximumGather2 = new MaximumGather2Perk(this);
-					RegisterChild(fMaximumGather2);
 				}
 				return fMaximumGather2;
 			}
@@ -955,7 +905,6 @@ namespace VBusiness.Perks
 				if (fMaximumPotiental3 == null)
 				{
 					fMaximumPotiental3 = new MaximumPotiental3Perk(this);
-					RegisterChild(fMaximumPotiental3);
 				}
 				return fMaximumPotiental3;
 			}
@@ -973,7 +922,6 @@ namespace VBusiness.Perks
 				if (fRankRevision2 == null)
 				{
 					fRankRevision2 = new RankRevision2Perk(this);
-					RegisterChild(fRankRevision2);
 				}
 				return fRankRevision2;
 			}
@@ -991,7 +939,6 @@ namespace VBusiness.Perks
 				if (fVeterancy3 == null)
 				{
 					fVeterancy3 = new Veterancy3Perk(this);
-					RegisterChild(fVeterancy3);
 				}
 				return fVeterancy3;
 			}
@@ -1009,7 +956,6 @@ namespace VBusiness.Perks
 				if (fAutomaticRefinery2 == null)
 				{
 					fAutomaticRefinery2 = new AutomaticRefinery2Perk(this);
-					RegisterChild(fAutomaticRefinery2);
 				}
 				return fAutomaticRefinery2;
 			}
@@ -1027,7 +973,6 @@ namespace VBusiness.Perks
 				if (fCriticalHarvest2 == null)
 				{
 					fCriticalHarvest2 = new CriticalHarvest2Perk(this);
-					RegisterChild(fCriticalHarvest2);
 				}
 				return fCriticalHarvest2;
 			}
@@ -1045,7 +990,6 @@ namespace VBusiness.Perks
 				if (fDoubleWarp3 == null)
 				{
 					fDoubleWarp3 = new DoubleWarp3Perk(this);
-					RegisterChild(fDoubleWarp3);
 				}
 				return fDoubleWarp3;
 			}
@@ -1063,7 +1007,6 @@ namespace VBusiness.Perks
 				if (fMineralJackpot3 == null)
 				{
 					fMineralJackpot3 = new MineralJackpot3Perk(this);
-					RegisterChild(fMineralJackpot3);
 				}
 				return fMineralJackpot3;
 			}
@@ -1081,7 +1024,6 @@ namespace VBusiness.Perks
 				if (fSuperJackpot == null)
 				{
 					fSuperJackpot = new SuperJackpotPerk(this);
-					RegisterChild(fSuperJackpot);
 				}
 				return fSuperJackpot;
 			}
@@ -1099,7 +1041,6 @@ namespace VBusiness.Perks
 				if (fTripleWarp == null)
 				{
 					fTripleWarp = new TripleWarpPerk(this);
-					RegisterChild(fTripleWarp);
 				}
 				return fTripleWarp;
 			}
@@ -1117,7 +1058,6 @@ namespace VBusiness.Perks
 				if (fAlacrity2 == null)
 				{
 					fAlacrity2 = new Alacrity2Perk(this);
-					RegisterChild(fAlacrity2);
 				}
 				return fAlacrity2;
 			}
@@ -1135,7 +1075,6 @@ namespace VBusiness.Perks
 				if (fBalancedTraining2 == null)
 				{
 					fBalancedTraining2 = new BalancedTraining2Perk(this);
-					RegisterChild(fBalancedTraining2);
 				}
 				return fBalancedTraining2;
 			}
@@ -1153,7 +1092,6 @@ namespace VBusiness.Perks
 				if (fCriticalChance3 == null)
 				{
 					fCriticalChance3 = new CriticalChance3Perk(this);
-					RegisterChild(fCriticalChance3);
 				}
 				return fCriticalChance3;
 			}
@@ -1171,7 +1109,6 @@ namespace VBusiness.Perks
 				if (fCriticalDamage3 == null)
 				{
 					fCriticalDamage3 = new CriticalDamage3Perk(this);
-					RegisterChild(fCriticalDamage3);
 				}
 				return fCriticalDamage3;
 			}
@@ -1189,7 +1126,6 @@ namespace VBusiness.Perks
 				if (fDamageReduction2 == null)
 				{
 					fDamageReduction2 = new DamageReduction2Perk(this);
-					RegisterChild(fDamageReduction2);
 				}
 				return fDamageReduction2;
 			}
@@ -1207,7 +1143,6 @@ namespace VBusiness.Perks
 				if (fSuperRush == null)
 				{
 					fSuperRush = new SuperRushPerk(this);
-					RegisterChild(fSuperRush);
 				}
 				return fSuperRush;
 			}

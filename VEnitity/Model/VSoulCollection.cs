@@ -11,7 +11,7 @@ namespace VEntityFramework.Model
 	{
 		#region Constructor
 
-		public VSoulCollection(VLoadout loadout)
+		public VSoulCollection(VLoadout loadout) : base(loadout)
 		{
 			Loadout = loadout ?? throw new ArgumentException(nameof(loadout));
 		}

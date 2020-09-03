@@ -93,7 +93,7 @@ namespace VBusiness.Loadouts
 
 		protected override void SetDefaultValuesCore()
 		{
-			Stats = new Stats();
+			Stats = new Stats(this);
 		}
 
 		#endregion

@@ -10,7 +10,7 @@ namespace VEntityFramework.Model
 	{
 		#region Constructor
 
-		public VGemCollection(VLoadout loadout)
+		public VGemCollection(VLoadout loadout) : base(loadout)
 		{
 			Loadout = loadout;
 		}

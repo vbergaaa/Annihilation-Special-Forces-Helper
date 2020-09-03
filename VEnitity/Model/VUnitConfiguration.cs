@@ -9,7 +9,7 @@ namespace VEntityFramework.Model
 	{
 		#region Constructor
 
-		public VUnitConfiguration(VLoadout loadout)
+		public VUnitConfiguration(VLoadout loadout) : base(loadout)
 		{
 			Loadout = loadout;
 		}

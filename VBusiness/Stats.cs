@@ -4,7 +4,7 @@ namespace VBusiness
 {
 	public class Stats : VStats
 	{
-		public Stats() : base()
+		public Stats(VLoadout loadout) : base(loadout)
 		{
 		}
 

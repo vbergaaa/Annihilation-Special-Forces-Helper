@@ -12,6 +12,11 @@ namespace VEntityFramework.Data
 	{
 		#region Constructor
 
+		public VBusinessObject(VBusinessObject parent) : this()
+		{
+			Parent = parent;
+		}
+
 		public VBusinessObject()
 		{
 			Context = new VDataContext();
@@ -111,14 +116,13 @@ namespace VEntityFramework.Data
 		protected IList<VBusinessObject> Children => fChildren ?? (fChildren = new List<VBusinessObject>());
 		IList<VBusinessObject> fChildren;
 
-		protected void RegisterChild(VBusinessObject bizo)
+		void RegisterChild(VBusinessObject bizo)
 		{
 			Children.Add(bizo);
 			if (IsSettingHasChangesSuspended)
 			{
 				childHasChangesDisposables.Add(bizo.SuspendSettingHasChanges());
 			}
-			bizo.Parent = this;
 		}
 
 		#endregion
@@ -126,11 +130,30 @@ namespace VEntityFramework.Data
 		#region Parent
 
 		[VXML(false)]
-		internal VBusinessObject Parent { get; set; }
+		internal VBusinessObject Parent
+		{
+			get => fParent;
+			set
+			{
+				if (fParent != value)
+				{
+					fParent = value;
+					fParent?.RegisterChild(this);
+				}
+#if DEBUG
+				else if (fParent != null)
+				{
+					throw new DeveloperException("Why are we adding a parent twice?");
+				}
+#endif
 
-		#endregion
+			}
+		}
+		VBusinessObject fParent;
 
-		#region HasChanges
+#endregion
+
+#region HasChanges
 
 		public bool HasChanges
 		{
@@ -174,11 +197,11 @@ namespace VEntityFramework.Data
 			Parent?.RefreshHasChanges();
 		}
 
-		#endregion
+#endregion
 
-		#region Events
+#region Events
 
-		#region PropertyChanged
+#region PropertyChanged
 
 		public void RefreshPropertyBinding(string property)
 		{
@@ -192,9 +215,9 @@ namespace VEntityFramework.Data
 			PropertyChanged?.Invoke(this, e);
 		}
 
-		#endregion
+#endregion
 
-		#region LoadedFromXML
+#region LoadedFromXML
 
 		internal event EventHandler<OnLoadedEventArgs> LoadedFromXML;
 
@@ -203,8 +226,8 @@ namespace VEntityFramework.Data
 			LoadedFromXML?.Invoke(this, e);
 		}
 
-		#endregion
+#endregion
 
-		#endregion
+#endregion
 	}
 }

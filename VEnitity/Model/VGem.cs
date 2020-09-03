@@ -9,7 +9,7 @@ namespace VEntityFramework.Model
 	{
 		#region Constructor
 
-		public VGem(VGemCollection collection)
+		public VGem(VGemCollection collection) : base(collection)
 		{
 			GemCollection = collection;
 		}

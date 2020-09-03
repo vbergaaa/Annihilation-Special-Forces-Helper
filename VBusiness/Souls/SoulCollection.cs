@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using VEntityFramework.Data;
+﻿using System.Collections.Generic;
 using VEntityFramework.Model;
 
 namespace VBusiness.Souls

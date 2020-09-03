@@ -5,6 +5,11 @@ namespace VEntityFramework.Model
 {
 	public abstract class VStats : VBusinessObject
 	{
+		public VStats(VLoadout loadout)
+		{
+			Loadout = loadout;
+		}
+
 		public override string BizoName => "Stats";
 
 		#region Calculated Stats;
@@ -371,6 +376,8 @@ namespace VEntityFramework.Model
 		public double DamageReductionForBinding => Math.Round(DamageReduction, 2);
 		public double DamageIncreaseForBinding => Math.Round(DamageIncrease, 2);
 		public double AccelerationForBinding => Math.Round(Acceleration, 2);
+
+		public VLoadout Loadout { get; }
 
 		#endregion
 	}

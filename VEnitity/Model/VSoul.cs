@@ -10,7 +10,7 @@ namespace VEntityFramework.Model
 	{
 		#region	Constructors
 
-		public VSoul(VSoulCollection soulCollection)
+		public VSoul(VSoulCollection soulCollection) : base(soulCollection)
 		{
 			SoulCollection = soulCollection;
 		}
