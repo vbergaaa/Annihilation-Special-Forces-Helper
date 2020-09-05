@@ -48,7 +48,7 @@ namespace VEntityFramework.Model
 
 		#region CostIncrement
 
-		public abstract int CostIncrement { get; }
+		public virtual int CostIncrement => 1;
 
 		#endregion
 

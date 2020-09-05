@@ -36,9 +36,9 @@ namespace VEntityFramework.Model
 				/// We then calculate how much damage is required to kill it in 100 attacks
 				/// This is then normalised to a score out of 100
 
-				var healthArmor = (fHealthArmor + AdditiveArmor) / 20;
+				var healthArmor = (fHealthArmor) / 20;
 				var health = fHealth;
-				var shieldsArmor = (fShieldsArmor + AdditiveArmor) / 20;
+				var shieldsArmor = (fShieldsArmor) / 20;
 				var shields = fShields / 100 * 50;
 
 				/// To get result I solved the following for X,
@@ -236,8 +236,10 @@ namespace VEntityFramework.Model
 
 		#region AdditiveArmor
 
-		public int AdditiveArmor
+		public double AdditiveArmor
 		{
+			// Additive Armor Currently isn't being used, because I haven't been about to find a way to accurately
+			// add it with knowing the exact armor of the unit. When that gets implemented I can revisit this 
 			get => fAdditiveArmor;
 			set
 			{
@@ -246,7 +248,7 @@ namespace VEntityFramework.Model
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
 			}
 		}
-		int fAdditiveArmor;
+		double fAdditiveArmor;
 
 		#endregion
 
@@ -358,6 +360,22 @@ namespace VEntityFramework.Model
 		}
 
 		UnitRank fRank;
+
+		#endregion
+
+		#region DefensiveEssenceStacks
+
+		public int DefensiveEssenceStacks
+		{
+			get => fDefensiveEssenceStacks;
+			set
+			{
+				var oldStacks = fDefensiveEssenceStacks;
+				fDefensiveEssenceStacks = value;
+				AdditiveArmor += Loadout.UnitConfiguration.EssenceStacks * 0.03 * (fDefensiveEssenceStacks - oldStacks);
+			}
+		}
+		int fDefensiveEssenceStacks;
 
 		#endregion
 

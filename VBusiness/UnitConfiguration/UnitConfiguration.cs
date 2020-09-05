@@ -117,7 +117,7 @@ namespace VBusiness
 			Loadout.Stats.AttackSpeed += 1 * levelDifference;
 			Loadout.Stats.Health += 5 * levelDifference;
 			Loadout.Stats.Shields += 5 * levelDifference;
-			Loadout.Stats.AdditiveArmor += 1 * levelDifference;
+			Loadout.Stats.AdditiveArmor += (1 + (0.03 * Loadout.Stats.DefensiveEssenceStacks)) * levelDifference;
 			Loadout.Stats.MoveSpeed += 2.5 * levelDifference;
 			Loadout.Stats.Acceleration += 1 * levelDifference;
 		}
