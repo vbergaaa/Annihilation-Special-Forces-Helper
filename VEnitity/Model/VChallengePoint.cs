@@ -24,6 +24,7 @@ namespace VEntityFramework.Model
 
 		#region CurrentLevel
 
+		[VXML(true)]
 		public virtual int CurrentLevel
 		{
 			get => fCurrentLevel;
@@ -40,9 +41,15 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region MinimalValue
+		#region MinValue
 
-		public virtual int MinValue { get; set; }
+		public int MinValue { get; set; }
+
+		#endregion
+
+		#region MaxValue
+
+		public int MaxValue { get; set; }
 
 		#endregion
 

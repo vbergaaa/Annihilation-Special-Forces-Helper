@@ -25,9 +25,12 @@ namespace VBusiness.ChallengePoints
 			set
 			{
 				var oldValue = base.CurrentLevel;
-				base.CurrentLevel = value;
-				var effectiveCPDifference = GetCPDifference(base.CurrentLevel, oldValue);
-				OnCPLevelChanged(effectiveCPDifference);
+				if (value <= MaxValue && value >= MinValue)
+				{
+					base.CurrentLevel = value;
+					var effectiveCPDifference = GetCPDifference(base.CurrentLevel, oldValue);
+					OnCPLevelChanged(effectiveCPDifference);
+				}
 			}
 		}
 
@@ -72,6 +75,19 @@ namespace VBusiness.ChallengePoints
 				}
 				return total;
 			}
+		}
+
+		#endregion
+
+		#endregion
+
+		#region Methods
+
+		#region SetDefaultValues
+
+		protected override void SetDefaultValuesCore()
+		{
+			MaxValue = int.MaxValue;
 		}
 
 		#endregion

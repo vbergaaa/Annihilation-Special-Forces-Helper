@@ -100,7 +100,7 @@ namespace VEntityFramework.Model
 
 		#region Accelleration
 
-		public virtual VChallengePoint Accelleration { get; set; }
+		public virtual VChallengePoint Acceleration { get; set; }
 
 		#endregion
 
