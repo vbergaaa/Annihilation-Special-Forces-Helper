@@ -38,6 +38,7 @@ namespace VUserInterface
 			ShowPerks(text == "Perks");
 			ShowGems(text == "Gems");
 			ShowSouls(text == "Souls");
+			ShowCP(text == "CP");
 			ShowUnit(text == "Unit");
 		}
 
@@ -54,6 +55,11 @@ namespace VUserInterface
 		void ShowGems(bool visibility)
 		{
 			GemsControl.Visible = visibility;
+		}
+
+		void ShowCP(bool visibility)
+		{
+			ChallengePointCollectionControl.Visible = visibility;
 		}
 
 		void ShowSouls(bool visibility)

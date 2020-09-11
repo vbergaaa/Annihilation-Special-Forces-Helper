@@ -18,6 +18,8 @@ namespace VBusiness.ChallengePoints
 
 		public override CPTier Tier => CPTier.Two;
 
+		public override string Name => "Veterancy";
+
 		public override void OnCPLevelChanged(int difference)
 		{
 		}

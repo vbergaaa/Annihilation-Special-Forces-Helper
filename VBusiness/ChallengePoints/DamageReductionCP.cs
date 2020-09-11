@@ -18,6 +18,8 @@ namespace VBusiness.ChallengePoints
 
 		public override CPTier Tier => CPTier.Two;
 
+		public override string Name => "Damage Reduction";
+
 		public override void OnCPLevelChanged(int difference)
 		{
 			ChallengePointCollection.Loadout.Stats.DamageReduction += 0.3999 * difference;

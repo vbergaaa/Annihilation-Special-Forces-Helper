@@ -30,6 +30,8 @@ namespace VBusiness.ChallengePoints
 					base.CurrentLevel = value;
 					var effectiveCPDifference = GetCPDifference(base.CurrentLevel, oldValue);
 					OnCPLevelChanged(effectiveCPDifference);
+
+					((ChallengePointCollection)ChallengePointCollection).SetCPLimits(Color);
 				}
 			}
 		}

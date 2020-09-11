@@ -46,9 +46,11 @@ namespace VUserInterface
 			this.PerksButton = new Button();
 			this.GemsButton = new Button();
 			this.SoulsButton = new Button();
+			this.ChallengePointCollectionButton = new Button();
 			this.UnitButton = new Button();
 			this.GemsControl = new VGemCollectionControl();
 			this.SoulsControl = new VSoulCollectionControl();
+			this.ChallengePointCollectionControl = new ChallengePointCollectionControl();
 			this.UnitControl = new UnitConfigurationControl();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
 			//
@@ -106,6 +108,13 @@ namespace VUserInterface
 			this.SoulsControl.DataBindings.Add("Souls", this.LoadoutBindingSource, "Souls");
 			this.SoulsControl.Text = "Soul";
 			//
+			// ChallengePointCollectionControl
+			//
+			this.ChallengePointCollectionControl.Location = new System.Drawing.Point(25, 90);
+			this.ChallengePointCollectionControl.DataBindings.Add("ChallengePointCollection", this.LoadoutBindingSource, "ChallengePoints");
+			this.ChallengePointCollectionControl.Text = "Challenge Points";
+			this.ChallengePointCollectionControl.Visible = false;
+			//
 			// StatsControl
 			//
 			this.StatsControl.DataBindings.Add("Stats", this.LoadoutBindingSource, "Stats");
@@ -114,31 +123,39 @@ namespace VUserInterface
 			// PerksButton
 			//
 			this.PerksButton.Location = new System.Drawing.Point(30, 55);
-			this.PerksButton.Size = new System.Drawing.Size(120, 25);
+			this.PerksButton.Size = new System.Drawing.Size(100, 25);
 			this.PerksButton.Text = "Perks";
 			this.PerksButton.FlatStyle = FlatStyle.Flat;
 			this.PerksButton.Click += ControlVisibilityToggled;
 			//
 			// GemsButton
 			//
-			this.GemsButton.Location = new System.Drawing.Point(170, 55);
-			this.GemsButton.Size = new System.Drawing.Size(120, 25);
+			this.GemsButton.Location = new System.Drawing.Point(140, 55);
+			this.GemsButton.Size = new System.Drawing.Size(100, 25);
 			this.GemsButton.Text = "Gems";
 			this.GemsButton.FlatStyle = FlatStyle.Flat;
 			this.GemsButton.Click += ControlVisibilityToggled;
 			//
 			// SoulsButton
 			//
-			this.SoulsButton.Location = new System.Drawing.Point(310, 55);
-			this.SoulsButton.Size = new System.Drawing.Size(120, 25);
+			this.SoulsButton.Location = new System.Drawing.Point(250, 55);
+			this.SoulsButton.Size = new System.Drawing.Size(100, 25);
 			this.SoulsButton.Text = "Souls";
 			this.SoulsButton.FlatStyle = FlatStyle.Flat;
 			this.SoulsButton.Click += ControlVisibilityToggled;
 			//
+			// ChallengePointCollectionButton
+			//
+			this.ChallengePointCollectionButton.Location = new System.Drawing.Point(360, 55);
+			this.ChallengePointCollectionButton.Size = new System.Drawing.Size(100, 25);
+			this.ChallengePointCollectionButton.Text = "CP";
+			this.ChallengePointCollectionButton.FlatStyle = FlatStyle.Flat;
+			this.ChallengePointCollectionButton.Click += ControlVisibilityToggled;
+			//
 			// UnitButton
 			//
-			this.UnitButton.Location = new System.Drawing.Point(450, 55);
-			this.UnitButton.Size = new System.Drawing.Size(120, 25);
+			this.UnitButton.Location = new System.Drawing.Point(470, 55);
+			this.UnitButton.Size = new System.Drawing.Size(100, 25);
 			this.UnitButton.Text = "Unit";
 			this.UnitButton.FlatStyle = FlatStyle.Flat;
 			this.UnitButton.Click += ControlVisibilityToggled;
@@ -156,9 +173,11 @@ namespace VUserInterface
 			this.Controls.Add(PerksButton);
 			this.Controls.Add(GemsButton);
 			this.Controls.Add(SoulsButton);
+			this.Controls.Add(ChallengePointCollectionButton);
 			this.Controls.Add(UnitButton);
 			this.Controls.Add(GemsControl);
 			this.Controls.Add(SoulsControl);
+			this.Controls.Add(ChallengePointCollectionControl);
 			this.Controls.Add(UnitControl);
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
@@ -169,6 +188,7 @@ namespace VUserInterface
 		private System.Windows.Forms.Button PerksButton;
 		private System.Windows.Forms.Button GemsButton;
 		private System.Windows.Forms.Button SoulsButton;
+		private System.Windows.Forms.Button ChallengePointCollectionButton;
 		private System.Windows.Forms.Button UnitButton;
 		private System.Windows.Forms.Label SlotNumberLabel;
 		private System.Windows.Forms.Label LoadoutNameLabel;
@@ -177,6 +197,7 @@ namespace VUserInterface
 		private VUserInterface.VPerkCollectionControl PerkPageControl;
 		private VUserInterface.VGemCollectionControl GemsControl;
 		private VUserInterface.VSoulCollectionControl SoulsControl;
+		private VUserInterface.ChallengePointCollectionControl ChallengePointCollectionControl;
 		private VUserInterface.UnitConfigurationControl UnitControl;
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;
 		private VStatsControl StatsControl;

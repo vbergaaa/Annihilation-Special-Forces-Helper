@@ -19,6 +19,8 @@ namespace VBusiness.ChallengePoints
 
 		public override CPTier Tier => CPTier.One;
 
+		public override string Name => "Attack";
+
 		public override void OnCPLevelChanged(int difference)
 		{
 			ChallengePointCollection.Loadout.Stats.Attack += 2 * difference;

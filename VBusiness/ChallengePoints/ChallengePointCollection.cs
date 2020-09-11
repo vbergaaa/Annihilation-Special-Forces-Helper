@@ -23,11 +23,117 @@ namespace VBusiness.ChallengePoints
 		public override VChallengePoint Attack
 		{
 			get => base.Attack ?? (base.Attack = new AttackCP(this));
-			set
-			{
-				base.Attack = value;
-				SetCPLimits(Attack.Color);
-			}
+			set { base.Attack = value; }
+		}
+
+		#endregion
+
+		#region AttackSpeed
+
+		public override VChallengePoint AttackSpeed
+		{
+			get => base.AttackSpeed ?? (base.AttackSpeed = new AttackSpeedCP(this));
+			set { base.AttackSpeed = value; }
+		}
+
+		#endregion
+
+		#region CriticalChance
+
+		public override VChallengePoint CriticalChance
+		{
+			get => base.CriticalChance ?? (base.CriticalChance = new CriticalChanceCP(this));
+			set { base.CriticalChance = value; }
+		}
+
+		#endregion
+
+		#region CriticalDamage
+
+		public override VChallengePoint CriticalDamage
+		{
+			get => base.CriticalDamage ?? (base.CriticalDamage = new CriticalDamageCP(this));
+			set { base.CriticalDamage = value; }
+		}
+
+		#endregion
+
+		#region Health
+
+		public override VChallengePoint Health
+		{
+			get => base.Health ?? (base.Health = new HealthCP(this));
+			set { base.Health = value; }
+		}
+
+		#endregion
+
+		#region Shields
+
+		public override VChallengePoint Shields
+		{
+			get => base.Shields ?? (base.Shields = new ShieldsCP(this));
+			set { base.Shields = value; }
+		}
+
+		#endregion
+
+		#region DefensiveEssence
+
+		public override VChallengePoint DefensiveEssence
+		{
+			get => base.DefensiveEssence ?? (base.DefensiveEssence = new DefensiveEssenceCP(this));
+			set => base.DefensiveEssence = value;
+		}
+
+		#endregion
+
+		#region DamageReduction
+
+		public override VChallengePoint DamageReduction
+		{
+			get => base.DamageReduction ?? (base.DamageReduction = new DamageReductionCP(this));
+			set => base.DamageReduction = value;
+		}
+
+		#endregion
+
+		#region Mining
+
+		public override VChallengePoint Mining
+		{
+			get => base.Mining ?? (base.Mining = new MiningUpgradesCP(this));
+			set => base.Mining = value;
+		}
+
+		#endregion
+
+		#region Kills
+
+		public override VChallengePoint Kills
+		{
+			get => base.Kills ?? (base.Kills = new KillsCP(this));
+			set => base.Kills = value;
+		}
+
+		#endregion
+
+		#region Veterancy
+
+		public override VChallengePoint Veterancy
+		{
+			get => base.Veterancy ?? (base.Veterancy = new VeterancyCP(this));
+			set => base.Veterancy = value;
+		}
+
+		#endregion
+
+		#region Acceleration
+
+		public override VChallengePoint Acceleration
+		{
+			get => base.Acceleration ?? (base.Acceleration = new AccelerationCP(this));
+			set => base.Acceleration = value;
 		}
 
 		#endregion
@@ -38,7 +144,14 @@ namespace VBusiness.ChallengePoints
 
 		#region RefreshCP
 
-		void SetCPLimits(CPColor color)
+		public void SetAllCPLimits()
+		{
+			SetCPLimits(CPColor.Red);
+			SetCPLimits(CPColor.Green);
+			SetCPLimits(CPColor.Blue);
+		}
+
+		internal void SetCPLimits(CPColor color)
 		{
 			LockTier1IfNecessary(color);
 			LockTier2IfNecessary(color);
@@ -160,7 +273,7 @@ namespace VBusiness.ChallengePoints
 
 		#region Implementation
 
-		public override string BizoName => "Challenge Point Collection";
+		public override string BizoName => "ChallengePointCollection";
 
 		#endregion
 	}

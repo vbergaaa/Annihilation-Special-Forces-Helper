@@ -18,6 +18,8 @@ namespace VBusiness.ChallengePoints
 
 		public override CPTier Tier => CPTier.Two;
 
+		public override string Name => "Critical Chance";
+
 		public override void OnCPLevelChanged(int difference)
 		{
 			ChallengePointCollection.Loadout.Stats.CriticalChance += 1 * difference;

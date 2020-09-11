@@ -43,13 +43,31 @@ namespace VEntityFramework.Model
 
 		#region MinValue
 
-		public int MinValue { get; set; }
+		public int MinValue
+		{
+			get => fMinValue;
+			set
+			{
+				fMinValue = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MinValue)));
+			}
+		}
+		int fMinValue;
 
 		#endregion
 
 		#region MaxValue
 
-		public int MaxValue { get; set; }
+		public int MaxValue
+		{
+			get => fMaxValue;
+			set
+			{
+				fMaxValue = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MaxValue)));
+			}
+		}
+		int fMaxValue;
 
 		#endregion
 
@@ -83,6 +101,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Tier
+
+		public abstract string Name { get; }
+
+		#endregion
+
 		#endregion
 
 		#region Methods
@@ -97,7 +121,7 @@ namespace VEntityFramework.Model
 
 		#region Implementation
 
-		public override string BizoName => "Challenge Point";
+		public override string BizoName => "ChallengePoint";
 
 		#endregion
 

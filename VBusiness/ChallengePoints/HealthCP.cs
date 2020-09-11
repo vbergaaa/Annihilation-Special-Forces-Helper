@@ -18,6 +18,8 @@ namespace VBusiness.ChallengePoints
 
 		public override CPTier Tier => CPTier.One;
 
+		public override string Name => "Health";
+
 		public override void OnCPLevelChanged(int difference)
 		{
 			ChallengePointCollection.Loadout.Stats.Health += 2 * difference;

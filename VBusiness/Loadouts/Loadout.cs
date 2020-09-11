@@ -1,4 +1,5 @@
 ﻿using System.Buffers.Text;
+using VBusiness.ChallengePoints;
 using VBusiness.Gems;
 using VBusiness.Perks;
 using VBusiness.Souls;
@@ -45,6 +46,16 @@ namespace VBusiness.Loadouts
 		{
 			get => base.Souls ?? (base.Souls = new SoulCollection(this));
 			set => base.Souls = value;
+		}
+
+		#endregion
+
+		#region ChallengePoints
+
+		public override VChallengePointCollection ChallengePoints
+		{
+			get => base.ChallengePoints ?? (base.ChallengePoints = new ChallengePointCollection(this));
+			set => base.ChallengePoints = value;
 		}
 
 		#endregion

@@ -24,6 +24,8 @@ namespace VBusiness.ChallengePoints
 
 		public override CPTier Tier => CPTier.Two;
 
+		public override string Name => "Acceleration";
+
 		public override void OnCPLevelChanged(int difference)
 		{
 			ChallengePointCollection.Loadout.Stats.Acceleration += 1.2 * difference;

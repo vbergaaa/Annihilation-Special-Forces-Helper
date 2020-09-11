@@ -18,6 +18,8 @@ namespace VBusiness.ChallengePoints
 
 		public override CPTier Tier => CPTier.One;
 
+		public override string Name => "Mining";
+
 		public override void OnCPLevelChanged(int difference)
 		{
 		}

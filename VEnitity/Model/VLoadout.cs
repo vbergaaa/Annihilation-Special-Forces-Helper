@@ -96,7 +96,7 @@ namespace VEntityFramework.Model
 
 		#region ChallengePoints
 
-		public virtual VPerkCollection ChallengePoints
+		public virtual VChallengePointCollection ChallengePoints
 		{
 			get => fChallengePoints;
 			set
@@ -104,7 +104,7 @@ namespace VEntityFramework.Model
 				fChallengePoints = value;
 			}
 		}
-		VPerkCollection fChallengePoints;
+		VChallengePointCollection fChallengePoints;
 
 		#endregion
 
