@@ -66,6 +66,7 @@ namespace VUserInterface
 			this.CurrentLevelIncrementor.DataBindings.Add("Value", bindingSource, "CurrentLevel");
 			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaxValue");
 			this.CurrentLevelIncrementor.DataBindings.Add("MinValue", bindingSource, "MinValue");
+			this.CurrentLevelIncrementor.DisableShiftClick = true;
 			this.CurrentLevelIncrementor.MinValue = 0;
 			// 
 			// ChallengePointBindingSource
