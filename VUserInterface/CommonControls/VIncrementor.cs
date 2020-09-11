@@ -30,6 +30,12 @@ namespace VUserInterface.CommonControls
 
 		#endregion
 
+		#region DisableShiftClick
+
+		public bool DisableShiftClick { get; set; }
+
+		#endregion
+
 		#region MaxValue
 
 		public int MaxValue
@@ -117,7 +123,11 @@ namespace VUserInterface.CommonControls
 
 		public void IncrementButton_Click(object sender, EventArgs e)
 		{
-			if (Control.ModifierKeys == Keys.Shift)
+			if (!DisableShiftClick && Control.ModifierKeys == Keys.Control)
+			{
+				Value += 100 * IncrementAmount;
+			}
+			else if (!DisableShiftClick && Control.ModifierKeys == Keys.Shift)
 			{
 				Value += 10 * IncrementAmount;
 			}
@@ -133,7 +143,11 @@ namespace VUserInterface.CommonControls
 
 		public void DecrementButton_Click(object sender, EventArgs e)
 		{
-			if (Control.ModifierKeys == Keys.Shift)
+			if (!DisableShiftClick && Control.ModifierKeys == Keys.Control)
+			{
+				Value -= 100 * IncrementAmount;
+			}
+			else if (!DisableShiftClick && Control.ModifierKeys == Keys.Shift)
 			{
 				Value -= 10 * IncrementAmount;
 			}
