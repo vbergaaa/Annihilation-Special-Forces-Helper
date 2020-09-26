@@ -14,56 +14,11 @@ namespace VEntityFramework.Model
 
 		#region Calculated Stats;
 
-		public double Damage
-		{
-			get
-			{
-				var regAtkChance = fCriticalChance > 100 ? 0 : 1 - fCriticalChance / 100;
-				var redCritChance = HasRedCrits ? fCriticalChance / 200 : 0;
-				var critChance = 1 - regAtkChance - redCritChance;
+		public abstract double Damage { get; }
 
-				var coreDamage = (regAtkChance * fAttack) + (critChance * (fAttack + fCriticalDamage)) + (redCritChance * (fAttack + 2 * fCriticalDamage));
-				var damage = coreDamage * (1 + DamageIncrease / 100);
-				return Math.Round(damage * fAttackSpeed / 100, 2);
-			}
-		}
+		public abstract double Toughness { get; }
 
-		public double Toughness
-		{
-			get
-			{
-				/// This calculation assumes a unit with 100 base health, 50 base shields, and 5 base armor
-				/// We then calculate how much damage is required to kill it in 100 attacks
-				/// This is then normalised to a score out of 100
-
-				var healthArmor = (fHealthArmor) / 20;
-				var health = fHealth;
-				var shieldsArmor = (fShieldsArmor) / 20;
-				var shields = fShields / 100 * 50;
-
-				/// To get result I solved the following for X,
-				/// 
-				/// H / (x - Ah) + S / (x - As) = 100
-				/// 
-				/// where
-				/// H = amount of Health
-				/// S = amount of Shields
-				/// Ah = Health Armor
-				/// As = Shield Armor
-				/// 100 = amount of hits required to kill our unit
-
-				var a = Math.Pow(100 * (shieldsArmor - healthArmor), 2)
-					+ Math.Pow(shields + health, 2)
-					+ (shields - health) * shieldsArmor * 200
-					+ (health - shields) * healthArmor * 200;
-				var b = Math.Sqrt(a) + 100 * shieldsArmor + 100 * healthArmor + shields + health;
-				var totalDamageRequiredToKillUnit = b / 2;
-				var totalToughness = totalDamageRequiredToKillUnit / (1 - fDamageReduction / 100);
-				var normalisedToughness = totalToughness / 650 * 100;
-				return Math.Round(normalisedToughness, 2);
-			}
-		}
-		public double Recovery { get => fHealth; }
+		public abstract double Recovery { get; }
 
 		#endregion
 
@@ -201,7 +156,7 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region DamageReduction
+		#region DamageIncrease
 
 		public double DamageIncrease
 		{
@@ -219,18 +174,49 @@ namespace VEntityFramework.Model
 
 		#region DamageReduction
 
-		public double DamageReduction
+		protected double TotalDamageReduction
 		{
-			get => fDamageReduction;
+			get => 100 - 100 * (1 - DamageReductionFromStats / 100) * (1 - DamageReductionFromRank / 100) * (1 - DamageReductionFromSpec / 100);
+		}
+
+		public double DamageReductionFromStats
+		{
+			get => fDamageReductionFromStats;
 			set
 			{
-				fDamageReduction = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageReduction)));
+				fDamageReductionFromStats = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageReductionForBinding)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
 			}
 		}
-		double fDamageReduction;
+		double fDamageReductionFromStats;
+
+		public double DamageReductionFromRank
+		{
+			get => fDamageReductionFromRank;
+			set
+			{
+				fDamageReductionFromRank = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageReductionForBinding)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+			}
+		}
+		double fDamageReductionFromRank;
+
+		public double DamageReductionFromSpec
+		{
+			get => fDamageReductionFromSpec;
+			set
+			{
+				fDamageReductionFromSpec = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageReductionForBinding)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+			}
+		}
+		double fDamageReductionFromSpec;
 
 		#endregion
 
@@ -391,7 +377,7 @@ namespace VEntityFramework.Model
 		public double HealthArmorForBinding => Math.Round(HealthArmor, 2);
 		public double ShieldsForBinding => Math.Round(Shields, 2);
 		public double ShieldsArmorForBinding => Math.Round(ShieldsArmor, 2);
-		public double DamageReductionForBinding => Math.Round(DamageReduction, 2);
+		public double DamageReductionForBinding => Math.Round(TotalDamageReduction, 2);
 		public double DamageIncreaseForBinding => Math.Round(DamageIncrease, 2);
 		public double AccelerationForBinding => Math.Round(Acceleration, 2);
 

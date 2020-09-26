@@ -389,7 +389,7 @@ namespace VBusiness.Ranks
 			UnitConfiguration.Loadout.Stats.Shields += Vitals;
 			UnitConfiguration.Loadout.Stats.ShieldsArmor += Vitals;
 			UnitConfiguration.Loadout.Stats.DamageIncrease += DamageIncrease;
-			UnitConfiguration.Loadout.Stats.DamageReduction += DamageReduction;
+			UnitConfiguration.Loadout.Stats.DamageReductionFromRank += DamageReduction;
 			UnitConfiguration.Loadout.Stats.CooldownReduction += Speed;
 			UnitConfiguration.Loadout.Stats.MoveSpeed += Speed;
 			UnitConfiguration.Loadout.Stats.Rank = Rank;
@@ -414,7 +414,7 @@ namespace VBusiness.Ranks
 			UnitConfiguration.Loadout.Stats.Shields -= Vitals;
 			UnitConfiguration.Loadout.Stats.ShieldsArmor -= Vitals;
 			UnitConfiguration.Loadout.Stats.DamageIncrease -= DamageIncrease;
-			UnitConfiguration.Loadout.Stats.DamageReduction -= DamageReduction;
+			UnitConfiguration.Loadout.Stats.DamageReductionFromRank -= DamageReduction;
 			UnitConfiguration.Loadout.Stats.CooldownReduction -= Speed;
 			UnitConfiguration.Loadout.Stats.MoveSpeed -= Speed;
 			UnitConfiguration.Loadout.Stats.Rank = Rank;

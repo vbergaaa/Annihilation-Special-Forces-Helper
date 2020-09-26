@@ -18,14 +18,14 @@ namespace VBusiness.Souls
 		{
 			base.ActivateSoulCore();
 			SoulCollection.Loadout.Stats.AdditiveArmor += 3;
-			SoulCollection.Loadout.Stats.DamageReduction += 5;
+			SoulCollection.Loadout.Stats.DamageReductionFromStats += 5;
 		}
 
 		protected override void DeactivateSoulCore()
 		{
 			base.DeactivateSoulCore();
 			SoulCollection.Loadout.Stats.AdditiveArmor -= 3;
-			SoulCollection.Loadout.Stats.DamageReduction -= 5;
+			SoulCollection.Loadout.Stats.DamageReductionFromStats -= 5;
 		}
 	}
 }
