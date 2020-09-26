@@ -36,6 +36,24 @@ namespace VUserInterface.CommonControls
 
 		#endregion
 
+		#region IncrementorStyle
+
+		public IncrementorStyle IncrementorStyle
+		{
+			get => fIncrementorStyle ?? IncrementorStyle.Normal;
+			set
+			{
+				if (fIncrementorStyle != value)
+				{
+					fIncrementorStyle = value;
+					ResizeControl(value);
+				}
+			}
+		}
+		IncrementorStyle? fIncrementorStyle;
+
+		#endregion
+
 		#region MaxValue
 
 		public int MaxValue
@@ -117,6 +135,28 @@ namespace VUserInterface.CommonControls
 
 		#endregion
 
+		#region ResizeControl
+
+		private void ResizeControl(IncrementorStyle value)
+		{
+			if (value == IncrementorStyle.Compact)
+			{
+				ValueLabel.Size = new System.Drawing.Size(23, 23);
+				ValueLabel.Left -= 5;
+				IncrementButton.Left -= 30;
+				this.Left += 30;
+			}
+			if (value == IncrementorStyle.Normal)
+			{
+				ValueLabel.Size = new System.Drawing.Size(43, 23);
+				ValueLabel.Left += 5;
+				IncrementButton.Left += 30;
+				this.Left -= 30;
+			}
+		}
+
+		#endregion
+
 		#region Event Handling
 
 		#region IncrementButton_Click
@@ -172,4 +212,11 @@ namespace VUserInterface.CommonControls
 
 		#endregion
 	}
+
+	public enum IncrementorStyle
+	{
+		Compact,
+		Normal 
+	}
+
 }

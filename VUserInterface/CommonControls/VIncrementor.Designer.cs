@@ -79,7 +79,7 @@
 			this.Controls.Add(ValueLabel);
 			this.Controls.Add(CaptionLabel);
 			this.DataBindings.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged;
-			this.Size = new System.Drawing.Size(120, 29);
+			this.Size = new System.Drawing.Size(109, 29);
 		}
 
 		#endregion

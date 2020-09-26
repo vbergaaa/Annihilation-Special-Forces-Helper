@@ -106,6 +106,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region TotalCost
+
+		public virtual int TotalCost { get; }
+
+		#endregion
+
 		#endregion
 	}
 }

@@ -44,29 +44,30 @@ namespace VUserInterface
 			// 
 			// CostCaption
 			// 
-			this.CostCaption.Location = new System.Drawing.Point(10, 46);
+			this.CostCaption.AutoSize = true;
+			this.CostCaption.Location = new System.Drawing.Point(40, 29);
 			this.CostCaption.Name = "CostCaption";
-			this.CostCaption.Size = new System.Drawing.Size(50, 23);
 			this.CostCaption.TabIndex = 6;
 			this.CostCaption.Text = "Cost";
-			this.CostCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.CostCaption.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// CostLabel
 			// 
-			this.CostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "TotalCost"));
-			this.CostLabel.Location = new System.Drawing.Point(70, 46);
+			this.CostLabel.AutoSize = true;
+			this.CostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "NextLevelCost"));
+			this.CostLabel.Location = new System.Drawing.Point(110, 29);
 			this.CostLabel.Name = "CostLabel";
-			this.CostLabel.Size = new System.Drawing.Size(70, 23);
 			this.CostLabel.TabIndex = 6;
 			this.CostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			//
 			// CurrentLevelIncrementor
 			//
-			this.CurrentLevelIncrementor.Location = new System.Drawing.Point(27, 18);
+			this.CurrentLevelIncrementor.Location = new System.Drawing.Point(48, 1);
 			this.CurrentLevelIncrementor.DataBindings.Add("Value", bindingSource, "CurrentLevel");
 			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaxValue");
 			this.CurrentLevelIncrementor.DataBindings.Add("MinValue", bindingSource, "MinValue");
 			this.CurrentLevelIncrementor.DisableShiftClick = true;
+			this.CurrentLevelIncrementor.IncrementorStyle = IncrementorStyle.Compact;
 			this.CurrentLevelIncrementor.MinValue = 0;
 			// 
 			// ChallengePointBindingSource
@@ -78,8 +79,7 @@ namespace VUserInterface
 			this.Controls.Add(this.CostLabel);
 			this.Controls.Add(this.CurrentLevelIncrementor);
 			this.Controls.Add(this.CostCaption);
-			this.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Name"));
-			this.Size = new System.Drawing.Size(160, 70);
+			this.Size = new System.Drawing.Size(160, 50);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
 

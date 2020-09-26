@@ -5,12 +5,14 @@ using VEntityFramework.Model;
 
 namespace VUserInterface
 {
-	public partial class ChallengePointControl : GroupBox
+	public partial class ChallengePointControl : UserControl
 	{
 		public ChallengePointControl()
 		{
 			InitializeComponent();
 		}
+
+		#region ChallengePoint
 
 		public VChallengePoint ChallengePoint
 		{
@@ -25,6 +27,20 @@ namespace VUserInterface
 			}
 		}
 		VChallengePoint fChallengePoint;
+
+		#endregion
+
+		#region Caption
+
+		public string Caption
+		{ 
+			get => CurrentLevelIncrementor.Caption;
+			set => CurrentLevelIncrementor.Caption = value;
+		}
+
+		#endregion
+
+		#region Bindings
 
 		void UpdateBindingIfDataSourceChanged()
 		{
@@ -51,5 +67,7 @@ namespace VUserInterface
 		{
 			this.bindingSource.ResetBindings(updateSchema);
 		}
+
+		#endregion
 	}
 }

@@ -138,6 +138,12 @@ namespace VBusiness.ChallengePoints
 
 		#endregion
 
+		#region TotalCost
+
+		public override int TotalCost => AllCP.Sum(cp => cp.TotalCost);
+
+		#endregion
+
 		#endregion
 
 		#region Methods

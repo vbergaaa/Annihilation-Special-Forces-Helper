@@ -6,7 +6,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="ChallengePointControl.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="CommonControls\VButton.cs">
       <SubType>Component</SubType>
