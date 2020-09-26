@@ -15,7 +15,7 @@ namespace VBusiness.HelperClasses
 				DifficultyLevel.None => new EmptyDifficulty(),
 				DifficultyLevel.VeryEasy => new VeryEasy(),
 				DifficultyLevel.Easy => new Easy(),
-				DifficultyLevel.Medium => new Medium(),
+				DifficultyLevel.Normal => new Normal(),
 				DifficultyLevel.Hard => new Hard(),
 				DifficultyLevel.VeryHard => new VeryHard(),
 				DifficultyLevel.Insane => new Insane(),

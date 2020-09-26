@@ -14,7 +14,7 @@ namespace VBusiness.Difficulties
 				DifficultyLevel.None,
 				DifficultyLevel.VeryEasy,
 				DifficultyLevel.Easy,
-				DifficultyLevel.Medium,
+				DifficultyLevel.Normal,
 				DifficultyLevel.Hard,
 				DifficultyLevel.VeryHard,
 				DifficultyLevel.Insane,
