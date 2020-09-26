@@ -201,18 +201,20 @@ namespace VEntityFramework.Data
 
 		PropertyInfo GetMatchingProperty(Type type, XmlNode child)
 		{
-			switch (child.Name)
+			return child.Name switch
 			{
-				case "PerkCollection": return type.GetProperty("Perks");
-				case "GemCollection": return type.GetProperty("Gems");
-				case "SoulCollection": return type.GetProperty("Souls");
-				case "Gem": return GetGem(type, child);
-				case "Perk": return GetPerkFromCode(type, child);
-				default: return type.GetProperty(child.Name);
-			}
+				"PerkCollection" => type.GetProperty("Perks"),
+				"GemCollection" => type.GetProperty("Gems"),
+				"SoulCollection" => type.GetProperty("Souls"),
+				"ChallengePointCollection" => type.GetProperty("ChallengePoints"),
+				"Gem" => GetGem(type, child),
+				"Perk" => GetPerkFromCode(type, child),
+				"ChallengePoint" => GetDefaultBizo(type, child),
+				_ => type.GetProperty(child.Name),
+			};
 		}
 
-		private PropertyInfo GetGem(Type type, XmlNode node)
+		PropertyInfo GetGem(Type type, XmlNode node)
 		{
 			var name = "";
 			foreach (XmlNode child in node.ChildNodes)
@@ -225,7 +227,20 @@ namespace VEntityFramework.Data
 			return type.GetProperty(name);
 		}
 
-		private PropertyInfo GetPerkFromCode(Type type, XmlNode node)
+		PropertyInfo GetDefaultBizo(Type type, XmlNode node)
+		{
+			var name = "";
+			foreach (XmlNode child in node.ChildNodes)
+			{
+				if (child.Name == "Key")
+				{
+					name = child.InnerText.Replace(" ", "");
+				}
+			}
+			return type.GetProperty(name);
+		}
+
+		PropertyInfo GetPerkFromCode(Type type, XmlNode node)
 		{
 			var code = "";
 			foreach (XmlNode child in node.ChildNodes)
@@ -240,78 +255,78 @@ namespace VEntityFramework.Data
 			return GetPerkFromCode(type, code);
 		}
 
-		private PropertyInfo GetPerkFromCode(Type type, string code)
+		PropertyInfo GetPerkFromCode(Type type, string code)
 		{
-			switch (code)
+			return code switch
 			{
-				case "1_1": return type.GetProperty("Attack");
-				case "1_2": return type.GetProperty("AttackSpeed");
-				case "1_3": return type.GetProperty("Shields");
-				case "1_4": return type.GetProperty("ShieldsArmor");
-				case "1_5": return type.GetProperty("Health");
-				case "1_6": return type.GetProperty("HealthArmor");
-				case "2_1": return type.GetProperty("KillEfficiency");
-				case "2_2": return type.GetProperty("KillRecycle");
-				case "2_3": return type.GetProperty("MaximumPotiential");
-				case "2_4": return type.GetProperty("Veterancy");
-				case "2_5": return type.GetProperty("Rank");
-				case "2_6": return type.GetProperty("InfusionRecycle");
-				case "3_1": return type.GetProperty("DoubleWarp");
-				case "3_2": return type.GetProperty("StartingMinerals");
-				case "3_3": return type.GetProperty("MasterTrainer");
-				case "3_4": return type.GetProperty("ExtraSupply");
-				case "3_5": return type.GetProperty("MineralJackpot");
-				case "3_6": return type.GetProperty("AutomaticRefinery");
-				case "4_3": return type.GetProperty("AdrenalineRush");
-				case "4_1": return type.GetProperty("CriticalChance");
-				case "4_2": return type.GetProperty("CriticalDamage");
-				case "4_6": return type.GetProperty("DamageReduction");
-				case "4_4": return type.GetProperty("OverSpeed");
-				case "4_5": return type.GetProperty("UnitSpecialization");
-				case "5_1": return type.GetProperty("KillEfficiency2");
-				case "5_4": return type.GetProperty("MaximumGather");
-				case "5_3": return type.GetProperty("MaximumPotiential2");
-				case "5_2": return type.GetProperty("QuickStart");
-				case "5_6": return type.GetProperty("RankRevision");
-				case "5_5": return type.GetProperty("Veterancy2");
-				case "6_2": return type.GetProperty("BuildingRecycle");
-				case "6_5": return type.GetProperty("CriticalCollection");
-				case "6_6": return type.GetProperty("CriticalHarvest");
-				case "6_1": return type.GetProperty("DoubleWarp2");
-				case "6_3": return type.GetProperty("ExpertMiner");
-				case "6_4": return type.GetProperty("MineralJackpot2");
-				case "7_4": return type.GetProperty("AcceleratedFusion");
-				case "7_6": return type.GetProperty("FastLearner");
-				case "7_2": return type.GetProperty("MiningExpertise");
-				case "7_3": return type.GetProperty("TrainingCenter");
-				case "7_1": return type.GetProperty("TrifectaPower");
-				case "7_5": return type.GetProperty("UnitStorage");
-				case "8_5": return type.GetProperty("Alacrity");
-				case "8_3": return type.GetProperty("BalancedTraining");
-				case "8_4": return type.GetProperty("CooldownSpeed");
-				case "8_1": return type.GetProperty("CriticalChance2");
-				case "8_2": return type.GetProperty("CriticalDamage2");
-				case "8_6": return type.GetProperty("RedCrits");
-				case "9_2": return type.GetProperty("InfusionRecycle2");
-				case "9_1": return type.GetProperty("KillHarvest");
-				case "9_3": return type.GetProperty("MaximumPotiental3");
-				case "9_4": return type.GetProperty("MaximumGather2");
-				case "9_6": return type.GetProperty("RankRevision2");
-				case "9_5": return type.GetProperty("Veterancy3");
-				case "10_6": return type.GetProperty("AutomaticRefinery2");
-				case "10_3": return type.GetProperty("CriticalHarvest2");
-				case "10_1": return type.GetProperty("DoubleWarp3");
-				case "10_5": return type.GetProperty("MineralJackpot3");
-				case "10_4": return type.GetProperty("SuperJackpot");
-				case "10_2": return type.GetProperty("TripleWarp");
-				case "11_3": return type.GetProperty("BalancedTraining2");
-				case "11_1": return type.GetProperty("CriticalChance3");
-				case "11_2": return type.GetProperty("CriticalDamage3");
-				case "11_5": return type.GetProperty("DamageReduction2");
-				case "11_4": return type.GetProperty("SuperRush");
-				case "11_6": return type.GetProperty("Alacrity2");
-				default: throw new InvalidDataException($"Somehow, a code of {code} was passed in.");
-			}
+				"1_1" => type.GetProperty("Attack"),
+				"1_2" => type.GetProperty("AttackSpeed"),
+				"1_3" => type.GetProperty("Shields"),
+				"1_4" => type.GetProperty("ShieldsArmor"),
+				"1_5" => type.GetProperty("Health"),
+				"1_6" => type.GetProperty("HealthArmor"),
+				"2_1" => type.GetProperty("KillEfficiency"),
+				"2_2" => type.GetProperty("KillRecycle"),
+				"2_3" => type.GetProperty("MaximumPotiential"),
+				"2_4" => type.GetProperty("Veterancy"),
+				"2_5" => type.GetProperty("Rank"),
+				"2_6" => type.GetProperty("InfusionRecycle"),
+				"3_1" => type.GetProperty("DoubleWarp"),
+				"3_2" => type.GetProperty("StartingMinerals"),
+				"3_3" => type.GetProperty("MasterTrainer"),
+				"3_4" => type.GetProperty("ExtraSupply"),
+				"3_5" => type.GetProperty("MineralJackpot"),
+				"3_6" => type.GetProperty("AutomaticRefinery"),
+				"4_3" => type.GetProperty("AdrenalineRush"),
+				"4_1" => type.GetProperty("CriticalChance"),
+				"4_2" => type.GetProperty("CriticalDamage"),
+				"4_6" => type.GetProperty("DamageReduction"),
+				"4_4" => type.GetProperty("OverSpeed"),
+				"4_5" => type.GetProperty("UnitSpecialization"),
+				"5_1" => type.GetProperty("KillEfficiency2"),
+				"5_4" => type.GetProperty("MaximumGather"),
+				"5_3" => type.GetProperty("MaximumPotiential2"),
+				"5_2" => type.GetProperty("QuickStart"),
+				"5_6" => type.GetProperty("RankRevision"),
+				"5_5" => type.GetProperty("Veterancy2"),
+				"6_2" => type.GetProperty("BuildingRecycle"),
+				"6_5" => type.GetProperty("CriticalCollection"),
+				"6_6" => type.GetProperty("CriticalHarvest"),
+				"6_1" => type.GetProperty("DoubleWarp2"),
+				"6_3" => type.GetProperty("ExpertMiner"),
+				"6_4" => type.GetProperty("MineralJackpot2"),
+				"7_4" => type.GetProperty("AcceleratedFusion"),
+				"7_6" => type.GetProperty("FastLearner"),
+				"7_2" => type.GetProperty("MiningExpertise"),
+				"7_3" => type.GetProperty("TrainingCenter"),
+				"7_1" => type.GetProperty("TrifectaPower"),
+				"7_5" => type.GetProperty("UnitStorage"),
+				"8_5" => type.GetProperty("Alacrity"),
+				"8_3" => type.GetProperty("BalancedTraining"),
+				"8_4" => type.GetProperty("CooldownSpeed"),
+				"8_1" => type.GetProperty("CriticalChance2"),
+				"8_2" => type.GetProperty("CriticalDamage2"),
+				"8_6" => type.GetProperty("RedCrits"),
+				"9_2" => type.GetProperty("InfusionRecycle2"),
+				"9_1" => type.GetProperty("KillHarvest"),
+				"9_3" => type.GetProperty("MaximumPotiental3"),
+				"9_4" => type.GetProperty("MaximumGather2"),
+				"9_6" => type.GetProperty("RankRevision2"),
+				"9_5" => type.GetProperty("Veterancy3"),
+				"10_6" => type.GetProperty("AutomaticRefinery2"),
+				"10_3" => type.GetProperty("CriticalHarvest2"),
+				"10_1" => type.GetProperty("DoubleWarp3"),
+				"10_5" => type.GetProperty("MineralJackpot3"),
+				"10_4" => type.GetProperty("SuperJackpot"),
+				"10_2" => type.GetProperty("TripleWarp"),
+				"11_3" => type.GetProperty("BalancedTraining2"),
+				"11_1" => type.GetProperty("CriticalChance3"),
+				"11_2" => type.GetProperty("CriticalDamage3"),
+				"11_5" => type.GetProperty("DamageReduction2"),
+				"11_4" => type.GetProperty("SuperRush"),
+				"11_6" => type.GetProperty("Alacrity2"),
+				_ => throw new InvalidDataException($"Somehow, a code of {code} was passed in."),
+			};
 		}
 	}
 }

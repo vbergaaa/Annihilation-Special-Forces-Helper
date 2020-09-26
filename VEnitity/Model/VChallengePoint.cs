@@ -60,7 +60,7 @@ namespace VEntityFramework.Model
 
 		public int MaxValue
 		{
-			get => fMaxValue;
+			get => IsSettingHasChangesSuspended ? int.MaxValue : fMaxValue;
 			set
 			{
 				fMaxValue = value;
@@ -101,9 +101,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region Tier
+		#region Name
 
 		public abstract string Name { get; }
+
+		[VXML(true)]
+		public string Key => Name;
 
 		#endregion
 
