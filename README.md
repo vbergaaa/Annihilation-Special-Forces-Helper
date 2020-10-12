@@ -1,7 +1,9 @@
 # Annihilation-Special-Forces-Helper
 A program used to assist players who play the SC2 Custom Arcade Game, "Annihilation Special Forces"
 
-You can use this program to plan and create your in game loadouts. It accurately shows your complete statistics, and goes beyond the in-game stats by including unit specific buffs from perks, souls, and ranks.
+You can use this program to plan and create your in game loadouts. It accurately shows your complete statistics, and goes beyond the in-game stats by including unit specific buffs from perks, souls, and ranks, as well as combining them to give you an indication of your overall power.
+
+
 
 ## Download Instructions
 To run this program, you will need to have Microsoft .NET Core installed on you computer. To check if your computer already has it installed, you can run the following command from a command prompt window:
@@ -13,18 +15,18 @@ Once you have dotnet installed, download <b>ASF.zip</b> from the newest release 
 
 Once you have downloaded the zip file, extract the files and run ASFLauncher.exe.
 
-If you have already downloaded a previous version of this application, you will need copy the "Loadouts" and "Souls" folders (if applicable) from the old application directory to the new application directory.
+If you have already downloaded a previous version of this application, you will need copy the "Loadouts" and "Souls" folders from the old application directory to the new application directory to retain your previous data.
 
-### Current feature roadmap:
-1. Adding a challenge point menu to mimic the effects of CP in game
-2. Adding a profile page to store information such as your current rank, pp, name, etc, and making it so that you can view how many perk point and gems you have remaining as you configure your loadouts.
+### Feature roadmap:
+1. Adding a profile page to store information such as your current rank, pp, name, etc.
+2. Adding caps to the loadout page so you can't create loadouts that cost more than your available PP / Gems / CP, etc. 
+3. Add individual units to the program to get even more accurate stats.
+4. Adding an economy calculator to help you determine which eco perks will give you the most value.
 
 ### Potiential future features
-- Adding a helper that suggests different perks or gems to increase stats with best stats/cost ratio
-- Same as above but for economics
-- Adding support for individual in game units, making it possible to compare stats of different units with different configurations.
-- Adding support for in game upgrades, to more accurately track costs of specific units
-- Add features to enhance your profile, such as live rp and soul tracking options
+- Adding support for in game upgrades, to more extensively track costs and stats of specific units.
+- Adding a helper that suggests different perks or gems to increase stats with best stats/cost ratio.
+- Add RP tracking functionality
 
-#### Feature requests welcome
-Please create an 'enhancement' type issue in the issue tab [here](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/issues) for any feature requests.
+#### Developer's Note
+Development for this program has slowed due to lack of community interest. However, I am still open to feature requests and will fix bugs, so feel free to raise an issue on [this page](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/issues).
