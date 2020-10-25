@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
-using VEntityFramework.Model;
+using VEntityFramework.Data;
 
-namespace VEntityFramework.Data
+namespace VEntityFramework.XML
 {
 	class VXMLWriter
 	{
@@ -31,11 +30,6 @@ namespace VEntityFramework.Data
 			}
 
 			return newNameWithPath;
-		}
-
-		string GetOldFilePathWithName(string bizoName, string existingName)
-		{
-			return GetFilePath(bizoName) + existingName + ".xml";
 		}
 
 		XmlWriter GetXmlWriter(Stream stream)

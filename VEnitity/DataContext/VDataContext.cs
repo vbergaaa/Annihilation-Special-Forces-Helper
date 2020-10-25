@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using VEntityFramework;
-using VEntityFramework.Model;
+﻿using System.IO;
+using VEntityFramework.XML;
 
 namespace VEntityFramework.Data
 {
@@ -20,14 +15,9 @@ namespace VEntityFramework.Data
 			return new VXMLReader().Read<T>(fileName);
 		}
 
-		public string[] GetAllLoadoutNames()
+		public string[] GetAllFileNames<T>() where T : VBusinessObject
 		{
-			return new VXMLReader().GetAllLoadoutNames();
-		}
-
-		public string[] GetAllSoulNames()
-		{
-			return new VXMLReader().GetAllSoulNames();
+			return new VXMLReader().GetAllFilenames<T>();
 		}
 
 		internal void DeleteXML(VBusinessObject bizo)

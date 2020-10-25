@@ -71,7 +71,7 @@ namespace VUserInterface
 		void RefreshLoadouts()
 		{
 			LoadoutsCollection.Clear();
-			var loadouts = context.GetAllLoadoutNames();
+			var loadouts = context.GetAllFileNames<Loadout>();
 			loadouts = OrderHelper.OrderNamesByKey(loadouts);
 			foreach (var loadout in loadouts)
 			{
@@ -130,7 +130,7 @@ namespace VUserInterface
 		void RefreshSouls()
 		{
 			SoulsCollection.Clear();
-			var souls = context.GetAllSoulNames();
+			var souls = context.GetAllFileNames<Soul>();
 			souls = OrderHelper.OrderNamesByKey(souls);
 			foreach (var Soul in souls)
 			{

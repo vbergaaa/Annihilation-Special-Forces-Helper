@@ -5,7 +5,7 @@ using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
-	public abstract class VDifficulty : VBusinessObject
+	public abstract class VDifficulty
 	{
 		#region Properties
 
@@ -49,11 +49,6 @@ namespace VEntityFramework.Model
 		}
 
 		#endregion
-
-		#endregion
-		#region Implementation
-
-		public override string BizoName => "Difficulty";
 
 		#endregion
 	}
