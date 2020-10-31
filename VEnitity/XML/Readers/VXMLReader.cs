@@ -16,19 +16,18 @@ namespace VEntityFramework.XML
 
 		internal string[] GetAllFilenames<T>() where T : VBusinessObject
 		{
-			var fullPath = GetFullDirectory<T>();
-			var files = Directory.GetFiles(fullPath);
+			var directory = DirectoryManager.GetFullDirectory<T>();
+			var files = Directory.GetFiles(directory);
 			return files.Where(f => f.EndsWith(".xml")).Select(f => Path.GetFileNameWithoutExtension(f)).ToArray();
 		}
 
-#endregion
+		#endregion
 
 		#region Read
 
 		internal T Read<T>(string fileName) where T : VBusinessObject
 		{
-			EnsureFileNameHasXMLExtension(ref fileName);
-			if (CheckFileExists<T>(fileName))
+			if (DirectoryManager.CheckFileExists<T>(fileName))
 			{
 				return ReadXML<T>(fileName);
 			}
@@ -38,7 +37,7 @@ namespace VEntityFramework.XML
 		T ReadXML<T>(string fileName) where T : VBusinessObject
 		{
 			var xml = new XmlDocument();
-			var xmlPath = GetFullPath<T>(fileName);
+			var xmlPath = DirectoryManager.GetFullPathWithExtension<T>(fileName);
 			xml.Load(xmlPath);
 			var bizo = (T)CreateBizoFromXML(typeof(T), xml.DocumentElement);
 			bizo.OnLoadedFromXML(new OnLoadedEventArgs(Path.GetFileNameWithoutExtension(fileName)));
@@ -101,56 +100,6 @@ namespace VEntityFramework.XML
 			}
 
 			return $"VBusiness.Souls.{soulType}Soul";
-		}
-
-		bool CheckFileExists<T>(string fileName)
-		{
-			return File.Exists(GetFullPath<T>(fileName));
-		}
-
-		void EnsureFileNameHasXMLExtension(ref string fileName)
-		{
-			var extension = Path.GetExtension(fileName);
-			if (extension != "xml")
-			{
-				if (extension != "")
-				{
-					throw new DeveloperException("What type is this extension?");
-				}
-				else
-				{
-					fileName += ".xml";
-				}
-			}
-		}
-
-		internal string GetFullPath<T>(string fileName)
-		{
-			return GetFullDirectory<T>() + fileName;
-		}
-
-		internal string GetFullPathWithExtension<T>(string fileName)
-		{
-			return GetFullDirectory<T>() + fileName + ".xml";
-		}
-
-		internal string GetFullDirectory<T>()
-		{
-			var atr = (TopLevelBusinessObjectAttribute)typeof(T).GetCustomAttribute(typeof(TopLevelBusinessObjectAttribute));
-			if (atr != null)
-			{
-				var pathHint = atr.PathHint;
-				var fullDirectory = $"{Directory.GetCurrentDirectory()}/{pathHint}/";
-
-				if (!Directory.Exists(fullDirectory))
-				{
-					Directory.CreateDirectory(fullDirectory);
-				}
-
-				return fullDirectory;
-			}
-
-			throw new DeveloperException("We shouldn't be trying to retrieve objects that aren't TopLevelBusinessObjects. Please implement the attribute to define the storage location");
 		}
 
 		#endregion

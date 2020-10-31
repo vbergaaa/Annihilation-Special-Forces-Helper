@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Xml;
 using VEntityFramework.Data;
 
@@ -6,18 +7,16 @@ namespace VEntityFramework.XML
 {
 	class VXMLWriter
 	{
-		internal bool Write(VBusinessObject bizo)
+		internal void Write(VBusinessObject bizo)
 		{
-			var directory = RenameFileIfNeccessary(bizo);
+			var fullFilePath = RenameFileIfNeccessary(bizo);
 
-			using (var stream = File.Create(directory))
+			using (var stream = File.Create(fullFilePath))
 			using (var writer = GetXmlWriter(stream))
 			{
 				WriteXML(writer, bizo);
 			}
-			bizo.XmlLocation = directory;
-
-			return true;
+			bizo.XmlLocation = fullFilePath;
 		}
 
 		string RenameFileIfNeccessary(VBusinessObject bizo)
@@ -68,27 +67,7 @@ namespace VEntityFramework.XML
 
 		string GetFileNameWithExtension(VBusinessObject bizo)
 		{
-			return GetFilePath(bizo.BizoName) + bizo.GetSaveNameForXML() + ".xml";
-		}
-
-		string GetFilePath(string bizoName)
-		{
-			var rootDirectory = Directory.GetCurrentDirectory();
-			var desiredPath = rootDirectory + $"/{bizoName}s/";
-
-			if (!Directory.Exists(desiredPath))
-			{
-				try
-				{
-					Directory.CreateDirectory(desiredPath);
-				}
-				catch
-				{
-					throw new IOException("An error occured while creating the directory");
-				}
-			}
-
-			return desiredPath;
+			return DirectoryManager.GetFullDirectory(bizo.GetType()) + bizo.GetSaveNameForXML() + ".xml";
 		}
 	}
 }
