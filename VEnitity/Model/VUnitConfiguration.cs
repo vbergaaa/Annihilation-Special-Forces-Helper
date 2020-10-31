@@ -28,7 +28,7 @@ namespace VEntityFramework.Model
 		#region Rank
 
 		[VXML(false)]
-		public VRank Rank
+		public VUnitRank Rank
 		{
 			get => fRank;
 			protected set
@@ -40,7 +40,7 @@ namespace VEntityFramework.Model
 			}
 		}
 
-		VRank fRank;
+		VUnitRank fRank;
 
 		#endregion
 
@@ -237,7 +237,7 @@ namespace VEntityFramework.Model
 
 		#region ActivateRank
 
-		void ActivateRank(VRank rank)
+		void ActivateRank(VUnitRank rank)
 		{
 			if (rank != null && Loadout != null)
 			{
@@ -249,7 +249,7 @@ namespace VEntityFramework.Model
 
 		#region DeactivateRank
 
-		void DeactivateRank(VRank rank)
+		void DeactivateRank(VUnitRank rank)
 		{
 			if (rank != null && Loadout != null)
 			{
