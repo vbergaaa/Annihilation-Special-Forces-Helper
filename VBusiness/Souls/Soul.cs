@@ -498,7 +498,7 @@ namespace VBusiness.Souls
 			var soulsNamesToDelete = Context.GetAllFileNames<Soul>().Where(name => int.Parse(name.Split('-')[0]) == SaveSlot);
 			foreach (var name in soulsNamesToDelete)
 			{
-				Context.ReadFromXML<Soul>(name).Delete();
+				Context.Delete<Soul>(name);
 			}
 		}
 

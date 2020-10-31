@@ -30,12 +30,8 @@ namespace VUserInterface
 			var loadoutName = (string)LoadoutsListBox.SelectedItem;
 			if (loadoutName != null)
 			{
-				var loadout = new VDataContext().ReadFromXML<Loadout>(loadoutName);
-				if (loadout != null)
-				{
-					loadout.Delete();
-					RefreshLoadouts();
-				}
+				new VDataContext().Delete<Loadout>(loadoutName);
+				RefreshLoadouts();
 			}
 		}
 
@@ -91,12 +87,8 @@ namespace VUserInterface
 			var SoulName = (string)SoulsListBox.SelectedItem;
 			if (SoulName != null)
 			{
-				var Soul = new VDataContext().ReadFromXML<Soul>(SoulName);
-				if (Soul != null)
-				{
-					Soul.Delete();
-					RefreshSouls();
-				}
+				new VDataContext().Delete<Soul>(SoulName);
+				RefreshSouls();
 			}
 		}
 

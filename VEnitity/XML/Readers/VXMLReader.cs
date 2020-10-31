@@ -129,7 +129,12 @@ namespace VEntityFramework.XML
 			return GetFullDirectory<T>() + fileName;
 		}
 
-		string GetFullDirectory<T>()
+		internal string GetFullPathWithExtension<T>(string fileName)
+		{
+			return GetFullDirectory<T>() + fileName + ".xml";
+		}
+
+		internal string GetFullDirectory<T>()
 		{
 			var atr = (TopLevelBusinessObjectAttribute)typeof(T).GetCustomAttribute(typeof(TopLevelBusinessObjectAttribute));
 			if (atr != null)

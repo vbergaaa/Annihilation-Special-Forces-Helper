@@ -96,15 +96,6 @@ namespace VEntityFramework.Data
 
 		#endregion
 
-		#region Delete
-
-		public void Delete()
-		{
-			Context.DeleteXML(this);
-		}
-
-		#endregion
-
 		#region Abstract Members
 
 		public abstract string BizoName { get; }

@@ -20,16 +20,20 @@ namespace VEntityFramework.Data
 			return new VXMLReader().GetAllFilenames<T>();
 		}
 
-		internal void DeleteXML(VBusinessObject bizo)
+		public void Delete<T>(string fileName) where T : VBusinessObject
 		{
-			if (bizo.XmlLocation != null)
+			var path = new VXMLReader().GetFullPathWithExtension<T>(fileName);
+			if (File.Exists(path))
+            {
+				File.Delete(path);
+            }
+            else
 			{
-				var path = bizo.XmlLocation;
-				if (File.Exists(path))
-				{
-					File.Delete(path);
-				}
+#if DEBUG
+				throw new DeveloperException($"filename {fileName} couldn't be found and wasn't deleted. Please address");
+#endif
 			}
+
 		}
 	}
 }
