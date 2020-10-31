@@ -125,7 +125,7 @@ namespace VBusiness.Souls
 				if (fSouls == null)
 				{
 					var souls = new Dictionary<int, string>();
-					foreach (var soulName in Context.GetAllSoulNames())
+					foreach (var soulName in Context.GetAllFileNames<Soul>())
 					{
 						souls.Add(int.Parse(soulName.Split('-')[0]), soulName);
 					}

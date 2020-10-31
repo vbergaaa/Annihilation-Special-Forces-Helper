@@ -1,8 +1,10 @@
 ﻿using System;
+using VEntityFramework.Attributes;
 using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
+	[TopLevelBusinessObject("Loadouts")]
 	public abstract class VLoadout : VBusinessObject
 	{
 		#region Properties

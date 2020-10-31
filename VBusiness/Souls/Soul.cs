@@ -445,7 +445,7 @@ namespace VBusiness.Souls
 
 		bool CheckIfDuplicateSaveSlot()
 		{
-			var usedSoulSlots = Context.GetAllSoulNames().Select(name => int.Parse(name.Split('-')[0]));
+			var usedSoulSlots = Context.GetAllFileNames<Soul>().Select(name => int.Parse(name.Split('-')[0]));
 			var hasSoulInSpot = usedSoulSlots.Contains(SaveSlot);
 			return hasSoulInSpot && (!ExistsInXML || saveSlotHasChanges);
 		}
@@ -495,10 +495,10 @@ namespace VBusiness.Souls
 
 		void DeleteSoulsInSaveSlot()
 		{
-			var soulsNamesToDelete = Context.GetAllSoulNames().Where(name => int.Parse(name.Split('-')[0]) == SaveSlot);
+			var soulsNamesToDelete = Context.GetAllFileNames<Soul>().Where(name => int.Parse(name.Split('-')[0]) == SaveSlot);
 			foreach (var name in soulsNamesToDelete)
 			{
-				Context.ReadFromXML<Soul>(name).Delete();
+				Context.Delete<Soul>(name);
 			}
 		}
 

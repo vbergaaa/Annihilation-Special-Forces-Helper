@@ -30,12 +30,8 @@ namespace VUserInterface
 			var loadoutName = (string)LoadoutsListBox.SelectedItem;
 			if (loadoutName != null)
 			{
-				var loadout = new VDataContext().ReadFromXML<Loadout>(loadoutName);
-				if (loadout != null)
-				{
-					loadout.Delete();
-					RefreshLoadouts();
-				}
+				new VDataContext().Delete<Loadout>(loadoutName);
+				RefreshLoadouts();
 			}
 		}
 
@@ -71,7 +67,7 @@ namespace VUserInterface
 		void RefreshLoadouts()
 		{
 			LoadoutsCollection.Clear();
-			var loadouts = context.GetAllLoadoutNames();
+			var loadouts = context.GetAllFileNames<Loadout>();
 			loadouts = OrderHelper.OrderNamesByKey(loadouts);
 			foreach (var loadout in loadouts)
 			{
@@ -91,12 +87,8 @@ namespace VUserInterface
 			var SoulName = (string)SoulsListBox.SelectedItem;
 			if (SoulName != null)
 			{
-				var Soul = new VDataContext().ReadFromXML<Soul>(SoulName);
-				if (Soul != null)
-				{
-					Soul.Delete();
-					RefreshSouls();
-				}
+				new VDataContext().Delete<Soul>(SoulName);
+				RefreshSouls();
 			}
 		}
 
@@ -130,7 +122,7 @@ namespace VUserInterface
 		void RefreshSouls()
 		{
 			SoulsCollection.Clear();
-			var souls = context.GetAllSoulNames();
+			var souls = context.GetAllFileNames<Soul>();
 			souls = OrderHelper.OrderNamesByKey(souls);
 			foreach (var Soul in souls)
 			{

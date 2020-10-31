@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using VEntityFramework;
-using VEntityFramework.Model;
+﻿using System.IO;
+using VEntityFramework.XML;
 
 namespace VEntityFramework.Data
 {
 	public class VDataContext
 	{
-		public bool SaveAsXML(VBusinessObject bizo)
+		public void SaveAsXML(VBusinessObject bizo)
 		{
-			return new VXMLWriter().Write(bizo);
+			new VXMLWriter().Write(bizo);
 		}
 
 		public T ReadFromXML<T>(string fileName) where T:VBusinessObject
@@ -20,26 +15,24 @@ namespace VEntityFramework.Data
 			return new VXMLReader().Read<T>(fileName);
 		}
 
-		public string[] GetAllLoadoutNames()
+		public string[] GetAllFileNames<T>() where T : VBusinessObject
 		{
-			return new VXMLReader().GetAllLoadoutNames();
+			return new VXMLReader().GetAllFilenames<T>();
 		}
 
-		public string[] GetAllSoulNames()
+		public void Delete<T>(string fileName) where T : VBusinessObject
 		{
-			return new VXMLReader().GetAllSoulNames();
-		}
-
-		internal void DeleteXML(VBusinessObject bizo)
-		{
-			if (bizo.XmlLocation != null)
-			{
-				var path = bizo.XmlLocation;
-				if (File.Exists(path))
-				{
-					File.Delete(path);
-				}
+			var path = DirectoryManager.GetFullPathWithExtension<T>(fileName);
+			if (File.Exists(path))
+            {
+				File.Delete(path);
 			}
+#if DEBUG
+			else
+			{
+				throw new DeveloperException($"filename {fileName} couldn't be found and wasn't deleted. Investigate and Fix.");
+			}
+#endif
 		}
 	}
 }

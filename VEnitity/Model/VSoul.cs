@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Text;
+using VEntityFramework.Attributes;
 using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
+	[TopLevelBusinessObject("Souls")]
 	public abstract class VSoul : VBusinessObject
 	{
 		#region	Constructors
@@ -267,7 +269,7 @@ namespace VEntityFramework.Model
 			}
 		}
 
-		protected virtual void DeactivateSoulCore() { } 
+		protected virtual void DeactivateSoulCore() { }
 
 		#endregion
 
