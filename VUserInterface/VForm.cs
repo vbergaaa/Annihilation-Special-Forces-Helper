@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
+using VBusiness.Loadouts;
 using VEntityFramework;
 using VEntityFramework.Data;
+using VEntityFramework.Model;
 
 namespace VUserInterface
 {
@@ -10,6 +12,19 @@ namespace VUserInterface
 		protected VForm(VBusinessObject parent) : this()
 		{
 			Parent = parent;
+		}
+
+		internal static VForm Create(VBusinessObject bizo)
+		{
+			if (bizo is VSoul soul)
+			{
+				return new SoulForm(soul);
+			}
+			if (bizo is Loadout loadout)
+			{
+				return new VLoadoutForm(loadout);
+			}
+			return null;
 		}
 
 		VForm()
