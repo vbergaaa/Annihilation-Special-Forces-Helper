@@ -17,68 +17,10 @@ namespace VUserInterface
 		{
 			InitializeComponent();
 			context = new VDataContext();
-			RefreshLoadouts();
 			RefreshSouls();
 		}
 
 		readonly VDataContext context;
-
-		#region Loadout List Box
-
-		private void DeleteLoadout_Click(object sender, EventArgs e)
-		{
-			var loadoutName = (string)LoadoutsListBox.SelectedItem;
-			if (loadoutName != null)
-			{
-				new VDataContext().Delete<Loadout>(loadoutName);
-				RefreshLoadouts();
-			}
-		}
-
-		void OpenLoadout_Click(object sender, EventArgs e)
-		{
-			var loadoutName = (string)LoadoutsListBox.SelectedItem;
-			if (loadoutName != null)
-			{
-				var loadout = new VDataContext().ReadFromXML<Loadout>(loadoutName);
-				bool test = loadout.HasChanges;
-				if (loadout != null)
-				{
-					var form = new VLoadoutForm(loadout);
-					form.OnSaved += LoadoutFormSaved;
-					form.Show();
-				}
-			}
-		}
-
-		void NewLoadout_Click(object sender, EventArgs e)
-		{
-			var loadout = new Loadout();
-			var form = new VLoadoutForm(loadout);
-			form.OnSaved += LoadoutFormSaved;
-			form.Show();
-		}
-
-		void LoadoutFormSaved(object sender, EventArgs e)
-		{
-			RefreshLoadouts();
-		}
-
-		void RefreshLoadouts()
-		{
-			LoadoutsCollection.Clear();
-			var loadouts = context.GetAllFileNames<Loadout>();
-			loadouts = OrderHelper.OrderNamesByKey(loadouts);
-			foreach (var loadout in loadouts)
-			{
-				LoadoutsCollection.Add(loadout);
-			}
-		}
-
-		public BindingList<string> LoadoutsCollection => fLoadoutsCollection ?? (fLoadoutsCollection = new BindingList<string>());
-		BindingList<string> fLoadoutsCollection;
-
-		#endregion
 
 		#region Soul List Box
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using VBusiness.Loadouts;
 using VUserInterface.CommonControls;
 
 namespace VUserInterface
@@ -32,66 +33,21 @@ namespace VUserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.LoadoutsListBox = new System.Windows.Forms.ListBox();
-			this.LoadoutsLabel = new VLabel();
-			this.DeleteLoadoutButton = new System.Windows.Forms.Button();
-			this.NewLoadoutButton = new System.Windows.Forms.Button();
-			this.OpenLoadoutButton = new System.Windows.Forms.Button();
+			this.LoadoutsLoadList = new VLoadList();
 			this.SoulsListBox = new System.Windows.Forms.ListBox();
 			this.SoulsLabel = new VLabel();
 			this.DeleteSoulButton = new System.Windows.Forms.Button();
 			this.NewSoulButton = new System.Windows.Forms.Button();
 			this.OpenSoulButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
-			// 
-			// LoadoutsListBox
-			// 
-			this.LoadoutsListBox.DataSource = this.LoadoutsCollection;
-			this.LoadoutsListBox.FormattingEnabled = true;
-			this.LoadoutsListBox.ItemHeight = 15;
-			this.LoadoutsListBox.Location = new System.Drawing.Point(83, 52);
-			this.LoadoutsListBox.Name = "LoadoutsListBox";
-			this.LoadoutsListBox.Size = new System.Drawing.Size(275, 94);
-			this.LoadoutsListBox.TabIndex = 0;
-			// 
-			// LoadoutsLabel
-			// 
-			this.LoadoutsLabel.AutoSize = true;
-			this.LoadoutsLabel.Location = new System.Drawing.Point(85, 33);
-			this.LoadoutsLabel.Name = "LoadoutsLabel";
-			this.LoadoutsLabel.Size = new System.Drawing.Size(56, 15);
-			this.LoadoutsLabel.TabIndex = 1;
-			this.LoadoutsLabel.Text = "Loadouts";
-			// 
-			// NewLoadoutButton
-			// 
-			this.NewLoadoutButton.Click += NewLoadout_Click;
-			this.NewLoadoutButton.Location = new System.Drawing.Point(82, 153);
-			this.NewLoadoutButton.Name = "NewLoadoutButton";
-			this.NewLoadoutButton.Size = new System.Drawing.Size(85, 23);
-			this.NewLoadoutButton.TabIndex = 2;
-			this.NewLoadoutButton.Text = "New";
-			this.NewLoadoutButton.UseVisualStyleBackColor = true;
-			// 
-			// OpenLoadoutButton
-			// 
-			this.OpenLoadoutButton.Click += OpenLoadout_Click;
-			this.OpenLoadoutButton.Location = new System.Drawing.Point(177, 153);
-			this.OpenLoadoutButton.Name = "OpenLoadoutButton";
-			this.OpenLoadoutButton.Size = new System.Drawing.Size(85, 23);
-			this.OpenLoadoutButton.TabIndex = 2;
-			this.OpenLoadoutButton.Text = "Open";
-			this.OpenLoadoutButton.UseVisualStyleBackColor = true;
-			// 
-			// DeleteLoadoutButton
-			// 
-			this.DeleteLoadoutButton.Click += DeleteLoadout_Click;
-			this.DeleteLoadoutButton.Location = new System.Drawing.Point(272, 153);
-			this.DeleteLoadoutButton.Name = "DeleteLoadoutButton";
-			this.DeleteLoadoutButton.Size = new System.Drawing.Size(85, 23);
-			this.DeleteLoadoutButton.TabIndex = 2;
-			this.DeleteLoadoutButton.Text = "Delete";
-			this.DeleteLoadoutButton.UseVisualStyleBackColor = true;
+			//
+			// LoadoutsLoadList
+			//
+			this.LoadoutsLoadList.BizoType = typeof(Loadout);
+			this.LoadoutsLoadList.Location = new System.Drawing.Point(83, 32);
+			this.LoadoutsLoadList.Name = "LoadoutsListBox";
+			this.LoadoutsLoadList.TabIndex = 0;
+			this.LoadoutsLoadList.Text = "Loadouts";
 			// 
 			// SoulsListBox
 			// 
@@ -147,11 +103,7 @@ namespace VUserInterface
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(441, 380);
-			this.Controls.Add(this.DeleteLoadoutButton);
-			this.Controls.Add(this.OpenLoadoutButton);
-			this.Controls.Add(this.NewLoadoutButton);
-			this.Controls.Add(this.LoadoutsLabel);
-			this.Controls.Add(this.LoadoutsListBox);
+			this.Controls.Add(this.LoadoutsLoadList);
 			this.Controls.Add(this.DeleteSoulButton);
 			this.Controls.Add(this.OpenSoulButton);
 			this.Controls.Add(this.NewSoulButton);
@@ -166,11 +118,7 @@ namespace VUserInterface
 
 		#endregion
 
-		private System.Windows.Forms.ListBox LoadoutsListBox;
-		private System.Windows.Forms.Label LoadoutsLabel;
-		private System.Windows.Forms.Button DeleteLoadoutButton;
-		private System.Windows.Forms.Button NewLoadoutButton;
-		private System.Windows.Forms.Button OpenLoadoutButton;
+		private VLoadList LoadoutsLoadList;
 		private System.Windows.Forms.ListBox SoulsListBox;
 		private System.Windows.Forms.Label SoulsLabel;
 		private System.Windows.Forms.Button DeleteSoulButton;

@@ -23,6 +23,9 @@
     <Compile Update="CommonControls\VLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="CommonControls\VLoadList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="CommonControls\VUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
