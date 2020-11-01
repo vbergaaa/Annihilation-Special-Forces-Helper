@@ -6,6 +6,7 @@ using System.Runtime.Loader;
 using System.Xml;
 using VEntityFramework.Attributes;
 using VEntityFramework.Data;
+using VEntityFramework.DataContext;
 using VEntityFramework.Model;
 
 namespace VEntityFramework.XML
@@ -78,28 +79,22 @@ namespace VEntityFramework.XML
 		{
 			if (typeof(VSoul).IsAssignableFrom(type))
 			{
-				var typeName = GetTypeNameForSoul(documentElement);
-				var myAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(Directory.GetCurrentDirectory() + "/VBusiness.dll");
-				var myType = myAssembly.GetType(typeName);
-				var ctor = myType.GetConstructors()[0];
-				return (VBusinessObject)ctor.Invoke(new object[] { null });
+				var typeName = GetSoulName(documentElement);
+				return BizoCreator.Create(type, typeName);
 			}
 			return (VBusinessObject)type.Assembly.CreateInstance(type.FullName);
 		}
 
-		string GetTypeNameForSoul(XmlElement documentElement)
+		string GetSoulName(XmlElement documentElement)
 		{
-			var soulType = "";
 			foreach (XmlNode xmlNode in documentElement.ChildNodes)
 			{
 				if (xmlNode.Name == "Type")
 				{
-					soulType = xmlNode.InnerText;
-					break;
+					return xmlNode.InnerText;
 				}
 			}
-
-			return $"VBusiness.Souls.{soulType}Soul";
+			return null;
 		}
 
 		#endregion

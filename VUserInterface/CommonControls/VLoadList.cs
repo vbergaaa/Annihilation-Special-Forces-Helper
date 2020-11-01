@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using VEntityFramework.Data;
 using VBusiness.HelperClasses;
+using VEntityFramework.DataContext;
 
 namespace VUserInterface.CommonControls
 {
@@ -75,7 +76,7 @@ namespace VUserInterface.CommonControls
 
 		void New_Click(object sender, EventArgs e)
 		{
-			var bizo = (VBusinessObject)Activator.CreateInstance(BizoType);
+			var bizo = BizoCreator.Create(BizoType);
 			var form = VForm.Create(bizo);
 			form.OnSaved += FormSaved;
 			form.Show();
