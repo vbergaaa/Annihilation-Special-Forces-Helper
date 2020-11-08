@@ -341,35 +341,35 @@ namespace VUserInterface
 
 		#endregion
 
-		private System.Windows.Forms.Label DamageCaption;
-		private System.Windows.Forms.Label ToughnessCaption;
-		private System.Windows.Forms.Label RecoveryCaption;
-		private System.Windows.Forms.Label AttackCaption;
-		private System.Windows.Forms.Label AttackSpeedCaption;
-		private System.Windows.Forms.Label CriticalDamageCaption;
-		private System.Windows.Forms.Label CriticalChanceCaption;
-		private System.Windows.Forms.Label HealthCaption;
-		private System.Windows.Forms.Label HealthArmorCaption;
-		private System.Windows.Forms.Label ShieldsCaption;
-		private System.Windows.Forms.Label ShieldsArmorCaption;
-		private System.Windows.Forms.Label DamageReductionCaption;
-		private System.Windows.Forms.Label DamageLabel;
-		private System.Windows.Forms.Label ToughnessLabel;
-		private System.Windows.Forms.Label RecoveryLabel;
-		private System.Windows.Forms.Label AttackLabel;
-		private System.Windows.Forms.Label AttackSpeedLabel;
-		private System.Windows.Forms.Label CriticalDamageLabel;
-		private System.Windows.Forms.Label CriticalChanceLabel;
-		private System.Windows.Forms.Label HealthLabel;
-		private System.Windows.Forms.Label HealthArmorLabel;
-		private System.Windows.Forms.Label ShieldsLabel;
-		private System.Windows.Forms.Label ShieldsArmorLabel;
-		private System.Windows.Forms.Label DamageReductionLabel;
-		private System.Windows.Forms.Label DamageIncreaseCaption;
-		private System.Windows.Forms.Label DamageIncreaseLabel;
-		private System.Windows.Forms.Label AccelCaption;
-		private System.Windows.Forms.Label AccelLabel;
+		private VLabel DamageCaption;
+		private VLabel ToughnessCaption;
+		private VLabel RecoveryCaption;
+		private VLabel AttackCaption;
+		private VLabel AttackSpeedCaption;
+		private VLabel CriticalDamageCaption;
+		private VLabel CriticalChanceCaption;
+		private VLabel HealthCaption;
+		private VLabel HealthArmorCaption;
+		private VLabel ShieldsCaption;
+		private VLabel ShieldsArmorCaption;
+		private VLabel DamageReductionCaption;
+		private VLabel DamageLabel;
+		private VLabel ToughnessLabel;
+		private VLabel RecoveryLabel;
+		private VLabel AttackLabel;
+		private VLabel AttackSpeedLabel;
+		private VLabel CriticalDamageLabel;
+		private VLabel CriticalChanceLabel;
+		private VLabel HealthLabel;
+		private VLabel HealthArmorLabel;
+		private VLabel ShieldsLabel;
+		private VLabel ShieldsArmorLabel;
+		private VLabel DamageReductionLabel;
+		private VLabel DamageIncreaseCaption;
+		private VLabel DamageIncreaseLabel;
+		private VLabel AccelCaption;
+		private VLabel AccelLabel;
 		private System.Windows.Forms.BindingSource statsBindingSource;
-		private System.Windows.Forms.Label DisclaimerLabel;
+		private VLabel DisclaimerLabel;
 	}
 }

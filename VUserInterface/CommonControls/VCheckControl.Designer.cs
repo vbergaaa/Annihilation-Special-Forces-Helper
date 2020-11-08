@@ -60,7 +60,7 @@ namespace VUserInterface.CommonControls
 
 		#endregion
 
-		private Label CaptionLabel;
+		private VLabel CaptionLabel;
 		private CheckBox CheckBox;
 	}
 }

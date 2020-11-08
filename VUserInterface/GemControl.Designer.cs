@@ -90,9 +90,9 @@ namespace VUserInterface
 		#endregion
 
 		private BindingSource gemBindingSource;
-		private Label CostCaption;
-		private Label CostLabel;
-		private Label CurrentLevelCaption;
+		private VLabel CostCaption;
+		private VLabel CostLabel;
+		private VLabel CurrentLevelCaption;
 		private VIncrementor CurrentLevelIncrementor;
 	}
 }

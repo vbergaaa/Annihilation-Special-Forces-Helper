@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace VUserInterface.CommonControls
 {
@@ -30,17 +31,26 @@ namespace VUserInterface.CommonControls
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.CaptionLabel = new VLabel();
-			this.CoreControl = new UserControl();
+			this.CaptionLabel = new Label();
+			this.CoreControl = new Panel();
 			components = new System.ComponentModel.Container();
 			//
 			// CaptionLabel
 			//
 			this.CaptionLabel.AutoSize = true;
-			this.CaptionLabel.Location = new System.Drawing.Point(0, 7);
+			this.CaptionLabel.Location = new System.Drawing.Point(0, 3);
 			this.CaptionLabel.Name = "CaptionLabel";
-			this.CaptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.CaptionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			this.CaptionLabel.Visible = false;
+#if DEBUG
+			this.CaptionLabel.ForeColor = Color.White;
+			this.CaptionLabel.BackColor = Color.Navy;
+#endif
+			//
+			// CoreControl
+			//
+			this.CoreControl.Location = new Point(0, 0);
+			this.CoreControl.Size = new Size(500, 29);
 			//
 			// VUserControl
 			//
@@ -52,7 +62,7 @@ namespace VUserInterface.CommonControls
 
 		#endregion
 
-		protected VLabel CaptionLabel;
-		protected UserControl CoreControl;
+		protected System.Windows.Forms.Label CaptionLabel;
+		protected Panel CoreControl;
 	}
 }

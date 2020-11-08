@@ -83,9 +83,9 @@ namespace VUserInterface
 
 		#endregion
 
-		private System.Windows.Forms.Label CostLabel;
+		private VLabel CostLabel;
 		private VIncrementor CurrentLevelIncrementor;
 		private System.Windows.Forms.BindingSource perkBindingSource;
-		private System.Windows.Forms.Label CostCaption;
+		private VLabel CostCaption;
 	}
 }

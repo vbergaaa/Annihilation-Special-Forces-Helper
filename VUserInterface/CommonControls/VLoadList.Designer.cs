@@ -97,7 +97,7 @@
 		#endregion
 
 		private System.Windows.Forms.ListBox ListBox;
-		private System.Windows.Forms.Label Label;
+		private VLabel Label;
 		private System.Windows.Forms.Button DeleteButton;
 		private System.Windows.Forms.Button NewButton;
 		private System.Windows.Forms.Button OpenButton;

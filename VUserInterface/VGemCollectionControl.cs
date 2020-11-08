@@ -21,10 +21,5 @@ namespace VUserInterface
 				this.gemsBindingSource.DataSource = Gems;
 			}
 		}
-
-		internal void RefreshBindings()
-		{
-			this.gemsBindingSource.ResetBindings(false);
-		}
 	}
 }

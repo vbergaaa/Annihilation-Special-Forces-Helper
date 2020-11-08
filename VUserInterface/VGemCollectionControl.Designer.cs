@@ -147,7 +147,7 @@ namespace VUserInterface
 		private GemControl CriticalChanceGemControl;
 		private GemControl CriticalDamageGemControl;
 		private GemControl DoubleWarpGemControl;
-		private System.Windows.Forms.Label TotalCostLabel;
-		private System.Windows.Forms.Label TotalCostCaption;
+		private VLabel TotalCostLabel;
+		private VLabel TotalCostCaption;
 	}
 }

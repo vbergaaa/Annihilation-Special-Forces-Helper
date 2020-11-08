@@ -6,7 +6,7 @@ using VEntityFramework.Data;
 namespace VEntityFramework.Model
 {
 	[TopLevelBusinessObject("Profile")]
-	public class VProfile : VBusinessObject
+	public abstract class VProfile : VBusinessObject
 	{
 
 		#region Constructor
@@ -81,7 +81,7 @@ namespace VEntityFramework.Model
 
 
 		[VXML(true)]
-		public int ModifierScore
+		public int ModScore
 		{
 			get => fModifierScore;
 			set
@@ -90,7 +90,7 @@ namespace VEntityFramework.Model
 				{
 					fModifierScore = value;
 					HasChanges = true;
-					OnPropertyChanged(new PropertyChangedEventArgs(nameof(ModifierScore)));
+					OnPropertyChanged(new PropertyChangedEventArgs(nameof(ModScore)));
 				}
 			}
 		}

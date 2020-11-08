@@ -47,6 +47,7 @@ namespace VUserInterface
 			this.ProfilePanel = new System.Windows.Forms.Panel();
 			this.LoadoutsPanel = new System.Windows.Forms.Panel();
 			this.SoulsPanel = new System.Windows.Forms.Panel();
+			this.ProfileControl = new ProfileControl();
 			this.LeftPanel.SuspendLayout();
 			this.RightPanel.SuspendLayout();
 			this.LoadoutsPanel.SuspendLayout();
@@ -60,6 +61,7 @@ namespace VUserInterface
 			this.LoadoutsLoadList.Name = "LoadoutsLoadList";
 			this.LoadoutsLoadList.Size = new System.Drawing.Size(280, 160);
 			this.LoadoutsLoadList.TabIndex = 0;
+			this.LoadoutsLoadList.Text = "Loadouts";
 			// 
 			// SoulsLoadList
 			// 
@@ -68,6 +70,7 @@ namespace VUserInterface
 			this.SoulsLoadList.Name = "SoulsLoadList";
 			this.SoulsLoadList.Size = new System.Drawing.Size(280, 160);
 			this.SoulsLoadList.TabIndex = 0;
+			this.SoulsLoadList.Text = "Souls";
 			// 
 			// TitleLabel
 			// 
@@ -119,7 +122,7 @@ namespace VUserInterface
 			this.ProfileButton.TabIndex = 0;
 			this.ProfileButton.Text = "Profile";
 			this.ProfileButton.UseVisualStyleBackColor = true;
-			this.ProfileButton.Visible = false;
+			this.ProfileButton.Visible = true;
 			this.ProfileButton.Click += new System.EventHandler(this.ProfileButton_Click);
 			// 
 			// RightPanel
@@ -134,11 +137,12 @@ namespace VUserInterface
 			// 
 			// ProfilePanel
 			// 
+			this.ProfilePanel.Controls.Add(this.ProfileControl);
 			this.ProfilePanel.Location = new System.Drawing.Point(0, 0);
 			this.ProfilePanel.Name = "ProfilePanel";
 			this.ProfilePanel.Size = new System.Drawing.Size(450, 400);
 			this.ProfilePanel.TabIndex = 1;
-			this.ProfilePanel.Visible = false;
+			this.ProfilePanel.Visible = true;
 			// 
 			// LoadoutsPanel
 			// 
@@ -147,6 +151,7 @@ namespace VUserInterface
 			this.LoadoutsPanel.Name = "LoadoutsPanel";
 			this.LoadoutsPanel.Size = new System.Drawing.Size(450, 400);
 			this.LoadoutsPanel.TabIndex = 1;
+			this.LoadoutsPanel.Visible = false;
 			// 
 			// SoulsPanel
 			// 
@@ -156,6 +161,12 @@ namespace VUserInterface
 			this.SoulsPanel.Size = new System.Drawing.Size(450, 400);
 			this.SoulsPanel.TabIndex = 1;
 			this.SoulsPanel.Visible = false;
+			//
+			// ProfileControl
+			//
+			this.ProfileControl.Name = "ProfileControl";
+			this.ProfileControl.Size = new Size(350, 300);
+			this.ProfileControl.Location = new Point(0, 0);
 			// 
 			// MainForm
 			// 
@@ -184,6 +195,7 @@ namespace VUserInterface
 		private Panel SoulsPanel;
 		private VLoadList LoadoutsLoadList;
 		private VLoadList SoulsLoadList;
+		private ProfileControl ProfileControl;
 		private VLabel TitleLabel;
 		private Button SoulsButton;
 		private Button LoadoutsButton;

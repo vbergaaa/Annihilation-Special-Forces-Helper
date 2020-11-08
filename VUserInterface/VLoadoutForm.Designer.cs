@@ -190,8 +190,8 @@ namespace VUserInterface
 		private System.Windows.Forms.Button SoulsButton;
 		private System.Windows.Forms.Button ChallengePointCollectionButton;
 		private System.Windows.Forms.Button UnitButton;
-		private System.Windows.Forms.Label SlotNumberLabel;
-		private System.Windows.Forms.Label LoadoutNameLabel;
+		private VLabel SlotNumberLabel;
+		private VLabel LoadoutNameLabel;
 		private System.Windows.Forms.TextBox SlotNumberTextBox;
 		private System.Windows.Forms.TextBox LoadoutNameTextBox;
 		private VUserInterface.VPerkCollectionControl PerkPageControl;

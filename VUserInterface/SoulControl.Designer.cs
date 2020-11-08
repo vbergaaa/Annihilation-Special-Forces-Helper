@@ -220,22 +220,22 @@ namespace VUserInterface
 
 		#endregion
 
-		private System.Windows.Forms.Label AttackSpeedCaption;
-		private System.Windows.Forms.Label VitalsCaption;
-		private System.Windows.Forms.Label ArmorCaption;
-		private System.Windows.Forms.Label CriticalChanceCaption;
-		private System.Windows.Forms.Label CriticalDamageCaption;
-		private System.Windows.Forms.Label MineralCaption;
-		private System.Windows.Forms.Label KillsCaption;
-		private System.Windows.Forms.Label AttackCaption;
-		private System.Windows.Forms.Label AttackLabel;
-		private System.Windows.Forms.Label AttackSpeedLabel;
-		private System.Windows.Forms.Label VitalsLabel;
-		private System.Windows.Forms.Label ArmorLabel;
-		private System.Windows.Forms.Label CriticalChanceLabel;
-		private System.Windows.Forms.Label CriticalDamageLabel;
-		private System.Windows.Forms.Label MineralsLabel;
-		private System.Windows.Forms.Label KillsLabel;
+		private VLabel AttackSpeedCaption;
+		private VLabel VitalsCaption;
+		private VLabel ArmorCaption;
+		private VLabel CriticalChanceCaption;
+		private VLabel CriticalDamageCaption;
+		private VLabel MineralCaption;
+		private VLabel KillsCaption;
+		private VLabel AttackCaption;
+		private VLabel AttackLabel;
+		private VLabel AttackSpeedLabel;
+		private VLabel VitalsLabel;
+		private VLabel ArmorLabel;
+		private VLabel CriticalChanceLabel;
+		private VLabel CriticalDamageLabel;
+		private VLabel MineralsLabel;
+		private VLabel KillsLabel;
 		private System.Windows.Forms.ComboBox SoulComboBox;
 		private System.Windows.Forms.BindingSource BindingSource;
 	}
