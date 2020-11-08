@@ -7,11 +7,6 @@ namespace VEntityFramework.Model
 	[TopLevelBusinessObject("Loadouts")]
 	public abstract class VLoadout : VBusinessObject
 	{
-		public VLoadout()
-		{
-			_ = Profile;
-		}
-
 		#region Properties
 
 		#region Profile
