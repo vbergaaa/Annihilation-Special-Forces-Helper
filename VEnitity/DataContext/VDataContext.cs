@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using VEntityFramework.DataContext;
 using VEntityFramework.XML;
 
@@ -24,7 +25,7 @@ namespace VEntityFramework.Data
 			}
 		}
 
-		public T ReadFromXML<T>(string fileName) where T:VBusinessObject
+		public T ReadFromXML<T>(string fileName) where T : VBusinessObject
 		{
 			var cache = BizoCache.Instance;
 			if (cache.Exists(typeof(T), fileName))
@@ -34,6 +35,23 @@ namespace VEntityFramework.Data
 			var loadedBizo = new VXMLReader().Read<T>(fileName);
 			cache.Add(loadedBizo);
 			return loadedBizo;
+		}
+
+		public T ReadFirst<T>() where T : VBusinessObject
+		{
+			var cache = BizoCache.Instance;
+			if (cache.Exists(typeof(T), null))
+			{
+				return (T)cache.Retrieve(typeof(T), null);
+			}
+			var fileNames = GetAllFileNames<T>();
+			if (fileNames.Any())
+			{
+				var loadedBizo = new VXMLReader().Read<T>(fileNames.First());
+				cache.Add(loadedBizo);
+				return loadedBizo;
+			}
+			return null;
 		}
 
 		public string[] GetAllFileNames(Type bizoType)

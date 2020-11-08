@@ -7,7 +7,19 @@ namespace VEntityFramework.Model
 	[TopLevelBusinessObject("Loadouts")]
 	public abstract class VLoadout : VBusinessObject
 	{
+		public VLoadout()
+		{
+			_ = Profile;
+		}
+
 		#region Properties
+
+		#region Profile
+
+		public VProfile Profile { get => fProfile ??= VDataContext.Instance.ReadFirst<VProfile>(); }
+		VProfile fProfile;
+
+		#endregion
 
 		#region Name
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using VEntityFramework.Data;
 
@@ -14,6 +15,8 @@ namespace VEntityFramework.DataContext
 
 		Dictionary<Type, Dictionary<string, VBusinessObject>> fCache = new Dictionary<Type, Dictionary<string, VBusinessObject>>();
 
+		#region Exists
+
 		public bool Exists(VBusinessObject bizo)
 		{
 			return Exists(bizo.GetType(), bizo.XmlLocation);
@@ -21,14 +24,21 @@ namespace VEntityFramework.DataContext
 
 		public bool Exists(Type type, string name)
 		{
+			name = name != null ? DirectoryManager.GetShortName(name) : null;
 			var cacheType = GetStorageType(type);
 
 			if (cacheType != null)
 			{
-				return fCache.TryGetValue(cacheType, out var cache) && cache.TryGetValue(name, out _);
+				if (fCache.TryGetValue(cacheType, out var cache))
+				{
+					return name != null && cache.TryGetValue(name, out _)
+						|| name == null && cache.Values.Any();
+				}
 			}
 			return false;
 		}
+
+		#endregion
 
 		public void Add(VBusinessObject bizo)
 		{
@@ -52,15 +62,31 @@ namespace VEntityFramework.DataContext
 			}
 		}
 
+		#region Retrieve
+
 		public VBusinessObject Retrieve(Type type, string name)
 		{
 			var cacheType = GetStorageType(type);
-			if (fCache.TryGetValue(cacheType, out var cache) && cache.TryGetValue(name, out var bizo))
+
+			if (name != null)
 			{
-				return bizo;
+				if (fCache.TryGetValue(cacheType, out var cache) && cache.TryGetValue(name, out var bizo))
+				{
+					return bizo;
+				}
 			}
+			else
+			{
+				if (fCache.TryGetValue(cacheType, out var cache))
+				{
+					return cache.Values.First();
+				}
+			}
+
 			return null;
 		}
+
+		#endregion
 
 		Type GetStorageType(Type type)
 		{
