@@ -40,13 +40,17 @@ namespace VEntityFramework.Data
 				{
 					property.SetValue(bizo, int.Parse(value));
 				}
+				else if (property.PropertyType.Name == "Int64")
+				{
+					property.SetValue(bizo, long.Parse(value));
+				}
 				else if (property.PropertyType.Name == "String")
 				{
 					property.SetValue(bizo, value);
 				}
 				else if (property.PropertyType.Name == "UnitRank")
 				{
-					property.SetValue(bizo, VRank.GetUnitRankFromString(value));
+					property.SetValue(bizo, VUnitRank.GetUnitRankFromString(value));
 				}
 				else if (property.PropertyType.Name == "DifficultyLevel")
 				{
@@ -55,6 +59,10 @@ namespace VEntityFramework.Data
 				else if (property.PropertyType.Name == "Boolean")
 				{
 					property.SetValue(bizo, value.ToLower() == "true" ? true : false);
+				}
+				else if (property.PropertyType.Name == "PlayerRank")
+				{
+					property.SetValue(bizo, VPlayerRank.GetPlayerRankFromString(value));
 				}
 				else
 				{

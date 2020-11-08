@@ -71,7 +71,7 @@ namespace VUserInterface
 
 		void RankChanged(object sender, EventArgs e)
 		{
-			if (UnitConfiguration != null && RankDropBox.SelectedValue is UnitRank rank)
+			if (UnitConfiguration != null && RankDropBox.SelectedValue is VEntityFramework.Model.UnitRank rank)
 			{
 				UnitConfiguration.UnitRank = rank;
 			}
@@ -79,7 +79,7 @@ namespace VUserInterface
 
 		List<object> RankList
 		{
-			get => fRankList ?? (fRankList = BindingHelper<UnitRank>.ConvertForBinding(new RankLookup().GetRanks()));
+			get => fRankList ?? (fRankList = BindingHelper<VEntityFramework.Model.UnitRank>.ConvertForBinding(new RankLookup().GetRanks()));
 		}
 		List<object> fRankList;
 

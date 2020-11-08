@@ -242,8 +242,8 @@ namespace VUserInterface
 		private VPerkControl Perk4Control;
 		private VPerkControl Perk5Control;
 		private VPerkControl Perk6Control;
-		private System.Windows.Forms.Label remainingCostLabel;
-		private System.Windows.Forms.Label remainingCostCaption;
+		private VLabel remainingCostLabel;
+		private VLabel remainingCostCaption;
 		private System.Windows.Forms.Button page1Button;
 		private System.Windows.Forms.Button page2Button;
 		private System.Windows.Forms.Button page3Button;

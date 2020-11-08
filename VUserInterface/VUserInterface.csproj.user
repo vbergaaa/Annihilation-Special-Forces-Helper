@@ -21,12 +21,18 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="CommonControls\VLabel.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="CommonControls\VLoadList.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="CommonControls\VTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="CommonControls\VUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ProfileControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="SoulControl.cs">

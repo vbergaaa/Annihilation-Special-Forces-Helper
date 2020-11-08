@@ -98,7 +98,7 @@ namespace VUserInterface.CommonControls
 			}
 		}
 
-		public BindingList<string> Collection => fCollection ?? (fCollection = new BindingList<string>());
+		public BindingList<string> Collection => fCollection ??= new BindingList<string>();
 		BindingList<string> fCollection;
 
 		#endregion

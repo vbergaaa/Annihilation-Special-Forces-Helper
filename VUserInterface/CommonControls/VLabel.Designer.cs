@@ -1,4 +1,6 @@
 ﻿using System.Drawing;
+using System.Media;
+using System.Reflection.Emit;
 
 namespace VUserInterface.CommonControls
 {
@@ -31,12 +33,21 @@ namespace VUserInterface.CommonControls
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
+			this.Label = new System.Windows.Forms.Label();
+			this.Label.AutoSize = true;
+			this.Label.DataBindings.Add("Text", this, "Text");
+			this.Label.Location = new Point(0, 3);
+			this.Label.TextAlign = ContentAlignment.MiddleLeft;
 #if DEBUG
-			this.ForeColor = Color.White;
-			this.BackColor = Color.Navy;
+			this.Label.ForeColor = Color.White;
+			this.Label.BackColor = Color.Navy;
 #endif
+			this.CoreControl.Controls.Add(Label);
+
 		}
 
 		#endregion
+
+		private System.Windows.Forms.Label Label;
 	}
 }

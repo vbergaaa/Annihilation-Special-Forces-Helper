@@ -28,7 +28,7 @@ namespace VBusiness
 			set
 			{
 				base.UnitRank = value;
-				Rank = Ranks.Rank.New(UnitRank, this);
+				Rank = Ranks.UnitRank.New(UnitRank, this);
 			}
 		}
 

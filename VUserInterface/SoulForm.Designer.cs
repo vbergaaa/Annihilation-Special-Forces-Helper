@@ -190,9 +190,9 @@ namespace VUserInterface
 		private VIncrementor CritDamageIncrementor;
 		private VIncrementor MineralsIncrementor;
 		private VIncrementor KillsIncrementor;
-		private System.Windows.Forms.Label TypeCaption;
+		private VLabel TypeCaption;
 		private System.Windows.Forms.ComboBox TypeComboBox;
-		private System.Windows.Forms.Label SaveSlotCaption;
+		private VLabel SaveSlotCaption;
 		private System.Windows.Forms.TextBox SaveSlotTextBox;
 		private System.Windows.Forms.BindingSource BindingSource;
 	}

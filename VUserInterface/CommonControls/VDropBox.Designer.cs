@@ -35,7 +35,7 @@ namespace VUserInterface.CommonControls
 			//
 			// ComboBox
 			//
-			this.ComboBox.Location = new System.Drawing.Point(1, 4);
+			this.ComboBox.Location = new System.Drawing.Point(1, 1);
 			this.ComboBox.SelectedValueChanged += ComboBox_SelectedValueChanged;
 			//
 			// DropBox

@@ -28,65 +28,73 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			components = new System.ComponentModel.Container();
-			this.DecrementButton = new VButton();
-			this.IncrementButton = new VButton();
-			this.ValueLabel = new VLabel();
-			this.CaptionLabel = new VLabel();
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			//
-			// this.DecrementButton
-			//
-			this.DecrementButton.Click += DecrementButton_Click;
+			this.DecrementButton = new VUserInterface.CommonControls.VButton();
+			this.IncrementButton = new VUserInterface.CommonControls.VButton();
+			this.ValueLabel = new VUserInterface.CommonControls.VLabel();
+			this.CaptionLabel = new VUserInterface.CommonControls.VLabel();
+			this.SuspendLayout();
+			// 
+			// DecrementButton
+			// 
 			this.DecrementButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.DecrementButton.Location = new System.Drawing.Point(1, 1);
 			this.DecrementButton.Name = "DecrementButton";
 			this.DecrementButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementButton.TabIndex = 1;
 			this.DecrementButton.Text = "-";
-			//
-			// this.IncrementButton
-			//
-			this.IncrementButton.Click += IncrementButton_Click;
+			// 
+			// IncrementButton
+			// 
 			this.IncrementButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.IncrementButton.Location = new System.Drawing.Point(81, 1);
 			this.IncrementButton.Name = "IncrementButton";
 			this.IncrementButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementButton.TabIndex = 2;
 			this.IncrementButton.Text = "+";
-			//
-			// this.ValueLabel
-			//
-			this.ValueLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this, "Value"));
+			// 
+			// ValueLabel
+			// 
+			this.ValueLabel.BackColor = System.Drawing.Color.Navy;
+			this.ValueLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this, "Value", true));
+			this.ValueLabel.ForeColor = System.Drawing.Color.White;
 			this.ValueLabel.Location = new System.Drawing.Point(33, 1);
 			this.ValueLabel.Name = "ValueLabel";
 			this.ValueLabel.Size = new System.Drawing.Size(43, 23);
 			this.ValueLabel.TabIndex = 0;
 			this.ValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			//
-			// this.CaptionLabel
-			//
+			// 
+			// CaptionLabel
+			// 
 			this.CaptionLabel.AutoSize = true;
-			this.CaptionLabel.Location = new System.Drawing.Point(0, 7);
+			this.CaptionLabel.BackColor = System.Drawing.Color.Navy;
+			this.CaptionLabel.ForeColor = System.Drawing.Color.White;
+			this.CaptionLabel.Location = new System.Drawing.Point(0, 3);
 			this.CaptionLabel.Name = "CaptionLabel";
+			this.CaptionLabel.Size = new System.Drawing.Size(0, 15);
+			this.CaptionLabel.TabIndex = 3;
 			this.CaptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.CaptionLabel.Visible = false;
-			//
+			// 
 			// VIncrementor
-			//
-			this.Controls.Add(DecrementButton);
-			this.Controls.Add(IncrementButton);
-			this.Controls.Add(ValueLabel);
-			this.Controls.Add(CaptionLabel);
-			this.DataBindings.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged;
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.DecrementButton);
+			this.Controls.Add(this.IncrementButton);
+			this.Controls.Add(this.ValueLabel);
+			this.Controls.Add(this.CaptionLabel);
+			this.Name = "VIncrementor";
 			this.Size = new System.Drawing.Size(109, 29);
+			this.ResumeLayout(false);
+			this.PerformLayout();
+
 		}
 
 		#endregion
 
-		private System.Windows.Forms.Button DecrementButton;
-		private System.Windows.Forms.Button IncrementButton;
-		private System.Windows.Forms.Label ValueLabel;
-		private System.Windows.Forms.Label CaptionLabel;
+		private VButton DecrementButton;
+		private VButton IncrementButton;
+		private VLabel ValueLabel;
+		private VLabel CaptionLabel;
 	}
 }
