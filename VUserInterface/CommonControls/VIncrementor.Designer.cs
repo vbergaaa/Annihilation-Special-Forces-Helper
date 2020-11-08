@@ -42,6 +42,7 @@
 			this.DecrementButton.Size = new System.Drawing.Size(27, 27);
 			this.DecrementButton.TabIndex = 1;
 			this.DecrementButton.Text = "-";
+			this.DecrementButton.Click += new System.EventHandler(this.DecrementButton_Click);
 			// 
 			// IncrementButton
 			// 
@@ -51,13 +52,14 @@
 			this.IncrementButton.Size = new System.Drawing.Size(27, 27);
 			this.IncrementButton.TabIndex = 2;
 			this.IncrementButton.Text = "+";
+			this.IncrementButton.Click += new System.EventHandler(this.IncrementButton_Click);
 			// 
 			// ValueLabel
 			// 
-			this.ValueLabel.BackColor = System.Drawing.Color.Navy;
+			this.ValueLabel.Caption = null;
 			this.ValueLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this, "Value", true));
-			this.ValueLabel.ForeColor = System.Drawing.Color.White;
 			this.ValueLabel.Location = new System.Drawing.Point(33, 1);
+			this.ValueLabel.MaximumSize = new System.Drawing.Size(500, 29);
 			this.ValueLabel.Name = "ValueLabel";
 			this.ValueLabel.Size = new System.Drawing.Size(43, 23);
 			this.ValueLabel.TabIndex = 0;
@@ -66,11 +68,11 @@
 			// CaptionLabel
 			// 
 			this.CaptionLabel.AutoSize = true;
-			this.CaptionLabel.BackColor = System.Drawing.Color.Navy;
-			this.CaptionLabel.ForeColor = System.Drawing.Color.White;
+			this.CaptionLabel.Caption = null;
 			this.CaptionLabel.Location = new System.Drawing.Point(0, 3);
+			this.CaptionLabel.MaximumSize = new System.Drawing.Size(500, 29);
 			this.CaptionLabel.Name = "CaptionLabel";
-			this.CaptionLabel.Size = new System.Drawing.Size(0, 15);
+			this.CaptionLabel.Size = new System.Drawing.Size(500, 29);
 			this.CaptionLabel.TabIndex = 3;
 			this.CaptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.CaptionLabel.Visible = false;
@@ -83,6 +85,7 @@
 			this.Controls.Add(this.IncrementButton);
 			this.Controls.Add(this.ValueLabel);
 			this.Controls.Add(this.CaptionLabel);
+			this.DataBindings.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged;
 			this.Name = "VIncrementor";
 			this.Size = new System.Drawing.Size(109, 29);
 			this.ResumeLayout(false);
