@@ -23,8 +23,11 @@ namespace VUserInterface
 		protected override void OnBindingContextChanged(EventArgs e)
 		{
 			base.OnBindingContextChanged(e);
-			this.perksBindingSource.DataSource = Perks;
-			SetButtonReadonlyStatus();
+			if (Perks != null)
+			{
+				this.perksBindingSource.DataSource = Perks;
+				SetButtonReadonlyStatus();
+			}
 		}
 
 		internal void RefreshBindings()

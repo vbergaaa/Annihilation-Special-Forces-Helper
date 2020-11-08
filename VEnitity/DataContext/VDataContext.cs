@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using VEntityFramework.DataContext;
 using VEntityFramework.XML;
 
 namespace VEntityFramework.Data
@@ -16,11 +17,23 @@ namespace VEntityFramework.Data
 		public void SaveAsXML(VBusinessObject bizo)
 		{
 			new VXMLWriter().Write(bizo);
+			var cache = BizoCache.Instance;
+			if (!cache.Exists(bizo))
+			{
+				BizoCache.Instance.Add(bizo);
+			}
 		}
 
 		public T ReadFromXML<T>(string fileName) where T:VBusinessObject
 		{
-			return new VXMLReader().Read<T>(fileName);
+			var cache = BizoCache.Instance;
+			if (cache.Exists(typeof(T), fileName))
+			{
+				return (T)cache.Retrieve(typeof(T), fileName);
+			}
+			var loadedBizo = new VXMLReader().Read<T>(fileName);
+			cache.Add(loadedBizo);
+			return loadedBizo;
 		}
 
 		public string[] GetAllFileNames(Type bizoType)
