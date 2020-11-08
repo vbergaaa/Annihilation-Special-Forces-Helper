@@ -10,6 +10,8 @@ using VBusiness.Profile;
 using Microsoft.Win32;
 using VEntityFramework.Data;
 using System.Linq;
+using VBusiness.HelperClasses;
+using VBusiness.PlayerRanks;
 
 namespace VUserInterface
 {
@@ -63,6 +65,20 @@ namespace VUserInterface
 				ReadonlyPanel.Visible = true;
 				button.Text = "Edit";
 				Profile.Save();
+			}
+		}
+
+		List<object> PlayerRankList
+		{
+			get => fPlayerRankList ??= BindingHelper<PlayerRank>.ConvertForBinding(new PlayerRankLookups().GetPlayerRanks());
+		}
+		List<object> fPlayerRankList;
+
+		void PlayerRankChanged(object sender, EventArgs e)
+		{
+			if (Profile != null && RankDropBox.SelectedValue is PlayerRank rank)
+			{
+				Profile.Rank = rank;
 			}
 		}
 	}

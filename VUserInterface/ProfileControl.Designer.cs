@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using VEntityFramework.Model;
 using VUserInterface.CommonControls;
 
@@ -80,11 +81,12 @@ namespace VUserInterface
 			// RankDropBox
 			// 
 			this.RankDropBox.Caption = "Rank:";
-			this.RankDropBox.List = null;
+			this.RankDropBox.List = PlayerRankList;
 			this.RankDropBox.Location = new System.Drawing.Point(139, 28);
 			this.RankDropBox.MaximumSize = new System.Drawing.Size(500, 29);
 			this.RankDropBox.Name = "RankDropBox";
 			this.RankDropBox.SelectedIndex = -1;
+			this.RankDropBox.SelectedValueChanged += PlayerRankChanged;
 			this.RankDropBox.Size = new System.Drawing.Size(300, 24);
 			this.RankDropBox.TabIndex = 0;
 			// 
