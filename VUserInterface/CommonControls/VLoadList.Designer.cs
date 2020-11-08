@@ -39,7 +39,7 @@
 			this.ListBox.DataSource = this.Collection;
 			this.ListBox.FormattingEnabled = true;
 			this.ListBox.ItemHeight = 15;
-			this.ListBox.Location = new System.Drawing.Point(2, 20);
+			this.ListBox.Location = new System.Drawing.Point(2, 30);
 			this.ListBox.Name = "ListBox";
 			this.ListBox.Size = new System.Drawing.Size(275, 94);
 			this.ListBox.TabIndex = 0;
@@ -49,7 +49,6 @@
 			this.Label.AutoSize = true;
 			this.Label.Location = new System.Drawing.Point(4, 1);
 			this.Label.Name = "Label";
-			this.Label.Size = new System.Drawing.Size(56, 15);
 			this.Label.TabIndex = 1;
 			// 
 			// NewButton
