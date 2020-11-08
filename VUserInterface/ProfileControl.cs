@@ -59,12 +59,20 @@ namespace VUserInterface
 				EditPanel.Visible = true;
 				button.Text = "Save";
 			}
-			else
+			else if (button.Text == "Save")
 			{
-				EditPanel.Visible = false;
-				ReadonlyPanel.Visible = true;
-				button.Text = "Edit";
-				Profile.Save();
+				Profile.RunPreSaveValidation();
+				if (!Profile.Notifications.HasErrors())
+				{
+					EditPanel.Visible = false;
+					ReadonlyPanel.Visible = true;
+					button.Text = "Edit";
+					Profile.Save();
+				}
+				else
+				{
+					MessageBox.Show("Unable to save, Error: " + Profile.Notifications.Errors[0]);
+				}
 			}
 		}
 
