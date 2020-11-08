@@ -30,7 +30,7 @@ namespace VUserInterface
 
 		VProfile GetProfile()
 		{
-			var context = new VDataContext();
+			var context = VDataContext.Instance;
 			var profileName = context.GetAllFileNames<VProfile>().FirstOrDefault();
 			if (profileName != null)
 			{

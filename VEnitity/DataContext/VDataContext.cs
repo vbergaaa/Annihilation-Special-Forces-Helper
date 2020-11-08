@@ -6,6 +6,13 @@ namespace VEntityFramework.Data
 {
 	public class VDataContext
 	{
+		VDataContext()
+		{
+		}
+
+		static VDataContext fInstance;
+		public static VDataContext Instance = fInstance ??= new VDataContext();
+
 		public void SaveAsXML(VBusinessObject bizo)
 		{
 			new VXMLWriter().Write(bizo);

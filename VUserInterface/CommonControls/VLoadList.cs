@@ -50,14 +50,14 @@ namespace VUserInterface.CommonControls
 			var name = (string)ListBox.SelectedItem;
 			if (name != null)
 			{
-				new VDataContext().Delete(BizoType, name);
+				VDataContext.Instance.Delete(BizoType, name);
 				RefreshList();
 			}
 		}
 
 		void Open_Click(object sender, EventArgs e)
 		{
-			var context = new VDataContext();
+			var context = VDataContext.Instance;
 			var name = (string)ListBox.SelectedItem;
 			if (name != null)
 			{
@@ -90,7 +90,7 @@ namespace VUserInterface.CommonControls
 		void RefreshList()
 		{
 			Collection.Clear();
-			var list = new VDataContext().GetAllFileNames(BizoType);
+			var list = VDataContext.Instance.GetAllFileNames(BizoType);
 			var orderedList = OrderHelper.OrderNamesByKey(list);
 			foreach (var entry in orderedList)
 			{
