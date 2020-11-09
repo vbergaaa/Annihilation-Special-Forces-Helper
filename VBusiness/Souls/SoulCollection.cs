@@ -15,6 +15,21 @@ namespace VBusiness.Souls
 
 		#region Properties
 
+		#region SoulCosts
+
+		public override int SoulCosts
+		{
+			get
+			{
+				var soul1Cost = Soul1?.Cost ?? 0;
+				var soul2Cost = Soul2?.Cost ?? 0;
+				var soul3Cost = Soul3?.Cost ?? 0;
+				return soul1Cost + soul2Cost + soul3Cost;
+			}
+		}
+
+		#endregion
+
 		#region Soul1
 
 		public override VSoul Soul1

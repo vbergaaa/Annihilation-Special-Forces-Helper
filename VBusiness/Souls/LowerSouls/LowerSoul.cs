@@ -46,5 +46,7 @@ namespace VBusiness.Souls
 		public override int MaxKills => 0;
 
 		public override int MinKills => 0;
+
+		public override int Cost => 50; // sell 10?
 	}
 }

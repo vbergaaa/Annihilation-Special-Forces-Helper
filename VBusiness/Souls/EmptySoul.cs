@@ -47,6 +47,8 @@ namespace VBusiness.Souls
 
 		public override int MinKills => 0;
 
+		public override int Cost => 0;
+
 		protected override void RunPreSaveValidationCore()
 		{
 			Notifications.AddError("Cannot save an empty soul - Please change the soul type");
