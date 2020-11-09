@@ -143,6 +143,25 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region ShouldRestrict
+
+		[VXML(true)]
+		public bool ShouldRestrict
+		{
+			get => fShouldRestrict;
+			set
+			{
+				if (value != fShouldRestrict)
+				{
+					HasChanges = true;
+					fShouldRestrict = value;
+				}
+			}
+		}
+		bool fShouldRestrict = true;
+
+		#endregion
+
 		#endregion
 
 		#region Implementation
