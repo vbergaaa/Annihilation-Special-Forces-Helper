@@ -39,6 +39,14 @@ namespace VBusiness.Souls
 
 		public override int MinArmor => 0;
 
-		public override int MaxMinerals => // Sell 30
+		public override int MaxMinerals => 2000;
+
+		public override int MinMinerals => 1000;
+
+		public override int MaxKills => 0;
+
+		public override int MinKills => 0;
+
+		public override int Cost => 250; // SELL 30
 	}
 }

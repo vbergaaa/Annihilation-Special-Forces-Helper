@@ -8,7 +8,6 @@ namespace VEntityFramework.Model
 	[TopLevelBusinessObject("Profile")]
 	public abstract class VProfile : VBusinessObject
 	{
-
 		#region Constructor
 
 		#endregion

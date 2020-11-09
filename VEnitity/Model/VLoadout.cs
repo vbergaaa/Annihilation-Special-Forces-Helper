@@ -131,6 +131,18 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region PerkPointCost
+
+		public virtual long PerkPointsCost { get; }
+
+		#endregion
+
+		#region RemainingPerkPoints
+
+		public virtual long RemainingPerkPoints { get; }
+
+		#endregion
+
 		#endregion
 
 		#region Implementation

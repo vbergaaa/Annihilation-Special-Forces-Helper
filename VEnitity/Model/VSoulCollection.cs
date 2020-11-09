@@ -132,6 +132,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Costs
+
+		public virtual int SoulCosts { get; }
+
+		#endregion
+
 		#endregion
 
 		#region Implementation

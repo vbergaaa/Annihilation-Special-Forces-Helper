@@ -241,6 +241,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Cost
+
+		public abstract int Cost { get; }
+
+		#endregion
+
 		#region UniqueName
 
 		public string UniqueName => IsUnique ? $"{Rarity} Soul of {Type.GetDescription()}" : $"Regular {Rarity} Soul";

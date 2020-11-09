@@ -70,6 +70,21 @@ namespace VBusiness.Loadouts
 
 		#endregion
 
+		#region PerkPointsCost
+
+		public override long PerkPointsCost
+		{
+			get => Perks.RemainingCost + Souls.SoulCosts;
+		}
+
+		#endregion
+
+		#region RemainingPerkPoints
+
+		public override long RemainingPerkPoints => Profile.PerkPoints - PerkPointsCost;
+
+		#endregion
+
 		#endregion
 
 		#region Validation
