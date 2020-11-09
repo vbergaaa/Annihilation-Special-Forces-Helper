@@ -140,6 +140,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region PerkPoints
+
+		public virtual long PerkPoints { get; }
+
+		#endregion
+
 		#endregion
 
 		#region Implementation
