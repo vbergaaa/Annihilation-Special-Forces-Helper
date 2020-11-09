@@ -22,10 +22,13 @@ namespace VUserInterface.CommonControls
 			get => fCaption;
 			set
 			{
-				fCaption = value;
-				CaptionLabel.Text = fCaption;
-				CaptionLabel.Visible = !string.IsNullOrEmpty(fCaption);
-				AdjustLabel();
+				if (fCaption != value)
+				{
+					fCaption = value;
+					CaptionLabel.Text = fCaption;
+					CaptionLabel.Visible = !string.IsNullOrEmpty(fCaption);
+					AdjustLabel();
+				}
 			}
 		}
 
