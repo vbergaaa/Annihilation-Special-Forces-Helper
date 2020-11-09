@@ -31,6 +31,7 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		public abstract int MaxPage { get; }
 		public abstract int RemainingCost { get; }
 		public abstract int CurrentCost { get; }
 		public abstract int TotalCost { get; }

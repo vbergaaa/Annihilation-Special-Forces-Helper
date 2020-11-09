@@ -24,7 +24,7 @@ namespace VBusiness.Perks
 
 		#region MaxPage
 
-		int MaxPage
+		public override int MaxPage
 		{
 			get
 			{
@@ -32,7 +32,7 @@ namespace VBusiness.Perks
 				{
 					return Loadout.Profile.Rank.GetMaxPerkPage();
 				}
-				return int.MaxValue;
+				return 11;
 			}
 		}
 
