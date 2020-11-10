@@ -52,6 +52,9 @@ namespace VUserInterface
 			this.SoulsControl = new VSoulCollectionControl();
 			this.ChallengePointCollectionControl = new ChallengePointCollectionControl();
 			this.UnitControl = new UnitConfigurationControl();
+			this.AvailablePPLabel = new VLabel();
+			this.AvailableGemsLabel = new VLabel();
+			this.AvailableCPLabel = new VLabel();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
 			//
 			// LoadoutBindingSource
@@ -84,33 +87,60 @@ namespace VUserInterface
 			this.SlotNumberTextBox.Size = new System.Drawing.Size(30, 20);
 			this.SlotNumberTextBox.TextAlign = HorizontalAlignment.Center;
 			//
+			// AvailablePPLabel
+			//
+			this.AvailablePPLabel.AutoSize = true;
+			this.AvailablePPLabel.DataBindings.Add("Text", LoadoutBindingSource, "RemainingPerkPoints");
+			this.AvailablePPLabel.Location = new System.Drawing.Point(120, 90);
+			this.AvailablePPLabel.Name = "AvailablePPLabel";
+			this.AvailablePPLabel.Caption = "Available PP:";
+			this.AvailablePPLabel.MaximumSize = new System.Drawing.Size(150, 100);
+			//
+			// AvailableCPLabel
+			//
+			this.AvailableCPLabel.AutoSize = true;
+			this.AvailableCPLabel.DataBindings.Add("Text", LoadoutBindingSource, "ChallengePoints.RemainingCP");
+			this.AvailableCPLabel.Location = new System.Drawing.Point(500, 90);
+			this.AvailableCPLabel.Name = "AvailableCPLabel";
+			this.AvailableCPLabel.Caption = "Available CP:";
+			this.AvailableCPLabel.MaximumSize = new System.Drawing.Size(150, 100);
+			//
+			// AvailableGemsLabel
+			//
+			this.AvailableGemsLabel.AutoSize = true;
+			this.AvailableGemsLabel.DataBindings.Add("Text", LoadoutBindingSource, "Gems.RemainingGems");
+			this.AvailableGemsLabel.Location = new System.Drawing.Point(320, 90);
+			this.AvailableGemsLabel.Name = "AvailableGemsLabel";
+			this.AvailableGemsLabel.Caption = "Available Gems:";
+			this.AvailableGemsLabel.MaximumSize = new System.Drawing.Size(150, 100);
+			//
 			// PerkPageControl
 			//
-			this.PerkPageControl.Location = new System.Drawing.Point(25, 90);
+			this.PerkPageControl.Location = new System.Drawing.Point(25, 120);
 			this.PerkPageControl.DataBindings.Add("Perks", this.LoadoutBindingSource, "Perks");
 			this.PerkPageControl.DataBindings.Add("Text", this.LoadoutBindingSource, "Perks.PageTitle");
 			//
 			// GemsControl
 			//
-			this.GemsControl.Location = new System.Drawing.Point(25, 90);
+			this.GemsControl.Location = new System.Drawing.Point(25, 120);
 			this.GemsControl.DataBindings.Add("Gems", this.LoadoutBindingSource, "Gems");
 			this.GemsControl.Text = "Gem";
 			//
 			// UnitControl
 			//
-			this.UnitControl.Location = new System.Drawing.Point(25, 90);
+			this.UnitControl.Location = new System.Drawing.Point(25, 120);
 			this.UnitControl.DataBindings.Add("UnitConfiguration", this.LoadoutBindingSource, "UnitConfiguration");
 			this.UnitControl.Text = "Gem";
 			//
 			// SoulsControl
 			//
-			this.SoulsControl.Location = new System.Drawing.Point(25, 90);
+			this.SoulsControl.Location = new System.Drawing.Point(25, 120);
 			this.SoulsControl.DataBindings.Add("Souls", this.LoadoutBindingSource, "Souls");
 			this.SoulsControl.Text = "Soul";
 			//
 			// ChallengePointCollectionControl
 			//
-			this.ChallengePointCollectionControl.Location = new System.Drawing.Point(25, 90);
+			this.ChallengePointCollectionControl.Location = new System.Drawing.Point(25, 120);
 			this.ChallengePointCollectionControl.DataBindings.Add("ChallengePointCollection", this.LoadoutBindingSource, "ChallengePoints");
 			this.ChallengePointCollectionControl.Text = "Challenge Points";
 			this.ChallengePointCollectionControl.Visible = false;
@@ -179,6 +209,9 @@ namespace VUserInterface
 			this.Controls.Add(SoulsControl);
 			this.Controls.Add(ChallengePointCollectionControl);
 			this.Controls.Add(UnitControl);
+			this.Controls.Add(AvailablePPLabel);
+			this.Controls.Add(AvailableGemsLabel);
+			this.Controls.Add(AvailableCPLabel);
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
 		}
@@ -190,6 +223,9 @@ namespace VUserInterface
 		private System.Windows.Forms.Button SoulsButton;
 		private System.Windows.Forms.Button ChallengePointCollectionButton;
 		private System.Windows.Forms.Button UnitButton;
+		private VLabel AvailablePPLabel;
+		private VLabel AvailableGemsLabel;
+		private VLabel AvailableCPLabel;
 		private VLabel SlotNumberLabel;
 		private VLabel LoadoutNameLabel;
 		private System.Windows.Forms.TextBox SlotNumberTextBox;

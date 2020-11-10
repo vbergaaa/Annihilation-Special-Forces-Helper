@@ -49,7 +49,7 @@ namespace VEntityFramework.Model
 					fDesiredLevel = value;
 					HasChanges = true;
 					OnLevelChanged(fDesiredLevel - oldValue);
-					PerkCollection?.RefreshPropertyBinding(nameof(PerkCollection.RemainingCost));
+					PerkCollection?.Loadout?.RefreshPropertyBinding(nameof(PerkCollection.Loadout.RemainingPerkPoints));
 				}
 
 				PerkCollection.RefreshMaxLevelBindings();

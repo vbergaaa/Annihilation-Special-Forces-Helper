@@ -42,81 +42,65 @@ namespace VUserInterface
 			this.CriticalDamageGemControl = new GemControl();
 			this.DoubleWarpGemControl = new GemControl();
 			this.gemsBindingSource = new System.Windows.Forms.BindingSource();
-			this.TotalCostCaption = new VLabel();
-			this.TotalCostLabel = new VLabel();
 			((System.ComponentModel.ISupportInitialize)(this.gemsBindingSource)).BeginInit();
 			//
 			// AttackControl
 			//
-			this.AttackGemControl.Location = new System.Drawing.Point(35, 40);
+			this.AttackGemControl.Location = new System.Drawing.Point(35, 20);
 			this.AttackGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "AttackGem");
 			this.AttackGemControl.TabIndex = 2;
 			//
 			// AttackSpeedControl
 			//
-			this.AttackSpeedGemControl.Location = new System.Drawing.Point(208, 40);
+			this.AttackSpeedGemControl.Location = new System.Drawing.Point(208, 20);
 			this.AttackSpeedGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "AttackSpeedGem");
 			this.AttackSpeedGemControl.TabIndex = 3;
 			//
 			// ShieldsControl
 			//
-			this.ShieldsGemControl.Location = new System.Drawing.Point(381, 40);
+			this.ShieldsGemControl.Location = new System.Drawing.Point(381, 20);
 			this.ShieldsGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "ShieldsGem");
 			this.ShieldsGemControl.TabIndex = 4;
 			//
 			// ShieldsArmorControl
 			//
-			this.ShieldsArmorGemControl.Location = new System.Drawing.Point(35, 127);
+			this.ShieldsArmorGemControl.Location = new System.Drawing.Point(35, 107);
 			this.ShieldsArmorGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "ShieldsArmorGem");
 			this.ShieldsArmorGemControl.TabIndex = 5;
 			//
 			// HealthControl
 			//
-			this.HealthGemControl.Location = new System.Drawing.Point(208, 127);
+			this.HealthGemControl.Location = new System.Drawing.Point(208, 107);
 			this.HealthGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "HealthGem");
 			this.HealthGemControl.TabIndex = 6;
 			//
 			// HealthArmorControl
 			//
-			this.HealthArmorGemControl.Location = new System.Drawing.Point(381, 127);
+			this.HealthArmorGemControl.Location = new System.Drawing.Point(381, 107);
 			this.HealthArmorGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "HealthArmorGem");
 			this.HealthArmorGemControl.TabIndex = 7;
 			//
 			// CriticalChanceControl
 			//
-			this.CriticalChanceGemControl.Location = new System.Drawing.Point(35, 207);
+			this.CriticalChanceGemControl.Location = new System.Drawing.Point(35, 187);
 			this.CriticalChanceGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "CritChanceGem");
 			this.CriticalChanceGemControl.TabIndex = 8;
 			//
 			// CriticalDamageControl
 			//
-			this.CriticalDamageGemControl.Location = new System.Drawing.Point(208, 207);
+			this.CriticalDamageGemControl.Location = new System.Drawing.Point(208, 187);
 			this.CriticalDamageGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "CritDamageGem");
 			this.CriticalDamageGemControl.TabIndex = 9;
 			//
 			// DoubleWarpControl
 			//
-			this.DoubleWarpGemControl.Location = new System.Drawing.Point(381, 207);
+			this.DoubleWarpGemControl.Location = new System.Drawing.Point(381, 187);
 			this.DoubleWarpGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "DoubleWarpGem");
 			this.DoubleWarpGemControl.TabIndex = 10;
 			// 
 			// gemsBindingSource
 			// 
 			this.gemsBindingSource.DataSource = typeof(VGemCollection);
-			//
-			// totalDesiredCostLabel
-			//
-			this.TotalCostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gemsBindingSource, "TotalCost"));
-			this.TotalCostLabel.Location = new System.Drawing.Point(501, 20);
-			this.TotalCostLabel.Size = new System.Drawing.Size(50, 20);
-			this.TotalCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			//
-			// totalDesiredCostCaption
-			//
-			this.TotalCostCaption.Location = new System.Drawing.Point(400, 20);
-			this.TotalCostCaption.Size = new System.Drawing.Size(100, 20);
-			this.TotalCostCaption.Text = "Total Cost:";
-			this.TotalCostCaption.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			//
 			// VPerkPageControl
 			//
@@ -129,9 +113,7 @@ namespace VUserInterface
 			this.Controls.Add(CriticalChanceGemControl);
 			this.Controls.Add(CriticalDamageGemControl);
 			this.Controls.Add(DoubleWarpGemControl);
-			this.Controls.Add(TotalCostLabel);
-			this.Controls.Add(TotalCostCaption);
-			this.Size = new System.Drawing.Size(589, 292);
+			this.Size = new System.Drawing.Size(589, 272);
 			((System.ComponentModel.ISupportInitialize)(this.gemsBindingSource)).EndInit();
 		}
 
@@ -147,7 +129,5 @@ namespace VUserInterface
 		private GemControl CriticalChanceGemControl;
 		private GemControl CriticalDamageGemControl;
 		private GemControl DoubleWarpGemControl;
-		private VLabel TotalCostLabel;
-		private VLabel TotalCostCaption;
 	}
 }
