@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Data;
+﻿using System;
+using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
@@ -60,7 +61,22 @@ namespace VEntityFramework.Model
 
 		public int MaxValue
 		{
-			get => IsSettingHasChangesSuspended ? int.MaxValue : fMaxValue;
+			get
+			{
+				if (IsSettingHasChangesSuspended)
+				{
+					return int.MaxValue;
+				}
+				else if (ChallengePointCollection.Loadout.ShouldRestrict && CurrentLevel < fMaxValue)
+				{
+					if (CanAffordNextLevel())
+					{
+						return int.MaxValue;
+					}
+					return CurrentLevel;
+				}
+				return fMaxValue;
+			}
 			set
 			{
 				fMaxValue = value;
@@ -68,6 +84,12 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fMaxValue;
+
+		bool CanAffordNextLevel()
+		{
+			return NextLevelCost <= ChallengePointCollection.RemainingCP;
+		}
+
 
 		#endregion
 

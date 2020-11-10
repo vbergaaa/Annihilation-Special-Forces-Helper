@@ -112,6 +112,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region RemainingCP
+
+		public int RemainingCP => Loadout.Profile.ChallengePoints - TotalCost;
+
+		#endregion
+
 		#endregion
 	}
 }
