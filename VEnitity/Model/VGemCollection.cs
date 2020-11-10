@@ -57,7 +57,9 @@ namespace VEntityFramework.Model
 		#region Implementation
 
 		public override string BizoName => "GemCollection";
-		
+
+		public virtual int RemainingGems { get; }
+
 		#endregion
 	}
 }

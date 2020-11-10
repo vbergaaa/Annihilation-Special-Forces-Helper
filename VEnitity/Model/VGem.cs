@@ -25,6 +25,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region MaxValue
+
+		public virtual short MaxValue { get; }
+
+		#endregion
+
 		#region CurrentLevel
 
 		[VXML(true)]
@@ -41,6 +47,10 @@ namespace VEntityFramework.Model
 					{
 						fCurrentLevel = 0;
 					}
+					else if (value > MaxValue)
+					{
+						fCurrentLevel = MaxValue;
+					}
 					else
 					{
 						fCurrentLevel = value;
@@ -49,11 +59,11 @@ namespace VEntityFramework.Model
 					if (fCurrentLevel != oldValue)
 					{
 						OnPerkLevelChanged(fCurrentLevel - oldValue);
-						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
-						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(NextLevelCost)));
 						GemCollection?.RefreshPropertyBinding(nameof(GemCollection.TotalCost));
 						HasChanges = true;
 					}
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(NextLevelCost)));
 				}
 			}
 		}
