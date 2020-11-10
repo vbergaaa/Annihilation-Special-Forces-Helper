@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
 		public override int IncrementCost => 2500;
 
-		public override short MaxLevel => 5;
+		protected override short MaxLevelCore => 5;
 
 		protected override string PerkName => "Rank Revision II";
 	}

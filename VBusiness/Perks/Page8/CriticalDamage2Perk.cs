@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
         public override int IncrementCost => 80;
 
-        public override short MaxLevel => 30;
+        protected override short MaxLevelCore => 30;
 
         protected override string PerkName => "Critical Damage II";
 

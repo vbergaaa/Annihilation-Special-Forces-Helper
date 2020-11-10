@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
         public override int IncrementCost => 60;
 
-        public override short MaxLevel => 20;
+        protected override short MaxLevelCore => 20;
 
         protected override string PerkName => "Critical Harvest";
     }

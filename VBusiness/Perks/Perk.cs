@@ -35,27 +35,43 @@ namespace VBusiness.Perks
 
 		#endregion
 
-		#region CurrentLevel
+		#region MaxLevel
 
-		//public override short CurrentLevel
-		//{
-		//	get => base.CurrentLevel;
-		//	set
-		//	{
-		//		if (value > MaxLevel)
-		//		{
-		//			base.CurrentLevel = MaxLevel;
-		//		}
-		//		else if (value < 0)
-		//		{
-		//			base.CurrentLevel = 0;
-		//		}
-		//		else
-		//		{
-		//			base.CurrentLevel = value;
-		//		}
-		//	}
-		//}
+		public override short MaxLevel
+		{
+			get
+			{
+				if (PerkCollection.Loadout.ShouldRestrict && DesiredLevel < MaxLevelCore)
+				{
+					return GetMaxLevel();
+				}
+				return MaxLevelCore;
+			}
+		}
+
+		short GetMaxLevel()
+		{
+			var costToMax = VCalculator.Calculate(StartingCost, IncrementCost, DesiredLevel, MaxLevelCore);
+			if (costToMax <= PerkCollection.Loadout.RemainingPerkPoints)
+			{
+				return MaxLevelCore;
+			}
+
+			return GetHighestLevelPPCanAfford();
+		}
+
+		short GetHighestLevelPPCanAfford()
+		{
+			var remainingPP = PerkCollection.Loadout.RemainingPerkPoints;
+			for (var i = MaxLevelCore; i >= DesiredLevel; i--)
+			{
+				if (VCalculator.Calculate(StartingCost, IncrementCost, DesiredLevel, i) <= remainingPP)
+				{
+					return i;
+				}
+			}
+			return DesiredLevel;
+		}
 
 		#endregion
 

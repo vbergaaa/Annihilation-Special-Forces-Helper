@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
         public override int IncrementCost => 150;
 
-        public override short MaxLevel => 10;
+        protected override short MaxLevelCore => 10;
 
         protected override string PerkName => "Building Recycle";
     }

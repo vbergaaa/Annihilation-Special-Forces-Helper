@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
 		public override int IncrementCost => 750;
 
-		public override short MaxLevel => 25;
+		protected override short MaxLevelCore => 25;
 
 		protected override string PerkName => "Fast Learner";
 	}

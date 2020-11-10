@@ -48,10 +48,11 @@ namespace VEntityFramework.Model
 					var oldValue = fDesiredLevel;
 					fDesiredLevel = value;
 					HasChanges = true;
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DesiredLevel)));
 					OnLevelChanged(fDesiredLevel - oldValue);
 					PerkCollection?.RefreshPropertyBinding(nameof(PerkCollection.RemainingCost));
 				}
+
+				PerkCollection.RefreshMaxLevelBindings();
 			}
 		}
 		short fDesiredLevel;
@@ -79,7 +80,9 @@ namespace VEntityFramework.Model
 
 		public abstract int IncrementCost { get; }
 
-		public abstract short MaxLevel { get; }
+		protected abstract short MaxLevelCore { get; }
+
+		public virtual short MaxLevel { get; }
 
 		public abstract int RemainingCost { get; }
 
