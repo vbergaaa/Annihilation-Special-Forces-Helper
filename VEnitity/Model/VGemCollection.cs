@@ -61,6 +61,18 @@ namespace VEntityFramework.Model
 		public virtual int RemainingGems { get; }
 
 		#endregion
+
+		#region RefreshMaxValuesForBinding
+
+		public void RefreshMaxValuesForBinding()
+		{
+			foreach (var gem in Gems)
+			{
+				gem.RefreshPropertyBinding(nameof(gem.MaxValue));
+			}
+		}
+
+		#endregion
 	}
 }
 
