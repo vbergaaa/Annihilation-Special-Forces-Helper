@@ -143,6 +143,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region CanAffordCurrentLoadout
+
+		public virtual bool CanAffordCurrentLoadout { get; }
+
+		#endregion
+
 		#region ShouldRestrict
 
 		[VXML(true)]
@@ -153,8 +159,15 @@ namespace VEntityFramework.Model
 			{
 				if (value != fShouldRestrict)
 				{
-					HasChanges = true;
-					fShouldRestrict = value;
+					if (!value || CanAffordCurrentLoadout)
+					{
+						HasChanges = true;
+						fShouldRestrict = value;
+						Gems.RefreshMaxLevelBindings();
+						Perks.RefreshMaxLevelBindings();
+						ChallengePoints.RefreshMaxLevelBindings();
+					}
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShouldRestrict)));
 				}
 			}
 		}

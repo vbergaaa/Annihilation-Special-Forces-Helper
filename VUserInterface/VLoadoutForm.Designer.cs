@@ -55,6 +55,7 @@ namespace VUserInterface
 			this.AvailablePPLabel = new VLabel();
 			this.AvailableGemsLabel = new VLabel();
 			this.AvailableCPLabel = new VLabel();
+			this.RestrictCheckBox = new VCheckControl();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
 			//
 			// LoadoutBindingSource
@@ -86,6 +87,14 @@ namespace VUserInterface
 			this.SlotNumberTextBox.Location = new System.Drawing.Point(191, 20);
 			this.SlotNumberTextBox.Size = new System.Drawing.Size(30, 20);
 			this.SlotNumberTextBox.TextAlign = HorizontalAlignment.Center;
+			//
+			// RestrictCheckBox
+			//
+			this.RestrictCheckBox.Text = "Use Profile Limits";
+			this.RestrictCheckBox.CheckedChanged += RestrictCheckBox_CheckedChanged;
+			this.RestrictCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "ShouldRestrict");
+			this.RestrictCheckBox.Location = new System.Drawing.Point(620, 20);
+			this.RestrictCheckBox.Name = "RestrictCheckBox";
 			//
 			// AvailablePPLabel
 			//
@@ -212,6 +221,7 @@ namespace VUserInterface
 			this.Controls.Add(AvailablePPLabel);
 			this.Controls.Add(AvailableGemsLabel);
 			this.Controls.Add(AvailableCPLabel);
+			this.Controls.Add(RestrictCheckBox);
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
 		}
@@ -237,5 +247,6 @@ namespace VUserInterface
 		private VUserInterface.UnitConfigurationControl UnitControl;
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;
 		private VStatsControl StatsControl;
+		private VCheckControl RestrictCheckBox;
 	}
 }

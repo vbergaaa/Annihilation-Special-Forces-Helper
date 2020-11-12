@@ -83,6 +83,14 @@ namespace VBusiness.Loadouts
 
 		public override long RemainingPerkPoints => Profile.PerkPoints - PerkPointsCost;
 
+		public override bool CanAffordCurrentLoadout
+		{
+			get
+			{
+				return RemainingPerkPoints >= 0 && Gems.RemainingGems >= 0 && ChallengePoints.RemainingCP >= 0;
+			}
+		}
+
 		#endregion
 
 		#endregion

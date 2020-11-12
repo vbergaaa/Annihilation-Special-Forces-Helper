@@ -64,7 +64,7 @@ namespace VEntityFramework.Model
 
 		#region RefreshMaxValuesForBinding
 
-		public void RefreshMaxValuesForBinding()
+		public void RefreshMaxLevelBindings()
 		{
 			foreach (var gem in Gems)
 			{
