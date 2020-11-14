@@ -27,17 +27,22 @@ namespace VEntityFramework.Data
 
 		public T ReadFromXML<T>(string fileName) where T : VBusinessObject
 		{
+			return new VXMLReader().Read<T>(fileName);
+		}
+
+		public T ReadFromXMLWithCache<T>(string fileName) where T : VBusinessObject
+		{
 			var cache = BizoCache.Instance;
 			if (cache.Exists(typeof(T), fileName))
 			{
 				return (T)cache.Retrieve(typeof(T), fileName);
 			}
-			var loadedBizo = new VXMLReader().Read<T>(fileName);
+			var loadedBizo = ReadFromXML<T>(fileName);
 			cache.Add(loadedBizo);
 			return loadedBizo;
 		}
 
-		public T ReadFirst<T>() where T : VBusinessObject
+		public T ReadFirstWithCache<T>() where T : VBusinessObject
 		{
 			var cache = BizoCache.Instance;
 			if (cache.Exists(typeof(T), null))

@@ -11,8 +11,7 @@ namespace VEntityFramework.Model
 
 		#region Profile
 
-		public VProfile Profile { get => fProfile ??= VDataContext.Instance.ReadFirst<VProfile>(); }
-		VProfile fProfile;
+		public abstract VProfile Profile { get; }
 
 		#endregion
 

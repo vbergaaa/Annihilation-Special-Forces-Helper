@@ -1,9 +1,8 @@
-﻿using System.Buffers.Text;
-using VBusiness.ChallengePoints;
+﻿using VBusiness.ChallengePoints;
 using VBusiness.Gems;
 using VBusiness.Perks;
 using VBusiness.Souls;
-using VEntityFramework;
+using VEntityFramework.Data;
 using VEntityFramework.Model;
 
 namespace VBusiness.Loadouts
@@ -19,6 +18,13 @@ namespace VBusiness.Loadouts
 		#endregion
 
 		#region Properties
+
+		#region Profile
+
+		public override VProfile Profile { get => fProfile ??= VDataContext.Instance.ReadFirstWithCache<VBusiness.Profile.Profile>(); }
+		VProfile fProfile;
+
+		#endregion
 
 		#region Gems
 

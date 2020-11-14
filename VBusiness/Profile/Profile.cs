@@ -1,4 +1,5 @@
 ﻿using System;
+using VEntityFramework.Data;
 using VEntityFramework.Model;
 
 namespace VBusiness.Profile

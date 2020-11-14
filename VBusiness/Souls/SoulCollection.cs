@@ -53,7 +53,7 @@ namespace VBusiness.Souls
 				{
 					if (SavedSouls.TryGetValue(value, out var soulName))
 					{
-						soul = Context.ReadFromXML<Soul>(soulName);
+						soul = Context.ReadFromXMLWithCache<Soul>(soulName);
 						soul.SoulCollection = this;
 					}
 				}
@@ -86,7 +86,7 @@ namespace VBusiness.Souls
 				{
 					if (SavedSouls.TryGetValue(value, out var soulName))
 					{
-						soul = Context.ReadFromXML<Soul>(soulName);
+						soul = Context.ReadFromXMLWithCache<Soul>(soulName);
 						soul.SoulCollection = this;
 					}
 				}
@@ -119,7 +119,7 @@ namespace VBusiness.Souls
 				{
 					if (SavedSouls.TryGetValue(value, out var soulName))
 					{
-						soul = Context.ReadFromXML<Soul>(soulName);
+						soul = Context.ReadFromXMLWithCache<Soul>(soulName);
 						soul.SoulCollection = this;
 					}
 				}

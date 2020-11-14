@@ -24,19 +24,8 @@ namespace VUserInterface
 
 		public VProfile Profile
 		{
-			get => fProfile ?? (fProfile = GetProfile());
+			get => fProfile ?? (fProfile = VDataContext.Instance.ReadFirstWithCache<Profile>());
 			set => fProfile = value;
-		}
-
-		VProfile GetProfile()
-		{
-			var context = VDataContext.Instance;
-			var profileName = context.GetAllFileNames<VProfile>().FirstOrDefault();
-			if (profileName != null)
-			{
-				return context.ReadFromXML<Profile>(profileName);
-			}
-			return new Profile();
 		}
 
 		VProfile fProfile;
