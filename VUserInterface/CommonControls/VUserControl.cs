@@ -39,7 +39,8 @@ namespace VUserInterface.CommonControls
 		void AdjustLabel()
 		{
 			isSettingCaption = true;
-			var widthChanged = 5 + CaptionLabel.Width - fOldCaptionWidth;
+			var widthChanged = CaptionLabel.Width - fOldCaptionWidth;
+			widthChanged += fOldCaptionWidth == 0 ? 5 : 0;
 			this.Width += widthChanged;
 			this.Left -= widthChanged;
 			this.CoreControl.Left += widthChanged;
