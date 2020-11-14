@@ -41,7 +41,7 @@ namespace VUserInterface
 			// 
 			// TextBox
 			// 
-			this.TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this, "Value", true));
+			this.TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this, "Text", true));
 			this.TextBox.Location = new System.Drawing.Point(0, 1);
 			this.TextBox.Name = "TextBox";
 			this.TextBox.Size = new System.Drawing.Size(300, 23);

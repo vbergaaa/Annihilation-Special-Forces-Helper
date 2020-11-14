@@ -70,13 +70,12 @@ namespace VUserInterface
 			// NameTextBox
 			// 
 			this.NameTextBox.Caption = "Name:";
-			this.NameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BindingSource, "Name", true));
+			this.NameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Name", true));
 			this.NameTextBox.Location = new System.Drawing.Point(150, 3);
 			this.NameTextBox.MaximumSize = new System.Drawing.Size(500, 29);
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(150, 24);
 			this.NameTextBox.TabIndex = 0;
-			this.NameTextBox.Value = null;
 			// 
 			// RankDropBox
 			// 
@@ -91,7 +90,7 @@ namespace VUserInterface
 			// 
 			// RankPointsTextBox
 			// 
-			this.RankPointsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BindingSource, "RankPoints", true));
+			this.RankPointsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "RankPoints", true));
 			this.RankPointsTextBox.Location = new System.Drawing.Point(150, 53);
 			this.RankPointsTextBox.MaximumSize = new System.Drawing.Size(500, 29);
 			this.RankPointsTextBox.Name = "RankPointsTextBox";
@@ -102,35 +101,32 @@ namespace VUserInterface
 			// ModScoreTextBox
 			// 
 			this.ModScoreTextBox.Caption = "Mod Score:";
-			this.ModScoreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BindingSource, "ModScore", true));
+			this.ModScoreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "ModScore", true));
 			this.ModScoreTextBox.Location = new System.Drawing.Point(150, 78);
 			this.ModScoreTextBox.MaximumSize = new System.Drawing.Size(500, 29);
 			this.ModScoreTextBox.Name = "ModScoreTextBox";
 			this.ModScoreTextBox.Size = new System.Drawing.Size(75, 24);
 			this.ModScoreTextBox.TabIndex = 0;
-			this.ModScoreTextBox.Value = null;
 			// 
 			// GemsTextBox
 			// 
 			this.GemsTextBox.Caption = "Gems:";
-			this.GemsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BindingSource, "Gems", true));
+			this.GemsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Gems", true));
 			this.GemsTextBox.Location = new System.Drawing.Point(150, 103);
 			this.GemsTextBox.MaximumSize = new System.Drawing.Size(500, 29);
 			this.GemsTextBox.Name = "GemsTextBox";
 			this.GemsTextBox.Size = new System.Drawing.Size(75, 24);
 			this.GemsTextBox.TabIndex = 0;
-			this.GemsTextBox.Value = null;
 			// 
 			// CPTextBox
 			// 
 			this.CPTextBox.Caption = "Challenge Points:";
-			this.CPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BindingSource, "ChallengePoints", true));
+			this.CPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "ChallengePoints", true));
 			this.CPTextBox.Location = new System.Drawing.Point(150, 128);
 			this.CPTextBox.MaximumSize = new System.Drawing.Size(500, 29);
 			this.CPTextBox.Name = "CPTextBox";
 			this.CPTextBox.Size = new System.Drawing.Size(75, 24);
 			this.CPTextBox.TabIndex = 0;
-			this.CPTextBox.Value = null;
 			// 
 			// NameLabel
 			// 

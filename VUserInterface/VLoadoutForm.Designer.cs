@@ -62,7 +62,7 @@ namespace VUserInterface
 			//
 			// LoadoutNameTextBox
 			//
-			this.LoadoutNameTextBox.DataBindings.Add("Value", this.LoadoutBindingSource, "Name");
+			this.LoadoutNameTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Name", true);
 			this.LoadoutNameTextBox.Location = new System.Drawing.Point(390, 20);
 			this.LoadoutNameTextBox.Name = "LoadoutNameTextBox";
 			this.LoadoutNameTextBox.Caption = "LoadoutName";
@@ -70,7 +70,7 @@ namespace VUserInterface
 			//
 			// SlotNumberTextBox
 			//
-			this.SlotNumberTextBox.DataBindings.Add("Value", this.LoadoutBindingSource, "Slot");
+			this.SlotNumberTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Slot", true);
 			this.SlotNumberTextBox.Location = new System.Drawing.Point(141, 20);
 			this.SlotNumberTextBox.Name = "SlotNumberTextBox";
 			this.SlotNumberTextBox.Width = 30;
