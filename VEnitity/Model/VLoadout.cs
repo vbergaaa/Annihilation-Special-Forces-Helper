@@ -160,8 +160,8 @@ namespace VEntityFramework.Model
 				{
 					if (!value || CanAffordCurrentLoadout)
 					{
-						HasChanges = true;
 						fShouldRestrict = value;
+						HasChanges = true;
 						Gems.RefreshMaxLevelBindings();
 						Perks.RefreshMaxLevelBindings();
 						ChallengePoints.RefreshMaxLevelBindings();
