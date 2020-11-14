@@ -38,10 +38,8 @@ namespace VUserInterface
 			this.components = new System.ComponentModel.Container();
 			this.PerkPageControl = new VPerkCollectionControl();
 			this.LoadoutBindingSource = new System.Windows.Forms.BindingSource();
-			this.LoadoutNameLabel = new VLabel();
-			this.LoadoutNameTextBox = new TextBox();
-			this.SlotNumberLabel = new VLabel();
-			this.SlotNumberTextBox = new TextBox();
+			this.LoadoutNameTextBox = new VTextBox();
+			this.SlotNumberTextBox = new VTextBox();
 			this.StatsControl = new VStatsControl();
 			this.PerksButton = new Button();
 			this.GemsButton = new Button();
@@ -62,31 +60,21 @@ namespace VUserInterface
 			//
 			this.LoadoutBindingSource.DataSource = typeof(Loadout);
 			//
-			// LoadoutNameLabel
-			//
-			this.LoadoutNameLabel.Location = new System.Drawing.Point(270, 20);
-			this.LoadoutNameLabel.Size = new System.Drawing.Size(120, 20);
-			this.LoadoutNameLabel.Text = "Loadout Name";
-			//
 			// LoadoutNameTextBox
 			//
-			this.LoadoutNameTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Name");
+			this.LoadoutNameTextBox.DataBindings.Add("Value", this.LoadoutBindingSource, "Name");
 			this.LoadoutNameTextBox.Location = new System.Drawing.Point(390, 20);
-			this.LoadoutNameTextBox.Size = new System.Drawing.Size(100, 20);
-			this.LoadoutNameTextBox.TextAlign = HorizontalAlignment.Center;
-			//
-			// SlotNumberLabel
-			//
-			this.SlotNumberLabel.Location = new System.Drawing.Point(120, 20);
-			this.SlotNumberLabel.Size = new System.Drawing.Size(70, 20);
-			this.SlotNumberLabel.Text = "Save Slot";
+			this.LoadoutNameTextBox.Name = "LoadoutNameTextBox";
+			this.LoadoutNameTextBox.Caption = "LoadoutName";
+			this.LoadoutNameTextBox.Width = 100;
 			//
 			// SlotNumberTextBox
 			//
-			this.SlotNumberTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Slot");
-			this.SlotNumberTextBox.Location = new System.Drawing.Point(191, 20);
-			this.SlotNumberTextBox.Size = new System.Drawing.Size(30, 20);
-			this.SlotNumberTextBox.TextAlign = HorizontalAlignment.Center;
+			this.SlotNumberTextBox.DataBindings.Add("Value", this.LoadoutBindingSource, "Slot");
+			this.SlotNumberTextBox.Location = new System.Drawing.Point(141, 20);
+			this.SlotNumberTextBox.Name = "SlotNumberTextBox";
+			this.SlotNumberTextBox.Width = 30;
+			this.SlotNumberTextBox.Caption = "Save Slot";
 			//
 			// RestrictCheckBox
 			//
@@ -203,10 +191,8 @@ namespace VUserInterface
 			//
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(LoadoutNameLabel);
 			this.Controls.Add(LoadoutNameTextBox);
 			this.Controls.Add(PerkPageControl);
-			this.Controls.Add(SlotNumberLabel);
 			this.Controls.Add(SlotNumberTextBox);
 			this.Controls.Add(StatsControl);
 			this.Controls.Add(PerksButton);
@@ -236,10 +222,8 @@ namespace VUserInterface
 		private VLabel AvailablePPLabel;
 		private VLabel AvailableGemsLabel;
 		private VLabel AvailableCPLabel;
-		private VLabel SlotNumberLabel;
-		private VLabel LoadoutNameLabel;
-		private System.Windows.Forms.TextBox SlotNumberTextBox;
-		private System.Windows.Forms.TextBox LoadoutNameTextBox;
+		private VTextBox SlotNumberTextBox;
+		private VTextBox LoadoutNameTextBox;
 		private VUserInterface.VPerkCollectionControl PerkPageControl;
 		private VUserInterface.VGemCollectionControl GemsControl;
 		private VUserInterface.VSoulCollectionControl SoulsControl;

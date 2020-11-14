@@ -50,7 +50,9 @@ namespace VUserInterface.CommonControls
 			// CoreControl
 			//
 			this.CoreControl.Location = new Point(0, 0);
-			this.CoreControl.Size = new Size(500, 29);
+			this.CoreControl.Name = "CoreControl";
+			this.CoreControl.SizeChanged += CoreControl_SizeChanged;
+			this.CoreControl.Size = new Size(100, 29);
 			//
 			// VUserControl
 			//
