@@ -38,24 +38,15 @@ namespace VUserInterface
 			components = new System.ComponentModel.Container();
 			this.CostLabel = new VLabel();
 			this.CurrentLevelIncrementor = new VIncrementor();
-			this.CostCaption = new VLabel();
 			this.bindingSource = new System.Windows.Forms.BindingSource();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
-			// 
-			// CostCaption
-			// 
-			this.CostCaption.AutoSize = true;
-			this.CostCaption.Location = new System.Drawing.Point(40, 29);
-			this.CostCaption.Name = "CostCaption";
-			this.CostCaption.TabIndex = 6;
-			this.CostCaption.Text = "Cost";
-			this.CostCaption.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// CostLabel
 			// 
 			this.CostLabel.AutoSize = true;
+			this.CostLabel.Caption = "Next Level Cost";
 			this.CostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "NextLevelCost"));
-			this.CostLabel.Location = new System.Drawing.Point(110, 29);
+			this.CostLabel.Location = new System.Drawing.Point(140, 29);
 			this.CostLabel.Name = "CostLabel";
 			this.CostLabel.TabIndex = 6;
 			this.CostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -78,7 +69,6 @@ namespace VUserInterface
 			// 
 			this.Controls.Add(this.CostLabel);
 			this.Controls.Add(this.CurrentLevelIncrementor);
-			this.Controls.Add(this.CostCaption);
 			this.Size = new System.Drawing.Size(160, 50);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
@@ -88,6 +78,5 @@ namespace VUserInterface
 		private VLabel CostLabel;
 		private VIncrementor CurrentLevelIncrementor;
 		private System.Windows.Forms.BindingSource bindingSource;
-		private VLabel CostCaption;
 	}
 }

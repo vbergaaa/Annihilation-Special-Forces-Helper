@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace VUserInterface.CommonControls
 {
-	public partial class VIncrementor : UserControl
+	public partial class VIncrementor : VUserControl
 	{
 		public VIncrementor()
 		{
@@ -84,34 +84,6 @@ namespace VUserInterface.CommonControls
 
 		#endregion
 
-		#region Caption
-
-		public string Caption
-		{
-			get => fCaption;
-			set
-			{
-				fCaption = value;
-				CaptionLabel.Text = fCaption;
-				CaptionLabel.Visible = !string.IsNullOrEmpty(fCaption);
-				AdjustLabel();
-			}
-		}
-
-		private void AdjustLabel()
-		{
-			var width = CaptionLabel.Width + 5;
-			this.Width += width;
-			this.Left -= width;
-			this.DecrementButton.Left += width;
-			this.IncrementButton.Left += width;
-			this.ValueLabel.Left += width;
-		}
-
-		string fCaption;
-
-		#endregion
-
 		#region Increment Amount
 
 		public int IncrementAmount
@@ -137,7 +109,7 @@ namespace VUserInterface.CommonControls
 
 		#region ResizeControl
 
-		private void ResizeControl(IncrementorStyle value)
+		void ResizeControl(IncrementorStyle value)
 		{
 			if (value == IncrementorStyle.Compact)
 			{

@@ -78,10 +78,10 @@ namespace VUserInterface
 			//
 			// RestrictCheckBox
 			//
-			this.RestrictCheckBox.Text = "Use Profile Limits";
+			this.RestrictCheckBox.Caption = "Use Profile Limits";
 			this.RestrictCheckBox.CheckedChanged += RestrictCheckBox_CheckedChanged;
 			this.RestrictCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "ShouldRestrict");
-			this.RestrictCheckBox.Location = new System.Drawing.Point(620, 20);
+			this.RestrictCheckBox.Location = new System.Drawing.Point(720, 20);
 			this.RestrictCheckBox.Name = "RestrictCheckBox";
 			//
 			// AvailablePPLabel

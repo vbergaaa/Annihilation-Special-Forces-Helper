@@ -79,7 +79,7 @@ namespace VUserInterface
 			//
 			// UnitSpecCheckBox
 			//
-			this.UnitSpecCheckBox.Location = new System.Drawing.Point(125, 170);
+			this.UnitSpecCheckBox.Location = new System.Drawing.Point(125, 140);
 			this.UnitSpecCheckBox.Caption = "Has Unit Spec:";
 			this.UnitSpecCheckBox.DataBindings.Add("Checked", bindingSource, "HasUnitSpec");
 			//
