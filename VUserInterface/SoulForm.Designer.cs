@@ -35,8 +35,7 @@ namespace VUserInterface
 		{
 			this.TypeCaption = new VLabel();
 			this.TypeComboBox = new System.Windows.Forms.ComboBox();
-			this.SaveSlotCaption = new VLabel();
-			this.SaveSlotTextBox = new TextBox();
+			this.SaveSlotTextBox = new VTextBox();
 			this.BindingSource = new BindingSource();
 			this.AttackIncrementor = new VIncrementor();
 			this.AttackSpeedIncrementor = new VIncrementor();
@@ -63,20 +62,12 @@ namespace VUserInterface
 			// 
 			// SaveSlotTextBox
 			// 
-			this.SaveSlotTextBox.Location = new System.Drawing.Point(141, 29);
+			this.SaveSlotTextBox.Caption = "Save Slot";
+			this.SaveSlotTextBox.Location = new System.Drawing.Point(130, 29);
 			this.SaveSlotTextBox.DataBindings.Add("Text", BindingSource, "SaveSlot");
 			this.SaveSlotTextBox.Name = "SaveSlotComboBox";
-			this.SaveSlotTextBox.Size = new System.Drawing.Size(98, 23);
+			this.SaveSlotTextBox.Size = new System.Drawing.Size(109, 24);
 			this.SaveSlotTextBox.TabIndex = 0;
-			// 
-			// SaveSlotCaption
-			// 
-			this.SaveSlotCaption.AutoSize = true;
-			this.SaveSlotCaption.Location = new System.Drawing.Point(20, 29);
-			this.SaveSlotCaption.Name = "SaveSlotCaption";
-			this.SaveSlotCaption.Size = new System.Drawing.Size(57, 15);
-			this.SaveSlotCaption.TabIndex = 8;
-			this.SaveSlotCaption.Text = "Save Slot";
 			// 
 			// TypeComboBox
 			// 
@@ -164,8 +155,6 @@ namespace VUserInterface
 			this.Controls.Add(this.TypeCaption);
 			this.Controls.Add(this.TypeComboBox);
 			this.Controls.Add(this.SaveSlotTextBox);
-			this.Controls.Add(this.SaveSlotCaption);
-			this.Name = "SoulForm";
 			this.Controls.Add(this.AttackIncrementor);
 			this.Controls.Add(this.AttackSpeedIncrementor);
 			this.Controls.Add(this.VitalsIncrementor);
@@ -174,6 +163,7 @@ namespace VUserInterface
 			this.Controls.Add(this.CritDamageIncrementor);
 			this.Controls.Add(this.MineralsIncrementor);
 			this.Controls.Add(this.KillsIncrementor);
+			this.Name = "SoulForm";
 			((ISupportInitialize)this.BindingSource).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -192,8 +182,7 @@ namespace VUserInterface
 		private VIncrementor KillsIncrementor;
 		private VLabel TypeCaption;
 		private System.Windows.Forms.ComboBox TypeComboBox;
-		private VLabel SaveSlotCaption;
-		private System.Windows.Forms.TextBox SaveSlotTextBox;
+		private VTextBox SaveSlotTextBox;
 		private System.Windows.Forms.BindingSource BindingSource;
 	}
 }

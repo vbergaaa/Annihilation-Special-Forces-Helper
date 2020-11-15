@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
         public override int IncrementCost => 0;
 
-        public override short MaxLevel => 1;
+        protected override short MaxLevelCore => 1;
 
         protected override string PerkName => "Unit Storage";
     }

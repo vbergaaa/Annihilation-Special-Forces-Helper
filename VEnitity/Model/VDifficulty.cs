@@ -34,7 +34,7 @@ namespace VEntityFramework.Model
 				("None") => DifficultyLevel.None,
 				("VeryEasy") => DifficultyLevel.VeryEasy,
 				("Easy") => DifficultyLevel.Easy,
-				("Medium") => DifficultyLevel.Normal,
+				("Normal") => DifficultyLevel.Normal,
 				("Hard") => DifficultyLevel.Hard,
 				("VeryHard") => DifficultyLevel.VeryHard,
 				("Brutal") => DifficultyLevel.Brutal,

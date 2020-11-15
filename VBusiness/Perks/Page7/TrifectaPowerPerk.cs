@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
 		public override int IncrementCost => 500;
 
-		public override short MaxLevel => 10;
+		protected override short MaxLevelCore => 10;
 
 		protected override string PerkName => "Trifecta Power";
 

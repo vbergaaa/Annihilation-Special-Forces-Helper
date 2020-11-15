@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
         public override int IncrementCost => 100;
 
-        public override short MaxLevel => 6;
+        protected override short MaxLevelCore => 6;
 
         protected override string PerkName => "Automatic Refinery";
     }

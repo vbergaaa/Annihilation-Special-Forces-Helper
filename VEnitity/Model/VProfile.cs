@@ -8,11 +8,6 @@ namespace VEntityFramework.Model
 	[TopLevelBusinessObject("Profile")]
 	public abstract class VProfile : VBusinessObject
 	{
-
-		#region Constructor
-
-		#endregion
-
 		#region Properties
 
 		#region Name
@@ -137,6 +132,12 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fChallengePoints;
+
+		#endregion
+
+		#region PerkPoints
+
+		public virtual long PerkPoints { get; }
 
 		#endregion
 

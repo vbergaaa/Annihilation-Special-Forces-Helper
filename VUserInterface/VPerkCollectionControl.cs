@@ -23,8 +23,12 @@ namespace VUserInterface
 		protected override void OnBindingContextChanged(EventArgs e)
 		{
 			base.OnBindingContextChanged(e);
-			this.perksBindingSource.DataSource = Perks;
-			SetButtonReadonlyStatus();
+			if (Perks != null)
+			{
+				this.perksBindingSource.DataSource = Perks;
+				SetButtonReadonlyStatus();
+				RestrictPagePageButtons();
+			}
 		}
 
 		internal void RefreshBindings()
@@ -57,7 +61,21 @@ namespace VUserInterface
 		void SetButtonReadonlyStatus()
 		{
 			previousPageButton.Enabled = Perks != null && Perks.Page != 1;
-			nextPageButton.Enabled = Perks != null && Perks.Page != 11;
+			nextPageButton.Enabled = Perks != null && Perks.Page < Perks.MaxPage;
+		}
+
+		void RestrictPagePageButtons()
+		{
+			if (Perks != null)
+			{
+				foreach (var control in Controls)
+				{
+					if (control is Button button && int.TryParse(button.Text, out var pageNum))
+					{
+						button.Enabled = pageNum <= Perks.MaxPage;
+					}
+				}
+			}
 		}
 	}
 }

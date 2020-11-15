@@ -46,20 +46,20 @@ namespace VUserInterface
 			// Soul1Control
 			//
 			this.Soul1Control.DataBindings.Add("Soul", bindingSource, "Soul1");
-			this.Soul1Control.Location = new System.Drawing.Point(35, 40);
+			this.Soul1Control.Location = new System.Drawing.Point(35, 20);
 			this.Soul1Control.OnSoulChanged += Soul1Control_OnSoulChanged;
 			//
 			// Soul2Control
 			//
 			this.Soul2Control.DataBindings.Add("Soul", bindingSource, "Soul2");
-			this.Soul2Control.Location = new System.Drawing.Point(208, 40);
+			this.Soul2Control.Location = new System.Drawing.Point(208, 20);
 			this.Soul2Control.OnSoulChanged += Soul2Control_OnSoulChanged;
 			//
 			// Soul3Control
 			//
 			this.Soul3Control.DataBindings.Add("Soul", bindingSource, "Soul3");
 			this.Soul3Control.Enabled = false;
-			this.Soul3Control.Location = new System.Drawing.Point(381, 40);
+			this.Soul3Control.Location = new System.Drawing.Point(381, 20);
 			this.Soul3Control.OnSoulChanged += Soul3Control_OnSoulChanged;
 			//
 			// VSoulCollectionControl
@@ -67,7 +67,7 @@ namespace VUserInterface
 			this.Controls.Add(Soul1Control);
 			this.Controls.Add(Soul2Control);
 			this.Controls.Add(Soul3Control);
-			this.Size = new System.Drawing.Size(589, 292);
+			this.Size = new System.Drawing.Size(589, 272);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
 

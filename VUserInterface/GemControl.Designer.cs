@@ -71,6 +71,7 @@ namespace VUserInterface
 			//
 			this.CurrentLevelIncrementor.Location = new System.Drawing.Point(27, 20);
 			this.CurrentLevelIncrementor.DataBindings.Add("Value", gemBindingSource, "CurrentLevel");
+			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", gemBindingSource, "MaxValue");
 			this.CurrentLevelIncrementor.MinValue = 0;
 			// 
 			// perkBindingSource

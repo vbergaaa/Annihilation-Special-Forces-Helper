@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using VBusiness.Loadouts;
+using VBusiness.PlayerRanks;
 using VEntityFramework.Model;
 
 namespace VBusiness.Perks
@@ -20,9 +22,19 @@ namespace VBusiness.Perks
 
 		#region Properties
 
-		#region Loadouts
+		#region MaxPage
 
-
+		public override int MaxPage
+		{
+			get
+			{
+				if (Loadout.ShouldRestrict)
+				{
+					return Loadout.Profile.Rank.GetMaxPerkPage();
+				}
+				return 11;
+			}
+		}
 
 		#endregion
 
@@ -1239,7 +1251,13 @@ namespace VBusiness.Perks
 		public override int Page
 		{
 			get => base.Page;
-			set => base.Page = value;
+			set
+			{
+				if (value > 0 && value <= MaxPage)
+				{
+					base.Page = value;
+				}
+			}
 		}
 
 		public override VPerk Perk1 => allPerks.Where(p => p.Page == Page && p.Position == 1).FirstOrDefault();

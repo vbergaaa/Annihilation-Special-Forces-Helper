@@ -31,6 +31,7 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		public abstract int MaxPage { get; }
 		public abstract int RemainingCost { get; }
 		public abstract int CurrentCost { get; }
 		public abstract int TotalCost { get; }
@@ -58,6 +59,17 @@ namespace VEntityFramework.Model
 				}
 			}
 		}
+
+		internal void RefreshMaxLevelBindings()
+		{
+			Perk1.RefreshPropertyBinding(nameof(Perk1.MaxLevel));
+			Perk2.RefreshPropertyBinding(nameof(Perk2.MaxLevel));
+			Perk3.RefreshPropertyBinding(nameof(Perk3.MaxLevel));
+			Perk4.RefreshPropertyBinding(nameof(Perk4.MaxLevel));
+			Perk5.RefreshPropertyBinding(nameof(Perk5.MaxLevel));
+			Perk6.RefreshPropertyBinding(nameof(Perk6.MaxLevel));
+		}
+
 		int fPage;
 
 		#endregion

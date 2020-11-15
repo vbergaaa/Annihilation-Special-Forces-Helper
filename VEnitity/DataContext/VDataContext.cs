@@ -1,19 +1,62 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using VEntityFramework.DataContext;
 using VEntityFramework.XML;
 
 namespace VEntityFramework.Data
 {
 	public class VDataContext
 	{
+		VDataContext()
+		{
+		}
+
+		static VDataContext fInstance;
+		public static VDataContext Instance = fInstance ??= new VDataContext();
+
 		public void SaveAsXML(VBusinessObject bizo)
 		{
 			new VXMLWriter().Write(bizo);
+			var cache = BizoCache.Instance;
+			if (!cache.Exists(bizo))
+			{
+				BizoCache.Instance.Add(bizo);
+			}
 		}
 
-		public T ReadFromXML<T>(string fileName) where T:VBusinessObject
+		public T ReadFromXML<T>(string fileName) where T : VBusinessObject
 		{
 			return new VXMLReader().Read<T>(fileName);
+		}
+
+		public T ReadFromXMLWithCache<T>(string fileName) where T : VBusinessObject
+		{
+			var cache = BizoCache.Instance;
+			if (cache.Exists(typeof(T), fileName))
+			{
+				return (T)cache.Retrieve(typeof(T), fileName);
+			}
+			var loadedBizo = ReadFromXML<T>(fileName);
+			cache.Add(loadedBizo);
+			return loadedBizo;
+		}
+
+		public T ReadFirstWithCache<T>() where T : VBusinessObject
+		{
+			var cache = BizoCache.Instance;
+			if (cache.Exists(typeof(T), null))
+			{
+				return (T)cache.Retrieve(typeof(T), null);
+			}
+			var fileNames = GetAllFileNames<T>();
+			if (fileNames.Any())
+			{
+				var loadedBizo = new VXMLReader().Read<T>(fileNames.First());
+				cache.Add(loadedBizo);
+				return loadedBizo;
+			}
+			return null;
 		}
 
 		public string[] GetAllFileNames(Type bizoType)

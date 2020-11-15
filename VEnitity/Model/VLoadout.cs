@@ -9,6 +9,13 @@ namespace VEntityFramework.Model
 	{
 		#region Properties
 
+		#region Profile
+
+		[VXML(false)]
+		public abstract VProfile Profile { get; }
+
+		#endregion
+
 		#region Name
 
 		[VXML(true)]
@@ -121,6 +128,50 @@ namespace VEntityFramework.Model
 			}
 		}
 		VUnitConfiguration fUnitConfiguration;
+
+		#endregion
+
+		#region PerkPointCost
+
+		public virtual long PerkPointsCost { get; }
+
+		#endregion
+
+		#region RemainingPerkPoints
+
+		public virtual long RemainingPerkPoints { get; }
+
+		#endregion
+
+		#region CanAffordCurrentLoadout
+
+		public virtual bool CanAffordCurrentLoadout { get; }
+
+		#endregion
+
+		#region ShouldRestrict
+
+		[VXML(true)]
+		public bool ShouldRestrict
+		{
+			get => fShouldRestrict;
+			set
+			{
+				if (value != fShouldRestrict)
+				{
+					if (!value || CanAffordCurrentLoadout)
+					{
+						fShouldRestrict = value;
+						HasChanges = true;
+						Gems.RefreshMaxLevelBindings();
+						Perks.RefreshMaxLevelBindings();
+						ChallengePoints.RefreshMaxLevelBindings();
+					}
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShouldRestrict)));
+				}
+			}
+		}
+		bool fShouldRestrict = true;
 
 		#endregion
 

@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
 		public override int IncrementCost => 400;
 
-		public override short MaxLevel => 20;
+		protected override short MaxLevelCore => 20;
 
 		protected override string PerkName => "Alacrity II";
 

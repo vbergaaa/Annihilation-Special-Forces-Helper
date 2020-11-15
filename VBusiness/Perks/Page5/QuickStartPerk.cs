@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
         public override int IncrementCost => 3000;
 
-        public override short MaxLevel => 3;
+        protected override short MaxLevelCore => 3;
 
         protected override string PerkName => "Quick Start";
     }

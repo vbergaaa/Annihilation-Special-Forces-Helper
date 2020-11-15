@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
         public override int IncrementCost => 1500;
 
-        public override short MaxLevel => 4;
+        protected override short MaxLevelCore => 4;
 
         protected override string PerkName => "Mining Expertise";
     }

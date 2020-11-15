@@ -35,8 +35,6 @@ namespace VUserInterface
 		{
 			components = new System.ComponentModel.Container();
 			this.bindingSource = new BindingSource();
-			this.TotalCostCaption = new VLabel();
-			this.TotalCostLabel = new VLabel();
 			this.AttackCPControl = new ChallengePointControl();
 			this.CriticalChanceCPControl = new ChallengePointControl();
 			this.CriticalDamageCPControl = new ChallengePointControl();
@@ -55,91 +53,77 @@ namespace VUserInterface
 			//
 			this.bindingSource.DataSource = typeof(ChallengePointCollection);
 			//
-			// TotalCostLabel
-			//
-			this.TotalCostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "TotalCost"));
-			this.TotalCostLabel.Location = new System.Drawing.Point(301, 15);
-			this.TotalCostLabel.Size = new System.Drawing.Size(70, 20);
-			this.TotalCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			//
-			// TotalCostCaption
-			//
-			this.TotalCostCaption.Location = new System.Drawing.Point(200, 15);
-			this.TotalCostCaption.Size = new System.Drawing.Size(100, 20);
-			this.TotalCostCaption.Text = "Total Cost:";
-			this.TotalCostCaption.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			//
 			// AttackCPControl
 			//
 			this.AttackCPControl.Caption = "Attack";
 			this.AttackCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Attack");
-			this.AttackCPControl.Location = new System.Drawing.Point(35, 40);
+			this.AttackCPControl.Location = new System.Drawing.Point(35, 20);
 			//
 			// CriticalDamageCPControl
 			//
 			this.CriticalDamageCPControl.Caption = "Crit Dmg";
 			this.CriticalDamageCPControl.DataBindings.Add("ChallengePoint", bindingSource, "CriticalDamage");
-			this.CriticalDamageCPControl.Location = new System.Drawing.Point(30, 100);
+			this.CriticalDamageCPControl.Location = new System.Drawing.Point(30, 80);
 			//
 			// CriticalChanceCPControl
 			//
 			this.CriticalChanceCPControl.Caption = "Crit Chance";
 			this.CriticalChanceCPControl.DataBindings.Add("ChallengePoint", bindingSource, "CriticalChance");
-			this.CriticalChanceCPControl.Location = new System.Drawing.Point(30, 160);
+			this.CriticalChanceCPControl.Location = new System.Drawing.Point(30, 140);
 			//
 			// AttackSpeedCPControl
 			//
 			this.AttackSpeedCPControl.Caption = "Atk Speed";
 			this.AttackSpeedCPControl.DataBindings.Add("ChallengePoint", bindingSource, "AttackSpeed");
-			this.AttackSpeedCPControl.Location = new System.Drawing.Point(30, 220);
+			this.AttackSpeedCPControl.Location = new System.Drawing.Point(30, 200);
 			//
 			// HealthCPControl
 			//
 			this.HealthCPControl.Caption = "Health";
 			this.HealthCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Health");
-			this.HealthCPControl.Location = new System.Drawing.Point(208, 40);
+			this.HealthCPControl.Location = new System.Drawing.Point(208, 20);
 			//
 			// ShieldsCPControl
 			//
 			this.ShieldsCPControl.Caption = "Shields";
 			this.ShieldsCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Shields");
-			this.ShieldsCPControl.Location = new System.Drawing.Point(208, 100);
+			this.ShieldsCPControl.Location = new System.Drawing.Point(208, 80);
 			//
 			// DefensiveEssenceCPControl
 			//
 			this.DefensiveEssenceCPControl.Caption = "Def Ess";
 			this.DefensiveEssenceCPControl.DataBindings.Add("ChallengePoint", bindingSource, "DefensiveEssence");
-			this.DefensiveEssenceCPControl.Location = new System.Drawing.Point(208, 160);
+			this.DefensiveEssenceCPControl.Location = new System.Drawing.Point(208, 140);
 			//
 			// DamageReductionCPControl
 			//
 			this.DamageReductionCPControl.Caption = "Dmg Rdct";
 			this.DamageReductionCPControl.DataBindings.Add("ChallengePoint", bindingSource, "DamageReduction");
-			this.DamageReductionCPControl.Location = new System.Drawing.Point(208, 220);
+			this.DamageReductionCPControl.Location = new System.Drawing.Point(208, 200);
 			//
 			// MiningCPControl
 			//
 			this.MiningCPControl.Caption = "Mining";
 			this.MiningCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Mining");
-			this.MiningCPControl.Location = new System.Drawing.Point(381, 40);
+			this.MiningCPControl.Location = new System.Drawing.Point(381, 20);
 			//
 			// KillsCPControl
 			//
 			this.KillsCPControl.Caption = "Kills";
 			this.KillsCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Kills");
-			this.KillsCPControl.Location = new System.Drawing.Point(381, 100);
+			this.KillsCPControl.Location = new System.Drawing.Point(381, 80);
 			//
 			// VeterancyCPControl
 			//
 			this.VeterancyCPControl.Caption = "Vet";
 			this.VeterancyCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Veterancy");
-			this.VeterancyCPControl.Location = new System.Drawing.Point(381, 160);
+			this.VeterancyCPControl.Location = new System.Drawing.Point(381, 140);
 			//
 			// AccelCPControl
 			//
 			this.AccelCPControl.Caption = "Accel";
 			this.AccelCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Acceleration");
-			this.AccelCPControl.Location = new System.Drawing.Point(381, 220);
+			this.AccelCPControl.Location = new System.Drawing.Point(381, 200);
 			//
 			// ChallengePointCollectionControl
 			//
@@ -156,8 +140,6 @@ namespace VUserInterface
 			this.Controls.Add(KillsCPControl);
 			this.Controls.Add(VeterancyCPControl);
 			this.Controls.Add(AccelCPControl);
-			this.Controls.Add(TotalCostLabel);
-			this.Controls.Add(TotalCostCaption);
 			this.Size = new System.Drawing.Size(589, 292);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
@@ -177,7 +159,5 @@ namespace VUserInterface
 		private ChallengePointControl KillsCPControl;
 		private ChallengePointControl VeterancyCPControl;
 		private ChallengePointControl AccelCPControl;
-		private VLabel TotalCostCaption;
-		private VLabel TotalCostLabel;
 	}
 }

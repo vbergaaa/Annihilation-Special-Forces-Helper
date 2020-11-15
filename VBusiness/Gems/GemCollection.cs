@@ -198,6 +198,12 @@ namespace VBusiness.Gems
 
 		#endregion
 
+		#region RemainingGems
+
+		public override int RemainingGems { get => Loadout.Profile.Gems - TotalCost; }
+
+		#endregion
+
 		#endregion
 	}
 }

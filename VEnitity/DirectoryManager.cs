@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using VEntityFramework.Attributes;
 using VEntityFramework.Data;
@@ -40,6 +41,13 @@ namespace VEntityFramework
 			}
 
 			throw new DeveloperException("We shouldn't be trying to retrieve objects that aren't TopLevelBusinessObjects. Please implement the attribute to define the storage location");
+		}
+
+		internal static string GetShortName(string xmlLocation)
+		{
+			var path = Path.GetFileNameWithoutExtension(xmlLocation);
+			var fileName = path.Split(new char[] { '/', '\\' }).Last();
+			return fileName;
 		}
 
 		static internal bool CheckFileExists<T>(string fileName)

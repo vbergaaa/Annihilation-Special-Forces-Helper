@@ -19,7 +19,6 @@ namespace VEntityFramework.Data
 
 		public VBusinessObject()
 		{
-			Context = new VDataContext();
 			SetDefaultValues();
 		}
 
@@ -44,7 +43,7 @@ namespace VEntityFramework.Data
 
 		#region DataContext
 
-		public VDataContext Context { get; set; }
+		public VDataContext Context => VDataContext.Instance;
 
 		#endregion
 

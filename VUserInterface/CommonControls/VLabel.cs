@@ -29,6 +29,7 @@ namespace VUserInterface.CommonControls
 			base.OnSizeChanged(e);
 			if (string.IsNullOrEmpty(Caption) && Label != null)
 			{
+				Label.AutoSize = false;
 				Label.Size = this.Size;
 			}
 		}

@@ -1,9 +1,8 @@
-﻿using System.Buffers.Text;
-using VBusiness.ChallengePoints;
+﻿using VBusiness.ChallengePoints;
 using VBusiness.Gems;
 using VBusiness.Perks;
 using VBusiness.Souls;
-using VEntityFramework;
+using VEntityFramework.Data;
 using VEntityFramework.Model;
 
 namespace VBusiness.Loadouts
@@ -19,6 +18,13 @@ namespace VBusiness.Loadouts
 		#endregion
 
 		#region Properties
+
+		#region Profile
+
+		public override VProfile Profile { get => fProfile ??= VDataContext.Instance.ReadFirstWithCache<VBusiness.Profile.Profile>(); }
+		VProfile fProfile;
+
+		#endregion
 
 		#region Gems
 
@@ -70,6 +76,29 @@ namespace VBusiness.Loadouts
 
 		#endregion
 
+		#region PerkPointsCost
+
+		public override long PerkPointsCost
+		{
+			get => Perks.RemainingCost + Souls.SoulCosts;
+		}
+
+		#endregion
+
+		#region RemainingPerkPoints
+
+		public override long RemainingPerkPoints => Profile.PerkPoints - PerkPointsCost;
+
+		public override bool CanAffordCurrentLoadout
+		{
+			get
+			{
+				return RemainingPerkPoints >= 0 && Gems.RemainingGems >= 0 && ChallengePoints.RemainingCP >= 0;
+			}
+		}
+
+		#endregion
+
 		#endregion
 
 		#region Validation
@@ -80,6 +109,15 @@ namespace VBusiness.Loadouts
 
 			CheckLoadoutName();
 			CheckSlotNumber();
+			CheckCanAfford();
+		}
+
+		void CheckCanAfford()
+		{
+			if (ShouldRestrict && !CanAffordCurrentLoadout)
+			{
+				Notifications.AddError("Cannot save this loadout as you cannot afford it with your current profile limits. Please turn off profile limits or reduce the cost of the loadout.");
+			}
 		}
 
 		void CheckSlotNumber()

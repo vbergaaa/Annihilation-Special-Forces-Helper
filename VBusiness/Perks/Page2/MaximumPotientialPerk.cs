@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
 		public override int IncrementCost => 20;
 
-		public override short MaxLevel => 8;
+		protected override short MaxLevelCore => 8;
 
 		protected override string PerkName => "Maximum Potiential";
 

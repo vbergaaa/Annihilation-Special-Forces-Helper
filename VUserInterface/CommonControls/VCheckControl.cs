@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace VUserInterface.CommonControls
 {
-	public partial class VCheckControl : UserControl
+	public partial class VCheckControl : VUserControl
 	{
 		public VCheckControl()
 		{
@@ -32,32 +32,6 @@ namespace VUserInterface.CommonControls
 		}
 
 		bool fChecked;
-
-		#endregion
-
-		#region Caption
-
-		public string Caption
-		{
-			get => fCaption;
-			set
-			{
-				fCaption = value;
-				CaptionLabel.Text = fCaption;
-				CaptionLabel.Visible = !string.IsNullOrEmpty(fCaption);
-				AdjustLabel();
-			}
-		}
-
-		private void AdjustLabel()
-		{
-			var width = CaptionLabel.Width + 5;
-			this.Width += width;
-			this.Left -= width;
-			this.CheckBox.Left += width;
-		}
-
-		string fCaption;
 
 		#endregion
 

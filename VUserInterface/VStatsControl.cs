@@ -28,7 +28,7 @@ namespace VUserInterface
 
 		public VStats Stats { get; set; }
 
-		private void DisclaimerLabel_Click(object sender, EventArgs e)
+		void DisclaimerLabel_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show(@"This sidebar represents the stats page that you can view in game.
 

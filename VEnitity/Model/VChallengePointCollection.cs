@@ -112,6 +112,32 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region RemainingCP
+
+		public int RemainingCP => Loadout.Profile.ChallengePoints - TotalCost;
+
+		#endregion
+
+		#endregion
+
+		#region Methods
+
+		public void RefreshMaxLevelBindings()
+		{
+			Attack.RefreshPropertyBinding(nameof(Attack.MaxValue));
+			CriticalDamage.RefreshPropertyBinding(nameof(CriticalDamage.MaxValue));
+			CriticalChance.RefreshPropertyBinding(nameof(CriticalChance.MaxValue));
+			AttackSpeed.RefreshPropertyBinding(nameof(AttackSpeed.MaxValue));
+			Health.RefreshPropertyBinding(nameof(Health.MaxValue));
+			Shields.RefreshPropertyBinding(nameof(Shields.MaxValue));
+			DefensiveEssence.RefreshPropertyBinding(nameof(DefensiveEssence.MaxValue));
+			DamageReduction.RefreshPropertyBinding(nameof(DamageReduction.MaxValue));
+			Mining.RefreshPropertyBinding(nameof(Mining.MaxValue));
+			Kills.RefreshPropertyBinding(nameof(Kills.MaxValue));
+			Veterancy.RefreshPropertyBinding(nameof(Veterancy.MaxValue));
+			Acceleration.RefreshPropertyBinding(nameof(Acceleration.MaxValue));
+		}
+
 		#endregion
 	}
 }

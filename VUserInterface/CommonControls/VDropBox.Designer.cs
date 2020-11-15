@@ -35,13 +35,15 @@ namespace VUserInterface.CommonControls
 			//
 			// ComboBox
 			//
-			this.ComboBox.Location = new System.Drawing.Point(1, 1);
+			this.ComboBox.DataBindings.Add("SelectedIndex", this, "SelectedIndex", true, DataSourceUpdateMode.OnPropertyChanged);
+			this.ComboBox.Location = new System.Drawing.Point(0, 1);
 			this.ComboBox.SelectedValueChanged += ComboBox_SelectedValueChanged;
 			//
 			// DropBox
 			//
-			this.CoreControl.Controls.Add(ComboBox);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CoreControl.Controls.Add(ComboBox);
+			this.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
 		}
 
 		#endregion

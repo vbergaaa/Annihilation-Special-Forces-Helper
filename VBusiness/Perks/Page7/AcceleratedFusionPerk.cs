@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
         public override int IncrementCost => 200;
 
-        public override short MaxLevel => 15;
+        protected override short MaxLevelCore => 15;
 
         protected override string PerkName => "Accelerated Fusion";
     }

@@ -15,6 +15,40 @@ namespace VBusiness.Gems
 
 		#endregion
 
+		#region Properties
+
+		#region MaxValue
+
+		public override short MaxValue
+		{
+			get
+			{
+				if (GemCollection.Loadout.ShouldRestrict)
+				{
+					return GetMaxValue();
+				}
+				return short.MaxValue;
+			}
+		}
+
+		short GetMaxValue()
+		{
+			var currentCost = GetTotalCost();
+			var totalCost = currentCost;
+			var remainingGems = GemCollection.RemainingGems;
+			var level = CurrentLevel;
+			while (totalCost - currentCost <= remainingGems)
+			{
+				totalCost += GetCostOfLevel(level);
+				level++;
+			}
+			return --level;
+		}
+
+		#endregion
+
+		#endregion
+
 		#region Methods
 
 		#region GetTotalCost

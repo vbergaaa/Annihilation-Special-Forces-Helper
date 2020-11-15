@@ -18,7 +18,7 @@ namespace VBusiness.Perks
 
 		public override int IncrementCost => 100;
 
-		public override short MaxLevel => 30;
+		protected override short MaxLevelCore => 30;
 
 		protected override string PerkName => "Double Warp III";
 	}

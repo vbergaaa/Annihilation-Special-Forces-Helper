@@ -32,35 +32,28 @@ namespace VUserInterface.CommonControls
 		{
 			components = new System.ComponentModel.Container();
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.CaptionLabel = new VLabel();
 			this.CheckBox = new VCheckBox();
 			//
 			// this.CaptionLabel
 			//
-			this.CaptionLabel.AutoSize = true;
-			this.CaptionLabel.Location = new System.Drawing.Point(0, 7);
-			this.CaptionLabel.Name = "CaptionLabel";
-			this.CaptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.CaptionLabel.Visible = false;
+			this.CaptionLabel.Location = new System.Drawing.Point(0, 2);
 			//
 			// CheckBox
 			//
 			this.CheckBox.AutoSize = false;
 			this.CheckBox.DataBindings.Add("CheckState", this, "Checked", true, DataSourceUpdateMode.OnPropertyChanged, CheckState.Indeterminate);
-			this.CheckBox.Location = new System.Drawing.Point(1, 3);
+			this.CheckBox.Location = new System.Drawing.Point(0, 0);
 			this.CheckBox.Size = new System.Drawing.Size(20, 20);
 			//
 			// VCheckBox
 			//
-			this.Controls.Add(CheckBox);
-			this.Controls.Add(CaptionLabel);
+			this.CoreControl.Controls.Add(CheckBox);
 			this.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
 			this.Height = 29;
 		}
 
 		#endregion
 
-		private VLabel CaptionLabel;
 		private CheckBox CheckBox;
 	}
 }

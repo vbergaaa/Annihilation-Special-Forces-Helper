@@ -38,10 +38,8 @@ namespace VUserInterface
 			this.components = new System.ComponentModel.Container();
 			this.PerkPageControl = new VPerkCollectionControl();
 			this.LoadoutBindingSource = new System.Windows.Forms.BindingSource();
-			this.LoadoutNameLabel = new VLabel();
-			this.LoadoutNameTextBox = new TextBox();
-			this.SlotNumberLabel = new VLabel();
-			this.SlotNumberTextBox = new TextBox();
+			this.LoadoutNameTextBox = new VTextBox();
+			this.SlotNumberTextBox = new VTextBox();
 			this.StatsControl = new VStatsControl();
 			this.PerksButton = new Button();
 			this.GemsButton = new Button();
@@ -52,65 +50,94 @@ namespace VUserInterface
 			this.SoulsControl = new VSoulCollectionControl();
 			this.ChallengePointCollectionControl = new ChallengePointCollectionControl();
 			this.UnitControl = new UnitConfigurationControl();
+			this.AvailablePPLabel = new VLabel();
+			this.AvailableGemsLabel = new VLabel();
+			this.AvailableCPLabel = new VLabel();
+			this.RestrictCheckBox = new VCheckControl();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
 			//
 			// LoadoutBindingSource
 			//
 			this.LoadoutBindingSource.DataSource = typeof(Loadout);
 			//
-			// LoadoutNameLabel
-			//
-			this.LoadoutNameLabel.Location = new System.Drawing.Point(270, 20);
-			this.LoadoutNameLabel.Size = new System.Drawing.Size(120, 20);
-			this.LoadoutNameLabel.Text = "Loadout Name";
-			//
 			// LoadoutNameTextBox
 			//
-			this.LoadoutNameTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Name");
+			this.LoadoutNameTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Name", true);
 			this.LoadoutNameTextBox.Location = new System.Drawing.Point(390, 20);
-			this.LoadoutNameTextBox.Size = new System.Drawing.Size(100, 20);
-			this.LoadoutNameTextBox.TextAlign = HorizontalAlignment.Center;
-			//
-			// SlotNumberLabel
-			//
-			this.SlotNumberLabel.Location = new System.Drawing.Point(120, 20);
-			this.SlotNumberLabel.Size = new System.Drawing.Size(70, 20);
-			this.SlotNumberLabel.Text = "Save Slot";
+			this.LoadoutNameTextBox.Name = "LoadoutNameTextBox";
+			this.LoadoutNameTextBox.Caption = "LoadoutName";
+			this.LoadoutNameTextBox.Width = 100;
 			//
 			// SlotNumberTextBox
 			//
-			this.SlotNumberTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Slot");
-			this.SlotNumberTextBox.Location = new System.Drawing.Point(191, 20);
-			this.SlotNumberTextBox.Size = new System.Drawing.Size(30, 20);
-			this.SlotNumberTextBox.TextAlign = HorizontalAlignment.Center;
+			this.SlotNumberTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Slot", true);
+			this.SlotNumberTextBox.Location = new System.Drawing.Point(141, 20);
+			this.SlotNumberTextBox.Name = "SlotNumberTextBox";
+			this.SlotNumberTextBox.Width = 30;
+			this.SlotNumberTextBox.Caption = "Save Slot";
+			//
+			// RestrictCheckBox
+			//
+			this.RestrictCheckBox.Caption = "Use Profile Limits";
+			this.RestrictCheckBox.CheckedChanged += RestrictCheckBox_CheckedChanged;
+			this.RestrictCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "ShouldRestrict");
+			this.RestrictCheckBox.Location = new System.Drawing.Point(720, 20);
+			this.RestrictCheckBox.Name = "RestrictCheckBox";
+			//
+			// AvailablePPLabel
+			//
+			this.AvailablePPLabel.AutoSize = true;
+			this.AvailablePPLabel.DataBindings.Add("Text", LoadoutBindingSource, "RemainingPerkPoints");
+			this.AvailablePPLabel.Location = new System.Drawing.Point(120, 90);
+			this.AvailablePPLabel.Name = "AvailablePPLabel";
+			this.AvailablePPLabel.Caption = "Available PP:";
+			this.AvailablePPLabel.MaximumSize = new System.Drawing.Size(150, 100);
+			//
+			// AvailableCPLabel
+			//
+			this.AvailableCPLabel.AutoSize = true;
+			this.AvailableCPLabel.DataBindings.Add("Text", LoadoutBindingSource, "ChallengePoints.RemainingCP");
+			this.AvailableCPLabel.Location = new System.Drawing.Point(500, 90);
+			this.AvailableCPLabel.Name = "AvailableCPLabel";
+			this.AvailableCPLabel.Caption = "Available CP:";
+			this.AvailableCPLabel.MaximumSize = new System.Drawing.Size(150, 100);
+			//
+			// AvailableGemsLabel
+			//
+			this.AvailableGemsLabel.AutoSize = true;
+			this.AvailableGemsLabel.DataBindings.Add("Text", LoadoutBindingSource, "Gems.RemainingGems");
+			this.AvailableGemsLabel.Location = new System.Drawing.Point(320, 90);
+			this.AvailableGemsLabel.Name = "AvailableGemsLabel";
+			this.AvailableGemsLabel.Caption = "Available Gems:";
+			this.AvailableGemsLabel.MaximumSize = new System.Drawing.Size(150, 100);
 			//
 			// PerkPageControl
 			//
-			this.PerkPageControl.Location = new System.Drawing.Point(25, 90);
+			this.PerkPageControl.Location = new System.Drawing.Point(25, 120);
 			this.PerkPageControl.DataBindings.Add("Perks", this.LoadoutBindingSource, "Perks");
 			this.PerkPageControl.DataBindings.Add("Text", this.LoadoutBindingSource, "Perks.PageTitle");
 			//
 			// GemsControl
 			//
-			this.GemsControl.Location = new System.Drawing.Point(25, 90);
+			this.GemsControl.Location = new System.Drawing.Point(25, 120);
 			this.GemsControl.DataBindings.Add("Gems", this.LoadoutBindingSource, "Gems");
 			this.GemsControl.Text = "Gem";
 			//
 			// UnitControl
 			//
-			this.UnitControl.Location = new System.Drawing.Point(25, 90);
+			this.UnitControl.Location = new System.Drawing.Point(25, 120);
 			this.UnitControl.DataBindings.Add("UnitConfiguration", this.LoadoutBindingSource, "UnitConfiguration");
 			this.UnitControl.Text = "Gem";
 			//
 			// SoulsControl
 			//
-			this.SoulsControl.Location = new System.Drawing.Point(25, 90);
+			this.SoulsControl.Location = new System.Drawing.Point(25, 120);
 			this.SoulsControl.DataBindings.Add("Souls", this.LoadoutBindingSource, "Souls");
 			this.SoulsControl.Text = "Soul";
 			//
 			// ChallengePointCollectionControl
 			//
-			this.ChallengePointCollectionControl.Location = new System.Drawing.Point(25, 90);
+			this.ChallengePointCollectionControl.Location = new System.Drawing.Point(25, 120);
 			this.ChallengePointCollectionControl.DataBindings.Add("ChallengePointCollection", this.LoadoutBindingSource, "ChallengePoints");
 			this.ChallengePointCollectionControl.Text = "Challenge Points";
 			this.ChallengePointCollectionControl.Visible = false;
@@ -164,10 +191,8 @@ namespace VUserInterface
 			//
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(LoadoutNameLabel);
 			this.Controls.Add(LoadoutNameTextBox);
 			this.Controls.Add(PerkPageControl);
-			this.Controls.Add(SlotNumberLabel);
 			this.Controls.Add(SlotNumberTextBox);
 			this.Controls.Add(StatsControl);
 			this.Controls.Add(PerksButton);
@@ -179,6 +204,10 @@ namespace VUserInterface
 			this.Controls.Add(SoulsControl);
 			this.Controls.Add(ChallengePointCollectionControl);
 			this.Controls.Add(UnitControl);
+			this.Controls.Add(AvailablePPLabel);
+			this.Controls.Add(AvailableGemsLabel);
+			this.Controls.Add(AvailableCPLabel);
+			this.Controls.Add(RestrictCheckBox);
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
 		}
@@ -190,10 +219,11 @@ namespace VUserInterface
 		private System.Windows.Forms.Button SoulsButton;
 		private System.Windows.Forms.Button ChallengePointCollectionButton;
 		private System.Windows.Forms.Button UnitButton;
-		private VLabel SlotNumberLabel;
-		private VLabel LoadoutNameLabel;
-		private System.Windows.Forms.TextBox SlotNumberTextBox;
-		private System.Windows.Forms.TextBox LoadoutNameTextBox;
+		private VLabel AvailablePPLabel;
+		private VLabel AvailableGemsLabel;
+		private VLabel AvailableCPLabel;
+		private VTextBox SlotNumberTextBox;
+		private VTextBox LoadoutNameTextBox;
 		private VUserInterface.VPerkCollectionControl PerkPageControl;
 		private VUserInterface.VGemCollectionControl GemsControl;
 		private VUserInterface.VSoulCollectionControl SoulsControl;
@@ -201,5 +231,6 @@ namespace VUserInterface
 		private VUserInterface.UnitConfigurationControl UnitControl;
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;
 		private VStatsControl StatsControl;
+		private VCheckControl RestrictCheckBox;
 	}
 }
