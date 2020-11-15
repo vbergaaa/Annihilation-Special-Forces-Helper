@@ -3,8 +3,6 @@ A program used to assist players who play the SC2 Custom Arcade Game, "Annihilat
 
 You can use this program to plan and create your in game loadouts. It accurately shows your complete statistics, and goes beyond the in-game stats by including unit specific buffs from perks, souls, and ranks, as well as combining them to give you an indication of your overall power.
 
-
-
 ## Download Instructions
 To run this program, you will need to have Microsoft .NET Core installed on you computer. To check if your computer already has it installed, you can run the following command from a command prompt window:
 `dotnet --version`
@@ -18,10 +16,8 @@ Once you have downloaded the zip file, extract the files and run ASFLauncher.exe
 If you have already downloaded a previous version of this application, you will need copy the "Loadouts" and "Souls" folders from the old application directory to the new application directory to retain your previous data.
 
 ### Feature roadmap:
-1. Adding a profile page to store information such as your current rank, pp, name, etc.
-2. Adding caps to the loadout page so you can't create loadouts that cost more than your available PP / Gems / CP, etc. 
-3. Add individual units to the program to get even more accurate stats.
-4. Adding an economy calculator to help you determine which eco perks will give you the most value.
+1. Add individual units to the program to get even more accurate stats.
+2. Adding an economy calculator to help you determine which eco perks will give you the most value.
 
 ### Potiential future features
 - Adding support for in game upgrades, to more extensively track costs and stats of specific units.
