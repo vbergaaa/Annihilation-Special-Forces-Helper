@@ -37,12 +37,14 @@ namespace VUserInterface
 			this.BindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.NameTextBox = new VUserInterface.VTextBox();
 			this.RankDropBox = new VUserInterface.CommonControls.VDropBox();
+			this.PerkPointsLabel2 = new VLabel();
 			this.RankPointsTextBox = new VUserInterface.VTextBox();
 			this.ModScoreTextBox = new VUserInterface.VTextBox();
 			this.GemsTextBox = new VUserInterface.VTextBox();
 			this.CPTextBox = new VUserInterface.VTextBox();
 			this.NameLabel = new VUserInterface.CommonControls.VLabel();
 			this.RankLabel = new VUserInterface.CommonControls.VLabel();
+			this.PerkPointsLabel = new VLabel();
 			this.RankPointsLabel = new VUserInterface.CommonControls.VLabel();
 			this.ModScoreLabel = new VUserInterface.CommonControls.VLabel();
 			this.GemsLabel = new VUserInterface.CommonControls.VLabel();
@@ -71,7 +73,7 @@ namespace VUserInterface
 			// 
 			this.NameTextBox.Caption = "Name:";
 			this.NameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Name", true));
-			this.NameTextBox.Location = new System.Drawing.Point(150, 3);
+			this.NameTextBox.Location = new System.Drawing.Point(150, 0);
 			this.NameTextBox.MaximumSize = new System.Drawing.Size(500, 29);
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(150, 24);
@@ -82,17 +84,28 @@ namespace VUserInterface
 			this.RankDropBox.Caption = "Rank:";
 			this.RankDropBox.DataBindings.Add("SelectedValue", BindingSource, "Rank");
 			this.RankDropBox.List = PlayerRankList;
-			this.RankDropBox.Location = new System.Drawing.Point(150, 28);
+			this.RankDropBox.Location = new System.Drawing.Point(150, 25);
 			this.RankDropBox.Name = "RankDropBox";
 			this.RankDropBox.SelectedIndex = -1;
 			this.RankDropBox.SelectedValueChanged += PlayerRankChanged;
 			this.RankDropBox.Size = new System.Drawing.Size(150, 24);
 			this.RankDropBox.TabIndex = 0;
 			// 
+			// PerkPointsLabel2
+			// 
+			this.PerkPointsLabel2.Caption = "Perk Points:";
+			this.PerkPointsLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "PerkPoints", true));
+			this.PerkPointsLabel2.Location = new System.Drawing.Point(150, 50);
+			this.PerkPointsLabel2.MaximumSize = new System.Drawing.Size(500, 29);
+			this.PerkPointsLabel2.Name = "PerkPointsLabel2";
+			this.PerkPointsLabel2.Size = new System.Drawing.Size(300, 24);
+			this.PerkPointsLabel2.TabIndex = 0;
+			this.PerkPointsLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// RankPointsTextBox
 			// 
 			this.RankPointsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "RankPoints", true));
-			this.RankPointsTextBox.Location = new System.Drawing.Point(150, 53);
+			this.RankPointsTextBox.Location = new System.Drawing.Point(150, 75);
 			this.RankPointsTextBox.MaximumSize = new System.Drawing.Size(500, 29);
 			this.RankPointsTextBox.Name = "RankPointsTextBox";
 			this.RankPointsTextBox.Size = new System.Drawing.Size(75, 24);
@@ -103,7 +116,7 @@ namespace VUserInterface
 			// 
 			this.ModScoreTextBox.Caption = "Mod Score:";
 			this.ModScoreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "ModScore", true));
-			this.ModScoreTextBox.Location = new System.Drawing.Point(150, 78);
+			this.ModScoreTextBox.Location = new System.Drawing.Point(150, 100);
 			this.ModScoreTextBox.MaximumSize = new System.Drawing.Size(500, 29);
 			this.ModScoreTextBox.Name = "ModScoreTextBox";
 			this.ModScoreTextBox.Size = new System.Drawing.Size(75, 24);
@@ -113,7 +126,7 @@ namespace VUserInterface
 			// 
 			this.GemsTextBox.Caption = "Gems:";
 			this.GemsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Gems", true));
-			this.GemsTextBox.Location = new System.Drawing.Point(150, 103);
+			this.GemsTextBox.Location = new System.Drawing.Point(150, 125);
 			this.GemsTextBox.MaximumSize = new System.Drawing.Size(500, 29);
 			this.GemsTextBox.Name = "GemsTextBox";
 			this.GemsTextBox.Size = new System.Drawing.Size(75, 24);
@@ -123,7 +136,7 @@ namespace VUserInterface
 			// 
 			this.CPTextBox.Caption = "Challenge Points:";
 			this.CPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "ChallengePoints", true));
-			this.CPTextBox.Location = new System.Drawing.Point(150, 128);
+			this.CPTextBox.Location = new System.Drawing.Point(150, 150);
 			this.CPTextBox.MaximumSize = new System.Drawing.Size(500, 29);
 			this.CPTextBox.Name = "CPTextBox";
 			this.CPTextBox.Size = new System.Drawing.Size(75, 24);
@@ -133,7 +146,7 @@ namespace VUserInterface
 			// 
 			this.NameLabel.Caption = "Name:";
 			this.NameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Name", true));
-			this.NameLabel.Location = new System.Drawing.Point(150, 3);
+			this.NameLabel.Location = new System.Drawing.Point(150, 0);
 			this.NameLabel.MaximumSize = new System.Drawing.Size(500, 29);
 			this.NameLabel.Name = "NameLabel";
 			this.NameLabel.Size = new System.Drawing.Size(300, 24);
@@ -144,18 +157,29 @@ namespace VUserInterface
 			// 
 			this.RankLabel.Caption = "Rank:";
 			this.RankLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Rank", true));
-			this.RankLabel.Location = new System.Drawing.Point(150, 28);
+			this.RankLabel.Location = new System.Drawing.Point(150, 25);
 			this.RankLabel.MaximumSize = new System.Drawing.Size(500, 29);
 			this.RankLabel.Name = "RankLabel";
 			this.RankLabel.Size = new System.Drawing.Size(300, 24);
 			this.RankLabel.TabIndex = 0;
 			this.RankLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// PerkPointsLabel
+			// 
+			this.PerkPointsLabel.Caption = "Perk Points:";
+			this.PerkPointsLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "PerkPoints", true));
+			this.PerkPointsLabel.Location = new System.Drawing.Point(150, 50);
+			this.PerkPointsLabel.MaximumSize = new System.Drawing.Size(500, 29);
+			this.PerkPointsLabel.Name = "PerkPointsLabel";
+			this.PerkPointsLabel.Size = new System.Drawing.Size(300, 24);
+			this.PerkPointsLabel.TabIndex = 0;
+			this.PerkPointsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// RankPointsLabel
 			// 
 			this.RankPointsLabel.Caption = "Rank Points:";
 			this.RankPointsLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "RankPoints", true));
-			this.RankPointsLabel.Location = new System.Drawing.Point(150, 53);
+			this.RankPointsLabel.Location = new System.Drawing.Point(150, 75);
 			this.RankPointsLabel.MaximumSize = new System.Drawing.Size(500, 29);
 			this.RankPointsLabel.Name = "RankPointsLabel";
 			this.RankPointsLabel.Size = new System.Drawing.Size(300, 24);
@@ -166,7 +190,7 @@ namespace VUserInterface
 			// 
 			this.ModScoreLabel.Caption = "Mod Score:";
 			this.ModScoreLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "ModScore", true));
-			this.ModScoreLabel.Location = new System.Drawing.Point(150, 78);
+			this.ModScoreLabel.Location = new System.Drawing.Point(150, 100);
 			this.ModScoreLabel.MaximumSize = new System.Drawing.Size(500, 29);
 			this.ModScoreLabel.Name = "ModScoreLabel";
 			this.ModScoreLabel.Size = new System.Drawing.Size(300, 24);
@@ -177,7 +201,7 @@ namespace VUserInterface
 			// 
 			this.GemsLabel.Caption = "Gems:";
 			this.GemsLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Gems", true));
-			this.GemsLabel.Location = new System.Drawing.Point(150, 103);
+			this.GemsLabel.Location = new System.Drawing.Point(150, 125);
 			this.GemsLabel.MaximumSize = new System.Drawing.Size(500, 29);
 			this.GemsLabel.Name = "GemsLabel";
 			this.GemsLabel.Size = new System.Drawing.Size(300, 24);
@@ -188,7 +212,7 @@ namespace VUserInterface
 			// 
 			this.CPLabel.Caption = "Challenge Points:";
 			this.CPLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "ChallengePoints", true));
-			this.CPLabel.Location = new System.Drawing.Point(150, 128);
+			this.CPLabel.Location = new System.Drawing.Point(150, 150);
 			this.CPLabel.MaximumSize = new System.Drawing.Size(500, 29);
 			this.CPLabel.Name = "CPLabel";
 			this.CPLabel.Size = new System.Drawing.Size(300, 24);
@@ -199,11 +223,12 @@ namespace VUserInterface
 			// 
 			this.EditPanel.Controls.Add(this.NameTextBox);
 			this.EditPanel.Controls.Add(this.RankDropBox);
+			this.EditPanel.Controls.Add(this.PerkPointsLabel);
 			this.EditPanel.Controls.Add(this.RankPointsTextBox);
 			this.EditPanel.Controls.Add(this.ModScoreTextBox);
 			this.EditPanel.Controls.Add(this.GemsTextBox);
 			this.EditPanel.Controls.Add(this.CPTextBox);
-			this.EditPanel.Location = new System.Drawing.Point(0, 60);
+			this.EditPanel.Location = new System.Drawing.Point(0, 50);
 			this.EditPanel.Name = "EditPanel";
 			this.EditPanel.Size = new System.Drawing.Size(400, 400);
 			this.EditPanel.TabIndex = 1;
@@ -213,6 +238,7 @@ namespace VUserInterface
 			// 
 			this.ReadonlyPanel.Controls.Add(this.NameLabel);
 			this.ReadonlyPanel.Controls.Add(this.RankLabel);
+			this.ReadonlyPanel.Controls.Add(this.PerkPointsLabel2);
 			this.ReadonlyPanel.Controls.Add(this.RankPointsLabel);
 			this.ReadonlyPanel.Controls.Add(this.ModScoreLabel);
 			this.ReadonlyPanel.Controls.Add(this.GemsLabel);
@@ -259,6 +285,8 @@ namespace VUserInterface
 		private VTextBox CPTextBox;
 		private VLabel NameLabel;
 		private VLabel RankLabel;
+		private VLabel PerkPointsLabel;
+		private VLabel PerkPointsLabel2;
 		private VLabel RankPointsLabel;
 		private VLabel ModScoreLabel;
 		private VLabel GemsLabel;
