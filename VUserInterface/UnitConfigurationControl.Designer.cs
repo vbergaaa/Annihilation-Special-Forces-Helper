@@ -52,9 +52,9 @@ namespace VUserInterface
 			//
 			// RankComboBox
 			//
+			this.RankDropBox.DataBindings.Add("SelectedValue", bindingSource, "UnitRank");
 			this.RankDropBox.List = RankList;
 			this.RankDropBox.Location = new System.Drawing.Point(125, 20);
-			this.RankDropBox.SelectedValueChanged += RankChanged;
 			this.RankDropBox.Caption = "Rank:";
 			//
 			// InfusionIncrementor
@@ -91,9 +91,9 @@ namespace VUserInterface
 			//
 			// DifficutlyComboBox
 			//
+			this.DifficultyDropBox.DataBindings.Add("SelectedValue", bindingSource, "DifficultyLevel");
 			this.DifficultyDropBox.List = DifficultyList;
 			this.DifficultyDropBox.Location = new System.Drawing.Point(125, 200);
-			this.DifficultyDropBox.SelectedValueChanged += DifficultyChanged;
 			this.DifficultyDropBox.Caption = "Difficulty:";
 			//
 			// VSoulCollectionControl

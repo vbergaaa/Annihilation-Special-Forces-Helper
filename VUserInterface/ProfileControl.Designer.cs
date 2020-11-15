@@ -80,6 +80,7 @@ namespace VUserInterface
 			// RankDropBox
 			// 
 			this.RankDropBox.Caption = "Rank:";
+			this.RankDropBox.DataBindings.Add("SelectedValue", BindingSource, "Rank");
 			this.RankDropBox.List = PlayerRankList;
 			this.RankDropBox.Location = new System.Drawing.Point(150, 28);
 			this.RankDropBox.Name = "RankDropBox";

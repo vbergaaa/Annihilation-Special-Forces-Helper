@@ -29,8 +29,6 @@ namespace VUserInterface
 				{
 					fUnit = value;
 					UpdateBindingIfDataSourceChanged();
-					UpdateRankComboBox();
-					UpdateDifficultyComboBox();
 				}
 			}
 		}
@@ -59,24 +57,6 @@ namespace VUserInterface
 
 		#region Rank
 
-		void UpdateRankComboBox()
-		{
-			if (fUnit != null)
-			{
-				RankDropBox.SelectedValueChanged -= RankChanged;
-				RankDropBox.SelectedIndex = (int)fUnit.UnitRank;
-				RankDropBox.SelectedValueChanged += RankChanged;
-			}
-		}
-
-		void RankChanged(object sender, EventArgs e)
-		{
-			if (UnitConfiguration != null && RankDropBox.SelectedValue is VEntityFramework.Model.UnitRank rank)
-			{
-				UnitConfiguration.UnitRank = rank;
-			}
-		}
-
 		List<object> RankList
 		{
 			get => fRankList ?? (fRankList = BindingHelper<VEntityFramework.Model.UnitRank>.ConvertForBinding(new RankLookup().GetRanks()));
@@ -86,24 +66,6 @@ namespace VUserInterface
 		#endregion
 
 		#region Difficulty
-
-		void UpdateDifficultyComboBox()
-		{
-			if (fUnit != null)
-			{
-				DifficultyDropBox.SelectedValueChanged -= RankChanged;
-				DifficultyDropBox.SelectedIndex = (int)fUnit.DifficultyLevel;
-				DifficultyDropBox.SelectedValueChanged += RankChanged;
-			}
-		}
-
-		void DifficultyChanged(object sender, EventArgs e)
-		{
-			if (UnitConfiguration != null && DifficultyDropBox.SelectedValue is DifficultyLevel difficulty)
-			{
-				UnitConfiguration.DifficultyLevel = difficulty;
-			}
-		}
 
 		List<object> DifficultyList
 		{

@@ -11,6 +11,7 @@ namespace VEntityFramework.Model
 
 		#region Profile
 
+		[VXML(false)]
 		public abstract VProfile Profile { get; }
 
 		#endregion

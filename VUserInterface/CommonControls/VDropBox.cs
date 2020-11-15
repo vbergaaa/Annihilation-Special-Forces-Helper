@@ -32,12 +32,26 @@ namespace VUserInterface.CommonControls
 		public int SelectedIndex
 		{
 			get => ComboBox.SelectedIndex;
-			set => ComboBox.SelectedIndex = value;
+			set
+			{
+				ComboBox.SelectedIndex = value;
+			}
 		}
 
 		public object SelectedValue
 		{
-			get => ComboBox.SelectedValue;
+			get
+			{
+				return ComboBox.SelectedValue;
+			}
+			set
+			{
+				if (ComboBox.Items.Contains(value))
+				{
+					var index = ComboBox.Items.IndexOf(value);
+					SelectedIndex = index;
+				}
+			}
 		}
 
 		#region Events
