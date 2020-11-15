@@ -109,6 +109,15 @@ namespace VBusiness.Loadouts
 
 			CheckLoadoutName();
 			CheckSlotNumber();
+			CheckCanAfford();
+		}
+
+		void CheckCanAfford()
+		{
+			if (ShouldRestrict && !CanAffordCurrentLoadout)
+			{
+				Notifications.AddError("Cannot save this loadout as you cannot afford it with your current profile limits. Please turn off profile limits or reduce the cost of the loadout.");
+			}
 		}
 
 		void CheckSlotNumber()
