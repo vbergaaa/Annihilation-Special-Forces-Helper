@@ -21,7 +21,7 @@ namespace VBusiness.Loadouts
 
 		#region Profile
 
-		public override VProfile Profile { get => fProfile ??= VDataContext.Instance.ReadFirstWithCache<VBusiness.Profile.Profile>(); }
+		public override VProfile Profile { get => fProfile ??= VDataContext.Instance.Get<VBusiness.Profile.Profile>(); }
 		VProfile fProfile;
 
 		#endregion
