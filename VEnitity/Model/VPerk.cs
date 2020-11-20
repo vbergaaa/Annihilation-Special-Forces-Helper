@@ -24,7 +24,7 @@ namespace VEntityFramework.Model
 
 		#region Name
 
-		public string Name => $"{PerkName} Perk";
+		public string Name => PerkName;
 
 		#endregion
 
@@ -110,7 +110,7 @@ namespace VEntityFramework.Model
 
 		public override string ToString()
 		{
-			return $"{Code}, {Name}";
+			return $"{Code}, {Name} Perk";
 		}
 
 		public override string BizoName => "Perk";

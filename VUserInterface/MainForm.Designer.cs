@@ -74,6 +74,7 @@ namespace VUserInterface
 			// 
 			// TitleLabel
 			// 
+			this.TitleLabel.AutoSize = true;
 			this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.TitleLabel.Location = new System.Drawing.Point(1, 5);
 			this.TitleLabel.Name = "TitleLabel";

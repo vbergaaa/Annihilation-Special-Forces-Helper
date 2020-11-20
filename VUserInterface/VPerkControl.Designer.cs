@@ -65,7 +65,6 @@ namespace VUserInterface
 			this.CurrentLevelIncrementor.Location = new System.Drawing.Point(27, 30);
 			this.CurrentLevelIncrementor.DataBindings.Add("Value", perkBindingSource, "DesiredLevel");
 			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", perkBindingSource, "MaxLevel");
-			this.CurrentLevelIncrementor.MinValue = 0;
 			// 
 			// perkBindingSource
 			// 

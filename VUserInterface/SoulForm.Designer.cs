@@ -66,7 +66,7 @@ namespace VUserInterface
 			this.SaveSlotTextBox.Location = new System.Drawing.Point(130, 29);
 			this.SaveSlotTextBox.DataBindings.Add("Text", BindingSource, "SaveSlot");
 			this.SaveSlotTextBox.Name = "SaveSlotComboBox";
-			this.SaveSlotTextBox.Size = new System.Drawing.Size(109, 24);
+			this.SaveSlotTextBox.Size = new System.Drawing.Size(50, 24);
 			this.SaveSlotTextBox.TabIndex = 0;
 			// 
 			// TypeComboBox
@@ -152,6 +152,7 @@ namespace VUserInterface
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(258, 419);
 			this.Controls.Add(this.TypeCaption);
 			this.Controls.Add(this.TypeComboBox);
 			this.Controls.Add(this.SaveSlotTextBox);
@@ -167,7 +168,6 @@ namespace VUserInterface
 			((ISupportInitialize)this.BindingSource).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
-			this.ClientSize = new System.Drawing.Size(258, 419);
 		}
 
 		#endregion
