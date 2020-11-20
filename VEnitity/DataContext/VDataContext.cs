@@ -42,6 +42,18 @@ namespace VEntityFramework.Data
 			return loadedBizo;
 		}
 
+		// Gets any matching bizo otherwise creates a new one
+		public T Get<T>() where T : VBusinessObject
+		{
+			var existingBizo = ReadFirstWithCache<T>();
+			if (existingBizo != null)
+			{
+				return existingBizo;
+			}
+
+			return (T)BizoCreator.Create(typeof(T));
+		}
+
 		public T ReadFirstWithCache<T>() where T : VBusinessObject
 		{
 			var cache = BizoCache.Instance;

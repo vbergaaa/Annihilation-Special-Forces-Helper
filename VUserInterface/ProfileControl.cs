@@ -24,7 +24,7 @@ namespace VUserInterface
 
 		public VProfile Profile
 		{
-			get => fProfile ?? (fProfile = VDataContext.Instance.ReadFirstWithCache<Profile>());
+			get => fProfile ?? (fProfile = VDataContext.Instance.Get<Profile>());
 			set => fProfile = value;
 		}
 
