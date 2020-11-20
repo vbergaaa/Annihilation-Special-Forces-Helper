@@ -51,7 +51,7 @@ namespace VUserInterface
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.Name = "VTextBox";
-			this.Size = new System.Drawing.Size(300, 29);
+			this.Size = new System.Drawing.Size(300, 24);
 			this.CoreControl.ResumeLayout(false);
 			this.CoreControl.PerformLayout();
 			this.ResumeLayout(false);

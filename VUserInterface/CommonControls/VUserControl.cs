@@ -60,6 +60,8 @@ namespace VUserInterface.CommonControls
 			}
 		}
 
+		protected virtual bool ShouldResizeOnParentSizeChanged => true;
+
 		#endregion
 
 		#region OnSizeChanged
@@ -68,7 +70,7 @@ namespace VUserInterface.CommonControls
 		{
 			base.OnSizeChanged(e);
 
-			if (!isResizing && !isSettingCaption)
+			if (!isResizing && !isSettingCaption && !isScaling)
 			{
 				isResizing = true;
 				var captionWidth = Caption != null ? CaptionLabel.Width + 5 : 0;
@@ -86,17 +88,35 @@ namespace VUserInterface.CommonControls
 		protected override void OnLocationChanged(EventArgs e)
 		{
 			base.OnLocationChanged(e);
-			if (!isRelocating && !isSettingCaption)
+			if (!isRelocating && !isSettingCaption && !isScaling)
 			{
 				isRelocating = true;
 				var captionWidth = Caption != null ? CaptionLabel.Width + 5 : 0;
 				this.Left -= captionWidth;
 				isRelocating = false;
 			}
+			else if (isScaling)
+			{
+				var captionWidth = Caption != null ? CaptionLabel.Width + 5 : 0;
+				this.Left = fHorizontalAnchor - captionWidth;
+			}
 		}
 		bool isRelocating;
 
 		#endregion
 
+		#region ScaleControl
+
+		protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
+		{
+			isScaling = true;
+			fHorizontalAnchor = this.Left + this.CoreControl.Left;
+			base.ScaleControl(factor, specified);
+			isScaling = false;
+		}
+		bool isScaling;
+		int fHorizontalAnchor;
+
+		#endregion
 	}
 }

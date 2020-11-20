@@ -55,6 +55,7 @@ namespace VUserInterface
 			this.AvailableCPLabel = new VLabel();
 			this.RestrictCheckBox = new VCheckControl();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
+			this.SuspendLayout();
 			//
 			// LoadoutBindingSource
 			//
@@ -78,11 +79,11 @@ namespace VUserInterface
 			//
 			// RestrictCheckBox
 			//
+			this.RestrictCheckBox.Name = "RestrictCheckBox";
 			this.RestrictCheckBox.Caption = "Use Profile Limits";
 			this.RestrictCheckBox.CheckedChanged += RestrictCheckBox_CheckedChanged;
 			this.RestrictCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "ShouldRestrict");
 			this.RestrictCheckBox.Location = new System.Drawing.Point(720, 20);
-			this.RestrictCheckBox.Name = "RestrictCheckBox";
 			//
 			// AvailablePPLabel
 			//
@@ -150,7 +151,7 @@ namespace VUserInterface
 			// PerksButton
 			//
 			this.PerksButton.Location = new System.Drawing.Point(30, 55);
-			this.PerksButton.Size = new System.Drawing.Size(100, 25);
+			this.PerksButton.Size = new System.Drawing.Size(100, 28);
 			this.PerksButton.Text = "Perks";
 			this.PerksButton.FlatStyle = FlatStyle.Flat;
 			this.PerksButton.Click += ControlVisibilityToggled;
@@ -158,7 +159,7 @@ namespace VUserInterface
 			// GemsButton
 			//
 			this.GemsButton.Location = new System.Drawing.Point(140, 55);
-			this.GemsButton.Size = new System.Drawing.Size(100, 25);
+			this.GemsButton.Size = new System.Drawing.Size(100, 28);
 			this.GemsButton.Text = "Gems";
 			this.GemsButton.FlatStyle = FlatStyle.Flat;
 			this.GemsButton.Click += ControlVisibilityToggled;
@@ -166,7 +167,7 @@ namespace VUserInterface
 			// SoulsButton
 			//
 			this.SoulsButton.Location = new System.Drawing.Point(250, 55);
-			this.SoulsButton.Size = new System.Drawing.Size(100, 25);
+			this.SoulsButton.Size = new System.Drawing.Size(100, 28);
 			this.SoulsButton.Text = "Souls";
 			this.SoulsButton.FlatStyle = FlatStyle.Flat;
 			this.SoulsButton.Click += ControlVisibilityToggled;
@@ -174,7 +175,7 @@ namespace VUserInterface
 			// ChallengePointCollectionButton
 			//
 			this.ChallengePointCollectionButton.Location = new System.Drawing.Point(360, 55);
-			this.ChallengePointCollectionButton.Size = new System.Drawing.Size(100, 25);
+			this.ChallengePointCollectionButton.Size = new System.Drawing.Size(100, 28);
 			this.ChallengePointCollectionButton.Text = "CP";
 			this.ChallengePointCollectionButton.FlatStyle = FlatStyle.Flat;
 			this.ChallengePointCollectionButton.Click += ControlVisibilityToggled;
@@ -182,13 +183,14 @@ namespace VUserInterface
 			// UnitButton
 			//
 			this.UnitButton.Location = new System.Drawing.Point(470, 55);
-			this.UnitButton.Size = new System.Drawing.Size(100, 25);
+			this.UnitButton.Size = new System.Drawing.Size(100, 28);
 			this.UnitButton.Text = "Unit";
 			this.UnitButton.FlatStyle = FlatStyle.Flat;
 			this.UnitButton.Click += ControlVisibilityToggled;
 			//
 			// PerkPlanningForm
 			//
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6.5F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(LoadoutNameTextBox);
@@ -210,6 +212,8 @@ namespace VUserInterface
 			this.Controls.Add(RestrictCheckBox);
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
+			this.ResumeLayout();
+			this.PerformLayout();
 		}
 
 		#endregion

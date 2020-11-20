@@ -36,7 +36,7 @@ namespace VUserInterface.CommonControls
 			//
 			// this.CaptionLabel
 			//
-			this.CaptionLabel.Location = new System.Drawing.Point(0, 2);
+			this.CaptionLabel.Location = new System.Drawing.Point(0, 0);
 			//
 			// CheckBox
 			//
@@ -45,11 +45,15 @@ namespace VUserInterface.CommonControls
 			this.CheckBox.Location = new System.Drawing.Point(0, 0);
 			this.CheckBox.Size = new System.Drawing.Size(20, 20);
 			//
+			// CoreControl
+			//
+			this.CoreControl.Size = new System.Drawing.Size(21, 21);
+			this.CoreControl.Controls.Add(CheckBox);
+			//
 			// VCheckBox
 			//
-			this.CoreControl.Controls.Add(CheckBox);
 			this.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
-			this.Height = 29;
+			this.Size = new System.Drawing.Size(21, 21);
 		}
 
 		#endregion

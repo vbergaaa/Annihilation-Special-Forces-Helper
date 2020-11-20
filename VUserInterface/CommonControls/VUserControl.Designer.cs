@@ -60,6 +60,7 @@ namespace VUserInterface.CommonControls
 			this.Controls.Add(CoreControl);
 			this.MaximumSize = new System.Drawing.Size(500, 29);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleDimensions = new SizeF(7F, 15F);
 		}
 
 		#endregion

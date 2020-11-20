@@ -48,7 +48,8 @@ namespace VUserInterface
 			this.DamageIncreaseLabel = new VLabel();
 			this.AccelLabel = new VLabel();
 			this.statsBindingSource = new System.Windows.Forms.BindingSource();
-			this.DisclaimerLabel = new Label();
+			this.DisclaimerLabel = new Label(); 
+			this.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.statsBindingSource)).BeginInit();
 			//
 			// statsBindingSource
@@ -59,126 +60,126 @@ namespace VUserInterface
 			// 
 			this.DamageLabel.Caption = "Damage:";
 			this.DamageLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "Damage"));
-			this.DamageLabel.Location = new System.Drawing.Point(120, 20);
+			this.DamageLabel.Location = new System.Drawing.Point(130,20);
 			this.DamageLabel.Name = "DamageLabel";
-			this.DamageLabel.Size = new System.Drawing.Size(50, 20);
+			this.DamageLabel.Size = new System.Drawing.Size(62, 21);
 			this.DamageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// ToughnessLabel
 			// 
 			this.ToughnessLabel.Caption = "Toughness:";
 			this.ToughnessLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "Toughness"));
-			this.ToughnessLabel.Location = new System.Drawing.Point(120, 40);
+			this.ToughnessLabel.Location = new System.Drawing.Point(130,40);
 			this.ToughnessLabel.Name = "ToughnessLabel";
-			this.ToughnessLabel.Size = new System.Drawing.Size(50, 20);
+			this.ToughnessLabel.Size = new System.Drawing.Size(62, 21);
 			this.ToughnessLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// RecoveryLabel
 			// 
 			this.RecoveryLabel.Caption = "Recovery:";
 			this.RecoveryLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "Recovery"));
-			this.RecoveryLabel.Location = new System.Drawing.Point(120, 60);
+			this.RecoveryLabel.Location = new System.Drawing.Point(130,60);
 			this.RecoveryLabel.Name = "RecoveryLabel";
-			this.RecoveryLabel.Size = new System.Drawing.Size(50, 20);
+			this.RecoveryLabel.Size = new System.Drawing.Size(62, 21);
 			this.RecoveryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// DamageIncreaseLabel
 			// 
 			this.DamageIncreaseLabel.Caption = "Dmg Increase:";
 			this.DamageIncreaseLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "DamageIncrease"));
-			this.DamageIncreaseLabel.Location = new System.Drawing.Point(120, 80);
+			this.DamageIncreaseLabel.Location = new System.Drawing.Point(130,80);
 			this.DamageIncreaseLabel.Name = "DamageIncreaseLabel";
-			this.DamageIncreaseLabel.Size = new System.Drawing.Size(50, 20);
+			this.DamageIncreaseLabel.Size = new System.Drawing.Size(62, 21);
 			this.DamageIncreaseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// AttackLabel
 			// 
 			this.AttackLabel.Caption = "Attack";
 			this.AttackLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "AttackForBinding"));
-			this.AttackLabel.Location = new System.Drawing.Point(120, 100);
+			this.AttackLabel.Location = new System.Drawing.Point(130,100);
 			this.AttackLabel.Name = "AttackLabel";
-			this.AttackLabel.Size = new System.Drawing.Size(50, 20);
+			this.AttackLabel.Size = new System.Drawing.Size(62, 21);
 			this.AttackLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// AttackSpeedLabel
 			// 
 			this.AttackSpeedLabel.Caption = "Attack Speed:";
 			this.AttackSpeedLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "AttackSpeedForBinding"));
-			this.AttackSpeedLabel.Location = new System.Drawing.Point(120, 120);
+			this.AttackSpeedLabel.Location = new System.Drawing.Point(130,120);
 			this.AttackSpeedLabel.Name = "AttackSpeedLabel";
-			this.AttackSpeedLabel.Size = new System.Drawing.Size(50, 20);
+			this.AttackSpeedLabel.Size = new System.Drawing.Size(62, 21);
 			this.AttackSpeedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// CriticalChanceLabel
 			// 
 			this.CriticalChanceLabel.Caption = "Crit Chance:";
 			this.CriticalChanceLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "CriticalChanceForBinding"));
-			this.CriticalChanceLabel.Location = new System.Drawing.Point(120, 140);
+			this.CriticalChanceLabel.Location = new System.Drawing.Point(130,140);
 			this.CriticalChanceLabel.Name = "CriticalChanceLabel";
-			this.CriticalChanceLabel.Size = new System.Drawing.Size(50, 20);
+			this.CriticalChanceLabel.Size = new System.Drawing.Size(62, 21);
 			this.CriticalChanceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// CriticalDamageLabel
 			// 
 			this.CriticalDamageLabel.Caption = "Crit Damage:";
 			this.CriticalDamageLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "CriticalDamageForBinding"));
-			this.CriticalDamageLabel.Location = new System.Drawing.Point(120, 160);
+			this.CriticalDamageLabel.Location = new System.Drawing.Point(130,160);
 			this.CriticalDamageLabel.Name = "CriticalDamageLabel";
-			this.CriticalDamageLabel.Size = new System.Drawing.Size(50, 20);
+			this.CriticalDamageLabel.Size = new System.Drawing.Size(62, 21);
 			this.CriticalDamageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// HealthLabel
 			// 
 			this.HealthLabel.Caption = "Health:";
 			this.HealthLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "HealthForBinding"));
-			this.HealthLabel.Location = new System.Drawing.Point(120, 180);
+			this.HealthLabel.Location = new System.Drawing.Point(130,180);
 			this.HealthLabel.Name = "HealthLabel";
-			this.HealthLabel.Size = new System.Drawing.Size(50, 20);
+			this.HealthLabel.Size = new System.Drawing.Size(62, 21);
 			this.HealthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// HealthArmorLabel
 			// 
 			this.HealthArmorLabel.Caption = "Health Armor:";
 			this.HealthArmorLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "HealthArmorForBinding"));
-			this.HealthArmorLabel.Location = new System.Drawing.Point(120, 200);
+			this.HealthArmorLabel.Location = new System.Drawing.Point(130,200);
 			this.HealthArmorLabel.Name = "HealthArmorLabel";
-			this.HealthArmorLabel.Size = new System.Drawing.Size(50, 20);
+			this.HealthArmorLabel.Size = new System.Drawing.Size(62, 21);
 			this.HealthArmorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// ShieldsLabel
 			// 
 			this.ShieldsLabel.Caption = "Shields:";
 			this.ShieldsLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "ShieldsForBinding"));
-			this.ShieldsLabel.Location = new System.Drawing.Point(120, 220);
+			this.ShieldsLabel.Location = new System.Drawing.Point(130,220);
 			this.ShieldsLabel.Name = "ShieldsLabel";
-			this.ShieldsLabel.Size = new System.Drawing.Size(50, 20);
+			this.ShieldsLabel.Size = new System.Drawing.Size(62, 21);
 			this.ShieldsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// ShieldsArmorLabel
 			// 
 			this.ShieldsArmorLabel.Caption = "Shields Armor:";
 			this.ShieldsArmorLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "ShieldsArmorForBinding"));
-			this.ShieldsArmorLabel.Location = new System.Drawing.Point(120, 240);
+			this.ShieldsArmorLabel.Location = new System.Drawing.Point(130,240);
 			this.ShieldsArmorLabel.Name = "ShieldsArmorLabel";
-			this.ShieldsArmorLabel.Size = new System.Drawing.Size(50, 20);
+			this.ShieldsArmorLabel.Size = new System.Drawing.Size(62, 21);
 			this.ShieldsArmorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// DamageReductionLabel
 			// 
 			this.DamageReductionLabel.Caption = "Dmg Rdct:";
 			this.DamageReductionLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "DamageReductionForBinding"));
-			this.DamageReductionLabel.Location = new System.Drawing.Point(120, 260);
+			this.DamageReductionLabel.Location = new System.Drawing.Point(130,260);
 			this.DamageReductionLabel.Name = "DamageReductionLabel";
-			this.DamageReductionLabel.Size = new System.Drawing.Size(50, 20);
+			this.DamageReductionLabel.Size = new System.Drawing.Size(62, 21);
 			this.DamageReductionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// AccelLabel
 			// 
 			this.AccelLabel.Caption = "Acceleration:";
 			this.AccelLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "AccelerationForBinding"));
-			this.AccelLabel.Location = new System.Drawing.Point(120, 280);
+			this.AccelLabel.Location = new System.Drawing.Point(130,280);
 			this.AccelLabel.Name = "AccelLabel";
-			this.AccelLabel.Size = new System.Drawing.Size(50, 20);
+			this.AccelLabel.Size = new System.Drawing.Size(62, 21);
 			this.AccelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// DisclaimerLabel
@@ -210,9 +211,11 @@ namespace VUserInterface
 			this.Controls.Add(DamageIncreaseLabel);
 			this.Controls.Add(AccelLabel);
 			this.Controls.Add(DisclaimerLabel);
-			this.Size = new System.Drawing.Size(180, 310);
+			this.Size = new System.Drawing.Size(175, 310);
 			this.Text = "Stats";
 			((System.ComponentModel.ISupportInitialize)(this.statsBindingSource)).EndInit();
+			this.ResumeLayout(false);
+			this.PerformLayout();
 		}
 
 		#endregion

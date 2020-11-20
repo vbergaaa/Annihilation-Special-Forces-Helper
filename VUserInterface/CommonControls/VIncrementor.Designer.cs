@@ -67,17 +67,21 @@
 			// CaptionLabel
 			//
 			this.CaptionLabel.Top = 5;
+			//
+			// CoreControl
+			//
+			this.CoreControl.Controls.Add(this.DecrementButton);
+			this.CoreControl.Controls.Add(this.IncrementButton);
+			this.CoreControl.Controls.Add(this.ValueLabel);
+			this.CoreControl.Height = 28;
 			// 
 			// VIncrementor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.CoreControl.Controls.Add(this.DecrementButton);
-			this.CoreControl.Controls.Add(this.IncrementButton);
-			this.CoreControl.Controls.Add(this.ValueLabel);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.DataBindings.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged;
 			this.Name = "VIncrementor";
-			this.Size = new System.Drawing.Size(109, 29);
+			this.Size = new System.Drawing.Size(109, 28);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
