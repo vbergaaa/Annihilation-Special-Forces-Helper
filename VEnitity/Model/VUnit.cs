@@ -49,4 +49,14 @@ namespace VEntityFramework.Model
 		Hero,
 		SuperHero
 	}
+
+	public enum Unit
+	{
+		WarpLord,
+		Striker,
+		LightAdept,
+		DarkShadow,
+		Dreadnought,
+		Templar
+	}
 }
