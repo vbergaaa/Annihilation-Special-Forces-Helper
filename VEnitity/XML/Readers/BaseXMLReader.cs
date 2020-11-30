@@ -11,6 +11,7 @@ namespace VEntityFramework.XML
 	{
 		public void PopulateFromXML(VBusinessObject bizo, XmlNode documentElement)
 		{
+			using (bizo.StartLoading())
 			using (bizo.SuspendSettingHasChanges())
 			{
 				foreach (XmlNode childNode in documentElement.ChildNodes)

@@ -143,7 +143,7 @@ namespace VEntityFramework.Data
 
 #endregion
 
-#region HasChanges
+		#region HasChanges
 
 		public bool HasChanges
 		{
@@ -187,11 +187,26 @@ namespace VEntityFramework.Data
 			Parent?.RefreshHasChanges();
 		}
 
-#endregion
+		#endregion
 
-#region Events
+		#region IsLoading
 
-#region PropertyChanged
+		public IDisposable StartLoading()
+		{
+			IsLoading = true;
+
+			return new DisposableAction(() => {
+				IsLoading = false;
+			});
+		}
+
+		public bool IsLoading { get; private set; }
+
+		#endregion
+
+		#region Events
+
+		#region PropertyChanged
 
 		public void RefreshPropertyBinding(string property)
 		{
