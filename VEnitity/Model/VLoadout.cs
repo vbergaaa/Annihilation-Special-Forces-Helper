@@ -154,7 +154,7 @@ namespace VEntityFramework.Model
 		[VXML(true)]
 		public bool ShouldRestrict
 		{
-			get => fShouldRestrict;
+			get => !IsLoading && fShouldRestrict;
 			set
 			{
 				if (value != fShouldRestrict)
