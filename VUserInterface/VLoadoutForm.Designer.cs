@@ -92,6 +92,7 @@ namespace VUserInterface
 			this.AvailablePPLabel.Location = DPIScalingHelper.GetScaledPoint(120, 90);
 			this.AvailablePPLabel.Name = "AvailablePPLabel";
 			this.AvailablePPLabel.Caption = "Available PP:";
+			this.AvailablePPLabel.MaximumSize = DPIScalingHelper.GetScaledSize(150, 100);
 			//
 			// AvailableCPLabel
 			//
