@@ -52,7 +52,7 @@ namespace VUserInterface
 			this.EditPanel = new VUserInterface.CommonControls.DPIPanel();
 			this.ReadonlyPanel = new VUserInterface.CommonControls.DPIPanel();
 			this.SaveEditButton = new VUserInterface.CommonControls.VButton();
-			this.ProfileTitleLabel = new Label();
+			this.ProfileTitleLabel = new VLabel();
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
 			this.EditPanel.SuspendLayout();
 			this.ReadonlyPanel.SuspendLayout();
@@ -292,6 +292,6 @@ namespace VUserInterface
 		private VLabel GemsLabel;
 		private VLabel CPLabel;
 		private VButton SaveEditButton;
-		private Label ProfileTitleLabel;
+		private VLabel ProfileTitleLabel;
 	}
 }
