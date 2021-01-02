@@ -86,6 +86,22 @@ namespace VUserInterface
 			Close();
 		}
 
+		protected override void OnSizeChanged(EventArgs e)
+		{
+			base.OnSizeChanged(e);
+
+			UpdateSaveButtonLocations();
+		}
+
+		void UpdateSaveButtonLocations()
+		{
+			if (SaveButton != null && CancelButton != null)
+			{
+				this.SaveButton.Location = new System.Drawing.Point(this.Width - 180, this.Height - 30);
+				this.CancelButton.Location = new System.Drawing.Point(this.Width - 90, this.Height - 30);
+			}
+		}
+
 		public event EventHandler<EventArgs> OnSaved;
 	}
 }

@@ -33,6 +33,7 @@ namespace VUserInterface
 		{
 			this.components = new System.ComponentModel.Container();
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.BindingSource = new BindingSource();
 			this.SaveButton = new Button();
@@ -46,7 +47,7 @@ namespace VUserInterface
 			//
 			this.SaveButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 			this.SaveButton.DataBindings.Add(new Binding("Enabled", BindingSource, "HasChanges"));
-			this.SaveButton.Location = new System.Drawing.Point(620, 420);
+			this.SaveButton.Location = new System.Drawing.Point(this.ClientSize.Width - 180, this.ClientSize.Height - 30);
 			this.SaveButton.Size = new System.Drawing.Size(80, 25);
 			this.SaveButton.Text = "Save";
 			this.SaveButton.Click += SaveButton_Click;
@@ -54,7 +55,7 @@ namespace VUserInterface
 			// CancelButton
 			//
 			this.CancelButton.Anchor = AnchorStyles.Bottom  | AnchorStyles.Right;
-			this.CancelButton.Location = new System.Drawing.Point(710, 420);
+			this.CancelButton.Location = new System.Drawing.Point(this.ClientSize.Width - 90, this.ClientSize.Height - 30);
 			this.CancelButton.Size = new System.Drawing.Size(80, 25);
 			this.CancelButton.Text = "Close";
 			this.CancelButton.Click += CancelButton_Click;

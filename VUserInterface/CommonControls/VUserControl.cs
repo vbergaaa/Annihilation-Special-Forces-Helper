@@ -75,7 +75,7 @@ namespace VUserInterface.CommonControls
 				isResizing = true;
 				var captionWidth = Caption != null ? CaptionLabel.Width + 5 : 0;
 				this.Width += captionWidth;
-				CoreControl.Width = Size.Width - captionWidth;
+				CoreControl.Size = new Size(Size.Width - captionWidth, Size.Height);
 				isResizing = false;
 			}
 		}
@@ -98,7 +98,7 @@ namespace VUserInterface.CommonControls
 			else if (isScaling)
 			{
 				var captionWidth = Caption != null ? CaptionLabel.Width + 5 : 0;
-				this.Left = fHorizontalAnchor - captionWidth;
+				this.Left = (int)(fHorizontalAnchor - captionWidth);
 			}
 		}
 		bool isRelocating;
@@ -110,12 +110,14 @@ namespace VUserInterface.CommonControls
 		protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
 		{
 			isScaling = true;
-			fHorizontalAnchor = this.Left + this.CoreControl.Left;
+			fHorizontalAnchor = (this.Left + this.CoreControl.Left) * factor.Width;
 			base.ScaleControl(factor, specified);
+			CoreControl.Width = (int)(CoreControl.Width * factor.Width);
+			CoreControl.Height = (int)(CoreControl.Height * factor.Height);
 			isScaling = false;
 		}
 		bool isScaling;
-		int fHorizontalAnchor;
+		float fHorizontalAnchor;
 
 		#endregion
 	}

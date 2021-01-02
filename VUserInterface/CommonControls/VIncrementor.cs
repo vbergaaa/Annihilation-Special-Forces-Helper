@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace VUserInterface.CommonControls
@@ -183,6 +184,18 @@ namespace VUserInterface.CommonControls
 		public event EventHandler ValueChanged;
 
 		#endregion
+
+		protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
+		{
+			base.ScaleControl(factor, specified);
+		}
+
+		protected override void ScaleCore(float dx, float dy)
+		{
+			base.ScaleCore(dx, dy);
+		}
+
+		protected override bool ScaleChildren => base.ScaleChildren;
 	}
 
 	public enum IncrementorStyle

@@ -77,8 +77,8 @@
 			// 
 			// VIncrementor
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.DataBindings.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged;
 			this.Name = "VIncrementor";
 			this.Size = new System.Drawing.Size(109, 28);

@@ -92,7 +92,6 @@ namespace VUserInterface
 			this.AvailablePPLabel.Location = new System.Drawing.Point(120, 90);
 			this.AvailablePPLabel.Name = "AvailablePPLabel";
 			this.AvailablePPLabel.Caption = "Available PP:";
-			this.AvailablePPLabel.MaximumSize = new System.Drawing.Size(150, 100);
 			//
 			// AvailableCPLabel
 			//
@@ -190,7 +189,7 @@ namespace VUserInterface
 			//
 			// PerkPlanningForm
 			//
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6.5F, 16F);
+			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(LoadoutNameTextBox);
@@ -210,6 +209,7 @@ namespace VUserInterface
 			this.Controls.Add(AvailableGemsLabel);
 			this.Controls.Add(AvailableCPLabel);
 			this.Controls.Add(RestrictCheckBox);
+			this.Name = "LoadoutForm";
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
 			this.ResumeLayout();

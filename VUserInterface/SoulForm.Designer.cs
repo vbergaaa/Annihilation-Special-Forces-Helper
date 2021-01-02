@@ -150,7 +150,7 @@ namespace VUserInterface
 			// 
 			// SoulForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(258, 419);
 			this.Controls.Add(this.TypeCaption);
@@ -165,6 +165,7 @@ namespace VUserInterface
 			this.Controls.Add(this.MineralsIncrementor);
 			this.Controls.Add(this.KillsIncrementor);
 			this.Name = "SoulForm";
+			this.Text = "Create/Edit Soul";
 			((ISupportInitialize)this.BindingSource).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

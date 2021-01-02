@@ -42,6 +42,7 @@ namespace VUserInterface.CommonControls
 			// DropBox
 			//
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.CoreControl.Controls.Add(ComboBox);
 			this.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
 		}

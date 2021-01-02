@@ -128,6 +128,7 @@ namespace VUserInterface
 			// ChallengePointCollectionControl
 			//
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.Controls.Add(AttackCPControl);
 			this.Controls.Add(CriticalChanceCPControl);
 			this.Controls.Add(CriticalDamageCPControl);

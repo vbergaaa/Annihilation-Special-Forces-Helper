@@ -32,6 +32,7 @@ namespace VUserInterface.CommonControls
 		{
 			components = new System.ComponentModel.Container();
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.CheckBox = new VCheckBox();
 			//
 			// this.CaptionLabel
