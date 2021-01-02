@@ -37,21 +37,21 @@ namespace VUserInterface
 			// CoreControl
 			// 
 			this.CoreControl.Controls.Add(this.TextBox);
-			this.CoreControl.Size = new System.Drawing.Size(300, 29);
+			this.CoreControl.Size = DPIScalingHelper.GetScaledSize(300, 29);
 			// 
 			// TextBox
 			// 
 			this.TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this, "Text", true));
-			this.TextBox.Location = new System.Drawing.Point(0, 1);
+			this.TextBox.Location = DPIScalingHelper.GetScaledPoint(0, 1);
 			this.TextBox.Name = "TextBox";
-			this.TextBox.Size = new System.Drawing.Size(300, 23);
+			this.TextBox.Size = DPIScalingHelper.GetScaledSize(300, 23);
 			this.TextBox.TabIndex = 2;
 			// 
 			// VTextBox
 			// 
 			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.Name = "VTextBox";
-			this.Size = new System.Drawing.Size(300, 24);
+			this.Size = DPIScalingHelper.GetScaledSize(300, 24);
 			this.CoreControl.ResumeLayout(false);
 			this.CoreControl.PerformLayout();
 			this.ResumeLayout(false);

@@ -114,14 +114,14 @@ namespace VUserInterface.CommonControls
 		{
 			if (value == IncrementorStyle.Compact)
 			{
-				ValueLabel.Size = new System.Drawing.Size(23, 23);
+				ValueLabel.Size = DPIScalingHelper.GetScaledSize(23, 23);
 				ValueLabel.Left -= 5;
 				IncrementButton.Left -= 30;
 				this.Left += 30;
 			}
 			if (value == IncrementorStyle.Normal)
 			{
-				ValueLabel.Size = new System.Drawing.Size(43, 23);
+				ValueLabel.Size = DPIScalingHelper.GetScaledSize(43, 23);
 				ValueLabel.Left += 5;
 				IncrementButton.Left += 30;
 				this.Left -= 30;
@@ -184,18 +184,6 @@ namespace VUserInterface.CommonControls
 		public event EventHandler ValueChanged;
 
 		#endregion
-
-		protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
-		{
-			base.ScaleControl(factor, specified);
-		}
-
-		protected override void ScaleCore(float dx, float dy)
-		{
-			base.ScaleCore(dx, dy);
-		}
-
-		protected override bool ScaleChildren => base.ScaleChildren;
 	}
 
 	public enum IncrementorStyle

@@ -67,5 +67,7 @@ namespace VUserInterface
 		{
 			return new Point(GetScaledX(x), GetScaledY(y));
 		}
+
+		#endregion
 	}
 }

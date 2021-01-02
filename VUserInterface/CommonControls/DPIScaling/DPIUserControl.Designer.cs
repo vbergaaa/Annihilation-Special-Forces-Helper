@@ -1,8 +1,7 @@
-﻿using System.Windows.Forms;
-
+﻿
 namespace VUserInterface.CommonControls
 {
-	partial class VDropBox
+	partial class DPIUserControl
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -31,24 +30,9 @@ namespace VUserInterface.CommonControls
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.ComboBox = new ComboBox();
-			//
-			// ComboBox
-			//
-			this.ComboBox.DataBindings.Add("SelectedIndex", this, "SelectedIndex", true, DataSourceUpdateMode.OnPropertyChanged);
-			this.ComboBox.Location = DPIScalingHelper.GetScaledPoint(0, 1);
-			this.ComboBox.SelectedValueChanged += ComboBox_SelectedValueChanged;
-			//
-			// DropBox
-			//
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
-			this.CoreControl.Controls.Add(ComboBox);
-			this.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
 		}
 
 		#endregion
-
-		private ComboBox ComboBox;
 	}
 }

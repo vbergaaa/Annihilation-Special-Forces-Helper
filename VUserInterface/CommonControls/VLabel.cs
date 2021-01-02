@@ -24,11 +24,6 @@ namespace VUserInterface.CommonControls
 			}
 		}
 
-		protected override void OnSizeChanged(EventArgs e)
-		{
-			base.OnSizeChanged(e);
-		}
-
 		public override string Text { get => Label.Text; set => Label.Text = value; }
 	}
 }

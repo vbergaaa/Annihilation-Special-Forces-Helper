@@ -46,14 +46,14 @@ namespace VUserInterface
 			this.CostLabel.AutoSize = true;
 			this.CostLabel.Caption = "Next Level Cost";
 			this.CostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "NextLevelCost"));
-			this.CostLabel.Location = new System.Drawing.Point(140, 29);
+			this.CostLabel.Location = DPIScalingHelper.GetScaledPoint(140, 29);
 			this.CostLabel.Name = "CostLabel";
 			this.CostLabel.TabIndex = 6;
 			this.CostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			//
 			// CurrentLevelIncrementor
 			//
-			this.CurrentLevelIncrementor.Location = new System.Drawing.Point(48, 1);
+			this.CurrentLevelIncrementor.Location = DPIScalingHelper.GetScaledPoint(48, 1);
 			this.CurrentLevelIncrementor.DataBindings.Add("Value", bindingSource, "CurrentLevel");
 			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaxValue");
 			this.CurrentLevelIncrementor.DataBindings.Add("MinValue", bindingSource, "MinValue");
@@ -69,7 +69,7 @@ namespace VUserInterface
 			// 
 			this.Controls.Add(this.CostLabel);
 			this.Controls.Add(this.CurrentLevelIncrementor);
-			this.Size = new System.Drawing.Size(160, 50);
+			this.Size = DPIScalingHelper.GetScaledSize(160, 50);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
 

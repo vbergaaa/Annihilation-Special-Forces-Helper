@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Linq;
-using System.Windows.Forms;
 using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class VPerkControl : GroupBox
+	public partial class VPerkControl : DPIGroupBox
 	{
 		public VPerkControl()
 		{

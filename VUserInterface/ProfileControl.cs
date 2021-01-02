@@ -12,10 +12,11 @@ using VEntityFramework.Data;
 using System.Linq;
 using VBusiness.HelperClasses;
 using VBusiness.PlayerRanks;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class ProfileControl : UserControl
+	public partial class ProfileControl : DPIUserControl
 	{
 		public ProfileControl()
 		{

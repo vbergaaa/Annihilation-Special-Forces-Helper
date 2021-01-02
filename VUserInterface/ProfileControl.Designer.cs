@@ -49,9 +49,9 @@ namespace VUserInterface
 			this.ModScoreLabel = new VUserInterface.CommonControls.VLabel();
 			this.GemsLabel = new VUserInterface.CommonControls.VLabel();
 			this.CPLabel = new VUserInterface.CommonControls.VLabel();
-			this.EditPanel = new System.Windows.Forms.Panel();
-			this.ReadonlyPanel = new System.Windows.Forms.Panel();
-			this.SaveEditButton = new System.Windows.Forms.Button();
+			this.EditPanel = new VUserInterface.CommonControls.DPIPanel();
+			this.ReadonlyPanel = new VUserInterface.CommonControls.DPIPanel();
+			this.SaveEditButton = new VUserInterface.CommonControls.VButton();
 			this.ProfileTitleLabel = new Label();
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
 			this.EditPanel.SuspendLayout();
@@ -65,7 +65,7 @@ namespace VUserInterface
 			// ProfileTitleLabel
 			//
 			this.ProfileTitleLabel.Name = "ProfileTitleLabel";
-			this.ProfileTitleLabel.Location = new System.Drawing.Point(120, 22);
+			this.ProfileTitleLabel.Location = DPIScalingHelper.GetScaledPoint(120, 22);
 			this.ProfileTitleLabel.Text = "Profile";
 			this.ProfileTitleLabel.Font = new System.Drawing.Font(this.ProfileTitleLabel.Font.FontFamily, 14);
 			// 
@@ -73,10 +73,10 @@ namespace VUserInterface
 			// 
 			this.NameTextBox.Caption = "Name:";
 			this.NameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Name", true));
-			this.NameTextBox.Location = new System.Drawing.Point(150, 0);
-			this.NameTextBox.MaximumSize = new System.Drawing.Size(500, 29);
+			this.NameTextBox.Location = DPIScalingHelper.GetScaledPoint(150, 0);
+			this.NameTextBox.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.NameTextBox.Name = "NameTextBox";
-			this.NameTextBox.Size = new System.Drawing.Size(150, 24);
+			this.NameTextBox.Size = DPIScalingHelper.GetScaledSize(150, 24);
 			this.NameTextBox.TabIndex = 0;
 			// 
 			// RankDropBox
@@ -84,31 +84,31 @@ namespace VUserInterface
 			this.RankDropBox.Caption = "Rank:";
 			this.RankDropBox.DataBindings.Add("SelectedValue", BindingSource, "Rank");
 			this.RankDropBox.List = PlayerRankList;
-			this.RankDropBox.Location = new System.Drawing.Point(150, 25);
+			this.RankDropBox.Location = DPIScalingHelper.GetScaledPoint(150, 25);
 			this.RankDropBox.Name = "RankDropBox";
 			this.RankDropBox.SelectedIndex = -1;
 			this.RankDropBox.SelectedValueChanged += PlayerRankChanged;
-			this.RankDropBox.Size = new System.Drawing.Size(150, 24);
+			this.RankDropBox.Size = DPIScalingHelper.GetScaledSize(150, 24);
 			this.RankDropBox.TabIndex = 0;
 			// 
 			// PerkPointsLabel2
 			// 
 			this.PerkPointsLabel2.Caption = "Perk Points:";
 			this.PerkPointsLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "PerkPoints", true));
-			this.PerkPointsLabel2.Location = new System.Drawing.Point(150, 50);
-			this.PerkPointsLabel2.MaximumSize = new System.Drawing.Size(500, 29);
+			this.PerkPointsLabel2.Location = DPIScalingHelper.GetScaledPoint(150, 50);
+			this.PerkPointsLabel2.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.PerkPointsLabel2.Name = "PerkPointsLabel2";
-			this.PerkPointsLabel2.Size = new System.Drawing.Size(300, 24);
+			this.PerkPointsLabel2.Size = DPIScalingHelper.GetScaledSize(300, 24);
 			this.PerkPointsLabel2.TabIndex = 0;
 			this.PerkPointsLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// RankPointsTextBox
 			// 
 			this.RankPointsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "RankPoints", true));
-			this.RankPointsTextBox.Location = new System.Drawing.Point(150, 75);
-			this.RankPointsTextBox.MaximumSize = new System.Drawing.Size(500, 29);
+			this.RankPointsTextBox.Location = DPIScalingHelper.GetScaledPoint(150, 75);
+			this.RankPointsTextBox.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.RankPointsTextBox.Name = "RankPointsTextBox";
-			this.RankPointsTextBox.Size = new System.Drawing.Size(75, 24);
+			this.RankPointsTextBox.Size = DPIScalingHelper.GetScaledSize(75, 24);
 			this.RankPointsTextBox.TabIndex = 0;
 			this.RankPointsTextBox.Caption = "Rank Points:";
 			// 
@@ -116,40 +116,40 @@ namespace VUserInterface
 			// 
 			this.ModScoreTextBox.Caption = "Mod Score:";
 			this.ModScoreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "ModScore", true));
-			this.ModScoreTextBox.Location = new System.Drawing.Point(150, 100);
-			this.ModScoreTextBox.MaximumSize = new System.Drawing.Size(500, 29);
+			this.ModScoreTextBox.Location = DPIScalingHelper.GetScaledPoint(150, 100);
+			this.ModScoreTextBox.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.ModScoreTextBox.Name = "ModScoreTextBox";
-			this.ModScoreTextBox.Size = new System.Drawing.Size(75, 24);
+			this.ModScoreTextBox.Size = DPIScalingHelper.GetScaledSize(75, 24);
 			this.ModScoreTextBox.TabIndex = 0;
 			// 
 			// GemsTextBox
 			// 
 			this.GemsTextBox.Caption = "Gems:";
 			this.GemsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Gems", true));
-			this.GemsTextBox.Location = new System.Drawing.Point(150, 125);
-			this.GemsTextBox.MaximumSize = new System.Drawing.Size(500, 29);
+			this.GemsTextBox.Location = DPIScalingHelper.GetScaledPoint(150, 125);
+			this.GemsTextBox.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.GemsTextBox.Name = "GemsTextBox";
-			this.GemsTextBox.Size = new System.Drawing.Size(75, 24);
+			this.GemsTextBox.Size = DPIScalingHelper.GetScaledSize(75, 24);
 			this.GemsTextBox.TabIndex = 0;
 			// 
 			// CPTextBox
 			// 
 			this.CPTextBox.Caption = "Challenge Points:";
 			this.CPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "ChallengePoints", true));
-			this.CPTextBox.Location = new System.Drawing.Point(150, 150);
-			this.CPTextBox.MaximumSize = new System.Drawing.Size(500, 29);
+			this.CPTextBox.Location = DPIScalingHelper.GetScaledPoint(150, 150);
+			this.CPTextBox.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.CPTextBox.Name = "CPTextBox";
-			this.CPTextBox.Size = new System.Drawing.Size(75, 24);
+			this.CPTextBox.Size = DPIScalingHelper.GetScaledSize(75, 24);
 			this.CPTextBox.TabIndex = 0;
 			// 
 			// NameLabel
 			// 
 			this.NameLabel.Caption = "Name:";
 			this.NameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Name", true));
-			this.NameLabel.Location = new System.Drawing.Point(150, 0);
-			this.NameLabel.MaximumSize = new System.Drawing.Size(500, 29);
+			this.NameLabel.Location = DPIScalingHelper.GetScaledPoint(150, 0);
+			this.NameLabel.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.NameLabel.Name = "NameLabel";
-			this.NameLabel.Size = new System.Drawing.Size(300, 24);
+			this.NameLabel.Size = DPIScalingHelper.GetScaledSize(300, 24);
 			this.NameLabel.TabIndex = 0;
 			this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -157,10 +157,10 @@ namespace VUserInterface
 			// 
 			this.RankLabel.Caption = "Rank:";
 			this.RankLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Rank", true));
-			this.RankLabel.Location = new System.Drawing.Point(150, 25);
-			this.RankLabel.MaximumSize = new System.Drawing.Size(500, 29);
+			this.RankLabel.Location = DPIScalingHelper.GetScaledPoint(150, 25);
+			this.RankLabel.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.RankLabel.Name = "RankLabel";
-			this.RankLabel.Size = new System.Drawing.Size(300, 24);
+			this.RankLabel.Size = DPIScalingHelper.GetScaledSize(300, 24);
 			this.RankLabel.TabIndex = 0;
 			this.RankLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -168,10 +168,10 @@ namespace VUserInterface
 			// 
 			this.PerkPointsLabel.Caption = "Perk Points:";
 			this.PerkPointsLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "PerkPoints", true));
-			this.PerkPointsLabel.Location = new System.Drawing.Point(150, 50);
-			this.PerkPointsLabel.MaximumSize = new System.Drawing.Size(500, 29);
+			this.PerkPointsLabel.Location = DPIScalingHelper.GetScaledPoint(150, 50);
+			this.PerkPointsLabel.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.PerkPointsLabel.Name = "PerkPointsLabel";
-			this.PerkPointsLabel.Size = new System.Drawing.Size(300, 24);
+			this.PerkPointsLabel.Size = DPIScalingHelper.GetScaledSize(300, 24);
 			this.PerkPointsLabel.TabIndex = 0;
 			this.PerkPointsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -179,10 +179,10 @@ namespace VUserInterface
 			// 
 			this.RankPointsLabel.Caption = "Rank Points:";
 			this.RankPointsLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "RankPoints", true));
-			this.RankPointsLabel.Location = new System.Drawing.Point(150, 75);
-			this.RankPointsLabel.MaximumSize = new System.Drawing.Size(500, 29);
+			this.RankPointsLabel.Location = DPIScalingHelper.GetScaledPoint(150, 75);
+			this.RankPointsLabel.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.RankPointsLabel.Name = "RankPointsLabel";
-			this.RankPointsLabel.Size = new System.Drawing.Size(300, 24);
+			this.RankPointsLabel.Size = DPIScalingHelper.GetScaledSize(300, 24);
 			this.RankPointsLabel.TabIndex = 0;
 			this.RankPointsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -190,10 +190,10 @@ namespace VUserInterface
 			// 
 			this.ModScoreLabel.Caption = "Mod Score:";
 			this.ModScoreLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "ModScore", true));
-			this.ModScoreLabel.Location = new System.Drawing.Point(150, 100);
-			this.ModScoreLabel.MaximumSize = new System.Drawing.Size(500, 29);
+			this.ModScoreLabel.Location = DPIScalingHelper.GetScaledPoint(150, 100);
+			this.ModScoreLabel.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.ModScoreLabel.Name = "ModScoreLabel";
-			this.ModScoreLabel.Size = new System.Drawing.Size(300, 24);
+			this.ModScoreLabel.Size = DPIScalingHelper.GetScaledSize(300, 24);
 			this.ModScoreLabel.TabIndex = 0;
 			this.ModScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -201,10 +201,10 @@ namespace VUserInterface
 			// 
 			this.GemsLabel.Caption = "Gems:";
 			this.GemsLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "Gems", true));
-			this.GemsLabel.Location = new System.Drawing.Point(150, 125);
-			this.GemsLabel.MaximumSize = new System.Drawing.Size(500, 29);
+			this.GemsLabel.Location = DPIScalingHelper.GetScaledPoint(150, 125);
+			this.GemsLabel.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.GemsLabel.Name = "GemsLabel";
-			this.GemsLabel.Size = new System.Drawing.Size(300, 24);
+			this.GemsLabel.Size = DPIScalingHelper.GetScaledSize(300, 24);
 			this.GemsLabel.TabIndex = 0;
 			this.GemsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -212,10 +212,10 @@ namespace VUserInterface
 			// 
 			this.CPLabel.Caption = "Challenge Points:";
 			this.CPLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BindingSource, "ChallengePoints", true));
-			this.CPLabel.Location = new System.Drawing.Point(150, 150);
-			this.CPLabel.MaximumSize = new System.Drawing.Size(500, 29);
+			this.CPLabel.Location = DPIScalingHelper.GetScaledPoint(150, 150);
+			this.CPLabel.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.CPLabel.Name = "CPLabel";
-			this.CPLabel.Size = new System.Drawing.Size(300, 24);
+			this.CPLabel.Size = DPIScalingHelper.GetScaledSize(300, 24);
 			this.CPLabel.TabIndex = 0;
 			this.CPLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -228,9 +228,9 @@ namespace VUserInterface
 			this.EditPanel.Controls.Add(this.ModScoreTextBox);
 			this.EditPanel.Controls.Add(this.GemsTextBox);
 			this.EditPanel.Controls.Add(this.CPTextBox);
-			this.EditPanel.Location = new System.Drawing.Point(0, 50);
+			this.EditPanel.Location = DPIScalingHelper.GetScaledPoint(0, 50);
 			this.EditPanel.Name = "EditPanel";
-			this.EditPanel.Size = new System.Drawing.Size(400, 400);
+			this.EditPanel.Size = DPIScalingHelper.GetScaledSize(400, 400);
 			this.EditPanel.TabIndex = 1;
 			this.EditPanel.Visible = false;
 			// 
@@ -243,16 +243,16 @@ namespace VUserInterface
 			this.ReadonlyPanel.Controls.Add(this.ModScoreLabel);
 			this.ReadonlyPanel.Controls.Add(this.GemsLabel);
 			this.ReadonlyPanel.Controls.Add(this.CPLabel);
-			this.ReadonlyPanel.Location = new System.Drawing.Point(0, 60);
+			this.ReadonlyPanel.Location = DPIScalingHelper.GetScaledPoint(0, 60);
 			this.ReadonlyPanel.Name = "ReadonlyPanel";
-			this.ReadonlyPanel.Size = new System.Drawing.Size(400, 400);
+			this.ReadonlyPanel.Size = DPIScalingHelper.GetScaledSize(400, 400);
 			this.ReadonlyPanel.TabIndex = 2;
 			// 
 			// SaveEditButton
 			// 
-			this.SaveEditButton.Location = new System.Drawing.Point(275, 22);
+			this.SaveEditButton.Location = DPIScalingHelper.GetScaledPoint(275, 22);
 			this.SaveEditButton.Name = "SaveEditButton";
-			this.SaveEditButton.Size = new System.Drawing.Size(75, 23);
+			this.SaveEditButton.Size = DPIScalingHelper.GetScaledSize(75, 23);
 			this.SaveEditButton.TabIndex = 0;
 			this.SaveEditButton.Text = "Edit";
 			this.SaveEditButton.Click += new System.EventHandler(this.SaveEditButton_Click);
@@ -264,7 +264,7 @@ namespace VUserInterface
 			this.Controls.Add(this.ReadonlyPanel);
 			this.Controls.Add(this.ProfileTitleLabel);
 			this.Name = "ProfileControl";
-			this.Size = new System.Drawing.Size(400, 400);
+			this.Size = DPIScalingHelper.GetScaledSize(400, 400);
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).EndInit();
 			this.EditPanel.ResumeLayout(false);
 			this.ReadonlyPanel.ResumeLayout(false);
@@ -291,7 +291,7 @@ namespace VUserInterface
 		private VLabel ModScoreLabel;
 		private VLabel GemsLabel;
 		private VLabel CPLabel;
-		private Button SaveEditButton;
+		private VButton SaveEditButton;
 		private Label ProfileTitleLabel;
 	}
 }

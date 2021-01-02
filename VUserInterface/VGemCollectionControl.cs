@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Windows.Forms;
 using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class VGemCollectionControl : GroupBox
+	public partial class VGemCollectionControl : DPIGroupBox
 	{
 		public VGemCollectionControl()
 		{

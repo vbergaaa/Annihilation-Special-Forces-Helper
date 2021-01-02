@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using VBusiness.HelperClasses;
@@ -41,6 +42,10 @@ namespace VUserInterface
 		void ProfileButton_Click(object sender, EventArgs e)
 		{
 			ChangeMainPanel(sender, e);
+		}
+
+		protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
+		{
 		}
 	}
 }

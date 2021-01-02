@@ -46,55 +46,55 @@ namespace VUserInterface
 			//
 			// AttackControl
 			//
-			this.AttackGemControl.Location = new System.Drawing.Point(35, 20);
+			this.AttackGemControl.Location = DPIScalingHelper.GetScaledPoint(35, 20);
 			this.AttackGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "AttackGem");
 			this.AttackGemControl.TabIndex = 2;
 			//
 			// AttackSpeedControl
 			//
-			this.AttackSpeedGemControl.Location = new System.Drawing.Point(208, 20);
+			this.AttackSpeedGemControl.Location = DPIScalingHelper.GetScaledPoint(208, 20);
 			this.AttackSpeedGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "AttackSpeedGem");
 			this.AttackSpeedGemControl.TabIndex = 3;
 			//
 			// ShieldsControl
 			//
-			this.ShieldsGemControl.Location = new System.Drawing.Point(381, 20);
+			this.ShieldsGemControl.Location = DPIScalingHelper.GetScaledPoint(381, 20);
 			this.ShieldsGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "ShieldsGem");
 			this.ShieldsGemControl.TabIndex = 4;
 			//
 			// ShieldsArmorControl
 			//
-			this.ShieldsArmorGemControl.Location = new System.Drawing.Point(35, 107);
+			this.ShieldsArmorGemControl.Location = DPIScalingHelper.GetScaledPoint(35, 107);
 			this.ShieldsArmorGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "ShieldsArmorGem");
 			this.ShieldsArmorGemControl.TabIndex = 5;
 			//
 			// HealthControl
 			//
-			this.HealthGemControl.Location = new System.Drawing.Point(208, 107);
+			this.HealthGemControl.Location = DPIScalingHelper.GetScaledPoint(208, 107);
 			this.HealthGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "HealthGem");
 			this.HealthGemControl.TabIndex = 6;
 			//
 			// HealthArmorControl
 			//
-			this.HealthArmorGemControl.Location = new System.Drawing.Point(381, 107);
+			this.HealthArmorGemControl.Location = DPIScalingHelper.GetScaledPoint(381, 107);
 			this.HealthArmorGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "HealthArmorGem");
 			this.HealthArmorGemControl.TabIndex = 7;
 			//
 			// CriticalChanceControl
 			//
-			this.CriticalChanceGemControl.Location = new System.Drawing.Point(35, 187);
+			this.CriticalChanceGemControl.Location = DPIScalingHelper.GetScaledPoint(35, 187);
 			this.CriticalChanceGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "CritChanceGem");
 			this.CriticalChanceGemControl.TabIndex = 8;
 			//
 			// CriticalDamageControl
 			//
-			this.CriticalDamageGemControl.Location = new System.Drawing.Point(208, 187);
+			this.CriticalDamageGemControl.Location = DPIScalingHelper.GetScaledPoint(208, 187);
 			this.CriticalDamageGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "CritDamageGem");
 			this.CriticalDamageGemControl.TabIndex = 9;
 			//
 			// DoubleWarpControl
 			//
-			this.DoubleWarpGemControl.Location = new System.Drawing.Point(381, 187);
+			this.DoubleWarpGemControl.Location = DPIScalingHelper.GetScaledPoint(381, 187);
 			this.DoubleWarpGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "DoubleWarpGem");
 			this.DoubleWarpGemControl.TabIndex = 10;
 			// 
@@ -113,7 +113,7 @@ namespace VUserInterface
 			this.Controls.Add(CriticalChanceGemControl);
 			this.Controls.Add(CriticalDamageGemControl);
 			this.Controls.Add(DoubleWarpGemControl);
-			this.Size = new System.Drawing.Size(589, 272);
+			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
 			((System.ComponentModel.ISupportInitialize)(this.gemsBindingSource)).EndInit();
 		}
 

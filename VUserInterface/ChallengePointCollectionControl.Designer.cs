@@ -57,73 +57,73 @@ namespace VUserInterface
 			//
 			this.AttackCPControl.Caption = "Attack";
 			this.AttackCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Attack");
-			this.AttackCPControl.Location = new System.Drawing.Point(35, 20);
+			this.AttackCPControl.Location = DPIScalingHelper.GetScaledPoint(35, 20);
 			//
 			// CriticalDamageCPControl
 			//
 			this.CriticalDamageCPControl.Caption = "Crit Dmg";
 			this.CriticalDamageCPControl.DataBindings.Add("ChallengePoint", bindingSource, "CriticalDamage");
-			this.CriticalDamageCPControl.Location = new System.Drawing.Point(30, 80);
+			this.CriticalDamageCPControl.Location = DPIScalingHelper.GetScaledPoint(30, 80);
 			//
 			// CriticalChanceCPControl
 			//
 			this.CriticalChanceCPControl.Caption = "Crit Chance";
 			this.CriticalChanceCPControl.DataBindings.Add("ChallengePoint", bindingSource, "CriticalChance");
-			this.CriticalChanceCPControl.Location = new System.Drawing.Point(30, 140);
+			this.CriticalChanceCPControl.Location = DPIScalingHelper.GetScaledPoint(30, 140);
 			//
 			// AttackSpeedCPControl
 			//
 			this.AttackSpeedCPControl.Caption = "Atk Speed";
 			this.AttackSpeedCPControl.DataBindings.Add("ChallengePoint", bindingSource, "AttackSpeed");
-			this.AttackSpeedCPControl.Location = new System.Drawing.Point(30, 200);
+			this.AttackSpeedCPControl.Location = DPIScalingHelper.GetScaledPoint(30, 200);
 			//
 			// HealthCPControl
 			//
 			this.HealthCPControl.Caption = "Health";
 			this.HealthCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Health");
-			this.HealthCPControl.Location = new System.Drawing.Point(208, 20);
+			this.HealthCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 20);
 			//
 			// ShieldsCPControl
 			//
 			this.ShieldsCPControl.Caption = "Shields";
 			this.ShieldsCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Shields");
-			this.ShieldsCPControl.Location = new System.Drawing.Point(208, 80);
+			this.ShieldsCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 80);
 			//
 			// DefensiveEssenceCPControl
 			//
 			this.DefensiveEssenceCPControl.Caption = "Def Ess";
 			this.DefensiveEssenceCPControl.DataBindings.Add("ChallengePoint", bindingSource, "DefensiveEssence");
-			this.DefensiveEssenceCPControl.Location = new System.Drawing.Point(208, 140);
+			this.DefensiveEssenceCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 140);
 			//
 			// DamageReductionCPControl
 			//
 			this.DamageReductionCPControl.Caption = "Dmg Rdct";
 			this.DamageReductionCPControl.DataBindings.Add("ChallengePoint", bindingSource, "DamageReduction");
-			this.DamageReductionCPControl.Location = new System.Drawing.Point(208, 200);
+			this.DamageReductionCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 200);
 			//
 			// MiningCPControl
 			//
 			this.MiningCPControl.Caption = "Mining";
 			this.MiningCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Mining");
-			this.MiningCPControl.Location = new System.Drawing.Point(381, 20);
+			this.MiningCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 20);
 			//
 			// KillsCPControl
 			//
 			this.KillsCPControl.Caption = "Kills";
 			this.KillsCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Kills");
-			this.KillsCPControl.Location = new System.Drawing.Point(381, 80);
+			this.KillsCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 80);
 			//
 			// VeterancyCPControl
 			//
 			this.VeterancyCPControl.Caption = "Vet";
 			this.VeterancyCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Veterancy");
-			this.VeterancyCPControl.Location = new System.Drawing.Point(381, 140);
+			this.VeterancyCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 140);
 			//
 			// AccelCPControl
 			//
 			this.AccelCPControl.Caption = "Accel";
 			this.AccelCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Acceleration");
-			this.AccelCPControl.Location = new System.Drawing.Point(381, 200);
+			this.AccelCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 200);
 			//
 			// ChallengePointCollectionControl
 			//
@@ -141,7 +141,7 @@ namespace VUserInterface
 			this.Controls.Add(KillsCPControl);
 			this.Controls.Add(VeterancyCPControl);
 			this.Controls.Add(AccelCPControl);
-			this.Size = new System.Drawing.Size(589, 292);
+			this.Size = DPIScalingHelper.GetScaledSize(589, 292);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
 

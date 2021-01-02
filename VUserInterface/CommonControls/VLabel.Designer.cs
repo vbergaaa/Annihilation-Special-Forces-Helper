@@ -46,10 +46,10 @@ namespace VUserInterface.CommonControls
 			this.Label.BackColor = System.Drawing.Color.Navy;
 			this.Label.DataBindings.Add(new System.Windows.Forms.Binding("Text", this, "Text", true));
 			this.Label.ForeColor = System.Drawing.Color.White;
-			this.Label.Location = new System.Drawing.Point(0, 3);
+			this.Label.Location = DPIScalingHelper.GetScaledPoint(0, 3);
 			this.Label.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
 			this.Label.Name = "Label";
-			this.Label.Size = new System.Drawing.Size(0, 25);
+			this.Label.Size = DPIScalingHelper.GetScaledSize(0, 25);
 			this.Label.TabIndex = 0;
 			this.Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 

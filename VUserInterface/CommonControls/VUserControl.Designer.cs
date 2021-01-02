@@ -38,7 +38,7 @@ namespace VUserInterface.CommonControls
 			// CaptionLabel
 			//
 			this.CaptionLabel.AutoSize = true;
-			this.CaptionLabel.Location = new System.Drawing.Point(0, 3);
+			this.CaptionLabel.Location = DPIScalingHelper.GetScaledPoint(0, 3);
 			this.CaptionLabel.Name = "CaptionLabel";
 			this.CaptionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			this.CaptionLabel.Visible = false;
@@ -49,16 +49,16 @@ namespace VUserInterface.CommonControls
 			//
 			// CoreControl
 			//
-			this.CoreControl.Location = new Point(0, 0);
+			this.CoreControl.Location = DPIScalingHelper.GetScaledPoint(0, 0);
 			this.CoreControl.Name = "CoreControl";
 			this.CoreControl.SizeChanged += CoreControl_SizeChanged;
-			this.CoreControl.Size = new Size(100, 29);
+			this.CoreControl.Size = DPIScalingHelper.GetScaledSize(100, 29);
 			//
 			// VUserControl
 			//
 			this.Controls.Add(CaptionLabel);
 			this.Controls.Add(CoreControl);
-			this.MaximumSize = new System.Drawing.Size(500, 29);
+			this.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
 			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 		}

@@ -41,11 +41,11 @@ namespace VUserInterface
 			this.LoadoutNameTextBox = new VTextBox();
 			this.SlotNumberTextBox = new VTextBox();
 			this.StatsControl = new VStatsControl();
-			this.PerksButton = new Button();
-			this.GemsButton = new Button();
-			this.SoulsButton = new Button();
-			this.ChallengePointCollectionButton = new Button();
-			this.UnitButton = new Button();
+			this.PerksButton = new DPIButton();
+			this.GemsButton = new DPIButton();
+			this.SoulsButton = new DPIButton();
+			this.ChallengePointCollectionButton = new DPIButton();
+			this.UnitButton = new DPIButton();
 			this.GemsControl = new VGemCollectionControl();
 			this.SoulsControl = new VSoulCollectionControl();
 			this.ChallengePointCollectionControl = new ChallengePointCollectionControl();
@@ -64,7 +64,7 @@ namespace VUserInterface
 			// LoadoutNameTextBox
 			//
 			this.LoadoutNameTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Name", true);
-			this.LoadoutNameTextBox.Location = new System.Drawing.Point(390, 20);
+			this.LoadoutNameTextBox.Location = DPIScalingHelper.GetScaledPoint(390, 20);
 			this.LoadoutNameTextBox.Name = "LoadoutNameTextBox";
 			this.LoadoutNameTextBox.Caption = "LoadoutName";
 			this.LoadoutNameTextBox.Width = 100;
@@ -72,7 +72,7 @@ namespace VUserInterface
 			// SlotNumberTextBox
 			//
 			this.SlotNumberTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Slot", true);
-			this.SlotNumberTextBox.Location = new System.Drawing.Point(141, 20);
+			this.SlotNumberTextBox.Location = DPIScalingHelper.GetScaledPoint(141, 20);
 			this.SlotNumberTextBox.Name = "SlotNumberTextBox";
 			this.SlotNumberTextBox.Width = 30;
 			this.SlotNumberTextBox.Caption = "Save Slot";
@@ -83,13 +83,13 @@ namespace VUserInterface
 			this.RestrictCheckBox.Caption = "Use Profile Limits";
 			this.RestrictCheckBox.CheckedChanged += RestrictCheckBox_CheckedChanged;
 			this.RestrictCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "ShouldRestrict");
-			this.RestrictCheckBox.Location = new System.Drawing.Point(720, 20);
+			this.RestrictCheckBox.Location = DPIScalingHelper.GetScaledPoint(720, 20);
 			//
 			// AvailablePPLabel
 			//
 			this.AvailablePPLabel.AutoSize = true;
 			this.AvailablePPLabel.DataBindings.Add("Text", LoadoutBindingSource, "RemainingPerkPoints");
-			this.AvailablePPLabel.Location = new System.Drawing.Point(120, 90);
+			this.AvailablePPLabel.Location = DPIScalingHelper.GetScaledPoint(120, 90);
 			this.AvailablePPLabel.Name = "AvailablePPLabel";
 			this.AvailablePPLabel.Caption = "Available PP:";
 			//
@@ -97,47 +97,47 @@ namespace VUserInterface
 			//
 			this.AvailableCPLabel.AutoSize = true;
 			this.AvailableCPLabel.DataBindings.Add("Text", LoadoutBindingSource, "ChallengePoints.RemainingCP");
-			this.AvailableCPLabel.Location = new System.Drawing.Point(500, 90);
+			this.AvailableCPLabel.Location = DPIScalingHelper.GetScaledPoint(500, 90);
 			this.AvailableCPLabel.Name = "AvailableCPLabel";
 			this.AvailableCPLabel.Caption = "Available CP:";
-			this.AvailableCPLabel.MaximumSize = new System.Drawing.Size(150, 100);
+			this.AvailableCPLabel.MaximumSize = DPIScalingHelper.GetScaledSize(150, 100);
 			//
 			// AvailableGemsLabel
 			//
 			this.AvailableGemsLabel.AutoSize = true;
 			this.AvailableGemsLabel.DataBindings.Add("Text", LoadoutBindingSource, "Gems.RemainingGems");
-			this.AvailableGemsLabel.Location = new System.Drawing.Point(320, 90);
+			this.AvailableGemsLabel.Location = DPIScalingHelper.GetScaledPoint(320, 90);
 			this.AvailableGemsLabel.Name = "AvailableGemsLabel";
 			this.AvailableGemsLabel.Caption = "Available Gems:";
-			this.AvailableGemsLabel.MaximumSize = new System.Drawing.Size(150, 100);
+			this.AvailableGemsLabel.MaximumSize = DPIScalingHelper.GetScaledSize(150, 100);
 			//
 			// PerkPageControl
 			//
-			this.PerkPageControl.Location = new System.Drawing.Point(25, 120);
+			this.PerkPageControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
 			this.PerkPageControl.DataBindings.Add("Perks", this.LoadoutBindingSource, "Perks");
 			this.PerkPageControl.DataBindings.Add("Text", this.LoadoutBindingSource, "Perks.PageTitle");
 			//
 			// GemsControl
 			//
-			this.GemsControl.Location = new System.Drawing.Point(25, 120);
+			this.GemsControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
 			this.GemsControl.DataBindings.Add("Gems", this.LoadoutBindingSource, "Gems");
 			this.GemsControl.Text = "Gem";
 			//
 			// UnitControl
 			//
-			this.UnitControl.Location = new System.Drawing.Point(25, 120);
+			this.UnitControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
 			this.UnitControl.DataBindings.Add("UnitConfiguration", this.LoadoutBindingSource, "UnitConfiguration");
 			this.UnitControl.Text = "Gem";
 			//
 			// SoulsControl
 			//
-			this.SoulsControl.Location = new System.Drawing.Point(25, 120);
+			this.SoulsControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
 			this.SoulsControl.DataBindings.Add("Souls", this.LoadoutBindingSource, "Souls");
 			this.SoulsControl.Text = "Soul";
 			//
 			// ChallengePointCollectionControl
 			//
-			this.ChallengePointCollectionControl.Location = new System.Drawing.Point(25, 120);
+			this.ChallengePointCollectionControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
 			this.ChallengePointCollectionControl.DataBindings.Add("ChallengePointCollection", this.LoadoutBindingSource, "ChallengePoints");
 			this.ChallengePointCollectionControl.Text = "Challenge Points";
 			this.ChallengePointCollectionControl.Visible = false;
@@ -145,44 +145,44 @@ namespace VUserInterface
 			// StatsControl
 			//
 			this.StatsControl.DataBindings.Add("Stats", this.LoadoutBindingSource, "Stats");
-			this.StatsControl.Location = new System.Drawing.Point(620, 50);
+			this.StatsControl.Location = DPIScalingHelper.GetScaledPoint(620, 50);
 			//
 			// PerksButton
 			//
-			this.PerksButton.Location = new System.Drawing.Point(30, 55);
-			this.PerksButton.Size = new System.Drawing.Size(100, 28);
+			this.PerksButton.Location = DPIScalingHelper.GetScaledPoint(30, 55);
+			this.PerksButton.Size = DPIScalingHelper.GetScaledSize(100, 28);
 			this.PerksButton.Text = "Perks";
 			this.PerksButton.FlatStyle = FlatStyle.Flat;
 			this.PerksButton.Click += ControlVisibilityToggled;
 			//
 			// GemsButton
 			//
-			this.GemsButton.Location = new System.Drawing.Point(140, 55);
-			this.GemsButton.Size = new System.Drawing.Size(100, 28);
+			this.GemsButton.Location = DPIScalingHelper.GetScaledPoint(140, 55);
+			this.GemsButton.Size = DPIScalingHelper.GetScaledSize(100, 28);
 			this.GemsButton.Text = "Gems";
 			this.GemsButton.FlatStyle = FlatStyle.Flat;
 			this.GemsButton.Click += ControlVisibilityToggled;
 			//
 			// SoulsButton
 			//
-			this.SoulsButton.Location = new System.Drawing.Point(250, 55);
-			this.SoulsButton.Size = new System.Drawing.Size(100, 28);
+			this.SoulsButton.Location = DPIScalingHelper.GetScaledPoint(250, 55);
+			this.SoulsButton.Size = DPIScalingHelper.GetScaledSize(100, 28);
 			this.SoulsButton.Text = "Souls";
 			this.SoulsButton.FlatStyle = FlatStyle.Flat;
 			this.SoulsButton.Click += ControlVisibilityToggled;
 			//
 			// ChallengePointCollectionButton
 			//
-			this.ChallengePointCollectionButton.Location = new System.Drawing.Point(360, 55);
-			this.ChallengePointCollectionButton.Size = new System.Drawing.Size(100, 28);
+			this.ChallengePointCollectionButton.Location = DPIScalingHelper.GetScaledPoint(360, 55);
+			this.ChallengePointCollectionButton.Size = DPIScalingHelper.GetScaledSize(100, 28);
 			this.ChallengePointCollectionButton.Text = "CP";
 			this.ChallengePointCollectionButton.FlatStyle = FlatStyle.Flat;
 			this.ChallengePointCollectionButton.Click += ControlVisibilityToggled;
 			//
 			// UnitButton
 			//
-			this.UnitButton.Location = new System.Drawing.Point(470, 55);
-			this.UnitButton.Size = new System.Drawing.Size(100, 28);
+			this.UnitButton.Location = DPIScalingHelper.GetScaledPoint(470, 55);
+			this.UnitButton.Size = DPIScalingHelper.GetScaledSize(100, 28);
 			this.UnitButton.Text = "Unit";
 			this.UnitButton.FlatStyle = FlatStyle.Flat;
 			this.UnitButton.Click += ControlVisibilityToggled;
@@ -191,7 +191,7 @@ namespace VUserInterface
 			//
 			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = DPIScalingHelper.GetScaledSize(800, 450);
 			this.Controls.Add(LoadoutNameTextBox);
 			this.Controls.Add(PerkPageControl);
 			this.Controls.Add(SlotNumberTextBox);

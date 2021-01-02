@@ -8,6 +8,15 @@
     <Compile Update="ChallengePointControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="CommonControls\DPIScaling\DPIGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="CommonControls\DPIScaling\DPIButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="CommonControls\DPIScaling\DPIUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="CommonControls\VButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -26,11 +35,17 @@
     <Compile Update="CommonControls\VLoadList.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="CommonControls\DPIScaling\DPIPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="CommonControls\VTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="CommonControls\VUserControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GemControl.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Update="ProfileControl.cs">
       <SubType>UserControl</SubType>
@@ -43,9 +58,6 @@
     </Compile>
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="GemControl.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Update="UnitConfigurationControl.cs">
       <SubType>UserControl</SubType>

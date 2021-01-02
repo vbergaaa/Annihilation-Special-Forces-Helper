@@ -6,10 +6,11 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class GemControl : GroupBox
+	public partial class GemControl : DPIGroupBox
 	{
 		public GemControl()
 		{

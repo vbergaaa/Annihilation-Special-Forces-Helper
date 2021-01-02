@@ -56,7 +56,7 @@ namespace VUserInterface
 			this.AttackLabel.AutoSize = true;
 			this.AttackLabel.Caption = "Attack";
 			this.AttackLabel.DataBindings.Add("Text", BindingSource, "Attack");
-			this.AttackLabel.Location = new System.Drawing.Point(120, 60);
+			this.AttackLabel.Location = DPIScalingHelper.GetScaledPoint(120, 60);
 			this.AttackLabel.Name = "AttackLabel";
 			this.AttackLabel.TabIndex = 0;
 			// 
@@ -65,7 +65,7 @@ namespace VUserInterface
 			this.AttackSpeedLabel.AutoSize = true;
 			this.AttackSpeedLabel.Caption = "Attack Speed";
 			this.AttackSpeedLabel.DataBindings.Add("Text", BindingSource, "AttackSpeed");
-			this.AttackSpeedLabel.Location = new System.Drawing.Point(120, 80);
+			this.AttackSpeedLabel.Location = DPIScalingHelper.GetScaledPoint(120, 80);
 			this.AttackSpeedLabel.Name = "AttackSpeedLabel";
 			this.AttackSpeedLabel.TabIndex = 0;
 			// 
@@ -74,7 +74,7 @@ namespace VUserInterface
 			this.VitalsLabel.AutoSize = true;
 			this.VitalsLabel.Caption = "Vitals";
 			this.VitalsLabel.DataBindings.Add("Text", BindingSource, "Vitals");
-			this.VitalsLabel.Location = new System.Drawing.Point(120, 100);
+			this.VitalsLabel.Location = DPIScalingHelper.GetScaledPoint(120, 100);
 			this.VitalsLabel.Name = "VitalsLabel";
 			this.VitalsLabel.TabIndex = 0;
 			// 
@@ -83,7 +83,7 @@ namespace VUserInterface
 			this.ArmorLabel.AutoSize = true;
 			this.ArmorLabel.Caption = "Armor";
 			this.ArmorLabel.DataBindings.Add("Text", BindingSource, "Armor");
-			this.ArmorLabel.Location = new System.Drawing.Point(120, 120);
+			this.ArmorLabel.Location = DPIScalingHelper.GetScaledPoint(120, 120);
 			this.ArmorLabel.Name = "ArmorLabel";
 			this.ArmorLabel.TabIndex = 0;
 			// 
@@ -92,7 +92,7 @@ namespace VUserInterface
 			this.CriticalChanceLabel.AutoSize = true;
 			this.CriticalChanceLabel.Caption = "Crit Chance";
 			this.CriticalChanceLabel.DataBindings.Add("Text", BindingSource, "CriticalChance");
-			this.CriticalChanceLabel.Location = new System.Drawing.Point(120, 140);
+			this.CriticalChanceLabel.Location = DPIScalingHelper.GetScaledPoint(120, 140);
 			this.CriticalChanceLabel.Name = "CriticalChanceLabel";
 			this.CriticalChanceLabel.TabIndex = 0;
 			// 
@@ -101,7 +101,7 @@ namespace VUserInterface
 			this.CriticalDamageLabel.AutoSize = true;
 			this.CriticalDamageLabel.Caption = "Crit Damage";
 			this.CriticalDamageLabel.DataBindings.Add("Text", BindingSource, "CriticalDamage");
-			this.CriticalDamageLabel.Location = new System.Drawing.Point(120, 160);
+			this.CriticalDamageLabel.Location = DPIScalingHelper.GetScaledPoint(120, 160);
 			this.CriticalDamageLabel.Name = "CriticalDamageLabel";
 			this.CriticalDamageLabel.TabIndex = 0;
 			// 
@@ -110,7 +110,7 @@ namespace VUserInterface
 			this.MineralsLabel.AutoSize = true;
 			this.MineralsLabel.Caption = "Minerals";
 			this.MineralsLabel.DataBindings.Add("Text", BindingSource, "Minerals");
-			this.MineralsLabel.Location = new System.Drawing.Point(120, 180);
+			this.MineralsLabel.Location = DPIScalingHelper.GetScaledPoint(120, 180);
 			this.MineralsLabel.Name = "MineralsLabel";
 			this.MineralsLabel.TabIndex = 0;
 			// 
@@ -119,14 +119,14 @@ namespace VUserInterface
 			this.KillsLabel.AutoSize = true;
 			this.KillsLabel.Caption = "Kills";
 			this.KillsLabel.DataBindings.Add("Text", BindingSource, "Kills");
-			this.KillsLabel.Location = new System.Drawing.Point(120, 200);
+			this.KillsLabel.Location = DPIScalingHelper.GetScaledPoint(120, 200);
 			this.KillsLabel.Name = "KillsLabel";
 			this.KillsLabel.TabIndex = 0;
 			//
 			// SoulComboBox
 			//
-			this.SoulComboBox.Location = new System.Drawing.Point(15, 30);
-			this.SoulComboBox.Size = new System.Drawing.Size(135, 25);
+			this.SoulComboBox.Location = DPIScalingHelper.GetScaledPoint(15, 30);
+			this.SoulComboBox.Size = DPIScalingHelper.GetScaledSize(135, 25);
 			this.SoulComboBox.DataSource = SoulList;
 			this.SoulComboBox.SelectedValueChanged += SoulChanged;
 			// 
@@ -142,7 +142,7 @@ namespace VUserInterface
 			this.Controls.Add(this.AttackSpeedLabel);
 			this.Controls.Add(this.AttackLabel);
 			this.Name = "SoulForm";
-			this.Size = new System.Drawing.Size(163, 230);
+			this.Size = DPIScalingHelper.GetScaledSize(163, 230);
 			((ISupportInitialize)this.BindingSource).EndInit();
 		}
 

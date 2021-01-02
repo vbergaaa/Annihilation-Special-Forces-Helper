@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using VBusiness.Loadouts;
 using VEntityFramework;
@@ -97,9 +98,13 @@ namespace VUserInterface
 		{
 			if (SaveButton != null && CancelButton != null)
 			{
-				this.SaveButton.Location = new System.Drawing.Point(this.Width - 180, this.Height - 30);
-				this.CancelButton.Location = new System.Drawing.Point(this.Width - 90, this.Height - 30);
+				this.SaveButton.Location = DPIScalingHelper.GetScaledPoint(this.Width - 180, this.Height - 30);
+				this.CancelButton.Location = DPIScalingHelper.GetScaledPoint(this.Width - 90, this.Height - 30);
 			}
+		}
+
+		protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
+		{
 		}
 
 		public event EventHandler<EventArgs> OnSaved;

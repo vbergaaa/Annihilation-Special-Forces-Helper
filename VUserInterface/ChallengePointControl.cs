@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Windows.Forms;
 using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class ChallengePointControl : UserControl
+	public partial class ChallengePointControl : DPIUserControl
 	{
 		public ChallengePointControl()
 		{

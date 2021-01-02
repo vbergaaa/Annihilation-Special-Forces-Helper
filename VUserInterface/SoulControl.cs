@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
 using VBusiness.Souls;
 using VEntityFramework.Data;
 using VEntityFramework;
 using VBusiness.HelperClasses;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class SoulControl : GroupBox
+	public partial class SoulControl : DPIGroupBox
 	{
 		public SoulControl()
 		{

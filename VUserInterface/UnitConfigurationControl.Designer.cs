@@ -54,38 +54,38 @@ namespace VUserInterface
 			//
 			this.RankDropBox.DataBindings.Add("SelectedValue", bindingSource, "UnitRank");
 			this.RankDropBox.List = RankList;
-			this.RankDropBox.Location = new System.Drawing.Point(125, 20);
+			this.RankDropBox.Location = DPIScalingHelper.GetScaledPoint(125, 20);
 			this.RankDropBox.Caption = "Rank:";
 			//
 			// InfusionIncrementor
 			//
-			this.InfusionIncrementor.Location = new System.Drawing.Point(125, 50);
+			this.InfusionIncrementor.Location = DPIScalingHelper.GetScaledPoint(125, 50);
 			this.InfusionIncrementor.DataBindings.Add("Value", bindingSource, "CurrentInfusion");
 			this.InfusionIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaximumInfusion");
 			this.InfusionIncrementor.Caption = "Infusion:";
 			//
 			// EssenceIncrementor
 			//
-			this.EssenceIncrementor.Location = new System.Drawing.Point(125, 80);
+			this.EssenceIncrementor.Location = DPIScalingHelper.GetScaledPoint(125, 80);
 			this.EssenceIncrementor.DataBindings.Add("Value", bindingSource, "EssenceStacks");
 			this.EssenceIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaximumEssence");
 			this.EssenceIncrementor.Caption = "Essence:";
 			//
 			// SoloBonusCheckBox
 			//
-			this.SoloBonusCheckBox.Location = new System.Drawing.Point(125, 110);
+			this.SoloBonusCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 110);
 			this.SoloBonusCheckBox.Caption = "Solo Bonus:";
 			this.SoloBonusCheckBox.DataBindings.Add("Checked", bindingSource, "HasSoloBonus");
 			//
 			// UnitSpecCheckBox
 			//
-			this.UnitSpecCheckBox.Location = new System.Drawing.Point(125, 140);
+			this.UnitSpecCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 140);
 			this.UnitSpecCheckBox.Caption = "Has Unit Spec:";
 			this.UnitSpecCheckBox.DataBindings.Add("Checked", bindingSource, "HasUnitSpec");
 			//
 			// AdrenalineRushCheckBox
 			//
-			this.AdrenalineRushCheckBox.Location = new System.Drawing.Point(125, 170);
+			this.AdrenalineRushCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 170);
 			this.AdrenalineRushCheckBox.Caption = "Adrenaline Rush:";
 			this.AdrenalineRushCheckBox.DataBindings.Add("Checked", bindingSource, "HasAdrenalineBuffActive");
 			//
@@ -93,7 +93,7 @@ namespace VUserInterface
 			//
 			this.DifficultyDropBox.DataBindings.Add("SelectedValue", bindingSource, "DifficultyLevel");
 			this.DifficultyDropBox.List = DifficultyList;
-			this.DifficultyDropBox.Location = new System.Drawing.Point(125, 200);
+			this.DifficultyDropBox.Location = DPIScalingHelper.GetScaledPoint(125, 200);
 			this.DifficultyDropBox.Caption = "Difficulty:";
 			//
 			// VSoulCollectionControl
@@ -105,7 +105,7 @@ namespace VUserInterface
 			this.Controls.Add(SoloBonusCheckBox);
 			this.Controls.Add(UnitSpecCheckBox);
 			this.Controls.Add(AdrenalineRushCheckBox);
-			this.Size = new System.Drawing.Size(589, 272);
+			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
 

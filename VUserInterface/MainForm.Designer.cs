@@ -39,14 +39,14 @@ namespace VUserInterface
 			this.LoadoutsLoadList = new VUserInterface.CommonControls.VLoadList();
 			this.SoulsLoadList = new VUserInterface.CommonControls.VLoadList();
 			this.TitleLabel = new VUserInterface.CommonControls.VLabel();
-			this.LeftPanel = new System.Windows.Forms.Panel();
-			this.SoulsButton = new System.Windows.Forms.Button();
-			this.LoadoutsButton = new System.Windows.Forms.Button();
-			this.ProfileButton = new System.Windows.Forms.Button();
-			this.RightPanel = new System.Windows.Forms.Panel();
-			this.ProfilePanel = new System.Windows.Forms.Panel();
-			this.LoadoutsPanel = new System.Windows.Forms.Panel();
-			this.SoulsPanel = new System.Windows.Forms.Panel();
+			this.LeftPanel = new VUserInterface.CommonControls.DPIPanel();
+			this.SoulsButton = new VUserInterface.CommonControls.VButton();
+			this.LoadoutsButton = new VUserInterface.CommonControls.VButton();
+			this.ProfileButton = new VUserInterface.CommonControls.VButton();
+			this.RightPanel = new VUserInterface.CommonControls.DPIPanel();
+			this.ProfilePanel = new VUserInterface.CommonControls.DPIPanel();
+			this.LoadoutsPanel = new VUserInterface.CommonControls.DPIPanel();
+			this.SoulsPanel = new VUserInterface.CommonControls.DPIPanel();
 			this.ProfileControl = new ProfileControl();
 			this.LeftPanel.SuspendLayout();
 			this.RightPanel.SuspendLayout();
@@ -57,18 +57,18 @@ namespace VUserInterface
 			// LoadoutsLoadList
 			// 
 			this.LoadoutsLoadList.BizoType = typeof(VBusiness.Loadouts.Loadout);
-			this.LoadoutsLoadList.Location = new System.Drawing.Point(50, 30);
+			this.LoadoutsLoadList.Location = DPIScalingHelper.GetScaledPoint(50, 30);
 			this.LoadoutsLoadList.Name = "LoadoutsLoadList";
-			this.LoadoutsLoadList.Size = new System.Drawing.Size(280, 160);
+			this.LoadoutsLoadList.Size = DPIScalingHelper.GetScaledSize(280, 160);
 			this.LoadoutsLoadList.TabIndex = 0;
 			this.LoadoutsLoadList.Text = "Loadouts";
 			// 
 			// SoulsLoadList
 			// 
 			this.SoulsLoadList.BizoType = typeof(VBusiness.Souls.Soul);
-			this.SoulsLoadList.Location = new System.Drawing.Point(50, 30);
+			this.SoulsLoadList.Location = DPIScalingHelper.GetScaledPoint(50, 30);
 			this.SoulsLoadList.Name = "SoulsLoadList";
-			this.SoulsLoadList.Size = new System.Drawing.Size(280, 160);
+			this.SoulsLoadList.Size = DPIScalingHelper.GetScaledSize(280, 160);
 			this.SoulsLoadList.TabIndex = 0;
 			this.SoulsLoadList.Text = "Souls";
 			// 
@@ -76,9 +76,9 @@ namespace VUserInterface
 			// 
 			this.TitleLabel.AutoSize = true;
 			this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.TitleLabel.Location = new System.Drawing.Point(1, 5);
+			this.TitleLabel.Location = DPIScalingHelper.GetScaledPoint(1, 5);
 			this.TitleLabel.Name = "TitleLabel";
-			this.TitleLabel.Size = new System.Drawing.Size(598, 30);
+			this.TitleLabel.Size = DPIScalingHelper.GetScaledSize(598, 30);
 			this.TitleLabel.TabIndex = 0;
 			this.TitleLabel.Text = "Annihilation Special Forces Companion Application";
 			this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,16 +88,16 @@ namespace VUserInterface
 			this.LeftPanel.Controls.Add(this.SoulsButton);
 			this.LeftPanel.Controls.Add(this.LoadoutsButton);
 			this.LeftPanel.Controls.Add(this.ProfileButton);
-			this.LeftPanel.Location = new System.Drawing.Point(0, 35);
+			this.LeftPanel.Location = DPIScalingHelper.GetScaledPoint(0, 35);
 			this.LeftPanel.Name = "LeftPanel";
-			this.LeftPanel.Size = new System.Drawing.Size(200, 400);
+			this.LeftPanel.Size = DPIScalingHelper.GetScaledSize(200, 400);
 			this.LeftPanel.TabIndex = 0;
 			// 
 			// SoulsButton
 			// 
-			this.SoulsButton.Location = new System.Drawing.Point(12, 133);
+			this.SoulsButton.Location = DPIScalingHelper.GetScaledPoint(12, 133);
 			this.SoulsButton.Name = "SoulsButton";
-			this.SoulsButton.Size = new System.Drawing.Size(182, 31);
+			this.SoulsButton.Size = DPIScalingHelper.GetScaledSize(182, 31);
 			this.SoulsButton.TabIndex = 2;
 			this.SoulsButton.Text = "Souls";
 			this.SoulsButton.UseVisualStyleBackColor = true;
@@ -105,9 +105,9 @@ namespace VUserInterface
 			// 
 			// LoadoutsButton
 			// 
-			this.LoadoutsButton.Location = new System.Drawing.Point(12, 96);
+			this.LoadoutsButton.Location = DPIScalingHelper.GetScaledPoint(12, 96);
 			this.LoadoutsButton.Name = "LoadoutsButton";
-			this.LoadoutsButton.Size = new System.Drawing.Size(182, 31);
+			this.LoadoutsButton.Size = DPIScalingHelper.GetScaledSize(182, 31);
 			this.LoadoutsButton.TabIndex = 1;
 			this.LoadoutsButton.Text = "Loadouts";
 			this.LoadoutsButton.UseVisualStyleBackColor = true;
@@ -115,9 +115,9 @@ namespace VUserInterface
 			// 
 			// ProfileButton
 			// 
-			this.ProfileButton.Location = new System.Drawing.Point(12, 59);
+			this.ProfileButton.Location = DPIScalingHelper.GetScaledPoint(12, 59);
 			this.ProfileButton.Name = "ProfileButton";
-			this.ProfileButton.Size = new System.Drawing.Size(182, 31);
+			this.ProfileButton.Size = DPIScalingHelper.GetScaledSize(182, 31);
 			this.ProfileButton.TabIndex = 0;
 			this.ProfileButton.Text = "Profile";
 			this.ProfileButton.UseVisualStyleBackColor = true;
@@ -129,49 +129,49 @@ namespace VUserInterface
 			this.RightPanel.Controls.Add(this.ProfilePanel);
 			this.RightPanel.Controls.Add(this.LoadoutsPanel);
 			this.RightPanel.Controls.Add(this.SoulsPanel);
-			this.RightPanel.Location = new System.Drawing.Point(200, 35);
+			this.RightPanel.Location = DPIScalingHelper.GetScaledPoint(200, 35);
 			this.RightPanel.Name = "RightPanel";
-			this.RightPanel.Size = new System.Drawing.Size(450, 400);
+			this.RightPanel.Size = DPIScalingHelper.GetScaledSize(450, 400);
 			this.RightPanel.TabIndex = 1;
 			// 
 			// ProfilePanel
 			// 
 			this.ProfilePanel.Controls.Add(this.ProfileControl);
-			this.ProfilePanel.Location = new System.Drawing.Point(0, 0);
+			this.ProfilePanel.Location = DPIScalingHelper.GetScaledPoint(0, 0);
 			this.ProfilePanel.Name = "ProfilePanel";
-			this.ProfilePanel.Size = new System.Drawing.Size(450, 400);
+			this.ProfilePanel.Size = DPIScalingHelper.GetScaledSize(450, 400);
 			this.ProfilePanel.TabIndex = 1;
 			this.ProfilePanel.Visible = true;
 			// 
 			// LoadoutsPanel
 			// 
 			this.LoadoutsPanel.Controls.Add(this.LoadoutsLoadList);
-			this.LoadoutsPanel.Location = new System.Drawing.Point(0, 0);
+			this.LoadoutsPanel.Location = DPIScalingHelper.GetScaledPoint(0, 0);
 			this.LoadoutsPanel.Name = "LoadoutsPanel";
-			this.LoadoutsPanel.Size = new System.Drawing.Size(450, 400);
+			this.LoadoutsPanel.Size = DPIScalingHelper.GetScaledSize(450, 400);
 			this.LoadoutsPanel.TabIndex = 1;
 			this.LoadoutsPanel.Visible = false;
 			// 
 			// SoulsPanel
 			// 
 			this.SoulsPanel.Controls.Add(this.SoulsLoadList);
-			this.SoulsPanel.Location = new System.Drawing.Point(0, 0);
+			this.SoulsPanel.Location = DPIScalingHelper.GetScaledPoint(0, 0);
 			this.SoulsPanel.Name = "SoulsPanel";
-			this.SoulsPanel.Size = new System.Drawing.Size(450, 400);
+			this.SoulsPanel.Size = DPIScalingHelper.GetScaledSize(450, 400);
 			this.SoulsPanel.TabIndex = 1;
 			this.SoulsPanel.Visible = false;
 			//
 			// ProfileControl
 			//
 			this.ProfileControl.Name = "ProfileControl";
-			this.ProfileControl.Size = new Size(350, 300);
-			this.ProfileControl.Location = new Point(0, 0);
+			this.ProfileControl.Size = DPIScalingHelper.GetScaledSize(350, 300);
+			this.ProfileControl.Location = DPIScalingHelper.GetScaledPoint(0, 0);
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(600, 300);
+			this.ClientSize = DPIScalingHelper.GetScaledSize(600, 300);
 			this.Controls.Add(this.TitleLabel);
 			this.Controls.Add(this.LeftPanel);
 			this.Controls.Add(this.RightPanel);
@@ -196,8 +196,8 @@ namespace VUserInterface
 		private VLoadList SoulsLoadList;
 		private ProfileControl ProfileControl;
 		private VLabel TitleLabel;
-		private Button SoulsButton;
-		private Button LoadoutsButton;
-		private Button ProfileButton;
+		private VButton SoulsButton;
+		private VButton LoadoutsButton;
+		private VButton ProfileButton;
 	}
 }

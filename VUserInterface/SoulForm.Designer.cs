@@ -54,37 +54,37 @@ namespace VUserInterface
 			// TypeCaption
 			// 
 			this.TypeCaption.AutoSize = true;
-			this.TypeCaption.Location = new System.Drawing.Point(20, 60);
+			this.TypeCaption.Location = DPIScalingHelper.GetScaledPoint(20, 60);
 			this.TypeCaption.Name = "TypeCaption";
-			this.TypeCaption.Size = new System.Drawing.Size(57, 15);
+			this.TypeCaption.Size = DPIScalingHelper.GetScaledSize(57, 15);
 			this.TypeCaption.TabIndex = 8;
 			this.TypeCaption.Text = "Soul Type";
 			// 
 			// SaveSlotTextBox
 			// 
 			this.SaveSlotTextBox.Caption = "Save Slot";
-			this.SaveSlotTextBox.Location = new System.Drawing.Point(130, 29);
+			this.SaveSlotTextBox.Location = DPIScalingHelper.GetScaledPoint(130, 29);
 			this.SaveSlotTextBox.DataBindings.Add("Text", BindingSource, "SaveSlot");
 			this.SaveSlotTextBox.Name = "SaveSlotComboBox";
-			this.SaveSlotTextBox.Size = new System.Drawing.Size(50, 24);
+			this.SaveSlotTextBox.Size = DPIScalingHelper.GetScaledSize(50, 24);
 			this.SaveSlotTextBox.TabIndex = 0;
 			// 
 			// TypeComboBox
 			// 
 			this.TypeComboBox.SelectedValueChanged += TypeComboBox_SelectionChanged;
 			this.TypeComboBox.FormattingEnabled = true;
-			this.TypeComboBox.Location = new System.Drawing.Point(20, 91);
+			this.TypeComboBox.Location = DPIScalingHelper.GetScaledPoint(20, 91);
 			this.TypeComboBox.BindingContext = new BindingContext();
 			this.TypeComboBox.DisplayMember = "Key";
 			this.TypeComboBox.ValueMember = "Value";
 			this.TypeComboBox.DataSource = SoulTypeList;
 			this.TypeComboBox.Name = "TypeComboBox";
-			this.TypeComboBox.Size = new System.Drawing.Size(220, 23);
+			this.TypeComboBox.Size = DPIScalingHelper.GetScaledSize(220, 23);
 			this.TypeComboBox.TabIndex = 9;
 			//
 			// AttackIncrementor
 			//
-			this.AttackIncrementor.Location = new System.Drawing.Point(130, 124);
+			this.AttackIncrementor.Location = DPIScalingHelper.GetScaledPoint(130, 124);
 			this.AttackIncrementor.Caption = "Attack:";
 			this.AttackIncrementor.DataBindings.Add("Value", BindingSource, "Attack");
 			this.AttackIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxAttack");
@@ -92,7 +92,7 @@ namespace VUserInterface
 			//
 			// AttackSpeedIncrementor
 			//
-			this.AttackSpeedIncrementor.Location = new System.Drawing.Point(130, 155);
+			this.AttackSpeedIncrementor.Location = DPIScalingHelper.GetScaledPoint(130, 155);
 			this.AttackSpeedIncrementor.Caption = "Attack Speed:";
 			this.AttackSpeedIncrementor.DataBindings.Add("Value", BindingSource, "AttackSpeed");
 			this.AttackSpeedIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxAttackSpeed");
@@ -100,7 +100,7 @@ namespace VUserInterface
 			//
 			// VitalsIncrementor
 			//
-			this.VitalsIncrementor.Location = new System.Drawing.Point(130, 186);
+			this.VitalsIncrementor.Location = DPIScalingHelper.GetScaledPoint(130, 186);
 			this.VitalsIncrementor.Caption = "Vitals:";
 			this.VitalsIncrementor.DataBindings.Add("Value", BindingSource, "Vitals");
 			this.VitalsIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxVitals");
@@ -108,7 +108,7 @@ namespace VUserInterface
 			//
 			// ArmorIncrementor
 			//
-			this.ArmorIncrementor.Location = new System.Drawing.Point(130, 217);
+			this.ArmorIncrementor.Location = DPIScalingHelper.GetScaledPoint(130, 217);
 			this.ArmorIncrementor.Caption = "Armor:";
 			this.ArmorIncrementor.DataBindings.Add("Value", BindingSource, "Armor");
 			this.ArmorIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxArmor");
@@ -116,7 +116,7 @@ namespace VUserInterface
 			//
 			// CritChanceIncrementor
 			//
-			this.CritChanceIncrementor.Location = new System.Drawing.Point(130, 248);
+			this.CritChanceIncrementor.Location = DPIScalingHelper.GetScaledPoint(130, 248);
 			this.CritChanceIncrementor.Caption = "Crit Chance:";
 			this.CritChanceIncrementor.DataBindings.Add("Value", BindingSource, "CriticalChance");
 			this.CritChanceIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxCriticalChance");
@@ -124,7 +124,7 @@ namespace VUserInterface
 			//
 			// CritDamageIncrementor
 			//
-			this.CritDamageIncrementor.Location = new System.Drawing.Point(130, 279);
+			this.CritDamageIncrementor.Location = DPIScalingHelper.GetScaledPoint(130, 279);
 			this.CritDamageIncrementor.Caption = "Crit Damage:";
 			this.CritDamageIncrementor.DataBindings.Add("Value", BindingSource, "CriticalDamage");
 			this.CritDamageIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxCriticalDamage");
@@ -132,7 +132,7 @@ namespace VUserInterface
 			//
 			// MineralsIncrementor
 			//
-			this.MineralsIncrementor.Location = new System.Drawing.Point(130, 310);
+			this.MineralsIncrementor.Location = DPIScalingHelper.GetScaledPoint(130, 310);
 			this.MineralsIncrementor.Caption = "Minerals:";
 			this.MineralsIncrementor.DataBindings.Add("Value", BindingSource, "Minerals");
 			this.MineralsIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxMinerals");
@@ -141,7 +141,7 @@ namespace VUserInterface
 			//
 			// KillsIncrementor
 			//
-			this.KillsIncrementor.Location = new System.Drawing.Point(130, 341);
+			this.KillsIncrementor.Location = DPIScalingHelper.GetScaledPoint(130, 341);
 			this.KillsIncrementor.Caption = "Kills:";
 			this.KillsIncrementor.DataBindings.Add("Value", BindingSource, "Kills");
 			this.KillsIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxKills");
@@ -152,7 +152,7 @@ namespace VUserInterface
 			// 
 			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(258, 419);
+			this.ClientSize = DPIScalingHelper.GetScaledSize(258, 419);
 			this.Controls.Add(this.TypeCaption);
 			this.Controls.Add(this.TypeComboBox);
 			this.Controls.Add(this.SaveSlotTextBox);

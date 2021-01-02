@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using VBusiness;
-using VEntityFramework.Model;
-using VBusiness.Ranks;
-using VBusiness.HelperClasses;
-using VBusiness.Difficulties;
 using VBusiness.ChallengePoints;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class ChallengePointCollectionControl : UserControl
+	public partial class ChallengePointCollectionControl : DPIUserControl
 	{
 		public ChallengePointCollectionControl()
 		{

@@ -42,9 +42,9 @@ namespace VUserInterface
 			// 
 			// CostCaption
 			// 
-			this.CostCaption.Location = new System.Drawing.Point(5, 50);
+			this.CostCaption.Location = DPIScalingHelper.GetScaledPoint(5, 50);
 			this.CostCaption.Name = "CostCaption";
-			this.CostCaption.Size = new System.Drawing.Size(110, 23);
+			this.CostCaption.Size = DPIScalingHelper.GetScaledSize(110, 23);
 			this.CostCaption.TabIndex = 6;
 			this.CostCaption.Text = "Next Lvl Cost:";
 			this.CostCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -52,24 +52,24 @@ namespace VUserInterface
 			// CostLabel
 			// 
 			this.CostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gemBindingSource, "NextLevelCost"));
-			this.CostLabel.Location = new System.Drawing.Point(116, 50);
+			this.CostLabel.Location = DPIScalingHelper.GetScaledPoint(116, 50);
 			this.CostLabel.Name = "CostLabel";
-			this.CostLabel.Size = new System.Drawing.Size(40, 23);
+			this.CostLabel.Size = DPIScalingHelper.GetScaledSize(40, 23);
 			this.CostLabel.TabIndex = 6;
 			this.CostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// CurrentLevelCaption
 			// 
-			this.CurrentLevelCaption.Location = new System.Drawing.Point(1, 17);
+			this.CurrentLevelCaption.Location = DPIScalingHelper.GetScaledPoint(1, 17);
 			this.CurrentLevelCaption.Name = "CurrentLevelCaption";
-			this.CurrentLevelCaption.Size = new System.Drawing.Size(70, 23);
+			this.CurrentLevelCaption.Size = DPIScalingHelper.GetScaledSize(70, 23);
 			this.CurrentLevelCaption.TabIndex = 3;
 			this.CurrentLevelCaption.Text = "Current:";
 			this.CurrentLevelCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			//
 			// this.CurrentLevelIncrementor
 			//
-			this.CurrentLevelIncrementor.Location = new System.Drawing.Point(27, 20);
+			this.CurrentLevelIncrementor.Location = DPIScalingHelper.GetScaledPoint(27, 20);
 			this.CurrentLevelIncrementor.DataBindings.Add("Value", gemBindingSource, "CurrentLevel");
 			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", gemBindingSource, "MaxValue");
 			this.CurrentLevelIncrementor.MinValue = 0;
@@ -84,7 +84,7 @@ namespace VUserInterface
 			this.Controls.Add(this.CostCaption);
 			this.Controls.Add(this.CurrentLevelIncrementor);
 			this.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gemBindingSource, "Name"));
-			this.Size = new System.Drawing.Size(160, 75);
+			this.Size = DPIScalingHelper.GetScaledSize(160, 75);
 			((System.ComponentModel.ISupportInitialize)(this.gemBindingSource)).EndInit();
 		}
 

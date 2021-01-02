@@ -11,7 +11,7 @@ using VEntityFramework.DataContext;
 
 namespace VUserInterface.CommonControls
 {
-	public partial class VLoadList : UserControl
+	public partial class VLoadList : DPIUserControl
 	{
 		public VLoadList()
 		{

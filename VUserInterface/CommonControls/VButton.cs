@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace VUserInterface.CommonControls
 {
-	public class VButton : Button
+	public class VButton : DPIButton
 	{
 		protected override void OnEnabledChanged(EventArgs e)
 		{

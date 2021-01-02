@@ -44,9 +44,9 @@ namespace VUserInterface
 			// 
 			// CostCaption
 			// 
-			this.CostCaption.Location = new System.Drawing.Point(10, 69);
+			this.CostCaption.Location = DPIScalingHelper.GetScaledPoint(10, 69);
 			this.CostCaption.Name = "CostCaption";
-			this.CostCaption.Size = new System.Drawing.Size(50, 23);
+			this.CostCaption.Size = DPIScalingHelper.GetScaledSize(50, 23);
 			this.CostCaption.TabIndex = 6;
 			this.CostCaption.Text = "Cost";
 			this.CostCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -54,15 +54,15 @@ namespace VUserInterface
 			// CostLabel
 			// 
 			this.CostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perkBindingSource, "RemainingCost"));
-			this.CostLabel.Location = new System.Drawing.Point(70, 69);
+			this.CostLabel.Location = DPIScalingHelper.GetScaledPoint(70, 69);
 			this.CostLabel.Name = "CostLabel";
-			this.CostLabel.Size = new System.Drawing.Size(70, 23);
+			this.CostLabel.Size = DPIScalingHelper.GetScaledSize(70, 23);
 			this.CostLabel.TabIndex = 6;
 			this.CostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			//
 			// CurrentLevelIncrementor
 			//
-			this.CurrentLevelIncrementor.Location = new System.Drawing.Point(27, 30);
+			this.CurrentLevelIncrementor.Location = DPIScalingHelper.GetScaledPoint(27, 30);
 			this.CurrentLevelIncrementor.DataBindings.Add("Value", perkBindingSource, "DesiredLevel");
 			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", perkBindingSource, "MaxLevel");
 			// 
@@ -76,7 +76,7 @@ namespace VUserInterface
 			this.Controls.Add(this.CurrentLevelIncrementor);
 			this.Controls.Add(this.CostCaption);
 			this.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.perkBindingSource, "Name"));
-			this.Size = new System.Drawing.Size(160, 100);
+			this.Size = DPIScalingHelper.GetScaledSize(160, 100);
 			((System.ComponentModel.ISupportInitialize)(this.perkBindingSource)).EndInit();
 		}
 

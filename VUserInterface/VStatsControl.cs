@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 using VEntityFramework.Model;
-using System.Threading;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class VStatsControl : GroupBox
+	public partial class VStatsControl : DPIGroupBox
 	{
 		public VStatsControl()
 		{
