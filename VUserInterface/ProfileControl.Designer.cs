@@ -228,7 +228,7 @@ namespace VUserInterface
 			this.EditPanel.Controls.Add(this.ModScoreTextBox);
 			this.EditPanel.Controls.Add(this.GemsTextBox);
 			this.EditPanel.Controls.Add(this.CPTextBox);
-			this.EditPanel.Location = DPIScalingHelper.GetScaledPoint(0, 50);
+			this.EditPanel.Location = DPIScalingHelper.GetScaledPoint(0, 60);
 			this.EditPanel.Name = "EditPanel";
 			this.EditPanel.Size = DPIScalingHelper.GetScaledSize(400, 400);
 			this.EditPanel.TabIndex = 1;

@@ -42,11 +42,13 @@ namespace VUserInterface.CommonControls
 			// 
 			// Label
 			// 
-			this.Label.AutoSize = true;
+#if DEBUG
 			this.Label.BackColor = System.Drawing.Color.Navy;
-			this.Label.DataBindings.Add(new System.Windows.Forms.Binding("Text", this, "Text", true));
 			this.Label.ForeColor = System.Drawing.Color.White;
-			this.Label.Location = DPIScalingHelper.GetScaledPoint(0, 3);
+#endif
+			this.Label.AutoSize = true;
+			this.Label.DataBindings.Add(new System.Windows.Forms.Binding("Text", this, "Text", true));
+			this.Label.Location = DPIScalingHelper.GetScaledPoint(0, 2);
 			this.Label.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
 			this.Label.Name = "Label";
 			this.Label.Size = DPIScalingHelper.GetScaledSize(0, 25);
