@@ -34,7 +34,7 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			this.TypeCaption = new VLabel();
-			this.TypeComboBox = new System.Windows.Forms.ComboBox();
+			this.TypeDropBox = new VDropBox();
 			this.SaveSlotTextBox = new VTextBox();
 			this.BindingSource = new BindingSource();
 			this.AttackIncrementor = new VIncrementor();
@@ -71,16 +71,13 @@ namespace VUserInterface
 			// 
 			// TypeComboBox
 			// 
-			this.TypeComboBox.SelectedValueChanged += TypeComboBox_SelectionChanged;
-			this.TypeComboBox.FormattingEnabled = true;
-			this.TypeComboBox.Location = DPIScalingHelper.GetScaledPoint(20, 91);
-			this.TypeComboBox.BindingContext = new BindingContext();
-			this.TypeComboBox.DisplayMember = "Key";
-			this.TypeComboBox.ValueMember = "Value";
-			this.TypeComboBox.DataSource = SoulTypeList;
-			this.TypeComboBox.Name = "TypeComboBox";
-			this.TypeComboBox.Size = DPIScalingHelper.GetScaledSize(220, 23);
-			this.TypeComboBox.TabIndex = 9;
+			this.TypeDropBox.SelectedValueChanged += TypeComboBox_SelectionChanged;
+			this.TypeDropBox.Location = DPIScalingHelper.GetScaledPoint(20, 91);
+			this.TypeDropBox.BindingContext = new BindingContext();
+			this.TypeDropBox.List = SoulTypesList;
+			this.TypeDropBox.Name = "TypeComboBox";
+			this.TypeDropBox.Size = DPIScalingHelper.GetScaledSize(220, 23);
+			this.TypeDropBox.TabIndex = 9;
 			//
 			// AttackIncrementor
 			//
@@ -154,7 +151,7 @@ namespace VUserInterface
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = DPIScalingHelper.GetScaledSize(258, 419);
 			this.Controls.Add(this.TypeCaption);
-			this.Controls.Add(this.TypeComboBox);
+			this.Controls.Add(this.TypeDropBox);
 			this.Controls.Add(this.SaveSlotTextBox);
 			this.Controls.Add(this.AttackIncrementor);
 			this.Controls.Add(this.AttackSpeedIncrementor);
@@ -182,7 +179,7 @@ namespace VUserInterface
 		private VIncrementor MineralsIncrementor;
 		private VIncrementor KillsIncrementor;
 		private VLabel TypeCaption;
-		private System.Windows.Forms.ComboBox TypeComboBox;
+		private VDropBox TypeDropBox;
 		private VTextBox SaveSlotTextBox;
 		private System.Windows.Forms.BindingSource BindingSource;
 	}
