@@ -44,17 +44,17 @@ namespace VUserInterface.CommonControls
 			this.CheckBox.AutoSize = false;
 			this.CheckBox.DataBindings.Add("CheckState", this, "Checked", true, DataSourceUpdateMode.OnPropertyChanged, CheckState.Indeterminate);
 			this.CheckBox.Location = new System.Drawing.Point(0, 0);
-			this.CheckBox.Size = new System.Drawing.Size(20, 20);
+			this.CheckBox.Size = DPIScalingHelper.GetScaledSize(20, 20);
 			//
 			// CoreControl
 			//
-			this.CoreControl.Size = new System.Drawing.Size(21, 21);
+			this.CoreControl.Size = DPIScalingHelper.GetScaledSize(21, 21);
 			this.CoreControl.Controls.Add(CheckBox);
 			//
 			// VCheckBox
 			//
 			this.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
-			this.Size = new System.Drawing.Size(21, 21);
+			this.Size = DPIScalingHelper.GetScaledSize(21, 21);
 		}
 
 		#endregion
