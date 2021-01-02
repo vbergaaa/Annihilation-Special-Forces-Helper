@@ -54,10 +54,10 @@ namespace VUserInterface.CommonControls
 
 		void CoreControl_SizeChanged(object sender, System.EventArgs e)
 		{
-		//	if (CoreControl.Controls.Count == 1)
-		//	{
-		//		CoreControl.Controls[0].Size = CoreControl.Size;
-		//	}
+			if (CoreControl.Controls.Count == 1)
+			{
+				CoreControl.Controls[0].Size = CoreControl.Size;
+			}
 		}
 
 		protected virtual bool ShouldResizeOnParentSizeChanged => true;
@@ -66,36 +66,36 @@ namespace VUserInterface.CommonControls
 
 		#region OnSizeChanged
 
-		//protected override void OnSizeChanged(EventArgs e)
-		//{
-		//	base.OnSizeChanged(e);
+		protected override void OnSizeChanged(EventArgs e)
+		{
+			base.OnSizeChanged(e);
 
-		//	if (!isResizing && !isSettingCaption)
-		//	{
-		//		isResizing = true;
-		//		var captionWidth = Caption != null ? CaptionLabel.Width + 5 : 0;
-		//		this.Width += captionWidth;
-		//		CoreControl.Size = DPIScalingHelper.GetScaledSize(Size.Width - captionWidth, Size.Height);
-		//		isResizing = false;
-		//	}
-		//}
+			if (!isResizing && !isSettingCaption)
+			{
+				isResizing = true;
+				var captionWidth = Caption != null ? CaptionLabel.Width + 5 : 0;
+				this.Width += captionWidth;
+				CoreControl.Size = new Size(Size.Width - captionWidth, Size.Height);
+				isResizing = false;
+			}
+		}
 		bool isResizing;
 
 		#endregion
 
 		#region OnLocationChanged
 
-		//protected override void OnLocationChanged(EventArgs e)
-		//{
-		//	base.OnLocationChanged(e);
-		//	if (!isRelocating && !isSettingCaption)
-		//	{
-		//		isRelocating = true;
-		//		var captionWidth = Caption != null ? CaptionLabel.Width + 5 : 0;
-		//		this.Left -= captionWidth;
-		//		isRelocating = false;
-		//	}
-		//}
+		protected override void OnLocationChanged(EventArgs e)
+		{
+			base.OnLocationChanged(e);
+			if (!isRelocating && !isSettingCaption)
+			{
+				isRelocating = true;
+				var captionWidth = Caption != null ? CaptionLabel.Width + 5 : 0;
+				this.Left -= captionWidth;
+				isRelocating = false;
+			}
+		}
 		bool isRelocating;
 
 		#endregion
