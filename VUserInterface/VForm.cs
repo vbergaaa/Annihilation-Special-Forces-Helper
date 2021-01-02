@@ -98,8 +98,8 @@ namespace VUserInterface
 		{
 			if (SaveButton != null && CancelButton != null)
 			{
-				this.SaveButton.Location = DPIScalingHelper.GetScaledPoint(this.Width - 180, this.Height - 30);
-				this.CancelButton.Location = DPIScalingHelper.GetScaledPoint(this.Width - 90, this.Height - 30);
+				this.SaveButton.Location = new Point(this.ClientSize.Width - DPIScalingHelper.GetScaledX(180), this.ClientSize.Height - DPIScalingHelper.GetScaledY(30));
+				this.CancelButton.Location = new Point(this.ClientSize.Width - DPIScalingHelper.GetScaledX(90), this.ClientSize.Height - DPIScalingHelper.GetScaledY(30));
 			}
 		}
 
