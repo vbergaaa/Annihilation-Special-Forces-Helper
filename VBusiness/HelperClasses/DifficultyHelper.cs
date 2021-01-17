@@ -25,6 +25,7 @@ namespace VBusiness.HelperClasses
 				DifficultyLevel.Hell => new Hell(),
 				DifficultyLevel.Titanic => new Titanic(),
 				DifficultyLevel.Mythic => new Mythic(),
+				DifficultyLevel.Divine => new Divine(),
 				_ => throw new ApplicationException(level.ToString() + " has not yet been implemented into the application")
 			};
 		}

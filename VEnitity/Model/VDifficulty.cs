@@ -17,7 +17,7 @@ namespace VEntityFramework.Model
 
 		#region TormentReduction
 
-		public virtual int TormentReduction => 0;
+		public abstract int TormentReduction { get; }
 
 		#endregion
 
@@ -44,6 +44,7 @@ namespace VEntityFramework.Model
 				("Hell") => DifficultyLevel.Hell,
 				("Titanic") => DifficultyLevel.Titanic,
 				("Mythic") => DifficultyLevel.Mythic,
+				("Divine") => DifficultyLevel.Divine,
 				_ => throw new NotImplementedException($"Cannot load {level} difficulty"),
 			};
 		}
@@ -67,6 +68,7 @@ namespace VEntityFramework.Model
 		Torment,
 		Hell,
 		Titanic,
-		Mythic
+		Mythic,
+		Divine,
 	}
 }

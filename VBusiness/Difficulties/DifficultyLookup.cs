@@ -23,7 +23,8 @@ namespace VBusiness.Difficulties
 				DifficultyLevel.Torment,
 				DifficultyLevel.Hell,
 				DifficultyLevel.Titanic,
-				DifficultyLevel.Mythic
+				DifficultyLevel.Mythic,
+				DifficultyLevel.Divine,
 			};
 		}
 	}
