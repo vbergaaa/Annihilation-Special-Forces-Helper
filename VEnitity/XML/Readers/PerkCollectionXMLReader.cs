@@ -103,7 +103,19 @@ namespace VEntityFramework.XML
 				"11_5" => type.GetProperty("DamageReduction2"),
 				"11_4" => type.GetProperty("SuperRush"),
 				"11_6" => type.GetProperty("Alacrity2"),
-				_ => throw new InvalidDataException($"{code} is an invalid code."),
+				"12_1" => type.GetProperty("InfusionRecycle3"),
+				"12_2" => type.GetProperty("MaximumPotential4"),
+				"12_3" => type.GetProperty("Veterancy4"),
+				"12_4" => type.GetProperty("KillRecycle2"),
+				"12_5" => type.GetProperty("DNAStart"),
+				"12_6" => type.GetProperty("RankRevision3"),
+				"13_1" => type.GetProperty("DoubleWarp4"),
+				"13_2" => type.GetProperty("TripleWarp2"),
+				"13_3" => type.GetProperty("SuperJackpot2"),
+				"13_4" => type.GetProperty("StartingMinerals2"),
+				"13_5" => type.GetProperty("MasterTrainer2"),
+				"13_6" => type.GetProperty("ExtraSupply2"),
+		_ => throw new InvalidDataException($"{code} is an invalid code."),
 			};
 		}
 	}
