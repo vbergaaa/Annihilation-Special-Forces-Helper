@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 using VBusiness.HelperClasses;
 using VBusiness.Souls;
 using VEntityFramework.Data;
@@ -78,7 +76,7 @@ namespace VUserInterface
 
 		List<object> SoulTypesList
 		{
-			get => fSoulTypesList ?? (fSoulTypesList = BindingHelper<SoulType>.ConvertForBinding(new SoulLookup().GetSouls()));
+			get => fSoulTypesList ??= BindingHelper<SoulType>.ConvertForBinding(new SoulLookup().GetSouls());
 		}
 		List<object> fSoulTypesList;
 

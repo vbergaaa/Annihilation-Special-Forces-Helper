@@ -1,7 +1,4 @@
-﻿using System;
-using System.Dynamic;
-using System.Linq;
-using VEntityFramework.Model;
+﻿using VEntityFramework.Model;
 
 namespace VBusiness.Gems
 {

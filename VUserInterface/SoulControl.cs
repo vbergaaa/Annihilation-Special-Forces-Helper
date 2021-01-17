@@ -17,7 +17,7 @@ namespace VUserInterface
 
 		public Soul Soul
 		{
-			get => fSoul ?? (fSoul = new EmptySoul());
+			get => fSoul ??= new EmptySoul();
 			set
 			{
 				fSoul = value;

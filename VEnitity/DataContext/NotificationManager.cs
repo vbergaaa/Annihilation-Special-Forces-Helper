@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace VEntityFramework.Data
 {
@@ -7,13 +6,13 @@ namespace VEntityFramework.Data
 	{
 		public List<string> Errors
 		{
-			get => fErrors ?? (fErrors = new List<string>());
+			get => fErrors ??= new List<string>();
 		}
 		List<string> fErrors;
 
 		public List<string> Prompts
 		{
-			get => fPrompts ?? (fPrompts = new List<string>());
+			get => fPrompts ??= new List<string>();
 		}
 		List<string> fPrompts;
 

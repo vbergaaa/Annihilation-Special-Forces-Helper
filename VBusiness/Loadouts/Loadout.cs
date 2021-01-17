@@ -30,7 +30,7 @@ namespace VBusiness.Loadouts
 
 		public override VGemCollection Gems
 		{
-			get => base.Gems ?? (base.Gems = new GemCollection(this));
+			get => base.Gems ??= new GemCollection(this);
 			set => base.Gems = value;
 		}
 
@@ -40,7 +40,7 @@ namespace VBusiness.Loadouts
 
 		public override VPerkCollection Perks
 		{
-			get => base.Perks ?? (base.Perks = new PerkCollection(this));
+			get => base.Perks ??= new PerkCollection(this);
 			set => base.Perks = value;
 		}
 
@@ -50,7 +50,7 @@ namespace VBusiness.Loadouts
 
 		public override VSoulCollection Souls
 		{
-			get => base.Souls ?? (base.Souls = new SoulCollection(this));
+			get => base.Souls ??= new SoulCollection(this);
 			set => base.Souls = value;
 		}
 
@@ -60,7 +60,7 @@ namespace VBusiness.Loadouts
 
 		public override VChallengePointCollection ChallengePoints
 		{
-			get => base.ChallengePoints ?? (base.ChallengePoints = new ChallengePointCollection(this));
+			get => base.ChallengePoints ??= new ChallengePointCollection(this);
 			set => base.ChallengePoints = value;
 		}
 
@@ -70,7 +70,7 @@ namespace VBusiness.Loadouts
 
 		public override VUnitConfiguration UnitConfiguration
 		{
-			get => base.UnitConfiguration ?? (base.UnitConfiguration = new UnitConfiguration(this));
+			get => base.UnitConfiguration ??= new UnitConfiguration(this);
 			set => base.UnitConfiguration = value;
 		}
 

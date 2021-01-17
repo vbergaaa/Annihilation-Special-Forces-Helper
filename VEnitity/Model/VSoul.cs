@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Text;
-using VEntityFramework.Attributes;
+﻿using VEntityFramework.Attributes;
 using VEntityFramework.Data;
 
 namespace VEntityFramework.Model

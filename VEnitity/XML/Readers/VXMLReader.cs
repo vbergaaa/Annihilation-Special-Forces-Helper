@@ -1,10 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Loader;
 using System.Xml;
-using VEntityFramework.Attributes;
 using VEntityFramework.Data;
 using VEntityFramework.DataContext;
 using VEntityFramework.Model;

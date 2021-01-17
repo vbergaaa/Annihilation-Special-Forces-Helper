@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using VEntityFramework.Model;
+﻿using VEntityFramework.Model;
 
 namespace VBusiness.Perks
 {

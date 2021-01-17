@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using VEntityFramework.Model;
+﻿using VEntityFramework.Model;
 
 namespace VBusiness.Souls
 {

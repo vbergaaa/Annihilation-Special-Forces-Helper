@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VEntityFramework.Data;
+﻿using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {

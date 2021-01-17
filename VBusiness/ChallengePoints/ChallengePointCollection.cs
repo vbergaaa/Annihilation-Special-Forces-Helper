@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using VEntityFramework.Model;
 
 namespace VBusiness.ChallengePoints
@@ -22,7 +20,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint Attack
 		{
-			get => base.Attack ?? (base.Attack = new AttackCP(this));
+			get => base.Attack ??= new AttackCP(this);
 			set { base.Attack = value; }
 		}
 
@@ -32,7 +30,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint AttackSpeed
 		{
-			get => base.AttackSpeed ?? (base.AttackSpeed = new AttackSpeedCP(this));
+			get => base.AttackSpeed ??= new AttackSpeedCP(this);
 			set { base.AttackSpeed = value; }
 		}
 
@@ -42,7 +40,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint CriticalChance
 		{
-			get => base.CriticalChance ?? (base.CriticalChance = new CriticalChanceCP(this));
+			get => base.CriticalChance ??= new CriticalChanceCP(this);
 			set { base.CriticalChance = value; }
 		}
 
@@ -52,7 +50,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint CriticalDamage
 		{
-			get => base.CriticalDamage ?? (base.CriticalDamage = new CriticalDamageCP(this));
+			get => base.CriticalDamage ??= new CriticalDamageCP(this);
 			set { base.CriticalDamage = value; }
 		}
 
@@ -62,7 +60,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint Health
 		{
-			get => base.Health ?? (base.Health = new HealthCP(this));
+			get => base.Health ??= new HealthCP(this);
 			set { base.Health = value; }
 		}
 
@@ -72,7 +70,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint Shields
 		{
-			get => base.Shields ?? (base.Shields = new ShieldsCP(this));
+			get => base.Shields ??= new ShieldsCP(this);
 			set { base.Shields = value; }
 		}
 
@@ -82,7 +80,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint DefensiveEssence
 		{
-			get => base.DefensiveEssence ?? (base.DefensiveEssence = new DefensiveEssenceCP(this));
+			get => base.DefensiveEssence ??= new DefensiveEssenceCP(this);
 			set => base.DefensiveEssence = value;
 		}
 
@@ -92,7 +90,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint DamageReduction
 		{
-			get => base.DamageReduction ?? (base.DamageReduction = new DamageReductionCP(this));
+			get => base.DamageReduction ??= new DamageReductionCP(this);
 			set => base.DamageReduction = value;
 		}
 
@@ -102,7 +100,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint Mining
 		{
-			get => base.Mining ?? (base.Mining = new MiningUpgradesCP(this));
+			get => base.Mining ??= new MiningUpgradesCP(this);
 			set => base.Mining = value;
 		}
 
@@ -112,7 +110,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint Kills
 		{
-			get => base.Kills ?? (base.Kills = new KillsCP(this));
+			get => base.Kills ??= new KillsCP(this);
 			set => base.Kills = value;
 		}
 
@@ -122,7 +120,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint Veterancy
 		{
-			get => base.Veterancy ?? (base.Veterancy = new VeterancyCP(this));
+			get => base.Veterancy ??= new VeterancyCP(this);
 			set => base.Veterancy = value;
 		}
 
@@ -132,7 +130,7 @@ namespace VBusiness.ChallengePoints
 
 		public override VChallengePoint Acceleration
 		{
-			get => base.Acceleration ?? (base.Acceleration = new AccelerationCP(this));
+			get => base.Acceleration ??= new AccelerationCP(this);
 			set => base.Acceleration = value;
 		}
 
@@ -253,7 +251,7 @@ namespace VBusiness.ChallengePoints
 
 		List<VChallengePoint> AllCP
 		{
-			get => fAllCP ?? (fAllCP = GetAllCPs());
+			get => fAllCP ??= GetAllCPs();
 		}
 		List<VChallengePoint> fAllCP;
 

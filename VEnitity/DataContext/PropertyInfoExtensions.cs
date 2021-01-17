@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using VEntityFramework;
+﻿using System.Reflection;
 using VEntityFramework.Model;
 
 namespace VEntityFramework.Data

@@ -1,5 +1,4 @@
-﻿using System;
-using VEntityFramework.Attributes;
+﻿using VEntityFramework.Attributes;
 using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
@@ -21,7 +20,7 @@ namespace VEntityFramework.Model
 		[VXML(true)]
 		public string Name
 		{
-			get => fName ?? (fName = "");
+			get => fName ??= "";
 			set
 			{
 				if (value != fName)

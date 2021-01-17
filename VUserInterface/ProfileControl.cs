@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 using VEntityFramework.Model;
 using VBusiness.Profile;
-using Microsoft.Win32;
 using VEntityFramework.Data;
-using System.Linq;
 using VBusiness.HelperClasses;
 using VBusiness.PlayerRanks;
 using VUserInterface.CommonControls;
@@ -25,7 +19,7 @@ namespace VUserInterface
 
 		public VProfile Profile
 		{
-			get => fProfile ?? (fProfile = VDataContext.Instance.Get<Profile>());
+			get => fProfile ??= VDataContext.Instance.Get<Profile>();
 			set => fProfile = value;
 		}
 

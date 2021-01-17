@@ -4,7 +4,6 @@ using VBusiness;
 using VEntityFramework.Model;
 using VBusiness.Ranks;
 using VBusiness.HelperClasses;
-using VBusiness.Difficulties;
 using VUserInterface.CommonControls;
 
 namespace VUserInterface
@@ -55,7 +54,7 @@ namespace VUserInterface
 
 		List<object> RankList
 		{
-			get => fRankList ?? (fRankList = BindingHelper<VEntityFramework.Model.UnitRank>.ConvertForBinding(new RankLookup().GetRanks()));
+			get => fRankList ??= BindingHelper<VEntityFramework.Model.UnitRank>.ConvertForBinding(new RankLookup().GetRanks());
 		}
 		List<object> fRankList;
 
@@ -65,7 +64,7 @@ namespace VUserInterface
 
 		List<object> DifficultyList
 		{
-			get => fDifficultyList ?? (fDifficultyList = BindingHelper<DifficultyLevel>.ConvertForBinding(DifficultyHelper.GetDifficulties()));
+			get => fDifficultyList ??= BindingHelper<DifficultyLevel>.ConvertForBinding(DifficultyHelper.GetDifficulties());
 		}
 		List<object> fDifficultyList;
 

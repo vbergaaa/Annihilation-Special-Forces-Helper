@@ -34,7 +34,7 @@ namespace VBusiness.Souls
 
 		public override VSoul Soul1
 		{
-			get => base.Soul1 ?? (base.Soul1 = new EmptySoul());
+			get => base.Soul1 ??= new EmptySoul();
 			protected set => base.Soul1 = value;
 		}
 
@@ -67,7 +67,7 @@ namespace VBusiness.Souls
 
 		public override VSoul Soul2
 		{
-			get => base.Soul2 ?? (base.Soul2 = new EmptySoul());
+			get => base.Soul2 ??= new EmptySoul();
 			protected set => base.Soul2 = value;
 		}
 
@@ -100,7 +100,7 @@ namespace VBusiness.Souls
 
 		public override VSoul Soul3
 		{
-			get => base.Soul3 ?? (base.Soul3 = new EmptySoul());
+			get => base.Soul3 ??= new EmptySoul();
 			protected set => base.Soul3 = value;
 		}
 

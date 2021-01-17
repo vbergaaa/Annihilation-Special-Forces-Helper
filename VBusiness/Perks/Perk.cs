@@ -1,5 +1,4 @@
-﻿using System;
-using VBusiness.HelperClasses;
+﻿using VBusiness.HelperClasses;
 using VEntityFramework.Model;
 
 namespace VBusiness.Perks

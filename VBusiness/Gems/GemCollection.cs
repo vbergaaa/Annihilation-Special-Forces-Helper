@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using VEntityFramework.Model;
+﻿using VEntityFramework.Model;
 
 namespace VBusiness.Gems
 {

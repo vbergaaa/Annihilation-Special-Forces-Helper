@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using VBusiness.Loadouts;
 using VBusiness.PlayerRanks;
 using VEntityFramework.Model;
 

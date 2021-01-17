@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
 
 namespace VEntityFramework.Data
 {
@@ -89,7 +86,7 @@ namespace VEntityFramework.Data
 
 		public NotificationManager Notifications
 		{
-			get => fNotifications ?? (fNotifications = new NotificationManager());
+			get => fNotifications ??= new NotificationManager();
 		}
 		NotificationManager fNotifications;
 
@@ -103,7 +100,7 @@ namespace VEntityFramework.Data
 
 		#region Children
 
-		protected IList<VBusinessObject> Children => fChildren ?? (fChildren = new List<VBusinessObject>());
+		protected IList<VBusinessObject> Children => fChildren ??= new List<VBusinessObject>();
 		IList<VBusinessObject> fChildren;
 
 		void RegisterChild(VBusinessObject bizo)

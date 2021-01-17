@@ -1,5 +1,4 @@
-﻿using System;
-using VUserInterface.CommonControls;
+﻿using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {

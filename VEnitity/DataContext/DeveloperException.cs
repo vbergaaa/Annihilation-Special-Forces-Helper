@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection.Metadata;
 using System.Runtime.Serialization;
 
 namespace VEntityFramework.Data

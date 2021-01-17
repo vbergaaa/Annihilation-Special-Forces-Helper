@@ -1,5 +1,4 @@
-﻿using VEntityFramework;
-using VEntityFramework.Model;
+﻿using VEntityFramework.Model;
 
 namespace VBusiness.Perks
 {

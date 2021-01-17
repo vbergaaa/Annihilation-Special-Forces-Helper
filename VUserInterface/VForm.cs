@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using VBusiness.Loadouts;
-using VEntityFramework;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
 
