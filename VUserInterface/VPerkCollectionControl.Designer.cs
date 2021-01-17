@@ -54,6 +54,7 @@ namespace VUserInterface
 			this.page10Button = new VUserInterface.CommonControls.VButton();
 			this.page11Button = new VUserInterface.CommonControls.VButton();
 			this.page12Button = new VUserInterface.CommonControls.VButton();
+			this.page13Button = new VUserInterface.CommonControls.VButton();
 			this.previousPageButton = new VUserInterface.CommonControls.VButton();
 			this.nextPageButton = new VUserInterface.CommonControls.VButton();
 			((System.ComponentModel.ISupportInitialize)(this.perksBindingSource)).BeginInit();
@@ -182,6 +183,13 @@ namespace VUserInterface
 			this.page12Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page12Button.Text = "12";
 			//
+			// page13Button
+			//
+			this.page13Button.Click += UpdatePage;
+			this.page13Button.Location = DPIScalingHelper.GetScaledPoint(492, 234);
+			this.page13Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
+			this.page13Button.Text = "13";
+			//
 			// previousPageButton
 			//
 			this.previousPageButton.Click += UpdatePage;
@@ -218,6 +226,7 @@ namespace VUserInterface
 			this.Controls.Add(page10Button);
 			this.Controls.Add(page11Button);
 			this.Controls.Add(page12Button);
+			this.Controls.Add(page13Button);
 			this.Controls.Add(previousPageButton);
 			this.Controls.Add(nextPageButton);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
@@ -245,6 +254,7 @@ namespace VUserInterface
 		private System.Windows.Forms.Button page10Button;
 		private System.Windows.Forms.Button page11Button;
 		private System.Windows.Forms.Button page12Button;
+		private System.Windows.Forms.Button page13Button;
 		private System.Windows.Forms.Button previousPageButton;
 		private System.Windows.Forms.Button nextPageButton;
 	}
