@@ -65,7 +65,7 @@ namespace VUserInterface
 
 		List<object> DifficultyList
 		{
-			get => fDifficultyList ?? (fDifficultyList = BindingHelper<DifficultyLevel>.ConvertForBinding(new DifficultyLookup().GetDifficulties()));
+			get => fDifficultyList ?? (fDifficultyList = BindingHelper<DifficultyLevel>.ConvertForBinding(DifficultyHelper.GetDifficulties()));
 		}
 		List<object> fDifficultyList;
 

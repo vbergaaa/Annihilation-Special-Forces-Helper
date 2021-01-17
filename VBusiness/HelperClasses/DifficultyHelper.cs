@@ -29,5 +29,31 @@ namespace VBusiness.HelperClasses
 				_ => throw new ApplicationException(level.ToString() + " has not yet been implemented into the application")
 			};
 		}
+
+		public static List<DifficultyLevel> GetDifficulties()
+		{
+			if (fDifficulties == null)
+			{
+				fDifficulties = new List<DifficultyLevel>
+				{
+					DifficultyLevel.None,
+					DifficultyLevel.VeryEasy,
+					DifficultyLevel.Easy,
+					DifficultyLevel.Normal,
+					DifficultyLevel.Hard,
+					DifficultyLevel.VeryHard,
+					DifficultyLevel.Insane,
+					DifficultyLevel.Brutal,
+					DifficultyLevel.Nightmare,
+					DifficultyLevel.Torment,
+					DifficultyLevel.Hell,
+					DifficultyLevel.Titanic,
+					DifficultyLevel.Mythic,
+					DifficultyLevel.Divine,
+				};
+			}
+			return fDifficulties;
+		}
+		static List<DifficultyLevel> fDifficulties;
 	}
 }
