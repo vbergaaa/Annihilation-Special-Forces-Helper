@@ -32,7 +32,7 @@ namespace VBusiness.Perks
 				{
 					return Loadout.Profile.Rank.GetMaxPerkPage();
 				}
-				return 12;
+				return 13;
 			}
 		}
 
@@ -1265,6 +1265,108 @@ namespace VBusiness.Perks
 
 		#endregion
 
+		#region DoubleWarp4
+
+		public VPerk DoubleWarp4
+		{
+			get
+			{
+				if (fDoubleWarp4 == null)
+				{
+					fDoubleWarp4 = new DoubleWarp4Perk(this);
+				}
+				return fDoubleWarp4;
+			}
+		}
+		VPerk fDoubleWarp4;
+
+		#endregion
+
+		#region TripleWarp2
+
+		public VPerk TripleWarp2
+		{
+			get
+			{
+				if (fTripleWarp2 == null)
+				{
+					fTripleWarp2 = new TripleWarp2Perk(this);
+				}
+				return fTripleWarp2;
+			}
+		}
+		VPerk fTripleWarp2;
+
+		#endregion
+
+		#region SuperJackpot2
+
+		public VPerk SuperJackpot2
+		{
+			get
+			{
+				if (fSuperJackpot2 == null)
+				{
+					fSuperJackpot2 = new SuperJackpot2Perk(this);
+				}
+				return fSuperJackpot2;
+			}
+		}
+		VPerk fSuperJackpot2;
+
+		#endregion
+
+		#region StartingMinerals2
+
+		public VPerk StartingMinerals2
+		{
+			get
+			{
+				if (fStartingMinerals2 == null)
+				{
+					fStartingMinerals2 = new StartingMinerals2Perk(this);
+				}
+				return fStartingMinerals2;
+			}
+		}
+		VPerk fStartingMinerals2;
+
+		#endregion
+
+		#region MasterTrainer2
+
+		public VPerk MasterTrainer2
+		{
+			get
+			{
+				if (fMasterTrainer2 == null)
+				{
+					fMasterTrainer2 = new MasterTrainer2Perk(this);
+				}
+				return fMasterTrainer2;
+			}
+		}
+		VPerk fMasterTrainer2;
+
+		#endregion
+
+		#region ExtraSupply2
+
+		public VPerk ExtraSupply2
+		{
+			get
+			{
+				if (fExtraSupply2 == null)
+				{
+					fExtraSupply2 = new ExtraSupply2Perk(this);
+				}
+				return fExtraSupply2;
+			}
+		}
+		VPerk fExtraSupply2;
+
+		#endregion
+
 		#endregion
 
 		#region AllPerks
@@ -1346,7 +1448,13 @@ namespace VBusiness.Perks
 				Veterancy4,
 				KillRecycle2,
 				DNAStart,
-				RankRevision3
+				RankRevision3,
+				DoubleWarp4,
+				TripleWarp2,
+				SuperJackpot2,
+				StartingMinerals2,
+				MasterTrainer2,
+				ExtraSupply2
 			};
 
 			allPerks = perks;

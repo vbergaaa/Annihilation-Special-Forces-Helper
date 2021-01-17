@@ -5,7 +5,7 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Perks
 {
-	class DNAStartPerk : Perk
+	public class DNAStartPerk : Perk
 	{
 		public DNAStartPerk(VPerkCollection collection) : base(collection)
 		{
