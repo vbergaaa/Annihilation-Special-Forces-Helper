@@ -53,6 +53,7 @@ namespace VUserInterface
 			this.page9Button = new VUserInterface.CommonControls.VButton();
 			this.page10Button = new VUserInterface.CommonControls.VButton();
 			this.page11Button = new VUserInterface.CommonControls.VButton();
+			this.page12Button = new VUserInterface.CommonControls.VButton();
 			this.previousPageButton = new VUserInterface.CommonControls.VButton();
 			this.nextPageButton = new VUserInterface.CommonControls.VButton();
 			((System.ComponentModel.ISupportInitialize)(this.perksBindingSource)).BeginInit();
@@ -100,79 +101,86 @@ namespace VUserInterface
 			// page1Button
 			//
 			this.page1Button.Click += UpdatePage;
-			this.page1Button.Location = DPIScalingHelper.GetScaledPoint(96, 234);
+			this.page1Button.Location = DPIScalingHelper.GetScaledPoint(60, 234);
 			this.page1Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page1Button.Text = "1";
 			//
 			// page2Button
 			//
 			this.page2Button.Click += UpdatePage;
-			this.page2Button.Location = DPIScalingHelper.GetScaledPoint(132, 234);
+			this.page2Button.Location = DPIScalingHelper.GetScaledPoint(96, 234);
 			this.page2Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page2Button.Text = "2";
 			//
 			// page3Button
 			//
 			this.page3Button.Click += UpdatePage;
-			this.page3Button.Location = DPIScalingHelper.GetScaledPoint(168, 234);
+			this.page3Button.Location = DPIScalingHelper.GetScaledPoint(132, 234);
 			this.page3Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page3Button.Text = "3";
 			//
 			// page4Button
 			//
 			this.page4Button.Click += UpdatePage;
-			this.page4Button.Location = DPIScalingHelper.GetScaledPoint(204, 234);
+			this.page4Button.Location = DPIScalingHelper.GetScaledPoint(168, 234);
 			this.page4Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page4Button.Text = "4";
 			//
 			// page5Button
 			//
 			this.page5Button.Click += UpdatePage;
-			this.page5Button.Location = DPIScalingHelper.GetScaledPoint(240, 234);
+			this.page5Button.Location = DPIScalingHelper.GetScaledPoint(204, 234);
 			this.page5Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page5Button.Text = "5";
 			//
 			// page6Button
 			//
 			this.page6Button.Click += UpdatePage;
-			this.page6Button.Location = DPIScalingHelper.GetScaledPoint(276, 234);
+			this.page6Button.Location = DPIScalingHelper.GetScaledPoint(240, 234);
 			this.page6Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page6Button.Text = "6";
 			//
 			// page7Button
 			//
 			this.page7Button.Click += UpdatePage;
-			this.page7Button.Location = DPIScalingHelper.GetScaledPoint(312, 234);
+			this.page7Button.Location = DPIScalingHelper.GetScaledPoint(276, 234);
 			this.page7Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page7Button.Text = "7";
 			//
 			// page8Button
 			//
 			this.page8Button.Click += UpdatePage;
-			this.page8Button.Location = DPIScalingHelper.GetScaledPoint(348, 234);
+			this.page8Button.Location = DPIScalingHelper.GetScaledPoint(312, 234);
 			this.page8Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page8Button.Text = "8";
 			//
 			// page9Button
 			//
 			this.page9Button.Click += UpdatePage;
-			this.page9Button.Location = DPIScalingHelper.GetScaledPoint(384, 234);
+			this.page9Button.Location = DPIScalingHelper.GetScaledPoint(348, 234);
 			this.page9Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page9Button.Text = "9";
 			//
 			// page10Button
 			//
 			this.page10Button.Click += UpdatePage;
-			this.page10Button.Location = DPIScalingHelper.GetScaledPoint(420, 234);
+			this.page10Button.Location = DPIScalingHelper.GetScaledPoint(384, 234);
 			this.page10Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page10Button.Text = "10";
 			//
 			// page11Button
 			//
 			this.page11Button.Click += UpdatePage;
-			this.page11Button.Location = DPIScalingHelper.GetScaledPoint(456, 234);
+			this.page11Button.Location = DPIScalingHelper.GetScaledPoint(420, 234);
 			this.page11Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page11Button.Text = "11";
+			//
+			// page12Button
+			//
+			this.page12Button.Click += UpdatePage;
+			this.page12Button.Location = DPIScalingHelper.GetScaledPoint(456, 234);
+			this.page12Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
+			this.page12Button.Text = "12";
 			//
 			// previousPageButton
 			//
@@ -209,6 +217,7 @@ namespace VUserInterface
 			this.Controls.Add(page9Button);
 			this.Controls.Add(page10Button);
 			this.Controls.Add(page11Button);
+			this.Controls.Add(page12Button);
 			this.Controls.Add(previousPageButton);
 			this.Controls.Add(nextPageButton);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
@@ -235,6 +244,7 @@ namespace VUserInterface
 		private System.Windows.Forms.Button page9Button;
 		private System.Windows.Forms.Button page10Button;
 		private System.Windows.Forms.Button page11Button;
+		private System.Windows.Forms.Button page12Button;
 		private System.Windows.Forms.Button previousPageButton;
 		private System.Windows.Forms.Button nextPageButton;
 	}

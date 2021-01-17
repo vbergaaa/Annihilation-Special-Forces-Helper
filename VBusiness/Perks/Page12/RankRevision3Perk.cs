@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using VEntityFramework.Model;
 
-namespace VBusiness.Perks.Page12
+namespace VBusiness.Perks
 {
 	public class RankRevision3Perk : Perk
 	{

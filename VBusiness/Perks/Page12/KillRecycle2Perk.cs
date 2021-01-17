@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VEntityFramework.Model;
 
-namespace VBusiness.Perks.Page12
+namespace VBusiness.Perks
 {
 	public class KillRecycle2Perk : Perk
 	{
+		public KillRecycle2Perk(VPerkCollection collection) : base(collection)
+		{
+		}
+
 		public override string Description => "";
 
 		public override byte Page => 12;
