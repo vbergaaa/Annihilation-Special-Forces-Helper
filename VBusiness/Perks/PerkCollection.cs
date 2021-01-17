@@ -32,7 +32,7 @@ namespace VBusiness.Perks
 				{
 					return Loadout.Profile.Rank.GetMaxPerkPage();
 				}
-				return 11;
+				return 12;
 			}
 		}
 
@@ -1163,6 +1163,108 @@ namespace VBusiness.Perks
 
 		#endregion
 
+		#region InfusionRecycle3
+
+		public VPerk InfusionRecycle3
+		{
+			get
+			{
+				if (fInfusionRecycle3 == null)
+				{
+					fInfusionRecycle3 = new InfusionRecycle3Perk(this);
+				}
+				return fInfusionRecycle3;
+			}
+		}
+		VPerk fInfusionRecycle3;
+
+		#endregion
+
+		#region MaximumPotential4
+
+		public VPerk MaximumPotential4
+		{
+			get
+			{
+				if (fMaximumPotential4 == null)
+				{
+					fMaximumPotential4 = new MaximumPotential4Perk(this);
+				}
+				return fMaximumPotential4;
+			}
+		}
+		VPerk fMaximumPotential4;
+
+		#endregion
+
+		#region Veterancy4
+
+		public VPerk Veterancy4
+		{
+			get
+			{
+				if (fVeterancy4 == null)
+				{
+					fVeterancy4 = new Veterancy4Perk(this);
+				}
+				return fVeterancy4;
+			}
+		}
+		VPerk fVeterancy4;
+
+		#endregion
+
+		#region KillRecycle2
+
+		public VPerk KillRecycle2
+		{
+			get
+			{
+				if (fKillRecycle2 == null)
+				{
+					fKillRecycle2 = new KillRecycle2Perk(this);
+				}
+				return fKillRecycle2;
+			}
+		}
+		VPerk fKillRecycle2;
+
+		#endregion
+
+		#region DNAStart
+
+		public VPerk DNAStart
+		{
+			get
+			{
+				if (fDNAStart == null)
+				{
+					fDNAStart = new DNAStartPerk(this);
+				}
+				return fDNAStart;
+			}
+		}
+		VPerk fDNAStart;
+
+		#endregion
+
+		#region RankRevision3
+
+		public VPerk RankRevision3
+		{
+			get
+			{
+				if (fRankRevision3 == null)
+				{
+					fRankRevision3 = new RankRevision3Perk(this);
+				}
+				return fRankRevision3;
+			}
+		}
+		VPerk fRankRevision3;
+
+		#endregion
+
 		#endregion
 
 		#region AllPerks
@@ -1238,7 +1340,13 @@ namespace VBusiness.Perks
 				CriticalDamage3,
 				DamageReduction2,
 				SuperRush,
-				Alacrity2
+				Alacrity2,
+				InfusionRecycle3,
+				MaximumPotential4,
+				Veterancy4,
+				KillRecycle2,
+				DNAStart,
+				RankRevision3
 			};
 
 			allPerks = perks;
