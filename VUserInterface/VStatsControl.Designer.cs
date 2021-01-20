@@ -58,7 +58,7 @@ namespace VUserInterface
 			// 
 			// DamageLabel
 			// 
-			this.DamageLabel.Caption = "Damage:";
+			this.DamageLabel.Caption = "Damage Score:";
 			this.DamageLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "Damage"));
 			this.DamageLabel.Location = DPIScalingHelper.GetScaledPoint(130,20);
 			this.DamageLabel.Name = "DamageLabel";
@@ -67,7 +67,7 @@ namespace VUserInterface
 			// 
 			// ToughnessLabel
 			// 
-			this.ToughnessLabel.Caption = "Toughness:";
+			this.ToughnessLabel.Caption = "Toughness Score:";
 			this.ToughnessLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "Toughness"));
 			this.ToughnessLabel.Location = DPIScalingHelper.GetScaledPoint(130,40);
 			this.ToughnessLabel.Name = "ToughnessLabel";
