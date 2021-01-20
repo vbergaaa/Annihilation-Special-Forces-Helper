@@ -194,6 +194,7 @@ namespace VUserInterface
 			this.DisclaimerLabel.Click += DisclaimerLabel_Click;
 			this.DisclaimerLabel.MouseHover += DisclaimerLabel_MouseHover;
 			this.DisclaimerLabel.MouseMove += DisclaimerLabel_MouseMove;
+			this.DisclaimerLabel.Visible = false;
 			//
 			// StatsControl
 			//
