@@ -22,22 +22,22 @@ namespace VUserInterface
 			}
 		}
 
-		private void InitializeParent(VBusinessObject bizo)
+		void InitializeParent(VBusinessObject bizo)
 		{
 			Parent = (Soul)bizo ?? new EmptySoul();
 			RefreshSoulTypeList();
 		}
 
-		private void RefreshSoulTypeList()
+		void RefreshSoulTypeList()
 		{
-		//	if (Parent != null)
-		//	{
-		//		TypeDropBox.SelectedValueChanged -= TypeComboBox_SelectionChanged;
-		//		var items = TypeDropBox.Items;
-		//		TypeDropBox.SelectedIndex = (int)Parent.Type;
-		//		TypeDropBox.SelectedValueChanged += TypeComboBox_SelectionChanged;
-		//		isParentInitialised = true;
-		//	}
+			if (Parent != null)
+			{
+				TypeDropBox.SelectedValueChanged -= TypeComboBox_SelectionChanged;
+				var items = TypeDropBox.List;
+				TypeDropBox.SelectedIndex = (int)Parent.Type;
+				TypeDropBox.SelectedValueChanged += TypeComboBox_SelectionChanged;
+				isParentInitialised = true;
+			}
 		}
 		bool isParentInitialised;
 
@@ -56,14 +56,14 @@ namespace VUserInterface
 			}
 		}
 
-		private int GetSaveSlotFromTextBoxSafe()
+		int GetSaveSlotFromTextBoxSafe()
 		{
 			return int.TryParse(SaveSlotTextBox.Text, out var saveSlot)
 				? saveSlot
 				: 0;
 		}
 
-		private void UpdatingBindingSource()
+		void UpdatingBindingSource()
 		{
 			if (Parent != null)
 			{

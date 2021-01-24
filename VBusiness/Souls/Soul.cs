@@ -28,6 +28,7 @@ namespace VBusiness.Souls
 				SoulType.Tormented => new TormentedSoul(collection),
 				SoulType.Demonic => new DemonicSoul(collection),
 				SoulType.Titan => new TitanSoul(collection),
+				SoulType.Divine => new DivineSoul(collection),
 				SoulType.Bronze => new BronzeSoul(collection),
 				SoulType.Mirrors => new MirrorsSoul(collection),
 				SoulType.Hunter => new HunterSoul(collection),
