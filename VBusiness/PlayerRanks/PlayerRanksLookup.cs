@@ -16,7 +16,7 @@ namespace VBusiness.PlayerRanks
 				PlayerRank.Professional,
 				PlayerRank.SuperProfessional,
 				PlayerRank.PrestigeProfessional,
-				PlayerRank.Professional,
+				PlayerRank.Crusader,
 				PlayerRank.SuperCrusader,
 				PlayerRank.PrestigeCrusader,
 				PlayerRank.Expert,

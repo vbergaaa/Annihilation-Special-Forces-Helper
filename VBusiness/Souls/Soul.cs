@@ -61,6 +61,9 @@ namespace VBusiness.Souls
 				SoulType.StridingTitan => new StridingTitanSoul(collection),
 				SoulType.UnboundReflection => new UnboundReflectionSoul(collection),
 				SoulType.Acceleration => new AccelerationSoul(collection),
+				SoulType.Supporting => new SupportingSoul(collection),
+				SoulType.LuckyStatus => new LuckyStatusSoul(collection),
+				SoulType.DivineSpeed => new DivineSpeedSoul(collection),
 				_ => throw new Exception($"Soul Type: {type} has not been properly configured"),
 			};
 		}
