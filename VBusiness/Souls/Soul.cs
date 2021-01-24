@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnumsNET;
+using System;
 using System.Linq;
 using VEntityFramework.Model;
 
@@ -14,66 +15,31 @@ namespace VBusiness.Souls
 
 		public static Soul New(SoulType type, VSoulCollection collection)
 		{
-			return type switch
+			if (type == SoulType.None)
 			{
-				SoulType.None => new EmptySoul(),
-				SoulType.Lowest => new LowestSoul(collection),
-				SoulType.Lower => new LowerSoul(collection),
-				SoulType.Low => new LowSoul(collection),
-				SoulType.Mid => new MidSoul(collection),
-				SoulType.High => new HighSoul(collection),
-				SoulType.Higher => new HigherSoul(collection),
-				SoulType.Highest => new HighestSoul(collection),
-				SoulType.Night => new NightSoul(collection),
-				SoulType.Tormented => new TormentedSoul(collection),
-				SoulType.Demonic => new DemonicSoul(collection),
-				SoulType.Titan => new TitanSoul(collection),
-				SoulType.Divine => new DivineSoul(collection),
-				SoulType.Bronze => new BronzeSoul(collection),
-				SoulType.Mirrors => new MirrorsSoul(collection),
-				SoulType.Hunter => new HunterSoul(collection),
-				SoulType.Silver => new SilverSoul(collection),
-				SoulType.Reflection => new ReflectionSoul(collection),
-				SoulType.Veterancy => new VeterancySoul(collection),
-				SoulType.Urusy => new UrusySoul(collection),
-				SoulType.Scavenger => new ScavengerSoul(collection),
-				SoulType.Hunger => new HungerSoul(collection),
-				SoulType.Luck => new LuckSoul(collection),
-				SoulType.Greed => new GreedSoul(collection),
-				SoulType.Sharing => new SharingSoul(collection),
-				SoulType.Convenience => new ConvenienceSoul(collection),
-				SoulType.Promotion => new PromotionSoul(collection),
-				SoulType.Status => new StatusSoul(collection),
-				SoulType.Predestination => new PredestinationSoul(collection),
-				SoulType.RapidMutation => new RapidMutationSoul(collection),
-				SoulType.Sales => new SalesSoul(collection),
-				SoulType.GlowingDetermination => new GlowingDeterminationSoul(collection),
-				SoulType.WellAmplification => new WellAmplificationSoul(collection),
-				SoulType.AccelleratedAdvancement => new AccelleratedAdvancementSoul(collection),
-				SoulType.GhostForce => new GhostForceSoul(collection),
-				SoulType.Training => new TrainingSoul(collection),
-				SoulType.PowerWarping => new PowerWarpingSoul(collection),
-				SoulType.Demolition => new DemolitionSoul(collection),
-				SoulType.Tanking => new TankingSoul(collection),
-				SoulType.Unchained => new UnchainedSoul(collection),
-				SoulType.Draining => new DrainingSoul(collection),
-				SoulType.Alacrity => new AlacritySoul(collection),
-				SoulType.Stats => new StatsSoul(collection),
-				SoulType.StridingTitan => new StridingTitanSoul(collection),
-				SoulType.UnboundReflection => new UnboundReflectionSoul(collection),
-				SoulType.Acceleration => new AccelerationSoul(collection),
-				SoulType.Supporting => new SupportingSoul(collection),
-				SoulType.LuckyStatus => new LuckyStatusSoul(collection),
-				SoulType.DivineSpeed => new DivineSpeedSoul(collection),
-				_ => throw new Exception($"Soul Type: {type} has not been properly configured"),
-			};
+				return new EmptySoul();
+			}
+			var soulName = type.AsString(EnumFormat.Name) + "Soul";
+			var soulType = System.Type.GetType($"VBusiness.Souls.{soulName}");
+
+			if (soulType == null)
+			{
+#if DEBUG
+				throw new Exception($"Please create a class named VBusiness.Souls.{soulName}");
+#else
+				return new EmptySoul();
+#endif
+			}
+
+			var soul = (Soul)Activator.CreateInstance(soulType, collection);
+			return soul;
 		}
 
-		#endregion
+#endregion
 
-		#region Properties
+#region Properties
 
-		#region Attack
+#region Attack
 
 		public override int Attack
 		{
@@ -104,9 +70,9 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region AttackSpeed
+#region AttackSpeed
 
 		public override int AttackSpeed
 		{
@@ -137,9 +103,9 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region CriticalChance
+#region CriticalChance
 
 		public override int CriticalChance
 		{
@@ -170,9 +136,9 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region CriticalDamage
+#region CriticalDamage
 
 		public override int CriticalDamage
 		{
@@ -203,9 +169,9 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region Armor
+#region Armor
 
 		public override int Armor
 		{
@@ -236,9 +202,9 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region Vitals
+#region Vitals
 
 		public override int Vitals
 		{
@@ -269,9 +235,9 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region Kills
+#region Kills
 
 		public override int Kills
 		{
@@ -302,9 +268,9 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region Minerals
+#region Minerals
 
 		public override int Minerals
 		{
@@ -335,9 +301,9 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region IsUnique
+#region IsUnique
 
 		protected override bool IsUnique
 		{
@@ -347,9 +313,9 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region SaveSlot
+#region SaveSlot
 
 		public override int SaveSlot
 		{
@@ -365,11 +331,11 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#endregion
+#endregion
 
-		#region Stats
+#region Stats
 
 		protected override void ActivateSoulCore()
 		{
@@ -398,9 +364,9 @@ namespace VBusiness.Souls
 			SoulCollection.Loadout.Stats.CriticalDamage -= CriticalDamage;
 		}
 
-		#endregion
+#endregion
 
-		#region Set Default Values
+#region Set Default Values
 
 		protected override void SetDefaultValuesCore()
 		{
@@ -417,9 +383,9 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region Validation
+#region Validation
 
 		protected override void RunPreSaveValidationCore()
 		{
@@ -452,9 +418,9 @@ namespace VBusiness.Souls
 			return hasSoulInSpot && (!ExistsInXML || saveSlotHasChanges);
 		}
 
-		#endregion
+#endregion
 
-		#region Implementation
+#region Implementation
 
 		public override bool IsMax(string property)
 		{
@@ -512,6 +478,6 @@ namespace VBusiness.Souls
 
 		bool saveSlotHasChanges;
 
-		#endregion
+#endregion
 	}
 }

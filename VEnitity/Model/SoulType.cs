@@ -1,4 +1,7 @@
-﻿namespace VEntityFramework.Model
+﻿using EnumsNET;
+using System.ComponentModel;
+
+namespace VEntityFramework.Model
 {
 	public enum SoulType
 	{
@@ -20,6 +23,7 @@
 		// Lowest
 		Bronze,
 		Mirrors,
+		[Description("The Hunter")]
 		Hunter,
 
 		// Lower
@@ -44,17 +48,23 @@
 
 		// Higher
 		Predestination,
+		[Description("Rapid Mutation")]
 		RapidMutation,
 		Sales,
 
 		// Highest
+		[Description("Glowing Determination")]
 		GlowingDetermination,
+		[Description("Well Amplification")]
 		WellAmplification,
+		[Description("Accellerated Advancement")]
 		AccelleratedAdvancement,
 
 		// Night
+		[Description("Ghost Force")]
 		GhostForce,
 		Training,
+		[Description("Power Warping")]
 		PowerWarping,
 
 		// Tormented
@@ -68,35 +78,25 @@
 		Stats,
 
 		// Titan
+		[Description("The Striding Titan")]
 		StridingTitan,
+		[Description("Unbound Reflection")]
 		UnboundReflection,
 		Acceleration,
 
 		// Divine
 		Supporting,
+		[Description("Divine Speed")]
 		DivineSpeed,
-		LuckyStatus
+		[Description("Lucky Status")]
+		LuckyStatus,
 	}
 
 	public static class SoulTypeExtentions
 	{
 		public static string GetDescription(this SoulType type)
 		{
-			return type switch
-			{
-				(SoulType.Hunter) => "The Hunter",
-				(SoulType.RapidMutation) => "Rapid Mutation",
-				(SoulType.GlowingDetermination) => "Glowing Determination",
-				(SoulType.WellAmplification) => "Well Amplification",
-				(SoulType.AccelleratedAdvancement) => "Accellerated Advancement",
-				(SoulType.GhostForce) => "Ghost Force",
-				(SoulType.PowerWarping) => "Power Warping",
-				(SoulType.StridingTitan) => "The Striding Titan",
-				(SoulType.UnboundReflection) => "Unbound Reflection",
-				(SoulType.DivineSpeed) => "Divine Speed",
-				(SoulType.LuckyStatus) => "Lucky Status",
-				_ => type.ToString(),
-			};
+			return type.AsString(EnumFormat.Description, EnumFormat.Name);
 		}
 	}
 }

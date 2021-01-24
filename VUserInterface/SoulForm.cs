@@ -1,5 +1,7 @@
-﻿using System;
+﻿using EnumsNET;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using VBusiness.HelperClasses;
 using VBusiness.Souls;
 using VEntityFramework.Data;
@@ -76,7 +78,7 @@ namespace VUserInterface
 
 		List<object> SoulTypesList
 		{
-			get => fSoulTypesList ??= BindingHelper<SoulType>.ConvertForBinding(new SoulLookup().GetSouls());
+			get => fSoulTypesList ??= BindingHelper<SoulType>.ConvertForBinding(Enums.GetValues<SoulType>().ToList());
 		}
 		List<object> fSoulTypesList;
 
