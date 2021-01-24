@@ -5,7 +5,7 @@ namespace VBusiness.Difficulties
 {
 	public class Divine : Difficulty
 	{
-		public override DifficultyLevel Difficulty => throw new NotImplementedException();
+		public override DifficultyLevel Difficulty => DifficultyLevel.Divine;
 
 		public override int TormentReduction => 15;
 	}

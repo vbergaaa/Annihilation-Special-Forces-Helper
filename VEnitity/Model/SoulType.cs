@@ -14,6 +14,7 @@
 		Tormented,
 		Demonic,
 		Titan,
+		Divine,
 
 		// Uniques
 		// Lowest
@@ -70,6 +71,11 @@
 		StridingTitan,
 		UnboundReflection,
 		Acceleration,
+
+		// Divine
+		Supporting,
+		DivineSpeed,
+		LuckyStatus
 	}
 
 	public static class SoulTypeExtentions
@@ -87,6 +93,8 @@
 				(SoulType.PowerWarping) => "Power Warping",
 				(SoulType.StridingTitan) => "The Striding Titan",
 				(SoulType.UnboundReflection) => "Unbound Reflection",
+				(SoulType.DivineSpeed) => "Divine Speed",
+				(SoulType.LuckyStatus) => "Lucky Status",
 				_ => type.ToString(),
 			};
 		}

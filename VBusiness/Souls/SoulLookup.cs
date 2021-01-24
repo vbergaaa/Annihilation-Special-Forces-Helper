@@ -21,6 +21,7 @@ namespace VBusiness.Souls
 				SoulType.Tormented,
 				SoulType.Demonic,
 				SoulType.Titan,
+				SoulType.Divine,
 				SoulType.Bronze,
 				SoulType.Mirrors,
 				SoulType.Hunter,
@@ -54,6 +55,9 @@ namespace VBusiness.Souls
 				SoulType.StridingTitan,
 				SoulType.UnboundReflection,
 				SoulType.Acceleration,
+				SoulType.Supporting,
+				SoulType.LuckyStatus,
+				SoulType.DivineSpeed,
 			};
 		}
 
