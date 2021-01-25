@@ -7,6 +7,8 @@ using VEntityFramework.Data;
 using VBusiness.HelperClasses;
 using VBusiness.PlayerRanks;
 using VUserInterface.CommonControls;
+using EnumsNET;
+using System.Linq;
 
 namespace VUserInterface
 {
@@ -62,7 +64,7 @@ namespace VUserInterface
 
 		List<object> PlayerRankList
 		{
-			get => fPlayerRankList ??= BindingHelper<PlayerRank>.ConvertForBinding(new PlayerRankLookups().GetPlayerRanks());
+			get => fPlayerRankList ??= BindingHelper<PlayerRank>.ConvertForBinding(Enums.GetValues<PlayerRank>().ToList());
 		}
 		List<object> fPlayerRankList;
 

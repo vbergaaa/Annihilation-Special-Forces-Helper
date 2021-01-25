@@ -8,6 +8,7 @@ namespace VBusiness.PlayerRanks
 		{
 			return rank switch
 			{
+				PlayerRank.None => 1,
 				PlayerRank.Rookie => 1,
 				PlayerRank.SuperRookie => 2,
 				PlayerRank.PrestigeRookie => 3,
@@ -23,7 +24,7 @@ namespace VBusiness.PlayerRanks
 				PlayerRank.Master => 11,
 				PlayerRank.SuperMaster => 12,
 				PlayerRank.PrestigeMaster => 13,
-				_ => 1
+				_ => (58 - (int)rank) / 3 // should cover all ranks after dominator
 			};
 		}
 	}

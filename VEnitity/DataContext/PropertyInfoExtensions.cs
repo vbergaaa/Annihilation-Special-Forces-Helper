@@ -55,7 +55,7 @@ namespace VEntityFramework.Data
 				}
 				else if (property.PropertyType.Name == "PlayerRank")
 				{
-					property.SetValue(bizo, VPlayerRank.GetPlayerRankFromString(value));
+					property.SetValue(bizo, EnumHelper.GetEnumFromDescription<PlayerRank>(value));
 				}
 				else
 				{

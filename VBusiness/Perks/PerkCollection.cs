@@ -29,7 +29,7 @@ namespace VBusiness.Perks
 				{
 					return Loadout.Profile.Rank.GetMaxPerkPage();
 				}
-				return 13;
+				return int.MaxValue;
 			}
 		}
 
