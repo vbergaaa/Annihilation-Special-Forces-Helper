@@ -43,7 +43,7 @@ namespace VEntityFramework.Data
 				}
 				else if (property.PropertyType.Name == "UnitRank")
 				{
-					property.SetValue(bizo, VUnitRank.GetUnitRankFromString(value));
+					property.SetValue(bizo, EnumHelper.GetEnumFromDescription<UnitRank>(value));
 				}
 				else if (property.PropertyType.Name == "DifficultyLevel")
 				{

@@ -5,6 +5,8 @@ using VEntityFramework.Model;
 using VBusiness.Ranks;
 using VBusiness.HelperClasses;
 using VUserInterface.CommonControls;
+using EnumsNET;
+using System.Linq;
 
 namespace VUserInterface
 {
@@ -54,7 +56,7 @@ namespace VUserInterface
 
 		List<object> RankList
 		{
-			get => fRankList ??= BindingHelper<VEntityFramework.Model.UnitRank>.ConvertForBinding(new RankLookup().GetRanks());
+			get => fRankList ??= BindingHelper<VEntityFramework.Model.UnitRank>.ConvertForBinding(Enums.GetValues<VEntityFramework.Model.UnitRank>().ToList());
 		}
 		List<object> fRankList;
 

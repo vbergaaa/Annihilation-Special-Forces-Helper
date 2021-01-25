@@ -40,43 +40,5 @@ namespace VEntityFramework.Model
 		public abstract double Speed { get; }
 
 		#endregion
-
-		public static UnitRank GetUnitRankFromString(string rank)
-		{
-			return rank switch
-			{
-				("D") => UnitRank.D,
-				("C") => UnitRank.C,
-				("B") => UnitRank.B,
-				("A") => UnitRank.A,
-				("S") => UnitRank.S,
-				("SD") => UnitRank.SD,
-				("SC") => UnitRank.SC,
-				("SB") => UnitRank.SB,
-				("SA") => UnitRank.SA,
-				("SS") => UnitRank.SS,
-				("SSD") => UnitRank.SSD,
-				("SSC") => UnitRank.SSC,
-				("SSB") => UnitRank.SSB,
-				("SSA") => UnitRank.SSA,
-				("SSS") => UnitRank.SSS,
-				("X") => UnitRank.X,
-				("SX") => UnitRank.SX,
-				("SSX") => UnitRank.SSX,
-				("SSSX") => UnitRank.SSSX,
-				("XX") => UnitRank.XX,
-				("XD") => UnitRank.XD,
-				("SXD") => UnitRank.SXD,
-				("Z") => UnitRank.Z,
-				("SZ") => UnitRank.SZ,
-				("SSZ") => UnitRank.SSZ,
-				("SSSZ") => UnitRank.SSSZ,
-				("XZ") => UnitRank.XZ,
-				("XDZ") => UnitRank.XDZ,
-				("SXDZ") => UnitRank.SXDZ,
-				("XYZ ") => UnitRank.XYZ,
-				_ => UnitRank.None
-			};
-		}
 	}
 }

@@ -1,4 +1,6 @@
-﻿using VEntityFramework.Model;
+﻿using EnumsNET;
+using System;
+using VEntityFramework.Model;
 
 namespace VBusiness.Ranks
 {
@@ -16,41 +18,24 @@ namespace VBusiness.Ranks
 
 		public static VUnitRank New(VEntityFramework.Model.UnitRank rank, VUnitConfiguration config)
 		{
-			return rank switch
+			if (rank == VEntityFramework.Model.UnitRank.None)
 			{
-				VEntityFramework.Model.UnitRank.None => new EmptyRank(config),
-				VEntityFramework.Model.UnitRank.D => new RankD(config),
-				VEntityFramework.Model.UnitRank.C => new RankC(config),
-				VEntityFramework.Model.UnitRank.B => new RankB(config),
-				VEntityFramework.Model.UnitRank.A => new RankA(config),
-				VEntityFramework.Model.UnitRank.S => new RankS(config),
-				VEntityFramework.Model.UnitRank.SD => new RankSD(config),
-				VEntityFramework.Model.UnitRank.SC => new RankSC(config),
-				VEntityFramework.Model.UnitRank.SB => new RankSB(config),
-				VEntityFramework.Model.UnitRank.SA => new RankSA(config),
-				VEntityFramework.Model.UnitRank.SS => new RankSS(config),
-				VEntityFramework.Model.UnitRank.SSD => new RankSSD(config),
-				VEntityFramework.Model.UnitRank.SSC => new RankSSC(config),
-				VEntityFramework.Model.UnitRank.SSB => new RankSSB(config),
-				VEntityFramework.Model.UnitRank.SSA => new RankSSA(config),
-				VEntityFramework.Model.UnitRank.SSS => new RankSSS(config),
-				VEntityFramework.Model.UnitRank.X => new RankX(config),
-				VEntityFramework.Model.UnitRank.SX => new RankSX(config),
-				VEntityFramework.Model.UnitRank.SSX => new RankSSX(config),
-				VEntityFramework.Model.UnitRank.SSSX => new RankSSSX(config),
-				VEntityFramework.Model.UnitRank.XX => new RankXX(config),
-				VEntityFramework.Model.UnitRank.XD => new RankXD(config),
-				VEntityFramework.Model.UnitRank.SXD => new RankSXD(config),
-				VEntityFramework.Model.UnitRank.Z => new RankZ(config),
-				VEntityFramework.Model.UnitRank.SZ => new RankSZ(config),
-				VEntityFramework.Model.UnitRank.SSZ => new RankSSZ(config),
-				VEntityFramework.Model.UnitRank.SSSZ => new RankSSSZ(config),
-				VEntityFramework.Model.UnitRank.XZ => new RankXZ(config),
-				VEntityFramework.Model.UnitRank.XDZ => new RankXDZ(config),
-				VEntityFramework.Model.UnitRank.SXDZ => new RankSXDZ(config),
-				VEntityFramework.Model.UnitRank.XYZ => new RankXYZ(config),
-				_ => null,
-			};
+				return new EmptyRank(config);
+			}
+			var rankName = "Rank" + rank.AsString(EnumFormat.Name);
+			var rankType = System.Type.GetType($"VBusiness.Ranks.{rankName}");
+
+			if (rankType == null)
+			{
+#if DEBUG
+				throw new Exception($"Please create a class named VBusiness.Ranks.{rankName}");
+#else
+				return new EmptySoul();
+#endif
+			}
+
+			var ret = (UnitRank)Activator.CreateInstance(rankType, config);
+			return ret;
 		}
 
 		#endregion
