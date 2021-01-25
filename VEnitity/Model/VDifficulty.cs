@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace VEntityFramework.Model
 {
@@ -19,45 +20,17 @@ namespace VEntityFramework.Model
 		#endregion
 
 		#endregion
-
-		#region Methods
-
-		#region GetDifficultyLevelFromString
-
-		public static DifficultyLevel GetDifficultyLevelFromString(string level)
-		{
-			return level switch
-			{
-				("None") => DifficultyLevel.None,
-				("VeryEasy") => DifficultyLevel.VeryEasy,
-				("Easy") => DifficultyLevel.Easy,
-				("Normal") => DifficultyLevel.Normal,
-				("Hard") => DifficultyLevel.Hard,
-				("VeryHard") => DifficultyLevel.VeryHard,
-				("Brutal") => DifficultyLevel.Brutal,
-				("Insane") => DifficultyLevel.Insane,
-				("Nightmare") => DifficultyLevel.Nightmare,
-				("Torment") => DifficultyLevel.Torment,
-				("Hell") => DifficultyLevel.Hell,
-				("Titanic") => DifficultyLevel.Titanic,
-				("Mythic") => DifficultyLevel.Mythic,
-				("Divine") => DifficultyLevel.Divine,
-				_ => throw new NotImplementedException($"Cannot load {level} difficulty"),
-			};
-		}
-
-		#endregion
-
-		#endregion
 	}
 
 	public enum DifficultyLevel
 	{
 		None,
+		[Description("Very Easy")]
 		VeryEasy,
 		Easy,
 		Normal,
 		Hard,
+		[Description("Very Hard")]
 		VeryHard,
 		Insane,
 		Brutal,
