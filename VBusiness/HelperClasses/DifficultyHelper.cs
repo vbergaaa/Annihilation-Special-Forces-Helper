@@ -18,7 +18,7 @@ namespace VBusiness.HelperClasses
 			if (diffType == null)
 			{
 #if DEBUG
-				throw new Exception($"Please create a class named VBusiness.DifficultyHelpers.{level.AsString(EnumFormat.Name)}");
+				throw new Exception($"Please create a class named VBusiness.Difficulties.{level.AsString(EnumFormat.Name)}");
 #else
 				return new EmptyDifficultyHelper();
 #endif
