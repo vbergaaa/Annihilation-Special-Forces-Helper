@@ -36,6 +36,8 @@ namespace VUserInterface.CommonControls
 			// ComboBox
 			//
 			this.ComboBox.DataBindings.Add("SelectedIndex", this, "SelectedIndex", true, DataSourceUpdateMode.OnPropertyChanged);
+			this.ComboBox.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.ComboBox_Format);
+			this.ComboBox.FormattingEnabled = true;
 			this.ComboBox.Location = DPIScalingHelper.GetScaledPoint(0, 1);
 			this.ComboBox.SelectedValueChanged += ComboBox_SelectedValueChanged;
 			//

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using EnumsNET;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using VEntityFramework.Model;
 
 namespace VUserInterface.CommonControls
 {
@@ -50,6 +52,11 @@ namespace VUserInterface.CommonControls
 			}
 		}
 
+		protected override void OnSizeChanged(EventArgs e)
+		{
+			base.OnSizeChanged(e);
+		}
+
 		#region Events
 
 		public event EventHandler SelectedValueChanged;
@@ -57,6 +64,17 @@ namespace VUserInterface.CommonControls
 		void ComboBox_SelectedValueChanged(object sender, EventArgs e)
 		{
 			SelectedValueChanged?.Invoke(this, e);
+		}
+
+		void ComboBox_Format(object sender, ListControlConvertEventArgs e)
+		{
+			e.Value = e.ListItem switch
+			{
+				SoulType value => value.AsString(EnumFormat.Description, EnumFormat.Name),
+				PlayerRank value => value.AsString(EnumFormat.Description, EnumFormat.Name),
+				DifficultyLevel value => value.AsString(EnumFormat.Description, EnumFormat.Name),
+				_ => e.ListItem.ToString()
+			};
 		}
 
 		#endregion
