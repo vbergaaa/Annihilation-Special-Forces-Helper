@@ -53,6 +53,9 @@
     <Compile Update="ProfileControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="SingleSoulControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="SoulControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -80,7 +83,7 @@
     <Compile Update="VPerkControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="VSoulCollectionControl.cs">
+    <Compile Update="VLoadoutSoulsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="VStatsControl.cs">

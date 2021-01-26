@@ -47,7 +47,7 @@ namespace VUserInterface
 			this.ChallengePointCollectionButton = new DPIButton();
 			this.UnitButton = new DPIButton();
 			this.GemsControl = new VGemCollectionControl();
-			this.SoulsControl = new VSoulCollectionControl();
+			this.SoulsControl = new VLoadoutSoulsControl();
 			this.ChallengePointCollectionControl = new ChallengePointCollectionControl();
 			this.UnitControl = new UnitConfigurationControl();
 			this.AvailablePPLabel = new VLabel();
@@ -231,7 +231,7 @@ namespace VUserInterface
 		private VTextBox LoadoutNameTextBox;
 		private VUserInterface.VPerkCollectionControl PerkPageControl;
 		private VUserInterface.VGemCollectionControl GemsControl;
-		private VUserInterface.VSoulCollectionControl SoulsControl;
+		private VUserInterface.VLoadoutSoulsControl SoulsControl;
 		private VUserInterface.ChallengePointCollectionControl ChallengePointCollectionControl;
 		private VUserInterface.UnitConfigurationControl UnitControl;
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;

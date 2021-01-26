@@ -5,9 +5,9 @@ using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class VSoulCollectionControl : DPIUserControl
+	public partial class VLoadoutSoulsControl : DPIUserControl
 	{
-		public VSoulCollectionControl()
+		public VLoadoutSoulsControl()
 		{
 			InitializeComponent();
 		}

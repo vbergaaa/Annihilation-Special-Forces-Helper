@@ -4,7 +4,7 @@ using VEntityFramework.Model;
 
 namespace VUserInterface
 {
-	partial class VSoulCollectionControl
+	partial class VLoadoutSoulsControl
 	{
 		/// <summary> 
 		/// Required designer variable.
