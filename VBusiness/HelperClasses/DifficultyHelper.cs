@@ -20,7 +20,7 @@ namespace VBusiness.HelperClasses
 #if DEBUG
 				throw new Exception($"Please create a class named VBusiness.Difficulties.{level.AsString(EnumFormat.Name)}");
 #else
-				return new EmptyDifficultyHelper();
+				return new EmptyDifficulty();
 #endif
 			}
 

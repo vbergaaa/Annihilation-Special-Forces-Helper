@@ -1,5 +1,6 @@
 ﻿using EnumsNET;
 using System;
+using VBusiness.Souls;
 using VEntityFramework.Model;
 
 namespace VBusiness.Ranks
@@ -30,7 +31,7 @@ namespace VBusiness.Ranks
 #if DEBUG
 				throw new Exception($"Please create a class named VBusiness.Ranks.{rankName}");
 #else
-				return new EmptySoul();
+				return new EmptyRank(config);
 #endif
 			}
 
