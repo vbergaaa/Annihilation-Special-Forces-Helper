@@ -1,4 +1,5 @@
 ﻿using System;
+using VBusiness.Souls;
 using VEntityFramework.Model;
 
 namespace VBusiness.Profile
@@ -19,6 +20,13 @@ namespace VBusiness.Profile
 				return RankPoints + modBonus;
 			}
 		}
+
+		#endregion
+
+		#region SoulCollection
+
+		public override VSoulCollection SoulCollection => fSoulCollection ??= new SoulCollection();
+		VSoulCollection fSoulCollection;
 
 		#endregion
 

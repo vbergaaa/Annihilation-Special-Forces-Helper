@@ -52,7 +52,6 @@ namespace VEntityFramework.Model
 
 		#region Rank
 
-
 		[VXML(true)]
 		public PlayerRank Rank
 		{
@@ -137,6 +136,12 @@ namespace VEntityFramework.Model
 		#region PerkPoints
 
 		public virtual long PerkPoints { get; }
+
+		#endregion
+
+		#region SoulCollection
+
+		public virtual VSoulCollection SoulCollection { get; }
 
 		#endregion
 
