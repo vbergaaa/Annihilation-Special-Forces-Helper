@@ -23,50 +23,10 @@ namespace VEntityFramework.Data
 
 		public static void CastAndSetValue(this PropertyInfo property, string value, VBusinessObject bizo)
 		{
-			try
+			var objectValue = CastFromStringHelper.GetValueForPropertyTypeFromString(property.PropertyType.Name, value);
+			if (objectValue != null)
 			{
-				if (property.PropertyType.Name == "Int16")
-				{
-					property.SetValue(bizo, short.Parse(value));
-				}
-				else if (property.PropertyType.Name == "Int32")
-				{
-					property.SetValue(bizo, int.Parse(value));
-				}
-				else if (property.PropertyType.Name == "Int64")
-				{
-					property.SetValue(bizo, long.Parse(value));
-				}
-				else if (property.PropertyType.Name == "String")
-				{
-					property.SetValue(bizo, value);
-				}
-				else if (property.PropertyType.Name == "UnitRank")
-				{
-					property.SetValue(bizo, EnumHelper.GetEnumFromDescription<UnitRank>(value));
-				}
-				else if (property.PropertyType.Name == "DifficultyLevel")
-				{
-					property.SetValue(bizo, EnumHelper.GetEnumFromDescription<DifficultyLevel>(value));
-				}
-				else if (property.PropertyType.Name == "Boolean")
-				{
-					property.SetValue(bizo, value.ToLower() == "true" ? true : false);
-				}
-				else if (property.PropertyType.Name == "PlayerRank")
-				{
-					property.SetValue(bizo, EnumHelper.GetEnumFromDescription<PlayerRank>(value));
-				}
-				else
-				{
-#if DEBUG
-					throw new DeveloperException($"Add cast type for {property.PropertyType.Name} to method PropertyInfoExtensions.CastAndSetValue()");
-#endif
-				}
-			}
-			catch (DeveloperException ex)
-			{
-				throw ex;
+				property.SetValue(bizo, objectValue);
 			}
 		}
 
@@ -88,6 +48,30 @@ namespace VEntityFramework.Data
 			{
 				return info.Name;
 			}
+		}
+	}
+
+	public static class CastFromStringHelper
+	{
+		public static object GetValueForPropertyTypeFromString(string propertyType, string value)
+		{
+			return propertyType switch
+			{
+				"Int16" => short.Parse(value),
+				"Int32" => int.Parse(value),
+				"Int64" => long.Parse(value),
+				"String" => value,
+				"Boolean" => value.ToLower() == "true" ? true : false,
+				"UnitRank" => EnumHelper.GetEnumFromDescription<UnitRank>(value),
+				"PlayerRank" => EnumHelper.GetEnumFromDescription<PlayerRank>(value),
+				"DifficultyLevel" => EnumHelper.GetEnumFromDescription<DifficultyLevel>(value),
+				"SoulType" => EnumHelper.GetEnumFromDescription<SoulType>(value),
+#if DEBUG
+				_ => throw new DeveloperException($"Add cast type for {propertyType} to method PropertyInfoExtensions.CastAndSetValue()"),
+#else
+				_ => null
+#endif
+			};
 		}
 	}
 }

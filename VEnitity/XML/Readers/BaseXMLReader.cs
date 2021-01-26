@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Reflection;
 using System.Xml;
 using VEntityFramework.Data;
@@ -53,11 +54,30 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		void PopulateNonKeyProperty(VBusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
+		protected virtual void PopulateNonKeyProperty(VBusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
 		{
 			if (!IsKey(childNode))
 			{
-				matchingProperty.CastAndSetValue(childNode.InnerText, bizo);
+				if (typeof(IList).IsAssignableFrom(matchingProperty.PropertyType))
+				{
+					ReadListIntoBizo(bizo, childNode, matchingProperty);
+				}
+				else
+				{
+					matchingProperty.CastAndSetValue(childNode.InnerText, bizo);
+				}
+			}
+		}
+
+		private static void ReadListIntoBizo(VBusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
+		{
+			var list = (IList)matchingProperty.GetValue(bizo);
+			var listBaseMemberName = list.GetType().GetGenericArguments()[0].Name;
+
+			foreach (XmlNode node in childNode.ChildNodes)
+			{
+				var item = CastFromStringHelper.GetValueForPropertyTypeFromString(listBaseMemberName, node.InnerText);
+				list.Add(item);
 			}
 		}
 
