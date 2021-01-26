@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class ScavengerSoul : LowSoul
 	{
-		public ScavengerSoul(VSoulCollection collection) : base(collection)
+		public ScavengerSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

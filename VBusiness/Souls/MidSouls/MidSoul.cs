@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public class MidSoul : Soul
 	{
-		public MidSoul(VSoulCollection collection) : base(collection)
+		public MidSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

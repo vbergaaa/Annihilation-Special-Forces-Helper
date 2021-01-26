@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class PromotionSoul : HighSoul
 	{
-		public PromotionSoul(VSoulCollection collection) : base(collection)
+		public PromotionSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

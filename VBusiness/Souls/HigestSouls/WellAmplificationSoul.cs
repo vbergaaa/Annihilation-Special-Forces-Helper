@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class WellAmplificationSoul : HighestSoul
 	{
-		public WellAmplificationSoul(VSoulCollection collection) : base(collection)
+		public WellAmplificationSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

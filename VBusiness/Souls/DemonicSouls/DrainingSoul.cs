@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class DrainingSoul : DemonicSoul
 	{
-		public DrainingSoul(VSoulCollection collection) : base(collection)
+		public DrainingSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

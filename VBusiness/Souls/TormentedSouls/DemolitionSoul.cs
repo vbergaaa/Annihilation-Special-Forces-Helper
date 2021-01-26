@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class DemolitionSoul : TormentedSoul
 	{
-		public DemolitionSoul(VSoulCollection collection) : base(collection)
+		public DemolitionSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

@@ -8,9 +8,9 @@ namespace VEntityFramework.Model
 	{
 		#region	Constructors
 
-		public VSoul(VSoulCollection soulCollection) : base(soulCollection)
+		public VSoul(VLoadoutSouls soulCollection) : base(soulCollection)
 		{
-			SoulCollection = soulCollection;
+			Parent = soulCollection;
 		}
 
 		#endregion
@@ -20,7 +20,10 @@ namespace VEntityFramework.Model
 		#region SoulCollection
 
 		[VXML(false)]
-		public VSoulCollection SoulCollection { get; set; }
+		public new VLoadoutSouls Parent { get; set; }
+
+		[VXML(false)]
+		public VLoadout Loadout { get => Parent?.Loadout; }
 
 		#endregion
 
@@ -255,7 +258,7 @@ namespace VEntityFramework.Model
 
 		public void ActivateSoul()
 		{
-			if (SoulCollection?.Loadout?.Stats != null)
+			if (Parent?.Loadout?.Stats != null)
 			{
 				ActivateSoulCore();
 			}
@@ -265,7 +268,7 @@ namespace VEntityFramework.Model
 
 		public void DeactivateSoul()
 		{
-			if (SoulCollection?.Loadout?.Stats != null)
+			if (Parent?.Loadout?.Stats != null)
 			{
 				DeactivateSoulCore();
 			}

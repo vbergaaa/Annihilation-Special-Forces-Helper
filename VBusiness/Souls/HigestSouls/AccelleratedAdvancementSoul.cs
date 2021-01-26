@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class AccelleratedAdvancementSoul : HighestSoul
 	{
-		public AccelleratedAdvancementSoul(VSoulCollection collection) : base(collection)
+		public AccelleratedAdvancementSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

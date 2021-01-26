@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class LuckSoul : MidSoul
 	{
-		public LuckSoul(VSoulCollection collection) : base(collection)
+		public LuckSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

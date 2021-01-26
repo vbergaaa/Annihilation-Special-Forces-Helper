@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class TrainingSoul : NightSoul
 	{
-		public TrainingSoul(VSoulCollection collection) : base(collection)
+		public TrainingSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

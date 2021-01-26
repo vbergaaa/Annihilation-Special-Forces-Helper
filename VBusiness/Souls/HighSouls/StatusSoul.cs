@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class StatusSoul : HighSoul
 	{
-		public StatusSoul(VSoulCollection collection) : base(collection)
+		public StatusSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 
@@ -13,15 +13,15 @@ namespace VBusiness.Souls
 		protected override void ActivateSoulCore()
 		{
 			base.ActivateSoulCore();
-			var rank = (int)SoulCollection.Loadout.Profile.Rank;
-			SoulCollection.Loadout.Stats.CriticalChance += (int)(rank * 0.5);
+			var rank = (int)Loadout.Profile.Rank;
+			Loadout.Stats.CriticalChance += (int)(rank * 0.5);
 		}
 
 		protected override void DeactivateSoulCore()
 		{
 			base.DeactivateSoulCore();
-			var rank = (int)SoulCollection.Loadout.Profile.Rank;
-			SoulCollection.Loadout.Stats.CriticalChance -= (int)(rank * 0.5);
+			var rank = (int)Loadout.Profile.Rank;
+			Loadout.Stats.CriticalChance -= (int)(rank * 0.5);
 		}
 	}
 }

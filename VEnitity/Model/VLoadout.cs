@@ -76,7 +76,7 @@ namespace VEntityFramework.Model
 
 		#region Souls
 
-		public virtual VSoulCollection Souls
+		public virtual VLoadoutSouls Souls
 		{
 			get => fSouls;
 			set
@@ -84,7 +84,7 @@ namespace VEntityFramework.Model
 				fSouls = value;
 			}
 		}
-		VSoulCollection fSouls;
+		VLoadoutSouls fSouls;
 
 		#endregion
 

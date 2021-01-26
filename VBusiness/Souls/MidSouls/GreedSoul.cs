@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class GreedSoul : MidSoul
 	{
-		public GreedSoul(VSoulCollection collection) : base(collection)
+		public GreedSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

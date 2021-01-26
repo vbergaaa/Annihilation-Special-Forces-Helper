@@ -12,7 +12,7 @@ namespace VEntityFramework.XML
 			{
 				"PerkCollection" => type.GetProperty("Perks"),
 				"GemCollection" => type.GetProperty("Gems"),
-				"SoulCollection" => type.GetProperty("Souls"),
+				"SoulCollection" => type.GetProperty("Souls"), // This is now for legacy only, v0.6 and earlier. BizoName = "Souls" now so this will nolonger be needed after they open/resave
 				"ChallengePointCollection" => type.GetProperty("ChallengePoints"),
 				_ => base.GetPropertyFromXML(type, child)
 			};

@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class RapidMutationSoul : HigherSoul
 	{
-		public RapidMutationSoul(VSoulCollection collection) : base(collection)
+		public RapidMutationSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

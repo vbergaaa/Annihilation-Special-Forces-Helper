@@ -3,11 +3,11 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Souls
 {
-	public class SoulCollection : VSoulCollection
+	public class LoadoutSouls : VLoadoutSouls
 	{
 		#region Constructor
 
-		public SoulCollection(VLoadout loadout) : base(loadout)
+		public LoadoutSouls(VLoadout loadout) : base(loadout)
 		{
 		}
 
@@ -54,7 +54,7 @@ namespace VBusiness.Souls
 					if (SavedSouls.TryGetValue(value, out var soulName))
 					{
 						soul = Context.ReadFromXMLWithCache<Soul>(soulName);
-						soul.SoulCollection = this;
+						soul.Parent = this;
 					}
 				}
 				Soul1 = soul;
@@ -87,7 +87,7 @@ namespace VBusiness.Souls
 					if (SavedSouls.TryGetValue(value, out var soulName))
 					{
 						soul = Context.ReadFromXMLWithCache<Soul>(soulName);
-						soul.SoulCollection = this;
+						soul.Parent = this;
 					}
 				}
 				Soul2 = soul;
@@ -120,7 +120,7 @@ namespace VBusiness.Souls
 					if (SavedSouls.TryGetValue(value, out var soulName))
 					{
 						soul = Context.ReadFromXMLWithCache<Soul>(soulName);
-						soul.SoulCollection = this;
+						soul.Parent = this;
 					}
 				}
 				Soul3 = soul;

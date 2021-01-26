@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class UnboundReflectionSoul : TitanSoul
 	{
-		public UnboundReflectionSoul(VSoulCollection collection) : base(collection)
+		public UnboundReflectionSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

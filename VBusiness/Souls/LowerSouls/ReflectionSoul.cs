@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class ReflectionSoul : LowerSoul
 	{
-		public ReflectionSoul(VSoulCollection collection) : base(collection)
+		public ReflectionSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

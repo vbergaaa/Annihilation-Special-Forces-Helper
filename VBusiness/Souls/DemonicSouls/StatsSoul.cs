@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public class StatsSoul : DemonicSoul
 	{
-		public StatsSoul(VSoulCollection collection) : base(collection)
+		public StatsSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

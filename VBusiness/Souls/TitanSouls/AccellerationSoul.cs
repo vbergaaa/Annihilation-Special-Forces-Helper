@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public class AccelerationSoul : TitanSoul
 	{
-		public AccelerationSoul(VSoulCollection collection) : base(collection)
+		public AccelerationSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 
@@ -13,13 +13,13 @@ namespace VBusiness.Souls
 		protected override void ActivateSoulCore()
 		{
 			base.ActivateSoulCore();
-			SoulCollection.Loadout.Stats.Acceleration += 10;
+			Loadout.Stats.Acceleration += 10;
 		}
 
 		protected override void DeactivateSoulCore()
 		{
 			base.ActivateSoulCore();
-			SoulCollection.Loadout.Stats.Acceleration -= 10;
+			Loadout.Stats.Acceleration -= 10;
 		}
 	}
 }

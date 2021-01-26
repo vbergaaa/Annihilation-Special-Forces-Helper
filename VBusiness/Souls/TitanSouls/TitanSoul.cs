@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public class TitanSoul : Soul
 	{
-		public TitanSoul(VSoulCollection collection) : base(collection)
+		public TitanSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

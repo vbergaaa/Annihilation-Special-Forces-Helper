@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public class LowerSoul : Soul
 	{
-		public LowerSoul(VSoulCollection collection) : base(collection)
+		public LowerSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

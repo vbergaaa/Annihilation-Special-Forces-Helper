@@ -4,11 +4,11 @@ using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
-	public abstract class VSoulCollection : VBusinessObject
+	public abstract class VLoadoutSouls : VBusinessObject
 	{
 		#region Constructor
 
-		public VSoulCollection(VLoadout loadout) : base(loadout)
+		public VLoadoutSouls(VLoadout loadout) : base(loadout)
 		{
 			Loadout = loadout ?? throw new ArgumentException(nameof(loadout));
 		}
@@ -139,7 +139,7 @@ namespace VEntityFramework.Model
 
 		#region Implementation
 
-		public override string BizoName => "SoulCollection";
+		public override string BizoName => "Souls";
 
 		#endregion
 	}

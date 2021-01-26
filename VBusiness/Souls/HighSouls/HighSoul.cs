@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public class HighSoul : Soul
 	{
-		public HighSoul(VSoulCollection collection) : base(collection)
+		public HighSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

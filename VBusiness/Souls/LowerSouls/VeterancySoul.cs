@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class VeterancySoul : LowerSoul
 	{
-		public VeterancySoul(VSoulCollection collection) : base(collection)
+		public VeterancySoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class PredestinationSoul : HigherSoul
 	{
-		public PredestinationSoul(VSoulCollection collection) : base(collection)
+		public PredestinationSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

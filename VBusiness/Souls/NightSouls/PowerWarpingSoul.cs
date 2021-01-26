@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class PowerWarpingSoul : NightSoul
 	{
-		public PowerWarpingSoul(VSoulCollection collection) : base(collection)
+		public PowerWarpingSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

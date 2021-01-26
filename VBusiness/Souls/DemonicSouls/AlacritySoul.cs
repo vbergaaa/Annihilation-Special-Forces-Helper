@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class AlacritySoul : DemonicSoul
 	{
-		public AlacritySoul(VSoulCollection collection) : base(collection)
+		public AlacritySoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

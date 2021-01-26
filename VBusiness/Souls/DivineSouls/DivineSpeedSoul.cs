@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public class DivineSpeedSoul : DivineSoul
 	{
-		public DivineSpeedSoul(VSoulCollection collection) : base(collection)
+		public DivineSpeedSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 
@@ -13,15 +13,15 @@ namespace VBusiness.Souls
 		protected override void ActivateSoulCore()
 		{
 			base.ActivateSoulCore();
-			SoulCollection.Loadout.Stats.CooldownReduction += 40;
-			SoulCollection.Loadout.Stats.Acceleration += 5;
+			Loadout.Stats.CooldownReduction += 40;
+			Loadout.Stats.Acceleration += 5;
 		}
 
 		protected override void DeactivateSoulCore()
 		{
 			base.DeactivateSoulCore();
-			SoulCollection.Loadout.Stats.CooldownReduction -= 40;
-			SoulCollection.Loadout.Stats.Acceleration -= 5;
+			Loadout.Stats.CooldownReduction -= 40;
+			Loadout.Stats.Acceleration -= 5;
 		}
 	}
 }

@@ -12,7 +12,7 @@ namespace VUserInterface
 			InitializeComponent();
 		}
 
-		public VSoulCollection Souls
+		public VLoadoutSouls Souls
 		{
 			get;
 			set;

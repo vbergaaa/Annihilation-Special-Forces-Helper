@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class SharingSoul : MidSoul
 	{
-		public SharingSoul(VSoulCollection collection) : base(collection)
+		public SharingSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

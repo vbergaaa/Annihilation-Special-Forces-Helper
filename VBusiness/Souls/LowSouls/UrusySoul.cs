@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class UrusySoul : LowSoul
 	{
-		public UrusySoul(VSoulCollection collection) : base(collection)
+		public UrusySoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

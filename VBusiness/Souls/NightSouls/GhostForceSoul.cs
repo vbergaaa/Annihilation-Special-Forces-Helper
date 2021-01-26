@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class GhostForceSoul : NightSoul
 	{
-		public GhostForceSoul(VSoulCollection collection) : base(collection)
+		public GhostForceSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 
@@ -13,13 +13,13 @@ namespace VBusiness.Souls
 		protected override void ActivateSoulCore()
 		{
 			base.ActivateSoulCore();
-			SoulCollection.Loadout.UnitConfiguration.MaximumKills += 200;
+			Loadout.UnitConfiguration.MaximumKills += 200;
 		}
 
 		protected override void DeactivateSoulCore()
 		{
 			base.DeactivateSoulCore();
-			SoulCollection.Loadout.UnitConfiguration.MaximumKills -= 200;
+			Loadout.UnitConfiguration.MaximumKills -= 200;
 		}
 	}
 }

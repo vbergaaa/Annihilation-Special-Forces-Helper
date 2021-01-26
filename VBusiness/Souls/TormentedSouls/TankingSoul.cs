@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class TankingSoul : TormentedSoul
 	{
-		public TankingSoul(VSoulCollection collection) : base(collection)
+		public TankingSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 
@@ -13,15 +13,15 @@ namespace VBusiness.Souls
 		protected override void ActivateSoulCore()
 		{
 			base.ActivateSoulCore();
-			SoulCollection.Loadout.Stats.AdditiveArmor += 3;
-			SoulCollection.Loadout.Stats.DamageReductionFromStats += 5;
+			Loadout.Stats.AdditiveArmor += 3;
+			Loadout.Stats.DamageReductionFromStats += 5;
 		}
 
 		protected override void DeactivateSoulCore()
 		{
 			base.DeactivateSoulCore();
-			SoulCollection.Loadout.Stats.AdditiveArmor -= 3;
-			SoulCollection.Loadout.Stats.DamageReductionFromStats -= 5;
+			Loadout.Stats.AdditiveArmor -= 3;
+			Loadout.Stats.DamageReductionFromStats -= 5;
 		}
 	}
 }

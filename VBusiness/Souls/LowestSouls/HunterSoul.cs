@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class HunterSoul : LowestSoul
 	{
-		public HunterSoul(VSoulCollection collection) : base(collection)
+		public HunterSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

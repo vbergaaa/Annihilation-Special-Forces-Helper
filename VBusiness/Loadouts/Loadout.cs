@@ -48,9 +48,9 @@ namespace VBusiness.Loadouts
 
 		#region Souls
 
-		public override VSoulCollection Souls
+		public override VLoadoutSouls Souls
 		{
-			get => base.Souls ??= new SoulCollection(this);
+			get => base.Souls ??= new LoadoutSouls(this);
 			set => base.Souls = value;
 		}
 

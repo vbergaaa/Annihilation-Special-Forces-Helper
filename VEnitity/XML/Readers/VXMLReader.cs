@@ -64,7 +64,7 @@ namespace VEntityFramework.XML
 				Type _ when typeof(VGemCollection).IsAssignableFrom(type) => new GemCollectionXMLReader(),
 				Type _ when typeof(VChallengePointCollection).IsAssignableFrom(type) => new ChallengePointCollectionXMLReader(),
 #if DEBUG
-				_ when typeof(VSoulCollection).IsAssignableFrom(type) => new SimpleXMLReader(),
+				_ when typeof(VLoadoutSouls).IsAssignableFrom(type) => new SimpleXMLReader(),
 				_ when typeof(VChallengePoint).IsAssignableFrom(type) => new SimpleXMLReader(),
 				_ when typeof(VProfile).IsAssignableFrom(type) => new SimpleXMLReader(),
 				_ when typeof(VBusinessObject).IsAssignableFrom(type) => throw new NotImplementedException($"{type.Name} does not have an associated xml reader. Create one, or add it to this exception list"),

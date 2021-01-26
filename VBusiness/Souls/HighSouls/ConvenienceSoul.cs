@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public sealed class ConvenienceSoul : HighSoul
 	{
-		public ConvenienceSoul(VSoulCollection collection) : base(collection)
+		public ConvenienceSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

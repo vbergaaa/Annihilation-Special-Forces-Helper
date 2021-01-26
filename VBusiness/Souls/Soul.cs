@@ -9,11 +9,11 @@ namespace VBusiness.Souls
 	{
 		#region Constructor
 
-		public Soul(VSoulCollection collection) : base(collection)
+		public Soul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 
-		public static Soul New(SoulType type, VSoulCollection collection)
+		public static Soul New(SoulType type, VLoadoutSouls collection)
 		{
 			if (type == SoulType.None)
 			{
@@ -339,29 +339,29 @@ namespace VBusiness.Souls
 
 		protected override void ActivateSoulCore()
 		{
-			if (SoulCollection?.Loadout?.Stats != null)
+			if (Parent?.Loadout?.Stats != null)
 			{
-				SoulCollection.Loadout.Stats.Attack += Attack;
-				SoulCollection.Loadout.Stats.AttackSpeed += AttackSpeed;
-				SoulCollection.Loadout.Stats.HealthArmor += Armor;
-				SoulCollection.Loadout.Stats.ShieldsArmor += Armor;
-				SoulCollection.Loadout.Stats.Health += Vitals;
-				SoulCollection.Loadout.Stats.Shields += Vitals;
-				SoulCollection.Loadout.Stats.CriticalChance += CriticalChance;
-				SoulCollection.Loadout.Stats.CriticalDamage += CriticalDamage;
+				Loadout.Stats.Attack += Attack;
+				Loadout.Stats.AttackSpeed += AttackSpeed;
+				Loadout.Stats.HealthArmor += Armor;
+				Loadout.Stats.ShieldsArmor += Armor;
+				Loadout.Stats.Health += Vitals;
+				Loadout.Stats.Shields += Vitals;
+				Loadout.Stats.CriticalChance += CriticalChance;
+				Loadout.Stats.CriticalDamage += CriticalDamage;
 			}
 		}
 
 		protected override void DeactivateSoulCore()
 		{
-			SoulCollection.Loadout.Stats.Attack -= Attack;
-			SoulCollection.Loadout.Stats.AttackSpeed -= AttackSpeed;
-			SoulCollection.Loadout.Stats.HealthArmor -= Armor;
-			SoulCollection.Loadout.Stats.ShieldsArmor -= Armor;
-			SoulCollection.Loadout.Stats.Health -= Vitals;
-			SoulCollection.Loadout.Stats.Shields -= Vitals;
-			SoulCollection.Loadout.Stats.CriticalChance -= CriticalChance;
-			SoulCollection.Loadout.Stats.CriticalDamage -= CriticalDamage;
+			Loadout.Stats.Attack -= Attack;
+			Loadout.Stats.AttackSpeed -= AttackSpeed;
+			Loadout.Stats.HealthArmor -= Armor;
+			Loadout.Stats.ShieldsArmor -= Armor;
+			Loadout.Stats.Health -= Vitals;
+			Loadout.Stats.Shields -= Vitals;
+			Loadout.Stats.CriticalChance -= CriticalChance;
+			Loadout.Stats.CriticalDamage -= CriticalDamage;
 		}
 
 #endregion

@@ -4,7 +4,7 @@ namespace VBusiness.Souls
 {
 	public class NightSoul : Soul
 	{
-		public NightSoul(VSoulCollection collection) : base(collection)
+		public NightSoul(VLoadoutSouls collection) : base(collection)
 		{
 		}
 

@@ -41,7 +41,7 @@ namespace VUserInterface
 			//
 			// bindingSource
 			//
-			this.bindingSource.DataSource = typeof(VSoulCollection);
+			this.bindingSource.DataSource = typeof(VLoadoutSouls);
 			//
 			// Soul1Control
 			//
