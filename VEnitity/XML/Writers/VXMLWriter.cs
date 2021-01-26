@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections;
+using System.IO;
 using System.Xml;
 using VEntityFramework.Data;
 
@@ -51,6 +52,10 @@ namespace VEntityFramework.XML
 						{
 							WriteXML(writer, (VBusinessObject)property.GetValue(bizo));
 						}
+						else if (typeof(IList).IsAssignableFrom(property.PropertyType))
+						{
+							WriteListToXml(writer, bizo, property);
+						}
 						else
 						{
 							writer.WriteStartElement(property.Name);
@@ -61,6 +66,23 @@ namespace VEntityFramework.XML
 				}
 				writer.WriteEndElement();
 				bizo.HasChanges = false;
+			}
+		}
+
+		static void WriteListToXml(XmlWriter writer, VBusinessObject bizo, System.Reflection.PropertyInfo property)
+		{
+			var value = property.GetValue(bizo);
+			if (value is IList list)
+			{
+				writer.WriteStartElement(property.Name);
+
+				foreach (var item in list)
+				{
+					writer.WriteStartElement("Item");
+					writer.WriteString(item.ToString());
+					writer.WriteEndElement();
+				}
+				writer.WriteEndElement();
 			}
 		}
 
