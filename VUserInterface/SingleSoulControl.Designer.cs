@@ -33,12 +33,12 @@ namespace VUserInterface
 			// 
 			// SingleSoulControl
 			// 
+			this.DataBindings.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged;
 			this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.Name = "SingleSoulControl";
 			this.Click += OnClick;
-			this.Size = DPIScalingHelper.GetScaledSize(70, 70);
+			this.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.ResumeLayout(false);
-
 		}
 
 		#endregion

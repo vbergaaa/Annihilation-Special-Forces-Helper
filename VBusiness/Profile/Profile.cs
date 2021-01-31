@@ -1,11 +1,21 @@
 ﻿using System;
 using VBusiness.Souls;
+using VEntityFramework.Data;
 using VEntityFramework.Model;
 
 namespace VBusiness.Profile
 {
 	public class Profile : VProfile
 	{
+		#region GetProfile
+
+		public static Profile GetProfile()
+		{
+			return VDataContext.Instance.Get<Profile>();
+		}
+
+		#endregion
+
 		#region Properties
 
 		#region Perk Points
@@ -25,7 +35,18 @@ namespace VBusiness.Profile
 
 		#region SoulCollection
 
-		public override VSoulCollection SoulCollection => fSoulCollection ??= new SoulCollection();
+		public override VSoulCollection SoulCollection
+		{
+			get
+			{
+
+				if (fSoulCollection == null)
+				{
+					fSoulCollection = new SoulCollection(this);
+				}
+				return fSoulCollection;
+			}
+		}
 		VSoulCollection fSoulCollection;
 
 		#endregion

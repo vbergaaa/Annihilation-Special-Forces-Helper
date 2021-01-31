@@ -6,6 +6,10 @@ namespace VEntityFramework.Model
 {
 	public abstract class VSoulCollection : VBusinessObject
 	{
+		public VSoulCollection(VProfile profile) : base(profile)
+		{
+		}
+
 		#region DiscoveredSouls
 
 		[VXML(true)]
@@ -31,6 +35,7 @@ namespace VEntityFramework.Model
 				if (!HasBronzeSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Bronze);
+					HasChanges = true;
 				}
 			}
 		}
@@ -52,6 +57,7 @@ namespace VEntityFramework.Model
 				if (!HasMirrorsSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Mirrors);
+					HasChanges = true;
 				}
 			}
 		}
@@ -73,6 +79,7 @@ namespace VEntityFramework.Model
 				if (!HasHunterSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Hunter);
+					HasChanges = true;
 				}
 			}
 		}
@@ -94,6 +101,7 @@ namespace VEntityFramework.Model
 				if (!HasSilverSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Silver);
+					HasChanges = true;
 				}
 			}
 		}
@@ -115,6 +123,7 @@ namespace VEntityFramework.Model
 				if (!HasReflectionSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Reflection);
+					HasChanges = true;
 				}
 			}
 		}
@@ -136,6 +145,7 @@ namespace VEntityFramework.Model
 				if (!HasVeterancySoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Veterancy);
+					HasChanges = true;
 				}
 			}
 		}
@@ -157,6 +167,7 @@ namespace VEntityFramework.Model
 				if (!HasHungerSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Hunger);
+					HasChanges = true;
 				}
 			}
 		}
@@ -178,6 +189,7 @@ namespace VEntityFramework.Model
 				if (!HasScavengerSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Scavenger);
+					HasChanges = true;
 				}
 			}
 		}
@@ -199,6 +211,7 @@ namespace VEntityFramework.Model
 				if (!HasUrusySoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Urusy);
+					HasChanges = true;
 				}
 			}
 		}
@@ -220,6 +233,7 @@ namespace VEntityFramework.Model
 				if (!HasGreedSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Greed);
+					HasChanges = true;
 				}
 			}
 		}
@@ -241,6 +255,7 @@ namespace VEntityFramework.Model
 				if (!HasLuckSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Luck);
+					HasChanges = true;
 				}
 			}
 		}
@@ -262,6 +277,7 @@ namespace VEntityFramework.Model
 				if (!HasSharingSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Sharing);
+					HasChanges = true;
 				}
 			}
 		}
@@ -283,6 +299,7 @@ namespace VEntityFramework.Model
 				if (!HasConvenienceSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Convenience);
+					HasChanges = true;
 				}
 			}
 		}
@@ -304,6 +321,7 @@ namespace VEntityFramework.Model
 				if (!HasPromotionSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Promotion);
+					HasChanges = true;
 				}
 			}
 		}
@@ -325,6 +343,7 @@ namespace VEntityFramework.Model
 				if (!HasStatusSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Status);
+					HasChanges = true;
 				}
 			}
 		}
@@ -346,6 +365,7 @@ namespace VEntityFramework.Model
 				if (!HasPredestinationSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Predestination);
+					HasChanges = true;
 				}
 			}
 		}
@@ -367,6 +387,7 @@ namespace VEntityFramework.Model
 				if (!HasRapidMutationSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.RapidMutation);
+					HasChanges = true;
 				}
 			}
 		}
@@ -388,6 +409,7 @@ namespace VEntityFramework.Model
 				if (!HasSalesSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Sales);
+					HasChanges = true;
 				}
 			}
 		}
@@ -409,6 +431,7 @@ namespace VEntityFramework.Model
 				if (!HasAccelleratedAdvancementSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.AccelleratedAdvancement);
+					HasChanges = true;
 				}
 			}
 		}
@@ -430,6 +453,7 @@ namespace VEntityFramework.Model
 				if (!HasGlowingDeterminationSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.GlowingDetermination);
+					HasChanges = true;
 				}
 			}
 		}
@@ -451,6 +475,7 @@ namespace VEntityFramework.Model
 				if (!HasWellAmplificationSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.WellAmplification);
+					HasChanges = true;
 				}
 			}
 		}
@@ -472,6 +497,7 @@ namespace VEntityFramework.Model
 				if (!HasGhostForceSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.GhostForce);
+					HasChanges = true;
 				}
 			}
 		}
@@ -493,6 +519,7 @@ namespace VEntityFramework.Model
 				if (!HasPowerWarpingSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.PowerWarping);
+					HasChanges = true;
 				}
 			}
 		}
@@ -514,6 +541,7 @@ namespace VEntityFramework.Model
 				if (!HasTrainingSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Training);
+					HasChanges = true;
 				}
 			}
 		}
@@ -535,6 +563,7 @@ namespace VEntityFramework.Model
 				if (!HasTankingSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Tanking);
+					HasChanges = true;
 				}
 			}
 		}
@@ -556,6 +585,7 @@ namespace VEntityFramework.Model
 				if (!HasUnchainedSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Unchained);
+					HasChanges = true;
 				}
 			}
 		}
@@ -577,6 +607,7 @@ namespace VEntityFramework.Model
 				if (!HasDemolitionSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Demolition);
+					HasChanges = true;
 				}
 			}
 		}
@@ -598,6 +629,7 @@ namespace VEntityFramework.Model
 				if (!HasAlacritySoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Alacrity);
+					HasChanges = true;
 				}
 			}
 		}
@@ -619,6 +651,7 @@ namespace VEntityFramework.Model
 				if (!HasDrainingSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Draining);
+					HasChanges = true;
 				}
 			}
 		}
@@ -640,6 +673,7 @@ namespace VEntityFramework.Model
 				if (!HasStatsSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Stats);
+					HasChanges = true;
 				}
 			}
 		}
@@ -661,6 +695,7 @@ namespace VEntityFramework.Model
 				if (!HasAccelerationSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Acceleration);
+					HasChanges = true;
 				}
 			}
 		}
@@ -682,6 +717,7 @@ namespace VEntityFramework.Model
 				if (!HasStridingTitanSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.StridingTitan);
+					HasChanges = true;
 				}
 			}
 		}
@@ -703,6 +739,7 @@ namespace VEntityFramework.Model
 				if (!HasUnboundReflectionSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.UnboundReflection);
+					HasChanges = true;
 				}
 			}
 		}
@@ -724,6 +761,7 @@ namespace VEntityFramework.Model
 				if (!HasDivineSpeedSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.DivineSpeed);
+					HasChanges = true;
 				}
 			}
 		}
@@ -745,6 +783,7 @@ namespace VEntityFramework.Model
 				if (!HasLuckyStatusSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.LuckyStatus);
+					HasChanges = true;
 				}
 			}
 		}
@@ -766,11 +805,24 @@ namespace VEntityFramework.Model
 				if (!HasSupportingSoul && value)
 				{
 					DiscoveredSouls.Add(SoulType.Supporting);
+					HasChanges = true;
 				}
 			}
 		}
 
 		#endregion
+
+		#endregion
+
+		#region TotalUniques
+
+		public int TotalUniques => DiscoveredSouls.Count();
+
+		#endregion
+
+		#region PowerSouls
+
+		public int PowerSouls => TotalUniques / 24;
 
 		#endregion
 

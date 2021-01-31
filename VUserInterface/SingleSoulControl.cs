@@ -18,13 +18,26 @@ namespace VUserInterface
 
 		#region Selected
 
-		public bool Selected { get; set; }
+		public bool Selected
+		{
+			get => fSelected;
+			set
+			{
+				fSelected = value;
+				OnSelectedChanged();
+			}
+		}
+		bool fSelected;
 
 		public event EventHandler SelectedChanged;
 
-		void OnSelectedChanged()
+		public void OnSelectedChanged()
 		{
 			SelectedChanged?.Invoke(this, new EventArgs());
+			if (Parent != null)
+			{
+				Parent.Refresh();
+			}
 		}
 
 		#endregion
@@ -50,17 +63,22 @@ namespace VUserInterface
 
 			if (Selected)
 			{
-				e.Graphics.DrawRectangle(Pens.LightGray, rect);
-			}
-			else
-			{
-				using (var pen = new Pen(Color.Black, DPIScalingHelper.GetScaledX(2)))
+				using (var pen = new Pen(Color.Black, DPIScalingHelper.GetScaledX(5)))
 				{
 					e.Graphics.DrawRectangle(Pens.Black, rect);
 				}
 			}
+			else
+			{
+				e.Graphics.DrawRectangle(Pens.LightGray, rect);
+			}
 		}
 
 		#endregion
+
+		public override void NotifyDefault(bool value)
+		{
+			base.NotifyDefault(false);
+		}
 	}
 }

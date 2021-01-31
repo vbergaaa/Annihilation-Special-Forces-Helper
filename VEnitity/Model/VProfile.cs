@@ -142,6 +142,7 @@ namespace VEntityFramework.Model
 		#region SoulCollection
 
 		public virtual VSoulCollection SoulCollection { get; }
+		VSoulCollection fSoulCollection;
 
 		#endregion
 

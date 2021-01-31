@@ -283,5 +283,7 @@ namespace VEntityFramework.Model
 		public override string BizoName => "Soul";
 
 		#endregion
+
+		public const SoulType HighestNonUniqueSoul = SoulType.Divine; 
 	}
 }

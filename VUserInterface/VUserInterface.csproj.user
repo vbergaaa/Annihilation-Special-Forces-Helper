@@ -56,6 +56,12 @@
     <Compile Update="SingleSoulControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="SoulCollectionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="SoulCollectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SoulControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -66,6 +72,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UnitConfigurationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="VCommonSoulCollectionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="VForm.cs">
