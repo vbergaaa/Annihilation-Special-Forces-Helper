@@ -142,7 +142,7 @@ namespace VEntityFramework.Data
 
 		#region HasChanges
 
-		public bool HasChanges
+		public virtual bool HasChanges
 		{
 			get
 			{
@@ -155,8 +155,17 @@ namespace VEntityFramework.Data
 					fHasChanges = value;
 					RefreshHasChanges();
 				}
+				if (value)
+				{
+					OnChangeMade();
+				}
 			}
 		}
+
+		protected virtual void OnChangeMade()
+		{
+		}
+
 		bool fHasChanges;
 
 		public IDisposable SuspendSettingHasChanges()

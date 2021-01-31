@@ -34,10 +34,6 @@ namespace VUserInterface
 		public void OnSelectedChanged()
 		{
 			SelectedChanged?.Invoke(this, new EventArgs());
-			if (Parent != null)
-			{
-				Parent.Refresh();
-			}
 		}
 
 		#endregion
