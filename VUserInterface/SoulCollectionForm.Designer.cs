@@ -35,6 +35,7 @@ namespace VUserInterface
 			// SoulCollectionControl
 			//
 			this.SoulCollectionControl.Location = DPIScalingHelper.GetScaledPoint(0, 5);
+			this.SoulCollectionControl.Name = "SoulCollectionControl";
 			// 
 			// SoulCollectionForm
 			// 

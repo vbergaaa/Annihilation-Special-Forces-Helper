@@ -6,7 +6,7 @@ using VEntityFramework.Model;
 
 namespace VUserInterface
 {
-	class SoulCollectionControl : VCommonSoulCollectionControl
+	public class SoulCollectionControl : VCommonSoulCollectionControl
 	{
 		protected override string GetSoulBindingStringCore(SoulType type)
 		{
