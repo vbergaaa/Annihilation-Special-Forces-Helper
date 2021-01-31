@@ -47,6 +47,7 @@ namespace VUserInterface
 			this.ProfilePanel = new VUserInterface.CommonControls.DPIPanel();
 			this.LoadoutsPanel = new VUserInterface.CommonControls.DPIPanel();
 			this.SoulsPanel = new VUserInterface.CommonControls.DPIPanel();
+			this.SoulCollectionButton = new VButton();
 			this.ProfileControl = new ProfileControl();
 			this.LeftPanel.SuspendLayout();
 			this.RightPanel.SuspendLayout();
@@ -88,6 +89,7 @@ namespace VUserInterface
 			this.LeftPanel.Controls.Add(this.SoulsButton);
 			this.LeftPanel.Controls.Add(this.LoadoutsButton);
 			this.LeftPanel.Controls.Add(this.ProfileButton);
+			this.LeftPanel.Controls.Add(this.SoulCollectionButton);
 			this.LeftPanel.Location = DPIScalingHelper.GetScaledPoint(0, 35);
 			this.LeftPanel.Name = "LeftPanel";
 			this.LeftPanel.Size = DPIScalingHelper.GetScaledSize(200, 400);
@@ -112,6 +114,16 @@ namespace VUserInterface
 			this.LoadoutsButton.Text = "Loadouts";
 			this.LoadoutsButton.UseVisualStyleBackColor = true;
 			this.LoadoutsButton.Click += new System.EventHandler(this.LoadoutsButton_Click);
+			// 
+			// SoulCollectionButton
+			// 
+			this.SoulCollectionButton.Location = DPIScalingHelper.GetScaledPoint(12, 170);
+			this.SoulCollectionButton.Name = "SoulCollectionButton";
+			this.SoulCollectionButton.Size = DPIScalingHelper.GetScaledSize(182, 31);
+			this.SoulCollectionButton.TabIndex = 1;
+			this.SoulCollectionButton.Text = "Soul Collection";
+			this.SoulCollectionButton.UseVisualStyleBackColor = true;
+			this.SoulCollectionButton.Click += new System.EventHandler(this.SoulCollectionButton_Click);
 			// 
 			// ProfileButton
 			// 
@@ -199,5 +211,6 @@ namespace VUserInterface
 		private VButton SoulsButton;
 		private VButton LoadoutsButton;
 		private VButton ProfileButton;
+		private VButton SoulCollectionButton;
 	}
 }

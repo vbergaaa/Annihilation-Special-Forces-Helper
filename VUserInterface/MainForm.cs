@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using VBusiness.Profile;
 
 namespace VUserInterface
 {
@@ -34,6 +35,14 @@ namespace VUserInterface
 		void ProfileButton_Click(object sender, EventArgs e)
 		{
 			ChangeMainPanel(sender, e);
+		}
+
+		void SoulCollectionButton_Click(object sender, EventArgs e)
+		{
+			using (var soulCollectionForm = new SoulCollectionForm(Profile.GetProfile()))
+			{
+				soulCollectionForm.ShowDialog();
+			}
 		}
 
 		protected override void ScaleControl(SizeF factor, BoundsSpecified specified)

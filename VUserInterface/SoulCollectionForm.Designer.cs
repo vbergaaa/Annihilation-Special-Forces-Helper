@@ -43,7 +43,7 @@ namespace VUserInterface
 			this.Controls.Add(SoulCollectionControl);
 			this.ClientSize = DPIScalingHelper.GetScaledSize(585, 362);
 			this.Name = "SoulCollectionForm";
-			this.Text = "SoulCollectionForm";
+			this.Text = "Soul Collection";
 			this.ResumeLayout(false);
 		}
 
