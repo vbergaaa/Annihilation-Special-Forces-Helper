@@ -32,6 +32,24 @@ namespace VUserInterface
 			InitializeComponent();
 		}
 
+		public bool BizoHasChanges
+		{
+			get => fBizoHasChanges;
+			set
+			{
+				fBizoHasChanges = value;
+				UpdateCancelButton();
+			}
+		}
+		bool fBizoHasChanges;
+
+		void UpdateCancelButton()
+		{
+			CancelButton.Text = fBizoHasChanges ? "Cancel" : "Close";
+			CancelButton.DialogResult = fBizoHasChanges ? DialogResult.Cancel : DialogResult.OK;
+		}
+
+
 		public new VBusinessObject Parent
 		{
 			get => fParent;

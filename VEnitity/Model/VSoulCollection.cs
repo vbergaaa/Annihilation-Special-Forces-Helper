@@ -826,6 +826,28 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Methods
+
+		#region SaveState
+
+		public virtual void SaveState()
+		{
+		}
+
+		#endregion
+
+		#region ResetState
+
+		public virtual void ResetState()
+		{
+		}
+
+		#endregion
+
+		#endregion
+
+		#region Overrides
+
 		protected override void OnChangeMade()
 		{
 			base.OnChangeMade();
@@ -833,6 +855,9 @@ namespace VEntityFramework.Model
 			RefreshPropertyBinding(nameof(PowerSouls));
 			RefreshPropertyBinding(nameof(TotalUniques));
 		}
+
+		#endregion
+
 		public override string BizoName => "SoulCollection";
 	}
 }

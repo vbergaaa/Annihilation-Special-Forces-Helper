@@ -54,12 +54,14 @@ namespace VUserInterface
 			// CancelButton
 			//
 			this.CancelButton.Anchor = AnchorStyles.Bottom  | AnchorStyles.Right;
+			this.CancelButton.DialogResult = DialogResult.OK;
 			this.CancelButton.Size = DPIScalingHelper.GetScaledSize(80, 25);
 			this.CancelButton.Text = "Close";
 			this.CancelButton.Click += CancelButton_Click;
 			//
 			// this
 			//
+			this.DataBindings.Add("BizoHasChanges", BindingSource, "HasChanges");
 			this.Text = "Annihilation Special Forces Companion App";
 			this.Controls.Add(this.SaveButton);
 			this.Controls.Add(this.CancelButton);

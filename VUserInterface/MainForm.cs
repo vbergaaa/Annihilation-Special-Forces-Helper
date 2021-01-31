@@ -39,9 +39,15 @@ namespace VUserInterface
 
 		void SoulCollectionButton_Click(object sender, EventArgs e)
 		{
+			var sc = Profile.GetProfile().SoulCollection;
+			sc.SaveState();
 			using (var soulCollectionForm = new SoulCollectionForm(Profile.GetProfile()))
 			{
-				soulCollectionForm.ShowDialog();
+				var result = soulCollectionForm.ShowDialog();
+				if (result == DialogResult.Cancel)
+				{
+					sc.ResetState();
+				}
 			}
 		}
 
