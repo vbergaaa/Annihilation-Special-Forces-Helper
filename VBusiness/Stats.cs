@@ -26,11 +26,33 @@ namespace VBusiness
 		{
 			get
 			{
-				var regAtkChance = CriticalChance > 100 ? 0 : 1 - CriticalChance / 100;
-				var redCritChance = HasRedCrits ? CriticalChance / 200 : 0;
-				var critChance = 1 - regAtkChance - redCritChance;
+				var remainingChance = 1.0;
 
-				var coreDamage = (regAtkChance * Attack) + (critChance * (Attack + CriticalDamage)) + (redCritChance * (Attack + 2 * CriticalDamage));
+				var blackCritChance = HasBlackCrits ? CriticalChance / 300 : 0;
+				blackCritChance = blackCritChance > 1 ? 1 : blackCritChance;
+
+				remainingChance -= blackCritChance;
+
+				var redCritChance = HasRedCrits ? CriticalChance / 200 : 0;
+				redCritChance = remainingChance * redCritChance;
+				redCritChance = redCritChance > remainingChance ? remainingChance : redCritChance;
+
+				remainingChance -= redCritChance;
+
+				var regAtkChance = CriticalChance > 100 ? 0 : 1 - CriticalChance / 100;
+
+				remainingChance -= regAtkChance;
+
+				var yellowCritChance = remainingChance;
+
+#if DEBUG
+				if (Math.Round(blackCritChance + redCritChance + yellowCritChance + regAtkChance, 10) != 1)
+				{
+					throw new Exception("your crit calculations must be wrong");
+				}
+#endif
+
+				var coreDamage = (regAtkChance * Attack) + (yellowCritChance * (Attack + CriticalDamage)) + (redCritChance * (Attack + 2 * CriticalDamage)) + (blackCritChance * (Attack + 3.5 * CriticalDamage));
 				var damage = coreDamage * (1 + DamageIncrease / 100);
 				return Math.Round(damage * AttackSpeed / 100, 2);
 			}

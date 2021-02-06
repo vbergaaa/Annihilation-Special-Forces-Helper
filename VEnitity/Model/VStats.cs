@@ -240,7 +240,8 @@ namespace VEntityFramework.Model
 
 		#region RedCrits
 
-		public bool HasRedCrits {
+		public bool HasRedCrits
+		{
 			get => fHasRedCrits;
 			set
 			{
@@ -249,6 +250,21 @@ namespace VEntityFramework.Model
 			}
 		}
 		bool fHasRedCrits;
+
+		#endregion
+
+		#region BlackCrits
+
+		public bool HasBlackCrits
+		{
+			get => fHasBlackCrits;
+			set
+			{
+				fHasBlackCrits = value;
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+			}
+		}
+		bool fHasBlackCrits;
 
 		#endregion
 

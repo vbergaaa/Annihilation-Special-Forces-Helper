@@ -21,5 +21,10 @@ namespace VBusiness.Perks
 		protected override string PerkName => "Dominator Damage";
 
 		protected override short MaxLevelCore => 200;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			PerkCollection.Loadout.Stats.Attack += difference;
+		}
 	}
 }

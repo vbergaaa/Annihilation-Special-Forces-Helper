@@ -21,5 +21,10 @@ namespace VBusiness.Perks
 		protected override string PerkName => "Dominator Attack Speed";
 
 		protected override short MaxLevelCore => 150;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			PerkCollection.Loadout.Stats.AttackSpeed += difference;
+		}
 	}
 }

@@ -21,5 +21,10 @@ namespace VBusiness.Perks
 		protected override string PerkName => "Black Crits";
 
 		protected override short MaxLevelCore => 1;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			PerkCollection.Loadout.Stats.HasBlackCrits = difference > 0;
+		}
 	}
 }
