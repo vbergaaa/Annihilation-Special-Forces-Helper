@@ -1364,6 +1364,108 @@ namespace VBusiness.Perks
 
 		#endregion
 
+		#region BlackCrits
+
+		public VPerk BlackCrits
+		{
+			get
+			{
+				if (fBlackCrits == null)
+				{
+					fBlackCrits = new BlackCritsPerk(this);
+				}
+				return fBlackCrits;
+			}
+		}
+		VPerk fBlackCrits;
+
+		#endregion
+
+		#region BlackMarket
+
+		public VPerk BlackMarket
+		{
+			get
+			{
+				if (fBlackMarket == null)
+				{
+					fBlackMarket = new BlackMarketPerk(this);
+				}
+				return fBlackMarket;
+			}
+		}
+		VPerk fBlackMarket;
+
+		#endregion
+
+		#region DominatorDamage
+
+		public VPerk DominatorDamage
+		{
+			get
+			{
+				if (fDominatorDamage == null)
+				{
+					fDominatorDamage = new DominatorDamagePerk(this);
+				}
+				return fDominatorDamage;
+			}
+		}
+		VPerk fDominatorDamage;
+
+		#endregion
+
+		#region DominatorSpeed
+
+		public VPerk DominatorSpeed
+		{
+			get
+			{
+				if (fDominatorSpeed == null)
+				{
+					fDominatorSpeed = new DominatorSpeedPerk(this);
+				}
+				return fDominatorSpeed;
+			}
+		}
+		VPerk fDominatorSpeed;
+
+		#endregion
+
+		#region Fearless
+
+		public VPerk Fearless
+		{
+			get
+			{
+				if (fFearless == null)
+				{
+					fFearless = new FearlessPerk(this);
+				}
+				return fFearless;
+			}
+		}
+		VPerk fFearless;
+
+		#endregion
+
+		#region UpgradeCache
+
+		public VPerk UpgradeCache
+		{
+			get
+			{
+				if (fUpgradeCache == null)
+				{
+					fUpgradeCache = new UpgradeCachePerk(this);
+				}
+				return fUpgradeCache;
+			}
+		}
+		VPerk fUpgradeCache;
+
+		#endregion
+
 		#endregion
 
 		#region AllPerks
