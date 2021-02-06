@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EnumsNET;
+using System.Collections.Generic;
 using System.Linq;
 using VBusiness.PlayerRanks;
 using VEntityFramework.Model;
@@ -29,7 +30,9 @@ namespace VBusiness.Perks
 				{
 					return Loadout.Profile.Rank.GetMaxPerkPage();
 				}
-				return int.MaxValue;
+
+				var lastRank = Enums.GetValues<PlayerRank>().Last();
+				return lastRank.GetMaxPerkPage();
 			}
 		}
 

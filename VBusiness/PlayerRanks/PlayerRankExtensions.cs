@@ -24,7 +24,7 @@ namespace VBusiness.PlayerRanks
 				PlayerRank.Master => 11,
 				PlayerRank.SuperMaster => 12,
 				PlayerRank.PrestigeMaster => 13,
-				_ => (58 - (int)rank) / 3 // should cover all ranks after dominator
+				_ => (26 + (int)rank) / 3 // should cover all ranks after dominator
 			};
 		}
 	}
