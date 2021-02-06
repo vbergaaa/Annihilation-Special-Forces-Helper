@@ -1553,7 +1553,13 @@ namespace VBusiness.Perks
 				SuperJackpot2,
 				StartingMinerals2,
 				MasterTrainer2,
-				ExtraSupply2
+				ExtraSupply2,
+				BlackCrits,
+				BlackMarket,
+				DominatorDamage,
+				DominatorSpeed,
+				Fearless,
+				UpgradeCache,
 			};
 
 			allPerks = perks;
