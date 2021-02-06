@@ -16,7 +16,7 @@ namespace VBusiness.Perks
 
 		public override int StartingCost => 1300;
 
-		public override int IncrementCost => 200;
+		public override int IncrementCost => 500;
 
 		protected override string PerkName => "Veterancy IV";
 

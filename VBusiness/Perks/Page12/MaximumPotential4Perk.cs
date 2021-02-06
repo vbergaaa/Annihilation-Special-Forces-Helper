@@ -16,7 +16,7 @@ namespace VBusiness.Perks
 
 		public override int StartingCost => 1200;
 
-		public override int IncrementCost => 200;
+		public override int IncrementCost => 350;
 
 		protected override string PerkName => "Maximum Potential IV";
 
