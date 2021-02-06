@@ -1470,7 +1470,7 @@ namespace VBusiness.Perks
 
 		#region AllPerks
 
-		IEnumerable<VPerk> allPerks;
+		protected IEnumerable<VPerk> allPerks;
 
 		void PopulateAllPerks()
 		{
