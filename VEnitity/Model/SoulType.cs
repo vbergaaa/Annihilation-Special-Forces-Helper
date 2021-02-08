@@ -18,6 +18,7 @@ namespace VEntityFramework.Model
 		Demonic,
 		Titan,
 		Divine,
+		Black,
 
 		// Uniques
 		// Lowest
