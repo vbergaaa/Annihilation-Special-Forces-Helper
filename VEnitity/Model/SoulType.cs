@@ -87,10 +87,10 @@ namespace VEntityFramework.Model
 
 		// Divine
 		Supporting,
-		[Description("Divine Speed")]
-		DivineSpeed,
 		[Description("Lucky Status")]
 		LuckyStatus,
+		[Description("Divine Speed")]
+		DivineSpeed,
 
 		// Black
 		Sanctuary,
