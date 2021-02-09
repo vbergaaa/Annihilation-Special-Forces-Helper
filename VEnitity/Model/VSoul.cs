@@ -284,6 +284,6 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		public const SoulType HighestNonUniqueSoul = SoulType.Divine; 
+		public const SoulType HighestNonUniqueSoul = SoulType.Black; 
 	}
 }

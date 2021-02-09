@@ -812,6 +812,72 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region HasSanctuarySoul
+
+		public bool HasSanctuarySoul
+		{
+			get => DiscoveredSouls.Any(soul => soul == SoulType.Sanctuary);
+			set
+			{
+				if (HasSanctuarySoul && !value)
+				{
+					DiscoveredSouls.Remove(SoulType.Sanctuary);
+					HasChanges = true;
+				}
+				if (!HasSanctuarySoul && value)
+				{
+					DiscoveredSouls.Add(SoulType.Sanctuary);
+					HasChanges = true;
+				}
+			}
+		}
+
+		#endregion
+
+		#region HasDominationSoul
+
+		public bool HasDominationSoul
+		{
+			get => DiscoveredSouls.Any(soul => soul == SoulType.Domination);
+			set
+			{
+				if (HasDominationSoul && !value)
+				{
+					DiscoveredSouls.Remove(SoulType.Domination);
+					HasChanges = true;
+				}
+				if (!HasDominationSoul && value)
+				{
+					DiscoveredSouls.Add(SoulType.Domination);
+					HasChanges = true;
+				}
+			}
+		}
+
+		#endregion
+
+		#region HasShadowsSoul
+
+		public bool HasShadowsSoul
+		{
+			get => DiscoveredSouls.Any(soul => soul == SoulType.Shadows);
+			set
+			{
+				if (HasShadowsSoul && !value)
+				{
+					DiscoveredSouls.Remove(SoulType.Shadows);
+					HasChanges = true;
+				}
+				if (!HasShadowsSoul && value)
+				{
+					DiscoveredSouls.Add(SoulType.Shadows);
+					HasChanges = true;
+				}
+			}
+		}
+
+		#endregion
+
 		#endregion
 
 		#region TotalUniques
