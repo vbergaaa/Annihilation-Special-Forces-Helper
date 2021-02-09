@@ -91,6 +91,11 @@ namespace VEntityFramework.Model
 		DivineSpeed,
 		[Description("Lucky Status")]
 		LuckyStatus,
+
+		// Black
+		Sanctuary,
+		Domination,
+		Shadows,
 	}
 
 	public static class SoulTypeExtentions
