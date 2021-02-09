@@ -18,7 +18,7 @@ namespace VBusiness.Souls
 
 		public override int MaxAttackSpeed => 30;
 
-		public override int MinAttackSpeed => 20;
+		public override int MinAttackSpeed => 18;
 
 		public override int MaxCriticalChance => 8;
 
