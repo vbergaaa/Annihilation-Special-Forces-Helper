@@ -31,9 +31,9 @@ namespace VEntityFramework.Model
 		[Description("Prestige Master")]
 		PrestigeMaster,
 		Dominator,
-		[Description("Dominator2")]
-		Dominator2,
+		[Description("Arch Dominator")]
+		ArchDominator,
 		[Description("Exalted Dominator")]
-		Dominator3,
+		ExaltedDominator,
 	}
 }
