@@ -2,10 +2,11 @@
 using System.IO;
 using System.Reflection;
 using System.Xml;
+using VEntityFramework.Model;
 
 namespace VEntityFramework.XML
 {
-	internal class PerkCollectionXMLReader : BaseXMLReader
+	class PerkCollectionXMLReader : BaseXMLReader
 	{
 		protected override PropertyInfo GetPropertyFromXML(Type type, XmlNode child)
 		{
@@ -31,7 +32,7 @@ namespace VEntityFramework.XML
 			return GetPerkFromCode(type, code);
 		}
 
-		PropertyInfo GetPerkFromCode(Type type, string code)
+		internal PropertyInfo GetPerkFromCode(Type type, string code)
 		{
 			return code switch
 			{
@@ -113,8 +114,23 @@ namespace VEntityFramework.XML
 				"13_4" => type.GetProperty("StartingMinerals2"),
 				"13_5" => type.GetProperty("MasterTrainer2"),
 				"13_6" => type.GetProperty("ExtraSupply2"),
-		_ => throw new InvalidDataException($"{code} is an invalid code."),
+				"14_1" => type.GetProperty("DominatorDamage"),
+				"14_2" => type.GetProperty("DominatorSpeed"),
+				"14_3" => type.GetProperty("BlackCrits"),
+				"14_4" => type.GetProperty("UpgradeCache"),
+				"14_5" => type.GetProperty("Fearless"),
+				"14_6" => type.GetProperty("BlackMarket"),
+				_ => null
 			};
+		}
+	}
+
+	public static class PerkCollectionXMLReaderTestMethods
+	{
+		public static PropertyInfo TestGetPerkFromCode(Type type, string code)
+		{
+			var reader = new PerkCollectionXMLReader();
+			return reader.GetPerkFromCode(type, code);
 		}
 	}
 }
