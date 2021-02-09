@@ -14,7 +14,7 @@ namespace VBusiness.Perks
 
 		public override byte Position => 4;
 
-		public override int StartingCost => 1200;
+		public override int StartingCost => 1250;
 
 		public override int IncrementCost => 375;
 
