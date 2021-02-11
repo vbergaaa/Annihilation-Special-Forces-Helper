@@ -69,7 +69,7 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		static void WriteListToXml(XmlWriter writer, VBusinessObject bizo, System.Reflection.PropertyInfo property)
+		void WriteListToXml(XmlWriter writer, VBusinessObject bizo, System.Reflection.PropertyInfo property)
 		{
 			var value = property.GetValue(bizo);
 			if (value is IList list)
@@ -78,9 +78,16 @@ namespace VEntityFramework.XML
 
 				foreach (var item in list)
 				{
-					writer.WriteStartElement("Item");
-					writer.WriteString(item.ToString());
-					writer.WriteEndElement();
+					if (item is VBusinessObject childBizo)
+					{
+						WriteXML(writer, childBizo);
+					}
+					else
+					{
+						writer.WriteStartElement("Item");
+						writer.WriteString(item.ToString());
+						writer.WriteEndElement();
+					}
 				}
 				writer.WriteEndElement();
 			}

@@ -17,5 +17,7 @@ namespace VBusiness.Units
 		public override int BaseArmor => 2;
 
 		public override int BaseHealth => 100;
+
+		//public override string Key => "WarpLord";
 	}
 }

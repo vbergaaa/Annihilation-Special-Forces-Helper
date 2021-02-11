@@ -3,6 +3,7 @@ using System.Collections;
 using System.Reflection;
 using System.Xml;
 using VEntityFramework.Data;
+using VEntityFramework.DataContext;
 
 namespace VEntityFramework.XML
 {
@@ -49,9 +50,14 @@ namespace VEntityFramework.XML
 		{
 			if (matchingProperty.GetValue(bizo) is VBusinessObject childBizo)
 			{
-				var reader = VXMLReader.GetXmlReader(childBizo.GetType());
-				reader.PopulateFromXML(childBizo, childNode);
+				PopulateBusinessObject(childBizo, childNode);
 			}
+		}
+
+		void PopulateBusinessObject(VBusinessObject childBizo, XmlNode childNode)
+		{
+			var reader = VXMLReader.GetXmlReader(childBizo.GetType());
+			reader.PopulateFromXML(childBizo, childNode);
 		}
 
 		protected virtual void PopulateNonKeyProperty(VBusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
@@ -69,15 +75,26 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		private static void ReadListIntoBizo(VBusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
+		void ReadListIntoBizo(VBusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
 		{
 			var list = (IList)matchingProperty.GetValue(bizo);
+			var listType = list.GetType().GetGenericArguments()[0];
 			var listBaseMemberName = list.GetType().GetGenericArguments()[0].Name;
 
 			foreach (XmlNode node in childNode.ChildNodes)
 			{
-				var item = CastFromStringHelper.GetValueForPropertyTypeFromString(listBaseMemberName, node.InnerText);
-				list.Add(item);
+				if (typeof(VBusinessObject).IsAssignableFrom(listType))
+				{
+					var key = GetKeyNode(node);
+					var item = BizoCreator.Create(listType, key.InnerText, bizo);
+					PopulateBusinessObject(item, node);
+					list.Add(item);
+				}
+				else
+				{
+					var item = CastFromStringHelper.GetValueForPropertyTypeFromString(listBaseMemberName, node.InnerText);
+					list.Add(item);
+				}
 			}
 		}
 
@@ -88,6 +105,18 @@ namespace VEntityFramework.XML
 		protected virtual PropertyInfo GetPropertyFromXML(Type type, XmlNode child)
 		{
 			return type.GetProperty(child.Name);
+		}
+
+		XmlNode GetKeyNode(XmlNode node)
+		{
+			foreach (XmlNode child in node)
+			{
+				if (child.Name == "Key")
+				{
+					return child;
+				}
+			}
+			return null;
 		}
 
 		protected PropertyInfo GetDefaultBizoProperty(Type type, XmlNode node)

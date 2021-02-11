@@ -23,6 +23,7 @@ namespace VEntityFramework.Model
 
 		#region Loadout
 
+		[VXML(false)]
 		public VLoadout Loadout => (VLoadout)Parent;
 
 		#endregion
@@ -33,6 +34,9 @@ namespace VEntityFramework.Model
 
 		public override string BizoName => "Unit";
 
-#endregion
+		[VXML(true)]
+		public string Key => this.GetType().Name;
+
+		#endregion
 	}
 }
