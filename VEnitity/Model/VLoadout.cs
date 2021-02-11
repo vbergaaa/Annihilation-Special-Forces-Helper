@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Attributes;
+﻿using System.Collections.Generic;
+using VEntityFramework.Attributes;
 using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
@@ -127,6 +128,12 @@ namespace VEntityFramework.Model
 			}
 		}
 		VUnitConfiguration fUnitConfiguration;
+
+		#endregion
+
+		#region Units
+
+		public virtual List<VUnit> Units { get; }
 
 		#endregion
 

@@ -1,4 +1,5 @@
-﻿using VBusiness.ChallengePoints;
+﻿using System.Collections.Generic;
+using VBusiness.ChallengePoints;
 using VBusiness.Gems;
 using VBusiness.Perks;
 using VBusiness.Souls;
@@ -73,6 +74,14 @@ namespace VBusiness.Loadouts
 			get => base.UnitConfiguration ??= new UnitConfiguration(this);
 			set => base.UnitConfiguration = value;
 		}
+
+		#endregion
+
+		#region Units
+
+		[VXML(true)]
+		public override List<VUnit> Units => fUnits ??= new List<VUnit>();
+		List<VUnit> fUnits;
 
 		#endregion
 
