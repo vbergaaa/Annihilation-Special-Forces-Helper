@@ -6,18 +6,34 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Units
 {
+	/// Unit: Zealot
+	/// Weapon: Psi Blades
 	public class WarpLord : Unit
 	{
 		public WarpLord(VLoadout loadout) : base(loadout)
 		{
 		}
 
-		public override int BaseDamage => 5;
+		public override double BaseAttack => 11;
 
-		public override int BaseArmor => 2;
+		public override double BaseAttackSpeed => 1.5;
 
-		public override int BaseHealth => 100;
+		public override double BaseAttackCount => 2;
 
-		//public override string Key => "WarpLord";
+		public override double BaseHealth => 100;
+
+		public override double BaseHealthArmor => 2;
+
+		public override double BaseHealthRegen => 2;
+
+		public override double BaseShields => 150;
+
+		public override double BaseShieldArmor => 2;
+
+		public override double BaseShieldRegen => 3;
+
+		public override double BaseShieldRegenDelay => 1;
+
+		public override double BaseAttackRange => 1;
 	}
 }

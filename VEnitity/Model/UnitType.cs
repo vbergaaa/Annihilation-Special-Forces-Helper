@@ -6,6 +6,14 @@ namespace VEntityFramework.Model
 {
 	public enum UnitType
 	{
+		Probe,
 		WarpLord,
+		ShieldBattery,
+		Striker,
+		LightAdept,
+		DarkShadow,
+		Dreadnought,
+		Templar,
+		Dominator
 	}
 }

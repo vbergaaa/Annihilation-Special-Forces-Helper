@@ -1,6 +1,7 @@
-﻿using VEntityFramework.Model;
+﻿using System;
+using VEntityFramework.Model;
 
-namespace VBusiness.Loadouts
+namespace VBusiness.Units
 {
 	public abstract class Unit : VUnit
 	{

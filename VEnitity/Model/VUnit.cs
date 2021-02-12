@@ -11,20 +11,28 @@ namespace VEntityFramework.Model
 		{
 		}
 
-		#region Stats
-
-		public abstract int BaseDamage { get; }
-		public abstract int BaseArmor { get; }
-		public abstract int BaseHealth { get; }
-
-		#endregion
-
 		#region Properties
 
 		#region Loadout
 
 		[VXML(false)]
 		public VLoadout Loadout => (VLoadout)Parent;
+
+		#endregion
+
+		#region Stats
+
+		public abstract double BaseAttack { get; }
+		public abstract double BaseAttackSpeed { get; }
+		public abstract double BaseAttackCount { get; }
+		public abstract double BaseAttackRange { get; }
+		public abstract double BaseHealth { get; }
+		public abstract double BaseHealthArmor { get; }
+		public abstract double BaseHealthRegen { get; }
+		public abstract double BaseShields { get; }
+		public abstract double BaseShieldArmor { get; }
+		public abstract double BaseShieldRegen { get; }
+		public abstract double BaseShieldRegenDelay { get; }
 
 		#endregion
 
