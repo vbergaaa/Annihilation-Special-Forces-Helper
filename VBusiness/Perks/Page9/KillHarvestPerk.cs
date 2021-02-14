@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Grants a 3% chance to gain an extra kill when Kill Efficiency triggers";
+		public override string Description => "+3% chance to double Kill Efficiency's Bonus";
 
 		public override byte Page => 9;
 

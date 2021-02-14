@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Increase damage, attack speed, vitals, vital armor by 1%";
+		public override string Description => "+1% Damage\r\n+1% Attack Speed\r\n+1% Vitals\r\n+1% Armor";
 
 		public override byte Page => 11;
 

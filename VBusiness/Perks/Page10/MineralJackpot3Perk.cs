@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Gain a 0.2% chance to gain 100 minerals on each kill";
+		public override string Description => "Grants a 0.2% chance to gain 100 minerals on each kill";
 
 		public override byte Page => 10;
 

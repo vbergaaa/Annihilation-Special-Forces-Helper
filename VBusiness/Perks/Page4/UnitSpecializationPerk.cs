@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "A random unit (excluding probes) cost 2% * L less, and it as well as any unit formed from it gain 2% * L Damage Increase and 1% * L Damage Reduction, but all other units cost 100% - 10% * L more";
+		public override string Description => "Gives a random unit type +2% Damage Increase, +1% Damage Reduction, -2% Cost.\r\nAll other units cost (100-10*L)% more";
 
 		public override byte Page => 4;
 

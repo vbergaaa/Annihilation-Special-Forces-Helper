@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Emit;
+using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using VBusiness.Perks;
 using VEntityFramework;
@@ -40,6 +41,7 @@ namespace VUserInterface
 			this.CurrentLevelIncrementor = new VIncrementor();
 			this.CostCaption = new VLabel();
 			this.perkBindingSource = new System.Windows.Forms.BindingSource();
+			this.perkInfo = new ToolTip();
 			((System.ComponentModel.ISupportInitialize)(this.perkBindingSource)).BeginInit();
 			// 
 			// CostCaption
@@ -65,6 +67,11 @@ namespace VUserInterface
 			this.CurrentLevelIncrementor.Location = DPIScalingHelper.GetScaledPoint(27, 30);
 			this.CurrentLevelIncrementor.DataBindings.Add("Value", perkBindingSource, "DesiredLevel");
 			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", perkBindingSource, "MaxLevel");
+			//
+			// perkInfo
+			//
+			this.perkInfo.SetToolTip(this, "Perk Info");
+			this.perkInfo.Popup += PerkInfo_Popup;
 			// 
 			// perkBindingSource
 			// 
@@ -82,6 +89,7 @@ namespace VUserInterface
 
 		#endregion
 
+		private ToolTip perkInfo;
 		private VLabel CostLabel;
 		private VIncrementor CurrentLevelIncrementor;
 		private System.Windows.Forms.BindingSource perkBindingSource;

@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Increase maximun kill count and maximun life essence stacks by 50";
+		public override string Description => "Increase maximum kill count and maximum life essence stacks by 50";
 
 		public override byte Page => 9;
 

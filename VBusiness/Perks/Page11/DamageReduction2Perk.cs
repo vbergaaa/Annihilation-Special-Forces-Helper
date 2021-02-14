@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Reduce damage taken by your units by 1% (additive with itself)";
+		public override string Description => "1% Damage Reduction";
 
 		public override byte Page => 11;
 

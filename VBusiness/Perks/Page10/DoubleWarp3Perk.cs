@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Grants a 1% chance to warp in duplicates when buying units";
+		public override string Description => "Grants a 1% chance to warp in a duplicate when buying a unit";
 
 		public override byte Page => 10;
 

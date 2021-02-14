@@ -10,7 +10,7 @@ namespace VBusiness.Perks
 
 		protected override string PerkName => "Attack Speed";
 
-		public override string Description => "Increase Attack Speed of all your units by 2%";
+		public override string Description => "+2% Attack Speed";
 
 		public override byte Page => 1;
 

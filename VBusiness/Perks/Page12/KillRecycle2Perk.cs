@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "";
+		public override string Description => "Reduce Kill Recycle cooldown by 1 second";
 
 		public override byte Page => 12;
 

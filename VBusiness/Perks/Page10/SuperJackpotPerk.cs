@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Increase mineral jackpot reward by 10 minerals and 1 kill";
+		public override string Description => "Increase Mineral Jackpot reward by +10 Minerals and +1 Kill Resource";
 
 		public override byte Page => 10;
 

@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Grants all players a 1% chance to gain an extra RP when a spawner dies";
+		public override string Description => "Grants all players a 1% chance to gain an extra Rank Point when a spawner dies";
 
 		public override byte Page => 7;
 

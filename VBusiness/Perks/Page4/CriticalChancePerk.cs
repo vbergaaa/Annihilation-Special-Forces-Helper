@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Grants a 1% chance to critically hit with any attack";
+		public override string Description => "+1% Critical Chance";
 
 		public override byte Page => 4;
 

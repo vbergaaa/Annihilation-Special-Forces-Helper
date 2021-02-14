@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Gain 1 mining speed and 1 mining amount upgrade";
+		public override string Description => "+1 Mining Speed\r\n+1 Mining Amount";
 
         public override byte Page => 6;
 
