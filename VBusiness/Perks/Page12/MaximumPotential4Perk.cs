@@ -21,5 +21,10 @@ namespace VBusiness.Perks
 		protected override string PerkName => "Maximum Potential IV";
 
 		protected override short MaxLevelCore => 10;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			PerkCollection.Loadout.UnitConfiguration.MaximumKills += 50 * difference;
+		}
 	}
 }
