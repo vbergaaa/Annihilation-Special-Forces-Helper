@@ -40,5 +40,6 @@ namespace VEntityFramework.Model
 		Titanic,
 		Mythic,
 		Divine,
+		Impossible,
 	}
 }
