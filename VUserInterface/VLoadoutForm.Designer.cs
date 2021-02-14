@@ -117,6 +117,7 @@ namespace VUserInterface
 			this.PerkPageControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
 			this.PerkPageControl.DataBindings.Add("Perks", this.LoadoutBindingSource, "Perks");
 			this.PerkPageControl.DataBindings.Add("Text", this.LoadoutBindingSource, "Perks.PageTitle");
+			this.PerkPageControl.Name = "PerkPageControl";
 			//
 			// GemsControl
 			//

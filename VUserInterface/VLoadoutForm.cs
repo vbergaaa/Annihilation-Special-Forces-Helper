@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using VBusiness.Loadouts;
 
 namespace VUserInterface
@@ -21,7 +22,16 @@ namespace VUserInterface
 			this.LoadoutBindingSource.DataSource = Loadout;
 		}
 
-		public Loadout Loadout { get; set; }
+		public Loadout Loadout
+		{
+			get => fLoadout;
+			set
+			{
+				fLoadout = value;
+				fLoadout.ShouldRestrictChanged += RefreshPageLimits;
+			}
+		}
+		Loadout fLoadout;
 
 		#region Control Visibility
 
@@ -90,6 +100,15 @@ namespace VUserInterface
 			}
 		}
 
+		void RefreshPageLimits(object sender, EventArgs e)
+		{
+			var perksControl = this.Controls.Find("PerkPageControl", false)[0];
+			if (perksControl is VPerkCollectionControl control)
+			{
+				control.RestrictPerkPageButtons();
+			}
+		}
+
 		void ShowCantAffordError()
 		{
 			var message = GetErrorMessage();
@@ -102,11 +121,10 @@ namespace VUserInterface
 			var excessGems = Loadout.Gems.RemainingGems < 0 ? -Loadout.Gems.RemainingGems : 0;
 			var excessCP = Loadout.ChallengePoints.RemainingCP < 0 ? -Loadout.ChallengePoints.RemainingCP : 0;
 
-			var ret = "You cannot afford this loadout with the values set on your current profile.\r\n\r\nYou need:\r\n";
-			ret += excessRP != 0 ? $"{excessRP} more rank points\r\n" : "";
+			var ret = "You cannot afford this loadout.\r\n\r\nYou need:\r\n";
+			ret += excessRP != 0 ? $"{excessRP} more perk points\r\n" : "";
 			ret += excessGems != 0 ? $"{excessGems} more gems\r\n" : "";
 			ret += excessCP != 0 ? $"{excessCP} more challenge points\r\n" : "";
-			ret += "\r\nPlease reduce the cost of your loadout, or increase the values on your profile to check this box";
 			return ret;
 		}
 

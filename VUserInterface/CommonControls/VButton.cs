@@ -5,10 +5,16 @@ namespace VUserInterface.CommonControls
 {
 	public class VButton : DPIButton
 	{
+		internal bool DisableStyleChanging { get; set; }
+
 		protected override void OnEnabledChanged(EventArgs e)
 		{
 			base.OnEnabledChanged(e);
-			FlatStyle = Enabled ? FlatStyle.Flat : FlatStyle.Standard;
+
+			if (!DisableStyleChanging)
+			{
+				FlatStyle = Enabled ? FlatStyle.Flat : FlatStyle.Standard;
+			}
 		}
 	}
 }
