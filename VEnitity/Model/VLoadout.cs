@@ -135,6 +135,12 @@ namespace VEntityFramework.Model
 
 		public virtual List<VUnit> Units { get; }
 
+		[VXML(false)]
+		public VUnit CurrentUnit
+		{
+			get => Units[0];
+		}
+
 		#endregion
 
 		#region PerkPointCost

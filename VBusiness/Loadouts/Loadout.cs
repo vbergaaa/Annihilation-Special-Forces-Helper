@@ -3,6 +3,7 @@ using VBusiness.ChallengePoints;
 using VBusiness.Gems;
 using VBusiness.Perks;
 using VBusiness.Souls;
+using VBusiness.Units;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
 
@@ -80,7 +81,7 @@ namespace VBusiness.Loadouts
 		#region Units
 
 		[VXML(true)]
-		public override List<VUnit> Units => fUnits ??= new List<VUnit>();
+		public override List<VUnit> Units => fUnits ??= new List<VUnit>() { new WarpLord(this) };
 		List<VUnit> fUnits;
 
 		#endregion

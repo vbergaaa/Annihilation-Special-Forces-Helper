@@ -10,6 +10,8 @@ namespace VEntityFramework.Model
 			Loadout = loadout;
 		}
 
+		public VUnit CurrentUnit => Loadout.CurrentUnit;
+
 		public override string BizoName => "Stats";
 
 		#region Calculated Stats;
@@ -385,14 +387,14 @@ namespace VEntityFramework.Model
 
 		#region StatsForBinding
 
-		public double AttackForBinding => Math.Round(Attack, 2);
-		public double AttackSpeedForBinding => Math.Round(AttackSpeed, 2);
+		public double AttackForBinding => Math.Round(CurrentUnit.BaseAttack * Attack / 100, 2);
+		public double AttackSpeedForBinding => Math.Round(CurrentUnit.BaseAttackSpeed / AttackSpeed * 100, 2);
 		public double CriticalChanceForBinding => Math.Round(CriticalChance, 2);
-		public double CriticalDamageForBinding => Math.Round(CriticalDamage, 2);
-		public double HealthForBinding => Math.Round(Health, 2);
-		public double HealthArmorForBinding => Math.Round(HealthArmor, 2);
-		public double ShieldsForBinding => Math.Round(Shields, 2);
-		public double ShieldsArmorForBinding => Math.Round(ShieldsArmor, 2);
+		public double CriticalDamageForBinding => Math.Round(CurrentUnit.BaseAttack * CriticalDamage / 100, 2);
+		public double HealthForBinding => Math.Round(CurrentUnit.BaseHealth * Health / 100, 2);
+		public double HealthArmorForBinding => Math.Round(CurrentUnit.BaseHealthArmor * HealthArmor / 100, 2);
+		public double ShieldsForBinding => Math.Round(CurrentUnit.BaseShields * Shields / 100, 2);
+		public double ShieldsArmorForBinding => Math.Round(CurrentUnit.BaseShieldArmor * ShieldsArmor / 100, 2);
 		public double DamageReductionForBinding => Math.Round(TotalDamageReduction, 2);
 		public double DamageIncreaseForBinding => Math.Round(DamageIncrease, 2);
 		public double AccelerationForBinding => Math.Round(Acceleration, 2);

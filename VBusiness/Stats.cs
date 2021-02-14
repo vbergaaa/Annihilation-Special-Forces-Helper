@@ -52,9 +52,9 @@ namespace VBusiness
 				}
 #endif
 
-				var coreDamage = (regAtkChance * Attack) + (yellowCritChance * (Attack + CriticalDamage)) + (redCritChance * (Attack + 2 * CriticalDamage)) + (blackCritChance * (Attack + 3.5 * CriticalDamage));
+				var coreDamage = (regAtkChance * AttackForBinding) + (yellowCritChance * (AttackForBinding + CriticalDamageForBinding)) + (redCritChance * (AttackForBinding + 2 * CriticalDamageForBinding)) + (blackCritChance * (AttackForBinding + 3.5 * CriticalDamageForBinding));
 				var damage = coreDamage * (1 + DamageIncrease / 100);
-				return Math.Round(damage * AttackSpeed / 100, 2);
+				return Math.Round(damage / AttackSpeedForBinding, 2);
 			}
 		}
 
