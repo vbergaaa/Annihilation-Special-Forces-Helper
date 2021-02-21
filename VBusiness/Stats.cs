@@ -54,7 +54,8 @@ namespace VBusiness
 
 				var coreDamage = (regAtkChance * AttackForBinding) + (yellowCritChance * (AttackForBinding + CriticalDamageForBinding)) + (redCritChance * (AttackForBinding + 2 * CriticalDamageForBinding)) + (blackCritChance * (AttackForBinding + 3.5 * CriticalDamageForBinding));
 				var damage = coreDamage * (1 + DamageIncrease / 100);
-				return Math.Round(damage / AttackSpeedForBinding, 2);
+				var totalDamage = UseUnitStats ? damage / AttackSpeedForBinding : damage * AttackSpeedForBinding / 100;
+				return Math.Round(totalDamage, 2);
 			}
 		}
 
@@ -88,7 +89,7 @@ namespace VBusiness
 					+ (health - shields) * healthArmor * 200;
 				var b = Math.Sqrt(a) + 100 * shieldsArmor + 100 * healthArmor + shields + health;
 				var totalDamageRequiredToKillUnit = b / 2;
-				var totalToughness = totalDamageRequiredToKillUnit / (1 - TotalDamageReduction / 100);
+				var totalToughness = totalDamageRequiredToKillUnit / (1 - DamageReduction / 100);
 				var normalisedToughness = totalToughness / 650 * 100;
 				return Math.Round(normalisedToughness, 2);
 			}

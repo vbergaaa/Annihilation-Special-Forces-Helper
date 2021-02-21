@@ -10,8 +10,40 @@ namespace VEntityFramework.Model
 			Loadout = loadout;
 		}
 
-		public VUnit CurrentUnit => Loadout.CurrentUnit;
+		#region Unit 
 
+		public VUnit CurrentUnit => Loadout.CurrentUnit;
+		
+		public bool UseUnitStats
+		{
+			get => fUseUnitStats;
+			set
+			{
+				fUseUnitStats = value;
+				RefreshAllBindings();
+			}
+		}
+
+		void RefreshAllBindings()
+		{
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackSpeedForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CriticalChanceForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CriticalDamageForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HealthForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HealthArmorForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShieldsForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShieldsArmorForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageIncreaseForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageReductionForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AccelerationForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+		}
+
+		bool fUseUnitStats;
+		#endregion
 		public override string BizoName => "Stats";
 
 		#region Calculated Stats;
@@ -34,7 +66,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fAttack = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Attack)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackForBinding)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
 			}
 		}
@@ -50,7 +82,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fAttackSpeed = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackSpeed)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackSpeedForBinding)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
 			}
 		}
@@ -82,7 +114,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fCriticalDamage = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CriticalDamage)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CriticalDamageForBinding)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
 			}
 		}
@@ -98,7 +130,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fHealth = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Health)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HealthForBinding)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
 			}
@@ -115,7 +147,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fHealthArmor = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HealthArmor)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HealthArmorForBinding)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
 			}
@@ -132,7 +164,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fShields = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Shields)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShieldsForBinding)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
 			}
@@ -149,7 +181,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fShieldsArmor = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShieldsArmor)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShieldsArmorForBinding)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
 			}
@@ -167,7 +199,7 @@ namespace VEntityFramework.Model
 			{
 				fDamageIncrease = value;
 				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageIncrease)));
+				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageIncreaseForBinding)));
 			}
 		}
 		double fDamageIncrease;
@@ -176,7 +208,7 @@ namespace VEntityFramework.Model
 
 		#region DamageReduction
 
-		protected double TotalDamageReduction
+		protected double DamageReduction
 		{
 			get
 			{
@@ -281,9 +313,6 @@ namespace VEntityFramework.Model
 				{
 					AddTrifectaStacks(diff);
 				}
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
 			}
 		}
 
@@ -318,9 +347,6 @@ namespace VEntityFramework.Model
 				{
 					DeactivateTrifectaPower();
 				}
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
 			}
 		}
 
@@ -366,22 +392,46 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region UnitStats
+
+		public double UnitAttack => CurrentUnit.BaseAttack * Attack / 100;
+		public double UnitAttackSpeed => CurrentUnit.BaseAttackSpeed / AttackSpeed * 100;
+		public double UnitCriticalDamage => CurrentUnit.BaseAttack * CriticalDamage / 100;
+		public double UnitHealth => CurrentUnit.BaseHealth * Health / 100;
+		public double UnitHealthArmor => CurrentUnit.BaseHealthArmor * HealthArmor / 100;
+		public double UnitShields => CurrentUnit.BaseShields * Shields / 100;
+		public double UnitShieldsArmor => CurrentUnit.BaseShieldArmor * ShieldsArmor / 100;
+
+		#endregion
+
+		#region PlayerStats
+
+		double PlayerAttack => Attack;
+		double PlayerAttackSpeed => AttackSpeed;
+		double PlayerCriticalDamage => CriticalDamage;
+		double PlayerHealth => Health;
+		double PlayerHealthArmor => HealthArmor;
+		double PlayerShields => Shields;
+		double PlayerShieldsArmor => ShieldsArmor;
+
+		#endregion
+
 		#region StatsForBinding
 
-		public double AttackForBinding => Math.Round(CurrentUnit.BaseAttack * Attack / 100, 2);
-		public double AttackSpeedForBinding => Math.Round(CurrentUnit.BaseAttackSpeed / AttackSpeed * 100, 2);
+		public double AttackForBinding => Math.Round(UseUnitStats ? UnitAttack : PlayerAttack, 2);
+		public double AttackSpeedForBinding => Math.Round(UseUnitStats ? UnitAttackSpeed : PlayerAttackSpeed, 2);
 		public double CriticalChanceForBinding => Math.Round(CriticalChance, 2);
-		public double CriticalDamageForBinding => Math.Round(CurrentUnit.BaseAttack * CriticalDamage / 100, 2);
-		public double HealthForBinding => Math.Round(CurrentUnit.BaseHealth * Health / 100, 2);
-		public double HealthArmorForBinding => Math.Round(CurrentUnit.BaseHealthArmor * HealthArmor / 100, 2);
-		public double ShieldsForBinding => Math.Round(CurrentUnit.BaseShields * Shields / 100, 2);
-		public double ShieldsArmorForBinding => Math.Round(CurrentUnit.BaseShieldArmor * ShieldsArmor / 100, 2);
-		public double DamageReductionForBinding => Math.Round(TotalDamageReduction, 2);
+		public double CriticalDamageForBinding => Math.Round(UseUnitStats ? UnitCriticalDamage : PlayerCriticalDamage, 2);
+		public double HealthForBinding => Math.Round(UseUnitStats ? UnitHealth : PlayerHealth, 2);
+		public double HealthArmorForBinding => Math.Round(UseUnitStats ? UnitHealthArmor : PlayerHealthArmor, 2);
+		public double ShieldsForBinding => Math.Round(UseUnitStats ? UnitShields : PlayerShields, 2);
+		public double ShieldsArmorForBinding => Math.Round(UseUnitStats ? UnitShieldsArmor : PlayerShieldsArmor, 2);
+		public double DamageReductionForBinding => Math.Round(DamageReduction, 2);
 		public double DamageIncreaseForBinding => Math.Round(DamageIncrease, 2);
 		public double AccelerationForBinding => Math.Round(Acceleration, 2);
 
-		public VLoadout Loadout { get; }
-
 		#endregion
+
+		public VLoadout Loadout { get; }
 	}
 }
