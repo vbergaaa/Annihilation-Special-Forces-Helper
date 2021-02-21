@@ -342,7 +342,7 @@ namespace VBusiness.Souls
 			if (Parent?.Loadout?.Stats != null)
 			{
 				Loadout.Stats.Attack += Attack;
-				Loadout.Stats.AttackSpeed += AttackSpeed;
+				Loadout.Stats.UpdateAttackSpeed("Core", AttackSpeed);
 				Loadout.Stats.HealthArmor += Armor;
 				Loadout.Stats.ShieldsArmor += Armor;
 				Loadout.Stats.Health += Vitals;
@@ -355,7 +355,7 @@ namespace VBusiness.Souls
 		protected override void DeactivateSoulCore()
 		{
 			Loadout.Stats.Attack -= Attack;
-			Loadout.Stats.AttackSpeed -= AttackSpeed;
+			Loadout.Stats.UpdateAttackSpeed("Core", -AttackSpeed);
 			Loadout.Stats.HealthArmor -= Armor;
 			Loadout.Stats.ShieldsArmor -= Armor;
 			Loadout.Stats.Health -= Vitals;

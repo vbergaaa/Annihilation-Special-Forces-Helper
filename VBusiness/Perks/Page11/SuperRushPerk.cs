@@ -29,7 +29,7 @@ namespace VBusiness.Perks
 				var currentLevel = ((PerkCollection)PerkCollection).AdrenalineRush.DesiredLevel;
 
 				PerkCollection.Loadout.Stats.Attack += 1.0 / 15 * currentLevel * difference;
-				PerkCollection.Loadout.Stats.AttackSpeed += 1.0 / 15 * currentLevel * difference;
+				PerkCollection.Loadout.Stats.UpdateAttackSpeed("AdrenalineRush", 1.0 / 15 * currentLevel * difference);
 				PerkCollection.Loadout.Stats.CriticalChance += 0.5 / 15 * currentLevel * difference;
 			}
 		}

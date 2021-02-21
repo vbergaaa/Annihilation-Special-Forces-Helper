@@ -66,7 +66,7 @@ namespace VBusiness
 		void UpdateStatsFromInfuse(int levelDifference)
 		{
 			Loadout.Stats.Attack += 10 * levelDifference;
-			Loadout.Stats.AttackSpeed += 10 * levelDifference;
+			Loadout.Stats.UpdateAttackSpeed("Infuse", 10 * levelDifference);
 			Loadout.Stats.Health += 10 * levelDifference;
 			Loadout.Stats.HealthArmor += 10 * levelDifference;
 			Loadout.Stats.Shields += 10 * levelDifference;
@@ -114,7 +114,7 @@ namespace VBusiness
 		void UpdateStatsFromEssence(int levelDifference)
 		{
 			Loadout.Stats.Attack += 5 * levelDifference;
-			Loadout.Stats.AttackSpeed += 1 * levelDifference;
+			Loadout.Stats.UpdateAttackSpeed("Essence", 1, levelDifference);
 			Loadout.Stats.Health += 5 * levelDifference;
 			Loadout.Stats.Shields += 5 * levelDifference;
 			Loadout.Stats.AdditiveArmor += (1 + (0.03 * Loadout.Stats.DefensiveEssenceStacks)) * levelDifference;
@@ -174,7 +174,7 @@ namespace VBusiness
 			if (HasSoloBonus)
 			{
 				Loadout.Stats.Attack += 30;
-				Loadout.Stats.AttackSpeed += 20;
+				Loadout.Stats.UpdateAttackSpeed("Core", 20);
 				Loadout.Stats.Health += 25;
 				Loadout.Stats.HealthArmor += 20;
 				Loadout.Stats.Shields += 25;
@@ -183,7 +183,7 @@ namespace VBusiness
 			else
 			{
 				Loadout.Stats.Attack -= 30;
-				Loadout.Stats.AttackSpeed -= 20;
+				Loadout.Stats.UpdateAttackSpeed("Core", -20);
 				Loadout.Stats.Health -= 25;
 				Loadout.Stats.HealthArmor -= 20;
 				Loadout.Stats.Shields -= 25;
@@ -251,13 +251,13 @@ namespace VBusiness
 				if (HasAdrenalineBuffActive)
 				{
 					Loadout.Stats.Attack += 10.0 / 15 * effectiveLevels;
-					Loadout.Stats.AttackSpeed += 10.0 / 15 * effectiveLevels;
+					Loadout.Stats.UpdateAttackSpeed("AdrenalineRush", 10.0 / 15 * effectiveLevels);
 					Loadout.Stats.CriticalChance += 5.0 / 15 * effectiveLevels;
 				}
 				else
 				{
 					Loadout.Stats.Attack -= 10.0 / 15 * effectiveLevels;
-					Loadout.Stats.AttackSpeed -= 10.0 / 15 * effectiveLevels;
+					Loadout.Stats.UpdateAttackSpeed("AdrenalineRush", -10.0 / 15 * effectiveLevels);
 					Loadout.Stats.CriticalChance -= 5.0 / 15 * effectiveLevels;
 				}
 			}
@@ -312,7 +312,7 @@ namespace VBusiness
 			if (difference != 0)
 			{
 				Loadout.Stats.Attack -= difference;
-				Loadout.Stats.AttackSpeed -= difference;
+				Loadout.Stats.UpdateAttackSpeed("Core", -difference);
 				Loadout.Stats.Health -= difference;
 				Loadout.Stats.HealthArmor -= difference;
 				Loadout.Stats.Shields -= difference;
