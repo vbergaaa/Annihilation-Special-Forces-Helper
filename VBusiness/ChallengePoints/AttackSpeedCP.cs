@@ -22,7 +22,7 @@ namespace VBusiness.ChallengePoints
 
 		public override void OnCPLevelChanged(int difference)
 		{
-			ChallengePointCollection.Loadout.Stats.AttackSpeed += 1.5 * difference;
+			ChallengePointCollection.Loadout.Stats.UpdateAttackSpeed("Core", 1.5 * difference);
 		}
 
 		#endregion

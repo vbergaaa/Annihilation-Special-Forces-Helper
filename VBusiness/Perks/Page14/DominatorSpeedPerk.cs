@@ -24,7 +24,7 @@ namespace VBusiness.Perks
 
 		protected override void OnLevelChanged(int difference)
 		{
-			PerkCollection.Loadout.Stats.AttackSpeed += difference;
+			PerkCollection.Loadout.Stats.UpdateAttackSpeed("Core", difference);
 		}
 	}
 }

@@ -12,7 +12,6 @@ namespace VBusiness
 		protected override void SetDefaultValuesCore()
 		{
 			Attack = 100;
-			AttackSpeed = 100;
 			CriticalChance = 0;
 			CriticalDamage = 100;
 			Health = 100;

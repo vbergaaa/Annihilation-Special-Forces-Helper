@@ -32,5 +32,55 @@ namespace Tests
 
 			Assert.That(loadout.Stats.DamageReductionForBinding, Is.EqualTo(expectedDR));
 		}
+
+		[TestCase(10, 0, 0, 0, 130)]
+		[TestCase(0, 20, 0, 0, 120)]
+		[TestCase(0, 0, 20, 0, 200)]
+		[TestCase(0, 0, 0, 10, 200)]
+		[TestCase(10, 20, 20, 10, 350)]
+		public void TestAttack(short perks, short gems, int essence, int infuse, double expected)
+		{
+			var loadout = new Loadout();
+			loadout.ShouldRestrict = false;
+			var perkCollection = (PerkCollection)loadout.Perks;
+			perkCollection.MaximumPotiential.DesiredLevel = 8;
+			perkCollection.MaximumPotiential2.DesiredLevel = 10;
+			perkCollection.MaximumPotiental3.DesiredLevel = 10;
+			perkCollection.MaximumPotential4.DesiredLevel = 10;
+			loadout.UnitConfiguration.EssenceStacks = 0;
+			loadout.UnitConfiguration.CurrentInfusion = 0;
+
+			perkCollection.Attack.DesiredLevel = perks;
+			loadout.Gems.AttackGem.CurrentLevel = gems;
+			loadout.UnitConfiguration.EssenceStacks = essence;
+			loadout.UnitConfiguration.CurrentInfusion = infuse;
+
+			Assert.That(loadout.Stats.AttackForBinding, Is.EqualTo(expected));
+		}
+
+		[TestCase(10, 0, 0, 0, 120)]
+		[TestCase(0, 20, 0, 0, 120)]
+		[TestCase(0, 0, 20, 0, 122.02)]
+		[TestCase(0, 0, 0, 10, 200)]
+		[TestCase(10, 20, 20, 10, 341.65)]
+		public void TestAttackSpeed(short perks, short gems, int essence, int infuse, double expected)
+		{
+			var loadout = new Loadout();
+			loadout.ShouldRestrict = false;
+			var perkCollection = (PerkCollection)loadout.Perks;
+			perkCollection.MaximumPotiential.DesiredLevel = 8;
+			perkCollection.MaximumPotiential2.DesiredLevel = 10;
+			perkCollection.MaximumPotiental3.DesiredLevel = 10;
+			perkCollection.MaximumPotential4.DesiredLevel = 10;
+			loadout.UnitConfiguration.EssenceStacks = 0;
+			loadout.UnitConfiguration.CurrentInfusion = 0;
+
+			perkCollection.AttackSpeed.DesiredLevel = perks;
+			loadout.Gems.AttackSpeedGem.CurrentLevel = gems;
+			loadout.UnitConfiguration.EssenceStacks = essence;
+			loadout.UnitConfiguration.CurrentInfusion = infuse;
+
+			Assert.That(loadout.Stats.AttackSpeedForBinding, Is.EqualTo(expected));
+		}
 	}
 }

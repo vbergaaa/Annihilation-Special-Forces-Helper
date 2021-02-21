@@ -44,15 +44,33 @@ namespace VEntityFramework.Model
 
 		public double AttackSpeed
 		{
-			get => fAttackSpeed;
-			set
+			get
 			{
-				fAttackSpeed = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackSpeed)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+				var attackSpeed = 100.0;
+				foreach (var kvp in AttackSpeedDictionary)
+				{
+					attackSpeed = attackSpeed * (100 + kvp.Value) / 100;
+				}
+				return attackSpeed;
 			}
 		}
-		double fAttackSpeed;
+
+		StatsDictionary AttackSpeedDictionary => fAttackSpeedDictionary ??= new StatsDictionary();
+		StatsDictionary fAttackSpeedDictionary;
+
+		public void UpdateAttackSpeed(string key, double value, int quantity = 0)
+		{
+			if (quantity == 0)
+			{
+				AttackSpeedDictionary.Update(key, value);
+			}
+			else
+			{
+				AttackSpeedDictionary.UpdateExpontiental(key, value, quantity);
+			}
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackSpeed)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+		}
 
 		#endregion
 
@@ -290,7 +308,7 @@ namespace VEntityFramework.Model
 		void AddTrifectaStacks(int diff)
 		{
 			Attack += 1.5 * diff;
-			AttackSpeed += 1.5 * diff;
+			UpdateAttackSpeed("Trifecta", 1.5 * diff);
 			Health += 1.5 * diff;
 			HealthArmor += 1 * diff;
 			Shields += 1.5 * diff;
@@ -325,7 +343,7 @@ namespace VEntityFramework.Model
 		private void DeactivateTrifectaPower()
 		{
 			Attack -= 1.5 * TrifectaStacks;
-			AttackSpeed -= 1.5 * TrifectaStacks;
+			UpdateAttackSpeed("Trifecta", -1.5 * TrifectaStacks);
 			Health -= 1.5 * TrifectaStacks;
 			HealthArmor -= 1 * TrifectaStacks;
 			Shields -= 1.5 * TrifectaStacks;
@@ -335,7 +353,7 @@ namespace VEntityFramework.Model
 		private void ActivateTrifectaPower()
 		{
 			Attack += 1.5 * TrifectaStacks;
-			AttackSpeed += 1.5 * TrifectaStacks;
+			UpdateAttackSpeed("Trifecta", 1.5 * TrifectaStacks);
 			Health += 1.5 * TrifectaStacks;
 			HealthArmor += 1 * TrifectaStacks;
 			Shields += 1.5 * TrifectaStacks;

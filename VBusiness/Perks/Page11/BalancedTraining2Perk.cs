@@ -25,7 +25,7 @@ namespace VBusiness.Perks
 		protected override void OnLevelChanged(int difference)
 		{
 			PerkCollection.Loadout.Stats.Attack += 1 * difference;
-			PerkCollection.Loadout.Stats.AttackSpeed += 1 * difference;
+			PerkCollection.Loadout.Stats.UpdateAttackSpeed("Core", difference);
 			PerkCollection.Loadout.Stats.Health += 1 * difference;
 			PerkCollection.Loadout.Stats.HealthArmor += 1 * difference;
 			PerkCollection.Loadout.Stats.Shields += 1 * difference;

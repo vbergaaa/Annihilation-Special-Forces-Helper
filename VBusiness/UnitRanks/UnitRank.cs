@@ -100,7 +100,7 @@ namespace VBusiness.Ranks
 		public void ActivateOmegaBuff()
 		{
 			UnitConfiguration.Loadout.Stats.Attack += 50;
-			UnitConfiguration.Loadout.Stats.AttackSpeed += 50;
+			UnitConfiguration.Loadout.Stats.UpdateAttackSpeed("Rank", 50);
 			UnitConfiguration.Loadout.Stats.Health += 50;
 			UnitConfiguration.Loadout.Stats.HealthArmor += 50;
 			UnitConfiguration.Loadout.Stats.Shields += 50;
@@ -112,7 +112,7 @@ namespace VBusiness.Ranks
 		public void ActivateSuperOmegaBuff()
 		{
 			UnitConfiguration.Loadout.Stats.Attack += 100;
-			UnitConfiguration.Loadout.Stats.AttackSpeed += 100;
+			UnitConfiguration.Loadout.Stats.UpdateAttackSpeed("Rank", 100);
 			UnitConfiguration.Loadout.Stats.Health += 100;
 			UnitConfiguration.Loadout.Stats.HealthArmor += 100;
 			UnitConfiguration.Loadout.Stats.Shields += 100;
@@ -124,7 +124,7 @@ namespace VBusiness.Ranks
 		public void DeactivateOmegaBuff()
 		{
 			UnitConfiguration.Loadout.Stats.Attack -= 50;
-			UnitConfiguration.Loadout.Stats.AttackSpeed -= 50;
+			UnitConfiguration.Loadout.Stats.UpdateAttackSpeed("Rank", -50);
 			UnitConfiguration.Loadout.Stats.Health -= 50;
 			UnitConfiguration.Loadout.Stats.HealthArmor -= 50;
 			UnitConfiguration.Loadout.Stats.Shields -= 50;
@@ -136,7 +136,7 @@ namespace VBusiness.Ranks
 		public void DeactivateSuperOmegaBuff()
 		{
 			UnitConfiguration.Loadout.Stats.Attack -= 100;
-			UnitConfiguration.Loadout.Stats.AttackSpeed -= 100;
+			UnitConfiguration.Loadout.Stats.UpdateAttackSpeed("Rank", -100);
 			UnitConfiguration.Loadout.Stats.Health -= 100;
 			UnitConfiguration.Loadout.Stats.HealthArmor -= 100;
 			UnitConfiguration.Loadout.Stats.Shields -= 100;
@@ -366,7 +366,7 @@ namespace VBusiness.Ranks
 		public override void ActivateRank()
 		{
 			UnitConfiguration.Loadout.Stats.Attack += Attack;
-			UnitConfiguration.Loadout.Stats.AttackSpeed += AttackSpeed;
+			UnitConfiguration.Loadout.Stats.UpdateAttackSpeed("Rank", AttackSpeed);
 			UnitConfiguration.Loadout.Stats.Health += Vitals;
 			UnitConfiguration.Loadout.Stats.HealthArmor += Vitals;
 			UnitConfiguration.Loadout.Stats.Shields += Vitals;
@@ -391,7 +391,7 @@ namespace VBusiness.Ranks
 		public override void DeactivateRank()
 		{
 			UnitConfiguration.Loadout.Stats.Attack -= Attack;
-			UnitConfiguration.Loadout.Stats.AttackSpeed -= AttackSpeed;
+			UnitConfiguration.Loadout.Stats.UpdateAttackSpeed("Rank", -AttackSpeed);
 			UnitConfiguration.Loadout.Stats.Health -= Vitals;
 			UnitConfiguration.Loadout.Stats.HealthArmor -= Vitals;
 			UnitConfiguration.Loadout.Stats.Shields -= Vitals;
