@@ -22,7 +22,7 @@ namespace VBusiness.ChallengePoints
 
 		public override void OnCPLevelChanged(int difference)
 		{
-			ChallengePointCollection.Loadout.Stats.DamageReductionFromStats += 0.3999 * difference;
+			ChallengePointCollection.Loadout.Stats.UpdateDamageReduction("Core", 0.3999 * difference);
 		}
 
 		#endregion

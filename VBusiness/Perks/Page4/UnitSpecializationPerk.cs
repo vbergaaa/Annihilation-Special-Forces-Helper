@@ -27,7 +27,7 @@ namespace VBusiness.Perks
 			if (PerkCollection.Loadout.UnitConfiguration.HasUnitSpec)
 			{
 				PerkCollection.Loadout.Stats.DamageIncrease += 2 * difference;
-				PerkCollection.Loadout.Stats.DamageReductionFromSpec += 1 * difference;
+				PerkCollection.Loadout.Stats.UpdateDamageReduction("Spec", difference);
 			}
 		}
 	}

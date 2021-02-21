@@ -215,12 +215,12 @@ namespace VBusiness
 				if (HasUnitSpec)
 				{
 					Loadout.Stats.DamageIncrease += 2 * perks.UnitSpecialization.DesiredLevel;
-					Loadout.Stats.DamageReductionFromSpec += perks.UnitSpecialization.DesiredLevel;
+					Loadout.Stats.UpdateDamageReduction("Spec" , perks.UnitSpecialization.DesiredLevel);
 				}
 				else
 				{
 					Loadout.Stats.DamageIncrease -= 2 * perks.UnitSpecialization.DesiredLevel;
-					Loadout.Stats.DamageReductionFromSpec -= perks.UnitSpecialization.DesiredLevel;
+					Loadout.Stats.UpdateDamageReduction("Spec", -perks.UnitSpecialization.DesiredLevel);
 				}
 			}
 		}
