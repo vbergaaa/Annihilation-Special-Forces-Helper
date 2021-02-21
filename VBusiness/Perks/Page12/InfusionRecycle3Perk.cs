@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Infusing a unit stores 5 kills.";
+		public override string Description => "Infusing a unit stores +5 kills";
 
 		public override byte Page => 12;
 

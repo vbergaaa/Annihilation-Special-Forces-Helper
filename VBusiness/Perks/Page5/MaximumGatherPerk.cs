@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Gain 5% chance to gain a Kill Resource whenever a unit with max kills obtains a kill";
+		public override string Description => "Grants a +5% chance to gain a Kill Resource whenever a unit with max kills obtains a kill";
 
 		public override byte Page => 5;
 

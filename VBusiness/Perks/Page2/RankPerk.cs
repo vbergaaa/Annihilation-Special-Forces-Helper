@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Allows units to be ranked to increase power even further";
+		public override string Description => "Allows units to be ranked";
 
 		public override byte Page => 2;
 

@@ -52,6 +52,17 @@ namespace Tests
 				}
 			}
 		}
+
+		[Test]
+		public void TestAllPerksHaveDescriptions()
+		{
+			var perkCollection = new PerkCollectionForTest();
+
+			foreach (var perk in perkCollection.AllPerks)
+			{
+				Assert.That(!string.IsNullOrEmpty(perk.Description), $"Add a description for {perk.Name} Perk");
+			}
+		}
 	}
 
 	class PerkCollectionForTest : PerkCollection

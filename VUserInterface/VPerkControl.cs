@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using VEntityFramework.Model;
 using VUserInterface.CommonControls;
 
@@ -58,5 +59,21 @@ namespace VUserInterface
 		{
 			this.perkBindingSource.ResetBindings(updateSchema);
 		}
+
+		#region ToolTip
+
+		void PerkInfo_Popup(object sender, PopupEventArgs e)
+		{
+			if (!isSettingPopup)
+			{
+				isSettingPopup = true;
+				var info = string.IsNullOrEmpty(Perk.Description) ? "Information for this perk is unavailable" : Perk.Description;
+				perkInfo.SetToolTip(e.AssociatedControl, info);
+				isSettingPopup = false;
+			}
+		}
+		bool isSettingPopup;
+
+		#endregion
 	}
 }

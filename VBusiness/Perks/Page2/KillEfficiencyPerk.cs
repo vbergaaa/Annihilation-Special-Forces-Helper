@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Gains a 3% chance to gain an extra kill upon killing an enemy unit";
+		public override string Description => "Grants a 3% chance to gain an extra kill upon killing an enemy unit";
 
 		public override byte Page => 2;
 

@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Increase speed cap by 1 and movement speed by 0.1";
+		public override string Description => "+0.1 Move Speed\r\n+1 Movement Speed Cap";
 
 		public override byte Page => 4;
 

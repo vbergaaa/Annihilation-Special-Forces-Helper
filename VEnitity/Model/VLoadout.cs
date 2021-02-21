@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using VEntityFramework.Attributes;
 using VEntityFramework.Data;
 
@@ -180,9 +181,17 @@ namespace VEntityFramework.Model
 						ChallengePoints.RefreshMaxLevelBindings();
 					}
 					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShouldRestrict)));
+					OnShouldRestrictChanged();
 				}
 			}
 		}
+
+		void OnShouldRestrictChanged()
+		{
+			ShouldRestrictChanged?.Invoke(this, new EventArgs());
+		}
+		public event EventHandler ShouldRestrictChanged;
+
 		bool fShouldRestrict = true;
 
 		#endregion

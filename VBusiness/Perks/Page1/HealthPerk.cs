@@ -10,7 +10,7 @@ namespace VBusiness.Perks
 
 		protected override string PerkName => "Health";
 
-		public override string Description => "Increases Health and Health Regen of all units by 2.5%";
+		public override string Description => "+2.5% Health\r\n+2.5% Health Regen";
 
 		public override byte Page => 1;
 

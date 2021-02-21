@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Increases the chance to successfully rank up a unit by 5%";
+		public override string Description => "Increases rank up chance by 5%";
 
 		public override byte Page => 9;
 

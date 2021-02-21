@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Gain a 1% chance to gain 2 kill resource when probes return to your nexus";
+		public override string Description => "+1% Chance to earn 2 Kill Resource when mining";
 
 		public override byte Page => 6;
 

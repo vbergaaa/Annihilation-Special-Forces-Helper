@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Grants 1% chance to gain double minerals when a probe returns to your nexus";
+		public override string Description => "+1% chance to double minerals when mining";
 
 		public override byte Page => 10;
 

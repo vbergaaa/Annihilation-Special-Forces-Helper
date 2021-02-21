@@ -103,6 +103,7 @@ namespace VUserInterface
 			// page1Button
 			//
 			this.page1Button.Click += UpdatePage;
+			this.page1Button.DisableStyleChanging = true;
 			this.page1Button.Location = DPIScalingHelper.GetScaledPoint(42, 234);
 			this.page1Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page1Button.Text = "1";
@@ -110,6 +111,7 @@ namespace VUserInterface
 			// page2Button
 			//
 			this.page2Button.Click += UpdatePage;
+			this.page2Button.DisableStyleChanging = true;
 			this.page2Button.Location = DPIScalingHelper.GetScaledPoint(78, 234);
 			this.page2Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page2Button.Text = "2";
@@ -117,6 +119,7 @@ namespace VUserInterface
 			// page3Button
 			//
 			this.page3Button.Click += UpdatePage;
+			this.page3Button.DisableStyleChanging = true;
 			this.page3Button.Location = DPIScalingHelper.GetScaledPoint(114, 234);
 			this.page3Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page3Button.Text = "3";
@@ -124,6 +127,7 @@ namespace VUserInterface
 			// page4Button
 			//
 			this.page4Button.Click += UpdatePage;
+			this.page4Button.DisableStyleChanging = true;
 			this.page4Button.Location = DPIScalingHelper.GetScaledPoint(150, 234);
 			this.page4Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page4Button.Text = "4";
@@ -131,6 +135,7 @@ namespace VUserInterface
 			// page5Button
 			//
 			this.page5Button.Click += UpdatePage;
+			this.page5Button.DisableStyleChanging = true;
 			this.page5Button.Location = DPIScalingHelper.GetScaledPoint(186, 234);
 			this.page5Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page5Button.Text = "5";
@@ -138,6 +143,7 @@ namespace VUserInterface
 			// page6Button
 			//
 			this.page6Button.Click += UpdatePage;
+			this.page6Button.DisableStyleChanging = true;
 			this.page6Button.Location = DPIScalingHelper.GetScaledPoint(222, 234);
 			this.page6Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page6Button.Text = "6";
@@ -145,6 +151,7 @@ namespace VUserInterface
 			// page7Button
 			//
 			this.page7Button.Click += UpdatePage;
+			this.page7Button.DisableStyleChanging = true;
 			this.page7Button.Location = DPIScalingHelper.GetScaledPoint(258, 234);
 			this.page7Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page7Button.Text = "7";
@@ -152,6 +159,7 @@ namespace VUserInterface
 			// page8Button
 			//
 			this.page8Button.Click += UpdatePage;
+			this.page8Button.DisableStyleChanging = true;
 			this.page8Button.Location = DPIScalingHelper.GetScaledPoint(294, 234);
 			this.page8Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page8Button.Text = "8";
@@ -159,6 +167,7 @@ namespace VUserInterface
 			// page9Button
 			//
 			this.page9Button.Click += UpdatePage;
+			this.page9Button.DisableStyleChanging = true;
 			this.page9Button.Location = DPIScalingHelper.GetScaledPoint(330, 234);
 			this.page9Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page9Button.Text = "9";
@@ -166,6 +175,7 @@ namespace VUserInterface
 			// page10Button
 			//
 			this.page10Button.Click += UpdatePage;
+			this.page10Button.DisableStyleChanging = true;
 			this.page10Button.Location = DPIScalingHelper.GetScaledPoint(366, 234);
 			this.page10Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page10Button.Text = "10";
@@ -173,6 +183,7 @@ namespace VUserInterface
 			// page11Button
 			//
 			this.page11Button.Click += UpdatePage;
+			this.page11Button.DisableStyleChanging = true;
 			this.page11Button.Location = DPIScalingHelper.GetScaledPoint(402, 234);
 			this.page11Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page11Button.Text = "11";
@@ -180,6 +191,7 @@ namespace VUserInterface
 			// page12Button
 			//
 			this.page12Button.Click += UpdatePage;
+			this.page12Button.DisableStyleChanging = true;
 			this.page12Button.Location = DPIScalingHelper.GetScaledPoint(438, 234);
 			this.page12Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page12Button.Text = "12";
@@ -187,6 +199,7 @@ namespace VUserInterface
 			// page13Button
 			//
 			this.page13Button.Click += UpdatePage;
+			this.page13Button.DisableStyleChanging = true;
 			this.page13Button.Location = DPIScalingHelper.GetScaledPoint(474, 234);
 			this.page13Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page13Button.Text = "13";
@@ -194,6 +207,7 @@ namespace VUserInterface
 			// page14Button
 			//
 			this.page14Button.Click += UpdatePage;
+			this.page14Button.DisableStyleChanging = true;
 			this.page14Button.Location = DPIScalingHelper.GetScaledPoint(510, 234);
 			this.page14Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page14Button.Text = "14";
@@ -251,21 +265,21 @@ namespace VUserInterface
 		private VPerkControl Perk4Control;
 		private VPerkControl Perk5Control;
 		private VPerkControl Perk6Control;
-		private System.Windows.Forms.Button page1Button;
-		private System.Windows.Forms.Button page2Button;
-		private System.Windows.Forms.Button page3Button;
-		private System.Windows.Forms.Button page4Button;
-		private System.Windows.Forms.Button page5Button;
-		private System.Windows.Forms.Button page6Button;
-		private System.Windows.Forms.Button page7Button;
-		private System.Windows.Forms.Button page8Button;
-		private System.Windows.Forms.Button page9Button;
-		private System.Windows.Forms.Button page10Button;
-		private System.Windows.Forms.Button page11Button;
-		private System.Windows.Forms.Button page12Button;
-		private System.Windows.Forms.Button page13Button;
-		private System.Windows.Forms.Button page14Button;
-		private System.Windows.Forms.Button previousPageButton;
-		private System.Windows.Forms.Button nextPageButton;
+		private VButton page1Button;
+		private VButton page2Button;
+		private VButton page3Button;
+		private VButton page4Button;
+		private VButton page5Button;
+		private VButton page6Button;
+		private VButton page7Button;
+		private VButton page8Button;
+		private VButton page9Button;
+		private VButton page10Button;
+		private VButton page11Button;
+		private VButton page12Button;
+		private VButton page13Button;
+		private VButton page14Button;
+		private VButton previousPageButton;
+		private VButton nextPageButton;
 	}
 }

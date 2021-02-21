@@ -10,7 +10,7 @@ namespace VBusiness.Perks
 
 		protected override string PerkName => "Shields Armor";
 		
-		public override string Description => "Increase Shields Armor of all units by 2%";
+		public override string Description => "+2% Shield Armor";
 
 		public override byte Page => 1;
 

@@ -10,7 +10,7 @@ namespace VBusiness.Perks
 
 		protected override string PerkName => "Attack";
 
-		public override string Description => "Increased Damage of your units by 3%";
+		public override string Description => "+3% Damage";
 
 		public override byte Page => 1;
 

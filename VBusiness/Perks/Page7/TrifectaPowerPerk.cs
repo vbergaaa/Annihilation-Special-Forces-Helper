@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Increases stats by 1.5% and armor by 1% while unit is at or above SSS";
+		public override string Description => "When ranking to SSS, give units:\r\n+1.5% Damage\r\n+1.5% Attack Speed\r\n+1.5% Vitals\r\n+1.5% Acceleration\r\n+1% Armor";
 
 		public override byte Page => 7;
 

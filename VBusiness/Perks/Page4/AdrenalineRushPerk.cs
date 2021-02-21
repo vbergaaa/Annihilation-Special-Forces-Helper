@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Gives your units a 2% chance to gain 10% attack damage, attack speed and 5% critical chance for 3 seconds after killing a unit";
+		public override string Description => "Gives +2% chance to gain 10% Damage, 10% Attack Speed and 5% Critical Chance to a unit for 3 seconds after making a kill";
 
 		public override byte Page => 4;
 

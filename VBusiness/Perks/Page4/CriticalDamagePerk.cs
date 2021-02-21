@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Gain 1% Critical Damage";
+		public override string Description => "+1% Critical Damage";
 
 		public override byte Page => 4;
 

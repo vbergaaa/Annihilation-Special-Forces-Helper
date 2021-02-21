@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Create a mineral field every 10 minutes near the well (subsequent upgrades reduce time in between by 1 minute)";
+		public override string Description => "Create a mineral field every (11 - L) minutes";
 
         public override byte Page => 3;
 

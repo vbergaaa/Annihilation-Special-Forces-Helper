@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "";
+		public override string Description => "Units start with +10 kills";
 
 		public override byte Page => 12;
 

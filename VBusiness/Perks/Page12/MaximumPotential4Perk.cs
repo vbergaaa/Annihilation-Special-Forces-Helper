@@ -8,7 +8,7 @@ namespace VBusiness.Perks
 		{
 		}
 
-		public override string Description => "Increases maximum kill count and maximum life essense by 50";
+		public override string Description => "Increase maximum kill count and maximum life essence stacks by 50";
 
 		public override byte Page => 12;
 
@@ -21,5 +21,10 @@ namespace VBusiness.Perks
 		protected override string PerkName => "Maximum Potential IV";
 
 		protected override short MaxLevelCore => 10;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			PerkCollection.Loadout.UnitConfiguration.MaximumKills += 50 * difference;
+		}
 	}
 }

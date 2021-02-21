@@ -21,7 +21,7 @@ namespace VUserInterface
 			{
 				this.perksBindingSource.DataSource = Perks;
 				SetButtonReadonlyStatus();
-				RestrictPagePageButtons();
+				RestrictPerkPageButtons();
 			}
 		}
 
@@ -58,7 +58,7 @@ namespace VUserInterface
 			nextPageButton.Enabled = Perks != null && Perks.Page < Perks.MaxPage;
 		}
 
-		void RestrictPagePageButtons()
+		internal void RestrictPerkPageButtons()
 		{
 			if (Perks != null)
 			{
