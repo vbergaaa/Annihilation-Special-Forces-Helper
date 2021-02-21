@@ -178,47 +178,28 @@ namespace VEntityFramework.Model
 
 		protected double TotalDamageReduction
 		{
-			get => 100 - 100 * (1 - DamageReductionFromStats / 100) * (1 - DamageReductionFromRank / 100) * (1 - DamageReductionFromSpec / 100);
-		}
-
-		public double DamageReductionFromStats
-		{
-			get => fDamageReductionFromStats;
-			set
+			get
 			{
-				fDamageReductionFromStats = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageReductionForBinding)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+				var totalDr = 0.0;
+				foreach (var kvp in DamageReductionDictionary)
+				{
+					totalDr = 100 - ((100 - totalDr) * (100 - kvp.Value) / 100);
+				}
+				return totalDr;
 			}
 		}
-		double fDamageReductionFromStats;
 
-		public double DamageReductionFromRank
-		{
-			get => fDamageReductionFromRank;
-			set
-			{
-				fDamageReductionFromRank = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageReductionForBinding)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
-			}
-		}
-		double fDamageReductionFromRank;
+		protected StatsDictionary DamageReductionDictionary => fDamageReductionDictionary ??= new StatsDictionary();
+		StatsDictionary fDamageReductionDictionary;
 
-		public double DamageReductionFromSpec
+		public void UpdateDamageReduction(string key, double amount)
 		{
-			get => fDamageReductionFromSpec;
-			set
-			{
-				fDamageReductionFromSpec = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageReductionForBinding)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
-			}
+			DamageReductionDictionary.Update(key, amount);
+
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageReductionForBinding)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
 		}
-		double fDamageReductionFromSpec;
 
 		#endregion
 
