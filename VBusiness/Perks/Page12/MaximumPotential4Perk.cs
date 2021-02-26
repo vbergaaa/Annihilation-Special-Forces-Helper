@@ -24,7 +24,8 @@ namespace VBusiness.Perks
 
 		protected override void OnLevelChanged(int difference)
 		{
-			PerkCollection.Loadout.UnitConfiguration.MaximumKills += 50 * difference;
+			PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding("MaximumInfusion");
+			PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding("MaximumEssence");
 		}
 	}
 }

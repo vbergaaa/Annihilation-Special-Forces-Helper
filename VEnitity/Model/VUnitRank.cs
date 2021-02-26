@@ -6,9 +6,9 @@ namespace VEntityFramework.Model
 	{
 		#region Constructor 
 
-		public VUnitRank(VUnitConfiguration config)
+		public VUnitRank(VUnit config)
 		{
-			UnitConfiguration = config;
+			Unit = config;
 		}
 
 		#endregion
@@ -18,7 +18,7 @@ namespace VEntityFramework.Model
 		#region Unit Configuration
 
 		[VXML(false)]
-		public VUnitConfiguration UnitConfiguration { get; private set; }
+		public VUnit Unit { get; private set; }
 
 		#endregion
 

@@ -21,7 +21,7 @@ namespace VEntityFramework.Model
 #if DEBUG
 			if (this[key] < 0)
 			{
-				throw new System.Exception($"Why do you have less then 0 DR? key:{key}, value:{this[key]}");
+				throw new System.Exception($"Why do you have less then 0 of this Stat? key:{key}, value:{this[key]}");
 			}
 #endif
 		}

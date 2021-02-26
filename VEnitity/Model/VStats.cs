@@ -92,15 +92,15 @@ namespace VEntityFramework.Model
 		StatsDictionary AttackSpeedDictionary => fAttackSpeedDictionary ??= new StatsDictionary();
 		StatsDictionary fAttackSpeedDictionary;
 
-		public void UpdateAttackSpeed(string key, double value, int quantity = 0)
+		public void UpdateAttackSpeed(string key, double value, int? quantity = null)
 		{
-			if (quantity == 0)
+			if (!quantity.HasValue)
 			{
 				AttackSpeedDictionary.Update(key, value);
 			}
-			else
+			else if (quantity.Value != 0)
 			{
-				AttackSpeedDictionary.UpdateExpontiental(key, value, quantity);
+				AttackSpeedDictionary.UpdateExpontiental(key, value, quantity.Value);
 			}
 			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackSpeedForBinding)));
 			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
@@ -401,7 +401,7 @@ namespace VEntityFramework.Model
 			{
 				var oldStacks = fDefensiveEssenceStacks;
 				fDefensiveEssenceStacks = value;
-				AdditiveArmor += Loadout.UnitConfiguration.EssenceStacks * 0.03 * (fDefensiveEssenceStacks - oldStacks);
+				AdditiveArmor += Loadout.CurrentUnit.EssenceStacks * 0.03 * (fDefensiveEssenceStacks - oldStacks);
 			}
 		}
 		int fDefensiveEssenceStacks;

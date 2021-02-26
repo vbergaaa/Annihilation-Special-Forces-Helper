@@ -21,13 +21,13 @@ namespace Tests
 		{
 			var loadout = new Loadout();
 			loadout.ShouldRestrict = false;
-			loadout.UnitConfiguration.HasUnitSpec = true;
+			loadout.CurrentUnit.HasUnitSpec = true;
 			var perks = (PerkCollection)loadout.Perks;
 
 			perks.UnitSpecialization.DesiredLevel = specPerks;
 			perks.DamageReduction.DesiredLevel = (short)(statsDR > 10 ? 10 : statsDR);
 			perks.DamageReduction2.DesiredLevel = (short)(statsDR < 10 ? 0 : statsDR - 10);
-			loadout.UnitConfiguration.UnitRank = (VEntityFramework.Model.UnitRank)rankDr;
+			loadout.CurrentUnit.UnitRank = (VEntityFramework.Model.UnitRank)rankDr;
 			loadout.Stats.UpdateDamageReduction("OTHER", otherDr);
 
 			Assert.That(loadout.Stats.DamageReductionForBinding, Is.EqualTo(expectedDR));
@@ -47,13 +47,13 @@ namespace Tests
 			perkCollection.MaximumPotiential2.DesiredLevel = 10;
 			perkCollection.MaximumPotiental3.DesiredLevel = 10;
 			perkCollection.MaximumPotential4.DesiredLevel = 10;
-			loadout.UnitConfiguration.EssenceStacks = 0;
-			loadout.UnitConfiguration.CurrentInfusion = 0;
+			loadout.CurrentUnit.EssenceStacks = 0;
+			loadout.CurrentUnit.CurrentInfusion = 0;
 
 			perkCollection.Attack.DesiredLevel = perks;
 			loadout.Gems.AttackGem.CurrentLevel = gems;
-			loadout.UnitConfiguration.EssenceStacks = essence;
-			loadout.UnitConfiguration.CurrentInfusion = infuse;
+			loadout.CurrentUnit.EssenceStacks = essence;
+			loadout.CurrentUnit.CurrentInfusion = infuse;
 
 			Assert.That(loadout.Stats.AttackForBinding, Is.EqualTo(expected));
 		}
@@ -72,13 +72,13 @@ namespace Tests
 			perkCollection.MaximumPotiential2.DesiredLevel = 10;
 			perkCollection.MaximumPotiental3.DesiredLevel = 10;
 			perkCollection.MaximumPotential4.DesiredLevel = 10;
-			loadout.UnitConfiguration.EssenceStacks = 0;
-			loadout.UnitConfiguration.CurrentInfusion = 0;
+			loadout.CurrentUnit.EssenceStacks = 0;
+			loadout.CurrentUnit.CurrentInfusion = 0;
 
 			perkCollection.AttackSpeed.DesiredLevel = perks;
 			loadout.Gems.AttackSpeedGem.CurrentLevel = gems;
-			loadout.UnitConfiguration.EssenceStacks = essence;
-			loadout.UnitConfiguration.CurrentInfusion = infuse;
+			loadout.CurrentUnit.EssenceStacks = essence;
+			loadout.CurrentUnit.CurrentInfusion = infuse;
 
 			Assert.That(loadout.Stats.AttackSpeedForBinding, Is.EqualTo(expected));
 		}

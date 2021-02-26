@@ -32,9 +32,15 @@ namespace VUserInterface.CommonControls
 			get => ComboBox.SelectedIndex;
 			set
 			{
-				ComboBox.SelectedIndex = value;
+				if (!isSettingIndexOnBaseComboBox)
+				{
+					isSettingIndexOnBaseComboBox = true;
+					ComboBox.SelectedIndex = value;
+					isSettingIndexOnBaseComboBox = false;
+				}
 			}
 		}
+		bool isSettingIndexOnBaseComboBox;
 
 		public object SelectedValue
 		{
@@ -44,7 +50,7 @@ namespace VUserInterface.CommonControls
 			}
 			set
 			{
-				if (ComboBox.Items.Contains(value))
+				if (value != null && ComboBox.Items.Contains(value) && !isSettingIndexOnBaseComboBox)
 				{
 					var index = ComboBox.Items.IndexOf(value);
 					SelectedIndex = index;
@@ -63,7 +69,7 @@ namespace VUserInterface.CommonControls
 
 		void ComboBox_SelectedValueChanged(object sender, EventArgs e)
 		{
-			SelectedValueChanged?.Invoke(this, e);
+			SelectedValueChanged?.Invoke(sender, e);
 		}
 
 		void ComboBox_Format(object sender, ListControlConvertEventArgs e)

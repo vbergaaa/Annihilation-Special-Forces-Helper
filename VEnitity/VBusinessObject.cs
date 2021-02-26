@@ -112,6 +112,14 @@ namespace VEntityFramework.Data
 			}
 		}
 
+		public void DeregisterChild(VBusinessObject bizo)
+		{
+			if (Children.Contains(bizo))
+			{
+				Children.Remove(bizo);
+			}
+		}
+
 		#endregion
 
 		#region Parent

@@ -35,5 +35,7 @@ namespace VBusiness.Units
 		public override double BaseShieldRegenDelay => 2;
 
 		public override double BaseAttackRange => 6;
+
+		public override UnitType Type => UnitType.Striker;
 	}
 }

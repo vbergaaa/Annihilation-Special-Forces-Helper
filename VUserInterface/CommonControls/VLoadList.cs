@@ -23,6 +23,9 @@ namespace VUserInterface.CommonControls
 			{
 				fBizoType = value;
 				RefreshList();
+				this.DeleteButton.Click += Delete_Click;
+				this.NewButton.Click += New_Click;
+				this.OpenButton.Click += Open_Click;
 			}
 		}
 		Type fBizoType;
@@ -98,5 +101,25 @@ namespace VUserInterface.CommonControls
 		BindingList<string> fCollection;
 
 		#endregion
+
+		public event EventHandler IndexChanged;
+
+		void ListBox_SelectedValueChanged(object sender, System.EventArgs e)
+		{
+			IndexChanged?.Invoke(this, e);
+		}
+
+		public object CurrentItem => ListBox?.SelectedItem;
+		public int CurrentIndex
+		{
+			get => ListBox?.SelectedIndex ?? -1;
+			set
+			{
+				if (ListBox != null)
+				{
+					ListBox.SelectedIndex = value;
+				}
+			}
+		}
 	}
 }

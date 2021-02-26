@@ -36,5 +36,7 @@ namespace VBusiness.Units
 		public override double BaseShieldRegen => 5;
 
 		public override double BaseShieldRegenDelay => 2;
+
+		public override UnitType Type => UnitType.Dreadnought;
 	}
 }

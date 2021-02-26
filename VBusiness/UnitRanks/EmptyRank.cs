@@ -4,7 +4,7 @@ namespace VBusiness.Ranks
 {
 	public class EmptyRank : UnitRank
 	{
-		public EmptyRank(VUnitConfiguration config) : base(config)
+		public EmptyRank(VUnit unit) : base(unit)
 		{
 		}
 

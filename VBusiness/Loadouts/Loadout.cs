@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using VBusiness.ChallengePoints;
 using VBusiness.Gems;
 using VBusiness.Perks;
 using VBusiness.Souls;
 using VBusiness.Units;
+using VEntityFramework;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
 
@@ -81,8 +83,54 @@ namespace VBusiness.Loadouts
 		#region Units
 
 		[VXML(true)]
-		public override List<VUnit> Units => fUnits ??= new List<VUnit>() { new WarpLord(this) };
-		List<VUnit> fUnits;
+		public override BusinessObjectList<VUnit> Units => fUnits ??= new BusinessObjectList<VUnit>(this);
+		BusinessObjectList<VUnit> fUnits;
+
+		#endregion
+
+		#region CurrentUnit
+
+		public override VUnit CurrentUnit 
+		{ 
+			get => base.CurrentUnit;
+			set
+			{
+				if (base.CurrentUnit != value)
+				{
+					RemoveStats(base.CurrentUnit);
+					base.CurrentUnit = value;
+					AddStats(base.CurrentUnit);
+				}
+			}
+		}
+
+		void RemoveStats(VUnit currentUnit)
+		{
+			if (currentUnit is Unit unit)
+			{
+				unit.Rank?.DeactivateRank();
+				unit.UpdateStatsFromInfuse(-unit.CurrentInfusion);
+				unit.UpdateStatsFromEssence(-unit.EssenceStacks);
+				if (unit.HasUnitSpec)
+				{
+					unit.DeactivateSpec();
+				}
+			}
+		}
+
+		void AddStats(VUnit currentUnit)
+		{
+			if (currentUnit is Unit unit)
+			{
+				unit.Rank?.ActivateRank();
+				unit.UpdateStatsFromInfuse(unit.CurrentInfusion);
+				unit.UpdateStatsFromEssence(unit.EssenceStacks);
+				if (unit.HasUnitSpec)
+				{
+					unit.ActivateSpec();
+				}
+			}
+		}
 
 		#endregion
 

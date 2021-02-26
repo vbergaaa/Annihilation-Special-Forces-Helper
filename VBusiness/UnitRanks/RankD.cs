@@ -4,7 +4,7 @@ namespace VBusiness.Ranks
 {
 	public class RankD : UnitRank
 	{
-		public RankD(VUnitConfiguration config) : base(config)
+		public RankD(VUnit unit) : base(unit)
 		{
 		}
 

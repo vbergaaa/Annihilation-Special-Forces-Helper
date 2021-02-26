@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using VEntityFramework.Attributes;
 using VEntityFramework.Data;
 
@@ -90,6 +91,20 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Active SoulTypes
+
+		public IEnumerable<SoulType> ActiveSoulTypes
+		{
+			get
+			{
+				var souls = new List<VSoul>() { Souls.Soul1, Souls.Soul2, Souls.Soul3 };
+				var types = souls.Select(s => s.Type);
+				return types;
+			}
+		}
+
+		#endregion
+
 		#region Gems
 
 		public virtual VGemCollection Gems
@@ -134,12 +149,56 @@ namespace VEntityFramework.Model
 
 		#region Units
 
-		public virtual List<VUnit> Units { get; }
+		public virtual BusinessObjectList<VUnit> Units { get; }
+
+		public virtual void AddUnit(VUnit unit) { }
+		public virtual void RemoveUnit(VUnit unit) { }
 
 		[VXML(false)]
-		public VUnit CurrentUnit
+		public virtual VUnit CurrentUnit
 		{
-			get => Units[0];
+			get
+			{
+				if (fCurrentUnit == null)
+				{
+					if (Units.Count > 0)
+					{
+						return Units[0];
+					}
+					else
+					{
+						return VUnit.New(UnitType.None, this);
+					}
+				}
+				return fCurrentUnit;
+			}
+			set
+			{
+				if (fCurrentUnit != value)
+				{
+					fCurrentUnit = value;
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentUnit)));
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Units)));
+				}
+			}
+		}
+		VUnit fCurrentUnit;
+
+		public void SetCurrentUnit(string unitName)
+		{
+			VUnit currentUnit = null;
+			foreach(var unit in Units)
+			{
+				if (unit.ToString() == unitName)
+				{
+					currentUnit = unit;
+				}
+			}
+
+			CurrentUnit = currentUnit
+#if DEBUG
+				?? throw new Exception("Where are you getting this setstring from?");
+#endif
 		}
 
 		#endregion

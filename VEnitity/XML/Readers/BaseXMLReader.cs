@@ -27,7 +27,7 @@ namespace VEntityFramework.XML
 			var matchingProperty = GetPropertyFromXML(bizo.GetType(), childNode);
 
 #if DEBUG
-			if (matchingProperty == null)
+			if (matchingProperty == null && bizo.GetType().Name != "UnitConfiguration") // we depreciated lots of UnitConfig stuff, so until I flush out my local xmls, ignore these
 			{
 				throw new DeveloperException($"Cannot find property {childNode.Name} on {bizo.GetType().Name} Business Object");
 			}
@@ -88,7 +88,11 @@ namespace VEntityFramework.XML
 					var key = GetKeyNode(node);
 					var item = BizoCreator.Create(listType, key.InnerText, bizo);
 					PopulateBusinessObject(item, node);
-					list.Add(item);
+
+					if (!list.Contains(item))
+					{
+						list.Add(item);
+					}
 				}
 				else
 				{

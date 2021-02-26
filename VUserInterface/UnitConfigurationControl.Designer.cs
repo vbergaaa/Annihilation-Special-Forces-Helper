@@ -37,43 +37,21 @@ namespace VUserInterface
 		{
 			components = new System.ComponentModel.Container();
 			this.bindingSource = new BindingSource();
-			this.RankDropBox = new VDropBox();
-			this.InfusionIncrementor = new VIncrementor();
-			this.EssenceIncrementor = new VIncrementor();
 			this.SoloBonusCheckBox = new VCheckControl();
 			this.UnitSpecCheckBox = new VCheckControl();
 			this.AdrenalineRushCheckBox = new VCheckControl();
 			this.DifficultyDropBox = new VDropBox();
+			this.UnitsLoadList = new VSelectList();
+			this.CurrentUnitControl = new UnitControl();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
 			//
 			this.bindingSource.DataSource = typeof(UnitConfiguration);
 			//
-			// RankComboBox
-			//
-			this.RankDropBox.DataBindings.Add("SelectedValue", bindingSource, "UnitRank");
-			this.RankDropBox.List = RankList;
-			this.RankDropBox.Location = DPIScalingHelper.GetScaledPoint(125, 20);
-			this.RankDropBox.Caption = "Rank:";
-			//
-			// InfusionIncrementor
-			//
-			this.InfusionIncrementor.Location = DPIScalingHelper.GetScaledPoint(125, 50);
-			this.InfusionIncrementor.DataBindings.Add("Value", bindingSource, "CurrentInfusion");
-			this.InfusionIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaximumInfusion");
-			this.InfusionIncrementor.Caption = "Infusion:";
-			//
-			// EssenceIncrementor
-			//
-			this.EssenceIncrementor.Location = DPIScalingHelper.GetScaledPoint(125, 80);
-			this.EssenceIncrementor.DataBindings.Add("Value", bindingSource, "EssenceStacks");
-			this.EssenceIncrementor.DataBindings.Add("MaxValue", bindingSource, "MaximumEssence");
-			this.EssenceIncrementor.Caption = "Essence:";
-			//
 			// SoloBonusCheckBox
 			//
-			this.SoloBonusCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 110);
+			this.SoloBonusCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 230);
 			this.SoloBonusCheckBox.Caption = "Solo Bonus:";
 			this.SoloBonusCheckBox.DataBindings.Add("Checked", bindingSource, "HasSoloBonus");
 			//
@@ -82,12 +60,14 @@ namespace VUserInterface
 			this.UnitSpecCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 140);
 			this.UnitSpecCheckBox.Caption = "Has Unit Spec:";
 			this.UnitSpecCheckBox.DataBindings.Add("Checked", bindingSource, "HasUnitSpec");
+			this.UnitSpecCheckBox.Visible = false;
 			//
 			// AdrenalineRushCheckBox
 			//
 			this.AdrenalineRushCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 170);
 			this.AdrenalineRushCheckBox.Caption = "Adrenaline Rush:";
 			this.AdrenalineRushCheckBox.DataBindings.Add("Checked", bindingSource, "HasAdrenalineBuffActive");
+			this.AdrenalineRushCheckBox.Visible = false;
 			//
 			// DifficutlyComboBox
 			//
@@ -96,28 +76,46 @@ namespace VUserInterface
 			this.DifficultyDropBox.Location = DPIScalingHelper.GetScaledPoint(125, 200);
 			this.DifficultyDropBox.Caption = "Difficulty:";
 			//
+			// UnitsLoadList
+			//
+			this.UnitsLoadList.DataBindings.Add("List", bindingSource, "Units", true, DataSourceUpdateMode.OnPropertyChanged);
+			this.UnitsLoadList.Location = DPIScalingHelper.GetScaledPoint(20, 30);
+			this.UnitsLoadList.Name = "UnitsLoadList";
+			this.UnitsLoadList.Size = DPIScalingHelper.GetScaledSize(280, 160);
+			this.UnitsLoadList.TabIndex = 0;
+			this.UnitsLoadList.Text = "Units";
+			this.UnitsLoadList.IndexChanged += UnitsLoadList_IndexChanged;
+			this.UnitsLoadList.NewButtonClicked += UnitsLoadList_NewButtonClicked;
+			this.UnitsLoadList.DeleteButtonClicked += UnitsLoadList_DeleteButtonClicked;
+			//
+			// CurrentUnitControl
+			//
+			this.CurrentUnitControl.DataBindings.Add("Unit", bindingSource, "Loadout.CurrentUnit");
+			this.CurrentUnitControl.Name = "CurrentUserControl";
+			this.CurrentUnitControl.Location = DPIScalingHelper.GetScaledPoint(290, 30);
+			this.CurrentUnitControl.UnitChanged += CurrentUnitControl_UnitChanged;
+			//
 			// VSoulCollectionControl
 			//
-			this.Controls.Add(RankDropBox);
 			this.Controls.Add(DifficultyDropBox);
-			this.Controls.Add(InfusionIncrementor);
-			this.Controls.Add(EssenceIncrementor);
 			this.Controls.Add(SoloBonusCheckBox);
 			this.Controls.Add(UnitSpecCheckBox);
 			this.Controls.Add(AdrenalineRushCheckBox);
+			this.Controls.Add(UnitsLoadList);
+			this.Controls.Add(CurrentUnitControl);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
+			this.VisibleChanged += UnitConfigurationControl_VisibleChanged;
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
 
 		#endregion
 
 		BindingSource bindingSource;
-		VDropBox RankDropBox;
 		VDropBox DifficultyDropBox;
-		VIncrementor InfusionIncrementor;
-		VIncrementor EssenceIncrementor;
 		VCheckControl SoloBonusCheckBox;
 		VCheckControl UnitSpecCheckBox;
 		VCheckControl AdrenalineRushCheckBox;
+		VSelectList UnitsLoadList;
+		UnitControl CurrentUnitControl;
 	}
 }

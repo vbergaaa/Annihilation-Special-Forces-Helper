@@ -41,6 +41,9 @@
     <Compile Update="CommonControls\DPIScaling\DPIPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="CommonControls\VSelectList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="CommonControls\VTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -72,6 +75,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UnitConfigurationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UnitControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="VCommonSoulCollectionControl.cs">
