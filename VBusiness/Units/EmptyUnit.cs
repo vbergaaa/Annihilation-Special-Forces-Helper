@@ -21,8 +21,6 @@ namespace VBusiness.Units
 
 		public override double BaseAttackCount => 0;
 
-		public override double BaseAttackRange => 0;
-
 		public override double BaseHealth => 0;
 
 		public override double BaseHealthArmor => 0;
@@ -34,7 +32,5 @@ namespace VBusiness.Units
 		public override double BaseShieldArmor => 0;
 
 		public override double BaseShieldRegen => 0;
-
-		public override double BaseShieldRegenDelay => 0;
 	}
 }

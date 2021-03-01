@@ -199,14 +199,12 @@ namespace VEntityFramework.Model
 		public abstract double BaseAttack { get; }
 		public abstract double BaseAttackSpeed { get; }
 		public abstract double BaseAttackCount { get; }
-		public abstract double BaseAttackRange { get; }
 		public abstract double BaseHealth { get; }
 		public abstract double BaseHealthArmor { get; }
 		public abstract double BaseHealthRegen { get; }
 		public abstract double BaseShields { get; }
 		public abstract double BaseShieldArmor { get; }
 		public abstract double BaseShieldRegen { get; }
-		public abstract double BaseShieldRegenDelay { get; }
 
 		#endregion
 

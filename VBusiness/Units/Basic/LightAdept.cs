@@ -20,8 +20,6 @@ namespace VBusiness.Units
 
 		public override double BaseAttackCount => 1;
 
-		public override double BaseAttackRange => 5;
-
 		public override double BaseHealth => 125;
 
 		public override double BaseHealthArmor => 3;
@@ -33,8 +31,6 @@ namespace VBusiness.Units
 		public override double BaseShieldArmor => 3;
 
 		public override double BaseShieldRegen => 5;
-
-		public override double BaseShieldRegenDelay => 2;
 
 		public override UnitType Type => UnitType.LightAdept;
 	}

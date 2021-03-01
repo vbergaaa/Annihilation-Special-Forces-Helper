@@ -32,10 +32,6 @@ namespace VBusiness.Units
 
 		public override double BaseShieldRegen => 3;
 
-		public override double BaseShieldRegenDelay => 1;
-
-		public override double BaseAttackRange => 1;
-
 		public override UnitType Type => UnitType.WarpLord;
 	}
 }

@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using VEntityFramework.Model;
+
+namespace VBusiness.Units
+{
+	// UnitData: ImmortalAiur
+	// WeaponData: UnstableDisruptors
+	// EffectData: ImmortalSplashSet2
+
+	public class UnstableDreadnought : Unit
+	{
+		public UnstableDreadnought(VLoadout loadout) : base(loadout)
+		{
+		}
+
+		public override UnitType Type => UnitType.UnstableDreadnought;
+
+		public override double BaseAttack => 30;
+
+		public override double BaseAttackSpeed => 1.7;
+
+		public override double BaseAttackCount => 1;
+
+		public override double BaseHealth => 350;
+
+		public override double BaseHealthArmor => 7;
+
+		public override double BaseHealthRegen => 7;
+
+		public override double BaseShields => 500;
+
+		public override double BaseShieldArmor => 7;
+
+		public override double BaseShieldRegen => 7;
+	}
+}

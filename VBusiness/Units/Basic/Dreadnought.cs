@@ -21,8 +21,6 @@ namespace VBusiness.Units
 
 		public override double BaseAttackCount => 1;
 
-		public override double BaseAttackRange => 6;
-
 		public override double BaseHealth => 300;
 
 		public override double BaseHealthArmor => 6;
@@ -34,8 +32,6 @@ namespace VBusiness.Units
 		public override double BaseShieldArmor => 6;
 
 		public override double BaseShieldRegen => 5;
-
-		public override double BaseShieldRegenDelay => 2;
 
 		public override UnitType Type => UnitType.Dreadnought;
 	}
