@@ -197,7 +197,7 @@ namespace VBusiness.Units
 		{
 			if (Loadout.Perks is PerkCollection perks && perks.UnitSpecialization.DesiredLevel > 0 && IsCurrentUnit)
 			{
-				Loadout.Stats.DamageIncrease -= 2 * perks.UnitSpecialization.DesiredLevel;
+				Loadout.Stats.UpdateDamageIncrease("Spec", -2 * perks.UnitSpecialization.DesiredLevel);
 				Loadout.Stats.UpdateDamageReduction("Spec", -perks.UnitSpecialization.DesiredLevel);
 			}
 		}
@@ -206,7 +206,7 @@ namespace VBusiness.Units
 		{
 			if (Loadout.Perks is PerkCollection perks && perks.UnitSpecialization.DesiredLevel > 0 && IsCurrentUnit)
 			{
-				Loadout.Stats.DamageIncrease += 2 * perks.UnitSpecialization.DesiredLevel;
+				Loadout.Stats.UpdateDamageIncrease("Spec", 2 * perks.UnitSpecialization.DesiredLevel);
 				Loadout.Stats.UpdateDamageReduction("Spec", perks.UnitSpecialization.DesiredLevel);
 			}
 		}

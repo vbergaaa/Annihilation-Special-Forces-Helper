@@ -202,15 +202,26 @@ namespace VEntityFramework.Model
 
 		public double DamageIncrease
 		{
-			get => fDamageIncrease;
-			set
+			get
 			{
-				fDamageIncrease = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageIncreaseForBinding)));
+				var totalDI = 100.0;
+				foreach (var kvp in DamageIncreaseDictionary)
+				{
+					totalDI *= (100 + kvp.Value) / 100;
+				}
+				return totalDI - 100;
 			}
 		}
-		double fDamageIncrease;
+
+		StatsDictionary DamageIncreaseDictionary => fDamageIncreaseDictionary ??= new StatsDictionary();
+		StatsDictionary fDamageIncreaseDictionary;
+
+		public void UpdateDamageIncrease(string key, double amount)
+		{
+			DamageIncreaseDictionary.Update(key, amount);
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageIncreaseForBinding)));
+		}
 
 		#endregion
 
