@@ -54,6 +54,7 @@ namespace VUserInterface
 			this.AvailableGemsLabel = new VLabel();
 			this.AvailableCPLabel = new VLabel();
 			this.RestrictCheckBox = new VCheckControl();
+			this.UseUnitStatsCheckBox = new VCheckControl();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
 			this.SuspendLayout();
 			//
@@ -64,7 +65,7 @@ namespace VUserInterface
 			// LoadoutNameTextBox
 			//
 			this.LoadoutNameTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Name", true);
-			this.LoadoutNameTextBox.Location = DPIScalingHelper.GetScaledPoint(390, 20);
+			this.LoadoutNameTextBox.Location = DPIScalingHelper.GetScaledPoint(250, 20);
 			this.LoadoutNameTextBox.Name = "LoadoutNameTextBox";
 			this.LoadoutNameTextBox.Caption = "LoadoutName";
 			this.LoadoutNameTextBox.Width = 100;
@@ -72,7 +73,7 @@ namespace VUserInterface
 			// SlotNumberTextBox
 			//
 			this.SlotNumberTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Slot", true);
-			this.SlotNumberTextBox.Location = DPIScalingHelper.GetScaledPoint(141, 20);
+			this.SlotNumberTextBox.Location = DPIScalingHelper.GetScaledPoint(100, 20);
 			this.SlotNumberTextBox.Name = "SlotNumberTextBox";
 			this.SlotNumberTextBox.Width = 30;
 			this.SlotNumberTextBox.Caption = "Save Slot";
@@ -83,7 +84,14 @@ namespace VUserInterface
 			this.RestrictCheckBox.Caption = "Use Profile Limits";
 			this.RestrictCheckBox.CheckedChanged += RestrictCheckBox_CheckedChanged;
 			this.RestrictCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "ShouldRestrict");
-			this.RestrictCheckBox.Location = DPIScalingHelper.GetScaledPoint(720, 20);
+			this.RestrictCheckBox.Location = DPIScalingHelper.GetScaledPoint(500, 20);
+			//
+			// UseUnitStatsCheckBox
+			//
+			this.UseUnitStatsCheckBox.Name = "UseUnitStatsCheckBox";
+			this.UseUnitStatsCheckBox.Caption = "Use Unit Statistics";
+			this.UseUnitStatsCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "UseUnitStats");
+			this.UseUnitStatsCheckBox.Location = DPIScalingHelper.GetScaledPoint(720, 20);
 			//
 			// AvailablePPLabel
 			//
@@ -211,6 +219,7 @@ namespace VUserInterface
 			this.Controls.Add(AvailableGemsLabel);
 			this.Controls.Add(AvailableCPLabel);
 			this.Controls.Add(RestrictCheckBox);
+			this.Controls.Add(UseUnitStatsCheckBox);
 			this.Name = "LoadoutForm";
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
@@ -238,5 +247,6 @@ namespace VUserInterface
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;
 		private VStatsControl StatsControl;
 		private VCheckControl RestrictCheckBox;
+		private VCheckControl UseUnitStatsCheckBox;
 	}
 }

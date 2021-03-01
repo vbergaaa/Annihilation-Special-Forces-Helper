@@ -60,7 +60,7 @@ namespace VUserInterface
 			// 
 			this.DamageLabel.Caption = "Damage Score:";
 			this.DamageLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "Damage"));
-			this.DamageLabel.Location = DPIScalingHelper.GetScaledPoint(130,20);
+			this.DamageLabel.Location = DPIScalingHelper.GetScaledPoint(120,20);
 			this.DamageLabel.Name = "DamageLabel";
 			this.DamageLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.DamageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -69,7 +69,7 @@ namespace VUserInterface
 			// 
 			this.ToughnessLabel.Caption = "Toughness Score:";
 			this.ToughnessLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "Toughness"));
-			this.ToughnessLabel.Location = DPIScalingHelper.GetScaledPoint(130,40);
+			this.ToughnessLabel.Location = DPIScalingHelper.GetScaledPoint(120,40);
 			this.ToughnessLabel.Name = "ToughnessLabel";
 			this.ToughnessLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.ToughnessLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -78,7 +78,7 @@ namespace VUserInterface
 			// 
 			this.RecoveryLabel.Caption = "Recovery:";
 			this.RecoveryLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "Recovery"));
-			this.RecoveryLabel.Location = DPIScalingHelper.GetScaledPoint(130,60);
+			this.RecoveryLabel.Location = DPIScalingHelper.GetScaledPoint(120,60);
 			this.RecoveryLabel.Name = "RecoveryLabel";
 			this.RecoveryLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.RecoveryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -87,7 +87,7 @@ namespace VUserInterface
 			// 
 			this.DamageIncreaseLabel.Caption = "Dmg Increase:";
 			this.DamageIncreaseLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "DamageIncrease"));
-			this.DamageIncreaseLabel.Location = DPIScalingHelper.GetScaledPoint(130,80);
+			this.DamageIncreaseLabel.Location = DPIScalingHelper.GetScaledPoint(120,260);
 			this.DamageIncreaseLabel.Name = "DamageIncreaseLabel";
 			this.DamageIncreaseLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.DamageIncreaseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -96,7 +96,7 @@ namespace VUserInterface
 			// 
 			this.AttackLabel.Caption = "Attack";
 			this.AttackLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "AttackForBinding"));
-			this.AttackLabel.Location = DPIScalingHelper.GetScaledPoint(130,100);
+			this.AttackLabel.Location = DPIScalingHelper.GetScaledPoint(120,80);
 			this.AttackLabel.Name = "AttackLabel";
 			this.AttackLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.AttackLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -105,7 +105,7 @@ namespace VUserInterface
 			// 
 			this.AttackSpeedLabel.Caption = "Attack Speed:";
 			this.AttackSpeedLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "AttackSpeedForBinding"));
-			this.AttackSpeedLabel.Location = DPIScalingHelper.GetScaledPoint(130,120);
+			this.AttackSpeedLabel.Location = DPIScalingHelper.GetScaledPoint(120,100);
 			this.AttackSpeedLabel.Name = "AttackSpeedLabel";
 			this.AttackSpeedLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.AttackSpeedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -114,7 +114,7 @@ namespace VUserInterface
 			// 
 			this.CriticalChanceLabel.Caption = "Crit Chance:";
 			this.CriticalChanceLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "CriticalChanceForBinding"));
-			this.CriticalChanceLabel.Location = DPIScalingHelper.GetScaledPoint(130,140);
+			this.CriticalChanceLabel.Location = DPIScalingHelper.GetScaledPoint(120,120);
 			this.CriticalChanceLabel.Name = "CriticalChanceLabel";
 			this.CriticalChanceLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.CriticalChanceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -123,7 +123,7 @@ namespace VUserInterface
 			// 
 			this.CriticalDamageLabel.Caption = "Crit Damage:";
 			this.CriticalDamageLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "CriticalDamageForBinding"));
-			this.CriticalDamageLabel.Location = DPIScalingHelper.GetScaledPoint(130,160);
+			this.CriticalDamageLabel.Location = DPIScalingHelper.GetScaledPoint(120,140);
 			this.CriticalDamageLabel.Name = "CriticalDamageLabel";
 			this.CriticalDamageLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.CriticalDamageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -132,7 +132,7 @@ namespace VUserInterface
 			// 
 			this.HealthLabel.Caption = "Health:";
 			this.HealthLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "HealthForBinding"));
-			this.HealthLabel.Location = DPIScalingHelper.GetScaledPoint(130,180);
+			this.HealthLabel.Location = DPIScalingHelper.GetScaledPoint(120,160);
 			this.HealthLabel.Name = "HealthLabel";
 			this.HealthLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.HealthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -141,7 +141,7 @@ namespace VUserInterface
 			// 
 			this.HealthArmorLabel.Caption = "Health Armor:";
 			this.HealthArmorLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "HealthArmorForBinding"));
-			this.HealthArmorLabel.Location = DPIScalingHelper.GetScaledPoint(130,200);
+			this.HealthArmorLabel.Location = DPIScalingHelper.GetScaledPoint(120,180);
 			this.HealthArmorLabel.Name = "HealthArmorLabel";
 			this.HealthArmorLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.HealthArmorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -150,7 +150,7 @@ namespace VUserInterface
 			// 
 			this.ShieldsLabel.Caption = "Shields:";
 			this.ShieldsLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "ShieldsForBinding"));
-			this.ShieldsLabel.Location = DPIScalingHelper.GetScaledPoint(130,220);
+			this.ShieldsLabel.Location = DPIScalingHelper.GetScaledPoint(120,200);
 			this.ShieldsLabel.Name = "ShieldsLabel";
 			this.ShieldsLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.ShieldsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -159,7 +159,7 @@ namespace VUserInterface
 			// 
 			this.ShieldsArmorLabel.Caption = "Shields Armor:";
 			this.ShieldsArmorLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "ShieldsArmorForBinding"));
-			this.ShieldsArmorLabel.Location = DPIScalingHelper.GetScaledPoint(130,240);
+			this.ShieldsArmorLabel.Location = DPIScalingHelper.GetScaledPoint(120,220);
 			this.ShieldsArmorLabel.Name = "ShieldsArmorLabel";
 			this.ShieldsArmorLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.ShieldsArmorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -168,7 +168,7 @@ namespace VUserInterface
 			// 
 			this.DamageReductionLabel.Caption = "Dmg Rdct:";
 			this.DamageReductionLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "DamageReductionForBinding"));
-			this.DamageReductionLabel.Location = DPIScalingHelper.GetScaledPoint(130,260);
+			this.DamageReductionLabel.Location = DPIScalingHelper.GetScaledPoint(120,280);
 			this.DamageReductionLabel.Name = "DamageReductionLabel";
 			this.DamageReductionLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.DamageReductionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -177,7 +177,7 @@ namespace VUserInterface
 			// 
 			this.AccelLabel.Caption = "Acceleration:";
 			this.AccelLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "AccelerationForBinding"));
-			this.AccelLabel.Location = DPIScalingHelper.GetScaledPoint(130,280);
+			this.AccelLabel.Location = DPIScalingHelper.GetScaledPoint(120,240);
 			this.AccelLabel.Name = "AccelLabel";
 			this.AccelLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.AccelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

@@ -13,18 +13,10 @@ namespace VEntityFramework.Model
 		#region Unit 
 
 		public VUnit CurrentUnit => Loadout.CurrentUnit;
-		
-		public bool UseUnitStats
-		{
-			get => fUseUnitStats;
-			set
-			{
-				fUseUnitStats = value;
-				RefreshAllBindings();
-			}
-		}
 
-		void RefreshAllBindings()
+		public bool UseUnitStats => Loadout.UseUnitStats;
+
+		public void RefreshAllBindings()
 		{
 			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackForBinding)));
 			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackSpeedForBinding)));
@@ -41,8 +33,6 @@ namespace VEntityFramework.Model
 			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
 			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
 		}
-
-		bool fUseUnitStats;
 		#endregion
 		public override string BizoName => "Stats";
 

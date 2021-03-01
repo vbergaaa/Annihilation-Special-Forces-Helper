@@ -254,8 +254,29 @@ namespace VEntityFramework.Model
 		bool fShouldRestrict = true;
 
 		#endregion
+		
+		#region UseUnitStats
+
+		[VXML(true)]
+		public bool UseUnitStats
+		{
+			get => fUseUnitStats;
+			set
+			{
+				if (value != fUseUnitStats)
+				{
+					fUseUnitStats = value;
+					HasChanges = true;
+					Stats.RefreshAllBindings();
+					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(UseUnitStats)));
+				}
+			}
+		}
+		bool fUseUnitStats;
 
 		#endregion
+
+#endregion
 
 		#region Implementation
 

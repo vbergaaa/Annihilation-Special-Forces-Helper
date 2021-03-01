@@ -16,7 +16,7 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.ShieldBattery;
 
-		public override double BaseAttack => -8;
+		public override double BaseAttack => -5;
 
 		public override double BaseAttackSpeed => 1.5;
 
