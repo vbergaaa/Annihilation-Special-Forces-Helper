@@ -197,8 +197,10 @@ namespace VEntityFramework.Model
 
 			CurrentUnit = currentUnit
 #if DEBUG
-				?? throw new Exception("Where are you getting this setstring from?");
+				?? throw new Exception("Where are you getting this setstring from?")
 #endif
+				;
+
 		}
 
 		#endregion
