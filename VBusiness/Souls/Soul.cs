@@ -64,7 +64,7 @@ namespace VBusiness.Souls
 
 					if (oldvalue != base.Attack)
 					{
-						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Attack)));
+						OnPropertyChanged(nameof(Attack));
 					}
 				}
 			}
@@ -97,7 +97,7 @@ namespace VBusiness.Souls
 
 					if (oldvalue != base.AttackSpeed)
 					{
-						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackSpeed)));
+						OnPropertyChanged(nameof(AttackSpeed));
 					}
 				}
 			}
@@ -130,7 +130,7 @@ namespace VBusiness.Souls
 
 					if (oldvalue != base.CriticalChance)
 					{
-						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CriticalChance)));
+						OnPropertyChanged(nameof(CriticalChance));
 					}
 				}
 			}
@@ -163,7 +163,7 @@ namespace VBusiness.Souls
 
 					if (oldvalue != base.CriticalDamage)
 					{
-						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CriticalDamage)));
+						OnPropertyChanged(nameof(CriticalDamage));
 					}
 				}
 			}
@@ -196,7 +196,7 @@ namespace VBusiness.Souls
 
 					if (oldvalue != base.Armor)
 					{
-						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Armor)));
+						OnPropertyChanged(nameof(Armor));
 					}
 				}
 			}
@@ -229,7 +229,7 @@ namespace VBusiness.Souls
 
 					if (oldvalue != base.Vitals)
 					{
-						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Vitals)));
+						OnPropertyChanged(nameof(Vitals));
 					}
 				}
 			}
@@ -262,7 +262,7 @@ namespace VBusiness.Souls
 
 					if (oldvalue != base.Kills)
 					{
-						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Kills)));
+						OnPropertyChanged(nameof(Kills));
 					}
 				}
 			}
@@ -295,7 +295,7 @@ namespace VBusiness.Souls
 
 					if (oldvalue != base.Minerals)
 					{
-						OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Minerals)));
+						OnPropertyChanged(nameof(Minerals));
 					}
 				}
 			}
@@ -327,7 +327,7 @@ namespace VBusiness.Souls
 					saveSlotHasChanges = true;
 				}
 				base.SaveSlot = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(SaveSlot)));
+				OnPropertyChanged(nameof(SaveSlot));
 			}
 		}
 

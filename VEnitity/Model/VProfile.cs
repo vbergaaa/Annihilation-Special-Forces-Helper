@@ -21,7 +21,7 @@ namespace VEntityFramework.Model
 				{
 					fName = value;
 					HasChanges = true;
-					OnPropertyChanged(new PropertyChangedEventArgs(nameof(Name)));
+					OnPropertyChanged(nameof(Name));
 				}
 			}
 		}
@@ -42,7 +42,7 @@ namespace VEntityFramework.Model
 				{
 					fRankPoints = value;
 					HasChanges = true;
-					OnPropertyChanged(new PropertyChangedEventArgs(nameof(RankPoints)));
+					OnPropertyChanged(nameof(RankPoints));
 				}
 			}
 		}
@@ -62,7 +62,7 @@ namespace VEntityFramework.Model
 				{
 					fRank = value;
 					HasChanges = true;
-					OnPropertyChanged(new PropertyChangedEventArgs(nameof(Rank)));
+					OnPropertyChanged(nameof(Rank));
 				}
 			}
 		}
@@ -83,7 +83,7 @@ namespace VEntityFramework.Model
 				{
 					fModifierScore = value;
 					HasChanges = true;
-					OnPropertyChanged(new PropertyChangedEventArgs(nameof(ModScore)));
+					OnPropertyChanged(nameof(ModScore));
 				}
 			}
 		}
@@ -104,7 +104,7 @@ namespace VEntityFramework.Model
 				{
 					fGems = value;
 					HasChanges = true;
-					OnPropertyChanged(new PropertyChangedEventArgs(nameof(Gems)));
+					OnPropertyChanged(nameof(Gems));
 				}
 			}
 		}
@@ -125,7 +125,7 @@ namespace VEntityFramework.Model
 				{
 					fChallengePoints = value;
 					HasChanges = true;
-					OnPropertyChanged(new PropertyChangedEventArgs(nameof(ChallengePoints)));
+					OnPropertyChanged(nameof(ChallengePoints));
 				}
 			}
 		}

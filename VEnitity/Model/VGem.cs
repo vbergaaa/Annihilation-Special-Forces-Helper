@@ -60,8 +60,8 @@ namespace VEntityFramework.Model
 						HasChanges = true;
 						GemCollection.RefreshMaxLevelBindings();
 					}
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(NextLevelCost)));
+					OnPropertyChanged(nameof(CurrentLevel));
+					OnPropertyChanged(nameof(NextLevelCost));
 				}
 			}
 		}

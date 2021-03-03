@@ -177,8 +177,8 @@ namespace VEntityFramework.Model
 				if (fCurrentUnit != value)
 				{
 					fCurrentUnit = value;
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentUnit)));
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Units)));
+					OnPropertyChanged(nameof(CurrentUnit));
+					OnPropertyChanged(nameof(Units));
 				}
 			}
 		}
@@ -241,7 +241,7 @@ namespace VEntityFramework.Model
 						Perks.RefreshMaxLevelBindings();
 						ChallengePoints.RefreshMaxLevelBindings();
 					}
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShouldRestrict)));
+					OnPropertyChanged(nameof(ShouldRestrict));
 					OnShouldRestrictChanged();
 				}
 			}
@@ -270,7 +270,7 @@ namespace VEntityFramework.Model
 					fUseUnitStats = value;
 					HasChanges = true;
 					Stats.RefreshAllBindings();
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(UseUnitStats)));
+					OnPropertyChanged(nameof(UseUnitStats));
 				}
 			}
 		}

@@ -197,7 +197,7 @@ namespace VEntityFramework.Data
 
 		void RefreshHasChanges()
 		{
-			OnPropertyChanged(new PropertyChangedEventArgs(nameof(HasChanges)));
+			OnPropertyChanged(nameof(HasChanges));
 			Parent?.RefreshHasChanges();
 		}
 
@@ -229,9 +229,9 @@ namespace VEntityFramework.Data
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		protected void OnPropertyChanged(PropertyChangedEventArgs e)
+		protected void OnPropertyChanged(string bindingName)
 		{
-			PropertyChanged?.Invoke(this, e);
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(bindingName));
 		}
 
 #endregion

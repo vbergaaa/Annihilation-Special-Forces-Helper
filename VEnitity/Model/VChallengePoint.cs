@@ -34,7 +34,7 @@ namespace VEntityFramework.Model
 				{
 					fCurrentLevel = value;
 					HasChanges = true;
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentLevel)));
+					OnPropertyChanged(nameof(CurrentLevel));
 				}
 			}
 		}
@@ -49,7 +49,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fMinValue = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MinValue)));
+				OnPropertyChanged(nameof(MinValue));
 			}
 		}
 		int fMinValue;
@@ -79,7 +79,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fMaxValue = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(MaxValue)));
+				OnPropertyChanged(nameof(MaxValue));
 			}
 		}
 		int fMaxValue;

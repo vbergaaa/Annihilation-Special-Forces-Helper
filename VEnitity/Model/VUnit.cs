@@ -66,7 +66,7 @@ namespace VEntityFramework.Model
 					fCurrentInfuse = value;
 					HasChanges = true;
 					OnDescriptionChanged();
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CurrentInfusion)));
+					OnPropertyChanged(nameof(CurrentInfusion));
 				}
 			}
 		}
@@ -160,7 +160,7 @@ namespace VEntityFramework.Model
 				{
 					fCurrentEssence = value;
 					HasChanges = true;
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(EssenceStacks)));
+					OnPropertyChanged(nameof(EssenceStacks));
 				}
 			}
 		}
@@ -186,7 +186,7 @@ namespace VEntityFramework.Model
 				{
 					fHasUnitSpec = value;
 					HasChanges = true;
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HasUnitSpec)));
+					OnPropertyChanged(nameof(HasUnitSpec));
 				}
 			}
 		}

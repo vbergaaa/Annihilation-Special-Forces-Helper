@@ -18,20 +18,20 @@ namespace VEntityFramework.Model
 
 		public void RefreshAllBindings()
 		{
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackSpeedForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CriticalChanceForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CriticalDamageForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HealthForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HealthArmorForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShieldsForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShieldsArmorForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageIncreaseForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageReductionForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AccelerationForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+			OnPropertyChanged(nameof(AttackForBinding));
+			OnPropertyChanged(nameof(AttackSpeedForBinding));
+			OnPropertyChanged(nameof(CriticalChanceForBinding));
+			OnPropertyChanged(nameof(CriticalDamageForBinding));
+			OnPropertyChanged(nameof(HealthForBinding));
+			OnPropertyChanged(nameof(HealthArmorForBinding));
+			OnPropertyChanged(nameof(ShieldsForBinding));
+			OnPropertyChanged(nameof(ShieldsArmorForBinding));
+			OnPropertyChanged(nameof(DamageIncreaseForBinding));
+			OnPropertyChanged(nameof(DamageReductionForBinding));
+			OnPropertyChanged(nameof(AccelerationForBinding));
+			OnPropertyChanged(nameof(Damage));
+			OnPropertyChanged(nameof(Toughness));
+			OnPropertyChanged(nameof(Recovery));
 		}
 		#endregion
 		public override string BizoName => "Stats";
@@ -56,8 +56,8 @@ namespace VEntityFramework.Model
 			set
 			{
 				fAttack = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackForBinding)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+				OnPropertyChanged(nameof(AttackForBinding));
+				OnPropertyChanged(nameof(Damage));
 			}
 		}
 		double fAttack;
@@ -92,8 +92,8 @@ namespace VEntityFramework.Model
 			{
 				AttackSpeedDictionary.UpdateExpontiental(key, value, quantity.Value);
 			}
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AttackSpeedForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+			OnPropertyChanged(nameof(AttackSpeedForBinding));
+			OnPropertyChanged(nameof(Damage));
 		}
 
 		#endregion
@@ -106,8 +106,8 @@ namespace VEntityFramework.Model
 			set
 			{
 				fCriticalChance = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CriticalChance)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+				OnPropertyChanged(nameof(CriticalChance));
+				OnPropertyChanged(nameof(Damage));
 			}
 		}
 		double fCriticalChance;
@@ -122,8 +122,8 @@ namespace VEntityFramework.Model
 			set
 			{
 				fCriticalDamage = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(CriticalDamageForBinding)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+				OnPropertyChanged(nameof(CriticalDamageForBinding));
+				OnPropertyChanged(nameof(Damage));
 			}
 		}
 		double fCriticalDamage;
@@ -138,9 +138,9 @@ namespace VEntityFramework.Model
 			set
 			{
 				fHealth = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HealthForBinding)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+				OnPropertyChanged(nameof(HealthForBinding));
+				OnPropertyChanged(nameof(Toughness));
+				OnPropertyChanged(nameof(Recovery));
 			}
 		}
 		double fHealth;
@@ -155,9 +155,9 @@ namespace VEntityFramework.Model
 			set
 			{
 				fHealthArmor = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HealthArmorForBinding)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+				OnPropertyChanged(nameof(HealthArmorForBinding));
+				OnPropertyChanged(nameof(Toughness));
+				OnPropertyChanged(nameof(Recovery));
 			}
 		}
 		double fHealthArmor;
@@ -172,9 +172,9 @@ namespace VEntityFramework.Model
 			set
 			{
 				fShields = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShieldsForBinding)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+				OnPropertyChanged(nameof(ShieldsForBinding));
+				OnPropertyChanged(nameof(Toughness));
+				OnPropertyChanged(nameof(Recovery));
 			}
 		}
 		double fShields;
@@ -189,9 +189,9 @@ namespace VEntityFramework.Model
 			set
 			{
 				fShieldsArmor = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(ShieldsArmorForBinding)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+				OnPropertyChanged(nameof(ShieldsArmorForBinding));
+				OnPropertyChanged(nameof(Toughness));
+				OnPropertyChanged(nameof(Recovery));
 			}
 		}
 		double fShieldsArmor;
@@ -219,8 +219,8 @@ namespace VEntityFramework.Model
 		public void UpdateDamageIncrease(string key, double amount)
 		{
 			DamageIncreaseDictionary.Update(key, amount);
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageIncreaseForBinding)));
+			OnPropertyChanged(nameof(Damage));
+			OnPropertyChanged(nameof(DamageIncreaseForBinding));
 		}
 
 		#endregion
@@ -247,9 +247,9 @@ namespace VEntityFramework.Model
 		{
 			DamageReductionDictionary.Update(key, amount);
 
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DamageReductionForBinding)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-			OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+			OnPropertyChanged(nameof(DamageReductionForBinding));
+			OnPropertyChanged(nameof(Toughness));
+			OnPropertyChanged(nameof(Recovery));
 		}
 
 		#endregion
@@ -264,8 +264,8 @@ namespace VEntityFramework.Model
 			set
 			{
 				fAdditiveArmor = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Toughness)));
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Recovery)));
+				OnPropertyChanged(nameof(Toughness));
+				OnPropertyChanged(nameof(Recovery));
 			}
 		}
 		double fAdditiveArmor;
@@ -280,7 +280,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fHasRedCrits = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+				OnPropertyChanged(nameof(Damage));
 			}
 		}
 		bool fHasRedCrits;
@@ -295,7 +295,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fHasBlackCrits = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Damage)));
+				OnPropertyChanged(nameof(Damage));
 			}
 		}
 		bool fHasBlackCrits;
@@ -309,7 +309,7 @@ namespace VEntityFramework.Model
 			set
 			{
 				fAcceleration = value;
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AccelerationForBinding)));
+				OnPropertyChanged(nameof(AccelerationForBinding));
 			}
 		}
 		double fAcceleration;

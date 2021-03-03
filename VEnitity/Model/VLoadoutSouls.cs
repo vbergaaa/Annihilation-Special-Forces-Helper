@@ -56,7 +56,7 @@ namespace VEntityFramework.Model
 				fSoul1?.DeactivateSoul();
 				fSoul1 = value;
 				fSoul1?.ActivateSoul();
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Soul1)));
+				OnPropertyChanged(nameof(Soul1));
 			}
 		}
 		VSoul fSoul1;
@@ -89,7 +89,7 @@ namespace VEntityFramework.Model
 				fSoul2?.DeactivateSoul();
 				fSoul2 = value;
 				fSoul2?.ActivateSoul();
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Soul2)));
+				OnPropertyChanged(nameof(Soul2));
 			}
 		}
 		VSoul fSoul2;
@@ -122,7 +122,7 @@ namespace VEntityFramework.Model
 				fSoul3?.DeactivateSoul();
 				fSoul3 = value;
 				fSoul3?.ActivateSoul();
-				OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Soul3)));
+				OnPropertyChanged(nameof(Soul3));
 			}
 		}
 		VSoul fSoul3;

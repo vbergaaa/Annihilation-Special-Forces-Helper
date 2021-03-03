@@ -41,7 +41,7 @@ namespace VEntityFramework.Model
 				{
 					fHasSoloBonus = value;
 					HasChanges = true;
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(HasSoloBonus)));
+					OnPropertyChanged(nameof(HasSoloBonus));
 				}
 			}
 		}
@@ -61,7 +61,7 @@ namespace VEntityFramework.Model
 				{
 					fDifficultyLevel = value;
 					HasChanges = true;
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(DifficultyLevel)));
+					OnPropertyChanged(nameof(DifficultyLevel));
 				}
 			}
 		}
@@ -80,7 +80,7 @@ namespace VEntityFramework.Model
 				{
 					fDifficulty = value;
 					HasChanges = true;
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Difficulty)));
+					OnPropertyChanged(nameof(Difficulty));
 				}
 			}
 		}

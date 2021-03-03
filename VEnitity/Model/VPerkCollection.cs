@@ -49,13 +49,13 @@ namespace VEntityFramework.Model
 				if (fPage != value)
 				{
 					fPage = value;
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Perk1)));
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Perk2)));
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Perk3)));
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Perk4)));
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Perk5)));
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(Perk6)));
-					OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(PageTitle)));
+					OnPropertyChanged(nameof(Perk1));
+					OnPropertyChanged(nameof(Perk2));
+					OnPropertyChanged(nameof(Perk3));
+					OnPropertyChanged(nameof(Perk4));
+					OnPropertyChanged(nameof(Perk5));
+					OnPropertyChanged(nameof(Perk6));
+					OnPropertyChanged(nameof(PageTitle));
 				}
 			}
 		}
