@@ -26,12 +26,10 @@ namespace VEntityFramework.XML
 		{
 			var matchingProperty = GetPropertyFromXML(bizo.GetType(), childNode);
 
-#if DEBUG
 			if (matchingProperty == null && bizo.GetType().Name != "UnitConfiguration") // we depreciated lots of UnitConfig stuff, so until I flush out my local xmls, ignore these
 			{
-				throw new DeveloperException($"Cannot find property {childNode.Name} on {bizo.GetType().Name} Business Object");
+				ErrorReporter.ReportDebug($"Cannot find property {childNode.Name} on {bizo.GetType().Name} Business Object");
 			}
-#endif
 
 			if (matchingProperty != null)
 			{

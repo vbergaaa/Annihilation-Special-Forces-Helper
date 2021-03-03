@@ -1,6 +1,7 @@
 ﻿using EnumsNET;
 using System;
 using System.Linq;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness.Souls
@@ -24,11 +25,8 @@ namespace VBusiness.Souls
 
 			if (soulType == null)
 			{
-#if DEBUG
-				throw new Exception($"Please create a class named VBusiness.Souls.{soulName}");
-#else
+				ErrorReporter.ReportDebug($"Please create a class named VBusiness.Souls.{soulName}");
 				return new EmptySoul();
-#endif
 			}
 
 			var soul = (Soul)Activator.CreateInstance(soulType, collection);

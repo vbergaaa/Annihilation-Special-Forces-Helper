@@ -187,20 +187,16 @@ namespace VEntityFramework.Model
 		public void SetCurrentUnit(string unitName)
 		{
 			VUnit currentUnit = null;
-			foreach(var unit in Units)
+			foreach (var unit in Units)
 			{
 				if (unit.ToString() == unitName)
 				{
 					currentUnit = unit;
 				}
 			}
+			ErrorReporter.ReportDebug(currentUnit == null, "Where are you getting this setstring from?");
 
-			CurrentUnit = currentUnit
-#if DEBUG
-				?? throw new Exception("Where are you getting this setstring from?")
-#endif
-				;
-
+			CurrentUnit = currentUnit;
 		}
 
 		#endregion

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using VBusiness.HelperClasses;
 using VBusiness.Units;
+using VEntityFramework;
 using VEntityFramework.Model;
 using VUserInterface.CommonControls;
 
@@ -105,12 +106,10 @@ namespace VUserInterface
 				{
 					loadout.Units.Remove(Unit);
 				}
-#if DEBUG
 				else if (oldUnitType != UnitType.None)
 				{
-					throw new System.Exception("Why isn't the current unit in the loadouts list?");
+					ErrorReporter.ReportDebug("Why isn't the current unit in the loadouts list?");
 				}
-#endif
 				Unit = newUnit;
 			}
 		}

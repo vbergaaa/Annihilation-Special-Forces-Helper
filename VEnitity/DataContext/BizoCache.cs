@@ -46,9 +46,7 @@ namespace VEntityFramework.DataContext
 
 			if (fCache.TryGetValue(cacheType, out var cache))
 			{
-#if DEBUG
-				if (cache.TryGetValue(name, out _)) throw new DeveloperException($"A bizo with the name {name} already exists in this cache, why are we trying to add it again?");
-#endif
+				ErrorReporter.ReportDebug(cache.TryGetValue(name, out _), $"A bizo with the name {name} already exists in this cache, why are we trying to add it again?");
 				cache[name] = bizo;
 			}
 			else
@@ -97,14 +95,11 @@ namespace VEntityFramework.DataContext
 				}
 				return type;
 			}
-#if DEBUG
 			else
 			{
-				throw new DeveloperException($"Why are you trying to cache a {type.FullName}?");
+				ErrorReporter.ReportDebug($"Why are you trying to cache a {type.FullName}?");
+				return null;
 			}
-#else
-			return null;
-#endif
 		}
 	}
 }

@@ -79,7 +79,7 @@ namespace VEntityFramework.Model
 			}
 		}
 
-		StatsDictionary AttackSpeedDictionary => fAttackSpeedDictionary ??= new StatsDictionary();
+		StatsDictionary AttackSpeedDictionary => fAttackSpeedDictionary ??= new StatsDictionary("AttackSpeed");
 		StatsDictionary fAttackSpeedDictionary;
 
 		public void UpdateAttackSpeed(string key, double value, int? quantity = null)
@@ -213,7 +213,7 @@ namespace VEntityFramework.Model
 			}
 		}
 
-		StatsDictionary DamageIncreaseDictionary => fDamageIncreaseDictionary ??= new StatsDictionary();
+		StatsDictionary DamageIncreaseDictionary => fDamageIncreaseDictionary ??= new StatsDictionary("DamageIncrease");
 		StatsDictionary fDamageIncreaseDictionary;
 
 		public void UpdateDamageIncrease(string key, double amount)
@@ -240,7 +240,7 @@ namespace VEntityFramework.Model
 			}
 		}
 
-		protected StatsDictionary DamageReductionDictionary => fDamageReductionDictionary ??= new StatsDictionary();
+		StatsDictionary DamageReductionDictionary => fDamageReductionDictionary ??= new StatsDictionary("DamageReduction");
 		StatsDictionary fDamageReductionDictionary;
 
 		public void UpdateDamageReduction(string key, double amount)

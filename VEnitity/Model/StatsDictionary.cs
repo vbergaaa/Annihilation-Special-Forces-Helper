@@ -5,6 +5,13 @@ namespace VEntityFramework.Model
 {
 	public class StatsDictionary : Dictionary<string, double>
 	{
+		public StatsDictionary(string debugName)
+		{
+			this.debugName = debugName;
+		}
+
+		readonly string debugName;
+
 		public void Update(string key, double amount)
 		{
 			key = key.ToUpper();
@@ -18,12 +25,7 @@ namespace VEntityFramework.Model
 				Add(key, amount);
 			}
 
-#if DEBUG
-			if (this[key] < 0)
-			{
-				throw new System.Exception($"Why do you have less then 0 of this Stat? key:{key}, value:{this[key]}");
-			}
-#endif
+			ErrorReporter.ReportDebug(this[key] < 0, $"Why do you have less then 0 of this Stat? Dictionary:{debugName}, key:{key}, value:{this[key]}");
 		}
 
 		public void UpdateExpontiental(string key, double value, int quantity)
@@ -52,12 +54,8 @@ namespace VEntityFramework.Model
 				MultipleKeyDict[key]++;
 				var mainDictKey = key + MultipleKeyDict[key];
 
-#if DEBUG
-				if (ContainsKey(mainDictKey))
-				{
-					throw new Exception($"This Key should be free. Key:{mainDictKey}");
-				}
-#endif
+				ErrorReporter.ReportDebug(ContainsKey(mainDictKey), $"This Key should be free. Key:{mainDictKey}");
+
 				Update(mainDictKey, value);
 			}
 		}
@@ -66,28 +64,17 @@ namespace VEntityFramework.Model
 		{
 			if (!MultipleKeyDict.ContainsKey(key))
 			{
-#if DEBUG
-				throw new Exception($"Can't remove something that never existed. Key:{key}");
-#else
-
+				ErrorReporter.ReportDebug($"Can't remove something that never existed. Key:{key}");
 				return;
-#endif
 			}
 
 			for (var i = 0; i > quantity; i--)
 			{
 				var mainDictKey = key + MultipleKeyDict[key];
 
-#if DEBUG
-				if (MultipleKeyDict[key] == 0)
-				{
-					throw new Exception($"Zero Keys shouldn't exist, we shouldn't try to remove them. Key={key}, quantity={quantity}, i={i}");
-				}
-				if (!this.ContainsKey(mainDictKey))
-				{
-					throw new Exception($"We shouldn't be trying to remove values that don't exist Key={key}, quantity={quantity}, i={i}");
-				}
-#endif
+				ErrorReporter.ReportDebug(MultipleKeyDict[key] == 0, $"Zero Keys shouldn't exist, we shouldn't try to remove them. Key={key}, quantity={quantity}, i={i}");
+				ErrorReporter.ReportDebug(!this.ContainsKey(mainDictKey), $"We shouldn't be trying to remove values that don't exist Key={key}, quantity={quantity}, i={i}");
+
 				if (this.ContainsKey(mainDictKey))
 				{
 					this.Remove(mainDictKey);

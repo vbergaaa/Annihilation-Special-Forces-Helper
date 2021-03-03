@@ -22,18 +22,4 @@ namespace VEntityFramework.Data
 		{
 		}
 	}
-
-	public static class Argument
-	{
-		public static object Check(object param, string paramName = null)
-		{
-#if DEBUG
-			if (param == null)
-			{
-				throw new ArgumentException($"Parameter {paramName} should not be null");
-			}
-#endif
-			return param;
-		}
-	}
 }

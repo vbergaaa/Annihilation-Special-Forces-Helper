@@ -135,13 +135,10 @@ namespace VEntityFramework.Data
 					fParent = value;
 					fParent?.RegisterChild(this);
 				}
-#if DEBUG
-				else if (fParent != null)
+				else
 				{
-					throw new DeveloperException("Why are we adding a parent twice?");
+					ErrorReporter.ReportDebug(fParent != null, "Why are we adding a parent twice?");
 				}
-#endif
-
 			}
 		}
 		VBusinessObject fParent;

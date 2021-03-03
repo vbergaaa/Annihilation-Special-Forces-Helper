@@ -1,6 +1,7 @@
 ﻿using EnumsNET;
 using System;
 using VBusiness.Difficulties;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness.HelperClasses
@@ -17,11 +18,8 @@ namespace VBusiness.HelperClasses
 
 			if (diffType == null)
 			{
-#if DEBUG
-				throw new Exception($"Please create a class named VBusiness.Difficulties.{level.AsString(EnumFormat.Name)}");
-#else
+				ErrorReporter.ReportDebug($"Please create a class named VBusiness.Difficulties.{level.AsString(EnumFormat.Name)}");
 				return new EmptyDifficulty();
-#endif
 			}
 
 			var diff = (VDifficulty)Activator.CreateInstance(diffType);

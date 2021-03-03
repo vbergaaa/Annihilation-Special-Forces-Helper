@@ -1,4 +1,5 @@
 ﻿using System;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness
@@ -44,12 +45,10 @@ namespace VBusiness
 
 				var yellowCritChance = remainingChance;
 
-#if DEBUG
 				if (Math.Round(blackCritChance + redCritChance + yellowCritChance + regAtkChance, 10) != 1)
 				{
-					throw new Exception("your crit calculations must be wrong");
+					ErrorReporter.ReportDebug("your crit calculations must be wrong");
 				}
-#endif
 
 				var coreDamage = (regAtkChance * AttackForBinding) + (yellowCritChance * (AttackForBinding + CriticalDamageForBinding)) + (redCritChance * (AttackForBinding + 2 * CriticalDamageForBinding)) + (blackCritChance * (AttackForBinding + 3.5 * CriticalDamageForBinding));
 				var damage = coreDamage * (1 + DamageIncrease / 100);

@@ -1,6 +1,7 @@
 ﻿using EnumsNET;
 using System;
 using VBusiness.Souls;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness.Ranks
@@ -28,11 +29,8 @@ namespace VBusiness.Ranks
 
 			if (rankType == null)
 			{
-#if DEBUG
-				throw new Exception($"Please create a class named VBusiness.Ranks.{rankName}");
-#else
+				ErrorReporter.ReportDebug($"Please create a class named VBusiness.Ranks.{rankName}");
 				return new EmptyRank(unit);
-#endif
 			}
 
 			var ret = (UnitRank)Activator.CreateInstance(rankType, unit);

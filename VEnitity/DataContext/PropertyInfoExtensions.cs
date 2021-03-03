@@ -66,12 +66,14 @@ namespace VEntityFramework.Data
 				"PlayerRank" => EnumHelper.GetEnumFromDescription<PlayerRank>(value),
 				"DifficultyLevel" => EnumHelper.GetEnumFromDescription<DifficultyLevel>(value),
 				"SoulType" => EnumHelper.GetEnumFromDescription<SoulType>(value),
-#if DEBUG
-				_ => throw new DeveloperException($"Add cast type for {propertyType} to method PropertyInfoExtensions.CastAndSetValue()"),
-#else
-				_ => null
-#endif
+				_ => HandleUnknownType(propertyType),
 			};
+		}
+
+		static object HandleUnknownType(string propertyType)
+		{
+			ErrorReporter.ReportDebug($"Add cast type for {propertyType} to method PropertyInfoExtensions.CastAndSetValue()");
+			return null;
 		}
 	}
 }

@@ -55,9 +55,7 @@ namespace VEntityFramework
 		{
 			innerList.Clear();
 
-#if DEBUG
-			throw new Exception("If we decide to use this, make sure you deregister all bizos from loadout.Children to avoid HasChanged Bugs");
-#endif
+			ErrorReporter.ReportDebug("If we decide to use this, make sure you deregister all bizos from loadout.Children to avoid HasChanged Bugs");
 		}
 
 		public bool Contains(T item)

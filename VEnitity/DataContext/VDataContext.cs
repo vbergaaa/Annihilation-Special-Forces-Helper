@@ -89,13 +89,9 @@ namespace VEntityFramework.Data
 			if (File.Exists(path))
 			{
 				File.Delete(path);
+				return;
 			}
-#if DEBUG
-			else
-			{
-				throw new DeveloperException($"filename {fileName} couldn't be found and wasn't deleted. Investigate and Fix.");
-			}
-#endif
+			ErrorReporter.ReportDebug($"filename {fileName} couldn't be found and wasn't deleted. Investigate and Fix.");
 		}
 
 		public void Delete(Type bizoType, string fileName)
