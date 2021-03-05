@@ -33,5 +33,19 @@ namespace VBusiness.Units
 		public override double BaseShieldRegen => 5;
 
 		public override UnitType Type => UnitType.LightAdept;
+
+		protected override double HealthIncrement => 5;
+
+		protected override double HealthRegenIncrement => 0.3007;
+
+		protected override double ShieldIncrement => 7;
+
+		protected override double ShieldRegenIncrement => 1;
+
+		protected override double HealthArmorIncrement => 0.45;
+
+		protected override double ShieldArmorIncrement => 0.45;
+
+		protected override double AttackIncrement => 1.25;
 	}
 }

@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using VBusiness.Loadouts;
 using VEntityFramework.Model;
@@ -30,6 +31,13 @@ namespace Tests
 				Assert.That(() => unit.BaseHealthRegen, Throws.Nothing, $"{unitType}.BaseHealthRegen");
 				Assert.That(() => unit.BaseShieldRegen, Throws.Nothing, $"{unitType}.BaseShieldRegen");
 				Assert.That(() => unit.BaseAttackCount, Throws.Nothing, $"{unitType}.BaseAttackCount");
+				Assert.That(() => unit.GetType().GetProperty("HealthIncrement", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(unit), Throws.Nothing, $"{unitType}.HealthIncrement");
+				Assert.That(() => unit.GetType().GetProperty("HealthRegenIncrement", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(unit), Throws.Nothing, $"{unitType}.HealthRegenIncrement");
+				Assert.That(() => unit.GetType().GetProperty("HealthArmorIncrement", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(unit), Throws.Nothing, $"{unitType}.HealthArmorIncrement");
+				Assert.That(() => unit.GetType().GetProperty("ShieldIncrement", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(unit), Throws.Nothing, $"{unitType}.ShieldIncrement");
+				Assert.That(() => unit.GetType().GetProperty("ShieldRegenIncrement", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(unit), Throws.Nothing, $"{unitType}.ShieldRegenIncrement");
+				Assert.That(() => unit.GetType().GetProperty("ShieldArmorIncrement", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(unit), Throws.Nothing, $"{unitType}.ShieldArmorIncrement");
+				Assert.That(() => unit.GetType().GetProperty("AttackIncrement", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(unit), Throws.Nothing, $"{unitType}.AttackIncrement");
 			}
 		}
 	}

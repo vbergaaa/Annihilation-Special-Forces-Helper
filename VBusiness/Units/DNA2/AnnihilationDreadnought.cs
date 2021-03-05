@@ -34,5 +34,19 @@ namespace VBusiness.Units
 		public override double BaseShieldArmor => 8;
 
 		public override double BaseShieldRegen => 8;
+
+		protected override double HealthIncrement => 11.8; // should be 11, but looks like a bug in the game code making health regen apply as health increment
+
+		protected override double HealthRegenIncrement => 0; // should be 0.8;
+
+		protected override double ShieldIncrement => 25;
+
+		protected override double ShieldRegenIncrement => 2;
+
+		protected override double HealthArmorIncrement => 0.7;
+
+		protected override double ShieldArmorIncrement => 0.7;
+
+		protected override double AttackIncrement => 2.5;
 	}
 }

@@ -34,5 +34,19 @@ namespace VBusiness.Units
 		public override double BaseShieldArmor => 6;
 
 		public override double BaseShieldRegen => 5;
+
+		protected override double HealthIncrement => 10;
+
+		protected override double HealthRegenIncrement => 0.6015;
+
+		protected override double ShieldIncrement => 16;
+
+		protected override double ShieldRegenIncrement => 1;
+
+		protected override double HealthArmorIncrement => 0.6;
+
+		protected override double ShieldArmorIncrement => 0.6;
+
+		protected override double AttackIncrement => 1.2;
 	}
 }

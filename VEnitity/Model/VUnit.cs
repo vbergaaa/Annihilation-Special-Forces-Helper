@@ -208,6 +208,18 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Upgrade Increments
+
+		protected abstract double AttackIncrement { get; }
+		protected abstract double HealthIncrement { get; }
+		protected abstract double HealthRegenIncrement { get; }
+		protected abstract double HealthArmorIncrement { get; }
+		protected abstract double ShieldIncrement { get; }
+		protected abstract double ShieldRegenIncrement { get; }
+		protected abstract double ShieldArmorIncrement { get; }
+
+		#endregion
+
 		#endregion
 
 		public event EventHandler DescriptionChanged;

@@ -33,5 +33,19 @@ namespace VBusiness.Units
 		public override double BaseShieldRegen => 5;
 
 		public override UnitType Type => UnitType.DarkShadow;
+
+		protected override double HealthIncrement => 1;
+
+		protected override double HealthRegenIncrement => 0.1992;
+
+		protected override double ShieldIncrement => 10;
+
+		protected override double ShieldRegenIncrement => 1;
+
+		protected override double HealthArmorIncrement => 0.3;
+
+		protected override double ShieldArmorIncrement => 0.3;
+
+		protected override double AttackIncrement => 1.5;
 	}
 }
