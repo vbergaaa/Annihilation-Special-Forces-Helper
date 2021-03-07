@@ -16,23 +16,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.DarkShieldBattery;
 
-		public override double BaseAttack => -7;
+		protected override double BaseAttack => -7;
 
-		public override double BaseAttackSpeed => 1.4;
+		protected override double BaseAttackSpeed => 1.4;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 75;
+		protected override double BaseHealth => 75;
 
-		public override double BaseHealthArmor => 3;
+		protected override double BaseHealthArmor => 3;
 
-		public override double BaseHealthRegen => 3;
+		protected override double BaseHealthRegen => 3;
 
-		public override double BaseShields => 150;
+		protected override double BaseShields => 150;
 
-		public override double BaseShieldArmor => 3;
+		protected override double BaseShieldsArmor => 3;
 
-		public override double BaseShieldRegen => 7;
+		protected override double BaseShieldsRegen => 7;
 
 		protected override double HealthIncrement => 6;
 

@@ -46,10 +46,12 @@ namespace VUserInterface
 			this.SoulsButton = new DPIButton();
 			this.ChallengePointCollectionButton = new DPIButton();
 			this.UnitButton = new DPIButton();
+			this.UpgradesButton = new DPIButton();
 			this.GemsControl = new VGemCollectionControl();
 			this.SoulsControl = new VLoadoutSoulsControl();
 			this.ChallengePointCollectionControl = new ChallengePointCollectionControl();
 			this.UnitControl = new UnitConfigurationControl();
+			this.LoadoutConfigurationControl = new LoadoutConfigurationControl();
 			this.AvailablePPLabel = new VLabel();
 			this.AvailableGemsLabel = new VLabel();
 			this.AvailableCPLabel = new VLabel();
@@ -152,6 +154,13 @@ namespace VUserInterface
 			this.ChallengePointCollectionControl.Text = "Challenge Points";
 			this.ChallengePointCollectionControl.Visible = false;
 			//
+			// UpgradeControl
+			//
+			this.LoadoutConfigurationControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
+			this.LoadoutConfigurationControl.DataBindings.Add("Loadout", this.LoadoutBindingSource, ".");
+			this.LoadoutConfigurationControl.Name= "LoadoutConfigurationControl";
+			this.LoadoutConfigurationControl.Visible = false;
+			//
 			// StatsControl
 			//
 			this.StatsControl.DataBindings.Add("Stats", this.LoadoutBindingSource, "Stats");
@@ -160,42 +169,50 @@ namespace VUserInterface
 			// PerksButton
 			//
 			this.PerksButton.Location = DPIScalingHelper.GetScaledPoint(30, 55);
-			this.PerksButton.Size = DPIScalingHelper.GetScaledSize(100, 28);
+			this.PerksButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
 			this.PerksButton.Text = "Perks";
 			this.PerksButton.FlatStyle = FlatStyle.Flat;
 			this.PerksButton.Click += ControlVisibilityToggled;
 			//
 			// GemsButton
 			//
-			this.GemsButton.Location = DPIScalingHelper.GetScaledPoint(140, 55);
-			this.GemsButton.Size = DPIScalingHelper.GetScaledSize(100, 28);
+			this.GemsButton.Location = DPIScalingHelper.GetScaledPoint(123, 55);
+			this.GemsButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
 			this.GemsButton.Text = "Gems";
 			this.GemsButton.FlatStyle = FlatStyle.Flat;
 			this.GemsButton.Click += ControlVisibilityToggled;
 			//
 			// SoulsButton
 			//
-			this.SoulsButton.Location = DPIScalingHelper.GetScaledPoint(250, 55);
-			this.SoulsButton.Size = DPIScalingHelper.GetScaledSize(100, 28);
+			this.SoulsButton.Location = DPIScalingHelper.GetScaledPoint(216, 55);
+			this.SoulsButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
 			this.SoulsButton.Text = "Souls";
 			this.SoulsButton.FlatStyle = FlatStyle.Flat;
 			this.SoulsButton.Click += ControlVisibilityToggled;
 			//
 			// ChallengePointCollectionButton
 			//
-			this.ChallengePointCollectionButton.Location = DPIScalingHelper.GetScaledPoint(360, 55);
-			this.ChallengePointCollectionButton.Size = DPIScalingHelper.GetScaledSize(100, 28);
+			this.ChallengePointCollectionButton.Location = DPIScalingHelper.GetScaledPoint(309, 55);
+			this.ChallengePointCollectionButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
 			this.ChallengePointCollectionButton.Text = "CP";
 			this.ChallengePointCollectionButton.FlatStyle = FlatStyle.Flat;
 			this.ChallengePointCollectionButton.Click += ControlVisibilityToggled;
 			//
 			// UnitButton
 			//
-			this.UnitButton.Location = DPIScalingHelper.GetScaledPoint(470, 55);
-			this.UnitButton.Size = DPIScalingHelper.GetScaledSize(100, 28);
+			this.UnitButton.Location = DPIScalingHelper.GetScaledPoint(402, 55);
+			this.UnitButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
 			this.UnitButton.Text = "Unit";
 			this.UnitButton.FlatStyle = FlatStyle.Flat;
 			this.UnitButton.Click += ControlVisibilityToggled;
+			//
+			// UpgradesButton
+			//
+			this.UpgradesButton.Location = DPIScalingHelper.GetScaledPoint(495, 55);
+			this.UpgradesButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
+			this.UpgradesButton.Text = "Config";
+			this.UpgradesButton.FlatStyle = FlatStyle.Flat;
+			this.UpgradesButton.Click += ControlVisibilityToggled;
 			//
 			// PerkPlanningForm
 			//
@@ -211,9 +228,11 @@ namespace VUserInterface
 			this.Controls.Add(SoulsButton);
 			this.Controls.Add(ChallengePointCollectionButton);
 			this.Controls.Add(UnitButton);
+			this.Controls.Add(UpgradesButton);
 			this.Controls.Add(GemsControl);
 			this.Controls.Add(SoulsControl);
 			this.Controls.Add(ChallengePointCollectionControl);
+			this.Controls.Add(LoadoutConfigurationControl);
 			this.Controls.Add(UnitControl);
 			this.Controls.Add(AvailablePPLabel);
 			this.Controls.Add(AvailableGemsLabel);
@@ -234,6 +253,7 @@ namespace VUserInterface
 		private System.Windows.Forms.Button SoulsButton;
 		private System.Windows.Forms.Button ChallengePointCollectionButton;
 		private System.Windows.Forms.Button UnitButton;
+		private System.Windows.Forms.Button UpgradesButton;
 		private VLabel AvailablePPLabel;
 		private VLabel AvailableGemsLabel;
 		private VLabel AvailableCPLabel;
@@ -244,6 +264,7 @@ namespace VUserInterface
 		private VUserInterface.VLoadoutSoulsControl SoulsControl;
 		private VUserInterface.ChallengePointCollectionControl ChallengePointCollectionControl;
 		private VUserInterface.UnitConfigurationControl UnitControl;
+		private VUserInterface.LoadoutConfigurationControl LoadoutConfigurationControl;
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;
 		private VStatsControl StatsControl;
 		private VCheckControl RestrictCheckBox;

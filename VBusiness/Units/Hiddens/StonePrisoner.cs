@@ -16,23 +16,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.StonePrisoner;
 
-		public override double BaseAttack => 25;
+		protected override double BaseAttack => 25;
 
-		public override double BaseAttackSpeed => 1.25;
+		protected override double BaseAttackSpeed => 1.25;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 600;
+		protected override double BaseHealth => 600;
 
-		public override double BaseHealthArmor => 6;
+		protected override double BaseHealthArmor => 6;
 
-		public override double BaseHealthRegen => 10;
+		protected override double BaseHealthRegen => 10;
 
-		public override double BaseShields => 0;
+		protected override double BaseShields => 0;
 
-		public override double BaseShieldArmor => 0;
+		protected override double BaseShieldsArmor => 0;
 
-		public override double BaseShieldRegen => 0;
+		protected override double BaseShieldsRegen => 0;
 
 		protected override double HealthIncrement => 12;
 

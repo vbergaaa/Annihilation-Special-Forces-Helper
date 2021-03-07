@@ -15,23 +15,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.BladeMaster;
 
-		public override double BaseAttack => 15;
+		protected override double BaseAttack => 15;
 
-		public override double BaseAttackSpeed => 2.3;
+		protected override double BaseAttackSpeed => 2.3;
 
-		public override double BaseAttackCount => 20;
+		public override double AttackCount => 20;
 
-		public override double BaseHealth => 700;
+		protected override double BaseHealth => 700;
 
-		public override double BaseHealthArmor => 12;
+		protected override double BaseHealthArmor => 12;
 
-		public override double BaseHealthRegen => 12;
+		protected override double BaseHealthRegen => 12;
 
-		public override double BaseShields => 1000;
+		protected override double BaseShields => 1000;
 
-		public override double BaseShieldArmor => 12;
+		protected override double BaseShieldsArmor => 12;
 
-		public override double BaseShieldRegen => 22;
+		protected override double BaseShieldsRegen => 22;
 
 		protected override double HealthIncrement => 16;
 

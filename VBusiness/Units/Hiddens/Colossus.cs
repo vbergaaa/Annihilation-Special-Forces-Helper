@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.Colossus;
 
-		public override double BaseAttack => 20;
+		protected override double BaseAttack => 20;
 
-		public override double BaseAttackSpeed => 1.5;
+		protected override double BaseAttackSpeed => 1.5;
 
-		public override double BaseAttackCount => 2;
+		public override double AttackCount => 2;
 
-		public override double BaseHealth => 325;
+		protected override double BaseHealth => 325;
 
-		public override double BaseHealthArmor => 7;
+		protected override double BaseHealthArmor => 7;
 
-		public override double BaseHealthRegen => 7;
+		protected override double BaseHealthRegen => 7;
 
-		public override double BaseShields => 400;
+		protected override double BaseShields => 400;
 
-		public override double BaseShieldArmor => 7;
+		protected override double BaseShieldsArmor => 7;
 
-		public override double BaseShieldRegen => 7;
+		protected override double BaseShieldsRegen => 7;
 
 		protected override double HealthIncrement => 7;
 

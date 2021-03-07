@@ -14,23 +14,23 @@ namespace VBusiness.Units
 		{
 		}
 
-		public override double BaseAttack => 15;
+		protected override double BaseAttack => 15;
 
-		public override double BaseAttackSpeed => 1.5;
+		protected override double BaseAttackSpeed => 1.5;
 
-		public override double BaseAttackCount => 2;
+		public override double AttackCount => 2;
 
-		public override double BaseHealth => 125;
+		protected override double BaseHealth => 125;
 
-		public override double BaseHealthArmor => 3;
+		protected override double BaseHealthArmor => 3;
 
-		public override double BaseHealthRegen => 1;
+		protected override double BaseHealthRegen => 1;
 
-		public override double BaseShields => 160;
+		protected override double BaseShields => 160;
 
-		public override double BaseShieldArmor => 3;
+		protected override double BaseShieldsArmor => 3;
 
-		public override double BaseShieldRegen => 2;
+		protected override double BaseShieldsRegen => 2;
 
 		public override UnitType Type => UnitType.Striker;
 

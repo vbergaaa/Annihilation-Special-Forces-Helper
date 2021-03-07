@@ -9,9 +9,10 @@ namespace VEntityFramework.Data
 	{
 		#region Constructor
 
-		public VBusinessObject(VBusinessObject parent) : this()
+		public VBusinessObject(VBusinessObject parent)
 		{
 			Parent = parent;
+			SetDefaultValues();
 		}
 
 		public VBusinessObject()

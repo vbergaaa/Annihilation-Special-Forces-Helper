@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.PurificationWalker;
 
-		public override double BaseAttack => 30;
+		protected override double BaseAttack => 30;
 
-		public override double BaseAttackSpeed => 1.4;
+		protected override double BaseAttackSpeed => 1.4;
 
-		public override double BaseAttackCount => 2;
+		public override double AttackCount => 2;
 
-		public override double BaseHealth => 600;
+		protected override double BaseHealth => 600;
 
-		public override double BaseHealthArmor => 8;
+		protected override double BaseHealthArmor => 8;
 
-		public override double BaseHealthRegen => 5;
+		protected override double BaseHealthRegen => 5;
 
-		public override double BaseShields => 850;
+		protected override double BaseShields => 850;
 
-		public override double BaseShieldArmor => 8;
+		protected override double BaseShieldsArmor => 8;
 
-		public override double BaseShieldRegen => 5;
+		protected override double BaseShieldsRegen => 5;
 
 		protected override double HealthIncrement => 12;
 

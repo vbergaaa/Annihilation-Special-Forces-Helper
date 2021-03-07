@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.Prisoner;
 
-		public override double BaseAttack => 15;
+		protected override double BaseAttack => 15;
 
-		public override double BaseAttackSpeed => 1.4;
+		protected override double BaseAttackSpeed => 1.4;
 
-		public override double BaseAttackCount => 2;
+		public override double AttackCount => 2;
 
-		public override double BaseHealth => 275;
+		protected override double BaseHealth => 275;
 
-		public override double BaseHealthArmor => 4;
+		protected override double BaseHealthArmor => 4;
 
-		public override double BaseHealthRegen => 8;
+		protected override double BaseHealthRegen => 8;
 
-		public override double BaseShields => 450;
+		protected override double BaseShields => 450;
 
-		public override double BaseShieldArmor => 4;
+		protected override double BaseShieldsArmor => 4;
 
-		public override double BaseShieldRegen => 6;
+		protected override double BaseShieldsRegen => 6;
 
 		protected override double HealthIncrement => 6;
 

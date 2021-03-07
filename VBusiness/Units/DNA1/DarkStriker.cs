@@ -19,23 +19,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.DarkStriker;
 
-		public override double BaseAttack => 22;
+		protected override double BaseAttack => 22;
 
-		public override double BaseAttackSpeed => 1.4;
+		protected override double BaseAttackSpeed => 1.4;
 
-		public override double BaseAttackCount => 1; // this is technically 3, but for single target damage, it's effectively 1
+		public override double AttackCount => 1; // this is technically 3, but for single target damage, it's effectively 1
 
-		public override double BaseHealth => 160;
+		protected override double BaseHealth => 160;
 
-		public override double BaseHealthArmor => 4.5;
+		protected override double BaseHealthArmor => 4.5;
 
-		public override double BaseHealthRegen => 2;
+		protected override double BaseHealthRegen => 2;
 
-		public override double BaseShields => 200;
+		protected override double BaseShields => 200;
 
-		public override double BaseShieldArmor => 4.5;
+		protected override double BaseShieldsArmor => 4.5;
 
-		public override double BaseShieldRegen => 2; // from in-game test
+		protected override double BaseShieldsRegen => 2; // from in-game test
 
 		protected override double HealthIncrement => 6;
 

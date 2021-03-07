@@ -15,23 +15,23 @@ namespace VBusiness.Units
 		{
 		}
 
-		public override double BaseAttack => 25;
+		protected override double BaseAttack => 25;
 
-		public override double BaseAttackSpeed => 2;
+		protected override double BaseAttackSpeed => 2;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 300;
+		protected override double BaseHealth => 300;
 
-		public override double BaseHealthArmor => 6;
+		protected override double BaseHealthArmor => 6;
 
-		public override double BaseHealthRegen => 5;
+		protected override double BaseHealthRegen => 5;
 
-		public override double BaseShields => 450;
+		protected override double BaseShields => 450;
 
-		public override double BaseShieldArmor => 6;
+		protected override double BaseShieldsArmor => 6;
 
-		public override double BaseShieldRegen => 5;
+		protected override double BaseShieldsRegen => 5;
 
 		public override UnitType Type => UnitType.Dreadnought;
 

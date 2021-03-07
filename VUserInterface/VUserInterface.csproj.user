@@ -80,6 +80,9 @@
     <Compile Update="UnitControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UpgradeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="VCommonSoulCollectionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

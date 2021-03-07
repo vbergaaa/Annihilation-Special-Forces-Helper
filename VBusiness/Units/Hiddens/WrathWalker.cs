@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.WrathWalker;
 
-		public override double BaseAttack => 35;
+		protected override double BaseAttack => 35;
 
-		public override double BaseAttackSpeed => 1.2;
+		protected override double BaseAttackSpeed => 1.2;
 
-		public override double BaseAttackCount => 1; // 3, but on 3 separate targets
+		public override double AttackCount => 1; // 3, but on 3 separate targets
 
-		public override double BaseHealth => 325;
+		protected override double BaseHealth => 325;
 
-		public override double BaseHealthArmor => 7;
+		protected override double BaseHealthArmor => 7;
 
-		public override double BaseHealthRegen => 7;
+		protected override double BaseHealthRegen => 7;
 
-		public override double BaseShields => 400;
+		protected override double BaseShields => 400;
 
-		public override double BaseShieldArmor => 7;
+		protected override double BaseShieldsArmor => 7;
 
-		public override double BaseShieldRegen => 7;
+		protected override double BaseShieldsRegen => 7;
 
 		protected override double HealthIncrement => 7;
 

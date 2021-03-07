@@ -15,23 +15,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.None;
 
-		public override double BaseAttack => 0;
+		protected override double BaseAttack => 0;
 
-		public override double BaseAttackSpeed => 0;
+		protected override double BaseAttackSpeed => 0;
 
-		public override double BaseAttackCount => 0;
+		public override double AttackCount => 0;
 
-		public override double BaseHealth => 0;
+		protected override double BaseHealth => 0;
 
-		public override double BaseHealthArmor => 0;
+		protected override double BaseHealthArmor => 0;
 
-		public override double BaseHealthRegen => 0;
+		protected override double BaseHealthRegen => 0;
 
-		public override double BaseShields => 0;
+		protected override double BaseShields => 0;
 
-		public override double BaseShieldArmor => 0;
+		protected override double BaseShieldsArmor => 0;
 
-		public override double BaseShieldRegen => 0;
+		protected override double BaseShieldsRegen => 0;
 
 		protected override double HealthIncrement => 0;
 

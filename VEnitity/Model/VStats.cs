@@ -413,13 +413,13 @@ namespace VEntityFramework.Model
 
 		#region UnitStats
 
-		public double UnitAttack => CurrentUnit.BaseAttack * Attack / 100;
-		public double UnitAttackSpeed => CurrentUnit.BaseAttackSpeed / AttackSpeed * 100;
-		public double UnitCriticalDamage => CurrentUnit.BaseAttack * CriticalDamage / 100;
-		public double UnitHealth => CurrentUnit.BaseHealth * Health / 100;
-		public double UnitHealthArmor => CurrentUnit.BaseHealthArmor * HealthArmor / 100;
-		public double UnitShields => CurrentUnit.BaseShields * Shields / 100;
-		public double UnitShieldsArmor => CurrentUnit.BaseShieldArmor * ShieldsArmor / 100;
+		public double UnitAttack => CurrentUnit.Attack * Attack / 100;
+		public double UnitAttackSpeed => CurrentUnit.AttackSpeed / AttackSpeed * 100;
+		public double UnitCriticalDamage => CurrentUnit.Attack * CriticalDamage / 100;
+		public double UnitHealth => CurrentUnit.Health * Health / 100;
+		public double UnitHealthArmor => CurrentUnit.HealthArmor * HealthArmor / 100;
+		public double UnitShields => CurrentUnit.Shields * Shields / 100;
+		public double UnitShieldsArmor => CurrentUnit.ShieldsArmor * ShieldsArmor / 100;
 
 		#endregion
 

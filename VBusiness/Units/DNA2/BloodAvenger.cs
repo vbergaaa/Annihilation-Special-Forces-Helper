@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.BloodAvenger;
 
-		public override double BaseAttack => 40;
+		protected override double BaseAttack => 40;
 
-		public override double BaseAttackSpeed => 0.8;
+		protected override double BaseAttackSpeed => 0.8;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 22;
+		protected override double BaseHealth => 22;
 
-		public override double BaseHealthArmor => 5;
+		protected override double BaseHealthArmor => 5;
 
-		public override double BaseHealthRegen => 7;
+		protected override double BaseHealthRegen => 7;
 
-		public override double BaseShields => 475;
+		protected override double BaseShields => 475;
 
-		public override double BaseShieldArmor => 5;
+		protected override double BaseShieldsArmor => 5;
 
-		public override double BaseShieldRegen => 7;
+		protected override double BaseShieldsRegen => 7;
 
 		protected override double HealthIncrement => 2;
 

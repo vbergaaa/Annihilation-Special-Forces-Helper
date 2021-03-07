@@ -147,6 +147,13 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Upgrades
+
+		[VXML(true)]
+		public virtual VUpgradeManager Upgrades { get; }
+
+		#endregion
+
 		#region Units
 
 		public virtual BusinessObjectList<VUnit> Units { get; }

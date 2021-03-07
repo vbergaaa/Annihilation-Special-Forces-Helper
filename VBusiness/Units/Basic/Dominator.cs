@@ -15,23 +15,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.Dominator;
 
-		public override double BaseAttack => 50;
+		protected override double BaseAttack => 50;
 
-		public override double BaseAttackSpeed => 1.5;
+		protected override double BaseAttackSpeed => 1.5;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 600;
+		protected override double BaseHealth => 600;
 
-		public override double BaseHealthArmor => 6;
+		protected override double BaseHealthArmor => 6;
 
-		public override double BaseHealthRegen => 1;
+		protected override double BaseHealthRegen => 1;
 
-		public override double BaseShields => 600;
+		protected override double BaseShields => 600;
 
-		public override double BaseShieldArmor => 6;
+		protected override double BaseShieldsArmor => 6;
 
-		public override double BaseShieldRegen => 2; // wasn't in data but seems to be correct from my testing
+		protected override double BaseShieldsRegen => 2; // wasn't in data but seems to be correct from my testing
 
 		protected override double HealthIncrement => 8;
 

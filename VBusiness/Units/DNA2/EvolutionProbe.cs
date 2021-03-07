@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.EvolutionProbe;
 
-		public override double BaseAttack => 22;
+		protected override double BaseAttack => 22;
 
-		public override double BaseAttackSpeed => 1;
+		protected override double BaseAttackSpeed => 1;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 100;
+		protected override double BaseHealth => 100;
 
-		public override double BaseHealthArmor => 6;
+		protected override double BaseHealthArmor => 6;
 
-		public override double BaseHealthRegen => 0;
+		protected override double BaseHealthRegen => 0;
 
-		public override double BaseShields => 200;
+		protected override double BaseShields => 200;
 
-		public override double BaseShieldArmor => 6;
+		protected override double BaseShieldsArmor => 6;
 
-		public override double BaseShieldRegen => 5;
+		protected override double BaseShieldsRegen => 5;
 
 		protected override double HealthIncrement => 10;
 

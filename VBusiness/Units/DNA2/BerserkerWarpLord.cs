@@ -16,23 +16,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.BerserkerWarpLord;
 
-		public override double BaseAttack => 16;
+		protected override double BaseAttack => 16;
 
-		public override double BaseAttackSpeed => 1;
+		protected override double BaseAttackSpeed => 1;
 
-		public override double BaseAttackCount => 2;
+		public override double AttackCount => 2;
 
-		public override double BaseHealth => 225;
+		protected override double BaseHealth => 225;
 
-		public override double BaseHealthArmor => 5;
+		protected override double BaseHealthArmor => 5;
 
-		public override double BaseHealthRegen => 4;
+		protected override double BaseHealthRegen => 4;
 
-		public override double BaseShields => 320;
+		protected override double BaseShields => 320;
 
-		public override double BaseShieldArmor => 5;
+		protected override double BaseShieldsArmor => 5;
 
-		public override double BaseShieldRegen => 4;
+		protected override double BaseShieldsRegen => 4;
 
 		protected override double HealthIncrement => 7;
 

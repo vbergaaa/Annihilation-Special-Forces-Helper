@@ -14,23 +14,23 @@ namespace VBusiness.Units
 		{
 		}
 
-		public override double BaseAttack => 11;
+		protected override double BaseAttack => 11;
 
-		public override double BaseAttackSpeed => 1.5;
+		protected override double BaseAttackSpeed => 1.5;
 
-		public override double BaseAttackCount => 2;
+		public override double AttackCount => 2;
 
-		public override double BaseHealth => 100;
+		protected override double BaseHealth => 100;
 
-		public override double BaseHealthArmor => 2;
+		protected override double BaseHealthArmor => 2;
 
-		public override double BaseHealthRegen => 2;
+		protected override double BaseHealthRegen => 2;
 
-		public override double BaseShields => 150;
+		protected override double BaseShields => 150;
 
-		public override double BaseShieldArmor => 2;
+		protected override double BaseShieldsArmor => 2;
 
-		public override double BaseShieldRegen => 3;
+		protected override double BaseShieldsRegen => 3;
 
 		public override UnitType Type => UnitType.WarpLord;
 

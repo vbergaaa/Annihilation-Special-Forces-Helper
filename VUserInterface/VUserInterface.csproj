@@ -7,5 +7,10 @@
     <ProjectReference Include="..\VBusiness\VBusiness.csproj" />
     <ProjectReference Include="..\VEnitity\VEntityFramework.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="LoadoutConfigurationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
 
 </Project>

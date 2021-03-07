@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.DarkWarpLord;
 
-		public override double BaseAttack => 15;
+		protected override double BaseAttack => 15;
 
-		public override double BaseAttackSpeed => 1.2; // Doesn't match weapon data for WarpBlades, tested in game
+		protected override double BaseAttackSpeed => 1.2; // Doesn't match weapon data for WarpBlades, tested in game
 
-		public override double BaseAttackCount => 2;
+		public override double AttackCount => 2;
 
-		public override double BaseHealth => 150;
+		protected override double BaseHealth => 150;
 
-		public override double BaseHealthArmor => 3;
+		protected override double BaseHealthArmor => 3;
 
-		public override double BaseHealthRegen => 3;
+		protected override double BaseHealthRegen => 3;
 
-		public override double BaseShields => 200;
+		protected override double BaseShields => 200;
 
-		public override double BaseShieldArmor => 3;
+		protected override double BaseShieldsArmor => 3;
 
-		public override double BaseShieldRegen => 5;
+		protected override double BaseShieldsRegen => 5;
 
 		protected override double HealthIncrement => 5;
 

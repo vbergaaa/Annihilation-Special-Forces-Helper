@@ -16,23 +16,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.ArchDominator;
 
-		public override double BaseAttack => 60;
+		protected override double BaseAttack => 60;
 
-		public override double BaseAttackSpeed => 1.4;
+		protected override double BaseAttackSpeed => 1.4;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 1000;
+		protected override double BaseHealth => 1000;
 
-		public override double BaseHealthArmor => 10;
+		protected override double BaseHealthArmor => 10;
 
-		public override double BaseHealthRegen => 2.5;
+		protected override double BaseHealthRegen => 2.5;
 
-		public override double BaseShields => 1000;
+		protected override double BaseShields => 1000;
 
-		public override double BaseShieldArmor => 10;
+		protected override double BaseShieldsArmor => 10;
 
-		public override double BaseShieldRegen => 5;
+		protected override double BaseShieldsRegen => 5;
 
 		protected override double HealthIncrement => 11;
 

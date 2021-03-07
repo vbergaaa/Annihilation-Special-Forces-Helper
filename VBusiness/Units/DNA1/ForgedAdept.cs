@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.ForgedAdept;
 
-		public override double BaseAttack => 35;
+		protected override double BaseAttack => 35;
 
-		public override double BaseAttackSpeed => 1.3;
+		protected override double BaseAttackSpeed => 1.3;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 160;
+		protected override double BaseHealth => 160;
 
-		public override double BaseHealthArmor => 4.5;
+		protected override double BaseHealthArmor => 4.5;
 
-		public override double BaseHealthRegen => 4;
+		protected override double BaseHealthRegen => 4;
 
-		public override double BaseShields => 250;
+		protected override double BaseShields => 250;
 
-		public override double BaseShieldArmor => 4.5;
+		protected override double BaseShieldsArmor => 4.5;
 
-		public override double BaseShieldRegen => 6;
+		protected override double BaseShieldsRegen => 6;
 
 		protected override double HealthIncrement => 7;
 

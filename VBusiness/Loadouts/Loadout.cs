@@ -80,6 +80,13 @@ namespace VBusiness.Loadouts
 
 		#endregion
 
+		#region Upgrades
+
+		public override VUpgradeManager Upgrades => fUpgrades ??= new UpgradeManager(this);
+		VUpgradeManager fUpgrades;
+
+		#endregion
+
 		#region Units
 
 		[VXML(true)]

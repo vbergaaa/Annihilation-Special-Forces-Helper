@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.UnstableDreadnought;
 
-		public override double BaseAttack => 30;
+		protected override double BaseAttack => 30;
 
-		public override double BaseAttackSpeed => 1.7;
+		protected override double BaseAttackSpeed => 1.7;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 350;
+		protected override double BaseHealth => 350;
 
-		public override double BaseHealthArmor => 7;
+		protected override double BaseHealthArmor => 7;
 
-		public override double BaseHealthRegen => 7;
+		protected override double BaseHealthRegen => 7;
 
-		public override double BaseShields => 500;
+		protected override double BaseShields => 500;
 
-		public override double BaseShieldArmor => 7;
+		protected override double BaseShieldsArmor => 7;
 
-		public override double BaseShieldRegen => 7;
+		protected override double BaseShieldsRegen => 7;
 
 		protected override double HealthIncrement => 9;
 

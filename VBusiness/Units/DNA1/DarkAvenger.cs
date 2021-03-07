@@ -16,23 +16,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.DarkAvenger;
 
-		public override double BaseAttack => 30;
+		protected override double BaseAttack => 30;
 
-		public override double BaseAttackSpeed => 0.9;
+		protected override double BaseAttackSpeed => 0.9;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 15;
+		protected override double BaseHealth => 15;
 
-		public override double BaseHealthArmor => 4;
+		protected override double BaseHealthArmor => 4;
 
-		public override double BaseHealthRegen => 6;
+		protected override double BaseHealthRegen => 6;
 
-		public override double BaseShields => 325;
+		protected override double BaseShields => 325;
 
-		public override double BaseShieldArmor => 4;
+		protected override double BaseShieldsArmor => 4;
 
-		public override double BaseShieldRegen => 6;
+		protected override double BaseShieldsRegen => 6;
 
 		protected override double HealthIncrement => 1.5;
 

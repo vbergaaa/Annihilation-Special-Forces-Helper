@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.OmniBlader;
 
-		public override double BaseAttack => 25;
+		protected override double BaseAttack => 25;
 
-		public override double BaseAttackSpeed => 2;
+		protected override double BaseAttackSpeed => 2;
 
-		public override double BaseAttackCount => 52;
+		public override double AttackCount => 52;
 
-		public override double BaseHealth => 1000;
+		protected override double BaseHealth => 1000;
 
-		public override double BaseHealthArmor => 16;
+		protected override double BaseHealthArmor => 16;
 
-		public override double BaseHealthRegen => 15;
+		protected override double BaseHealthRegen => 15;
 
-		public override double BaseShields => 1500;
+		protected override double BaseShields => 1500;
 
-		public override double BaseShieldArmor => 16;
+		protected override double BaseShieldsArmor => 16;
 
-		public override double BaseShieldRegen => 30;
+		protected override double BaseShieldsRegen => 30;
 
 		protected override double HealthIncrement => 23;
 

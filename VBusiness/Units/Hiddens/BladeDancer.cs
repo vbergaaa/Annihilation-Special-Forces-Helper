@@ -16,23 +16,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.BladeDancer;
 
-		public override double BaseAttack => 10;
+		protected override double BaseAttack => 10;
 
-		public override double BaseAttackSpeed => 2.5;
+		protected override double BaseAttackSpeed => 2.5;
 
-		public override double BaseAttackCount => 10;
+		public override double AttackCount => 10;
 
-		public override double BaseHealth => 500;
+		protected override double BaseHealth => 500;
 
-		public override double BaseHealthArmor => 8;
+		protected override double BaseHealthArmor => 8;
 
-		public override double BaseHealthRegen => 9;
+		protected override double BaseHealthRegen => 9;
 
-		public override double BaseShields => 750;
+		protected override double BaseShields => 750;
 
-		public override double BaseShieldArmor => 8;
+		protected override double BaseShieldsArmor => 8;
 
-		public override double BaseShieldRegen => 15;
+		protected override double BaseShieldsRegen => 15;
 
 		protected override double HealthIncrement => 11;
 

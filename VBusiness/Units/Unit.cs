@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using VBusiness.Perks;
+using VEntityFramework.Data;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -120,8 +122,8 @@ namespace VBusiness.Units
 		{
 			Loadout.Stats.Attack += 5 * levelDifference;
 			Loadout.Stats.UpdateAttackSpeed("Essence", 1, levelDifference);
-			Loadout.Stats.Health += 5 * levelDifference;
-			Loadout.Stats.Shields += 5 * levelDifference;
+			Loadout.Stats.Health += 10 * levelDifference;
+			Loadout.Stats.Shields += 10 * levelDifference;
 			Loadout.Stats.AdditiveArmor += (1 + (0.03 * Loadout.Stats.DefensiveEssenceStacks)) * levelDifference;
 			Loadout.Stats.MoveSpeed += 2.5 * levelDifference;
 			Loadout.Stats.Acceleration += 1 * levelDifference;
@@ -210,6 +212,22 @@ namespace VBusiness.Units
 				Loadout.Stats.UpdateDamageReduction("Spec", perks.UnitSpecialization.DesiredLevel);
 			}
 		}
+
+		#endregion
+
+		#region Calculated Stats
+
+		public override double Attack => BaseAttack + Upgrades.AttackUpgrade * AttackIncrement;
+		public override double AttackSpeed => BaseAttackSpeed / Math.Pow(1.04, Upgrades.AttackSpeedUpgrade);
+		public override double Health => BaseHealth + Upgrades.HealthUpgrade * HealthIncrement;
+		public override double HealthRegen => BaseHealthRegen + Upgrades.HealthUpgrade * HealthRegenIncrement;
+		public override double HealthArmor => BaseHealthArmor + Upgrades.HealthArmorUpgrade * HealthArmorIncrement;
+		public override double Shields => BaseShields + Upgrades.ShieldsUpgrade * ShieldIncrement;
+		public override double ShieldsArmor => BaseShieldsArmor + Upgrades.ShieldsArmorUpgrade * ShieldArmorIncrement;
+		public override double ShieldsRegen => BaseShieldsRegen + Upgrades.ShieldsUpgrade * ShieldRegenIncrement;
+
+		[VXML(false)]
+		VUpgradeManager Upgrades => Loadout.Upgrades;
 
 		#endregion
 

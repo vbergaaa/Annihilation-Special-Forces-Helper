@@ -196,15 +196,32 @@ namespace VEntityFramework.Model
 
 		#region Stats
 
-		public abstract double BaseAttack { get; }
-		public abstract double BaseAttackSpeed { get; }
-		public abstract double BaseAttackCount { get; }
-		public abstract double BaseHealth { get; }
-		public abstract double BaseHealthArmor { get; }
-		public abstract double BaseHealthRegen { get; }
-		public abstract double BaseShields { get; }
-		public abstract double BaseShieldArmor { get; }
-		public abstract double BaseShieldRegen { get; }
+		#region Calculated Stats
+
+		public abstract double Attack { get; }
+		public abstract double AttackSpeed { get; }
+		public abstract double Health { get; }
+		public abstract double HealthArmor { get; }
+		public abstract double HealthRegen { get; }
+		public abstract double Shields { get; }
+		public abstract double ShieldsArmor { get; }
+		public abstract double ShieldsRegen { get; }
+
+		#endregion
+
+		#region Base Stats
+
+		public abstract double AttackCount { get; }
+		protected abstract double BaseAttack { get; }
+		protected abstract double BaseAttackSpeed { get; }
+		protected abstract double BaseHealth { get; }
+		protected abstract double BaseHealthArmor { get; }
+		protected abstract double BaseHealthRegen { get; }
+		protected abstract double BaseShields { get; }
+		protected abstract double BaseShieldsArmor { get; }
+		protected abstract double BaseShieldsRegen { get; }
+
+		#endregion
 
 		#endregion
 

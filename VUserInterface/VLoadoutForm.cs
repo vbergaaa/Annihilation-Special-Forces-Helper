@@ -50,6 +50,12 @@ namespace VUserInterface
 			ShowSouls(text == "Souls");
 			ShowCP(text == "CP");
 			ShowUnit(text == "Unit");
+			ShowUpgrades(text == "Config");
+		}
+
+		void ShowUpgrades(bool visibility)
+		{
+			LoadoutConfigurationControl.Visible = visibility;
 		}
 
 		void ShowPerks(bool visibility)

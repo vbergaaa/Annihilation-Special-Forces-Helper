@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.AnnihilationDreadnought;
 
-		public override double BaseAttack => 40;
+		protected override double BaseAttack => 40;
 
-		public override double BaseAttackSpeed => 1.4;
+		protected override double BaseAttackSpeed => 1.4;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 425;
+		protected override double BaseHealth => 425;
 
-		public override double BaseHealthArmor => 8;
+		protected override double BaseHealthArmor => 8;
 
-		public override double BaseHealthRegen => 8;
+		protected override double BaseHealthRegen => 8;
 
-		public override double BaseShields => 600;
+		protected override double BaseShields => 600;
 
-		public override double BaseShieldArmor => 8;
+		protected override double BaseShieldsArmor => 8;
 
-		public override double BaseShieldRegen => 8;
+		protected override double BaseShieldsRegen => 8;
 
 		protected override double HealthIncrement => 11.8; // should be 11, but looks like a bug in the game code making health regen apply as health increment
 

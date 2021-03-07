@@ -17,23 +17,23 @@ namespace VBusiness.Units
 
 		public override UnitType Type => UnitType.CrimsonArchon;
 
-		public override double BaseAttack => 50;
+		protected override double BaseAttack => 50;
 
-		public override double BaseAttackSpeed => 1.3;
+		protected override double BaseAttackSpeed => 1.3;
 
-		public override double BaseAttackCount => 1;
+		public override double AttackCount => 1;
 
-		public override double BaseHealth => 30;
+		protected override double BaseHealth => 30;
 
-		public override double BaseHealthArmor => 12;
+		protected override double BaseHealthArmor => 12;
 
-		public override double BaseHealthRegen => 3;
+		protected override double BaseHealthRegen => 3;
 
-		public override double BaseShields => 1250;
+		protected override double BaseShields => 1250;
 
-		public override double BaseShieldArmor => 12;
+		protected override double BaseShieldsArmor => 12;
 
-		public override double BaseShieldRegen => 8;
+		protected override double BaseShieldsRegen => 8;
 
 		protected override double HealthIncrement => 3.5;
 
