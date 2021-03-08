@@ -5,6 +5,7 @@ using System.Text;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
 using VBusiness.Ranks;
+using VBusiness.Units;
 using VEntityFramework.Model;
 
 namespace Tests
@@ -85,6 +86,60 @@ namespace Tests
 			loadout.CurrentUnit.CurrentInfusion = infuse;
 
 			Assert.That(loadout.Stats.AttackSpeedForBinding, Is.EqualTo(expected));
+		}
+
+		[TestCase(0, 0, 0, 100)]
+		[TestCase(0, 9, 0, 145)]
+		[TestCase(5, 0, 0, 150)]
+		[TestCase(5, 9, 0, 217)]
+		[TestCase(0, 0, 50, 150)]
+		[TestCase(0, 9, 50, 217)]
+		[TestCase(5, 0, 50, 200)]
+		[TestCase(5, 9, 50, 290)]
+		public void TestHealth(int infuse, int essence, int stats, double expected)
+		{
+			// ALl the expected values for this test were generated in game
+			var loadout = GetTestLoadout();
+			var unit = new WarpLord(loadout);
+			unit.CurrentInfusion = infuse;
+			unit.EssenceStacks = essence;
+			loadout.Gems.HealthGem.CurrentLevel = (short)stats;
+
+			Assert.That(loadout.Stats.HealthForBinding, Is.AtLeast(expected-1) & Is.AtMost(expected + 1));
+		}
+
+		[TestCase(0, 0, 0, 150)]
+		[TestCase(0, 9, 0, 217)]
+		[TestCase(5, 0, 0, 225)]
+		[TestCase(5, 9, 0, 300)]
+		[TestCase(0, 0, 50, 225)]
+		[TestCase(0, 9, 50, 326)]
+		[TestCase(5, 0, 50, 300)]
+		[TestCase(5, 9, 50, 435)]
+		public void TestShields(int infuse, int essence, int stats, double expected)
+		{
+			// All the expected values for this test were generated in game
+			var loadout = GetTestLoadout();
+			var unit = new WarpLord(loadout);
+			unit.CurrentInfusion = infuse;
+			unit.EssenceStacks = essence;
+			loadout.Gems.ShieldsGem.CurrentLevel = (short)stats;
+
+			Assert.That(loadout.Stats.ShieldsForBinding, Is.AtLeast(expected - 1) & Is.AtMost(expected + 1));
+		}
+
+		VLoadout GetTestLoadout()
+		{
+			var loadout = new Loadout();
+			loadout.ShouldRestrict = false;
+			loadout.UseUnitStats = true;
+			var perks = (PerkCollection)loadout.Perks;
+			perks.MaximumPotiential.DesiredLevel = 8;
+			perks.MaximumPotiential2.DesiredLevel = 10;
+			perks.MaximumPotiental3.DesiredLevel = 10;
+			perks.MaximumPotential4.DesiredLevel = 10;
+
+			return loadout;
 		}
 	}
 }
