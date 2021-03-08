@@ -99,9 +99,9 @@ namespace VBusiness.Ranks
 		{
 			Unit.Loadout.Stats.Attack += 50;
 			Unit.Loadout.Stats.UpdateAttackSpeed("Rank", 50);
-			Unit.Loadout.Stats.Health += 50;
+			Unit.Loadout.Stats.UpdateHealth("Rank", 50);
 			Unit.Loadout.Stats.HealthArmor += 50;
-			Unit.Loadout.Stats.Shields += 50;
+			Unit.Loadout.Stats.UpdateShields("Rank", 50);
 			Unit.Loadout.Stats.ShieldsArmor += 50;
 			Unit.Loadout.Stats.CriticalChance += 5;
 			Unit.Loadout.Stats.CriticalDamage += 10;
@@ -111,9 +111,9 @@ namespace VBusiness.Ranks
 		{
 			Unit.Loadout.Stats.Attack += 100;
 			Unit.Loadout.Stats.UpdateAttackSpeed("Rank", 100);
-			Unit.Loadout.Stats.Health += 100;
+			Unit.Loadout.Stats.UpdateHealth("Rank", 100);
 			Unit.Loadout.Stats.HealthArmor += 100;
-			Unit.Loadout.Stats.Shields += 100;
+			Unit.Loadout.Stats.UpdateShields("Rank", 100);
 			Unit.Loadout.Stats.ShieldsArmor += 100;
 			Unit.Loadout.Stats.CriticalChance += 10;
 			Unit.Loadout.Stats.CriticalDamage += 20;
@@ -123,9 +123,9 @@ namespace VBusiness.Ranks
 		{
 			Unit.Loadout.Stats.Attack -= 50;
 			Unit.Loadout.Stats.UpdateAttackSpeed("Rank", -50);
-			Unit.Loadout.Stats.Health -= 50;
+			Unit.Loadout.Stats.UpdateHealth("Rank", -50);
 			Unit.Loadout.Stats.HealthArmor -= 50;
-			Unit.Loadout.Stats.Shields -= 50;
+			Unit.Loadout.Stats.UpdateShields("Rank", -50);
 			Unit.Loadout.Stats.ShieldsArmor -= 50;
 			Unit.Loadout.Stats.CriticalChance -= 5;
 			Unit.Loadout.Stats.CriticalDamage -= 10;
@@ -135,9 +135,9 @@ namespace VBusiness.Ranks
 		{
 			Unit.Loadout.Stats.Attack -= 100;
 			Unit.Loadout.Stats.UpdateAttackSpeed("Rank", -100);
-			Unit.Loadout.Stats.Health -= 100;
+			Unit.Loadout.Stats.UpdateHealth("Rank", -100);
 			Unit.Loadout.Stats.HealthArmor -= 100;
-			Unit.Loadout.Stats.Shields -= 100;
+			Unit.Loadout.Stats.UpdateShields("Rank", -100);
 			Unit.Loadout.Stats.ShieldsArmor -= 100;
 			Unit.Loadout.Stats.CriticalChance -= 10;
 			Unit.Loadout.Stats.CriticalDamage -= 20;
@@ -367,9 +367,9 @@ namespace VBusiness.Ranks
 			{
 				Unit.Loadout.Stats.Attack += Attack;
 				Unit.Loadout.Stats.UpdateAttackSpeed("Rank", AttackSpeed);
-				Unit.Loadout.Stats.Health += Vitals;
+				Unit.Loadout.Stats.UpdateHealth("Rank", Vitals);
 				Unit.Loadout.Stats.HealthArmor += Vitals;
-				Unit.Loadout.Stats.Shields += Vitals;
+				Unit.Loadout.Stats.UpdateHealth("Rank", Vitals);
 				Unit.Loadout.Stats.ShieldsArmor += Vitals;
 				Unit.Loadout.Stats.UpdateDamageIncrease("Rank", DamageIncrease);
 				Unit.Loadout.Stats.UpdateDamageReduction("Rank", DamageReduction);
@@ -395,9 +395,9 @@ namespace VBusiness.Ranks
 			{
 				Unit.Loadout.Stats.Attack -= Attack;
 				Unit.Loadout.Stats.UpdateAttackSpeed("Rank", -AttackSpeed);
-				Unit.Loadout.Stats.Health -= Vitals;
+				Unit.Loadout.Stats.UpdateHealth("Rank", Vitals);
 				Unit.Loadout.Stats.HealthArmor -= Vitals;
-				Unit.Loadout.Stats.Shields -= Vitals;
+				Unit.Loadout.Stats.UpdateHealth("Rank", Vitals);
 				Unit.Loadout.Stats.ShieldsArmor -= Vitals;
 				Unit.Loadout.Stats.UpdateDamageIncrease("Rank", -DamageIncrease);
 				Unit.Loadout.Stats.UpdateDamageReduction("Rank", -DamageReduction);

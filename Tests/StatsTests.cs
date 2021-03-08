@@ -111,7 +111,7 @@ namespace Tests
 		[TestCase(0, 0, 0, 150)]
 		[TestCase(0, 9, 0, 217)]
 		[TestCase(5, 0, 0, 225)]
-		[TestCase(5, 9, 0, 300)]
+		[TestCase(5, 9, 0, 326)]
 		[TestCase(0, 0, 50, 225)]
 		[TestCase(0, 9, 50, 326)]
 		[TestCase(5, 0, 50, 300)]

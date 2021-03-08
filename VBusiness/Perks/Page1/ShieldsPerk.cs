@@ -24,7 +24,7 @@ namespace VBusiness.Perks
 
 		protected override void OnLevelChanged(int difference)
 		{
-			PerkCollection.Loadout.Stats.Shields += 2.5 * difference;
+			PerkCollection.Loadout.Stats.UpdateShields("Core", 2.5 * difference);
 		}
 	}
 }

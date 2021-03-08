@@ -134,16 +134,27 @@ namespace VEntityFramework.Model
 
 		public double Health
 		{
-			get => fHealth;
-			set
+			get
 			{
-				fHealth = value;
-				OnPropertyChanged(nameof(HealthForBinding));
-				OnPropertyChanged(nameof(Toughness));
-				OnPropertyChanged(nameof(Recovery));
+				var totalHealth = 100.0;
+				foreach (var kvp in HealthDictionary)
+				{
+					totalHealth *= (100 + kvp.Value) / 100;
+				}
+				return totalHealth;
 			}
 		}
-		double fHealth;
+
+		StatsDictionary HealthDictionary => fHealthDictionary ??= new StatsDictionary("Health");
+		StatsDictionary fHealthDictionary;
+
+		public void UpdateHealth(string key, double amount)
+		{
+			HealthDictionary.Update(key, amount);
+			OnPropertyChanged(nameof(HealthForBinding));
+			OnPropertyChanged(nameof(Toughness));
+			OnPropertyChanged(nameof(Recovery));
+		}
 
 		#endregion
 
@@ -168,16 +179,27 @@ namespace VEntityFramework.Model
 
 		public double Shields
 		{
-			get => fShields;
-			set
+			get
 			{
-				fShields = value;
-				OnPropertyChanged(nameof(ShieldsForBinding));
-				OnPropertyChanged(nameof(Toughness));
-				OnPropertyChanged(nameof(Recovery));
+				var totalShields = 100.0;
+				foreach (var kvp in ShieldsDictionary)
+				{
+					totalShields *= (100 + kvp.Value) / 100;
+				}
+				return totalShields;
 			}
 		}
-		double fShields;
+
+		StatsDictionary ShieldsDictionary => fShieldsDictionary ??= new StatsDictionary("Shields");
+		StatsDictionary fShieldsDictionary;
+
+		public void UpdateShields(string key, double amount)
+		{
+			ShieldsDictionary.Update(key, amount);
+			OnPropertyChanged(nameof(ShieldsForBinding));
+			OnPropertyChanged(nameof(Toughness));
+			OnPropertyChanged(nameof(Recovery));
+		}
 
 		#endregion
 
@@ -341,9 +363,9 @@ namespace VEntityFramework.Model
 		{
 			Attack += 1.5 * diff;
 			UpdateAttackSpeed("Trifecta", 1.5 * diff);
-			Health += 1.5 * diff;
+			UpdateHealth("Core", 1.5 * diff);
 			HealthArmor += 1 * diff;
-			Shields += 1.5 * diff;
+			UpdateShields("Core", 1.5 * diff);
 			ShieldsArmor += 1 * diff;
 		}
 
@@ -373,9 +395,9 @@ namespace VEntityFramework.Model
 		{
 			Attack -= 1.5 * TrifectaStacks;
 			UpdateAttackSpeed("Trifecta", -1.5 * TrifectaStacks);
-			Health -= 1.5 * TrifectaStacks;
+			UpdateHealth("Trifecta", -1.5 * TrifectaStacks);
 			HealthArmor -= 1 * TrifectaStacks;
-			Shields -= 1.5 * TrifectaStacks;
+			UpdateShields("Trifecta", -1.5 * TrifectaStacks);
 			ShieldsArmor -= 1 * TrifectaStacks;
 		}
 
@@ -383,9 +405,9 @@ namespace VEntityFramework.Model
 		{
 			Attack += 1.5 * TrifectaStacks;
 			UpdateAttackSpeed("Trifecta", 1.5 * TrifectaStacks);
-			Health += 1.5 * TrifectaStacks;
+			UpdateHealth("Trifecta", 1.5 * TrifectaStacks);
 			HealthArmor += 1 * TrifectaStacks;
-			Shields += 1.5 * TrifectaStacks;
+			UpdateShields("Trifecta", 1.5 * TrifectaStacks);
 			ShieldsArmor += 1 * TrifectaStacks;
 		}
 

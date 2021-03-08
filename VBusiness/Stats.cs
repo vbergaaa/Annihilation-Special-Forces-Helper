@@ -15,9 +15,7 @@ namespace VBusiness
 			Attack = 100;
 			CriticalChance = 0;
 			CriticalDamage = 100;
-			Health = 100;
 			HealthArmor = 100;
-			Shields = 100;
 			ShieldsArmor = 100;
 			Acceleration = 100;
 		}

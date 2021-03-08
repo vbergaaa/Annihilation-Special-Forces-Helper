@@ -53,9 +53,9 @@ namespace VBusiness.Units
 		{
 			Loadout.Stats.Attack += 10 * levelDifference;
 			Loadout.Stats.UpdateAttackSpeed("Infuse", 10 * levelDifference);
-			Loadout.Stats.Health += 10 * levelDifference;
+			Loadout.Stats.UpdateHealth("Core", 10 * levelDifference);
 			Loadout.Stats.HealthArmor += 10 * levelDifference;
-			Loadout.Stats.Shields += 10 * levelDifference;
+			Loadout.Stats.UpdateShields("Core", 10 * levelDifference);
 			Loadout.Stats.ShieldsArmor += 10 * levelDifference;
 			Loadout.Stats.Acceleration += 10 * levelDifference;
 		}
@@ -122,8 +122,8 @@ namespace VBusiness.Units
 		{
 			Loadout.Stats.Attack += 5 * levelDifference;
 			Loadout.Stats.UpdateAttackSpeed("Essence", 1, levelDifference);
-			Loadout.Stats.Health += 10 * levelDifference;
-			Loadout.Stats.Shields += 10 * levelDifference;
+			Loadout.Stats.UpdateHealth("Essence", 5 * levelDifference);
+			Loadout.Stats.UpdateShields("Essence", 5 * levelDifference);
 			Loadout.Stats.AdditiveArmor += (1 + (0.03 * Loadout.Stats.DefensiveEssenceStacks)) * levelDifference;
 			Loadout.Stats.MoveSpeed += 2.5 * levelDifference;
 			Loadout.Stats.Acceleration += 1 * levelDifference;

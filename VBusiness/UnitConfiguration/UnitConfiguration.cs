@@ -41,18 +41,18 @@ namespace VBusiness
 			{
 				Loadout.Stats.Attack += 30;
 				Loadout.Stats.UpdateAttackSpeed("Core", 20);
-				Loadout.Stats.Health += 25;
+				Loadout.Stats.UpdateHealth("Core", 25);
 				Loadout.Stats.HealthArmor += 20;
-				Loadout.Stats.Shields += 25;
+				Loadout.Stats.UpdateShields("Core", 25);
 				Loadout.Stats.ShieldsArmor += 20;
 			}
 			else
 			{
 				Loadout.Stats.Attack -= 30;
 				Loadout.Stats.UpdateAttackSpeed("Core", -20);
-				Loadout.Stats.Health -= 25;
+				Loadout.Stats.UpdateHealth("Core", 25);
 				Loadout.Stats.HealthArmor -= 20;
-				Loadout.Stats.Shields -= 25;
+				Loadout.Stats.UpdateShields("Core", -25);
 				Loadout.Stats.ShieldsArmor -= 20;
 			}
 		}
@@ -107,9 +107,9 @@ namespace VBusiness
 			{
 				Loadout.Stats.Attack -= difference;
 				Loadout.Stats.UpdateAttackSpeed("Core", -difference);
-				Loadout.Stats.Health -= difference;
+				Loadout.Stats.UpdateHealth("Core", -difference);
 				Loadout.Stats.HealthArmor -= difference;
-				Loadout.Stats.Shields -= difference;
+				Loadout.Stats.UpdateHealth("Core", -difference);
 				Loadout.Stats.ShieldsArmor -= difference;
 				Loadout.Stats.Acceleration -= difference;
 			}

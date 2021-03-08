@@ -22,7 +22,7 @@ namespace VBusiness.ChallengePoints
 
 		public override void OnCPLevelChanged(int difference)
 		{
-			ChallengePointCollection.Loadout.Stats.Health += 2 * difference;
+			ChallengePointCollection.Loadout.Stats.UpdateHealth("Core", 2 * difference);
 		}
 
 		#endregion

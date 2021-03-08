@@ -14,6 +14,6 @@ namespace VBusiness.Gems
 
 		protected override decimal IncrementCost => 0.2m;
 
-		protected override void OnPerkLevelChanged(int difference) => GemCollection.Loadout.Stats.Health += difference;
+		protected override void OnPerkLevelChanged(int difference) => GemCollection.Loadout.Stats.UpdateHealth("Core", difference);
 	}
 }
