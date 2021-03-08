@@ -439,9 +439,9 @@ namespace VEntityFramework.Model
 		public double UnitAttackSpeed => CurrentUnit.AttackSpeed / AttackSpeed * 100;
 		public double UnitCriticalDamage => CurrentUnit.Attack * CriticalDamage / 100;
 		public double UnitHealth => CurrentUnit.Health * Health / 100;
-		public double UnitHealthArmor => CurrentUnit.HealthArmor * HealthArmor / 100;
+		public double UnitHealthArmor => CurrentUnit.HealthArmor * HealthArmor / 100 + AdditiveArmor;
 		public double UnitShields => CurrentUnit.Shields * Shields / 100;
-		public double UnitShieldsArmor => CurrentUnit.ShieldsArmor * ShieldsArmor / 100;
+		public double UnitShieldsArmor => CurrentUnit.ShieldsArmor * ShieldsArmor / 100 + AdditiveArmor;
 
 		#endregion
 
