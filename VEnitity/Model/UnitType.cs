@@ -49,6 +49,8 @@ namespace VEntityFramework.Model
 		EvolutionProbe,
 		[Description("Berserker Warp Lord")]
 		BerserkerWarpLord,
+		[Description("Mirror Striker")]
+		MirrorStriker,
 		[Description("Splitter Adept")]
 		SplitterAdept,
 		[Description("Blood Avenger")]
@@ -59,6 +61,8 @@ namespace VEntityFramework.Model
 		// Hero
 		[Description("Terminator Warp Lord")]
 		TerminatorWarpLord,
+		[Description("Paradox Striker")]
+		ParadoxStriker,
 
 		// Hidden
 		Dragoon,
