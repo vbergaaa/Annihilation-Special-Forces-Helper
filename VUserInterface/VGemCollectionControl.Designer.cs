@@ -95,7 +95,7 @@ namespace VUserInterface
 			// DoubleWarpControl
 			//
 			this.DoubleWarpGemControl.Location = DPIScalingHelper.GetScaledPoint(381, 187);
-			this.DoubleWarpGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "DoubleWarpGem");
+			this.DoubleWarpGemControl.DataBindings.Add("Gem", this.gemsBindingSource, "EconomyGem");
 			this.DoubleWarpGemControl.TabIndex = 10;
 			// 
 			// gemsBindingSource

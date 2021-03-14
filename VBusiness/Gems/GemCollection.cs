@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Model;
+﻿using VBusiness.Perks;
+using VEntityFramework.Model;
 
 namespace VBusiness.Gems
 {
@@ -167,30 +168,56 @@ namespace VBusiness.Gems
 
 		#endregion
 
+		#region TripleWarp
+
+		public override VGem TripleWarpGem
+		{
+			get
+			{
+				if (fTripleWarpGem == null)
+				{
+					fTripleWarpGem = new TripleWarpGem(this);
+				}
+				return fTripleWarpGem;
+			}
+		}
+		VGem fTripleWarpGem;
+
+		#endregion
+
+		#region EconomyGem
+
+		public override VGem EconomyGem => ShouldDisplayTripleWarpGem()
+					? TripleWarpGem
+					: DoubleWarpGem;
+
+		bool ShouldDisplayTripleWarpGem()
+		{
+			return Loadout.Perks is PerkCollection perks 
+				&& perks.DoubleWarp.DesiredLevel == perks.DoubleWarp.MaxLevel
+				&& perks.DoubleWarp2.DesiredLevel == perks.DoubleWarp2.MaxLevel
+				&& perks.DoubleWarp3.DesiredLevel == perks.DoubleWarp3.MaxLevel
+				&& perks.DoubleWarp4.DesiredLevel == perks.DoubleWarp4.MaxLevel;
+		}
+
+		#endregion
+
 		#region Gems
 
 		public override VGem[] Gems
 		{
-			get
-			{
-				if (fGems == null)
-				{
-					fGems = new VGem[] {
-						AttackGem,
-						AttackSpeedGem,
-						ShieldsGem,
-						ShieldsArmorGem,
-						HealthGem,
-						HealthArmorGem,
-						CritChanceGem,
-						CritDamageGem,
-						DoubleWarpGem
-					};
-				}
-				return fGems;
-			}
-		}
-		VGem[] fGems;
+			get => new VGem[] {
+				AttackGem,
+				AttackSpeedGem,
+				ShieldsGem,
+				ShieldsArmorGem,
+				HealthGem,
+				HealthArmorGem,
+				CritChanceGem,
+				CritDamageGem,
+				EconomyGem
+			};
+		} // caching this is awkward because we need the Economy gem to change at times
 
 		#endregion
 

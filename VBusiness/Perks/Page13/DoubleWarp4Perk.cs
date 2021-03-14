@@ -21,5 +21,12 @@ namespace VBusiness.Perks
 		protected override string PerkName => "Double Warp IV";
 
 		protected override short MaxLevelCore => 40;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			base.OnLevelChanged(difference);
+			PerkCollection.Loadout.Gems.RefreshPropertyBinding("EconomyGem");
+			PerkCollection.Loadout.Gems.RefreshPropertyBinding("RemainingGems");
+		}
 	}
 }
