@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using VEntityFramework.Model;
 
 namespace VEntityFramework.Data
 {
-	public abstract class VBusinessObject : INotifyPropertyChanged
+	public abstract class VBusinessObject : INotifyPropertyChanged, IXmlObject
 	{
 		#region Constructor
 

@@ -26,7 +26,7 @@ namespace VEntityFramework.XML
 		{
 			var matchingProperty = GetPropertyFromXML(bizo.GetType(), childNode);
 
-			if (matchingProperty == null && bizo.GetType().Name != "UnitConfiguration") // we depreciated lots of UnitConfig stuff, so until I flush out my local xmls, ignore these
+			if (matchingProperty == null && ShouldReportError(bizo, childNode))
 			{
 				ErrorReporter.ReportDebug($"Cannot find property {childNode.Name} on {bizo.GetType().Name} Business Object");
 			}
@@ -42,6 +42,23 @@ namespace VEntityFramework.XML
 					PopulateNonKeyProperty(bizo, childNode, matchingProperty);
 				}
 			}
+		}
+
+		static bool ShouldReportError(VBusinessObject bizo, XmlNode childNode)
+		{
+			if (bizo.GetType().Name != "UnitConfiguration")
+			{
+				return false;  // we depreciated lots of UnitConfig stuff, so until I flush out my local xmls, ignore these
+			}
+			else if (bizo.GetType().BaseType.Name == "Unit" && childNode.Name == "Key")
+			{
+				return false; // the Key for unit is used in the construction of the class, we don't need to set it anywhere else
+			}
+			else if (bizo.GetType().Name == "Unit" && childNode.Name == "HasUnitSpec")
+			{
+				return false; // HasUnitSpec is now calculated from the spec on the loadout, not stored against a unit
+			}
+			return true;
 		}
 
 		void PopulateBusinessObject(VBusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
@@ -106,7 +123,8 @@ namespace VEntityFramework.XML
 
 		protected virtual PropertyInfo GetPropertyFromXML(Type type, XmlNode child)
 		{
-			return type.GetProperty(child.Name);
+			var property = type.GetProperty(child.Name);
+			return (property?.IncludeInVXml() ?? false) ? property : null;
 		}
 
 		XmlNode GetKeyNode(XmlNode node)

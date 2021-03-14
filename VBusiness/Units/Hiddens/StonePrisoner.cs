@@ -8,44 +8,42 @@ namespace VBusiness.Units
 	// UnitData: StoneZealot
 	// EffectData: EyeBeamsGround (NOT StoneZealot)
 
-	public class StonePrisoner : Unit
+	public class StonePrisoner : IUnitData
 	{
-		public StonePrisoner(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.StonePrisoner;
 
-		public override UnitType Type => UnitType.StonePrisoner;
+		double IUnitData.BaseAttack =>25;
 
-		protected override double BaseAttack => 25;
+		double IUnitData.BaseAttackSpeed => 1.25;
 
-		protected override double BaseAttackSpeed => 1.25;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 600;
 
-		protected override double BaseHealth => 600;
+		double IUnitData.BaseHealthArmor => 6;
 
-		protected override double BaseHealthArmor => 6;
+		double IUnitData.BaseHealthRegen => 10;
 
-		protected override double BaseHealthRegen => 10;
+		double IUnitData.BaseShields => 0;
 
-		protected override double BaseShields => 0;
+		double IUnitData.BaseShieldsArmor => 0;
 
-		protected override double BaseShieldsArmor => 0;
+		double IUnitData.BaseShieldsRegen => 0;
 
-		protected override double BaseShieldsRegen => 0;
+		double IUnitData.HealthIncrement => 12;
 
-		protected override double HealthIncrement => 12;
+		double IUnitData.HealthRegenIncrement => 1.1015;
 
-		protected override double HealthRegenIncrement => 1.1015;
+		double IUnitData.ShieldIncrement => 0;
 
-		protected override double ShieldIncrement => 0;
+		double IUnitData.ShieldRegenIncrement => 0;
 
-		protected override double ShieldRegenIncrement => 0;
+		double IUnitData.HealthArmorIncrement => 0.7;
 
-		protected override double HealthArmorIncrement => 0.7;
+		double IUnitData.ShieldArmorIncrement => 0;
 
-		protected override double ShieldArmorIncrement => 0;
+		double IUnitData.AttackIncrement => 1.8;
 
-		protected override double AttackIncrement => 1.8;
+		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery };
 	}
 }

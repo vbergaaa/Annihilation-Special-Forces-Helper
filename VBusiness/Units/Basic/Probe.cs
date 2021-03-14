@@ -8,44 +8,42 @@ namespace VBusiness.Units
 	// UnitData name = Probe
 	// WeaponData name = ParticleBeam
 
-	public class Probe : Unit
+	public class Probe : IUnitData
 	{
-		public Probe(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.Probe;
 
-		public override UnitType Type => UnitType.Probe;
+		double IUnitData.BaseAttack => 5;
 
-		protected override double BaseAttack => 5;
+		double IUnitData.BaseAttackSpeed => 1.5;
 
-		protected override double BaseAttackSpeed => 1.5;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 35;
 
-		protected override double BaseHealth => 35;
+		double IUnitData.BaseHealthArmor => 2;
 
-		protected override double BaseHealthArmor => 2;
+		double IUnitData.BaseHealthRegen => 0.3007;
 
-		protected override double BaseHealthRegen => 0.3007;
+		double IUnitData.BaseShields => 50;
 
-		protected override double BaseShields => 50;
+		double IUnitData.BaseShieldsArmor => 2;
 
-		protected override double BaseShieldsArmor => 2;
+		double IUnitData.BaseShieldsRegen => 3;
 
-		protected override double BaseShieldsRegen => 3;
+		double IUnitData.HealthIncrement => 3;
 
-		protected override double HealthIncrement => 3;
+		double IUnitData.HealthRegenIncrement => 0.1992;
 
-		protected override double HealthRegenIncrement => 0.1992;
+		double IUnitData.ShieldIncrement => 5;
 
-		protected override double ShieldIncrement => 5;
+		double IUnitData.ShieldRegenIncrement => 0.3007;
 
-		protected override double ShieldRegenIncrement => 0.3007;
+		double IUnitData.HealthArmorIncrement => 0.2;
 
-		protected override double HealthArmorIncrement => 0.2;
+		double IUnitData.ShieldArmorIncrement => 0.2;
 
-		protected override double ShieldArmorIncrement => 0.2;
+		double IUnitData.AttackIncrement => 0.5;
 
-		protected override double AttackIncrement => 0.5;
+		public UnitType[] SpecTypes => new UnitType[0];
 	}
 }

@@ -9,44 +9,42 @@ namespace VBusiness.Units
 	// WeaponData: PsionicShockwave
 	// EffectData: PsionicShockwaveDamage
 
-	public class Archon : Unit
+	public class Archon : IUnitData
 	{
-		public Archon(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.Archon;
 
-		public override UnitType Type => UnitType.Archon;
+		double IUnitData.BaseAttack =>25;
 
-		protected override double BaseAttack => 25;
+		double IUnitData.BaseAttackSpeed => 1.4;
 
-		protected override double BaseAttackSpeed => 1.4;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 10;
 
-		protected override double BaseHealth => 10;
+		double IUnitData.BaseHealthArmor => 7;
 
-		protected override double BaseHealthArmor => 7;
+		double IUnitData.BaseHealthRegen => 1;
 
-		protected override double BaseHealthRegen => 1;
+		double IUnitData.BaseShields => 700;
 
-		protected override double BaseShields => 700;
+		double IUnitData.BaseShieldsArmor => 7;
 
-		protected override double BaseShieldsArmor => 7;
+		double IUnitData.BaseShieldsRegen => 4;
 
-		protected override double BaseShieldsRegen => 4;
+		double IUnitData.HealthIncrement => 1;
 
-		protected override double HealthIncrement => 1;
+		double IUnitData.HealthRegenIncrement => 0.1992;
 
-		protected override double HealthRegenIncrement => 0.1992;
+		double IUnitData.ShieldIncrement => 27;
 
-		protected override double ShieldIncrement => 27;
+		double IUnitData.ShieldRegenIncrement => 1.3007;
 
-		protected override double ShieldRegenIncrement => 1.3007;
+		double IUnitData.HealthArmorIncrement => 0.7;
 
-		protected override double HealthArmorIncrement => 0.7;
+		double IUnitData.ShieldArmorIncrement => 0.7;
 
-		protected override double ShieldArmorIncrement => 0.7;
+		double IUnitData.AttackIncrement => 1.3;
 
-		protected override double AttackIncrement => 1.3;
+		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar };
 	}
 }

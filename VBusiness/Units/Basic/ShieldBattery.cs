@@ -8,44 +8,42 @@ namespace VBusiness.Units
 	// UnitData name = Sentry
 	// ASF weapon name = Healing Beam?
 
-	public class ShieldBattery : Unit
+	public class ShieldBattery : IUnitData
 	{
-		public ShieldBattery(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.ShieldBattery;
 
-		public override UnitType Type => UnitType.ShieldBattery;
+		double IUnitData.BaseAttack => -5;
 
-		protected override double BaseAttack => -5;
+		double IUnitData.BaseAttackSpeed => 1.5;
 
-		protected override double BaseAttackSpeed => 1.5;
+		double IUnitData.AttackCount => 0;
 
-		public override double AttackCount => 0;
+		double IUnitData.BaseHealth => 50;
 
-		protected override double BaseHealth => 50;
+		double IUnitData.BaseHealthArmor => 2;
 
-		protected override double BaseHealthArmor => 2;
+		double IUnitData.BaseHealthRegen => 2;
 
-		protected override double BaseHealthRegen => 2;
+		double IUnitData.BaseShields => 100;
 
-		protected override double BaseShields => 100;
+		double IUnitData.BaseShieldsArmor => 2;
 
-		protected override double BaseShieldsArmor => 2;
+		double IUnitData.BaseShieldsRegen => 5;
 
-		protected override double BaseShieldsRegen => 5;
+		double IUnitData.HealthIncrement => 4;
 
-		protected override double HealthIncrement => 4;
+		double IUnitData.HealthRegenIncrement => 0.1992;
 
-		protected override double HealthRegenIncrement => 0.1992;
+		double IUnitData.ShieldIncrement => 6;
 
-		protected override double ShieldIncrement => 6;
+		double IUnitData.ShieldRegenIncrement => 0.8007;
 
-		protected override double ShieldRegenIncrement => 0.8007;
+		double IUnitData.HealthArmorIncrement => 0.3;
 
-		protected override double HealthArmorIncrement => 0.3;
+		double IUnitData.ShieldArmorIncrement => 0.3;
 
-		protected override double ShieldArmorIncrement => 0.3;
+		double IUnitData.AttackIncrement => -0.25;
 
-		protected override double AttackIncrement => -0.25;
+		public UnitType[] SpecTypes => new[] { UnitType.ShieldBattery };
 	}
 }

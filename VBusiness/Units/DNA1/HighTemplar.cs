@@ -8,44 +8,42 @@ namespace VBusiness.Units
 	// UnitData: HighArchonTemplar
 	// WeaponData: HighTemplarWeapon
 
-	public class HighTemplar : Unit
+	public class HighTemplar : IUnitData
 	{
-		public HighTemplar(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.HighTemplar;
 
-		public override UnitType Type => UnitType.HighTemplar;
+		double IUnitData.BaseAttack =>20;
 
-		protected override double BaseAttack => 20;
+		double IUnitData.BaseAttackSpeed => 1.5;
 
-		protected override double BaseAttackSpeed => 1.5;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 650;
 
-		protected override double BaseHealth => 650;
+		double IUnitData.BaseHealthArmor => 7;
 
-		protected override double BaseHealthArmor => 7;
+		double IUnitData.BaseHealthRegen => 3;
 
-		protected override double BaseHealthRegen => 3;
+		double IUnitData.BaseShields => 650;
 
-		protected override double BaseShields => 650;
+		double IUnitData.BaseShieldsArmor => 7;
 
-		protected override double BaseShieldsArmor => 7;
+		double IUnitData.BaseShieldsRegen => 6;
 
-		protected override double BaseShieldsRegen => 6;
+		double IUnitData.HealthIncrement => 8;
 
-		protected override double HealthIncrement => 8;
+		double IUnitData.HealthRegenIncrement => 0.6992;
 
-		protected override double HealthRegenIncrement => 0.6992;
+		double IUnitData.ShieldIncrement => 8;
 
-		protected override double ShieldIncrement => 8;
+		double IUnitData.ShieldRegenIncrement => 0.6992;
 
-		protected override double ShieldRegenIncrement => 0.6992;
+		double IUnitData.HealthArmorIncrement => 0.65;
 
-		protected override double HealthArmorIncrement => 0.65;
+		double IUnitData.ShieldArmorIncrement => 0.65;
 
-		protected override double ShieldArmorIncrement => 0.65;
+		double IUnitData.AttackIncrement => 1;
 
-		protected override double AttackIncrement => 1;
+		public UnitType[] SpecTypes => new[] { UnitType.Templar };
 	}
 }

@@ -56,9 +56,9 @@ namespace VUserInterface
 			// 
 			// UnitTypeDropBox
 			// 
-			this.UnitTypeDropBox.Caption = "Type";
+			this.UnitTypeDropBox.Caption = "Type:";
 			this.UnitTypeDropBox.SelectedValueChanged += UnitTypeDropBox_SelectedValueChanged;
-			this.UnitTypeDropBox.DataBindings.Add("SelectedValue", BindingSource, "Type");
+			this.UnitTypeDropBox.DataBindings.Add("SelectedValue", BindingSource, "UnitData.Type");
 			this.UnitTypeDropBox.List = UnitsTypesList;
 			this.UnitTypeDropBox.Location = DPIScalingHelper.GetScaledPoint(106, 30);
 			this.UnitTypeDropBox.Name = "UnitTypeDropBox";
@@ -68,7 +68,7 @@ namespace VUserInterface
 			// UnitTypeLabel
 			// 
 			this.UnitTypeLabel.Caption = "Type: ";
-			this.UnitTypeLabel.DataBindings.Add("Text", BindingSource, "Type");
+			this.UnitTypeLabel.DataBindings.Add("Text", BindingSource, "UnitData.Type");
 			this.UnitTypeLabel.Location = DPIScalingHelper.GetScaledPoint(106, 30);
 			this.UnitTypeLabel.Name = "UnitTypeLabel";
 			this.UnitTypeLabel.Size = DPIScalingHelper.GetScaledSize(211, 29);
@@ -113,10 +113,11 @@ namespace VUserInterface
 			//
 			// SpecCheckBox
 			//
-			this.SpecCheckBox.Name = "SpecCheckBox";
 			this.SpecCheckBox.Caption = "Unit Spec";
 			this.SpecCheckBox.DataBindings.Add("Checked", BindingSource, "HasUnitSpec");
+			this.SpecCheckBox.Enabled = false;
 			this.SpecCheckBox.Location = DPIScalingHelper.GetScaledPoint(106, 150);
+			this.SpecCheckBox.Name = "SpecCheckBox";
 			// 
 			// AddButton
 			// 

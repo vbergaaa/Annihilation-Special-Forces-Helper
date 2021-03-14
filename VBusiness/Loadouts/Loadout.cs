@@ -98,8 +98,22 @@ namespace VBusiness.Loadouts
 		#region CurrentUnit
 
 		public override VUnit CurrentUnit 
-		{ 
-			get => base.CurrentUnit;
+		{
+			get
+			{
+				if (base.CurrentUnit == null)
+				{
+					if (Units.Count > 0)
+					{
+						return Units[0];
+					}
+					else
+					{
+						return VUnit.New(UnitType.None, this);
+					}
+				}
+				return base.CurrentUnit;
+			}
 			set
 			{
 				if (base.CurrentUnit != value)
@@ -118,10 +132,7 @@ namespace VBusiness.Loadouts
 				unit.Rank?.DeactivateRank();
 				unit.UpdateStatsFromInfuse(-unit.CurrentInfusion);
 				unit.UpdateStatsFromEssence(-unit.EssenceStacks);
-				if (unit.HasUnitSpec)
-				{
-					unit.DeactivateSpec();
-				}
+				unit.RemoveStatsFromSpec(unit.HasUnitSpec);
 			}
 		}
 
@@ -132,9 +143,31 @@ namespace VBusiness.Loadouts
 				unit.Rank?.ActivateRank();
 				unit.UpdateStatsFromInfuse(unit.CurrentInfusion);
 				unit.UpdateStatsFromEssence(unit.EssenceStacks);
-				if (unit.HasUnitSpec)
+				unit.AddStatsFromSpec();
+			}
+		}
+
+		#endregion
+
+		#region UnitSpec
+
+		public override UnitType UnitSpec
+		{
+			get => base.UnitSpec;
+			set
+			{
+				var unitHadSpec = CurrentUnit.HasUnitSpec;
+				base.UnitSpec = value;
+				if (unitHadSpec != CurrentUnit.HasUnitSpec)
 				{
-					unit.ActivateSpec();
+					if (CurrentUnit.HasUnitSpec)
+					{
+						((Unit)CurrentUnit).AddStatsFromSpec();
+					}
+					else
+					{
+						((Unit)CurrentUnit).RemoveStatsFromSpec(true);
+					}
 				}
 			}
 		}

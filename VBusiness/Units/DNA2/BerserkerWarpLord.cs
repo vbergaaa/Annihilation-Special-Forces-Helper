@@ -8,44 +8,42 @@ namespace VBusiness.Units
 	// UnitData: ZealotAiur
 	// WeaponData: SolariteReaper
 	
-	public class BerserkerWarpLord : Unit
+	public class BerserkerWarpLord : IUnitData
 	{
-		public BerserkerWarpLord(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.BerserkerWarpLord;
 
-		public override UnitType Type => UnitType.BerserkerWarpLord;
+		double IUnitData.BaseAttack =>16;
 
-		protected override double BaseAttack => 16;
+		double IUnitData.BaseAttackSpeed => 1;
 
-		protected override double BaseAttackSpeed => 1;
+		double IUnitData.AttackCount => 2;
 
-		public override double AttackCount => 2;
+		double IUnitData.BaseHealth => 225;
 
-		protected override double BaseHealth => 225;
+		double IUnitData.BaseHealthArmor => 5;
 
-		protected override double BaseHealthArmor => 5;
+		double IUnitData.BaseHealthRegen => 4;
 
-		protected override double BaseHealthRegen => 4;
+		double IUnitData.BaseShields => 320;
 
-		protected override double BaseShields => 320;
+		double IUnitData.BaseShieldsArmor => 5;
 
-		protected override double BaseShieldsArmor => 5;
+		double IUnitData.BaseShieldsRegen => 4;
 
-		protected override double BaseShieldsRegen => 4;
+		double IUnitData.HealthIncrement => 7;
 
-		protected override double HealthIncrement => 7;
+		double IUnitData.HealthRegenIncrement => 0.3984;
 
-		protected override double HealthRegenIncrement => 0.3984;
+		double IUnitData.ShieldIncrement => 13;
 
-		protected override double ShieldIncrement => 13;
+		double IUnitData.ShieldRegenIncrement => 1;
 
-		protected override double ShieldRegenIncrement => 1;
+		double IUnitData.HealthArmorIncrement => 0.6;
 
-		protected override double HealthArmorIncrement => 0.6;
+		double IUnitData.ShieldArmorIncrement => 0.6;
 
-		protected override double ShieldArmorIncrement => 0.6;
+		double IUnitData.AttackIncrement => 1.2;
 
-		protected override double AttackIncrement => 1.2;
+		public UnitType[] SpecTypes => new[] { UnitType.WarpLord };
 	}
 }

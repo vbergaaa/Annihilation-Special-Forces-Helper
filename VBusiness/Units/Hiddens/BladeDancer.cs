@@ -8,44 +8,42 @@ namespace VBusiness.Units
 	// UnitData: BladeDancer
 	// WeaponData: BladeDance
 
-	public class BladeDancer : Unit
+	public class BladeDancer : IUnitData
 	{
-		public BladeDancer(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.BladeDancer;
 
-		public override UnitType Type => UnitType.BladeDancer;
+		double IUnitData.BaseAttack =>10;
 
-		protected override double BaseAttack => 10;
+		double IUnitData.BaseAttackSpeed => 2.5;
 
-		protected override double BaseAttackSpeed => 2.5;
+		double IUnitData.AttackCount => 10;
 
-		public override double AttackCount => 10;
+		double IUnitData.BaseHealth => 500;
 
-		protected override double BaseHealth => 500;
+		double IUnitData.BaseHealthArmor => 8;
 
-		protected override double BaseHealthArmor => 8;
+		double IUnitData.BaseHealthRegen => 9;
 
-		protected override double BaseHealthRegen => 9;
+		double IUnitData.BaseShields => 750;
 
-		protected override double BaseShields => 750;
+		double IUnitData.BaseShieldsArmor => 8;
 
-		protected override double BaseShieldsArmor => 8;
+		double IUnitData.BaseShieldsRegen => 15;
 
-		protected override double BaseShieldsRegen => 15;
+		double IUnitData.HealthIncrement => 11;
 
-		protected override double HealthIncrement => 11;
+		double IUnitData.HealthRegenIncrement => 1.1992;
 
-		protected override double HealthRegenIncrement => 1.1992;
+		double IUnitData.ShieldIncrement => 18;
 
-		protected override double ShieldIncrement => 18;
+		double IUnitData.ShieldRegenIncrement => 1.3984;
 
-		protected override double ShieldRegenIncrement => 1.3984;
+		double IUnitData.HealthArmorIncrement => 0.9;
 
-		protected override double HealthArmorIncrement => 0.9;
+		double IUnitData.ShieldArmorIncrement => 0.9;
 
-		protected override double ShieldArmorIncrement => 0.9;
+		double IUnitData.AttackIncrement => 1;
 
-		protected override double AttackIncrement => 1;
+		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.LightAdept, UnitType.ShieldBattery };
 	}
 }

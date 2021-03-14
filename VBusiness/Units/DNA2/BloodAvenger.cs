@@ -9,44 +9,42 @@ namespace VBusiness.Units
 	// WeaponData: DarkTemplarTaldarmin
 	// EffectData: BAScytheDamage
 
-	public class BloodAvenger : Unit
+	public class BloodAvenger : IUnitData
 	{
-		public BloodAvenger(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.BloodAvenger;
 
-		public override UnitType Type => UnitType.BloodAvenger;
+		double IUnitData.BaseAttack =>40;
 
-		protected override double BaseAttack => 40;
+		double IUnitData.BaseAttackSpeed => 0.8;
 
-		protected override double BaseAttackSpeed => 0.8;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 22;
 
-		protected override double BaseHealth => 22;
+		double IUnitData.BaseHealthArmor => 5;
 
-		protected override double BaseHealthArmor => 5;
+		double IUnitData.BaseHealthRegen => 7;
 
-		protected override double BaseHealthRegen => 7;
+		double IUnitData.BaseShields => 475;
 
-		protected override double BaseShields => 475;
+		double IUnitData.BaseShieldsArmor => 5;
 
-		protected override double BaseShieldsArmor => 5;
+		double IUnitData.BaseShieldsRegen => 7;
 
-		protected override double BaseShieldsRegen => 7;
+		double IUnitData.HealthIncrement => 2;
 
-		protected override double HealthIncrement => 2;
+		double IUnitData.HealthRegenIncrement => 0.5;
 
-		protected override double HealthRegenIncrement => 0.5;
+		double IUnitData.ShieldIncrement => 15;
 
-		protected override double ShieldIncrement => 15;
+		double IUnitData.ShieldRegenIncrement => 2;
 
-		protected override double ShieldRegenIncrement => 2;
+		double IUnitData.HealthArmorIncrement => 0.6;
 
-		protected override double HealthArmorIncrement => 0.6;
+		double IUnitData.ShieldArmorIncrement => 0.6;
 
-		protected override double ShieldArmorIncrement => 0.6;
+		double IUnitData.AttackIncrement => 2.5;
 
-		protected override double AttackIncrement => 2.5;
+		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow };
 	}
 }

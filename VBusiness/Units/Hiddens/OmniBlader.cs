@@ -5,48 +5,46 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Units
 {
-	public class OmniBlader : Unit
+	public class OmniBlader : IUnitData
 	{
 		// UnitData: OmniBlader
 		// WeaponData: OmniDance
 		// EffectData: OmniDanceDamage
 
-		public OmniBlader(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.OmniBlader;
 
-		public override UnitType Type => UnitType.OmniBlader;
+		double IUnitData.BaseAttack =>25;
 
-		protected override double BaseAttack => 25;
+		double IUnitData.BaseAttackSpeed => 2;
 
-		protected override double BaseAttackSpeed => 2;
+		double IUnitData.AttackCount => 52;
 
-		public override double AttackCount => 52;
+		double IUnitData.BaseHealth => 1000;
 
-		protected override double BaseHealth => 1000;
+		double IUnitData.BaseHealthArmor => 16;
 
-		protected override double BaseHealthArmor => 16;
+		double IUnitData.BaseHealthRegen => 15;
 
-		protected override double BaseHealthRegen => 15;
+		double IUnitData.BaseShields => 1500;
 
-		protected override double BaseShields => 1500;
+		double IUnitData.BaseShieldsArmor => 16;
 
-		protected override double BaseShieldsArmor => 16;
+		double IUnitData.BaseShieldsRegen => 30;
 
-		protected override double BaseShieldsRegen => 30;
+		double IUnitData.HealthIncrement => 23;
 
-		protected override double HealthIncrement => 23;
+		double IUnitData.HealthRegenIncrement => 1.8007;
 
-		protected override double HealthRegenIncrement => 1.8007;
+		double IUnitData.ShieldIncrement => 32;
 
-		protected override double ShieldIncrement => 32;
+		double IUnitData.ShieldRegenIncrement => 2.5;
 
-		protected override double ShieldRegenIncrement => 2.5;
+		double IUnitData.HealthArmorIncrement => 1.4;
 
-		protected override double HealthArmorIncrement => 1.4;
+		double IUnitData.ShieldArmorIncrement => 1.4;
 
-		protected override double ShieldArmorIncrement => 1.4;
+		double IUnitData.AttackIncrement => 20;
 
-		protected override double AttackIncrement => 20;
+		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery, UnitType.LightAdept };
 	}
 }

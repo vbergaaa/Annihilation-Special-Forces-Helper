@@ -6,9 +6,9 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Units
 {
-	public abstract class Unit : VUnit
+	public class Unit : VUnit
 	{
-		public Unit(VLoadout loadout) : base(loadout)
+		public Unit(VLoadout loadout, UnitType unitType) : base(loadout, unitType)
 		{
 		}
 
@@ -129,6 +129,26 @@ namespace VBusiness.Units
 			Loadout.Stats.Acceleration += 1 * levelDifference;
 		}
 
+		internal void RemoveStatsFromSpec(bool shouldRemove = true)
+		{
+			if (shouldRemove)
+			{
+				var specLevel = ((PerkCollection)Loadout.Perks).UnitSpecialization.DesiredLevel;
+				Loadout.Stats.UpdateDamageIncrease("Spec", -2 * specLevel);
+				Loadout.Stats.UpdateDamageReduction("Spec", -specLevel);
+			}
+		}
+
+		internal void AddStatsFromSpec()
+		{
+			if (HasUnitSpec)
+			{
+				var specLevel = ((PerkCollection)Loadout.Perks).UnitSpecialization.DesiredLevel;
+				Loadout.Stats.UpdateDamageIncrease("Spec", 2 * specLevel);
+				Loadout.Stats.UpdateDamageReduction("Spec", specLevel);
+			}
+		}
+
 		#endregion
 
 		#region MaximumEssence
@@ -172,44 +192,12 @@ namespace VBusiness.Units
 
 		public override bool HasUnitSpec
 		{
-			get => base.HasUnitSpec;
-			set
+			get
 			{
-				if (base.HasUnitSpec != value)
-				{
-					base.HasUnitSpec = value;
-					ToggleSpec();
-				}
-			}
-		}
-
-		void ToggleSpec()
-		{
-			if (HasUnitSpec)
-			{
-				ActivateSpec();
-			}
-			else
-			{
-				DeactivateSpec();
-			}
-		}
-
-		public void DeactivateSpec()
-		{
-			if (Loadout.Perks is PerkCollection perks && perks.UnitSpecialization.DesiredLevel > 0 && IsCurrentUnit)
-			{
-				Loadout.Stats.UpdateDamageIncrease("Spec", -2 * perks.UnitSpecialization.DesiredLevel);
-				Loadout.Stats.UpdateDamageReduction("Spec", -perks.UnitSpecialization.DesiredLevel);
-			}
-		}
-
-		public void ActivateSpec()
-		{
-			if (Loadout.Perks is PerkCollection perks && perks.UnitSpecialization.DesiredLevel > 0 && IsCurrentUnit)
-			{
-				Loadout.Stats.UpdateDamageIncrease("Spec", 2 * perks.UnitSpecialization.DesiredLevel);
-				Loadout.Stats.UpdateDamageReduction("Spec", perks.UnitSpecialization.DesiredLevel);
+				//var perks = (PerkCollection)Loadout.Perks;
+				//var hasAllSpec = perks.UnitSpecialization.DesiredLevel == 10 && perks.UpgradeCache.DesiredLevel == 1;
+				return UnitData.SpecTypes.Contains(Loadout.UnitSpec);
+				//	|| hasAllSpec;
 			}
 		}
 
@@ -217,14 +205,14 @@ namespace VBusiness.Units
 
 		#region Calculated Stats
 
-		public override double Attack => BaseAttack + Upgrades.AttackUpgrade * AttackIncrement;
-		public override double AttackSpeed => BaseAttackSpeed / Math.Pow(1.04, Upgrades.AttackSpeedUpgrade);
-		public override double Health => BaseHealth + Upgrades.HealthUpgrade * HealthIncrement;
-		public override double HealthRegen => BaseHealthRegen + Upgrades.HealthUpgrade * HealthRegenIncrement;
-		public override double HealthArmor => BaseHealthArmor + Upgrades.HealthArmorUpgrade * HealthArmorIncrement;
-		public override double Shields => BaseShields + Upgrades.ShieldsUpgrade * ShieldIncrement;
-		public override double ShieldsArmor => BaseShieldsArmor + Upgrades.ShieldsArmorUpgrade * ShieldArmorIncrement;
-		public override double ShieldsRegen => BaseShieldsRegen + Upgrades.ShieldsUpgrade * ShieldRegenIncrement;
+		public override double Attack => UnitData.BaseAttack + Upgrades.AttackUpgrade * UnitData.AttackIncrement;
+		public override double AttackSpeed => UnitData.BaseAttackSpeed / Math.Pow(1.04, Upgrades.AttackSpeedUpgrade);
+		public override double Health => UnitData.BaseHealth + Upgrades.HealthUpgrade * UnitData.HealthIncrement;
+		public override double HealthRegen => UnitData.BaseHealthRegen + Upgrades.HealthUpgrade * UnitData.HealthRegenIncrement;
+		public override double HealthArmor => UnitData.BaseHealthArmor + Upgrades.HealthArmorUpgrade * UnitData.HealthArmorIncrement;
+		public override double Shields => UnitData.BaseShields + Upgrades.ShieldsUpgrade * UnitData.ShieldIncrement;
+		public override double ShieldsArmor => UnitData.BaseShieldsArmor + Upgrades.ShieldsArmorUpgrade * UnitData.ShieldArmorIncrement;
+		public override double ShieldsRegen => UnitData.BaseShieldsRegen + Upgrades.ShieldsUpgrade * UnitData.ShieldRegenIncrement;
 
 		[VXML(false)]
 		VUpgradeManager Upgrades => Loadout.Upgrades;

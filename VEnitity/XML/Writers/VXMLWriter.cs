@@ -2,6 +2,7 @@
 using System.IO;
 using System.Xml;
 using VEntityFramework.Data;
+using VEntityFramework.Model;
 
 namespace VEntityFramework.XML
 {
@@ -14,7 +15,7 @@ namespace VEntityFramework.XML
 			using (var stream = File.Create(fullFilePath))
 			using (var writer = GetXmlWriter(stream))
 			{
-				WriteXML(writer, bizo);
+				WriteBizoXML(writer, bizo);
 			}
 			bizo.XmlLocation = fullFilePath;
 		}
@@ -39,7 +40,7 @@ namespace VEntityFramework.XML
 			return XmlWriter.Create(stream, xmlSettings);
 		}
 
-		void WriteXML(XmlWriter writer, VBusinessObject bizo)
+		void WriteBizoXML(XmlWriter writer, VBusinessObject bizo)
 		{
 			if (bizo != null)
 			{
@@ -48,9 +49,16 @@ namespace VEntityFramework.XML
 				{
 					if (property.IncludeInVXml())
 					{
-						if (property.IsBusinessObject())
+						if (property.IsXmlObject())
 						{
-							WriteXML(writer, (VBusinessObject)property.GetValue(bizo));
+							if (property.IsBusinessObject())
+							{
+								WriteBizoXML(writer, (VBusinessObject)property.GetValue(bizo));
+							}
+							else
+							{
+								WriteXmlObject(writer, (IXmlObject)property.GetValue(bizo));
+							}
 						}
 						else if (typeof(IList).IsAssignableFrom(property.PropertyType))
 						{
@@ -58,7 +66,7 @@ namespace VEntityFramework.XML
 						}
 						else
 						{
-							writer.WriteStartElement(property.Name);
+							writer.WriteStartElement(property.GetXmlAlias());
 							writer.WriteString(property.GetValue(bizo)?.ToString() ?? "");
 							writer.WriteEndElement();
 						}
@@ -66,6 +74,19 @@ namespace VEntityFramework.XML
 				}
 				writer.WriteEndElement();
 				bizo.HasChanges = false;
+			}
+		}
+
+		void WriteXmlObject(XmlWriter writer, IXmlObject xmlObject)
+		{
+			foreach (var proprety in xmlObject.GetType().GetProperties())
+			{
+				if (proprety.IncludeInVXml())
+				{
+					writer.WriteStartElement(proprety.GetXmlAlias());
+					writer.WriteString(proprety.GetValue(xmlObject)?.ToString() ?? "");
+					writer.WriteEndElement();
+				}
 			}
 		}
 
@@ -80,7 +101,7 @@ namespace VEntityFramework.XML
 				{
 					if (item is VBusinessObject childBizo)
 					{
-						WriteXML(writer, childBizo);
+						WriteBizoXML(writer, childBizo);
 					}
 					else
 					{

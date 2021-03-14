@@ -8,44 +8,42 @@ namespace VBusiness.Units
 	// Unit: Adept
 	// Weapon: Adept
 	// Effect: AdeptDamage
-	public class LightAdept : Unit
+	public class LightAdept : IUnitData
 	{
-		public LightAdept(VLoadout loadout) : base(loadout)
-		{
-		}
+		double IUnitData.BaseAttack => 25;
 
-		protected override double BaseAttack => 25;
+		double IUnitData.BaseAttackSpeed => 1.4;
 
-		protected override double BaseAttackSpeed => 1.4;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 125;
 
-		protected override double BaseHealth => 125;
+		double IUnitData.BaseHealthArmor => 3;
 
-		protected override double BaseHealthArmor => 3;
+		double IUnitData.BaseHealthRegen => 3;
 
-		protected override double BaseHealthRegen => 3;
+		double IUnitData.BaseShields => 175;
 
-		protected override double BaseShields => 175;
+		double IUnitData.BaseShieldsArmor => 3;
 
-		protected override double BaseShieldsArmor => 3;
+		double IUnitData.BaseShieldsRegen => 5;
 
-		protected override double BaseShieldsRegen => 5;
+		public UnitType Type => UnitType.LightAdept;
 
-		public override UnitType Type => UnitType.LightAdept;
+		double IUnitData.HealthIncrement => 5;
 
-		protected override double HealthIncrement => 5;
+		double IUnitData.HealthRegenIncrement => 0.3007;
 
-		protected override double HealthRegenIncrement => 0.3007;
+		double IUnitData.ShieldIncrement => 7;
 
-		protected override double ShieldIncrement => 7;
+		double IUnitData.ShieldRegenIncrement => 1;
 
-		protected override double ShieldRegenIncrement => 1;
+		double IUnitData.HealthArmorIncrement => 0.45;
 
-		protected override double HealthArmorIncrement => 0.45;
+		double IUnitData.ShieldArmorIncrement => 0.45;
 
-		protected override double ShieldArmorIncrement => 0.45;
+		double IUnitData.AttackIncrement => 1.25;
 
-		protected override double AttackIncrement => 1.25;
+		public UnitType[] SpecTypes => new[] { UnitType.LightAdept };
 	}
 }

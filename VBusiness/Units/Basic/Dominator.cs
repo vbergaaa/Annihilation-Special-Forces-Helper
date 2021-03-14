@@ -7,44 +7,42 @@ namespace VBusiness.Units
 {
 	// UnitData name = HybridDominator
 	// ASF Weapon name = Psi Blast (can't find in WeaponData)
-	public class Dominator : Unit
+	public class Dominator : IUnitData
 	{
-		public Dominator(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.Dominator;
 
-		public override UnitType Type => UnitType.Dominator;
+		double IUnitData.BaseAttack => 50;
 
-		protected override double BaseAttack => 50;
+		double IUnitData.BaseAttackSpeed => 1.5;
 
-		protected override double BaseAttackSpeed => 1.5;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 600;
 
-		protected override double BaseHealth => 600;
+		double IUnitData.BaseHealthArmor => 6;
 
-		protected override double BaseHealthArmor => 6;
+		double IUnitData.BaseHealthRegen => 1;
 
-		protected override double BaseHealthRegen => 1;
+		double IUnitData.BaseShields => 600;
 
-		protected override double BaseShields => 600;
+		double IUnitData.BaseShieldsArmor => 6;
 
-		protected override double BaseShieldsArmor => 6;
+		double IUnitData.BaseShieldsRegen => 2; // wasn't in data but seems to be correct from my testing
 
-		protected override double BaseShieldsRegen => 2; // wasn't in data but seems to be correct from my testing
+		double IUnitData.HealthIncrement => 8;
 
-		protected override double HealthIncrement => 8;
+		double IUnitData.HealthRegenIncrement => 1;
 
-		protected override double HealthRegenIncrement => 1;
+		double IUnitData.ShieldIncrement => 8;
 
-		protected override double ShieldIncrement => 8;
+		double IUnitData.ShieldRegenIncrement => 2.0;
 
-		protected override double ShieldRegenIncrement => 2.0;
+		double IUnitData.HealthArmorIncrement => 0.6;
 
-		protected override double HealthArmorIncrement => 0.6;
+		double IUnitData.ShieldArmorIncrement => 0.6;
 
-		protected override double ShieldArmorIncrement => 0.6;
+		double IUnitData.AttackIncrement => 2.5;
 
-		protected override double AttackIncrement => 2.5;
+		public UnitType[] SpecTypes => new[] { UnitType.Dominator };
 	}
 }

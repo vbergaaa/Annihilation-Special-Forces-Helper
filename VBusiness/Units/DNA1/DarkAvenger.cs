@@ -8,44 +8,42 @@ namespace VBusiness.Units
 	// UnitData: DarkTemplarAiur
 	// WeaponData: AvengerWeapon
 
-	public class DarkAvenger : Unit
+	public class DarkAvenger : IUnitData
 	{
-		public DarkAvenger(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.DarkAvenger;
 
-		public override UnitType Type => UnitType.DarkAvenger;
+		double IUnitData.BaseAttack => 30;
 
-		protected override double BaseAttack => 30;
+		double IUnitData.BaseAttackSpeed => 0.9;
 
-		protected override double BaseAttackSpeed => 0.9;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 15;
 
-		protected override double BaseHealth => 15;
+		double IUnitData.BaseHealthArmor => 4;
 
-		protected override double BaseHealthArmor => 4;
+		double IUnitData.BaseHealthRegen => 6;
 
-		protected override double BaseHealthRegen => 6;
+		double IUnitData.BaseShields => 325;
 
-		protected override double BaseShields => 325;
+		double IUnitData.BaseShieldsArmor => 4;
 
-		protected override double BaseShieldsArmor => 4;
+		double IUnitData.BaseShieldsRegen => 6;
 
-		protected override double BaseShieldsRegen => 6;
+		double IUnitData.HealthIncrement => 1.5;
 
-		protected override double HealthIncrement => 1.5;
+		double IUnitData.HealthRegenIncrement => 0.3984;
 
-		protected override double HealthRegenIncrement => 0.3984;
+		double IUnitData.ShieldIncrement => 13;
 
-		protected override double ShieldIncrement => 13;
+		double IUnitData.ShieldRegenIncrement => 1.5;
 
-		protected override double ShieldRegenIncrement => 1.5;
+		double IUnitData.HealthArmorIncrement => 0.4;
 
-		protected override double HealthArmorIncrement => 0.4;
+		double IUnitData.ShieldArmorIncrement => 0.4;
 
-		protected override double ShieldArmorIncrement => 0.4;
+		double IUnitData.AttackIncrement => 2;
 
-		protected override double AttackIncrement => 2;
+		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow };
 	}
 }

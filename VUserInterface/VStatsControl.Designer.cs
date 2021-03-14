@@ -86,7 +86,7 @@ namespace VUserInterface
 			// DamageIncreaseLabel
 			// 
 			this.DamageIncreaseLabel.Caption = "Dmg Increase:";
-			this.DamageIncreaseLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "DamageIncrease"));
+			this.DamageIncreaseLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statsBindingSource, "DamageIncreaseForBinding"));
 			this.DamageIncreaseLabel.Location = DPIScalingHelper.GetScaledPoint(120,260);
 			this.DamageIncreaseLabel.Name = "DamageIncreaseLabel";
 			this.DamageIncreaseLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);

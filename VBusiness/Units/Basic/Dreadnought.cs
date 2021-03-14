@@ -9,44 +9,42 @@ namespace VBusiness.Units
 	// Main Effect: PhaseDisruptors
 	// Splash Effect: ImmortalSplashDamage
 
-	public class Dreadnought : Unit
+	public class Dreadnought : IUnitData
 	{
-		public Dreadnought(VLoadout loadout) : base(loadout)
-		{
-		}
+		double IUnitData.BaseAttack => 25;
 
-		protected override double BaseAttack => 25;
+		double IUnitData.BaseAttackSpeed => 2;
 
-		protected override double BaseAttackSpeed => 2;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 300;
 
-		protected override double BaseHealth => 300;
+		double IUnitData.BaseHealthArmor => 6;
 
-		protected override double BaseHealthArmor => 6;
+		double IUnitData.BaseHealthRegen => 5;
 
-		protected override double BaseHealthRegen => 5;
+		double IUnitData.BaseShields => 450;
 
-		protected override double BaseShields => 450;
+		double IUnitData.BaseShieldsArmor => 6;
 
-		protected override double BaseShieldsArmor => 6;
+		double IUnitData.BaseShieldsRegen => 5;
 
-		protected override double BaseShieldsRegen => 5;
+		public UnitType Type => UnitType.Dreadnought;
 
-		public override UnitType Type => UnitType.Dreadnought;
+		double IUnitData.HealthIncrement => 7;
 
-		protected override double HealthIncrement => 7;
+		double IUnitData.HealthRegenIncrement => 0.5;
 
-		protected override double HealthRegenIncrement => 0.5;
+		double IUnitData.ShieldIncrement => 18;
 
-		protected override double ShieldIncrement => 18;
+		double IUnitData.ShieldRegenIncrement => 1.1992;
 
-		protected override double ShieldRegenIncrement => 1.1992;
+		double IUnitData.HealthArmorIncrement => 0.45;
 
-		protected override double HealthArmorIncrement => 0.45;
+		double IUnitData.ShieldArmorIncrement => 0.45;
 
-		protected override double ShieldArmorIncrement => 0.45;
+		double IUnitData.AttackIncrement => 1.5;
 
-		protected override double AttackIncrement => 1.5;
+		public UnitType[] SpecTypes => new[] { UnitType.Dreadnought };
 	}
 }

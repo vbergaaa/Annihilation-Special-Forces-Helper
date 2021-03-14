@@ -9,44 +9,42 @@ namespace VBusiness.Units
 	// Weapon effect: HighTemplarWeaponDamage
 	// Ability effect: PsiStormDamage && PsiStormDamageInitial
 
-	public class Templar : Unit
+	public class Templar : IUnitData
 	{
-		public Templar(VLoadout loadout) : base(loadout)
-		{
-		}
+		double IUnitData.BaseAttack => 20;
 
-		protected override double BaseAttack => 20;
+		double IUnitData.BaseAttackSpeed => 1;
 
-		protected override double BaseAttackSpeed => 1;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 400;
 
-		protected override double BaseHealth => 400;
+		double IUnitData.BaseHealthArmor => 5;
 
-		protected override double BaseHealthArmor => 5;
+		double IUnitData.BaseHealthRegen => 2;
 
-		protected override double BaseHealthRegen => 2;
+		double IUnitData.BaseShields => 400;
 
-		protected override double BaseShields => 400;
+		double IUnitData.BaseShieldsArmor => 5;
 
-		protected override double BaseShieldsArmor => 5;
+		double IUnitData.BaseShieldsRegen => 3;
 
-		protected override double BaseShieldsRegen => 3;
+		public UnitType Type => UnitType.Templar;
 
-		public override UnitType Type => UnitType.Templar;
+		double IUnitData.HealthIncrement => 6;
 
-		protected override double HealthIncrement => 6;
+		double IUnitData.HealthRegenIncrement => 0.5;
 
-		protected override double HealthRegenIncrement => 0.5;
+		double IUnitData.ShieldIncrement => 6;
 
-		protected override double ShieldIncrement => 6;
+		double IUnitData.ShieldRegenIncrement => 0.5;
 
-		protected override double ShieldRegenIncrement => 0.5;
+		double IUnitData.HealthArmorIncrement => 0.55;
 
-		protected override double HealthArmorIncrement => 0.55;
+		double IUnitData.ShieldArmorIncrement => 0.55;
 
-		protected override double ShieldArmorIncrement => 0.55;
+		double IUnitData.AttackIncrement => 1;
 
-		protected override double AttackIncrement => 1;
+		public UnitType[] SpecTypes => new[] { UnitType.Templar };
 	}
 }

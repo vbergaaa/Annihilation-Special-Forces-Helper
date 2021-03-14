@@ -5,48 +5,46 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Units
 {
-	public class PurificationWalker : Unit
+	public class PurificationWalker : IUnitData
 	{
 		// UnitData: ColossusPurifier
 		// WeaponData: ColossusPurifierThermalLances
 		// EffectData: ColossusPurifierThermalLancesDamage
 
-		public PurificationWalker(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.PurificationWalker;
 
-		public override UnitType Type => UnitType.PurificationWalker;
+		double IUnitData.BaseAttack =>30;
 
-		protected override double BaseAttack => 30;
+		double IUnitData.BaseAttackSpeed => 1.4;
 
-		protected override double BaseAttackSpeed => 1.4;
+		double IUnitData.AttackCount => 2;
 
-		public override double AttackCount => 2;
+		double IUnitData.BaseHealth => 600;
 
-		protected override double BaseHealth => 600;
+		double IUnitData.BaseHealthArmor => 8;
 
-		protected override double BaseHealthArmor => 8;
+		double IUnitData.BaseHealthRegen => 5;
 
-		protected override double BaseHealthRegen => 5;
+		double IUnitData.BaseShields => 850;
 
-		protected override double BaseShields => 850;
+		double IUnitData.BaseShieldsArmor => 8;
 
-		protected override double BaseShieldsArmor => 8;
+		double IUnitData.BaseShieldsRegen => 5;
 
-		protected override double BaseShieldsRegen => 5;
+		double IUnitData.HealthIncrement => 12;
 
-		protected override double HealthIncrement => 12;
+		double IUnitData.HealthRegenIncrement => 1;
 
-		protected override double HealthRegenIncrement => 1;
+		double IUnitData.ShieldIncrement => 18;
 
-		protected override double ShieldIncrement => 18;
+		double IUnitData.ShieldRegenIncrement => 1.5;
 
-		protected override double ShieldRegenIncrement => 1.5;
+		double IUnitData.HealthArmorIncrement => 1.1;
 
-		protected override double HealthArmorIncrement => 1.1;
+		double IUnitData.ShieldArmorIncrement => 1.1;
 
-		protected override double ShieldArmorIncrement => 1.1;
+		double IUnitData.AttackIncrement => 2.5;
 
-		protected override double AttackIncrement => 2.5;
+		public UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
 	}
 }

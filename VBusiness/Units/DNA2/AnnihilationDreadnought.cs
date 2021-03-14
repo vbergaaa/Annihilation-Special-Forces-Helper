@@ -9,44 +9,42 @@ namespace VBusiness.Units
 	// WeaponData: AnnihilatorParticleDisruptors
 	// EffectData: AnnihilatorParticleDisruptors
 
-	public class AnnihilationDreadnought : Unit
+	public class AnnihilationDreadnought : IUnitData
 	{
-		public AnnihilationDreadnought(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.AnnihilationDreadnought;
 
-		public override UnitType Type => UnitType.AnnihilationDreadnought;
+		double IUnitData.BaseAttack =>40;
 
-		protected override double BaseAttack => 40;
+		double IUnitData.BaseAttackSpeed => 1.4;
 
-		protected override double BaseAttackSpeed => 1.4;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 425;
 
-		protected override double BaseHealth => 425;
+		double IUnitData.BaseHealthArmor => 8;
 
-		protected override double BaseHealthArmor => 8;
+		double IUnitData.BaseHealthRegen => 8;
 
-		protected override double BaseHealthRegen => 8;
+		double IUnitData.BaseShields => 600;
 
-		protected override double BaseShields => 600;
+		double IUnitData.BaseShieldsArmor => 8;
 
-		protected override double BaseShieldsArmor => 8;
+		double IUnitData.BaseShieldsRegen => 8;
 
-		protected override double BaseShieldsRegen => 8;
+		double IUnitData.HealthIncrement => 11.8; // should be 11, but looks like a bug in the game code making health regen apply as health increment
 
-		protected override double HealthIncrement => 11.8; // should be 11, but looks like a bug in the game code making health regen apply as health increment
+		double IUnitData.HealthRegenIncrement => 0; // should be 0.8;
 
-		protected override double HealthRegenIncrement => 0; // should be 0.8;
+		double IUnitData.ShieldIncrement => 25;
 
-		protected override double ShieldIncrement => 25;
+		double IUnitData.ShieldRegenIncrement => 2;
 
-		protected override double ShieldRegenIncrement => 2;
+		double IUnitData.HealthArmorIncrement => 0.7;
 
-		protected override double HealthArmorIncrement => 0.7;
+		double IUnitData.ShieldArmorIncrement => 0.7;
 
-		protected override double ShieldArmorIncrement => 0.7;
+		double IUnitData.AttackIncrement => 2.5;
 
-		protected override double AttackIncrement => 2.5;
+		public UnitType[] SpecTypes => new[] { UnitType.Dreadnought };
 	}
 }

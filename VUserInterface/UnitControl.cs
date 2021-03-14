@@ -58,7 +58,7 @@ namespace VUserInterface
 					}
 					if (isFirstSet)
 					{
-						ChangeDisplayState(fUnit.Type == UnitType.None);
+						ChangeDisplayState(fUnit.UnitData.Type == UnitType.None);
 					}
 					OnUnitChanged();
 					isSettingUnit = false;
@@ -97,20 +97,24 @@ namespace VUserInterface
 		{
 			if (Unit != null && !isSettingUnit)
 			{
-				var oldUnitType = Unit.Type;
 				var loadout = Unit.Loadout;
+				RemoveExistingUnit(loadout);
 				var unitType = (UnitType)UnitTypeDropBox.SelectedValue;
 				var newUnit = VUnit.New(unitType, loadout);
 
-				if (loadout.Units.Contains(Unit))
-				{
-					loadout.Units.Remove(Unit);
-				}
-				else if (oldUnitType != UnitType.None)
-				{
-					ErrorReporter.ReportDebug("Why isn't the current unit in the loadouts list?");
-				}
 				Unit = newUnit;
+			}
+		}
+
+		private void RemoveExistingUnit(VLoadout loadout)
+		{
+			if (loadout.Units.Contains(Unit))
+			{
+				loadout.Units.Remove(Unit);
+			}
+			else if (Unit.UnitData.Type != UnitType.None)
+			{
+				ErrorReporter.ReportDebug("Why isn't the current unit in the loadouts list?");
 			}
 		}
 

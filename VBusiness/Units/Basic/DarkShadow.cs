@@ -8,44 +8,42 @@ namespace VBusiness.Units
 	// Unit: DarkTemplar
 	// Weapon: WarpBlades
 	// Effect: WarpBlades
-	public class DarkShadow : Unit
+	public class DarkShadow : IUnitData
 	{
-		public DarkShadow(VLoadout loadout) : base(loadout)
-		{
-		}
+		double IUnitData.BaseAttack => 20;
 
-		protected override double BaseAttack => 20;
+		double IUnitData.BaseAttackSpeed => 1;
 
-		protected override double BaseAttackSpeed => 1;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 10;
 
-		protected override double BaseHealth => 10;
+		double IUnitData.BaseHealthArmor => 3;
 
-		protected override double BaseHealthArmor => 3;
+		double IUnitData.BaseHealthRegen => 5;
 
-		protected override double BaseHealthRegen => 5;
+		double IUnitData.BaseShields => 250;
 
-		protected override double BaseShields => 250;
+		double IUnitData.BaseShieldsArmor => 3;
 
-		protected override double BaseShieldsArmor => 3;
+		double IUnitData.BaseShieldsRegen => 5;
 
-		protected override double BaseShieldsRegen => 5;
+		public UnitType Type => UnitType.DarkShadow;
 
-		public override UnitType Type => UnitType.DarkShadow;
+		double IUnitData.HealthIncrement => 1;
 
-		protected override double HealthIncrement => 1;
+		double IUnitData.HealthRegenIncrement => 0.1992;
 
-		protected override double HealthRegenIncrement => 0.1992;
+		double IUnitData.ShieldIncrement => 10;
 
-		protected override double ShieldIncrement => 10;
+		double IUnitData.ShieldRegenIncrement => 1;
 
-		protected override double ShieldRegenIncrement => 1;
+		double IUnitData.HealthArmorIncrement => 0.3;
 
-		protected override double HealthArmorIncrement => 0.3;
+		double IUnitData.ShieldArmorIncrement => 0.3;
 
-		protected override double ShieldArmorIncrement => 0.3;
+		double IUnitData.AttackIncrement => 1.5;
 
-		protected override double AttackIncrement => 1.5;
+		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow };
 	}
 }

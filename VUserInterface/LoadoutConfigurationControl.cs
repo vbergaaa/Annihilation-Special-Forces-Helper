@@ -52,5 +52,25 @@ namespace VUserInterface
 				BindingSource.ResetBindings(false);
 			}
 		}
+
+		#region Difficulty
+
+		List<object> DifficultyList
+		{
+			get => fDifficultyList ??= BindingHelper<DifficultyLevel>.ConvertForBinding(Enums.GetValues<DifficultyLevel>().ToList());
+		}
+		List<object> fDifficultyList;
+
+		#endregion
+
+		#region UnitSpec
+
+		List<object> UnitSpecList
+		{
+			get => fUnitSpecList ??= BindingHelper<UnitType>.ConvertForBinding(VUnit.ValidSpecTypes().ToList());
+		}
+		List<object> fUnitSpecList;
+
+		#endregion
 	}
 }

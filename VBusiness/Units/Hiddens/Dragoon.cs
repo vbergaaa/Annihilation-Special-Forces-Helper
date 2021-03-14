@@ -9,44 +9,42 @@ namespace VBusiness.Units
 	// WeaponData: Dragoon
 	// EffectData: DragoonDamage
 
-	public class Dragoon : Unit
+	public class Dragoon : IUnitData
 	{
-		public Dragoon(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.Dragoon;
 
-		public override UnitType Type => UnitType.Dragoon;
+		double IUnitData.BaseAttack =>15;
 
-		protected override double BaseAttack => 15;
+		double IUnitData.BaseAttackSpeed => 1.3;
 
-		protected override double BaseAttackSpeed => 1.3;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 250;
 
-		protected override double BaseHealth => 250;
+		double IUnitData.BaseHealthArmor => 6;
 
-		protected override double BaseHealthArmor => 6;
+		double IUnitData.BaseHealthRegen => 5;
 
-		protected override double BaseHealthRegen => 5;
+		double IUnitData.BaseShields => 325;
 
-		protected override double BaseShields => 325;
+		double IUnitData.BaseShieldsArmor => 6;
 
-		protected override double BaseShieldsArmor => 6;
+		double IUnitData.BaseShieldsRegen => 5;
 
-		protected override double BaseShieldsRegen => 5;
+		double IUnitData.HealthIncrement => 5;
 
-		protected override double HealthIncrement => 5;
+		double IUnitData.HealthRegenIncrement => 0.3007;
 
-		protected override double HealthRegenIncrement => 0.3007;
+		double IUnitData.ShieldIncrement => 10;
 
-		protected override double ShieldIncrement => 10;
+		double IUnitData.ShieldRegenIncrement => 0.8007;
 
-		protected override double ShieldRegenIncrement => 0.8007;
+		double IUnitData.HealthArmorIncrement => 0.6;
 
-		protected override double HealthArmorIncrement => 0.6;
+		double IUnitData.ShieldArmorIncrement => 0.6;
 
-		protected override double ShieldArmorIncrement => 0.6;
+		double IUnitData.AttackIncrement => 1;
 
-		protected override double AttackIncrement => 1;
+		public UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
 	}
 }

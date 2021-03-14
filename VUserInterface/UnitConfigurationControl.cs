@@ -18,8 +18,6 @@ namespace VUserInterface
 			InitializeComponent();
 		}
 
-		bool isCreatingControl;
-
 		public UnitConfiguration UnitConfiguration
 		{
 			get => fUnit;
@@ -55,16 +53,6 @@ namespace VUserInterface
 			}
 		}
 
-		#region Difficulty
-
-		List<object> DifficultyList
-		{
-			get => fDifficultyList ??= BindingHelper<DifficultyLevel>.ConvertForBinding(Enums.GetValues<DifficultyLevel>().ToList());
-		}
-		List<object> fDifficultyList;
-
-		#endregion
-
 		void UnitsLoadList_IndexChanged(object sender, EventArgs e)
 		{
 			isSettingUnitFromLoadList = true;
@@ -83,12 +71,11 @@ namespace VUserInterface
 		{
 			var indexToSelect = isSettingUnitFromLoadList ? UnitsLoadList.CurrentIndex : -1;
 			UnitsLoadList.RefreshList(indexToSelect);
-			//bindingSource.ResetBindings(false);
 		}
-		
+
 		void UnitsLoadList_NewButtonClicked(object sender, EventArgs e)
 		{
-			var newUnit = new EmptyUnit(UnitConfiguration.Loadout);
+			var newUnit = VUnit.New(UnitType.None, UnitConfiguration.Loadout);
 			UnitConfiguration.Loadout.CurrentUnit = newUnit;
 			CurrentUnitControl.ChangeDisplayState(true);
 			UnitsLoadList.CurrentIndex = -1;
@@ -113,7 +100,7 @@ namespace VUserInterface
 				}
 				else
 				{
-					UnitConfiguration.Loadout.CurrentUnit = new EmptyUnit(UnitConfiguration.Loadout);
+					UnitConfiguration.Loadout.CurrentUnit = VUnit.New(UnitType.None, UnitConfiguration.Loadout);
 				}
 			}
 		}

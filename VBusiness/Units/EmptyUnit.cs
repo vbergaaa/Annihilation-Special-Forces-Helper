@@ -5,46 +5,42 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Units
 {
-	public class EmptyUnit : Unit
+	public class EmptyUnit : IUnitData
 	{
-		public EmptyUnit(VLoadout loadout) : base(loadout)
-		{
-			loadout.Units.Remove(this);
-			HasChanges = false;
-		}
+		public UnitType Type => UnitType.None;
 
-		public override UnitType Type => UnitType.None;
+		double IUnitData.BaseAttack =>0;
 
-		protected override double BaseAttack => 0;
+		double IUnitData.BaseAttackSpeed => 0;
 
-		protected override double BaseAttackSpeed => 0;
+		double IUnitData.AttackCount => 0;
 
-		public override double AttackCount => 0;
+		double IUnitData.BaseHealth => 0;
 
-		protected override double BaseHealth => 0;
+		double IUnitData.BaseHealthArmor => 0;
 
-		protected override double BaseHealthArmor => 0;
+		double IUnitData.BaseHealthRegen => 0;
 
-		protected override double BaseHealthRegen => 0;
+		double IUnitData.BaseShields => 0;
 
-		protected override double BaseShields => 0;
+		double IUnitData.BaseShieldsArmor => 0;
 
-		protected override double BaseShieldsArmor => 0;
+		double IUnitData.BaseShieldsRegen => 0;
 
-		protected override double BaseShieldsRegen => 0;
+		double IUnitData.HealthIncrement => 0;
 
-		protected override double HealthIncrement => 0;
+		double IUnitData.HealthRegenIncrement => 0;
 
-		protected override double HealthRegenIncrement => 0;
+		double IUnitData.ShieldIncrement => 0;
 
-		protected override double ShieldIncrement => 0;
+		double IUnitData.ShieldRegenIncrement => 0;
 
-		protected override double ShieldRegenIncrement => 0;
+		double IUnitData.HealthArmorIncrement => 0;
 
-		protected override double HealthArmorIncrement => 0;
+		double IUnitData.ShieldArmorIncrement => 0;
 
-		protected override double ShieldArmorIncrement => 0;
+		double IUnitData.AttackIncrement => 0;
 
-		protected override double AttackIncrement => 0;
+		public UnitType[] SpecTypes => new UnitType[0];
 	}
 }

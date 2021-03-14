@@ -164,21 +164,7 @@ namespace VEntityFramework.Model
 		[VXML(false)]
 		public virtual VUnit CurrentUnit
 		{
-			get
-			{
-				if (fCurrentUnit == null)
-				{
-					if (Units.Count > 0)
-					{
-						return Units[0];
-					}
-					else
-					{
-						return VUnit.New(UnitType.None, this);
-					}
-				}
-				return fCurrentUnit;
-			}
+			get => fCurrentUnit;
 			set
 			{
 				if (fCurrentUnit != value)
@@ -259,7 +245,7 @@ namespace VEntityFramework.Model
 		bool fShouldRestrict = true;
 
 		#endregion
-		
+
 		#region UseUnitStats
 
 		[VXML(true)]
@@ -278,6 +264,28 @@ namespace VEntityFramework.Model
 			}
 		}
 		bool fUseUnitStats;
+
+		#endregion
+		
+		#region UnitSpec
+
+		[VXML(true)]
+		public virtual UnitType UnitSpec
+		{
+			get => fUnitSpec;
+			set
+			{
+				if (value != fUnitSpec)
+				{
+					fUnitSpec = value;
+					HasChanges = true;
+					Stats.RefreshAllBindings();
+					OnPropertyChanged(nameof(UnitSpec));
+					CurrentUnit.RefreshPropertyBinding(nameof(CurrentUnit.HasUnitSpec));
+				}
+			}
+		}
+		UnitType fUnitSpec;
 
 		#endregion
 

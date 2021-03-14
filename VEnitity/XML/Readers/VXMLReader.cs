@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using VEntityFramework.Data;
 using VEntityFramework.DataContext;
 using VEntityFramework.Model;
 
+[assembly: InternalsVisibleTo("Tests")]
 namespace VEntityFramework.XML
 {
 	class VXMLReader
@@ -43,7 +45,7 @@ namespace VEntityFramework.XML
 			return bizo;
 		}
 
-		VBusinessObject CreateBizoFromXML(Type type, XmlElement documentElement)
+		internal VBusinessObject CreateBizoFromXML(Type type, XmlElement documentElement)
 		{
 			var bizo = CreateInstance(type, documentElement);
 			var reader = GetXmlReader(type);

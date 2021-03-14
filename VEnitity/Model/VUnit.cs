@@ -1,8 +1,9 @@
 ﻿using EnumsNET;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Runtime.Loader;
 using VEntityFramework.Data;
 using VEntityFramework.DataContext;
 
@@ -10,24 +11,34 @@ namespace VEntityFramework.Model
 {
 	public abstract class VUnit : VBusinessObject
 	{
-		public VUnit(VLoadout loadout) : base(loadout)
+		public VUnit(VLoadout loadout, UnitType unitType) : base(loadout)
 		{
-			if (!loadout.Units.Contains(this))
+			UnitData = GetUnitData(unitType);
+
+			if (!loadout.Units.Contains(this) && unitType != UnitType.None)
 			{
 				loadout.Units.Add(this);
-				HasChanges = !loadout.IsLoading;
 			}
+
+			loadout.CurrentUnit = this;
 		}
 
 		#region New
 
 		public static VUnit New(UnitType type, VLoadout loadout)
 		{
-			if (type != UnitType.None)
-			{
-				return (VUnit)BizoCreator.Create(typeof(VUnit), type.ToString(), loadout);
-			}
-			return (VUnit)BizoCreator.Create(typeof(VUnit), "EmptyUnit", loadout);
+			return (VUnit)BizoCreator.Create(typeof(VUnit), "Unit", loadout, type);
+		}
+
+		static IUnitData GetUnitData(UnitType type)
+		{
+			var typeFullName = type != UnitType.None 
+				? $"VBusiness.Units.{type}"
+				: $"VBusiness.Units.EmptyUnit";
+			var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(Directory.GetCurrentDirectory() + "/VBusiness.dll");
+			var myType = assembly.GetType(typeFullName);
+			var ctor = myType.GetConstructors()[0];
+			return (IUnitData)ctor.Invoke(null);
 		}
 
 		#endregion
@@ -41,9 +52,10 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region Type
+		#region UnitData
 
-		public abstract UnitType Type { get; }
+		[VXML(true, "Key")]
+		public IUnitData UnitData { get; internal set; }
 
 		#endregion
 
@@ -176,21 +188,7 @@ namespace VEntityFramework.Model
 
 		#region HasUnitSpec
 
-		[VXML(true)]
-		public virtual bool HasUnitSpec
-		{
-			get => fHasUnitSpec;
-			set
-			{
-				if (fHasUnitSpec != value)
-				{
-					fHasUnitSpec = value;
-					HasChanges = true;
-					OnPropertyChanged(nameof(HasUnitSpec));
-				}
-			}
-		}
-		bool fHasUnitSpec;
+		public virtual bool HasUnitSpec { get; }
 
 		#endregion
 
@@ -209,32 +207,6 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region Base Stats
-
-		public abstract double AttackCount { get; }
-		protected abstract double BaseAttack { get; }
-		protected abstract double BaseAttackSpeed { get; }
-		protected abstract double BaseHealth { get; }
-		protected abstract double BaseHealthArmor { get; }
-		protected abstract double BaseHealthRegen { get; }
-		protected abstract double BaseShields { get; }
-		protected abstract double BaseShieldsArmor { get; }
-		protected abstract double BaseShieldsRegen { get; }
-
-		#endregion
-
-		#endregion
-
-		#region Upgrade Increments
-
-		protected abstract double AttackIncrement { get; }
-		protected abstract double HealthIncrement { get; }
-		protected abstract double HealthRegenIncrement { get; }
-		protected abstract double HealthArmorIncrement { get; }
-		protected abstract double ShieldIncrement { get; }
-		protected abstract double ShieldRegenIncrement { get; }
-		protected abstract double ShieldArmorIncrement { get; }
-
 		#endregion
 
 		#endregion
@@ -245,12 +217,25 @@ namespace VEntityFramework.Model
 			DescriptionChanged?.Invoke(this, new EventArgs());
 		}
 
+		public static IEnumerable<UnitType> ValidSpecTypes()
+		{
+			return new List<UnitType>()
+			{
+				UnitType.None,
+				UnitType.WarpLord,
+				UnitType.ShieldBattery,
+				UnitType.Striker,
+				UnitType.LightAdept,
+				UnitType.DarkShadow,
+				UnitType.Dreadnought,
+				UnitType.Templar,
+				UnitType.Dominator,
+			};
+		}
+
 		#region Implementation
 
 		public override string BizoName => "Unit";
-
-		[VXML(true)]
-		public string Key => this.GetType().Name;
 
 		public override string ToString()
 		{
@@ -262,14 +247,14 @@ namespace VEntityFramework.Model
 			var number = "";
 			if (Loadout != null)
 			{
-				var matchingUnits = Loadout.Units.Where(u => u.Type == Type && u.UnitRank == UnitRank && u.CurrentInfusion == CurrentInfusion).ToList();
+				var matchingUnits = Loadout.Units.Where(u => u.UnitData.Type == UnitData.Type && u.UnitRank == UnitRank && u.CurrentInfusion == CurrentInfusion).ToList();
 				if (matchingUnits.Count > 1)
 				{
 					number = $"({matchingUnits.IndexOf(this) + 1})";
 				}
 			}
 			var rank = UnitRank == UnitRank.None ? "" : UnitRank.ToString();
-			return $"+{CurrentInfusion} {rank} {Type.AsString(EnumFormat.Description, EnumFormat.Name)} {number}";
+			return $"+{CurrentInfusion} {rank} {UnitData.Type.AsString(EnumFormat.Description, EnumFormat.Name)} {number}";
 		}
 
 		#endregion

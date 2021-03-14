@@ -49,33 +49,6 @@ namespace VUserInterface
 			//
 			this.bindingSource.DataSource = typeof(UnitConfiguration);
 			//
-			// SoloBonusCheckBox
-			//
-			this.SoloBonusCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 230);
-			this.SoloBonusCheckBox.Caption = "Solo Bonus:";
-			this.SoloBonusCheckBox.DataBindings.Add("Checked", bindingSource, "HasSoloBonus");
-			//
-			// UnitSpecCheckBox
-			//
-			this.UnitSpecCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 140);
-			this.UnitSpecCheckBox.Caption = "Has Unit Spec:";
-			this.UnitSpecCheckBox.DataBindings.Add("Checked", bindingSource, "HasUnitSpec");
-			this.UnitSpecCheckBox.Visible = false;
-			//
-			// AdrenalineRushCheckBox
-			//
-			this.AdrenalineRushCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 170);
-			this.AdrenalineRushCheckBox.Caption = "Adrenaline Rush:";
-			this.AdrenalineRushCheckBox.DataBindings.Add("Checked", bindingSource, "HasAdrenalineBuffActive");
-			this.AdrenalineRushCheckBox.Visible = false;
-			//
-			// DifficutlyComboBox
-			//
-			this.DifficultyDropBox.DataBindings.Add("SelectedValue", bindingSource, "DifficultyLevel");
-			this.DifficultyDropBox.List = DifficultyList;
-			this.DifficultyDropBox.Location = DPIScalingHelper.GetScaledPoint(125, 200);
-			this.DifficultyDropBox.Caption = "Difficulty:";
-			//
 			// UnitsLoadList
 			//
 			this.UnitsLoadList.DataBindings.Add("List", bindingSource, "Units", true, DataSourceUpdateMode.OnPropertyChanged);

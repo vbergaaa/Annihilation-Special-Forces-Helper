@@ -53,7 +53,7 @@ namespace VBusiness
 				var totalDamage = !UseUnitStats
 					? damage * AttackSpeedForBinding / 100
 					: damage != 0
-						? damage / AttackSpeedForBinding * CurrentUnit.AttackCount
+						? damage / AttackSpeedForBinding * CurrentUnit.UnitData.AttackCount
 						: 0;
 				return Math.Round(totalDamage, 2);
 			}

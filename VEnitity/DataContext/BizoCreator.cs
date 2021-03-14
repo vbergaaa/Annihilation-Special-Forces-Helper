@@ -1,5 +1,7 @@
-﻿using System;
+﻿using EnumsNET;
+using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.Loader;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
@@ -30,7 +32,14 @@ namespace VEntityFramework.DataContext
 			{
 				if (specificTypeName != null)
 				{
-					var typeFullName = $"VBusiness.Units.{specificTypeName}";
+					if (parameters.Length == 1)
+					{
+						var type = Enums.GetValues<UnitType>().FirstOrDefault(uType => uType.AsString(EnumFormat.Name) == specificTypeName);
+						var paramList = parameters.ToList();
+						paramList.Add(type);
+						parameters = paramList.ToArray();
+					}
+					var typeFullName = $"VBusiness.Units.Unit";
 					var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(Directory.GetCurrentDirectory() + "/VBusiness.dll");
 					var myType = assembly.GetType(typeFullName);
 					var ctor = myType.GetConstructors()[0];

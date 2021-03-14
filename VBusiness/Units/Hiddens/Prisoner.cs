@@ -9,44 +9,42 @@ namespace VBusiness.Units
 	// WeaponData: PrisonerBlades
 	// EffectData: WarpBladesDamage2
 
-	public class Prisoner : Unit
+	public class Prisoner : IUnitData
 	{
-		public Prisoner(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.Prisoner;
 
-		public override UnitType Type => UnitType.Prisoner;
+		double IUnitData.BaseAttack =>15;
 
-		protected override double BaseAttack => 15;
+		double IUnitData.BaseAttackSpeed => 1.4;
 
-		protected override double BaseAttackSpeed => 1.4;
+		double IUnitData.AttackCount => 2;
 
-		public override double AttackCount => 2;
+		double IUnitData.BaseHealth => 275;
 
-		protected override double BaseHealth => 275;
+		double IUnitData.BaseHealthArmor => 4;
 
-		protected override double BaseHealthArmor => 4;
+		double IUnitData.BaseHealthRegen => 8;
 
-		protected override double BaseHealthRegen => 8;
+		double IUnitData.BaseShields => 450;
 
-		protected override double BaseShields => 450;
+		double IUnitData.BaseShieldsArmor => 4;
 
-		protected override double BaseShieldsArmor => 4;
+		double IUnitData.BaseShieldsRegen => 6;
 
-		protected override double BaseShieldsRegen => 6;
+		double IUnitData.HealthIncrement => 6;
 
-		protected override double HealthIncrement => 6;
+		double IUnitData.HealthRegenIncrement => 0.8515;
 
-		protected override double HealthRegenIncrement => 0.8515;
+		double IUnitData.ShieldIncrement => 12;
 
-		protected override double ShieldIncrement => 12;
+		double IUnitData.ShieldRegenIncrement => 0.8984;
 
-		protected override double ShieldRegenIncrement => 0.8984;
+		double IUnitData.HealthArmorIncrement => 0.65;
 
-		protected override double HealthArmorIncrement => 0.65;
+		double IUnitData.ShieldArmorIncrement => 0.65;
 
-		protected override double ShieldArmorIncrement => 0.65;
+		double IUnitData.AttackIncrement => 1.5;
 
-		protected override double AttackIncrement => 1.5;
+		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery };
 	}
 }

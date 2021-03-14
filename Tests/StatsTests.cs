@@ -23,8 +23,8 @@ namespace Tests
 		{
 			var loadout = new Loadout();
 			loadout.ShouldRestrict = false;
-			loadout.CurrentUnit = VUnit.New(UnitType.Probe, loadout);
-			loadout.CurrentUnit.HasUnitSpec = true;
+			loadout.CurrentUnit = VUnit.New(UnitType.WarpLord, loadout);
+			loadout.UnitSpec = UnitType.WarpLord;
 			var perks = (PerkCollection)loadout.Perks;
 
 			perks.UnitSpecialization.DesiredLevel = specPerks;
@@ -100,7 +100,7 @@ namespace Tests
 		{
 			// ALl the expected values for this test were generated in game
 			var loadout = GetTestLoadout();
-			var unit = new WarpLord(loadout);
+			var unit = VUnit.New(UnitType.WarpLord, loadout);
 			unit.CurrentInfusion = infuse;
 			unit.EssenceStacks = essence;
 			loadout.Gems.HealthGem.CurrentLevel = (short)stats;
@@ -120,7 +120,7 @@ namespace Tests
 		{
 			// All the expected values for this test were generated in game
 			var loadout = GetTestLoadout();
-			var unit = new WarpLord(loadout);
+			var unit = VUnit.New(UnitType.WarpLord, loadout);
 			unit.CurrentInfusion = infuse;
 			unit.EssenceStacks = essence;
 			loadout.Gems.ShieldsGem.CurrentLevel = (short)stats;

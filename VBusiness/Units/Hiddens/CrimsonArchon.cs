@@ -9,44 +9,42 @@ namespace VBusiness.Units
 	// WeaponData: DarkArchonWeapon
 	// EffectData: DarkArchonWeaponDamage
 
-	public class CrimsonArchon : Unit
+	public class CrimsonArchon : IUnitData
 	{
-		public CrimsonArchon(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.CrimsonArchon;
 
-		public override UnitType Type => UnitType.CrimsonArchon;
+		double IUnitData.BaseAttack =>50;
 
-		protected override double BaseAttack => 50;
+		double IUnitData.BaseAttackSpeed => 1.3;
 
-		protected override double BaseAttackSpeed => 1.3;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 30;
 
-		protected override double BaseHealth => 30;
+		double IUnitData.BaseHealthArmor => 12;
 
-		protected override double BaseHealthArmor => 12;
+		double IUnitData.BaseHealthRegen => 3;
 
-		protected override double BaseHealthRegen => 3;
+		double IUnitData.BaseShields => 1250;
 
-		protected override double BaseShields => 1250;
+		double IUnitData.BaseShieldsArmor => 12;
 
-		protected override double BaseShieldsArmor => 12;
+		double IUnitData.BaseShieldsRegen => 8;
 
-		protected override double BaseShieldsRegen => 8;
+		double IUnitData.HealthIncrement => 3.5;
 
-		protected override double HealthIncrement => 3.5;
+		double IUnitData.HealthRegenIncrement => 0.4492;
 
-		protected override double HealthRegenIncrement => 0.4492;
+		double IUnitData.ShieldIncrement => 37;
 
-		protected override double ShieldIncrement => 37;
+		double IUnitData.ShieldRegenIncrement => 2.3007;
 
-		protected override double ShieldRegenIncrement => 2.3007;
+		double IUnitData.HealthArmorIncrement => 1.1;
 
-		protected override double HealthArmorIncrement => 1.1;
+		double IUnitData.ShieldArmorIncrement => 1.1;
 
-		protected override double ShieldArmorIncrement => 1.1;
+		double IUnitData.AttackIncrement => 3.5;
 
-		protected override double AttackIncrement => 3.5;
+		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar, UnitType.ShieldBattery };
 	}
 }

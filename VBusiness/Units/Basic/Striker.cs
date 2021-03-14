@@ -8,44 +8,42 @@ namespace VBusiness.Units
 	// Stalker
 	// ParticleDisruptor / ParticleDisruptorU
 
-	public class Striker : Unit
+	public class Striker : IUnitData
 	{
-		public Striker(VLoadout loadout) : base(loadout)
-		{
-		}
+		double IUnitData.BaseAttack => 15;
 
-		protected override double BaseAttack => 15;
+		double IUnitData.BaseAttackSpeed => 1.5;
 
-		protected override double BaseAttackSpeed => 1.5;
+		double IUnitData.AttackCount => 2;
 
-		public override double AttackCount => 2;
+		double IUnitData.BaseHealth => 125;
 
-		protected override double BaseHealth => 125;
+		double IUnitData.BaseHealthArmor => 3;
 
-		protected override double BaseHealthArmor => 3;
+		double IUnitData.BaseHealthRegen => 1;
 
-		protected override double BaseHealthRegen => 1;
+		double IUnitData.BaseShields => 160;
 
-		protected override double BaseShields => 160;
+		double IUnitData.BaseShieldsArmor => 3;
 
-		protected override double BaseShieldsArmor => 3;
+		double IUnitData.BaseShieldsRegen => 2;
 
-		protected override double BaseShieldsRegen => 2;
+		public UnitType Type => UnitType.Striker;
 
-		public override UnitType Type => UnitType.Striker;
+		double IUnitData.HealthIncrement => 4;
 
-		protected override double HealthIncrement => 4;
+		double IUnitData.HealthRegenIncrement => 0.3007;
 
-		protected override double HealthRegenIncrement => 0.3007;
+		double IUnitData.ShieldIncrement => 6;
 
-		protected override double ShieldIncrement => 6;
+		double IUnitData.ShieldRegenIncrement => 0.5;
 
-		protected override double ShieldRegenIncrement => 0.5;
+		double IUnitData.HealthArmorIncrement => 0.4;
 
-		protected override double HealthArmorIncrement => 0.4;
+		double IUnitData.ShieldArmorIncrement => 0.4;
 
-		protected override double ShieldArmorIncrement => 0.4;
+		double IUnitData.AttackIncrement => 1;
 
-		protected override double AttackIncrement => 1;
+		public UnitType[] SpecTypes => new[] { UnitType.Striker };
 	}
 }

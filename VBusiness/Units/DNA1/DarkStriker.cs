@@ -11,44 +11,42 @@ namespace VBusiness.Units
 	// EffectData: ParticleDisruptors3
 	// EffectDamage: ParticleDisruptorsU3
 
-	public class DarkStriker : Unit
+	public class DarkStriker : IUnitData
 	{
-		public DarkStriker(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.DarkStriker;
 
-		public override UnitType Type => UnitType.DarkStriker;
+		double IUnitData.BaseAttack =>22;
 
-		protected override double BaseAttack => 22;
+		double IUnitData.BaseAttackSpeed => 1.4;
 
-		protected override double BaseAttackSpeed => 1.4;
+		double IUnitData.AttackCount => 1; // this is technically 3, but for single target damage, it's effectively 1
 
-		public override double AttackCount => 1; // this is technically 3, but for single target damage, it's effectively 1
+		double IUnitData.BaseHealth => 160;
 
-		protected override double BaseHealth => 160;
+		double IUnitData.BaseHealthArmor => 4.5;
 
-		protected override double BaseHealthArmor => 4.5;
+		double IUnitData.BaseHealthRegen => 2;
 
-		protected override double BaseHealthRegen => 2;
+		double IUnitData.BaseShields => 200;
 
-		protected override double BaseShields => 200;
+		double IUnitData.BaseShieldsArmor => 4.5;
 
-		protected override double BaseShieldsArmor => 4.5;
+		double IUnitData.BaseShieldsRegen => 2; // from in-game test
 
-		protected override double BaseShieldsRegen => 2; // from in-game test
+		double IUnitData.HealthIncrement => 6;
 
-		protected override double HealthIncrement => 6;
+		double IUnitData.HealthRegenIncrement => 0.3515;
 
-		protected override double HealthRegenIncrement => 0.3515;
+		double IUnitData.ShieldIncrement => 8;
 
-		protected override double ShieldIncrement => 8;
+		double IUnitData.ShieldRegenIncrement => 0.6992;
 
-		protected override double ShieldRegenIncrement => 0.6992;
+		double IUnitData.HealthArmorIncrement => 0.5;
 
-		protected override double HealthArmorIncrement => 0.5;
+		double IUnitData.ShieldArmorIncrement => 0.5;
 
-		protected override double ShieldArmorIncrement => 0.5;
+		double IUnitData.AttackIncrement => 1.25;
 
-		protected override double AttackIncrement => 1.25;
+		public UnitType[] SpecTypes => new[] { UnitType.Striker };
 	}
 }

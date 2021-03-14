@@ -9,44 +9,42 @@ namespace VBusiness.Units
 	// WeaponData: AscendantWeapon
 	// EffectData: AscendantWeaponDamage
 
-	public class Ascendant : Unit
+	public class Ascendant : IUnitData
 	{
-		public Ascendant(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.Ascendant;
 
-		public override UnitType Type => UnitType.Ascendant;
+		double IUnitData.BaseAttack =>25;
 
-		protected override double BaseAttack => 25;
+		double IUnitData.BaseAttackSpeed => 1.4;
 
-		protected override double BaseAttackSpeed => 1.4;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 500;
 
-		protected override double BaseHealth => 500;
+		double IUnitData.BaseHealthArmor => 10;
 
-		protected override double BaseHealthArmor => 10;
+		double IUnitData.BaseHealthRegen => 2;
 
-		protected override double BaseHealthRegen => 2;
+		double IUnitData.BaseShields => 1000;
 
-		protected override double BaseShields => 1000;
+		double IUnitData.BaseShieldsArmor => 10;
 
-		protected override double BaseShieldsArmor => 10;
+		double IUnitData.BaseShieldsRegen => 10;
 
-		protected override double BaseShieldsRegen => 10;
+		double IUnitData.HealthIncrement => 10;
 
-		protected override double HealthIncrement => 10;
+		double IUnitData.HealthRegenIncrement => 0.3007;
 
-		protected override double HealthRegenIncrement => 0.3007;
+		double IUnitData.ShieldIncrement => 20;
 
-		protected override double ShieldIncrement => 20;
+		double IUnitData.ShieldRegenIncrement => 1;
 
-		protected override double ShieldRegenIncrement => 1;
+		double IUnitData.HealthArmorIncrement => 0.9;
 
-		protected override double HealthArmorIncrement => 0.9;
+		double IUnitData.ShieldArmorIncrement => 0.9;
 
-		protected override double ShieldArmorIncrement => 0.9;
+		double IUnitData.AttackIncrement => 2;
 
-		protected override double AttackIncrement => 2;
+		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar, UnitType.ShieldBattery };
 	}
 }

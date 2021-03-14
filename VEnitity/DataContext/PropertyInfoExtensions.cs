@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Linq;
+using System.Reflection;
 using VEntityFramework.Model;
 
 namespace VEntityFramework.Data
@@ -9,7 +11,7 @@ namespace VEntityFramework.Data
 		{
 			// by default, VBusinessObjects are included, and all other property infos are excluded.
 			// default can be overriden by VXMLAttribute.ShouldInclude
-			var attribute = (VXMLAttribute)info.GetCustomAttribute(typeof(VXMLAttribute));
+			var attribute = (VXMLAttribute)info.InheritsCustomAttribute(typeof(VXMLAttribute));
 
 			if (attribute != null)
 			{
@@ -19,6 +21,19 @@ namespace VEntityFramework.Data
 			{
 				return typeof(VBusinessObject).IsAssignableFrom(info.PropertyType);
 			}
+		}
+
+		public static string GetXmlAlias(this PropertyInfo info)
+		{
+			if (IncludeInVXml(info))
+			{
+				var attribute = (VXMLAttribute)info.InheritsCustomAttribute(typeof(VXMLAttribute));
+				if (attribute != null)
+				{
+					return attribute.Alias ?? info.Name;
+				}
+			}
+			return null;
 		}
 
 		public static void CastAndSetValue(this PropertyInfo property, string value, VBusinessObject bizo)
@@ -35,6 +50,11 @@ namespace VEntityFramework.Data
 			return typeof(VBusinessObject).IsAssignableFrom(info?.PropertyType);
 		}
 
+		public static bool IsXmlObject(this PropertyInfo info)
+		{
+			return typeof(IXmlObject).IsAssignableFrom(info?.PropertyType);
+		}
+
 		public static string GetNameForXML(this PropertyInfo info)
 		{
 			if (typeof(VBusinessObject).IsAssignableFrom(info.PropertyType))
@@ -48,6 +68,33 @@ namespace VEntityFramework.Data
 			{
 				return info.Name;
 			}
+		}
+
+		static Attribute InheritsCustomAttribute(this PropertyInfo info, Type attributeType)
+		{
+			var attribute = info.GetCustomAttribute(attributeType);
+			if (attribute != null)
+			{
+				return attribute;
+			}
+
+			var propertyHostType = info.DeclaringType;
+			var typesToCheck = propertyHostType.GetInterfaces().ToList();
+			typesToCheck.Add(propertyHostType.BaseType);
+			foreach (var baseInterface in typesToCheck)
+			{
+				var property = baseInterface?.GetProperty(info.Name);
+				if (property != null)
+				{
+					var matchingAttribute = property.InheritsCustomAttribute(attributeType);
+					if (matchingAttribute != null)
+					{
+						return matchingAttribute;
+					}
+				}
+			}
+
+			return null;
 		}
 	}
 
@@ -66,6 +113,7 @@ namespace VEntityFramework.Data
 				"PlayerRank" => EnumHelper.GetEnumFromDescription<PlayerRank>(value),
 				"DifficultyLevel" => EnumHelper.GetEnumFromDescription<DifficultyLevel>(value),
 				"SoulType" => EnumHelper.GetEnumFromDescription<SoulType>(value),
+				"UnitType" => EnumHelper.GetEnumFromDescription<UnitType>(value),
 				_ => HandleUnknownType(propertyType),
 			};
 		}

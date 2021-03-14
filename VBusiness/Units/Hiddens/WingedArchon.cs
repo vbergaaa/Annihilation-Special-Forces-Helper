@@ -9,44 +9,42 @@ namespace VBusiness.Units
 	// WeaponData: WingedTorrent
 	// EffectData: WingedArchonWeaponDamage
 
-	public class WingedArchon : Unit
+	public class WingedArchon : IUnitData
 	{
-		public WingedArchon(VLoadout loadout) : base(loadout)
-		{
-		}
+		public UnitType Type => UnitType.WingedArchon;
 
-		public override UnitType Type => UnitType.WingedArchon;
+		double IUnitData.BaseAttack =>65;
 
-		protected override double BaseAttack => 65;
+		double IUnitData.BaseAttackSpeed => 1.1;
 
-		protected override double BaseAttackSpeed => 1.1;
+		double IUnitData.AttackCount => 1;
 
-		public override double AttackCount => 1;
+		double IUnitData.BaseHealth => 60;
 
-		protected override double BaseHealth => 60;
+		double IUnitData.BaseHealthArmor => 15;
 
-		protected override double BaseHealthArmor => 15;
+		double IUnitData.BaseHealthRegen => 4;
 
-		protected override double BaseHealthRegen => 4;
+		double IUnitData.BaseShields => 1600;
 
-		protected override double BaseShields => 1600;
+		double IUnitData.BaseShieldsArmor => 15;
 
-		protected override double BaseShieldsArmor => 15;
+		double IUnitData.BaseShieldsRegen => 10;
 
-		protected override double BaseShieldsRegen => 10;
+		double IUnitData.HealthIncrement => 15;
 
-		protected override double HealthIncrement => 15;
+		double IUnitData.HealthRegenIncrement => 1.8007;
 
-		protected override double HealthRegenIncrement => 1.8007;
+		double IUnitData.ShieldIncrement => 40;
 
-		protected override double ShieldIncrement => 40;
+		double IUnitData.ShieldRegenIncrement => 3;
 
-		protected override double ShieldRegenIncrement => 3;
+		double IUnitData.HealthArmorIncrement => 1.3;
 
-		protected override double HealthArmorIncrement => 1.3;
+		double IUnitData.ShieldArmorIncrement => 1.3;
 
-		protected override double ShieldArmorIncrement => 1.3;
+		double IUnitData.AttackIncrement => 4.2;
 
-		protected override double AttackIncrement => 4.2;
+		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar, UnitType.ShieldBattery, UnitType.WarpLord };
 	}
 }
