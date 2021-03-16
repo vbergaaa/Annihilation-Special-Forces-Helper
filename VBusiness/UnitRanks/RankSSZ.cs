@@ -4,11 +4,7 @@ namespace VBusiness.Ranks
 {
 	public class RankSSZ : UnitRank
 	{
-		public RankSSZ(VUnit unit) : base(unit)
-		{
-		}
-
-		public override VEntityFramework.Model.UnitRank Rank => VEntityFramework.Model.UnitRank.SSZ;
+		public override UnitRankType Rank => UnitRankType.SSZ;
 
 		public override double DamageIncrease => 75;
 

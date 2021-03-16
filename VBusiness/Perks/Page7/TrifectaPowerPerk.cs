@@ -22,9 +22,17 @@ namespace VBusiness.Perks
 
 		protected override string PerkName => "Trifecta Power";
 
-		protected override void OnLevelChanged(int difference)
+		protected override void OnLevelChanged(int diff)
 		{
-			PerkCollection.Loadout.Stats.TrifectaStacks += difference;
+			if (PerkCollection.Loadout.CurrentUnit.UnitRank >= UnitRankType.SSS)
+			{
+				PerkCollection.Loadout.Stats.Attack += 1.5 * diff;
+				PerkCollection.Loadout.Stats.UpdateAttackSpeed("Trifecta", 1.5 * diff);
+				PerkCollection.Loadout.Stats.UpdateHealth("Core", 1.5 * diff);
+				PerkCollection.Loadout.Stats.HealthArmor += 1 * diff;
+				PerkCollection.Loadout.Stats.UpdateShields("Core", 1.5 * diff);
+				PerkCollection.Loadout.Stats.ShieldsArmor += 1 * diff;
+			}
 		}
 	}
 }

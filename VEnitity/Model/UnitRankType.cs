@@ -1,6 +1,6 @@
 ﻿namespace VEntityFramework.Model
 {
-	public enum UnitRank
+	public enum UnitRankType
 	{
 		None,
 		D,

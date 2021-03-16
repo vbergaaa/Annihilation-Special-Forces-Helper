@@ -95,7 +95,7 @@ namespace VEntityFramework.Model
 		#region Rank
 
 		[VXML(false)]
-		public VUnitRank Rank
+		public virtual VUnitRank Rank
 		{
 			get => fRank;
 			protected set
@@ -113,7 +113,7 @@ namespace VEntityFramework.Model
 
 		void ActivateRank(VUnitRank rank)
 		{
-			if (rank != null && Loadout != null)
+			if (rank != null && Loadout != null && IsCurrentUnit)
 			{
 				rank.ActivateRank();
 			}
@@ -125,7 +125,7 @@ namespace VEntityFramework.Model
 
 		void DeactivateRank(VUnitRank rank)
 		{
-			if (rank != null && Loadout != null)
+			if (rank != null && Loadout != null && IsCurrentUnit)
 			{
 				rank.DeactivateRank();
 			}
@@ -138,7 +138,7 @@ namespace VEntityFramework.Model
 		#region UnitRank
 
 		[VXML(true)]
-		public virtual UnitRank UnitRank
+		public virtual UnitRankType UnitRank
 		{
 			get => fUnitRank;
 			set
@@ -150,7 +150,7 @@ namespace VEntityFramework.Model
 				}
 			}
 		}
-		UnitRank fUnitRank;
+		UnitRankType fUnitRank;
 
 		#endregion
 
@@ -253,7 +253,7 @@ namespace VEntityFramework.Model
 					number = $"({matchingUnits.IndexOf(this) + 1})";
 				}
 			}
-			var rank = UnitRank == UnitRank.None ? "" : UnitRank.ToString();
+			var rank = UnitRank == UnitRankType.None ? "" : UnitRank.ToString();
 			return $"+{CurrentInfusion} {rank} {UnitData.Type.AsString(EnumFormat.Description, EnumFormat.Name)} {number}";
 		}
 

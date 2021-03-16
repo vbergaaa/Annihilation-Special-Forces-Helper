@@ -12,13 +12,13 @@ namespace Tests
 		[Test]
 		public void TestNew()
 		{
-			var allRanks = Enums.GetValues<UnitRank>();
+			var allRanks = Enums.GetValues<UnitRankType>();
 			foreach (var rank in allRanks)
 			{
-				var generatedRank = VBusiness.Ranks.UnitRank.New(rank, null);
+				var generatedRank = VBusiness.Ranks.UnitRank.New(rank);
 				var rankName = generatedRank.GetType().Name;
 
-				if (rank == UnitRank.None)
+				if (rank == UnitRankType.None)
 				{
 					Assert.That(rankName, Is.EqualTo("EmptyRank"));
 				}

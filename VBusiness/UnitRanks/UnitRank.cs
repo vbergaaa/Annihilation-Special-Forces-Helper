@@ -1,5 +1,6 @@
 ﻿using EnumsNET;
 using System;
+using VBusiness.Perks;
 using VBusiness.Souls;
 using VEntityFramework;
 using VEntityFramework.Model;
@@ -8,21 +9,13 @@ namespace VBusiness.Ranks
 {
 	public abstract class UnitRank : VUnitRank
 	{
-		#region Constructor
-
-		public UnitRank(VUnit unit) : base(unit)
-		{
-		}
-
-		#endregion
-
 		#region New
 
-		public static VUnitRank New(VEntityFramework.Model.UnitRank rank, VUnit unit)
+		public static VUnitRank New(UnitRankType rank)
 		{
-			if (rank == VEntityFramework.Model.UnitRank.None)
+			if (rank == UnitRankType.None)
 			{
-				return new EmptyRank(unit);
+				return new EmptyRank();
 			}
 			var rankName = "Rank" + rank.AsString(EnumFormat.Name);
 			var rankType = System.Type.GetType($"VBusiness.Ranks.{rankName}");
@@ -30,12 +23,18 @@ namespace VBusiness.Ranks
 			if (rankType == null)
 			{
 				ErrorReporter.ReportDebug($"Please create a class named VBusiness.Ranks.{rankName}");
-				return new EmptyRank(unit);
+				return new EmptyRank();
 			}
 
-			var ret = (UnitRank)Activator.CreateInstance(rankType, unit);
+			var ret = (UnitRank)Activator.CreateInstance(rankType);
 			return ret;
 		}
+
+		#endregion
+
+		#region Properties
+
+		public override VLoadout Loadout { get; set; }
 
 		#endregion
 
@@ -57,26 +56,26 @@ namespace VBusiness.Ranks
 
 		public void ActivateGodBuff()
 		{
-			Unit.Loadout.Stats.CriticalChance += 5;
-			Unit.Loadout.Stats.CriticalDamage += 10;
+			Loadout.Stats.CriticalChance += 5;
+			Loadout.Stats.CriticalDamage += 10;
 		}
 
 		public void ActivateSuperGodBuff()
 		{
-			Unit.Loadout.Stats.CriticalChance += 10;
-			Unit.Loadout.Stats.CriticalDamage += 20;
+			Loadout.Stats.CriticalChance += 10;
+			Loadout.Stats.CriticalDamage += 20;
 		}
 
 		public void DeactivateGodBuff()
 		{
-			Unit.Loadout.Stats.CriticalChance -= 5;
-			Unit.Loadout.Stats.CriticalDamage -= 10;
+			Loadout.Stats.CriticalChance -= 5;
+			Loadout.Stats.CriticalDamage -= 10;
 		}
 
 		public void DeactivateSuperGodBuff()
 		{
-			Unit.Loadout.Stats.CriticalChance -= 10;
-			Unit.Loadout.Stats.CriticalDamage -= 20;
+			Loadout.Stats.CriticalChance -= 10;
+			Loadout.Stats.CriticalDamage -= 20;
 		}
 
 		#endregion
@@ -97,50 +96,50 @@ namespace VBusiness.Ranks
 
 		public void ActivateOmegaBuff()
 		{
-			Unit.Loadout.Stats.Attack += 50;
-			Unit.Loadout.Stats.UpdateAttackSpeed("Rank", 50);
-			Unit.Loadout.Stats.UpdateHealth("Rank", 50);
-			Unit.Loadout.Stats.HealthArmor += 50;
-			Unit.Loadout.Stats.UpdateShields("Rank", 50);
-			Unit.Loadout.Stats.ShieldsArmor += 50;
-			Unit.Loadout.Stats.CriticalChance += 5;
-			Unit.Loadout.Stats.CriticalDamage += 10;
+			Loadout.Stats.Attack += 50;
+			Loadout.Stats.UpdateAttackSpeed("Rank", 50);
+			Loadout.Stats.UpdateHealth("Rank", 50);
+			Loadout.Stats.HealthArmor += 50;
+			Loadout.Stats.UpdateShields("Rank", 50);
+			Loadout.Stats.ShieldsArmor += 50;
+			Loadout.Stats.CriticalChance += 5;
+			Loadout.Stats.CriticalDamage += 10;
 		}
 
 		public void ActivateSuperOmegaBuff()
 		{
-			Unit.Loadout.Stats.Attack += 100;
-			Unit.Loadout.Stats.UpdateAttackSpeed("Rank", 100);
-			Unit.Loadout.Stats.UpdateHealth("Rank", 100);
-			Unit.Loadout.Stats.HealthArmor += 100;
-			Unit.Loadout.Stats.UpdateShields("Rank", 100);
-			Unit.Loadout.Stats.ShieldsArmor += 100;
-			Unit.Loadout.Stats.CriticalChance += 10;
-			Unit.Loadout.Stats.CriticalDamage += 20;
+			Loadout.Stats.Attack += 100;
+			Loadout.Stats.UpdateAttackSpeed("Rank", 100);
+			Loadout.Stats.UpdateHealth("Rank", 100);
+			Loadout.Stats.HealthArmor += 100;
+			Loadout.Stats.UpdateShields("Rank", 100);
+			Loadout.Stats.ShieldsArmor += 100;
+			Loadout.Stats.CriticalChance += 10;
+			Loadout.Stats.CriticalDamage += 20;
 		}
 
 		public void DeactivateOmegaBuff()
 		{
-			Unit.Loadout.Stats.Attack -= 50;
-			Unit.Loadout.Stats.UpdateAttackSpeed("Rank", -50);
-			Unit.Loadout.Stats.UpdateHealth("Rank", -50);
-			Unit.Loadout.Stats.HealthArmor -= 50;
-			Unit.Loadout.Stats.UpdateShields("Rank", -50);
-			Unit.Loadout.Stats.ShieldsArmor -= 50;
-			Unit.Loadout.Stats.CriticalChance -= 5;
-			Unit.Loadout.Stats.CriticalDamage -= 10;
+			Loadout.Stats.Attack -= 50;
+			Loadout.Stats.UpdateAttackSpeed("Rank", -50);
+			Loadout.Stats.UpdateHealth("Rank", -50);
+			Loadout.Stats.HealthArmor -= 50;
+			Loadout.Stats.UpdateShields("Rank", -50);
+			Loadout.Stats.ShieldsArmor -= 50;
+			Loadout.Stats.CriticalChance -= 5;
+			Loadout.Stats.CriticalDamage -= 10;
 		}
 
 		public void DeactivateSuperOmegaBuff()
 		{
-			Unit.Loadout.Stats.Attack -= 100;
-			Unit.Loadout.Stats.UpdateAttackSpeed("Rank", -100);
-			Unit.Loadout.Stats.UpdateHealth("Rank", -100);
-			Unit.Loadout.Stats.HealthArmor -= 100;
-			Unit.Loadout.Stats.UpdateShields("Rank", -100);
-			Unit.Loadout.Stats.ShieldsArmor -= 100;
-			Unit.Loadout.Stats.CriticalChance -= 10;
-			Unit.Loadout.Stats.CriticalDamage -= 20;
+			Loadout.Stats.Attack -= 100;
+			Loadout.Stats.UpdateAttackSpeed("Rank", -100);
+			Loadout.Stats.UpdateHealth("Rank", -100);
+			Loadout.Stats.HealthArmor -= 100;
+			Loadout.Stats.UpdateShields("Rank", -100);
+			Loadout.Stats.ShieldsArmor -= 100;
+			Loadout.Stats.CriticalChance -= 10;
+			Loadout.Stats.CriticalDamage -= 20;
 		}
 
 		#endregion
@@ -171,9 +170,9 @@ namespace VBusiness.Ranks
 
 		void ActivateMegaBuffs()
 		{
-			if (Rank >= VEntityFramework.Model.UnitRank.SS)
+			if (Rank >= UnitRankType.SS)
 			{
-				if (Rank >= VEntityFramework.Model.UnitRank.SSS)
+				if (Rank >= UnitRankType.SSS)
 				{
 					ActivateSuperMegaBuff();
 				}
@@ -190,9 +189,9 @@ namespace VBusiness.Ranks
 
 		void ActivateGodBuffs()
 		{
-			if (Rank >= VEntityFramework.Model.UnitRank.SX)
+			if (Rank >= UnitRankType.SX)
 			{
-				if (Rank >= VEntityFramework.Model.UnitRank.SSSX)
+				if (Rank >= UnitRankType.SSSX)
 				{
 					ActivateSuperGodBuff();
 				}
@@ -209,9 +208,9 @@ namespace VBusiness.Ranks
 
 		void ActivateDivineBuffs()
 		{
-			if (Rank >= VEntityFramework.Model.UnitRank.SXD)
+			if (Rank >= UnitRankType.SXD)
 			{
-				if (Rank >= VEntityFramework.Model.UnitRank.SZ)
+				if (Rank >= UnitRankType.SZ)
 				{
 					ActivateSuperDivineBuff();
 				}
@@ -228,9 +227,9 @@ namespace VBusiness.Ranks
 
 		void ActivateOmegaBuffs()
 		{
-			if (Rank >= VEntityFramework.Model.UnitRank.XZ)
+			if (Rank >= UnitRankType.XZ)
 			{
-				if (Rank >= VEntityFramework.Model.UnitRank.XDZ)
+				if (Rank >= UnitRankType.XDZ)
 				{
 					ActivateSuperOmegaBuff();
 				}
@@ -247,11 +246,11 @@ namespace VBusiness.Ranks
 
 		void ActivateVoidBuffs()
 		{
-			if (Rank >= VEntityFramework.Model.UnitRank.SXDZ)
+			if (Rank >= UnitRankType.SXDZ)
 			{
 				ActivateQuasarBuff();
 			}
-			if (Rank >= VEntityFramework.Model.UnitRank.XYZ)
+			if (Rank >= UnitRankType.XYZ)
 			{
 				ActivateVoidBuff();
 			}
@@ -267,9 +266,9 @@ namespace VBusiness.Ranks
 
 		void DeactivateMegaBuffs()
 		{
-			if (Rank >= VEntityFramework.Model.UnitRank.SS)
+			if (Rank >= UnitRankType.SS)
 			{
-				if (Rank >= VEntityFramework.Model.UnitRank.SSS)
+				if (Rank >= UnitRankType.SSS)
 				{
 					DeactivateSuperMegaBuff();
 				}
@@ -286,9 +285,9 @@ namespace VBusiness.Ranks
 
 		void DeactivateGodBuffs()
 		{
-			if (Rank >= VEntityFramework.Model.UnitRank.SX)
+			if (Rank >= UnitRankType.SX)
 			{
-				if (Rank >= VEntityFramework.Model.UnitRank.SSSX)
+				if (Rank >= UnitRankType.SSSX)
 				{
 					DeactivateSuperGodBuff();
 				}
@@ -305,9 +304,9 @@ namespace VBusiness.Ranks
 
 		void DeactivateDivineBuffs()
 		{
-			if (Rank >= VEntityFramework.Model.UnitRank.SXD)
+			if (Rank >= UnitRankType.SXD)
 			{
-				if (Rank >= VEntityFramework.Model.UnitRank.SZ)
+				if (Rank >= UnitRankType.SZ)
 				{
 					DeactivateSuperDivineBuff();
 				}
@@ -324,9 +323,9 @@ namespace VBusiness.Ranks
 
 		void DeactivateOmegaBuffs()
 		{
-			if (Rank >= VEntityFramework.Model.UnitRank.XZ)
+			if (Rank >= UnitRankType.XZ)
 			{
-				if (Rank >= VEntityFramework.Model.UnitRank.XDZ)
+				if (Rank >= UnitRankType.XDZ)
 				{
 					DeactivateSuperOmegaBuff();
 				}
@@ -343,11 +342,11 @@ namespace VBusiness.Ranks
 
 		void DeactivateVoidBuffs()
 		{
-			if (Rank >= VEntityFramework.Model.UnitRank.SXDZ)
+			if (Rank >= UnitRankType.SXDZ)
 			{
 				DeactivateQuasarBuff();
 			}
-			if (Rank >= VEntityFramework.Model.UnitRank.XYZ)
+			if (Rank >= UnitRankType.XYZ)
 			{
 				DeactivateVoidBuff();
 			}
@@ -359,30 +358,56 @@ namespace VBusiness.Ranks
 
 		#endregion
 
+		#region Trifecta Power
+
+		void DeactivateTrifectaPower()
+		{
+			if (Rank >= UnitRankType.SSS)
+			{
+				Loadout.Stats.Attack -= 1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
+				Loadout.Stats.UpdateAttackSpeed("Trifecta", -1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
+				Loadout.Stats.UpdateHealth("Trifecta", -1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
+				Loadout.Stats.HealthArmor -= 1 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
+				Loadout.Stats.UpdateShields("Trifecta", -1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
+				Loadout.Stats.ShieldsArmor -= 1 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
+			}
+		}
+
+		void ActivateTrifectaPower()
+		{
+			if (Rank >= UnitRankType.SSS)
+			{
+				Loadout.Stats.Attack += 1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
+				Loadout.Stats.UpdateAttackSpeed("Trifecta", 1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
+				Loadout.Stats.UpdateHealth("Trifecta", 1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
+				Loadout.Stats.HealthArmor += 1 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
+				Loadout.Stats.UpdateShields("Trifecta", 1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
+				Loadout.Stats.ShieldsArmor += 1 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
+			}
+		}
+		#endregion
+
 		#region Activate
 
 		public override void ActivateRank()
 		{
-			if (Unit.IsCurrentUnit)
-			{
-				Unit.Loadout.Stats.Attack += Attack;
-				Unit.Loadout.Stats.UpdateAttackSpeed("Rank", AttackSpeed);
-				Unit.Loadout.Stats.UpdateHealth("Rank", Vitals);
-				Unit.Loadout.Stats.HealthArmor += Vitals;
-				Unit.Loadout.Stats.UpdateHealth("Rank", Vitals);
-				Unit.Loadout.Stats.ShieldsArmor += Vitals;
-				Unit.Loadout.Stats.UpdateDamageIncrease("Rank", DamageIncrease);
-				Unit.Loadout.Stats.UpdateDamageReduction("Rank", DamageReduction);
-				Unit.Loadout.Stats.CooldownReduction += Speed;
-				Unit.Loadout.Stats.MoveSpeed += Speed;
-				Unit.Loadout.Stats.Rank = Rank;
+			Loadout.Stats.Attack += Attack;
+			Loadout.Stats.UpdateAttackSpeed("Rank", AttackSpeed);
+			Loadout.Stats.UpdateHealth("Rank", Vitals);
+			Loadout.Stats.HealthArmor += Vitals;
+			Loadout.Stats.UpdateHealth("Rank", Vitals);
+			Loadout.Stats.ShieldsArmor += Vitals;
+			Loadout.Stats.UpdateDamageIncrease("Rank", DamageIncrease);
+			Loadout.Stats.UpdateDamageReduction("Rank", DamageReduction);
+			Loadout.Stats.CooldownReduction += Speed;
+			Loadout.Stats.MoveSpeed += Speed;
 
-				ActivateMegaBuffs();
-				ActivateGodBuffs();
-				ActivateDivineBuffs();
-				ActivateOmegaBuffs();
-				ActivateVoidBuffs();
-			}
+			ActivateMegaBuffs();
+			ActivateGodBuffs();
+			ActivateDivineBuffs();
+			ActivateOmegaBuffs();
+			ActivateVoidBuffs();
+			ActivateTrifectaPower();
 		}
 
 		#endregion
@@ -391,26 +416,23 @@ namespace VBusiness.Ranks
 
 		public override void DeactivateRank()
 		{
-			if (Unit.IsCurrentUnit)
-			{
-				Unit.Loadout.Stats.Attack -= Attack;
-				Unit.Loadout.Stats.UpdateAttackSpeed("Rank", -AttackSpeed);
-				Unit.Loadout.Stats.UpdateHealth("Rank", Vitals);
-				Unit.Loadout.Stats.HealthArmor -= Vitals;
-				Unit.Loadout.Stats.UpdateHealth("Rank", Vitals);
-				Unit.Loadout.Stats.ShieldsArmor -= Vitals;
-				Unit.Loadout.Stats.UpdateDamageIncrease("Rank", -DamageIncrease);
-				Unit.Loadout.Stats.UpdateDamageReduction("Rank", -DamageReduction);
-				Unit.Loadout.Stats.CooldownReduction -= Speed;
-				Unit.Loadout.Stats.MoveSpeed -= Speed;
-				Unit.Loadout.Stats.Rank = Rank;
+			Loadout.Stats.Attack -= Attack;
+			Loadout.Stats.UpdateAttackSpeed("Rank", -AttackSpeed);
+			Loadout.Stats.UpdateHealth("Rank", Vitals);
+			Loadout.Stats.HealthArmor -= Vitals;
+			Loadout.Stats.UpdateHealth("Rank", Vitals);
+			Loadout.Stats.ShieldsArmor -= Vitals;
+			Loadout.Stats.UpdateDamageIncrease("Rank", -DamageIncrease);
+			Loadout.Stats.UpdateDamageReduction("Rank", -DamageReduction);
+			Loadout.Stats.CooldownReduction -= Speed;
+			Loadout.Stats.MoveSpeed -= Speed;
 
-				DeactivateMegaBuffs();
-				DeactivateGodBuffs();
-				DeactivateDivineBuffs();
-				DeactivateOmegaBuffs();
-				DeactivateVoidBuffs();
-			}
+			DeactivateMegaBuffs();
+			DeactivateGodBuffs();
+			DeactivateDivineBuffs();
+			DeactivateOmegaBuffs();
+			DeactivateVoidBuffs();
+			DeactivateTrifectaPower();
 		}
 
 		#endregion

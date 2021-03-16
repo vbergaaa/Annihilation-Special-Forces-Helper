@@ -30,7 +30,7 @@ namespace Tests
 			perks.UnitSpecialization.DesiredLevel = specPerks;
 			perks.DamageReduction.DesiredLevel = (short)(statsDR > 10 ? 10 : statsDR);
 			perks.DamageReduction2.DesiredLevel = (short)(statsDR < 10 ? 0 : statsDR - 10);
-			loadout.CurrentUnit.UnitRank = (VEntityFramework.Model.UnitRank)rankDr;
+			loadout.CurrentUnit.UnitRank = (UnitRankType)rankDr;
 			loadout.Stats.UpdateDamageReduction("OTHER", otherDr);
 
 			Assert.That(loadout.Stats.DamageReductionForBinding, Is.EqualTo(expectedDR));

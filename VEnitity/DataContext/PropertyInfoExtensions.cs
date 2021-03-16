@@ -109,7 +109,7 @@ namespace VEntityFramework.Data
 				"Int64" => long.Parse(value),
 				"String" => value,
 				"Boolean" => value.ToLower() == "true" ? true : false,
-				"UnitRank" => EnumHelper.GetEnumFromDescription<UnitRank>(value),
+				"UnitRankType" => EnumHelper.GetEnumFromDescription<UnitRankType>(value),
 				"PlayerRank" => EnumHelper.GetEnumFromDescription<PlayerRank>(value),
 				"DifficultyLevel" => EnumHelper.GetEnumFromDescription<DifficultyLevel>(value),
 				"SoulType" => EnumHelper.GetEnumFromDescription<SoulType>(value),

@@ -85,7 +85,7 @@ namespace VUserInterface
 
 		List<object> RanksList
 		{
-			get => fRankList ??= BindingHelper<UnitRank>.ConvertForBinding(Enums.GetValues<UnitRank>().ToList());
+			get => fRankList ??= BindingHelper<UnitRankType>.ConvertForBinding(Enums.GetValues<UnitRankType>().ToList());
 		}
 		List<object> fRankList;
 

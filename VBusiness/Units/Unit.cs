@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using VBusiness.Perks;
+using VBusiness.Ranks;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
 
@@ -67,17 +68,30 @@ namespace VBusiness.Units
 		public override int MaximumInfusion => MaximumKills > 2000 ? 10 : MaximumKills / 200;
 
 		#endregion
-		
+
 		#region Unit Rank
 
-		public override UnitRank UnitRank
+		public override VUnitRank Rank
+		{
+			get => base.Rank ??= new EmptyRank();
+			protected set => base.Rank = value;
+		}
+
+		public override UnitRankType UnitRank
 		{
 			get => base.UnitRank;
 			set
 			{
 				base.UnitRank = value;
-				Rank = Ranks.UnitRank.New(UnitRank, this);
+				SetRankFromType(value);
 			}
+		}
+
+		private void SetRankFromType(UnitRankType value)
+		{
+			var rank = Ranks.UnitRank.New(value);
+			rank.Loadout = Loadout;
+			Rank = rank;
 		}
 
 		#endregion

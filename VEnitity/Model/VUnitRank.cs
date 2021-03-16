@@ -4,33 +4,18 @@ namespace VEntityFramework.Model
 {
 	public abstract class VUnitRank
 	{
-		#region Constructor 
-
-		public VUnitRank(VUnit config)
-		{
-			Unit = config;
-		}
-
-		#endregion
-
-		#region Properties
-
-		#region Unit Configuration
-
-		[VXML(false)]
-		public VUnit Unit { get; private set; }
-
-		#endregion
-
-		#endregion
-
 		public abstract void ActivateRank();
 		public abstract void DeactivateRank();
 
+		#region Properties
+
+		public abstract VLoadout Loadout { get; set; }
+
+		#endregion
 
 		#region Stats
 
-		public abstract UnitRank Rank { get; }
+		public abstract UnitRankType Rank { get; }
 		public abstract double DamageIncrease { get; }
 		public abstract double DamageReduction { get; }
 		public abstract double Attack { get; }

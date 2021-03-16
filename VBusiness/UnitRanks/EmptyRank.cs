@@ -4,11 +4,7 @@ namespace VBusiness.Ranks
 {
 	public class EmptyRank : UnitRank
 	{
-		public EmptyRank(VUnit unit) : base(unit)
-		{
-		}
-
-		public override VEntityFramework.Model.UnitRank Rank => VEntityFramework.Model.UnitRank.None;
+		public override UnitRankType Rank => UnitRankType.None;
 
 		public override double DamageIncrease => 0;
 
@@ -23,5 +19,15 @@ namespace VBusiness.Ranks
 		public override double Armor => 0;
 
 		public override double Speed => 0;
+
+		public override void ActivateRank()
+		{
+			// do nothing as empty rank
+		}
+
+		public override void DeactivateRank()
+		{
+			// do nothing as empty rank
+		}
 	}
 }
