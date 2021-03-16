@@ -5,6 +5,8 @@ using VEntityFramework.Data;
 using VEntityFramework;
 using VBusiness.HelperClasses;
 using VUserInterface.CommonControls;
+using VEntityFramework.DataContext;
+using VEntityFramework.Model;
 
 namespace VUserInterface
 {
@@ -14,6 +16,8 @@ namespace VUserInterface
 		{
 			InitializeComponent();
 		}
+
+		public VLoadoutSouls SoulCollection { get; set; }
 
 		public Soul Soul
 		{
@@ -79,6 +83,24 @@ namespace VUserInterface
 				var soulSlot = soulName != "None" ? int.Parse(soulName.Split("-")[0]) : 0;
 				var eventArgs = new SoulChangedEventArgs() { SoulSlot = soulSlot };
 				OnSoulChanged?.Invoke(this, eventArgs);
+			}
+		}
+
+		void AddNewSoulButton_Click(object sender, EventArgs e)
+		{
+			var oldSoul = Soul;
+			var soul = BizoCreator.Create(typeof(Soul), new object[0]);
+			var soulForm = new SoulForm(soul);
+			soulForm.SoulCollection = SoulCollection;
+			soulForm.ShowDialog();
+
+			if (!(soulForm.Parent is EmptySoul) && soulForm.Parent.ExistsInXML)
+			{
+				var bindingField = DataBindings.GetBindingField("Soul");
+				fSoulList = null;
+				hasSoulBeenSet = false;
+				SoulComboBox.DataSource = SoulList;
+				SoulCollection.GetType().GetProperty(bindingField).SetValue(SoulCollection, soulForm.Parent);
 			}
 		}
 

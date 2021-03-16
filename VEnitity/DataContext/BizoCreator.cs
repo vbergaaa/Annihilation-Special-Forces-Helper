@@ -25,7 +25,7 @@ namespace VEntityFramework.DataContext
 				var myType = myAssembly.GetType(fullType);
 				var ctor = myType.GetConstructors()[0];
 				return specificTypeName != null
-					? (VBusinessObject)ctor.Invoke(new object[] { null })
+					? (VBusinessObject)ctor.Invoke(new object[] { parameters.FirstOrDefault() })
 					: (VBusinessObject)ctor.Invoke(null); // EmptySoul initialiser
 			}
 			else if (typeof(VUnit).IsAssignableFrom(bizoType))

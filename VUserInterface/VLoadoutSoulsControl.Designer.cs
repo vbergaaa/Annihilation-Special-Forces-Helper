@@ -46,18 +46,21 @@ namespace VUserInterface
 			// Soul1Control
 			//
 			this.Soul1Control.DataBindings.Add("Soul", bindingSource, "Soul1");
+			this.Soul1Control.DataBindings.Add("SoulCollection", bindingSource, ".");
 			this.Soul1Control.Location = DPIScalingHelper.GetScaledPoint(35, 20);
 			this.Soul1Control.OnSoulChanged += Soul1Control_OnSoulChanged;
 			//
 			// Soul2Control
 			//
 			this.Soul2Control.DataBindings.Add("Soul", bindingSource, "Soul2");
+			this.Soul2Control.DataBindings.Add("SoulCollection", bindingSource, ".");
 			this.Soul2Control.Location = DPIScalingHelper.GetScaledPoint(208, 20);
 			this.Soul2Control.OnSoulChanged += Soul2Control_OnSoulChanged;
 			//
 			// Soul3Control
 			//
 			this.Soul3Control.DataBindings.Add("Soul", bindingSource, "Soul3");
+			this.Soul3Control.DataBindings.Add("SoulCollection", bindingSource, ".");
 			this.Soul3Control.Enabled = false;
 			this.Soul3Control.Location = DPIScalingHelper.GetScaledPoint(381, 20);
 			this.Soul3Control.OnSoulChanged += Soul3Control_OnSoulChanged;

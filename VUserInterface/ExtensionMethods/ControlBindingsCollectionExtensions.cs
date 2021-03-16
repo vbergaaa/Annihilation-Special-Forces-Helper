@@ -14,5 +14,19 @@ namespace VUserInterface
 				dataSource.Add(controlProperty, binding, bizoProperty);
 			}
 		}
+
+		public static string GetBindingField(this ControlBindingsCollection dataBindings, string property)
+		{
+			Binding bindingOfInterest = null;
+			foreach (Binding binding in dataBindings)
+			{
+				if (binding.PropertyName == property)
+				{
+					bindingOfInterest = binding;
+				}
+			}
+
+			return bindingOfInterest?.BindingMemberInfo.BindingField ?? null;
+		}
 	}
 }

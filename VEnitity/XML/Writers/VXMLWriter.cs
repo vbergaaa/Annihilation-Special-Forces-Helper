@@ -17,6 +17,7 @@ namespace VEntityFramework.XML
 			{
 				WriteBizoXML(writer, bizo);
 			}
+			bizo.ExistsInXML = true;
 			bizo.XmlLocation = fullFilePath;
 		}
 

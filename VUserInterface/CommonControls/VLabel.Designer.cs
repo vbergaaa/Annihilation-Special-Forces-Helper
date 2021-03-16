@@ -51,7 +51,7 @@ namespace VUserInterface.CommonControls
 			this.Label.Location = DPIScalingHelper.GetScaledPoint(0, 2);
 			this.Label.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
 			this.Label.Name = "Label";
-			this.Label.Size = DPIScalingHelper.GetScaledSize(0, 25);
+			this.Label.Size = DPIScalingHelper.GetScaledSize(0, 20);
 			this.Label.TabIndex = 0;
 			this.Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -60,6 +60,7 @@ namespace VUserInterface.CommonControls
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Name = "VLabel";
+			this.Height = DPIScalingHelper.GetScaledY(22);
 			this.CoreControl.ResumeLayout(false);
 			this.CoreControl.PerformLayout();
 			this.ResumeLayout(false);

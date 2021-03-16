@@ -42,6 +42,7 @@ namespace VUserInterface
 			this.CriticalDamageLabel = new VLabel();
 			this.MineralsLabel = new VLabel();
 			this.KillsLabel = new VLabel();
+			this.AddNewSoulButton = new DPIButton();
 			this.SoulComboBox = new System.Windows.Forms.ComboBox();
 			this.BindingSource = new BindingSource();
 			((ISupportInitialize)this.BindingSource).BeginInit();
@@ -116,12 +117,19 @@ namespace VUserInterface
 			// 
 			// KillsLabel
 			// 
-			this.KillsLabel.AutoSize = true;
 			this.KillsLabel.Caption = "Kills";
 			this.KillsLabel.DataBindings.Add("Text", BindingSource, "Kills");
 			this.KillsLabel.Location = DPIScalingHelper.GetScaledPoint(120, 200);
 			this.KillsLabel.Name = "KillsLabel";
 			this.KillsLabel.TabIndex = 0;
+			//
+			// AddNewSoulButton
+			//
+			this.AddNewSoulButton.Click += AddNewSoulButton_Click;
+			this.AddNewSoulButton.Location = DPIScalingHelper.GetScaledPoint(15, 230);
+			this.AddNewSoulButton.Name = "AddNewSoulButton";
+			this.AddNewSoulButton.Size = DPIScalingHelper.GetScaledSize(135, 25);
+			this.AddNewSoulButton.Text = "Add New";
 			//
 			// SoulComboBox
 			//
@@ -141,8 +149,9 @@ namespace VUserInterface
 			this.Controls.Add(this.VitalsLabel);
 			this.Controls.Add(this.AttackSpeedLabel);
 			this.Controls.Add(this.AttackLabel);
+			this.Controls.Add(this.AddNewSoulButton);
 			this.Name = "SoulForm";
-			this.Size = DPIScalingHelper.GetScaledSize(163, 230);
+			this.Size = DPIScalingHelper.GetScaledSize(163, 270);
 			((ISupportInitialize)this.BindingSource).EndInit();
 		}
 
@@ -156,6 +165,7 @@ namespace VUserInterface
 		private VLabel CriticalDamageLabel;
 		private VLabel MineralsLabel;
 		private VLabel KillsLabel;
+		private DPIButton AddNewSoulButton;
 		private System.Windows.Forms.ComboBox SoulComboBox;
 		private System.Windows.Forms.BindingSource BindingSource;
 	}

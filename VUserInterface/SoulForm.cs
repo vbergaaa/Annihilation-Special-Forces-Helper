@@ -58,6 +58,8 @@ namespace VUserInterface
 			}
 		}
 
+		public VLoadoutSouls SoulCollection { get; set; }
+
 		int GetSaveSlotFromTextBoxSafe()
 		{
 			return int.TryParse(SaveSlotTextBox.Text, out var saveSlot)
@@ -92,7 +94,7 @@ namespace VUserInterface
 
 			if (value is SoulType type && (Parent == null || Parent.Type != type))
 			{
-				Parent = Soul.New(type, null);
+				Parent = Soul.New(type, SoulCollection);
 			}
 		}
 
