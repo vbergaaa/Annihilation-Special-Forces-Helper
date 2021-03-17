@@ -242,7 +242,7 @@ namespace VEntityFramework.Model
 		}
 		public event EventHandler ShouldRestrictChanged;
 
-		bool fShouldRestrict = true;
+		bool fShouldRestrict;
 
 		#endregion
 

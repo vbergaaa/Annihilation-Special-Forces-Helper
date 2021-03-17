@@ -37,10 +37,6 @@ namespace VUserInterface
 		{
 			components = new System.ComponentModel.Container();
 			this.bindingSource = new BindingSource();
-			this.SoloBonusCheckBox = new VCheckControl();
-			this.UnitSpecCheckBox = new VCheckControl();
-			this.AdrenalineRushCheckBox = new VCheckControl();
-			this.DifficultyDropBox = new VDropBox();
 			this.UnitsLoadList = new VSelectList();
 			this.CurrentUnitControl = new UnitControl();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -70,10 +66,6 @@ namespace VUserInterface
 			//
 			// VSoulCollectionControl
 			//
-			this.Controls.Add(DifficultyDropBox);
-			this.Controls.Add(SoloBonusCheckBox);
-			this.Controls.Add(UnitSpecCheckBox);
-			this.Controls.Add(AdrenalineRushCheckBox);
 			this.Controls.Add(UnitsLoadList);
 			this.Controls.Add(CurrentUnitControl);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
@@ -84,10 +76,6 @@ namespace VUserInterface
 		#endregion
 
 		BindingSource bindingSource;
-		VDropBox DifficultyDropBox;
-		VCheckControl SoloBonusCheckBox;
-		VCheckControl UnitSpecCheckBox;
-		VCheckControl AdrenalineRushCheckBox;
 		VSelectList UnitsLoadList;
 		UnitControl CurrentUnitControl;
 	}

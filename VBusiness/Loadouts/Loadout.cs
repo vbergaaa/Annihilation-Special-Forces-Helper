@@ -241,6 +241,8 @@ namespace VBusiness.Loadouts
 		protected override void SetDefaultValuesCore()
 		{
 			Stats = new Stats(this);
+			//ShouldRestrict = false;
+			UseUnitStats = true;
 		}
 
 		#endregion
