@@ -1,9 +1,11 @@
 ﻿using EnumsNET;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using VBusiness.PlayerRanks;
 using VEntityFramework.Model;
 
+[assembly: InternalsVisibleTo("Tests")]
 namespace VBusiness.Perks
 {
 	public class PerkCollection : VPerkCollection
@@ -1472,7 +1474,7 @@ namespace VBusiness.Perks
 		#endregion
 
 		#region AllPerks
-
+		internal IEnumerable<VPerk> AllPerks => allPerks;
 		protected IEnumerable<VPerk> allPerks;
 
 		void PopulateAllPerks()

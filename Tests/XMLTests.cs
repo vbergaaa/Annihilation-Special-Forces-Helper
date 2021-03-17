@@ -1,11 +1,14 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
+using VEntityFramework.Data;
+using VEntityFramework.Model;
 using VEntityFramework.XML;
 
 namespace Tests
@@ -60,5 +63,123 @@ namespace Tests
 			var loadout = (Loadout)reader.CreateBizoFromXML(typeof(Loadout), xmlDoc.DocumentElement);
 			Assert.That(loadout.Units.ToArray(), Has.Length.EqualTo(3));
 		}
+
+		[Test]
+		public void FullXml()
+		{
+			var loadout = GetFullyPopulatedLoadout();
+			loadout.Save();
+			
+			var xml = new XmlDocument();
+			var xmlPath = Directory.GetCurrentDirectory() + "/Loadouts/9999-XMLTEST.xml";
+			xml.Load(xmlPath);
+			var firstXml = xml.DocumentElement.InnerText;
+
+			var loadout2 = VDataContext.Instance.ReadFromXML<Loadout>("9999-XMLTEST");
+			loadout2.Save();
+
+			xml = new XmlDocument();
+			xml.Load(xmlPath);
+			var secondXml = xml.DocumentElement.InnerText;
+
+			Assert.That(firstXml, Is.EqualTo(secondXml), "if these are different, then the xml import > export doesn't work correctly");
+		}
+
+		#region	GetFullyPopulatedLoadout
+
+		VLoadout GetFullyPopulatedLoadout()
+		{
+			var loadout = new Loadout();
+			loadout.ShouldRestrict = false;
+			AddMaxPerks(loadout);
+			AddCP(loadout);
+			AddMaxGems(loadout);
+			AddUnits(loadout);
+			AddUpgrades(loadout);
+			AddSouls(loadout);
+			PopulateOtherProperties(loadout);
+			return loadout;
+		}
+
+		void PopulateOtherProperties(Loadout loadout)
+		{
+			loadout.UseUnitStats = true;
+			loadout.UnitSpec = UnitType.Templar;
+			loadout.Name = "XMLTEST";
+			loadout.Slot = 9999;
+		}
+
+		private void AddSouls(Loadout loadout)
+		{
+			loadout.Souls.SoulSlot1 = 1;
+			loadout.Souls.SoulSlot2 = 2;
+			loadout.Souls.SoulSlot3 = 3;
+		}
+
+		void AddUpgrades(Loadout loadout)
+		{
+			loadout.Upgrades.AttackSpeedUpgrade = 15;
+			loadout.Upgrades.AttackUpgrade = 20;
+			loadout.Upgrades.HealthArmorUpgrade = 43;
+			loadout.Upgrades.HealthUpgrade = 58;
+			loadout.Upgrades.ShieldsArmorUpgrade = 81;
+			loadout.Upgrades.ShieldsUpgrade = 99;
+		}
+
+		void AddUnits(Loadout loadout)
+		{
+			var unit = VUnit.New(UnitType.WarpLord, loadout);
+			unit.EssenceStacks = 15;
+			unit.CurrentInfusion = 10;
+			unit.UnitRank = UnitRankType.XYZ;
+			loadout.Units.Add(unit);
+
+			unit = VUnit.New(UnitType.WingedArchon, loadout);
+			unit.EssenceStacks = 3;
+			unit.CurrentInfusion = 8;
+			unit.UnitRank = UnitRankType.SSS;
+			loadout.Units.Add(unit);
+		}
+
+		void AddMaxGems(Loadout loadout)
+		{
+			loadout.Gems.AttackGem.CurrentLevel = 10;
+			loadout.Gems.AttackSpeedGem.CurrentLevel = 20;
+			loadout.Gems.HealthGem.CurrentLevel = 30;
+			loadout.Gems.HealthArmorGem.CurrentLevel = 40;
+			loadout.Gems.ShieldsGem.CurrentLevel = 50;
+			loadout.Gems.ShieldsArmorGem.CurrentLevel = 60;
+			loadout.Gems.CritChanceGem.CurrentLevel = 70;
+			loadout.Gems.CritDamageGem.CurrentLevel = 80;
+			loadout.Gems.DoubleWarpGem.CurrentLevel = 90;
+			loadout.Gems.TripleWarpGem.CurrentLevel = 100;
+		}
+
+		void AddCP(Loadout loadout)
+		{
+			loadout.ChallengePoints.Attack.CurrentLevel = 1;
+			loadout.ChallengePoints.AttackSpeed.CurrentLevel = 2;
+			loadout.ChallengePoints.CriticalChance.CurrentLevel = 3;
+			loadout.ChallengePoints.CriticalDamage.CurrentLevel = 4;
+			loadout.ChallengePoints.Health.CurrentLevel = 5;
+			loadout.ChallengePoints.Shields.CurrentLevel = 6;
+			loadout.ChallengePoints.DefensiveEssence.CurrentLevel = 7;
+			loadout.ChallengePoints.DamageReduction.CurrentLevel = 8;
+			loadout.ChallengePoints.Mining.CurrentLevel = 9;
+			loadout.ChallengePoints.Kills.CurrentLevel = 10;
+			loadout.ChallengePoints.Veterancy.CurrentLevel = 1;
+			loadout.ChallengePoints.Acceleration.CurrentLevel = 2;
+		}
+
+		void AddMaxPerks(Loadout loadout)
+		{
+			var perks = (PerkCollection)loadout.Perks;
+			foreach (var perk in perks.AllPerks)
+			{
+				perk.DesiredLevel = perk.MaxLevel;
+			}
+		}
+
+		#endregion
 	}
 }
