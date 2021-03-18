@@ -45,6 +45,7 @@ namespace Tests
 		{
 			var loadout = new Loadout();
 			loadout.ShouldRestrict = false;
+			loadout.UseUnitStats = false;
 			loadout.CurrentUnit = VUnit.New(UnitType.Probe, loadout);
 			var perkCollection = (PerkCollection)loadout.Perks;
 			perkCollection.MaximumPotiential.DesiredLevel = 8;
@@ -70,6 +71,7 @@ namespace Tests
 		public void TestAttackSpeed(short perks, short gems, int essence, int infuse, double expected)
 		{
 			var loadout = new Loadout();
+			loadout.UseUnitStats = false;
 			loadout.ShouldRestrict = false;
 			loadout.CurrentUnit = VUnit.New(UnitType.Probe, loadout);
 			var perkCollection = (PerkCollection)loadout.Perks;
