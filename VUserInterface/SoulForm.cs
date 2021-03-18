@@ -80,9 +80,25 @@ namespace VUserInterface
 
 		List<object> SoulTypesList
 		{
-			get => fSoulTypesList ??= BindingHelper<SoulType>.ConvertForBinding(Enums.GetValues<SoulType>().ToList());
+			get => fSoulTypesList ??= GetOrderedSoulsList();
 		}
+
 		List<object> fSoulTypesList;
+
+		List<object> GetOrderedSoulsList()
+		{
+			var list = new List<object>();
+			list.Add(SoulType.None);
+			for (var i = 1; i <= (int)VSoul.HighestNonUniqueSoul; i++)
+			{
+				list.Add("");
+				list.Add((SoulType)i);
+				list.Add((SoulType)((i * 3) + (int)VSoul.HighestNonUniqueSoul - 2));
+				list.Add((SoulType)((i * 3) + (int)VSoul.HighestNonUniqueSoul - 1));
+				list.Add((SoulType)((i * 3) + (int)VSoul.HighestNonUniqueSoul - 0));
+			}
+			return list;
+		}
 
 		#endregion
 

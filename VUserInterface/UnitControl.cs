@@ -75,7 +75,7 @@ namespace VUserInterface
 
 		List<object> UnitsTypesList
 		{
-			get => fUnitsTypesList ??= BindingHelper<UnitType>.ConvertForBinding(Enums.GetValues<UnitType>().ToList());
+			get => fUnitsTypesList ??= GetUnitTypes();
 		}
 		List<object> fUnitsTypesList;
 
@@ -143,5 +143,69 @@ namespace VUserInterface
 		}
 
 		#endregion
+
+		List<object> GetUnitTypes()
+		{
+			var list = new List<object>
+			{
+				UnitType.None,
+				string.Empty,
+				UnitType.Probe,
+				UnitType.DarkProbe,
+				UnitType.EvolutionProbe,
+				string.Empty,
+				UnitType.WarpLord,
+				UnitType.DarkWarpLord,
+				UnitType.BerserkerWarpLord,
+				UnitType.TerminatorWarpLord,
+				string.Empty,
+				UnitType.ShieldBattery,
+				UnitType.DarkShieldBattery,
+				string.Empty,
+				UnitType.Striker,
+				UnitType.DarkStriker,
+				UnitType.MirrorStriker,
+				UnitType.ParadoxStriker,
+				string.Empty,
+				UnitType.LightAdept,
+				UnitType.ForgedAdept,
+				UnitType.SplitterAdept,
+				string.Empty,
+				UnitType.DarkShadow,
+				UnitType.DarkAvenger,
+				UnitType.BloodAvenger,
+				string.Empty,
+				UnitType.Dreadnought,
+				UnitType.UnstableDreadnought,
+				UnitType.AnnihilationDreadnought,
+				string.Empty,
+				UnitType.Templar,
+				UnitType.HighTemplar,
+				string.Empty,
+				UnitType.Dominator,
+				UnitType.ArchDominator,
+				string.Empty,
+				UnitType.Dragoon,
+				UnitType.Reaver,
+				UnitType.Disruptor,
+				UnitType.Colossus,
+				UnitType.WrathWalker,
+				UnitType.PurificationWalker,
+				string.Empty,
+				UnitType.Prisoner,
+				UnitType.StonePrisoner,
+				UnitType.BladeDancer,
+				UnitType.BladeMaster,
+				UnitType.OmniBlader,
+				string.Empty,
+				UnitType.Archon,
+				UnitType.DarkArchon,
+				UnitType.Ascendant,
+				UnitType.CrimsonArchon,
+				UnitType.WingedArchon
+			};
+
+			return list;
+		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace VUserInterface.CommonControls
 {
@@ -40,6 +41,7 @@ namespace VUserInterface.CommonControls
 			this.ComboBox.FormattingEnabled = true;
 			this.ComboBox.Location = DPIScalingHelper.GetScaledPoint(0, 1);
 			this.ComboBox.SelectedValueChanged += ComboBox_SelectedValueChanged;
+			this.ComboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
 			//
 			// DropBox
 			//

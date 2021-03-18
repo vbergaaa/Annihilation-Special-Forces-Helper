@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using EnumsNET;
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace VUserInterface.CommonControls
@@ -19,6 +21,15 @@ namespace VUserInterface.CommonControls
 			}
 		}
 
-		public override string Text { get => Label.Text; set => Label.Text = value; }
+		public new object Text
+		{
+			get => Label.Text;
+			set
+			{
+				Label.Text = value is Enum @enum
+					? Enums.AsString(@enum.GetType(), @enum, EnumFormat.Description, EnumFormat.Name)
+					: value.ToString();
+			}
+		}
 	}
 }

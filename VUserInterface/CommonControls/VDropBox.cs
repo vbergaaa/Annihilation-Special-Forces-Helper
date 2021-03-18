@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VUserInterface.CommonControls
@@ -69,18 +70,30 @@ namespace VUserInterface.CommonControls
 
 		void ComboBox_SelectedValueChanged(object sender, EventArgs e)
 		{
-			SelectedValueChanged?.Invoke(sender, e);
+			if (ComboBox.SelectedItem != null && ComboBox.SelectedItem is string)
+			{
+				if (oldIndex <= ComboBox.SelectedIndex)
+				{
+					ComboBox.SelectedIndex++;
+				}
+				else
+				{
+					ComboBox.SelectedIndex--;
+				}
+			}
+			else
+			{
+				oldIndex = ComboBox.SelectedIndex;
+				SelectedValueChanged?.Invoke(sender, e);
+			}
 		}
+		int oldIndex;
 
 		void ComboBox_Format(object sender, ListControlConvertEventArgs e)
 		{
-			e.Value = e.ListItem switch
-			{
-				SoulType value => value.AsString(EnumFormat.Description, EnumFormat.Name),
-				PlayerRank value => value.AsString(EnumFormat.Description, EnumFormat.Name),
-				DifficultyLevel value => value.AsString(EnumFormat.Description, EnumFormat.Name),
-				_ => e.ListItem.ToString()
-			};
+				e.Value = e.ListItem is Enum value
+					? Enums.AsString(value.GetType(), value, EnumFormat.Description, EnumFormat.Name)
+					: e.ListItem.ToString();
 		}
 
 		#endregion
