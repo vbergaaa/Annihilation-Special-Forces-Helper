@@ -19,6 +19,84 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Health
+
+		public abstract double Health { get; }
+
+		#endregion
+
+		#region Damage
+
+		public abstract double Damage { get; }
+
+		#endregion
+
+		#region Armor
+
+		public abstract double Armor { get; }
+
+		#endregion
+
+		#region DamageIncrease
+
+		public abstract int DamageIncrease { get; }
+
+		#endregion
+
+		#region DamageReduction
+
+		public abstract int DamageReduction { get; }
+
+		#endregion
+
+		#region AttackSpeed
+
+		public abstract double AttackSpeed { get; }
+
+		#endregion
+
+		#region FearChance
+
+		public abstract int FearChance { get; }
+
+		#endregion
+
+		#region StartingUpgrades
+
+		public abstract int StartingUpgrades { get; }
+
+		#endregion
+
+		#region TitanChance
+
+		public abstract int TitanChance { get; }
+
+		#endregion
+
+		#region TitanChance
+
+		public abstract int MythicBoss { get; }
+
+		#endregion
+
+		#region TitanChance
+
+		public abstract int CritReduction { get; }
+
+		#endregion
+
+		#region TitanChance
+
+		public abstract int UnitTierIncrease { get; }
+
+		#endregion
+
+		#region TitanChance
+
+		public abstract int RoomToClear { get; }
+
+		#endregion
+
 		#endregion
 	}
 
