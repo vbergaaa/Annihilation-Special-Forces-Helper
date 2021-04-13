@@ -46,7 +46,7 @@ namespace VEntityFramework.XML
 
 		static bool ShouldReportError(VBusinessObject bizo, XmlNode childNode)
 		{
-			if (bizo.GetType().Name != "UnitConfiguration")
+			if (bizo.GetType().Name == "UnitConfiguration")
 			{
 				return false;  // we depreciated lots of UnitConfig stuff, so until I flush out my local xmls, ignore these
 			}
@@ -54,9 +54,11 @@ namespace VEntityFramework.XML
 			{
 				return false; // the Key for unit is used in the construction of the class, we don't need to set it anywhere else
 			}
-			else if (bizo.GetType().Name == "Unit" && childNode.Name == "HasUnitSpec")
+			else if (bizo.GetType().Name == "Unit" && (childNode.Name == "HasUnitSpec" || childNode.Name == "Key"))
 			{
-				return false; // HasUnitSpec is now calculated from the spec on the loadout, not stored against a unit
+				// HasUnitSpec is now calculated from the spec on the loadout, not stored against a unit
+				// Key is now read before creating the Unit, it no longer sets the unit type after creating an empty unit
+				return false; 
 			}
 			return true;
 		}
