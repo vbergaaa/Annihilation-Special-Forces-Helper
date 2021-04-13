@@ -70,6 +70,7 @@ namespace VBusiness
 				{
 					base.DifficultyLevel = value;
 					Difficulty = DifficultyHelper.New(value);
+					Loadout.Stats.RefreshPropertyBinding("Toughness");
 				}
 			}
 		}
