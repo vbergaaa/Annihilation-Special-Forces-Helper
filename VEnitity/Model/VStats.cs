@@ -249,7 +249,7 @@ namespace VEntityFramework.Model
 
 		#region DamageReduction
 
-		protected double DamageReduction
+		public double DamageReduction
 		{
 			get
 			{
