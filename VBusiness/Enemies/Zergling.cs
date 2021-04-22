@@ -2,7 +2,7 @@
 
 namespace VBusiness.Enemies
 {
-	public class Zergling : VEnemyUnit
+	public class Zergling : EnemyUnit
 	{
 		public override EnemyType EnemyType => EnemyType.Zergling;
 

@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using VBusiness.HelperClasses;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
 using VEntityFramework.Model;
@@ -59,6 +58,7 @@ namespace Tests.Stats_Tests
 		public void TestToughness_Difficulty(DifficultyLevel difficulty, double expected)
 		{
 			var loadout = GetLoadout();
+			SetBasicLingComposition();
 			loadout.UnitConfiguration.DifficultyLevel = difficulty;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.01));
 		}
@@ -70,6 +70,7 @@ namespace Tests.Stats_Tests
 		[TestCase(300, 36000 + 814.81)]
 		public void TestToughness_HealthArmor(int additionalArmor, double expected)
 		{
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.Gems.HealthArmorGem.CurrentLevel = (short)additionalArmor;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.02));
@@ -81,6 +82,7 @@ namespace Tests.Stats_Tests
 		[TestCase(1000, 444.444 * 11 + 814.81)]
 		public void TestToughness_Health(int additionalHealth, double expected)
 		{
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.Gems.HealthGem.CurrentLevel = (short)additionalHealth;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.02));
@@ -93,6 +95,7 @@ namespace Tests.Stats_Tests
 		[TestCase(300, 444.44 + 66000)]
 		public void TestToughness_ShieldsArmor(int additionalArmor, double expected)
 		{
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.Gems.ShieldsArmorGem.CurrentLevel = (short)additionalArmor;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.02));
@@ -105,6 +108,7 @@ namespace Tests.Stats_Tests
 		[TestCase(1000, 444.444 + 814.815 * 11)]
 		public void TestToughness_Shields(int additionalShields, double expected)
 		{
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.Gems.ShieldsGem.CurrentLevel = (short)additionalShields;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.02));
@@ -117,6 +121,7 @@ namespace Tests.Stats_Tests
 		[TestCase(70, 102000)]
 		public void TestToughness_DamageReduction(int dr, double expected)
 		{
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.Stats.UpdateDamageReduction("Test", dr);
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.01));
@@ -129,6 +134,7 @@ namespace Tests.Stats_Tests
 		[TestCase(10, 4857.14)]
 		public void TestToughness_Infusion(int infuse, double expected)
 		{
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.CurrentUnit.CurrentInfusion = infuse;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.01));
@@ -141,6 +147,7 @@ namespace Tests.Stats_Tests
 		[TestCase(25, 7403.23)]
 		public void TestToughness_EssenceStacks(int essence, double expected)
 		{
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.CurrentUnit.EssenceStacks = essence;
 
@@ -151,9 +158,46 @@ namespace Tests.Stats_Tests
 		[TestCase(UnitType.Striker, 1272.97)]
 		public void TestToughness_CurrentUnit(UnitType unit, double expected)
 		{
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.CurrentUnit = VUnit.New(unit, loadout);
 
+			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.01));
+		}
+
+		[TestCase(1, 0, 1259.26)]
+		[TestCase(0, 1, 1178.22)]
+		[TestCase(.5, .5, 1214.29)]
+		public void TestToughness_UnitComposition(double lingChance, double roachChance, double expected)
+		{
+			// ling atk = 60;
+			// roach atk = 70;
+			StatCalculationHelper.UnitCompOverride = new Dictionary<EnemyType, double> {
+				{ EnemyType.Zergling, lingChance },
+				{ EnemyType.Roach, roachChance }
+			};
+			var loadout = GetLoadout();
+			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.01));
+		}
+
+		[TestCase(1, 0, 102000)]
+		[TestCase(0, 1, 5950)]
+		[TestCase(.5, .5, 10523.81)]
+		[TestCase(.9, .1, 35758.62)]
+		public void TestToughness_UnitComposition_WhenOneUnitDoesNoDamage(double lingChance, double roachChance, double expected)
+		{
+			// ling atk = 60;
+			// roach atk = 70;
+			StatCalculationHelper.UnitCompOverride = new Dictionary<EnemyType, double> {
+				{ EnemyType.Zergling, lingChance },
+				{ EnemyType.Roach, roachChance }
+			};
+			var loadout = GetLoadout();
+			loadout.Gems.HealthArmorGem.CurrentLevel = 100; 
+			loadout.Gems.ShieldsArmorGem.CurrentLevel = 100;
+			loadout.Upgrades.HealthArmorUpgrade = 80;
+			loadout.Upgrades.ShieldsArmorUpgrade = 80;
+			// 60 flat armor
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.01));
 		}
 
@@ -180,5 +224,18 @@ namespace Tests.Stats_Tests
 			perks.MaximumPotential4.DesiredLevel = 10;
 			return loadout;
 		}
+
+		[TearDown]
+		public void TearDown()
+		{
+			StatCalculationHelper.UnitCompOverride = null;
+		}
+
+		void SetBasicLingComposition()
+		{
+			StatCalculationHelper.UnitCompOverride = new Dictionary<EnemyType, double> { { EnemyType.Zergling, 1 } };
+		}
+
+		
 	}
 }

@@ -15,10 +15,10 @@ namespace VEntityFramework.Model
 		Zergling,
 		Roach,
 		[Description("Hydralisk")]
-		Hydra,
+		Hydralisk,
 		Pygalisk,
 		[Description("Primal Hydralisk")]
-		PrimalHydra,
+		PrimalHydralisk,
 
 		// aberation tree
 		Abberation,
