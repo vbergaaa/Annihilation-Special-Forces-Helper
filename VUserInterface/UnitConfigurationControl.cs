@@ -60,7 +60,7 @@ namespace VUserInterface
 			if (unitName != null)
 			{
 				UnitConfiguration.Loadout.SetCurrentUnit(unitName);
-				CurrentUnitControl.ChangeDisplayState(false);
+				CurrentUnitControl.ChangeDisplayState(isSettingUnitFromUnitDropBox);
 			}
 			isSettingUnitFromLoadList = false;
 		}
@@ -69,9 +69,12 @@ namespace VUserInterface
 
 		void CurrentUnitControl_UnitChanged(object sender, EventArgs e)
 		{
+			isSettingUnitFromUnitDropBox = true;
 			var indexToSelect = isSettingUnitFromLoadList ? UnitsLoadList.CurrentIndex : -1;
 			UnitsLoadList.RefreshList(indexToSelect);
+			isSettingUnitFromUnitDropBox = false;
 		}
+		bool isSettingUnitFromUnitDropBox;
 
 		void UnitsLoadList_NewButtonClicked(object sender, EventArgs e)
 		{
