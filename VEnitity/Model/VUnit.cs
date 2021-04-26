@@ -20,6 +20,11 @@ namespace VEntityFramework.Model
 				loadout.Units.Add(this);
 			}
 
+			if (unitType == UnitType.None)
+			{
+				loadout.DeregisterChild(this);
+			}
+
 			loadout.CurrentUnit = this;
 		}
 
