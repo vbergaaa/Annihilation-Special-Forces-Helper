@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using VEntityFramework.Data;
+﻿using VEntityFramework.Data;
+using VEntityFramework.Interfaces;
 
 namespace VUserInterface
 {
 	public partial class SoulCollectionForm : VForm
 	{
-		public SoulCollectionForm(VBusinessObject bizo) : base(bizo)
+		public SoulCollectionForm(VBusinessObject bizo, ISoulCollectable bindingEntity) : base(bizo)
 		{
 			InitializeComponent();
+			this.SoulCollectionControl.Souls = bindingEntity;
 		}
 	}
 }

@@ -1,5 +1,4 @@
-﻿
-namespace VUserInterface
+﻿namespace VUserInterface
 {
 	partial class SoulCollectionForm
 	{

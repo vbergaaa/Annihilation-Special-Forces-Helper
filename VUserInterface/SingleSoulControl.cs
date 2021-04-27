@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using VEntityFramework.Model;
 using VUserInterface.CommonControls;
 
 namespace VUserInterface
@@ -15,6 +16,12 @@ namespace VUserInterface
 		{
 			InitializeComponent();
 		}
+
+		#region SoulType
+
+		public SoulType SoulType { get; set; }
+
+		#endregion
 
 		#region Selected
 
@@ -33,7 +40,7 @@ namespace VUserInterface
 
 		public void OnSelectedChanged()
 		{
-			SelectedChanged?.Invoke(this, new EventArgs());
+			SelectedChanged?.Invoke(this, new SoulTypeEventArgs(SoulType));
 		}
 
 		#endregion
@@ -43,7 +50,6 @@ namespace VUserInterface
 		public void OnClick(object sender, EventArgs e)
 		{
 			Selected = !Selected;
-			Update();
 		}
 
 		#endregion
@@ -77,4 +83,18 @@ namespace VUserInterface
 			base.NotifyDefault(false);
 		}
 	}
+
+	#region Event Args
+
+	class SoulTypeEventArgs : EventArgs
+	{
+		public SoulTypeEventArgs(SoulType type)
+		{
+			SoulType = type;
+		}
+
+		public SoulType SoulType { get; set; }
+	}
+
+	#endregion
 }

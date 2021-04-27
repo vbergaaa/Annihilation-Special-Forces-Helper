@@ -83,9 +83,6 @@
     <Compile Update="UpgradeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="VCommonSoulCollectionControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="VForm.cs">
       <SubType>Form</SubType>
     </Compile>

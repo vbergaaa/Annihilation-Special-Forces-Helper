@@ -1,12 +1,10 @@
-﻿
-using System.Windows.Forms;
-using VBusiness.Souls;
-using VEntityFramework.Model;
+﻿using System.Windows.Forms;
+using VEntityFramework.Interfaces;
 using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	partial class VCommonSoulCollectionControl
+	partial class SoulCollectionControl
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -60,7 +58,7 @@ namespace VUserInterface
 			//
 			// BindingSource
 			//
-			this.BindingSource.DataSource = typeof(VSoulCollection);
+			this.BindingSource.DataSource = typeof(ISoulCollectable);
 			// 
 			// TitleLabel
 			// 
@@ -101,6 +99,7 @@ namespace VUserInterface
 			this.SoulControl1.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl1.TabIndex = 3;
 			this.SoulControl1.UseVisualStyleBackColor = true;
+			this.SoulControl1.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl2
 			// 
@@ -111,6 +110,7 @@ namespace VUserInterface
 			this.SoulControl2.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl2.TabIndex = 4;
 			this.SoulControl2.UseVisualStyleBackColor = true;
+			this.SoulControl2.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl3
 			// 
@@ -121,6 +121,7 @@ namespace VUserInterface
 			this.SoulControl3.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl3.TabIndex = 5;
 			this.SoulControl3.UseVisualStyleBackColor = true;
+			this.SoulControl3.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl4
 			// 
@@ -131,6 +132,7 @@ namespace VUserInterface
 			this.SoulControl4.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl4.TabIndex = 11;
 			this.SoulControl4.UseVisualStyleBackColor = true;
+			this.SoulControl4.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl5
 			// 
@@ -141,6 +143,7 @@ namespace VUserInterface
 			this.SoulControl5.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl5.TabIndex = 10;
 			this.SoulControl5.UseVisualStyleBackColor = true;
+			this.SoulControl5.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl6
 			// 
@@ -151,6 +154,7 @@ namespace VUserInterface
 			this.SoulControl6.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl6.TabIndex = 9;
 			this.SoulControl6.UseVisualStyleBackColor = true;
+			this.SoulControl6.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl7
 			// 
@@ -161,6 +165,7 @@ namespace VUserInterface
 			this.SoulControl7.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl7.TabIndex = 14;
 			this.SoulControl7.UseVisualStyleBackColor = true;
+			this.SoulControl7.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl8
 			// 
@@ -171,6 +176,7 @@ namespace VUserInterface
 			this.SoulControl8.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl8.TabIndex = 13;
 			this.SoulControl8.UseVisualStyleBackColor = true;
+			this.SoulControl8.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl9
 			// 
@@ -181,6 +187,7 @@ namespace VUserInterface
 			this.SoulControl9.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl9.TabIndex = 12;
 			this.SoulControl9.UseVisualStyleBackColor = true;
+			this.SoulControl9.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl10
 			// 
@@ -191,6 +198,7 @@ namespace VUserInterface
 			this.SoulControl10.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl10.TabIndex = 17;
 			this.SoulControl10.UseVisualStyleBackColor = true;
+			this.SoulControl10.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl11
 			// 
@@ -201,6 +209,7 @@ namespace VUserInterface
 			this.SoulControl11.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl11.TabIndex = 16;
 			this.SoulControl11.UseVisualStyleBackColor = true;
+			this.SoulControl11.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl12
 			// 
@@ -211,6 +220,7 @@ namespace VUserInterface
 			this.SoulControl12.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl12.TabIndex = 15;
 			this.SoulControl12.UseVisualStyleBackColor = true;
+			this.SoulControl12.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl13
 			// 
@@ -221,6 +231,7 @@ namespace VUserInterface
 			this.SoulControl13.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl13.TabIndex = 20;
 			this.SoulControl13.UseVisualStyleBackColor = true;
+			this.SoulControl13.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl14
 			// 
@@ -231,6 +242,7 @@ namespace VUserInterface
 			this.SoulControl14.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl14.TabIndex = 19;
 			this.SoulControl14.UseVisualStyleBackColor = true;
+			this.SoulControl14.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// SoulControl15
 			// 
@@ -241,6 +253,7 @@ namespace VUserInterface
 			this.SoulControl15.Size = DPIScalingHelper.GetScaledSize(100, 70);
 			this.SoulControl15.TabIndex = 18;
 			this.SoulControl15.UseVisualStyleBackColor = true;
+			this.SoulControl15.SelectedChanged += SoulControl_SelectedChanged;
 			// 
 			// button1
 			// 
