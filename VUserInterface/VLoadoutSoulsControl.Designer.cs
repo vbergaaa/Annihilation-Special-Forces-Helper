@@ -74,7 +74,7 @@ namespace VUserInterface
 			// SoulPowerButton
 			//
 			this.SoulPowerButton.Click += VLoadoutSoulsControl_Click;
-			this.SoulPowerButton.Size = DPIScalingHelper.GetScaledSize(150, 50);
+			this.SoulPowerButton.Size = DPIScalingHelper.GetScaledSize(150, 30);
 			this.SoulPowerButton.Location = DPIScalingHelper.GetScaledPoint(420, 40);
 			this.SoulPowerButton.Name = "SoulPowerButton";
 			this.SoulPowerButton.Text = "Soul Powers";

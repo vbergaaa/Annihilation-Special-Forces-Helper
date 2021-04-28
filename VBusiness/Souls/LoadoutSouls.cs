@@ -135,8 +135,8 @@ namespace VBusiness.Souls
 		public override VSoulPowers SoulPowers => fSoulPowers ??= new SoulPowers(this);
 		VSoulPowers fSoulPowers;
 
-		public override string SoulPower1 => SoulPowers.ActiveSouls.Count > 0 ? SoulPowers.ActiveSouls[0].AsString(EnumFormat.Description, EnumFormat.Name) : null;
-		public override string SoulPower2 => SoulPowers.ActiveSouls.Count > 1 ? SoulPowers.ActiveSouls[1].AsString(EnumFormat.Description, EnumFormat.Name) : null;
+		public override string SoulPower1 => SoulPowers.ActiveSouls.Count > 0 ? SoulPowers.ActiveSouls[0].AsString(EnumFormat.Description, EnumFormat.Name) : "Unselected";
+		public override string SoulPower2 => SoulPowers.ActiveSouls.Count > 1 ? SoulPowers.ActiveSouls[1].AsString(EnumFormat.Description, EnumFormat.Name) : "Unselected";
 
 		#endregion
 
