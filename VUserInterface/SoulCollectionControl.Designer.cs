@@ -83,8 +83,8 @@ namespace VUserInterface
 			// RemainingPowerSoulsLabel
 			// 
 			this.RemainingPowerSoulsLabel.AutoSize = true;
-			this.RemainingPowerSoulsLabel.Caption = "PowerSouls";
-			this.RemainingPowerSoulsLabel.DataBindings.Add("Text", BindingSource, "PowerSouls");
+			this.RemainingPowerSoulsLabel.DataBindings.Add("Caption", BindingSource, "PowerSoulsCountCaption");
+			this.RemainingPowerSoulsLabel.DataBindings.Add("Text", BindingSource, "PowerSoulsCount");
 			this.RemainingPowerSoulsLabel.Location = DPIScalingHelper.GetScaledPoint(445, 42);
 			this.RemainingPowerSoulsLabel.Name = "RemainingPowerSoulsLabel";
 			this.RemainingPowerSoulsLabel.Size = DPIScalingHelper.GetScaledSize(68, 15);

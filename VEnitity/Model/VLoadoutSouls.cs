@@ -129,6 +129,15 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region SoulPowers
+
+		public virtual VSoulPowers SoulPowers { get; }
+
+		public virtual string SoulPower1 { get; }
+		public virtual string SoulPower2 { get; }
+
+		#endregion
+
 		#region Costs
 
 		public virtual int SoulCosts { get; }

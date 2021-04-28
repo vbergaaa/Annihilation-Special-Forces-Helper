@@ -40,5 +40,12 @@ namespace VUserInterface
 		{
 			Souls.SoulSlot3 = e.SoulSlot;
 		}
+
+		void VLoadoutSoulsControl_Click(object sender, System.EventArgs e)
+		{
+			var powerSoulForm = new PowerSoulForm();
+			powerSoulForm.SoulCollectable = Souls.SoulPowers;
+			powerSoulForm.ShowDialog();
+		}
 	}
 }

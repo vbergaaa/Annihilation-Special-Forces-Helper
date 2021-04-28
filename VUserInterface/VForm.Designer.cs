@@ -68,8 +68,8 @@ namespace VUserInterface
 		}
 		#endregion
 
-		private VButton SaveButton;
-		private new VButton CancelButton;
+		protected VButton SaveButton;
+		protected new VButton CancelButton;
 		private BindingSource BindingSource;
 	}
 }

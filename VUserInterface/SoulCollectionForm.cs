@@ -5,10 +5,15 @@ namespace VUserInterface
 {
 	public partial class SoulCollectionForm : VForm
 	{
-		public SoulCollectionForm(VBusinessObject bizo, ISoulCollectable bindingEntity) : base(bizo)
+		public SoulCollectionForm(VBusinessObject bizo) : base(bizo)
 		{
 			InitializeComponent();
-			this.SoulCollectionControl.Souls = bindingEntity;
+		}
+
+		public ISoulCollectable SoulCollectable
+		{
+			get => this.SoulCollectionControl.Souls;
+			set => this.SoulCollectionControl.Souls = value;
 		}
 	}
 }

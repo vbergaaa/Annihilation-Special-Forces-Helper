@@ -27,7 +27,7 @@ namespace VEntityFramework.Model
 
 		#region PowerSouls
 
-		public int PowerSouls => TotalUniques / 24;
+		public int PowerSoulsCount => TotalUniques / 24;
 
 		#endregion
 
@@ -57,7 +57,7 @@ namespace VEntityFramework.Model
 		{
 			base.OnChangeMade();
 
-			RefreshPropertyBinding(nameof(PowerSouls));
+			RefreshPropertyBinding(nameof(PowerSoulsCount));
 			RefreshPropertyBinding(nameof(TotalUniques));
 		}
 
@@ -84,6 +84,8 @@ namespace VEntityFramework.Model
 		public bool GetBindingValue(SoulType soul) => DiscoveredSouls.Any(s => s == soul);
 
 		public bool GetBindingVisibility(SoulType soul) => soul != SoulType.None;
+
+		public string PowerSoulsCountCaption => "Available Souls:";
 
 		#endregion
 	}

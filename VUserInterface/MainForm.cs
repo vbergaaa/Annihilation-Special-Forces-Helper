@@ -41,8 +41,9 @@ namespace VUserInterface
 		{
 			var sc = Profile.GetProfile().SoulCollection;
 			sc.SaveState();
-			using (var soulCollectionForm = new SoulCollectionForm(Profile.GetProfile(), Profile.GetProfile().SoulCollection))
+			using (var soulCollectionForm = new SoulCollectionForm(Profile.GetProfile()))
 			{
+				soulCollectionForm.SoulCollectable = Profile.GetProfile().SoulCollection;
 				var result = soulCollectionForm.ShowDialog();
 				if (result == DialogResult.Cancel)
 				{

@@ -30,8 +30,11 @@ namespace VUserInterface
 			get => fSelected;
 			set
 			{
-				fSelected = value;
-				OnSelectedChanged();
+				if (fSelected != value)
+				{
+					fSelected = value;
+					OnSelectedChanged();
+				}
 			}
 		}
 		bool fSelected;
@@ -41,6 +44,7 @@ namespace VUserInterface
 		public void OnSelectedChanged()
 		{
 			SelectedChanged?.Invoke(this, new SoulTypeEventArgs(SoulType));
+			Refresh();
 		}
 
 		#endregion

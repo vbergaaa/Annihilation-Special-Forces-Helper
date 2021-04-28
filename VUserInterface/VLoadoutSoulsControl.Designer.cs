@@ -1,6 +1,8 @@
 ﻿using System.Windows.Forms;
+using VBusiness.Profile;
 using VBusiness.Souls;
 using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
@@ -37,6 +39,9 @@ namespace VUserInterface
 			this.Soul1Control = new SoulControl();
 			this.Soul2Control = new SoulControl();
 			this.Soul3Control = new SoulControl();
+			this.SoulPowerButton = new DPIButton();
+			this.SoulPower1Label = new VLabel();
+			this.SoulPower2Label = new VLabel();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
@@ -64,12 +69,40 @@ namespace VUserInterface
 			this.Soul3Control.Enabled = false;
 			this.Soul3Control.Location = DPIScalingHelper.GetScaledPoint(381, 20);
 			this.Soul3Control.OnSoulChanged += Soul3Control_OnSoulChanged;
+			this.Soul3Control.Visible = false;
+			//
+			// SoulPowerButton
+			//
+			this.SoulPowerButton.Click += VLoadoutSoulsControl_Click;
+			this.SoulPowerButton.Size = DPIScalingHelper.GetScaledSize(150, 50);
+			this.SoulPowerButton.Location = DPIScalingHelper.GetScaledPoint(420, 40);
+			this.SoulPowerButton.Name = "SoulPowerButton";
+			this.SoulPowerButton.Text = "Soul Powers";
+			//
+			// SoulPower1Label
+			//
+			this.SoulPower1Label.Caption = "Soul Power 1:";
+			this.SoulPower1Label.DataBindings.Add("Text", bindingSource, "SoulPower1");
+			this.SoulPower1Label.Location = DPIScalingHelper.GetScaledPoint(470, 100);
+			this.SoulPower1Label.Name = "SoulPowerButton";
+			this.SoulPower1Label.Visible = Profile.GetProfile().SoulCollection.PowerSoulsCount > 0;
+			//
+			// SoulPower1Label
+			//
+			this.SoulPower2Label.Caption = "Soul Power 2:";
+			this.SoulPower2Label.DataBindings.Add("Text", bindingSource, "SoulPower2");
+			this.SoulPower2Label.Location = DPIScalingHelper.GetScaledPoint(470, 130);
+			this.SoulPower2Label.Name = "SoulPowerButton";
+			this.SoulPower2Label.Visible = Profile.GetProfile().SoulCollection.PowerSoulsCount > 1;
 			//
 			// VSoulCollectionControl
 			//
 			this.Controls.Add(Soul1Control);
 			this.Controls.Add(Soul2Control);
 			this.Controls.Add(Soul3Control);
+			this.Controls.Add(SoulPowerButton);
+			this.Controls.Add(SoulPower1Label);
+			this.Controls.Add(SoulPower2Label);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
@@ -80,5 +113,8 @@ namespace VUserInterface
 		SoulControl Soul1Control;
 		SoulControl Soul2Control;
 		SoulControl Soul3Control;
+		DPIButton SoulPowerButton;
+		VLabel SoulPower1Label;
+		VLabel SoulPower2Label;
 	}
 }

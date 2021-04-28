@@ -43,7 +43,7 @@ namespace VUserInterface
 		}
 		bool fBizoHasChanges;
 
-		void UpdateCancelButton()
+		protected virtual void UpdateCancelButton()
 		{
 			CancelButton.Text = fBizoHasChanges ? "Cancel" : "Close";
 			CancelButton.DialogResult = fBizoHasChanges ? DialogResult.Cancel : DialogResult.OK;
@@ -90,7 +90,7 @@ namespace VUserInterface
 			OnSaved?.Invoke(this, e);
 		}
 
-		void CancelButton_Click(object sender, EventArgs e)
+		protected virtual void CancelButton_Click(object sender, EventArgs e)
 		{
 			if (Parent != null && Parent.HasChanges)
 			{

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EnumsNET;
+using System.Collections.Generic;
 using VEntityFramework.Model;
 
 namespace VBusiness.Souls
@@ -126,6 +127,16 @@ namespace VBusiness.Souls
 				Soul3 = soul;
 			}
 		}
+
+		#endregion
+
+		#region SoulPowers
+
+		public override VSoulPowers SoulPowers => fSoulPowers ??= new SoulPowers(this);
+		VSoulPowers fSoulPowers;
+
+		public override string SoulPower1 => SoulPowers.ActiveSouls.Count > 0 ? SoulPowers.ActiveSouls[0].AsString(EnumFormat.Description, EnumFormat.Name) : null;
+		public override string SoulPower2 => SoulPowers.ActiveSouls.Count > 1 ? SoulPowers.ActiveSouls[1].AsString(EnumFormat.Description, EnumFormat.Name) : null;
 
 		#endregion
 
