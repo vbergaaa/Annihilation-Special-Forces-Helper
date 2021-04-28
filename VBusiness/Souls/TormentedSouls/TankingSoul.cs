@@ -10,18 +10,16 @@ namespace VBusiness.Souls
 
 		public override SoulType Type => SoulType.Tanking;
 
-		protected override void ActivateSoulCore()
+		public override void ActivateUniqueEffect()
 		{
-			base.ActivateSoulCore();
 			Loadout.Stats.AdditiveArmor += 3;
 			Loadout.Stats.UpdateDamageReduction("Core", 5);
 		}
 
-		protected override void DeactivateSoulCore()
+		public override void DeactivateUniqueEffect()
 		{
-			base.DeactivateSoulCore();
 			Loadout.Stats.AdditiveArmor -= 3;
-			Loadout.Stats.UpdateDamageReduction("Core", 5);
+			Loadout.Stats.UpdateDamageReduction("Core", -5);
 		}
 	}
 }

@@ -10,18 +10,16 @@ namespace VBusiness.Souls
 
 		public override SoulType Type => SoulType.StridingTitan;
 
-		protected override void ActivateSoulCore()
+		public override void ActivateUniqueEffect()
 		{
-			base.ActivateSoulCore();
 			Loadout.Stats.Attack += 20;
 			Loadout.Stats.UpdateAttackSpeed("stitan", 20);
 			Loadout.Stats.UpdateHealth("stitan", 20);
 			Loadout.Stats.UpdateShields("stitan", 20);
 		}
 
-		protected override void DeactivateSoulCore()
+		public override void DeactivateUniqueEffect()
 		{
-			base.DeactivateSoulCore();
 			Loadout.Stats.Attack -= 20;
 			Loadout.Stats.UpdateAttackSpeed("stitan", -20);
 			Loadout.Stats.UpdateShields("stitan", -20);

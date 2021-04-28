@@ -10,16 +10,14 @@ namespace VBusiness.Souls
 
 		public override VEntityFramework.Model.SoulType Type => VEntityFramework.Model.SoulType.Status;
 
-		protected override void ActivateSoulCore()
+		public override void ActivateUniqueEffect()
 		{
-			base.ActivateSoulCore();
 			var rank = (int)Loadout.Profile.Rank;
 			Loadout.Stats.CriticalChance += (int)(rank * 0.5);
 		}
 
-		protected override void DeactivateSoulCore()
+		public override void DeactivateUniqueEffect()
 		{
-			base.DeactivateSoulCore();
 			var rank = (int)Loadout.Profile.Rank;
 			Loadout.Stats.CriticalChance -= (int)(rank * 0.5);
 		}

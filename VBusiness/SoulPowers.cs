@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using VBusiness.Souls;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness
@@ -34,16 +36,16 @@ namespace VBusiness
 
 			if (ActiveSouls.Contains(soul))
 			{
-				ActiveSouls.Remove(soul);
+				RemoveSoul(soul);
 			}
 			else if (ActiveSouls.Count < maxPowerSoulCount)
 			{
-				ActiveSouls.Add(soul);
+				AddSoul(soul);
 			}
 			else
 			{
-				ActiveSouls.RemoveAt(0);
-				ActiveSouls.Add(soul);
+				RemoveFirst();
+				AddSoul(soul);
 			}
 
 			OnPropertyChanged(nameof(PowerSoulsCount));
@@ -53,7 +55,40 @@ namespace VBusiness
 			HasChanges = true;
 		}
 
+		private void RemoveFirst()
+		{
+			var soulType = ActiveSouls[0];
+			RemoveSoul(soulType);
+		}
+
+		private void AddSoul(SoulType soulType)
+		{
+			ActiveSouls.Add(soulType);
+			var soul = Soul.New(soulType, LoadoutSouls);
+			soul.ActivateUniqueEffect();
+			LoadoutSouls.DeregisterChild(soul);
+		}
+
+		void RemoveSoul(SoulType soulType)
+		{
+			ActiveSouls.Remove(soulType);
+			var soul = Soul.New(soulType, LoadoutSouls);
+			soul.DeactivateUniqueEffect();
+			LoadoutSouls.DeregisterChild(soul);
+		}
+
 		public override int PowerSoulsCount => SoulCollection.PowerSoulsCount - ActiveSouls.Count;
 		public override int TotalUniques => SoulCollection.TotalUniques;
+
+		public override void OnLoaded()
+		{
+			foreach (var soulType in ActiveSouls)
+			{
+				var soul = Soul.New(soulType, LoadoutSouls);
+				soul.ActivateUniqueEffect();
+				LoadoutSouls.DeregisterChild(soul);
+			}
+			base.OnLoaded();
+		}
 	}
 }

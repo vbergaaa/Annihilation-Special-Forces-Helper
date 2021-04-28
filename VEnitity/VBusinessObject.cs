@@ -213,6 +213,7 @@ namespace VEntityFramework.Data
 
 			return new DisposableAction(() => {
 				IsLoading = false;
+				OnLoaded();
 			});
 		}
 
@@ -242,10 +243,13 @@ namespace VEntityFramework.Data
 
 		internal event EventHandler<OnLoadedEventArgs> LoadedFromXML;
 
-		public virtual void OnLoadedFromXML(OnLoadedEventArgs e)
+		internal virtual void OnLoadedFromXML(OnLoadedEventArgs e)
 		{
+			// this is the on loaded event for a top level bizo, we should probably refactor this
 			LoadedFromXML?.Invoke(this, e);
 		}
+
+		public virtual void OnLoaded() { }
 
 #endregion
 

@@ -101,9 +101,9 @@ namespace VBusiness.Souls
 			}
 		}
 
-#endregion
+		#endregion
 
-#region CriticalChance
+		#region CriticalChance
 
 		public override int CriticalChance
 		{
@@ -347,7 +347,12 @@ namespace VBusiness.Souls
 				Loadout.Stats.UpdateShields("Core", Vitals);
 				Loadout.Stats.CriticalChance += CriticalChance;
 				Loadout.Stats.CriticalDamage += CriticalDamage;
+				ActivateUniqueEffect();
 			}
+		}
+
+		public virtual void ActivateUniqueEffect()
+		{
 		}
 
 		protected override void DeactivateSoulCore()
@@ -360,11 +365,16 @@ namespace VBusiness.Souls
 			Loadout.Stats.UpdateShields("Core", -Vitals);
 			Loadout.Stats.CriticalChance -= CriticalChance;
 			Loadout.Stats.CriticalDamage -= CriticalDamage;
+			DeactivateUniqueEffect();
 		}
 
-#endregion
+		public virtual void DeactivateUniqueEffect()
+		{
+		}
 
-#region Set Default Values
+	#endregion
+
+	#region Set Default Values
 
 		protected override void SetDefaultValuesCore()
 		{

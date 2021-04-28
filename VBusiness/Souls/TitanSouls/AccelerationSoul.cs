@@ -10,15 +10,13 @@ namespace VBusiness.Souls
 
 		public override SoulType Type => SoulType.Acceleration;
 
-		protected override void ActivateSoulCore()
+		public override void ActivateUniqueEffect()
 		{
-			base.ActivateSoulCore();
 			Loadout.Stats.Acceleration += 10;
 		}
 
-		protected override void DeactivateSoulCore()
+		public override void DeactivateUniqueEffect()
 		{
-			base.ActivateSoulCore();
 			Loadout.Stats.Acceleration -= 10;
 		}
 	}
