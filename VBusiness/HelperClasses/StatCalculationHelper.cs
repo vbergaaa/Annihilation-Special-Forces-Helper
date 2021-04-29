@@ -55,7 +55,7 @@ namespace VBusiness.HelperClasses
 		static double GetAdjustedUnitAttack(VDifficulty difficulty, EnemyType unitType)
 		{
 			var unit = EnemyUnit.New(unitType);
-			var unitDamage = unit.Attack + unit.AttackIncrement * difficulty.RoomToClear;
+			var unitDamage = unit.Attack + unit.AttackIncrement * (difficulty.RoomToClear + difficulty.StartingUpgrades);
 			unitDamage *= difficulty.Damage;
 			unitDamage *= (1 + difficulty.DamageIncrease / 100.0);
 			return unitDamage;
