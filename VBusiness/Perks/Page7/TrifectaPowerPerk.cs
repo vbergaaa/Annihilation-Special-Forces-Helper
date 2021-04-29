@@ -33,6 +33,24 @@ namespace VBusiness.Perks
 				PerkCollection.Loadout.Stats.UpdateShields("Core", 1.5 * diff);
 				PerkCollection.Loadout.Stats.ShieldsArmor += 1 * diff;
 			}
+
+			if (PerkCollection.Loadout.CurrentUnit.UnitRank >= UnitRankType.Z && ((PerkCollection)PerkCollection).UpgradeCache.DesiredLevel > 0)
+			{
+				if (DesiredLevel == MaxLevel)
+				{
+					PerkCollection.Loadout.Stats.Attack += 15;
+					PerkCollection.Loadout.Stats.UpdateAttackSpeed("Trifecta", 15);
+					PerkCollection.Loadout.Stats.UpdateHealth("Core", 15);
+					PerkCollection.Loadout.Stats.UpdateShields("Core", 15);
+				}
+				if (DesiredLevel - diff == MaxLevel)
+				{
+					PerkCollection.Loadout.Stats.Attack -= 15;
+					PerkCollection.Loadout.Stats.UpdateAttackSpeed("Trifecta", -15);
+					PerkCollection.Loadout.Stats.UpdateHealth("Core", -15);
+					PerkCollection.Loadout.Stats.UpdateShields("Core", -15);
+				}
+			}
 		}
 	}
 }

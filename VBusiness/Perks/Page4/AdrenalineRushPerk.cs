@@ -29,6 +29,16 @@ namespace VBusiness.Perks
 			PerkCollection.Loadout.Stats.Attack += 10.0 / 15 * difference * superRushBonus;
 			PerkCollection.Loadout.Stats.UpdateAttackSpeed("AdrenalineRush", 10.0 / 15 * difference * superRushBonus);
 			PerkCollection.Loadout.Stats.CriticalChance += 5.0 / 15 * difference * superRushBonus;
+
+			var hasCache = ((PerkCollection)PerkCollection).UpgradeCache.DesiredLevel > 0;
+			if (DesiredLevel == MaxLevel && hasCache)
+			{
+				PerkCollection.Loadout.Stats.CriticalChance += 5.0 * superRushBonus;
+			}
+			else if (DesiredLevel - difference == MaxLevel && hasCache)
+			{
+				PerkCollection.Loadout.Stats.CriticalChance -= 5.0 * superRushBonus;
+			}
 		}
 	}
 }

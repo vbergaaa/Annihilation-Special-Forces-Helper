@@ -362,27 +362,45 @@ namespace VBusiness.Ranks
 
 		void DeactivateTrifectaPower()
 		{
+			var perks = Loadout.Perks as PerkCollection;
+			var trifectaLevel = perks.TrifectaPower.DesiredLevel;
 			if (Rank >= UnitRankType.SSS)
 			{
-				Loadout.Stats.Attack -= 1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
-				Loadout.Stats.UpdateAttackSpeed("Trifecta", -1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
-				Loadout.Stats.UpdateHealth("Trifecta", -1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
-				Loadout.Stats.HealthArmor -= 1 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
-				Loadout.Stats.UpdateShields("Trifecta", -1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
-				Loadout.Stats.ShieldsArmor -= 1 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
+				Loadout.Stats.Attack -= 1.5 * trifectaLevel;
+				Loadout.Stats.UpdateAttackSpeed("Trifecta", -1.5 * trifectaLevel);
+				Loadout.Stats.UpdateHealth("Trifecta", -1.5 * trifectaLevel);
+				Loadout.Stats.HealthArmor -= 1 * trifectaLevel;
+				Loadout.Stats.UpdateShields("Trifecta", -1.5 * trifectaLevel);
+				Loadout.Stats.ShieldsArmor -= 1 * trifectaLevel;
+			}
+			if (Rank >= UnitRankType.Z && perks.UpgradeCache.DesiredLevel > 0 && trifectaLevel == perks.TrifectaPower.MaxLevel)
+			{
+				Loadout.Stats.Attack -= 1.5 * trifectaLevel;
+				Loadout.Stats.UpdateAttackSpeed("Trifecta", -1.5 * trifectaLevel);
+				Loadout.Stats.UpdateHealth("Trifecta", -1.5 * trifectaLevel);
+				Loadout.Stats.UpdateShields("Trifecta", -1.5 * trifectaLevel);
 			}
 		}
 
 		void ActivateTrifectaPower()
 		{
+			var perks = Loadout.Perks as PerkCollection;
+			var trifectaLevel = perks.TrifectaPower.DesiredLevel;
 			if (Rank >= UnitRankType.SSS)
 			{
-				Loadout.Stats.Attack += 1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
-				Loadout.Stats.UpdateAttackSpeed("Trifecta", 1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
-				Loadout.Stats.UpdateHealth("Trifecta", 1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
-				Loadout.Stats.HealthArmor += 1 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
-				Loadout.Stats.UpdateShields("Trifecta", 1.5 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel);
-				Loadout.Stats.ShieldsArmor += 1 * ((PerkCollection)Loadout.Perks).TrifectaPower.DesiredLevel;
+				Loadout.Stats.Attack += 1.5 * trifectaLevel;
+				Loadout.Stats.UpdateAttackSpeed("Trifecta", 1.5 * trifectaLevel);
+				Loadout.Stats.UpdateHealth("Trifecta", 1.5 * trifectaLevel);
+				Loadout.Stats.HealthArmor += 1 * trifectaLevel;
+				Loadout.Stats.UpdateShields("Trifecta", 1.5 * trifectaLevel);
+				Loadout.Stats.ShieldsArmor += 1 * trifectaLevel;
+			}
+			if (Rank >= UnitRankType.Z && perks.UpgradeCache.DesiredLevel > 0 && trifectaLevel == perks.TrifectaPower.MaxLevel)
+			{
+				Loadout.Stats.Attack += 1.5 * trifectaLevel;
+				Loadout.Stats.UpdateAttackSpeed("Trifecta", 1.5 * trifectaLevel);
+				Loadout.Stats.UpdateHealth("Trifecta", 1.5 * trifectaLevel);
+				Loadout.Stats.UpdateShields("Trifecta", 1.5 * trifectaLevel);
 			}
 		}
 		#endregion

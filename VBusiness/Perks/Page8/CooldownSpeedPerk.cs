@@ -21,5 +21,22 @@ namespace VBusiness.Perks
 		protected override short MaxLevelCore => 10;
 
 		protected override string PerkName => "Cooldown Speed";
+
+		protected override void OnLevelChanged(int difference)
+		{
+			base.OnLevelChanged(difference);
+
+			PerkCollection.Loadout.Stats.CooldownReduction += 2 * difference;
+
+			var perks = PerkCollection as PerkCollection;
+			if (DesiredLevel == MaxLevel && perks.UpgradeCache.DesiredLevel == 1)
+			{
+				PerkCollection.Loadout.Stats.CooldownReduction += 20;
+			}
+			else if (DesiredLevel - difference == MaxLevel && perks.UpgradeCache.DesiredLevel == 1)
+			{
+				PerkCollection.Loadout.Stats.CooldownReduction -= 20;
+			}
+		}
 	}
 }
