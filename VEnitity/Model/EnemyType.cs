@@ -45,6 +45,28 @@ namespace VEntityFramework.Model
 		[Description("Captain Gamala")]
 		CaptainGamala,
 		[Description("Major Asylum")]
-		MajorAsylum
+		MajorAsylum,
+
+		// Buildings
+		[Description("Spine Crawler")]
+		SpineCrawler,
+		[Description("Evolution Chamber")]
+		EvoChamber,
+		Hatchery,
+		[Description("Spawning Pool")]
+		SpawningPool,
+		[Description("Spore Crawler")]
+		SporeCrawler,
+		[Description("Roach Warren")]
+		RoachWarren,
+		Spire,
+		Lair,
+		[Description("Hydralisk Den")]
+		HydraliskDen,
+		[Description("Spore Cannon")]
+		SporeCannon,
+		Hive,
+		[Description("Pygalisk Cavern")]
+		PygaliskCavern,
 	}
 }

@@ -71,6 +71,6 @@ namespace Tests
 		{
 		}
 
-		public IEnumerable<VPerk> AllPerks => this.allPerks;
+		public new IEnumerable<VPerk> AllPerks => this.allPerks;
 	}
 }
