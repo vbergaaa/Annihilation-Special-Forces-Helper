@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace VEntityFramework.Model
 {
@@ -51,7 +48,7 @@ namespace VEntityFramework.Model
 		[Description("Spine Crawler")]
 		SpineCrawler,
 		[Description("Evolution Chamber")]
-		EvoChamber,
+		EvolutionChamber,
 		Hatchery,
 		[Description("Spawning Pool")]
 		SpawningPool,

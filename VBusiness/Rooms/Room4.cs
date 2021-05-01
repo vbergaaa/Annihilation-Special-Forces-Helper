@@ -16,7 +16,7 @@ namespace VBusiness.Rooms
 			return new List<(EnemyType, int)>()
 			{
 				(EnemyType.SpineCrawler, 15),
-				(EnemyType.EvoChamber, 4),
+				(EnemyType.EvolutionChamber, 4),
 				(EnemyType.Hatchery, 4),
 			};
 		}

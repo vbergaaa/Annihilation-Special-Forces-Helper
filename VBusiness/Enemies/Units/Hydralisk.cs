@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VEntityFramework;
-using VEntityFramework.Model;
+﻿using VEntityFramework.Model;
 
 namespace VBusiness.Enemies
 {
@@ -12,14 +8,7 @@ namespace VBusiness.Enemies
 
 		public override double Attack => 22;
 
-		public override double AttackSpeed
-		{
-			get
-			{
-				ErrorReporter.ReportDebug("You need to set this actually, this was a guess");
-				return 1;
-			}
-		}
+		public override double AttackSpeed => 0.83;
 
 		public override double Health => 500;
 
