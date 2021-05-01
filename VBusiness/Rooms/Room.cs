@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using VBusiness.HelperClasses;
 using VEntityFramework;
 using VEntityFramework.Model;
 
@@ -22,12 +23,13 @@ namespace VBusiness
 
 		}
 		public abstract int RoomNumber { get; }
-		public IEnumerable<(EnemyType, int)> Buildings => GetBuildings();
-		public IEnumerable<(EnemyType, int)> EnemiesPerWave => GetEnemies();
+		public IEnumerable<EnemyQuantity> Buildings => GetBuildings();
+		public IEnumerable<EnemyQuantity> EnemiesPerWave => GetEnemies();
 
+		public bool HasBoss => GetBoss != EnemyType.None;
 		public virtual EnemyType GetBoss => EnemyType.None;
 		public abstract int MineralPatches { get; }
-		protected abstract IEnumerable<(EnemyType, int)> GetBuildings();
-		protected abstract IEnumerable<(EnemyType, int)> GetEnemies();
+		protected abstract IEnumerable<EnemyQuantity> GetBuildings();
+		protected abstract IEnumerable<EnemyQuantity> GetEnemies();
 	}
 }

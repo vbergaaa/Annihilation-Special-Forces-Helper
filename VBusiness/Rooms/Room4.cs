@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using VBusiness.HelperClasses;
 using VEntityFramework.Model;
 
 namespace VBusiness.Rooms
@@ -11,22 +10,22 @@ namespace VBusiness.Rooms
 
 		public override int MineralPatches => 6;
 
-		protected override IEnumerable<(EnemyType, int)> GetBuildings()
+		protected override IEnumerable<EnemyQuantity> GetBuildings()
 		{
-			return new List<(EnemyType, int)>()
+			return new List<EnemyQuantity>()
 			{
-				(EnemyType.SpineCrawler, 15),
-				(EnemyType.EvolutionChamber, 4),
-				(EnemyType.Hatchery, 4),
+				new EnemyQuantity(EnemyType.SpineCrawler, 15),
+				new EnemyQuantity(EnemyType.EvolutionChamber, 4),
+				new EnemyQuantity(EnemyType.Hatchery, 1),
 			};
 		}
 
-		protected override IEnumerable<(EnemyType, int)> GetEnemies()
+		protected override IEnumerable<EnemyQuantity> GetEnemies()
 		{
-			return new List<(EnemyType, int)>()
+			return new List<EnemyQuantity>()
 			{
-				(EnemyType.InfestedTerran, 40),
-				(EnemyType.Abberation, 3),
+				new EnemyQuantity(EnemyType.InfestedTerran, 40),
+				new EnemyQuantity(EnemyType.Abberation, 3),
 			};
 		}
 	}
