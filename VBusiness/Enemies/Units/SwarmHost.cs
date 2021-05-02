@@ -1,4 +1,6 @@
-﻿using VEntityFramework.Model;
+﻿using System.Collections.Generic;
+using VBusiness.HelperClasses;
+using VEntityFramework.Model;
 
 namespace VBusiness.Enemies
 {
@@ -19,5 +21,9 @@ namespace VBusiness.Enemies
 		public override double HealthIncrement => 75;
 
 		public override double HealthArmorIncrement => 6.5;
+
+		public override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Pygalisk, 10) }; // This was with tier up, but I'm pretty sure tier up shouldn't affect this
+
+		// OnHit Giant Abberation
 	}
 }

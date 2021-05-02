@@ -1,4 +1,6 @@
-﻿using VEntityFramework.Model;
+﻿using System.Collections.Generic;
+using VBusiness.HelperClasses;
+using VEntityFramework.Model;
 
 namespace VBusiness.Enemies
 {
@@ -19,5 +21,7 @@ namespace VBusiness.Enemies
 		public override double HealthIncrement => 60;
 
 		public override double HealthArmorIncrement => 5;
+
+		public override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Roach, 20) };
 	}
 }

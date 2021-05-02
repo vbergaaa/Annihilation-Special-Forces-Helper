@@ -172,9 +172,9 @@ namespace Tests.Stats_Tests
 		{
 			// ling atk = 60;
 			// roach atk = 70;
-			StatCalculationHelper.UnitCompOverride = new Dictionary<EnemyType, double> {
-				{ EnemyType.Zergling, lingChance },
-				{ EnemyType.Roach, roachChance }
+			StatCalculationHelper.UnitCompOverride = new List<(EnemyType, double)> {
+				( EnemyType.Zergling, lingChance ),
+				( EnemyType.Roach, roachChance )
 			};
 			var loadout = GetLoadout();
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.01));
@@ -188,9 +188,10 @@ namespace Tests.Stats_Tests
 		{
 			// ling atk = 60;
 			// roach atk = 70;
-			StatCalculationHelper.UnitCompOverride = new Dictionary<EnemyType, double> {
-				{ EnemyType.Zergling, lingChance },
-				{ EnemyType.Roach, roachChance }
+			StatCalculationHelper.UnitCompOverride = new List<(EnemyType, double)>
+			{ 
+				(EnemyType.Zergling, lingChance),
+				(EnemyType.Roach, roachChance)
 			};
 			var loadout = GetLoadout();
 			loadout.Gems.HealthArmorGem.CurrentLevel = 100; 
@@ -233,9 +234,7 @@ namespace Tests.Stats_Tests
 
 		void SetBasicLingComposition()
 		{
-			StatCalculationHelper.UnitCompOverride = new Dictionary<EnemyType, double> { { EnemyType.Zergling, 1 } };
+			StatCalculationHelper.UnitCompOverride = new List<(EnemyType, double)> { (EnemyType.Zergling, 1) };
 		}
-
-		
 	}
 }

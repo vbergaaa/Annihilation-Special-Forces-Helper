@@ -13,19 +13,36 @@ namespace Tests
 		[Test]
 		public void TestCreateNewEnemy()
 		{
-			//var enemyTypes = Enums.GetValues<EnemyType>();
-			var enemyTypes = new List<EnemyType>()
-			{
-				EnemyType.Zergling,
-				EnemyType.Roach,
-				EnemyType.Hydralisk,
-				EnemyType.Pygalisk,
-				EnemyType.PrimalHydralisk
-			};
+			var enemyTypes = Enums.GetValues<EnemyType>();
 
 			foreach (var type in enemyTypes)
 			{
-				Assert.That(() => EnemyUnit.New(type), Throws.Nothing);
+				if (type != EnemyType.None)
+				{
+					Assert.That(() => EnemyUnit.New(type), Throws.Nothing);
+				}
+			}
+		}
+
+		[Test]
+		public void TestCanAttack()
+		{
+			var enemyTypes = Enums.GetValues<EnemyType>();
+
+			foreach (var type in enemyTypes)
+			{
+				if (type != EnemyType.None)
+				{
+					var enemy = EnemyUnit.New(type);
+					if (type.CanAttack())
+					{
+						Assert.That(enemy.Attack, Is.GreaterThan(0), type.ToString());
+					}
+					else
+					{
+						Assert.That(enemy.Attack, Is.EqualTo(0), type.ToString());
+					}
+				}
 			}
 		}
 	}

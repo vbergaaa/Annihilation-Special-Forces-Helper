@@ -49,7 +49,7 @@ namespace VBusiness.HelperClasses
 		static IEnumerable<(double, double)> GetUnitRawDamages(VDifficulty difficulty)
 		{
 			var unitComp = GetUnitComposition(difficulty);
-			return unitComp.Select(kvp => (kvp.Value, GetAdjustedUnitAttack(difficulty, kvp.Key)));
+			return unitComp.Select(kvp => (kvp.Item2, GetAdjustedUnitAttack(difficulty, kvp.Item1)));
 		}
 
 		static double GetAdjustedUnitAttack(VDifficulty difficulty, EnemyType unitType)
@@ -61,45 +61,15 @@ namespace VBusiness.HelperClasses
 			return unitDamage;
 		}
 
-		static IDictionary<EnemyType, double> GetUnitComposition(VDifficulty difficulty)
+		static IEnumerable<(EnemyType, double)> GetUnitComposition(VDifficulty difficulty)
 		{
 			if (UnitCompOverride != null)
 			{
 				return UnitCompOverride;
 			}
-			return GetBasicUnitComp(difficulty);
+			return UnitCompositionGenerator.GetComposition(difficulty);
 		}
 
-		static IDictionary<EnemyType, double> GetBasicUnitComp(VDifficulty difficulty)
-		{
-			// this method assumes all units for a difficulty are the strongest basic enemy availble for that difficulty.
-			// It will be enhanced in the future to be based off what the unit comp of all units + buildings for the last room/s of that difficulty
-			EnemyType basicunit;
-
-			if (difficulty.Difficulty <= DifficultyLevel.Easy)
-			{
-				basicunit = EnemyType.Zergling;
-			}
-			else if (difficulty.Difficulty <= DifficultyLevel.VeryHard)
-			{
-				basicunit = EnemyType.Roach;
-			}
-			else if (difficulty.Difficulty <= DifficultyLevel.Mythic)
-			{
-				basicunit = EnemyType.Hydralisk;
-			}
-			else if (difficulty.Difficulty <= DifficultyLevel.Divine)
-			{
-				basicunit = EnemyType.Pygalisk;
-			}
-			else
-			{
-				basicunit = EnemyType.PrimalHydralisk;
-			}
-
-			return new Dictionary<EnemyType, double>() { { basicunit, 1 } };
-		}
-
-		internal static IDictionary<EnemyType, double> UnitCompOverride;
+		internal static IEnumerable<(EnemyType, double)> UnitCompOverride;
 	}
 }

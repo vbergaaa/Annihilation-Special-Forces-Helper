@@ -1,5 +1,7 @@
 ﻿using EnumsNET;
 using System;
+using System.Collections.Generic;
+using VBusiness.HelperClasses;
 using VEntityFramework;
 using VEntityFramework.Model;
 
@@ -30,5 +32,7 @@ namespace VBusiness.Enemies
 			var ret = (EnemyUnit)Activator.CreateInstance(enemyType);
 			return ret;
 		}
+
+		public virtual IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => Array.Empty<EnemyQuantity>();
 	}
 }
