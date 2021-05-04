@@ -1,6 +1,7 @@
 ﻿using VEntityFramework.Model;
 using VBusiness.Perks;
 using VBusiness.HelperClasses;
+using VBusiness.Difficulties;
 
 namespace VBusiness
 {
@@ -69,8 +70,12 @@ namespace VBusiness
 				if (base.DifficultyLevel != value)
 				{
 					base.DifficultyLevel = value;
-					Difficulty = DifficultyHelper.New(value);
+
+					Difficulty = value != DifficultyLevel.None
+						? Difficulty = DifficultyHelper.New(value)
+						: null;
 					Loadout.Stats.RefreshPropertyBinding("Toughness");
+					Loadout.Stats.RefreshPropertyBinding("Damage");
 				}
 			}
 		}
@@ -81,7 +86,7 @@ namespace VBusiness
 
 		public override VDifficulty Difficulty
 		{
-			get => base.Difficulty;
+			get => base.Difficulty ?? new Normal(); //TODO: make this default to recommended from player rank
 			set
 			{
 				if (base.Difficulty != value)

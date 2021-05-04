@@ -21,81 +21,9 @@ namespace VBusiness
 			Acceleration = 100;
 		}
 
-		public override double Damage
-		{
-			get
-			{
-				var remainingChance = 1.0;
+		public override double Damage => StatCalculationHelper.GetDamage(Loadout);
 
-				var blackCritChance = HasBlackCrits ? CriticalChance / 300 : 0;
-				blackCritChance = blackCritChance > 1 ? 1 : blackCritChance;
-
-				remainingChance -= blackCritChance;
-
-				var redCritChance = HasRedCrits ? CriticalChance / 200 : 0;
-				redCritChance = remainingChance * redCritChance;
-				redCritChance = redCritChance > remainingChance ? remainingChance : redCritChance;
-
-				remainingChance -= redCritChance;
-
-				var regAtkChance = CriticalChance > 100 ? 0 : 1 - CriticalChance / 100;
-
-				remainingChance -= regAtkChance;
-
-				var yellowCritChance = remainingChance;
-
-				if (Math.Round(blackCritChance + redCritChance + yellowCritChance + regAtkChance, 10) != 1)
-				{
-					ErrorReporter.ReportDebug("your crit calculations must be wrong");
-				}
-
-				var coreDamage = (regAtkChance * AttackForBinding) + (yellowCritChance * (AttackForBinding + CriticalDamageForBinding)) + (redCritChance * (AttackForBinding + 2 * CriticalDamageForBinding)) + (blackCritChance * (AttackForBinding + 3.5 * CriticalDamageForBinding));
-				var damage = coreDamage * (1 + DamageIncrease / 100);
-				var totalDamage = !UseUnitStats
-					? damage * AttackSpeedForBinding / 100
-					: damage != 0
-						? damage / AttackSpeedForBinding * CurrentUnit.UnitData.AttackCount
-						: 0;
-				return Math.Round(totalDamage, 2);
-			}
-		}
-
-		public override double Toughness
-		{
-			get => StatCalculationHelper.GetToughness(Loadout);
-			//get
-			//{
-			//	/// This calculation assumes a unit with 100 base health, 50 base shields, and 5 base armor
-			//	/// We then calculate how much damage is required to kill it in 100 attacks
-			//	/// This is then normalised to a score out of 100
-
-			//	var healthArmor = (HealthArmor) / 20;
-			//	var health = Health;
-			//	var shieldsArmor = (ShieldsArmor) / 20;
-			//	var shields = Shields / 100 * 50;
-
-			//	/// To get result I solved the following for X,
-			//	/// 
-			//	/// H / (x - Ah) + S / (x - As) = 100
-			//	/// 
-			//	/// where
-			//	/// H = amount of Health
-			//	/// S = amount of Shields
-			//	/// Ah = Health Armor
-			//	/// As = Shield Armor
-			//	/// 100 = amount of hits required to kill our unit
-
-			//	var a = Math.Pow(100 * (shieldsArmor - healthArmor), 2)
-			//		+ Math.Pow(shields + health, 2)
-			//		+ (shields - health) * shieldsArmor * 200
-			//		+ (health - shields) * healthArmor * 200;
-			//	var b = Math.Sqrt(a) + 100 * shieldsArmor + 100 * healthArmor + shields + health;
-			//	var totalDamageRequiredToKillUnit = b / 2;
-			//	var totalToughness = totalDamageRequiredToKillUnit / (1 - DamageReduction / 100);
-			//	var normalisedToughness = totalToughness / 650 * 100;
-			//	return Math.Round(normalisedToughness, 2);
-			//}
-		}
+		public override double Toughness  => StatCalculationHelper.GetToughness(Loadout);
 
 		public override double Recovery => 0;
 	}
