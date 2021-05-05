@@ -64,6 +64,7 @@ namespace VUserInterface
 			this.DamageLabel.Name = "DamageLabel";
 			this.DamageLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.DamageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.DamageLabel.UseNumberSuffixes = true;
 			// 
 			// ToughnessLabel
 			// 
@@ -73,6 +74,7 @@ namespace VUserInterface
 			this.ToughnessLabel.Name = "ToughnessLabel";
 			this.ToughnessLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.ToughnessLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ToughnessLabel.UseNumberSuffixes = true;
 			// 
 			// RecoveryLabel
 			// 

@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using VEntityFramework;
 
 namespace VUserInterface.CommonControls
 {
@@ -28,8 +29,45 @@ namespace VUserInterface.CommonControls
 			{
 				Label.Text = value is Enum @enum
 					? Enums.AsString(@enum.GetType(), @enum, EnumFormat.Description, EnumFormat.Name)
-					: value.ToString();
+					: UseNumberSuffixes
+						? GetSuffixedNumber(value.ToString())
+						: value.ToString();
 			}
 		}
+
+		string GetSuffixedNumber(string value)
+		{
+			if (!double.TryParse(value, out var number))
+			{
+				ErrorReporter.ReportDebug(!string.IsNullOrEmpty(value), "Why are we trying to suffix this?");
+				return value;
+			}
+			else
+			{
+				if (number > 1000000000000)
+				{
+					number /= 1000000000000;
+					return Math.Round(number, 2) + "T";
+				}
+				if (number > 1000000000)
+				{
+					number /= 1000000000;
+					return Math.Round(number, 2) + "B";
+				}
+				if (number > 1000000)
+				{
+					number /= 1000000;
+					return Math.Round(number, 2) + "M";
+				}
+				if (number > 10000)
+				{
+					number /= 1000;
+					return Math.Round(number, 2) + "K";
+				}
+				return Math.Round(number, 2).ToString();
+			}
+		}
+
+		public bool UseNumberSuffixes { get; set; }
 	}
 }
