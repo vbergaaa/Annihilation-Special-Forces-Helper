@@ -18,9 +18,9 @@ namespace VBusiness.Enemies
 
 		public override double AttackIncrement => 0;
 
-		public override double HealthIncrement => 6;
+		public override double HealthIncrement => 70;
 
-		public override double HealthArmorIncrement => 70;
+		public override double HealthArmorIncrement => 6;
 
 		public override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.GiantAbberation, 10) };
 	}
