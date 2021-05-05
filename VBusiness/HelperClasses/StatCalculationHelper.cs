@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using VBusiness.Difficulties;
 using VBusiness.Enemies;
@@ -20,11 +21,11 @@ namespace VBusiness.HelperClasses
 				{
 					difficulty = new Normal();
 				}
-				var rawEnemyDamages = GetUnitRawDamages(difficulty);
-				var enemyDamages = rawEnemyDamages.Select(tuple => (tuple.Item1, tuple.Item2* (1 - loadout.Stats.DamageReduction / 100)));
+				var rawEnemyDamages = GetEnemyCompositionStats(difficulty, CompositionOptions.AttackingUnitsOnly);
+				var enemyDamages = rawEnemyDamages.Select(x => (x.Chance, x.Enemy.Damage * (1 - loadout.Stats.DamageReduction / 100)));
 
 				var hitsTillDeath = GetHitsTillDeath(enemyDamages, loadout.Stats);
-				var totalDamageTillDeath = hitsTillDeath * rawEnemyDamages.Sum(tuple => (tuple.Item1 * tuple.Item2));
+				var totalDamageTillDeath = hitsTillDeath * rawEnemyDamages.Sum(x => (x.Chance * x.Enemy.Damage));
 				return totalDamageTillDeath;
 			}
 			return 0;
@@ -35,11 +36,10 @@ namespace VBusiness.HelperClasses
 			if (loadout.UseUnitStats && loadout.CurrentUnit != null)
 			{
 				var crits = GetCritChances(loadout);
-				var composition = GetEnemyUnitComposition(loadout.UnitConfiguration.Difficulty, CompositionOptions.Normal);
-				var enemyArmors = GetEnemyArmor(composition, loadout.UnitConfiguration.Difficulty);
-				var damages = GetBaseDamageDealt(enemyArmors, loadout);
+				var composition = GetEnemyCompositionStats(loadout.UnitConfiguration.Difficulty, CompositionOptions.Normal);
+				var damages = GetBaseDamageDealt(composition, loadout);
 				damages = ApplyCrits(damages, crits, loadout.Stats.CriticalDamage);
-				var averageDamagePerHit = damages.Sum(x => (x.Item1 * x.Item2));
+				var averageDamagePerHit = damages.Sum(x => (x.Chance * x.Damage));
 				var dps = averageDamagePerHit / loadout.Stats.UnitAttackSpeed * loadout.CurrentUnit.UnitData.AttackCount;
 
 				return Math.Round(dps, 2);
@@ -57,25 +57,34 @@ namespace VBusiness.HelperClasses
 			return damages.Select(e => (e.Item1, e.Item2 * avgCritMultiplier));
 		}
 
-		static IEnumerable<(double, double)> GetBaseDamageDealt(IEnumerable<(double, double)> enemyArmors, VLoadout loadout)
+		static IEnumerable<(double Chance, double Damage)> GetBaseDamageDealt(IEnumerable<(double Chance, EnemyStatCard Enemy)> compositionStats, VLoadout loadout)
 		{
 			var unitDamage = loadout.Stats.UnitAttack;
 			unitDamage *= loadout.Stats.DamageIncrease / 100;
-			unitDamage *= (1 - loadout.UnitConfiguration.Difficulty.DamageReduction / 100.0);
+			unitDamage *= (1 - loadout.UnitConfiguration.Difficulty.DamageReduction / 100.0); 
 
-			return enemyArmors.Select(e => (e.Item1, Math.Max(unitDamage - e.Item2, 0.5)));
+			return compositionStats.SelectMany(x => GetTotalDamageDealt(x.Chance, x.Enemy, unitDamage));
 		}
 
-		static IEnumerable<(double, double)> GetEnemyArmor(IEnumerable<(EnemyType, double)> composition, VDifficulty difficulty)
+		static IEnumerable<(double, double)> GetTotalDamageDealt(double chance, EnemyStatCard stats, double damage)
 		{
-			var units = composition.Select(u => (u.Item2, EnemyUnit.New(u.Item1)));
-			return units.Select(u => (u.Item1, GetEnemyArmorForDifficulty(u.Item2, difficulty)));
+			if (stats.TitanicDRChance > 0)
+			{
+				yield return (chance * stats.TitanicDRChance, Math.Max(damage * (1 - stats.TitanicDR) - stats.Armor, 0.5));
+				yield return (chance * (1 - stats.TitanicDRChance), Math.Max(damage - stats.Armor, 0.5));
+			}
+			else
+			{
+				yield return (chance, Math.Max(damage - stats.Armor, 0.5));
+			}
 		}
 
-		static double GetEnemyArmorForDifficulty(EnemyUnit unit, VDifficulty difficulty)
+		static double GetEnemyArmorForDifficulty(EnemyUnit unit, bool hasTitanicBuff, VDifficulty difficulty)
 		{
 			var baseArmor = unit.HealthArmor + (difficulty.RoomToClear + difficulty.StartingUpgrades) * unit.HealthArmorIncrement;
-			return baseArmor * difficulty.Armor;
+			var totalArmor = baseArmor * difficulty.Armor;
+			totalArmor *= hasTitanicBuff ? 1.5 : 1;
+			return totalArmor;
 		}
 
 		static CritChances GetCritChances(VLoadout loadout)
@@ -125,32 +134,83 @@ namespace VBusiness.HelperClasses
 			return hitsTillNoShields + hitsTillNoHealth;
 		}
 
-		static IEnumerable<(double, double)> GetUnitRawDamages(VDifficulty difficulty)
+		static IEnumerable<(double Chance, EnemyStatCard Enemy)> GetEnemyCompositionStats(VDifficulty difficulty, CompositionOptions options)
 		{
-			var unitComp = GetEnemyUnitComposition(difficulty, CompositionOptions.ExcludeNoAttack);
-			return unitComp.Select(kvp => (kvp.Item2, GetAdjustedUnitAttack(difficulty, kvp.Item1)));
+			var unitComp = GetEnemyUnitComposition(difficulty, options);
+			return unitComp.Select(x => (x.Chance, GetEnemyStats(x.Enemy, difficulty)));
 		}
 
-		static double GetAdjustedUnitAttack(VDifficulty difficulty, EnemyType unitType)
+		static EnemyStatCard GetEnemyStats(EnemyStatCard stats, VDifficulty difficulty)
 		{
-			var unit = EnemyUnit.New(unitType);
+			var unit = EnemyUnit.New(stats.Type);
+			stats.Damage = GetEnemyDamage(unit, stats.IsTitan, difficulty);
+			stats.Armor = GetEnemyArmorForDifficulty(unit, stats.IsTitan, difficulty);
+			stats.TitanicDR = stats.IsTitan ? GetTitanicDR(stats.Type) : 0;
+			stats.TitanicDRChance = stats.IsTitan ? GetTitanicDRChance(stats.Type) : 0;
+			return stats;
+		}
+
+		static double GetTitanicDR(EnemyType type) => type.IsHeroic() ? 0.6 : 0.8;
+		static double GetTitanicDRChance(EnemyType type) => type.IsHeroic() ? 0.3 : 0.2;
+
+		static double GetEnemyDamage(EnemyUnit unit, bool isTitanic, VDifficulty difficulty)
+		{
 			var unitDamage = unit.Attack + unit.AttackIncrement * (difficulty.RoomToClear + difficulty.StartingUpgrades);
-			unitDamage *= difficulty.Damage;
+			var damageModifier = difficulty.Damage;
+			if (isTitanic && unit.EnemyType.IsHeroic())
+			{
+				damageModifier += 0.5;
+			}
+			else if (isTitanic)
+			{
+				damageModifier += 2;
+			}
+			unitDamage *= damageModifier;
 			unitDamage *= (1 + difficulty.DamageIncrease / 100.0);
 			return unitDamage;
 		}
 
-		static IEnumerable<(EnemyType, double)> GetEnemyUnitComposition(VDifficulty difficulty, CompositionOptions options)
+		static IEnumerable<(double Chance, EnemyStatCard Enemy)> GetEnemyUnitComposition(VDifficulty difficulty, CompositionOptions options)
 		{
 			if (UnitCompOverride != null)
 			{
-				return UnitCompOverride;
+				return UnitCompOverride.Select(x => (x.Item2, new EnemyStatCard { Type = x.Item1 }));
 			}
-			return UnitCompositionGenerator.GetComposition(difficulty, options);
+			var comp = UnitCompositionGenerator.GetComposition(difficulty, options);
+			if (difficulty.Difficulty < DifficultyLevel.Titanic)
+			{
+				return comp.Select(x => (x.Item2, new EnemyStatCard { Type = x.Item1 }));
+			}
+			else
+			{
+				return ApplyTitanicBuffedComposition(comp, difficulty.TitanChance);
+			}
+		}
+
+		static IEnumerable<(double, EnemyStatCard)> ApplyTitanicBuffedComposition(IEnumerable<(EnemyType, double)> comp, int titanicChance)
+		{
+			foreach (var unit in comp)
+			{
+				yield return (unit.Item2 * titanicChance / 100, new EnemyStatCard { Type = unit.Item1, IsTitan = true });
+				yield return (unit.Item2 * (1 - titanicChance / 100), new EnemyStatCard { Type = unit.Item1, IsTitan = false });
+			}
 		}
 
 		internal static IEnumerable<(EnemyType, double)> UnitCompOverride;
 
+		struct EnemyStatCard
+		{
+			public EnemyType Type { get; set; }
+			public bool IsTitan { get; set; }
+			public double Damage { get; set; }
+			public double Armor { get; set; }
+			public double TitanicDR{ get; set; }
+			public double TitanicDRChance{ get; set; }
+
+#if DEBUG // this is for debugging display - DebuggerDisplayAttribute doesn't appear to work for nested classes
+			public override string ToString() => $"{Type} - tit:{IsTitan}, atk:{Damage}";
+#endif
+		}
 	}
 
 	public struct CritChances

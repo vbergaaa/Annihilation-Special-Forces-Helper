@@ -26,8 +26,11 @@ namespace VBusiness.Enemies
 		{
 			get
 			{
-				VEntityFramework.ErrorReporter.ReportDebug("theres also what, 20 abbs?");
-				return new[] { new EnemyQuantity(EnemyType.GreatQueen, 4) };
+				return new[]
+				{
+					new EnemyQuantity(EnemyType.GiantAbberation, 20),
+					new EnemyQuantity(EnemyType.GreatQueen, 4)
+				};
 			}
 		}
 	}

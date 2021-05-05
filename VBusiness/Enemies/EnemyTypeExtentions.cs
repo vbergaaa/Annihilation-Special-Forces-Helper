@@ -24,6 +24,16 @@ namespace VBusiness.Enemies
 			return true;
 		}
 
+		public static bool IsQueen(this EnemyType type)
+		{
+			return type >= EnemyUnit.FirstQueen && type <= EnemyUnit.LastQueen;
+		}
+
+		public static bool IsHeroic(this EnemyType type)
+		{
+			return type >= EnemyUnit.FirstQueen && type <= EnemyUnit.LastBoss;
+		}
+
 		public static IEnumerable<EnemyQuantity> GetUnitsOnDeath(this EnemyType parentType)
 		{
 			if (OnDeathCache.ContainsKey(parentType))

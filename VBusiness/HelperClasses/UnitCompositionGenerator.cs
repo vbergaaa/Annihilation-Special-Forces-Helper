@@ -56,7 +56,7 @@ namespace VBusiness.HelperClasses
 		{
 			// TODO: Add UnitsSpawnedOnHit to this list
 			// Or - Rethink this whole complicated design
-			composition.AddRange(enemiesToAdd.Where(e => e.Type != EnemyType.None && (e.Type.CanAttack() || !options.HasFlag(CompositionOptions.ExcludeNoAttack))));
+			composition.AddRange(enemiesToAdd.Where(e => e.Type != EnemyType.None && (e.Type.CanAttack() || !options.HasFlag(CompositionOptions.AttackingUnitsOnly))));
 			composition.AddRange(enemiesToAdd.SelectRecursive(e => e.Type.GetUnitsOnDeath().Multiply(e.Quantity)));
 		}
 
@@ -103,6 +103,6 @@ namespace VBusiness.HelperClasses
 	enum CompositionOptions
 	{
 		Normal,
-		ExcludeNoAttack
+		AttackingUnitsOnly
 	}
 }

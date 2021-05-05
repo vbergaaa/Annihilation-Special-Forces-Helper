@@ -34,5 +34,14 @@ namespace VBusiness.Enemies
 		}
 
 		public virtual IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => Array.Empty<EnemyQuantity>();
+
+		public static EnemyType FirstUnit => EnemyType.InfestedTerran;
+		public static EnemyType LastUnit => FirstAbbertion - 1;
+		public static EnemyType FirstAbbertion => EnemyType.Abberation;
+		public static EnemyType LastAbbertion => EnemyType.Queen - 1;
+		public static EnemyType FirstQueen => EnemyType.Queen;
+		public static EnemyType LastQueen => EnemyType.SergeantRamone - 1;
+		public static EnemyType FirstBoss => EnemyType.SergeantRamone;
+		public static EnemyType LastBoss => EnemyType.EvolutionChamber - 1;
 	}
 }

@@ -37,7 +37,7 @@ namespace Tests
 				(EnemyType.SporeCrawler, 1 / totalUnits),
 				(EnemyType.SpineCrawler, 47 / totalUnits),
 			};
-			var actual = UnitCompositionGenerator.GetComposition(difficulty, CompositionOptions.ExcludeNoAttack).ToList();
+			var actual = UnitCompositionGenerator.GetComposition(difficulty, CompositionOptions.AttackingUnitsOnly).ToList();
 
 			AssertCompositionsMatch(expectedComp, actual);
 		}
