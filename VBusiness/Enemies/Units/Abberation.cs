@@ -8,13 +8,13 @@ namespace VBusiness.Enemies
 	{
 		public override EnemyType EnemyType => EnemyType.Abberation;
 
-		public override double Attack => 12;
+		public override double Attack => 15.5;
 
 		public override double AttackSpeed => 1;
 
-		public override double Health => 100;
+		public override double Health => 120;
 
-		public override double HealthArmor => 3;
+		public override double HealthArmor => 5;
 
 		public override double AttackIncrement => 3;
 

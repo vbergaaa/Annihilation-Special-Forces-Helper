@@ -8,13 +8,13 @@ namespace VBusiness.Enemies
 	{
 		public override EnemyType EnemyType => EnemyType.SpineCrawler;
 
-		public override double Attack => 15;
+		public override double Attack => 18;
 
 		public override double AttackSpeed => 1;
 
-		public override double Health => 200;
+		public override double Health => 235;
 
-		public override double HealthArmor => 4;
+		public override double HealthArmor => 8;
 
 		public override double AttackIncrement => 4.5;
 

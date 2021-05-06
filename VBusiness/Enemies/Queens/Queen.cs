@@ -8,13 +8,13 @@ namespace VBusiness.Enemies
 	{
 		public override EnemyType EnemyType => EnemyType.Queen;
 
-		public override double Attack => 20;
+		public override double Attack => 25;
 
 		public override double AttackSpeed => 0.5;
 
-		public override double Health => 1000;
+		public override double Health => 1125;
 
-		public override double HealthArmor => 15;
+		public override double HealthArmor => 20;
 
 		public override double AttackIncrement => 5;
 

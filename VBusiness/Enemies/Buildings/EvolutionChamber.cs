@@ -12,9 +12,9 @@ namespace VBusiness.Enemies
 
 		public override double AttackSpeed => 0;
 
-		public override double Health => 250;
+		public override double Health => 300;
 
-		public override double HealthArmor => 4;
+		public override double HealthArmor => 6;
 
 		public override double AttackIncrement => 0;
 

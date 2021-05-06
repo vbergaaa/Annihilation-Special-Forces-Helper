@@ -15,9 +15,9 @@ namespace Tests.Stats_Tests
 		// That's far too complicated to work out.
 		// They are just simply what they were when I made this test,
 		// so I don't accidently change something
-		[TestCase(DifficultyLevel.VeryEasy,		4960738.45, 3786552.03)]
-		[TestCase(DifficultyLevel.Easy,			4934730.62, 7234722.16)]
-		[TestCase(DifficultyLevel.Normal,		4899392.00, 12171043.81)]
+		[TestCase(DifficultyLevel.VeryEasy,		4960173.71, 3832927.46)]
+		[TestCase(DifficultyLevel.Easy,			4934371.20, 7261779.14)]
+		[TestCase(DifficultyLevel.Normal,		4899309.87, 12178492.67)]
 		[TestCase(DifficultyLevel.Hard,			4522013.12, 18603287.96)]
 		[TestCase(DifficultyLevel.VeryHard,		4261424.99, 22290725.40)]
 		[TestCase(DifficultyLevel.Insane,		3888035.63, 32071495.77)]
