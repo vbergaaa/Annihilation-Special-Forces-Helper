@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Data;
+﻿using System;
+using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
@@ -57,6 +58,7 @@ namespace VEntityFramework.Model
 				}
 			}
 		}
+
 		int fAttackSpeedUpgrade;
 
 		#endregion
@@ -159,5 +161,17 @@ namespace VEntityFramework.Model
 		public override string BizoName => "Upgrades";
 
 		#endregion
+
+#if DEBUG
+		internal void MaxAll()
+		{
+			AttackUpgrade = MaxAttack;
+			AttackSpeedUpgrade = MaxAttackSpeed;
+			HealthArmorUpgrade = MaxHealthArmor;
+			HealthUpgrade = MaxHealth;
+			ShieldsArmorUpgrade = MaxShieldsArmor;
+			ShieldsUpgrade = MaxShields;
+		}
+#endif
 	}
 }
