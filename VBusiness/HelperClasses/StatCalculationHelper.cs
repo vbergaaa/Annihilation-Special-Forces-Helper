@@ -17,18 +17,38 @@ namespace VBusiness.HelperClasses
 			if (loadout.UseUnitStats && loadout.CurrentUnit != null)
 			{
 				var difficulty = loadout.UnitConfiguration.Difficulty;
-				if (difficulty == null || difficulty is EmptyDifficulty)
-				{
-					difficulty = new Normal();
-				}
 				var rawEnemyDamages = GetEnemyCompositionStats(difficulty, CompositionOptions.AttackingUnitsOnly);
-				var enemyDamages = rawEnemyDamages.Select(x => (x.Chance, x.Enemy.Damage * (1 - loadout.Stats.DamageReduction / 100)));
+				var enemyDamages = ApplyDifficultyModifiers(loadout, rawEnemyDamages);
 
 				var hitsTillDeath = GetHitsTillDeath(enemyDamages, loadout.Stats);
 				var totalDamageTillDeath = hitsTillDeath * rawEnemyDamages.Sum(x => (x.Chance * x.Enemy.Damage));
 				return totalDamageTillDeath;
 			}
 			return 0;
+		}
+
+		static IEnumerable<(double Chance, double)> ApplyDifficultyModifiers(VLoadout loadout, IEnumerable<(double Chance, EnemyStatCard Enemy)> rawEnemyDamages)
+		{
+			if (loadout.UnitConfiguration.DifficultyLevel >= DifficultyLevel.Mythic)
+			{
+				rawEnemyDamages = rawEnemyDamages.SelectMany(x => ApplyMythicBossAttacks(x));
+			}
+
+			return rawEnemyDamages.Select(x => (x.Chance, x.Enemy.Damage * (1 - loadout.Stats.DamageReduction / 100)));
+		}
+
+		private static IEnumerable<(double Chance, EnemyStatCard Enemy)> ApplyMythicBossAttacks((double Chance, EnemyStatCard Enemy) x)
+		{
+			if (x.Enemy.Type.IsHeroic())
+			{
+				yield return (x.Chance * 0.8, x.Enemy);
+				x.Enemy.Damage *= 2;
+				yield return (x.Chance * 0.2, x.Enemy);
+			}
+			else
+			{
+				yield return x;
+			}
 		}
 
 		public static double GetDamage(VLoadout loadout)
@@ -83,7 +103,12 @@ namespace VBusiness.HelperClasses
 		{
 			var baseArmor = unit.HealthArmor + (difficulty.RoomToClear + difficulty.StartingUpgrades) * unit.HealthArmorIncrement;
 			var totalArmor = baseArmor * difficulty.Armor;
-			totalArmor *= hasTitanicBuff ? 1.5 : 1;
+			var armorModifier = hasTitanicBuff ? 1.5 : 1;
+			if (unit.EnemyType.IsHeroic())
+			{
+				armorModifier += difficulty.MythicBoss / 100.0;
+			}
+			totalArmor *= armorModifier;
 			return totalArmor;
 		}
 
@@ -157,6 +182,10 @@ namespace VBusiness.HelperClasses
 		{
 			var unitDamage = unit.Attack + unit.AttackIncrement * (difficulty.RoomToClear + difficulty.StartingUpgrades);
 			var damageModifier = difficulty.Damage;
+			if (unit.EnemyType.IsHeroic())
+			{
+				damageModifier += difficulty.MythicBoss / 100.0;
+			}
 			if (isTitanic && unit.EnemyType.IsHeroic())
 			{
 				damageModifier += 0.5;
