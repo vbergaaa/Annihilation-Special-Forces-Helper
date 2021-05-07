@@ -45,25 +45,25 @@ namespace VBusiness.Enemies
 			return type >= EnemyUnit.FirstBoss && type <= EnemyUnit.LastBoss;
 		}
 
-		public static IEnumerable<EnemyQuantity> GetUnitsOnDeath(this EnemyType parentType, int tierUpLevels)
+		public static IEnumerable<EnemyQuantity> GetAdditionalSpawns(this EnemyType parentType, int tierUpLevels)
 		{
 			var key = new OnDeathCacheKey { Type = parentType, TierUp = tierUpLevels };
-			if (OnDeathCache.ContainsKey(key))
+			if (AdditionalSpawnsCache.ContainsKey(key))
 			{
-				return OnDeathCache[key];
+				return AdditionalSpawnsCache[key];
 			}
 			if (parentType == EnemyType.None)
 			{
-				return (OnDeathCache[key] = Array.Empty<EnemyQuantity>());
+				return (AdditionalSpawnsCache[key] = Array.Empty<EnemyQuantity>());
 			}
 
 			var unit = EnemyUnit.New(parentType);
-			var unitsSpawnedOnDeath = unit.GetUnitsSpawnedOnDeath(tierUpLevels);
-			return (OnDeathCache[key] = unitsSpawnedOnDeath);
+			var additionalUnitsSpawned = unit.GetUnitsSpawnedOnDeath(tierUpLevels);
+			return (AdditionalSpawnsCache[key] = additionalUnitsSpawned);
 		}
 
-		static IDictionary<OnDeathCacheKey, IEnumerable<EnemyQuantity>> OnDeathCache => fOnDeathCache ??= new Dictionary<OnDeathCacheKey, IEnumerable<EnemyQuantity>>();
-		static IDictionary<OnDeathCacheKey, IEnumerable<EnemyQuantity>> fOnDeathCache;
+		static IDictionary<OnDeathCacheKey, IEnumerable<EnemyQuantity>> AdditionalSpawnsCache => fAdditionalSpawnsCache ??= new Dictionary<OnDeathCacheKey, IEnumerable<EnemyQuantity>>();
+		static IDictionary<OnDeathCacheKey, IEnumerable<EnemyQuantity>> fAdditionalSpawnsCache;
 
 		struct OnDeathCacheKey
 		{

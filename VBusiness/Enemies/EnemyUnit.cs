@@ -33,7 +33,7 @@ namespace VBusiness.Enemies
 			return ret;
 		}
 
-		public virtual IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => Array.Empty<EnemyQuantity>();
+		protected virtual IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => Array.Empty<EnemyQuantity>();
 
 		public static EnemyType FirstUnit => EnemyType.InfestedTerran;
 		public static EnemyType LastUnit => FirstAbbertion - 1;

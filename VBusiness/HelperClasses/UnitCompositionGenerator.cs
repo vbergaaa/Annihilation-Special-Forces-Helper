@@ -55,11 +55,9 @@ namespace VBusiness.HelperClasses
 
 		static void AddAllIncludingSpawns(List<EnemyQuantity> composition, IEnumerable<EnemyQuantity> enemiesToAdd, VDifficulty difficulty, CompositionOptions options)
 		{
-			// TODO: Add UnitsSpawnedOnHit to this list
-			// Or - Rethink this whole complicated design
 			enemiesToAdd = enemiesToAdd.TierUp(difficulty.UnitTierIncrease);
 			composition.AddRange(enemiesToAdd.Where(e => e.Type != EnemyType.None && (e.Type.CanAttack() || !options.HasFlag(CompositionOptions.AttackingUnitsOnly))));
-			composition.AddRange(enemiesToAdd.SelectRecursive(e => e.Type.GetUnitsOnDeath(difficulty.UnitTierIncrease).Multiply(e.Quantity)));
+			composition.AddRange(enemiesToAdd.SelectRecursive(e => e.Type.GetAdditionalSpawns(difficulty.UnitTierIncrease).Multiply(e.Quantity)));
 		}
 
 		internal static EnemyQuantity TierUp(EnemyQuantity enemy, int tierUp)

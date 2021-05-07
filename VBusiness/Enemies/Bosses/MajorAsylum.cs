@@ -22,6 +22,6 @@ namespace VBusiness.Enemies
 
 		public override double HealthArmorIncrement => 0;
 
-		public override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.EmpressQueen, 20) };
+		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.EmpressQueen, 20) };
 	}
 }

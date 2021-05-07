@@ -22,6 +22,6 @@ namespace VBusiness.Enemies
 
 		public override double HealthArmorIncrement => 7;
 
-		public override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Pygalisk, 30) };
+		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Pygalisk, 30) };
 	}
 }

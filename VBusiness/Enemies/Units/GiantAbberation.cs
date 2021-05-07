@@ -23,7 +23,7 @@ namespace VBusiness.Enemies
 
 		public override double HealthArmorIncrement => 3.5;
 
-		public override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Roach, 8) };
+		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Roach, 8) };
 
 		internal override IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(int tierUpLevels)
 		{
