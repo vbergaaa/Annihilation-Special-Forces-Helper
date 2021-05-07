@@ -33,6 +33,6 @@ namespace VBusiness.Difficulties
 
 		public override int CritReduction => 10;
 
-		public override int UnitTierIncrease => throw new NotImplementedException();
+		public override int UnitTierIncrease => 0;
 	}
 }

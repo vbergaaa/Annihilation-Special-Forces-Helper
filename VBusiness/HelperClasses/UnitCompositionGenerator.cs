@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using VBusiness.Enemies;
@@ -31,33 +32,43 @@ namespace VBusiness.HelperClasses
 		{
 			var composition = new List<EnemyQuantity>();
 
-			AddRoomToComposition(composition, difficulty.RoomToClear, options);
-			AddRoomToComposition(composition, difficulty.RoomToClear - 1, options);
-			AddRoomToComposition(composition, difficulty.RoomToClear - 2, options);
+			AddRoomToComposition(composition, difficulty.RoomToClear, difficulty, options);
+			AddRoomToComposition(composition, difficulty.RoomToClear - 1, difficulty, options);
+			AddRoomToComposition(composition, difficulty.RoomToClear - 2, difficulty, options);
 			return ConsolidateComposition(composition);
 		}
 
-		static void AddRoomToComposition(List<EnemyQuantity> composition, int roomToClear, CompositionOptions options)
+		static void AddRoomToComposition(List<EnemyQuantity> composition, int roomToClear, VDifficulty difficulty, CompositionOptions options)
 		{
 			var room = Room.New(roomToClear);
-			AddAllIncludingSpawns(composition, room.EnemiesPerWave, options);
-			AddAllIncludingSpawns(composition, room.EnemiesPerWave, options);
-			AddAllIncludingSpawns(composition, room.EnemiesPerWave, options);
-			AddAllIncludingSpawns(composition, room.Buildings, options);
-			AddAllIncludingSpawns(composition, room.GetBoss, options);
+			AddAllIncludingSpawns(composition, room.EnemiesPerWave, difficulty, options);
+			AddAllIncludingSpawns(composition, room.EnemiesPerWave, difficulty, options);
+			AddAllIncludingSpawns(composition, room.EnemiesPerWave, difficulty, options);
+			AddAllIncludingSpawns(composition, room.Buildings, difficulty, options);
+			AddAllIncludingSpawns(composition, room.GetBoss, difficulty, options);
 		}
 
-		static void AddAllIncludingSpawns(List<EnemyQuantity> composition, EnemyType unit, CompositionOptions options)
+		static void AddAllIncludingSpawns(List<EnemyQuantity> composition, EnemyType unit, VDifficulty difficulty, CompositionOptions options)
 		{
-			AddAllIncludingSpawns(composition, new[] { new EnemyQuantity(unit, 1) }, options);
+			AddAllIncludingSpawns(composition, new[] { new EnemyQuantity(unit, 1) }, difficulty, options);
 		}
 
-		static void AddAllIncludingSpawns(List<EnemyQuantity> composition, IEnumerable<EnemyQuantity> enemiesToAdd, CompositionOptions options)
+		static void AddAllIncludingSpawns(List<EnemyQuantity> composition, IEnumerable<EnemyQuantity> enemiesToAdd, VDifficulty difficulty, CompositionOptions options)
 		{
 			// TODO: Add UnitsSpawnedOnHit to this list
 			// Or - Rethink this whole complicated design
+			enemiesToAdd = enemiesToAdd.TierUp(difficulty.UnitTierIncrease);
 			composition.AddRange(enemiesToAdd.Where(e => e.Type != EnemyType.None && (e.Type.CanAttack() || !options.HasFlag(CompositionOptions.AttackingUnitsOnly))));
-			composition.AddRange(enemiesToAdd.SelectRecursive(e => e.Type.GetUnitsOnDeath().Multiply(e.Quantity)));
+			composition.AddRange(enemiesToAdd.SelectRecursive(e => e.Type.GetUnitsOnDeath(difficulty.UnitTierIncrease).Multiply(e.Quantity)));
+		}
+
+		internal static EnemyQuantity TierUp(EnemyQuantity enemy, int tierUp)
+		{
+			if (!enemy.Type.IsBuilding() && !enemy.Type.IsBoss())
+			{
+				enemy.Type += tierUp;
+			}
+			return enemy;
 		}
 
 		static IEnumerable<(EnemyType, double)> ConsolidateComposition(List<EnemyQuantity> composition)

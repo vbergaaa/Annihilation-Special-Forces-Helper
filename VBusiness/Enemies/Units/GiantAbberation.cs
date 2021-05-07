@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using VBusiness.HelperClasses;
 using VEntityFramework.Model;
 
@@ -23,5 +24,12 @@ namespace VBusiness.Enemies
 		public override double HealthArmorIncrement => 3.5;
 
 		public override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Roach, 8) };
+
+		internal override IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(int tierUpLevels)
+		{
+			return tierUpLevels > 0
+				? Array.Empty<EnemyQuantity>()
+				: UnitsSpawnedOnDeath;
+		}
 	}
 }

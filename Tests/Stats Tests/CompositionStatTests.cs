@@ -28,7 +28,7 @@ namespace Tests.Stats_Tests
 		[TestCase(DifficultyLevel.Titanic,		1755140.30, 29230683.13)]
 		[TestCase(DifficultyLevel.Mythic,		1378388.29, 8154744.40)]
 		[TestCase(DifficultyLevel.Divine,		829549.37,  3209950.53)]
-		[TestCase(DifficultyLevel.Impossible,	557772.92,  1841276.48)]
+		[TestCase(DifficultyLevel.Impossible,	142667.85,  802440.44)]
 		public void TestCalculatedStats(DifficultyLevel difficulty, double expectedDamage, double expectedToughness)
 		{
 			var loadout = LoadMaxAll();

@@ -43,5 +43,14 @@ namespace VBusiness.Enemies
 		public static EnemyType LastQueen => EnemyType.SergeantRamone - 1;
 		public static EnemyType FirstBoss => EnemyType.SergeantRamone;
 		public static EnemyType LastBoss => EnemyType.EvolutionChamber - 1;
+
+		internal virtual IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(int tierUpLevels)
+		{
+			if (EnemyType.IsBoss() || EnemyType.IsBuilding())
+			{
+				return UnitsSpawnedOnDeath.TierUp(tierUpLevels);
+			}
+			return UnitsSpawnedOnDeath;
+		}
 	}
 }
