@@ -105,11 +105,14 @@ namespace VEntityFramework.Model
 			get => fRank;
 			protected set
 			{
-				DeactivateRank(fRank);
-				fRank = value;
-				ActivateRank(fRank);
-				HasChanges = true;
-				OnDescriptionChanged();
+				using (Loadout.Stats.SuspendRefreshingStatBindings())
+				{
+					DeactivateRank(fRank);
+					fRank = value;
+					ActivateRank(fRank);
+					HasChanges = true;
+					OnDescriptionChanged();
+				}
 			}
 		}
 		VUnitRank fRank;

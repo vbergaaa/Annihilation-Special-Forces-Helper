@@ -260,7 +260,10 @@ namespace VEntityFramework.Model
 		{
 			if (Parent?.Loadout?.Stats != null)
 			{
-				ActivateSoulCore();
+				using (Loadout.Stats.SuspendRefreshingStatBindings())
+				{
+					ActivateSoulCore();
+				}
 			}
 		}
 
@@ -270,7 +273,10 @@ namespace VEntityFramework.Model
 		{
 			if (Parent?.Loadout?.Stats != null)
 			{
-				DeactivateSoulCore();
+				using (Loadout.Stats.SuspendRefreshingStatBindings())
+				{
+					DeactivateSoulCore();
+				}
 			}
 		}
 

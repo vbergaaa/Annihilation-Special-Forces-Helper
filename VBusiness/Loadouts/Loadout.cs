@@ -118,9 +118,12 @@ namespace VBusiness.Loadouts
 			{
 				if (base.CurrentUnit != value)
 				{
-					RemoveStats(base.CurrentUnit);
-					base.CurrentUnit = value;
-					AddStats(base.CurrentUnit);
+					using (Stats.SuspendRefreshingStatBindings())
+					{
+						RemoveStats(base.CurrentUnit);
+						base.CurrentUnit = value;
+						AddStats(base.CurrentUnit);
+					}
 				}
 			}
 		}

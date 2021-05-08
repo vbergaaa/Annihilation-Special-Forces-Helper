@@ -409,23 +409,26 @@ namespace VBusiness.Ranks
 
 		public override void ActivateRank()
 		{
-			Loadout.Stats.Attack += Attack;
-			Loadout.Stats.UpdateAttackSpeed("Rank", AttackSpeed);
-			Loadout.Stats.UpdateHealth("Rank", Vitals);
-			Loadout.Stats.HealthArmor += Vitals;
-			Loadout.Stats.UpdateShields("Rank", Vitals);
-			Loadout.Stats.ShieldsArmor += Vitals;
-			Loadout.Stats.UpdateDamageIncrease("Rank", DamageIncrease);
-			Loadout.Stats.UpdateDamageReduction("Rank", DamageReduction);
-			Loadout.Stats.CooldownReduction += Speed;
-			Loadout.Stats.MoveSpeed += Speed;
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				Loadout.Stats.Attack += Attack;
+				Loadout.Stats.UpdateAttackSpeed("Rank", AttackSpeed);
+				Loadout.Stats.UpdateHealth("Rank", Vitals);
+				Loadout.Stats.HealthArmor += Vitals;
+				Loadout.Stats.UpdateShields("Rank", Vitals);
+				Loadout.Stats.ShieldsArmor += Vitals;
+				Loadout.Stats.UpdateDamageIncrease("Rank", DamageIncrease);
+				Loadout.Stats.UpdateDamageReduction("Rank", DamageReduction);
+				Loadout.Stats.CooldownReduction += Speed;
+				Loadout.Stats.MoveSpeed += Speed;
 
-			ActivateMegaBuffs();
-			ActivateGodBuffs();
-			ActivateDivineBuffs();
-			ActivateOmegaBuffs();
-			ActivateVoidBuffs();
-			ActivateTrifectaPower();
+				ActivateMegaBuffs();
+				ActivateGodBuffs();
+				ActivateDivineBuffs();
+				ActivateOmegaBuffs();
+				ActivateVoidBuffs();
+				ActivateTrifectaPower();
+			}
 		}
 
 		#endregion
@@ -434,23 +437,26 @@ namespace VBusiness.Ranks
 
 		public override void DeactivateRank()
 		{
-			Loadout.Stats.Attack -= Attack;
-			Loadout.Stats.UpdateAttackSpeed("Rank", -AttackSpeed);
-			Loadout.Stats.UpdateHealth("Rank", -Vitals);
-			Loadout.Stats.HealthArmor -= Vitals;
-			Loadout.Stats.UpdateShields("Rank", -Vitals);
-			Loadout.Stats.ShieldsArmor -= Vitals;
-			Loadout.Stats.UpdateDamageIncrease("Rank", -DamageIncrease);
-			Loadout.Stats.UpdateDamageReduction("Rank", -DamageReduction);
-			Loadout.Stats.CooldownReduction -= Speed;
-			Loadout.Stats.MoveSpeed -= Speed;
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				Loadout.Stats.Attack -= Attack;
+				Loadout.Stats.UpdateAttackSpeed("Rank", -AttackSpeed);
+				Loadout.Stats.UpdateHealth("Rank", -Vitals);
+				Loadout.Stats.HealthArmor -= Vitals;
+				Loadout.Stats.UpdateShields("Rank", -Vitals);
+				Loadout.Stats.ShieldsArmor -= Vitals;
+				Loadout.Stats.UpdateDamageIncrease("Rank", -DamageIncrease);
+				Loadout.Stats.UpdateDamageReduction("Rank", -DamageReduction);
+				Loadout.Stats.CooldownReduction -= Speed;
+				Loadout.Stats.MoveSpeed -= Speed;
 
-			DeactivateMegaBuffs();
-			DeactivateGodBuffs();
-			DeactivateDivineBuffs();
-			DeactivateOmegaBuffs();
-			DeactivateVoidBuffs();
-			DeactivateTrifectaPower();
+				DeactivateMegaBuffs();
+				DeactivateGodBuffs();
+				DeactivateDivineBuffs();
+				DeactivateOmegaBuffs();
+				DeactivateVoidBuffs();
+				DeactivateTrifectaPower();
+			}
 		}
 
 		#endregion

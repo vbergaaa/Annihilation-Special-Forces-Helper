@@ -398,5 +398,31 @@ namespace VEntityFramework.Model
 		#endregion
 
 		public VLoadout Loadout { get; }
+
+		#region RefreshBindingSuspension
+
+		protected override void OnPropertyChanged(string bindingName)
+		{
+			if (!shouldPreventRefreshBinding)
+			{
+				base.OnPropertyChanged(bindingName);
+			}
+		}
+
+		public IDisposable SuspendRefreshingStatBindings()
+		{
+			suspendRefreshBindingCounter++;
+
+			return new DisposableAction(() =>
+			{
+				suspendRefreshBindingCounter--;
+				RefreshAllBindings();
+			});
+		}
+
+		int suspendRefreshBindingCounter;
+		bool shouldPreventRefreshBinding => suspendRefreshBindingCounter > 0;
+
+		#endregion
 	}
 }

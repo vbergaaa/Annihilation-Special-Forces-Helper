@@ -100,8 +100,11 @@ namespace VBusiness
 
 		void UpdateDifficulty(VDifficulty oldDiff)
 		{
-			UpdateTormentReduction(oldDiff);
-			UpdateCritReduction(oldDiff);
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				UpdateTormentReduction(oldDiff);
+				UpdateCritReduction(oldDiff);
+			}
 		}
 
 		void UpdateTormentReduction(VDifficulty oldDiff)

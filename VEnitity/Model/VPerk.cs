@@ -47,7 +47,11 @@ namespace VEntityFramework.Model
 					var oldValue = fDesiredLevel;
 					fDesiredLevel = value;
 					HasChanges = true;
-					OnLevelChanged(fDesiredLevel - oldValue);
+
+					using (PerkCollection.Loadout.Stats.SuspendRefreshingStatBindings())
+					{
+						OnLevelChanged(fDesiredLevel - oldValue);
+					}
 					PerkCollection?.Loadout?.RefreshPropertyBinding(nameof(PerkCollection.Loadout.RemainingPerkPoints));
 				}
 

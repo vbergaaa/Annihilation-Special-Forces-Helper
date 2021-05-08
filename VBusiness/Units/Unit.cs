@@ -52,13 +52,16 @@ namespace VBusiness.Units
 
 		public void UpdateStatsFromInfuse(int levelDifference)
 		{
-			Loadout.Stats.Attack += 10 * levelDifference;
-			Loadout.Stats.UpdateAttackSpeed("Infuse", 10 * levelDifference);
-			Loadout.Stats.UpdateHealth("Core", 10 * levelDifference);
-			Loadout.Stats.HealthArmor += 10 * levelDifference;
-			Loadout.Stats.UpdateShields("Core", 10 * levelDifference);
-			Loadout.Stats.ShieldsArmor += 10 * levelDifference;
-			Loadout.Stats.Acceleration += 10 * levelDifference;
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				Loadout.Stats.Attack += 10 * levelDifference;
+				Loadout.Stats.UpdateAttackSpeed("Infuse", 10 * levelDifference);
+				Loadout.Stats.UpdateHealth("Core", 10 * levelDifference);
+				Loadout.Stats.HealthArmor += 10 * levelDifference;
+				Loadout.Stats.UpdateShields("Core", 10 * levelDifference);
+				Loadout.Stats.ShieldsArmor += 10 * levelDifference;
+				Loadout.Stats.Acceleration += 10 * levelDifference;
+			}
 		}
 
 		#endregion
@@ -134,13 +137,16 @@ namespace VBusiness.Units
 
 		public void UpdateStatsFromEssence(int levelDifference)
 		{
-			Loadout.Stats.Attack += 5 * levelDifference;
-			Loadout.Stats.UpdateAttackSpeed("Essence", 1, levelDifference);
-			Loadout.Stats.UpdateHealth("Essence", 5 * levelDifference);
-			Loadout.Stats.UpdateShields("Essence", 5 * levelDifference);
-			Loadout.Stats.AdditiveArmor += (1 + (0.03 * Loadout.Stats.DefensiveEssenceStacks)) * levelDifference;
-			Loadout.Stats.MoveSpeed += 2.5 * levelDifference;
-			Loadout.Stats.Acceleration += 1 * levelDifference;
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				Loadout.Stats.Attack += 5 * levelDifference;
+				Loadout.Stats.UpdateAttackSpeed("Essence", 1, levelDifference);
+				Loadout.Stats.UpdateHealth("Essence", 5 * levelDifference);
+				Loadout.Stats.UpdateShields("Essence", 5 * levelDifference);
+				Loadout.Stats.AdditiveArmor += (1 + (0.03 * Loadout.Stats.DefensiveEssenceStacks)) * levelDifference;
+				Loadout.Stats.MoveSpeed += 2.5 * levelDifference;
+				Loadout.Stats.Acceleration += 1 * levelDifference;
+			}
 		}
 
 		internal void RemoveStatsFromSpec(bool shouldRemove = true)

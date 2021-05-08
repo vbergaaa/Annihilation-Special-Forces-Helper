@@ -232,7 +232,7 @@ namespace VEntityFramework.Data
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		protected void OnPropertyChanged(string bindingName)
+		protected virtual void OnPropertyChanged(string bindingName)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(bindingName));
 		}
