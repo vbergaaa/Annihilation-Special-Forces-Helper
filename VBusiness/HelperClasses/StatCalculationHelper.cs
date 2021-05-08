@@ -90,9 +90,9 @@ namespace VBusiness.HelperClasses
 			{
 				var crits = GetCritChances(loadout);
 				var composition = GetEnemyCompositionStats(loadout.UnitConfiguration.Difficulty, CompositionOptions.Normal);
-				var damages = GetBaseDamageDealt(composition, loadout);
-				damages = ApplyCrits(damages, crits, loadout.Stats.CriticalDamage);
-				var averageDamagePerHit = damages.Sum(x => (x.Chance * x.Damage));
+				var baseDamages = GetBaseDamageDealt(composition, loadout);
+				var totalDamages = ApplyCrits(baseDamages, crits, loadout.Stats.CriticalDamage);
+				var averageDamagePerHit = totalDamages.Sum(x => (x.Chance * x.Damage));
 				var dps = averageDamagePerHit / loadout.Stats.UnitAttackSpeed * loadout.CurrentUnit.UnitData.AttackCount;
 
 				return Math.Round(dps, 2);
@@ -129,7 +129,7 @@ namespace VBusiness.HelperClasses
 			return critChances;
 		}
 
-		static IEnumerable<(double Chance, double Damage)> GetBaseDamageDealt(IEnumerable<(double Chance, EnemyStatCard Enemy)> compositionStats, VLoadout loadout)
+		static IEnumerable<(double Chance, double Damage, double VoidBuffBonus)> GetBaseDamageDealt(IEnumerable<(double Chance, EnemyStatCard Enemy)> compositionStats, VLoadout loadout)
 		{
 			var unitDamage = loadout.Stats.UnitAttack;
 			unitDamage *= loadout.Stats.DamageIncrease / 100;
@@ -139,36 +139,44 @@ namespace VBusiness.HelperClasses
 				unitDamage *= (1 - 0.1); // 10DR from spire buff
 			}
 			var hasQuasarBuff = loadout.CurrentUnit.UnitRank >= UnitRankType.SXDZ;
+			var hasVoidBuff = loadout.CurrentUnit.UnitRank >= UnitRankType.XYZ;
 
-			return compositionStats.SelectMany(x => GetTotalDamageDealt(x.Chance, x.Enemy, unitDamage, hasQuasarBuff));
+			return compositionStats.SelectMany(x => GetTotalDamageDealt(x.Chance, x.Enemy, unitDamage, hasQuasarBuff, hasVoidBuff));
 		}
 
-		static IEnumerable<(double Chance, double Damage)> GetTotalDamageDealt(double chance, EnemyStatCard stats, double damage, bool hasQuasarBuff)
+		static IEnumerable<(double Chance, double Damage, double VoidBuffBonus)> GetTotalDamageDealt(double chance, EnemyStatCard stats, double damage, bool hasQuasarBuff, bool hasVoidBuff)
 		{
 			if (hasQuasarBuff)
 			{
 				stats.Armor *= 1 - 0.3;
 			}
 
+			var voidBuffBonus = hasVoidBuff ? stats.Armor / 5 : 0;
+
 			if (stats.TitanicDRChance > 0)
 			{
-				yield return (chance * stats.TitanicDRChance, Math.Max(damage * (1 - stats.TitanicDR) - stats.Armor, 0.5));
-				yield return (chance * (1 - stats.TitanicDRChance), Math.Max(damage - stats.Armor, 0.5));
+				yield return (chance * stats.TitanicDRChance, Math.Max(damage * (1 - stats.TitanicDR) - stats.Armor, 0.5), voidBuffBonus);
+				yield return (chance * (1 - stats.TitanicDRChance), Math.Max(damage - stats.Armor, 0.5), voidBuffBonus);
 			}
 			else
 			{
-				yield return (chance, Math.Max(damage - stats.Armor, 0.5));
+				yield return (chance, Math.Max(damage - stats.Armor, 0.5), voidBuffBonus);
 			}
 		}
 
-		static IEnumerable<(double Chance, double Damage)> ApplyCrits(IEnumerable<(double, double)> damages, CritChances crits, double critDamage)
+		static IEnumerable<(double Chance, double Damage)> ApplyCrits(IEnumerable<(double Chance, double Damage, double VoidBuffBonus)> damages, CritChances crits, double critDamage)
 		{
-			critDamage /= 100.0;
+			return damages.Select(e => (e.Chance, e.Damage * GetCritDamageModifier(crits, critDamage, e.VoidBuffBonus)));
+		}
+
+		static double GetCritDamageModifier(CritChances crits, double critDamage, double voidBuff)
+		{
+			var totalCritDamage = critDamage / 100.0 + ((int)voidBuff) / 100.0;
 			var avgCritMultiplier = (1 * crits.RegularChance)
-				+ (1 + critDamage) * crits.YellowChance
-				+ (1 + 2 * critDamage) * crits.RedChance
-				+ (1 + 3.5 * critDamage) * crits.BlackChance;
-			return damages.Select(e => (e.Item1, e.Item2 * avgCritMultiplier));
+				+ (1 + totalCritDamage) * crits.YellowChance
+				+ (1 + 2 * totalCritDamage) * crits.RedChance
+				+ (1 + 3.5 * totalCritDamage) * crits.BlackChance;
+			return avgCritMultiplier;
 		}
 
 		#endregion
