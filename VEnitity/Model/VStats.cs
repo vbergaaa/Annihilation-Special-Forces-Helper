@@ -362,7 +362,6 @@ namespace VEntityFramework.Model
 
 		public double UnitAttack => CurrentUnit.Attack * Attack / 100;
 		public double UnitAttackSpeed => CurrentUnit.AttackSpeed / AttackSpeed * 100;
-		public double UnitCriticalDamage => CurrentUnit.Attack * CriticalDamage / 100;
 		public double UnitHealth => CurrentUnit.Health * Health / 100;
 		public double UnitHealthArmor => CurrentUnit.HealthArmor * HealthArmor / 100 + AdditiveArmor;
 		public double UnitShields => CurrentUnit.Shields * Shields / 100;
@@ -374,7 +373,6 @@ namespace VEntityFramework.Model
 
 		double PlayerAttack => Attack;
 		double PlayerAttackSpeed => AttackSpeed;
-		double PlayerCriticalDamage => CriticalDamage;
 		double PlayerHealth => Health;
 		double PlayerHealthArmor => HealthArmor;
 		double PlayerShields => Shields;
@@ -387,7 +385,7 @@ namespace VEntityFramework.Model
 		public double AttackForBinding => Math.Round(UseUnitStats ? UnitAttack : PlayerAttack, 2);
 		public double AttackSpeedForBinding => Math.Round(UseUnitStats ? UnitAttackSpeed : PlayerAttackSpeed, 2);
 		public double CriticalChanceForBinding => Math.Round(CriticalChance, 2);
-		public double CriticalDamageForBinding => Math.Round(UseUnitStats ? UnitCriticalDamage : PlayerCriticalDamage, 2);
+		public double CriticalDamageForBinding => Math.Round(CriticalDamage, 2);
 		public double HealthForBinding => Math.Round(UseUnitStats ? UnitHealth : PlayerHealth, 2);
 		public double HealthArmorForBinding => Math.Round(UseUnitStats ? UnitHealthArmor : PlayerHealthArmor, 2);
 		public double ShieldsForBinding => Math.Round(UseUnitStats ? UnitShields : PlayerShields, 2);
