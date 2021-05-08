@@ -3,7 +3,7 @@ using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
-	public abstract class VPerkCollection : VBusinessObject
+	public abstract class VPerkCollection : BusinessObject
 	{
 		#region Constructor
 

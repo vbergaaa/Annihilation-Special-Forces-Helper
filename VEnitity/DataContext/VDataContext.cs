@@ -15,7 +15,7 @@ namespace VEntityFramework.Data
 		static VDataContext fInstance;
 		public static VDataContext Instance = fInstance ??= new VDataContext();
 
-		public void SaveAsXML(VBusinessObject bizo)
+		public void SaveAsXML(BusinessObject bizo)
 		{
 			new VXMLWriter().Write(bizo);
 			var cache = BizoCache.Instance;
@@ -25,12 +25,12 @@ namespace VEntityFramework.Data
 			}
 		}
 
-		public T ReadFromXML<T>(string fileName) where T : VBusinessObject
+		public T ReadFromXML<T>(string fileName) where T : BusinessObject
 		{
 			return new VXMLReader().Read<T>(fileName);
 		}
 
-		public T ReadFromXMLWithCache<T>(string fileName) where T : VBusinessObject
+		public T ReadFromXMLWithCache<T>(string fileName) where T : BusinessObject
 		{
 			var cache = BizoCache.Instance;
 			if (cache.Exists(typeof(T), fileName))
@@ -43,7 +43,7 @@ namespace VEntityFramework.Data
 		}
 
 		// Gets any matching bizo otherwise creates a new one
-		public T Get<T>() where T : VBusinessObject
+		public T Get<T>() where T : BusinessObject
 		{
 			var existingBizo = ReadFirstWithCache<T>();
 			if (existingBizo != null)
@@ -54,7 +54,7 @@ namespace VEntityFramework.Data
 			return (T)BizoCreator.Create(typeof(T));
 		}
 
-		public T ReadFirstWithCache<T>() where T : VBusinessObject
+		public T ReadFirstWithCache<T>() where T : BusinessObject
 		{
 			var cache = BizoCache.Instance;
 			if (cache.Exists(typeof(T), null))
@@ -78,12 +78,12 @@ namespace VEntityFramework.Data
 			return (string[])generic.Invoke(this, null);
 		}
 
-		public string[] GetAllFileNames<T>() where T : VBusinessObject
+		public string[] GetAllFileNames<T>() where T : BusinessObject
 		{
 			return new VXMLReader().GetAllFilenames<T>();
 		}
 
-		public void Delete<T>(string fileName) where T : VBusinessObject
+		public void Delete<T>(string fileName) where T : BusinessObject
 		{
 			var path = DirectoryManager.GetFullPathWithExtension<T>(fileName);
 			if (File.Exists(path))

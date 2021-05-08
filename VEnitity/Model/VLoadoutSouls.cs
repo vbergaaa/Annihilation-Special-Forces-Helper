@@ -4,7 +4,7 @@ using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
-	public abstract class VLoadoutSouls : VBusinessObject
+	public abstract class VLoadoutSouls : BusinessObject
 	{
 		#region Constructor
 

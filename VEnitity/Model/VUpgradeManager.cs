@@ -3,11 +3,11 @@ using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
-	public class VUpgradeManager : VBusinessObject
+	public class VUpgradeManager : BusinessObject
 	{
 		#region Constructor
 
-		public VUpgradeManager(VBusinessObject parent) : base(parent)
+		public VUpgradeManager(BusinessObject parent) : base(parent)
 		{
 		}
 

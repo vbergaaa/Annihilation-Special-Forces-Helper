@@ -19,7 +19,7 @@ namespace VEntityFramework.Data
 			}
 			else
 			{
-				return typeof(VBusinessObject).IsAssignableFrom(info.PropertyType);
+				return typeof(BusinessObject).IsAssignableFrom(info.PropertyType);
 			}
 		}
 
@@ -36,7 +36,7 @@ namespace VEntityFramework.Data
 			return null;
 		}
 
-		public static void CastAndSetValue(this PropertyInfo property, string value, VBusinessObject bizo)
+		public static void CastAndSetValue(this PropertyInfo property, string value, BusinessObject bizo)
 		{
 			var objectValue = CastFromStringHelper.GetValueForPropertyTypeFromString(property.PropertyType.Name, value);
 			if (objectValue != null)
@@ -47,7 +47,7 @@ namespace VEntityFramework.Data
 
 		public static bool IsBusinessObject(this PropertyInfo info)
 		{
-			return typeof(VBusinessObject).IsAssignableFrom(info?.PropertyType);
+			return typeof(BusinessObject).IsAssignableFrom(info?.PropertyType);
 		}
 
 		public static bool IsXmlObject(this PropertyInfo info)
@@ -57,7 +57,7 @@ namespace VEntityFramework.Data
 
 		public static string GetNameForXML(this PropertyInfo info)
 		{
-			if (typeof(VBusinessObject).IsAssignableFrom(info.PropertyType))
+			if (typeof(BusinessObject).IsAssignableFrom(info.PropertyType))
 			{
 				var propInfo = info.PropertyType.GetProperty("BizoName");
 				var value = propInfo.GetValue(null);

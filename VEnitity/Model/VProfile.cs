@@ -5,7 +5,7 @@ using VEntityFramework.Data;
 namespace VEntityFramework.Model
 {
 	[TopLevelBusinessObject("Profile")]
-	public abstract class VProfile : VBusinessObject
+	public abstract class VProfile : BusinessObject
 	{
 		#region Properties
 

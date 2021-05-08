@@ -10,12 +10,12 @@ namespace VEntityFramework.DataContext
 {
 	public static class BizoCreator
 	{
-		public static VBusinessObject Create(Type bizoType, params object[] parameters)
+		public static BusinessObject Create(Type bizoType, params object[] parameters)
 		{
 			return Create(bizoType, null, parameters);
 		}
 
-		public static VBusinessObject Create(Type bizoType, string specificTypeName, params object[] parameters)
+		public static BusinessObject Create(Type bizoType, string specificTypeName, params object[] parameters)
 		{
 			if (typeof(VSoul).IsAssignableFrom(bizoType))
 			{
@@ -25,8 +25,8 @@ namespace VEntityFramework.DataContext
 				var myType = myAssembly.GetType(fullType);
 				var ctor = myType.GetConstructors()[0];
 				return specificTypeName != null
-					? (VBusinessObject)ctor.Invoke(new object[] { parameters.FirstOrDefault() })
-					: (VBusinessObject)ctor.Invoke(null); // EmptySoul initialiser
+					? (BusinessObject)ctor.Invoke(new object[] { parameters.FirstOrDefault() })
+					: (BusinessObject)ctor.Invoke(null); // EmptySoul initialiser
 			}
 			else if (typeof(VUnit).IsAssignableFrom(bizoType))
 			{
@@ -43,13 +43,13 @@ namespace VEntityFramework.DataContext
 					var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(Directory.GetCurrentDirectory() + "/VBusiness.dll");
 					var myType = assembly.GetType(typeFullName);
 					var ctor = myType.GetConstructors()[0];
-					return (VBusinessObject)ctor.Invoke(parameters);
+					return (BusinessObject)ctor.Invoke(parameters);
 				}
 
 				return null;
 			}
 
-			return (VBusinessObject)bizoType.Assembly.CreateInstance(bizoType.FullName);
+			return (BusinessObject)bizoType.Assembly.CreateInstance(bizoType.FullName);
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace VEntityFramework.XML
 {
 	class VXMLWriter
 	{
-		internal void Write(VBusinessObject bizo)
+		internal void Write(BusinessObject bizo)
 		{
 			var fullFilePath = RenameFileIfNeccessary(bizo);
 
@@ -21,7 +21,7 @@ namespace VEntityFramework.XML
 			bizo.XmlLocation = fullFilePath;
 		}
 
-		string RenameFileIfNeccessary(VBusinessObject bizo)
+		string RenameFileIfNeccessary(BusinessObject bizo)
 		{
 			var newNameWithPath = GetFileNameWithExtension(bizo);
 
@@ -41,7 +41,7 @@ namespace VEntityFramework.XML
 			return XmlWriter.Create(stream, xmlSettings);
 		}
 
-		void WriteBizoXML(XmlWriter writer, VBusinessObject bizo)
+		void WriteBizoXML(XmlWriter writer, BusinessObject bizo)
 		{
 			if (bizo != null)
 			{
@@ -54,7 +54,7 @@ namespace VEntityFramework.XML
 						{
 							if (property.IsBusinessObject())
 							{
-								WriteBizoXML(writer, (VBusinessObject)property.GetValue(bizo));
+								WriteBizoXML(writer, (BusinessObject)property.GetValue(bizo));
 							}
 							else
 							{
@@ -91,7 +91,7 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		void WriteListToXml(XmlWriter writer, VBusinessObject bizo, System.Reflection.PropertyInfo property)
+		void WriteListToXml(XmlWriter writer, BusinessObject bizo, System.Reflection.PropertyInfo property)
 		{
 			var value = property.GetValue(bizo);
 			if (value is IList list)
@@ -100,7 +100,7 @@ namespace VEntityFramework.XML
 
 				foreach (var item in list)
 				{
-					if (item is VBusinessObject childBizo)
+					if (item is BusinessObject childBizo)
 					{
 						WriteBizoXML(writer, childBizo);
 					}
@@ -115,7 +115,7 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		string GetFileNameWithExtension(VBusinessObject bizo)
+		string GetFileNameWithExtension(BusinessObject bizo)
 		{
 			return DirectoryManager.GetFullDirectory(bizo.GetType()) + bizo.GetSaveNameForXML() + ".xml";
 		}

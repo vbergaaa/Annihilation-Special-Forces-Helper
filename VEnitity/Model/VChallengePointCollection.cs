@@ -2,7 +2,7 @@
 
 namespace VEntityFramework.Model
 {
-	public abstract class VChallengePointCollection : VBusinessObject
+	public abstract class VChallengePointCollection : BusinessObject
 	{
 		#region Constructor
 

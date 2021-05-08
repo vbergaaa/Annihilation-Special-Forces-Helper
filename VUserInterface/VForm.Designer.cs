@@ -41,7 +41,7 @@ namespace VUserInterface
 			//
 			// BindingSource
 			//
-			this.BindingSource.DataSource = typeof(VBusinessObject);
+			this.BindingSource.DataSource = typeof(BusinessObject);
 			//
 			// SaveButton
 			//

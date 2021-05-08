@@ -8,7 +8,7 @@ using VEntityFramework.Interfaces;
 
 namespace VEntityFramework.Model
 {
-	public class VSoulPowers : VBusinessObject, ISoulCollectable
+	public class VSoulPowers : BusinessObject, ISoulCollectable
 	{
 		public VSoulPowers(VLoadoutSouls loadoutSouls) : base(loadoutSouls)
 		{

@@ -5,7 +5,7 @@ using VEntityFramework.Interfaces;
 
 namespace VEntityFramework.Model
 {
-	public abstract class VSoulCollection : VBusinessObject, ISoulCollectable
+	public abstract class VSoulCollection : BusinessObject, ISoulCollectable
 	{
 		public VSoulCollection(VProfile profile) : base(profile)
 		{

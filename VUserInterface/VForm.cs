@@ -9,12 +9,12 @@ namespace VUserInterface
 {
 	public abstract partial class VForm : Form
 	{
-		protected VForm(VBusinessObject parent) : this()
+		protected VForm(BusinessObject parent) : this()
 		{
 			Parent = parent;
 		}
 
-		internal static VForm Create(VBusinessObject bizo)
+		internal static VForm Create(BusinessObject bizo)
 		{
 			if (bizo is VSoul soul)
 			{
@@ -50,7 +50,7 @@ namespace VUserInterface
 		}
 
 
-		public new VBusinessObject Parent
+		public new BusinessObject Parent
 		{
 			get => fParent;
 			set
@@ -62,7 +62,7 @@ namespace VUserInterface
 				}
 			}
 		}
-		VBusinessObject fParent;
+		BusinessObject fParent;
 
 		void SaveButton_Click(object sender, EventArgs e)
 		{

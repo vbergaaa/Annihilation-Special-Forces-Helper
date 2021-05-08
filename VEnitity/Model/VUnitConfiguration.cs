@@ -3,7 +3,7 @@ using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
-	public abstract class VUnitConfiguration : VBusinessObject
+	public abstract class VUnitConfiguration : BusinessObject
 	{
 		#region Constructor
 

@@ -9,7 +9,7 @@ using VEntityFramework.DataContext;
 
 namespace VEntityFramework.Model
 {
-	public abstract class VUnit : VBusinessObject
+	public abstract class VUnit : BusinessObject
 	{
 		public VUnit(VLoadout loadout, UnitType unitType) : base(loadout)
 		{

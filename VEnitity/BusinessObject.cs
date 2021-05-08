@@ -6,17 +6,17 @@ using VEntityFramework.Model;
 
 namespace VEntityFramework.Data
 {
-	public abstract class VBusinessObject : INotifyPropertyChanged, IXmlObject
+	public abstract class BusinessObject : INotifyPropertyChanged, IXmlObject
 	{
 		#region Constructor
 
-		public VBusinessObject(VBusinessObject parent)
+		public BusinessObject(BusinessObject parent)
 		{
 			Parent = parent;
 			SetDefaultValues();
 		}
 
-		public VBusinessObject()
+		public BusinessObject()
 		{
 			SetDefaultValues();
 		}
@@ -105,10 +105,10 @@ namespace VEntityFramework.Data
 
 		#region Children
 
-		protected IList<VBusinessObject> Children => fChildren ??= new List<VBusinessObject>();
-		IList<VBusinessObject> fChildren;
+		protected IList<BusinessObject> Children => fChildren ??= new List<BusinessObject>();
+		IList<BusinessObject> fChildren;
 
-		void RegisterChild(VBusinessObject bizo)
+		void RegisterChild(BusinessObject bizo)
 		{
 			Children.Add(bizo);
 			if (IsSettingHasChangesSuspended)
@@ -117,7 +117,7 @@ namespace VEntityFramework.Data
 			}
 		}
 
-		public void DeregisterChild(VBusinessObject bizo)
+		public void DeregisterChild(BusinessObject bizo)
 		{
 			if (Children.Contains(bizo))
 			{
@@ -130,7 +130,7 @@ namespace VEntityFramework.Data
 		#region Parent
 
 		[VXML(false)]
-		internal VBusinessObject Parent
+		internal BusinessObject Parent
 		{
 			get => fParent;
 			set
@@ -146,7 +146,7 @@ namespace VEntityFramework.Data
 				}
 			}
 		}
-		VBusinessObject fParent;
+		BusinessObject fParent;
 
 #endregion
 

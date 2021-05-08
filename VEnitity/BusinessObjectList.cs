@@ -8,12 +8,12 @@ using VEntityFramework.Model;
 namespace VEntityFramework
 {
 	public class BusinessObjectList<T> : IList<T>, IList
-		where T : VBusinessObject
+		where T : BusinessObject
 	{
-		readonly VBusinessObject parent;
+		readonly BusinessObject parent;
 		readonly IList<T> innerList;
 
-		public BusinessObjectList(VBusinessObject parent)
+		public BusinessObjectList(BusinessObject parent)
 		{
 			this.parent = parent;
 			innerList = new List<T>();

@@ -11,7 +11,7 @@ namespace VUserInterface
 {
 	public partial class SoulForm : VForm
 	{
-		public SoulForm(VBusinessObject bizo) : base(bizo)
+		public SoulForm(BusinessObject bizo) : base(bizo)
 		{
 			if (bizo != null && !(bizo is Soul))
 			{
@@ -24,7 +24,7 @@ namespace VUserInterface
 			}
 		}
 
-		void InitializeParent(VBusinessObject bizo)
+		void InitializeParent(BusinessObject bizo)
 		{
 			Parent = (Soul)bizo ?? new EmptySoul();
 			RefreshSoulTypeList();

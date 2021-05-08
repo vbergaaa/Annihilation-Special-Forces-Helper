@@ -4,7 +4,7 @@ using VEntityFramework.Data;
 namespace VEntityFramework.Model
 {
 	[TopLevelBusinessObject("Souls")]
-	public abstract class VSoul : VBusinessObject
+	public abstract class VSoul : BusinessObject
 	{
 		#region	Constructors
 

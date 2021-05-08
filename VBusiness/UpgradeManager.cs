@@ -8,7 +8,7 @@ namespace VBusiness
 {
 	public class UpgradeManager : VUpgradeManager
 	{
-		public UpgradeManager(VBusinessObject parent) : base(parent)
+		public UpgradeManager(BusinessObject parent) : base(parent)
 		{
 		}
 

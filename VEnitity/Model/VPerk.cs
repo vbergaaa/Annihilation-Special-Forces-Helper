@@ -4,7 +4,7 @@ using VEntityFramework.Data;
 namespace VEntityFramework.Model
 {
 	[VXMLParent("PeckCollection")]
-	public abstract class VPerk : VBusinessObject
+	public abstract class VPerk : BusinessObject
 	{
 		#region Constructor
 

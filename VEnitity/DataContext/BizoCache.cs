@@ -12,11 +12,11 @@ namespace VEntityFramework.DataContext
 		public static BizoCache Instance => fInstance ??= new BizoCache();
 		static BizoCache fInstance;
 
-		Dictionary<Type, Dictionary<string, VBusinessObject>> fCache = new Dictionary<Type, Dictionary<string, VBusinessObject>>();
+		Dictionary<Type, Dictionary<string, BusinessObject>> fCache = new Dictionary<Type, Dictionary<string, BusinessObject>>();
 
 		#region Exists
 
-		public bool Exists(VBusinessObject bizo)
+		public bool Exists(BusinessObject bizo)
 		{
 			return Exists(bizo.GetType(), bizo.XmlLocation);
 		}
@@ -39,7 +39,7 @@ namespace VEntityFramework.DataContext
 
 		#endregion
 
-		public void Add(VBusinessObject bizo)
+		public void Add(BusinessObject bizo)
 		{
 			var name = DirectoryManager.GetShortName(bizo.XmlLocation);
 			var cacheType = GetStorageType(bizo.GetType());
@@ -51,7 +51,7 @@ namespace VEntityFramework.DataContext
 			}
 			else
 			{
-				var newCache = new Dictionary<string, VBusinessObject>
+				var newCache = new Dictionary<string, BusinessObject>
 				{
 					[name] = bizo
 				};
@@ -61,7 +61,7 @@ namespace VEntityFramework.DataContext
 
 		#region Retrieve
 
-		public VBusinessObject Retrieve(Type type, string name)
+		public BusinessObject Retrieve(Type type, string name)
 		{
 			var cacheType = GetStorageType(type);
 
@@ -87,9 +87,9 @@ namespace VEntityFramework.DataContext
 
 		Type GetStorageType(Type type)
 		{
-			if (typeof(VBusinessObject).IsAssignableFrom(type) && type != typeof(VBusinessObject))
+			if (typeof(BusinessObject).IsAssignableFrom(type) && type != typeof(BusinessObject))
 			{
-				while (type.BaseType != typeof(VBusinessObject))
+				while (type.BaseType != typeof(BusinessObject))
 				{
 					type = type.BaseType;
 				}

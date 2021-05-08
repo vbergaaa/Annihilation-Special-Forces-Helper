@@ -2,7 +2,7 @@
 
 namespace VEntityFramework.Model
 {
-	public abstract class VGem : VBusinessObject
+	public abstract class VGem : BusinessObject
 	{
 		#region Constructor
 

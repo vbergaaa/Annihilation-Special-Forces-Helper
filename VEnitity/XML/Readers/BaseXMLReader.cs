@@ -9,7 +9,7 @@ namespace VEntityFramework.XML
 {
 	internal abstract class BaseXMLReader
 	{
-		public void PopulateFromXML(VBusinessObject bizo, XmlNode documentElement)
+		public void PopulateFromXML(BusinessObject bizo, XmlNode documentElement)
 		{
 			using (bizo.StartLoading())
 			using (bizo.SuspendSettingHasChanges())
@@ -22,7 +22,7 @@ namespace VEntityFramework.XML
 			bizo.ExistsInXML = true;
 		}
 
-		void PopulateChild(VBusinessObject bizo, XmlNode childNode)
+		void PopulateChild(BusinessObject bizo, XmlNode childNode)
 		{
 			var matchingProperty = GetPropertyFromXML(bizo.GetType(), childNode);
 
@@ -44,7 +44,7 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		static bool ShouldReportError(VBusinessObject bizo, XmlNode childNode)
+		static bool ShouldReportError(BusinessObject bizo, XmlNode childNode)
 		{
 			if (bizo.GetType().Name == "UnitConfiguration")
 			{
@@ -63,21 +63,21 @@ namespace VEntityFramework.XML
 			return true;
 		}
 
-		void PopulateBusinessObject(VBusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
+		void PopulateBusinessObject(BusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
 		{
-			if (matchingProperty.GetValue(bizo) is VBusinessObject childBizo)
+			if (matchingProperty.GetValue(bizo) is BusinessObject childBizo)
 			{
 				PopulateBusinessObject(childBizo, childNode);
 			}
 		}
 
-		void PopulateBusinessObject(VBusinessObject childBizo, XmlNode childNode)
+		void PopulateBusinessObject(BusinessObject childBizo, XmlNode childNode)
 		{
 			var reader = VXMLReader.GetXmlReader(childBizo.GetType());
 			reader.PopulateFromXML(childBizo, childNode);
 		}
 
-		protected virtual void PopulateNonKeyProperty(VBusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
+		protected virtual void PopulateNonKeyProperty(BusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
 		{
 			if (!IsKey(childNode))
 			{
@@ -92,7 +92,7 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		void ReadListIntoBizo(VBusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
+		void ReadListIntoBizo(BusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
 		{
 			var list = (IList)matchingProperty.GetValue(bizo);
 			var listType = list.GetType().GetGenericArguments()[0];
@@ -100,7 +100,7 @@ namespace VEntityFramework.XML
 
 			foreach (XmlNode node in childNode.ChildNodes)
 			{
-				if (typeof(VBusinessObject).IsAssignableFrom(listType))
+				if (typeof(BusinessObject).IsAssignableFrom(listType))
 				{
 					var key = GetKeyNode(node);
 					var item = BizoCreator.Create(listType, key.InnerText, bizo);

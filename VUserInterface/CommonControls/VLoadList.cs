@@ -62,7 +62,7 @@ namespace VUserInterface.CommonControls
 			{
 				var method = typeof(VDataContext).GetMethod(nameof(VDataContext.ReadFromXML), new Type[] { typeof(string) });
 				var generic = method.MakeGenericMethod(BizoType);
-				var bizo = (VBusinessObject)generic.Invoke(context, new object[]{ name });
+				var bizo = (BusinessObject)generic.Invoke(context, new object[]{ name });
 
 				if (bizo != null)
 				{

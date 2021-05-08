@@ -7,7 +7,7 @@ using VEntityFramework.Data;
 namespace VEntityFramework.Model
 {
 	[TopLevelBusinessObject("Loadouts")]
-	public abstract class VLoadout : VBusinessObject
+	public abstract class VLoadout : BusinessObject
 	{
 		#region Properties
 

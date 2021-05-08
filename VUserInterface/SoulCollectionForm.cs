@@ -5,7 +5,7 @@ namespace VUserInterface
 {
 	public partial class SoulCollectionForm : VForm
 	{
-		public SoulCollectionForm(VBusinessObject bizo) : base(bizo)
+		public SoulCollectionForm(BusinessObject bizo) : base(bizo)
 		{
 			InitializeComponent();
 		}

@@ -3,7 +3,7 @@ using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
-	public abstract class VStats : VBusinessObject
+	public abstract class VStats : BusinessObject
 	{
 		public VStats(VLoadout loadout)
 		{
@@ -34,6 +34,7 @@ namespace VEntityFramework.Model
 			OnPropertyChanged(nameof(Recovery));
 		}
 		#endregion
+
 		public override string BizoName => "Stats";
 
 		#region Calculated Stats;
