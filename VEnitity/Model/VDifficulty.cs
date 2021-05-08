@@ -73,25 +73,25 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region TitanChance
+		#region MythicBoss
 
 		public abstract int MythicBoss { get; }
 
 		#endregion
 
-		#region TitanChance
+		#region CritReduction
 
 		public abstract int CritReduction { get; }
 
 		#endregion
 
-		#region TitanChance
+		#region UnitTierIncrease
 
 		public abstract int UnitTierIncrease { get; }
 
 		#endregion
 
-		#region TitanChance
+		#region RoomToClear
 
 		public abstract int RoomToClear { get; }
 

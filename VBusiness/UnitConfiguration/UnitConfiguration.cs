@@ -101,6 +101,7 @@ namespace VBusiness
 		void UpdateDifficulty(VDifficulty oldDiff)
 		{
 			UpdateTormentReduction(oldDiff);
+			UpdateCritReduction(oldDiff);
 		}
 
 		void UpdateTormentReduction(VDifficulty oldDiff)
@@ -118,6 +119,18 @@ namespace VBusiness
 				Loadout.Stats.UpdateHealth("Core", -difference);
 				Loadout.Stats.ShieldsArmor -= difference;
 				Loadout.Stats.Acceleration -= difference;
+			}
+		}
+
+		void UpdateCritReduction(VDifficulty oldDiff)
+		{
+			var oldCritReduction = oldDiff?.CritReduction ?? 0;
+			var newCritReduction = Difficulty.CritReduction;
+			var difference = newCritReduction - oldCritReduction;
+
+			if (difference != 0)
+			{
+				Loadout.Stats.CriticalDamage -= difference;
 			}
 		}
 
