@@ -54,7 +54,7 @@ namespace Tests.Stats_Tests
 
 		[TestCase(DifficultyLevel.VeryEasy, 4740.85)]
 		[TestCase(DifficultyLevel.Normal, 1259.26)]
-		[TestCase(DifficultyLevel.VeryHard, 1050.93)]
+		[TestCase(DifficultyLevel.VeryHard, 1014.05)]
 		public void TestToughness_Difficulty(DifficultyLevel difficulty, double expected)
 		{
 			var loadout = GetLoadout();
@@ -66,8 +66,6 @@ namespace Tests.Stats_Tests
 		[TestCase(0, 444.44 + 814.81)]
 		[TestCase(100, 857.14 + 814.81)]
 		[TestCase(200, 12000 + 814.81)]
-		[TestCase(250, 36000 + 814.81)]
-		[TestCase(300, 36000 + 814.81)]
 		public void TestToughness_HealthArmor(int additionalArmor, double expected)
 		{
 			SetBasicLingComposition();
@@ -91,8 +89,6 @@ namespace Tests.Stats_Tests
 		[TestCase(0, 444.44 + 814.81)]
 		[TestCase(100, 444.44 + 1571.43)]
 		[TestCase(200, 444.44 + 22000)]
-		[TestCase(250, 444.44 + 66000)]
-		[TestCase(300, 444.44 + 66000)]
 		public void TestToughness_ShieldsArmor(int additionalArmor, double expected)
 		{
 			SetBasicLingComposition();
@@ -117,8 +113,6 @@ namespace Tests.Stats_Tests
 		[TestCase(0, 1259.26)]
 		[TestCase(10, 1478.26)]
 		[TestCase(50, 4857.14)]
-		[TestCase(70, 102000)]
-		[TestCase(70, 102000)]
 		public void TestToughness_DamageReduction(int dr, double expected)
 		{
 			SetBasicLingComposition();
