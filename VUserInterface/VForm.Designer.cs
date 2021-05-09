@@ -33,38 +33,54 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
-			this.BindingSource = new BindingSource();
-			this.SaveButton = new VButton();
-			this.CancelButton = new VButton();
-			//
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VForm));
+			this.BindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.SaveButton = new VUserInterface.CommonControls.VButton();
+			this.CancelButton = new VUserInterface.CommonControls.VButton();
+			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
+			this.SuspendLayout();
+			// 
 			// BindingSource
-			//
-			this.BindingSource.DataSource = typeof(BusinessObject);
-			//
+			// 
+			this.BindingSource.DataSource = typeof(VEntityFramework.Data.BusinessObject);
+			// 
 			// SaveButton
-			//
-			this.SaveButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-			this.SaveButton.DataBindings.Add(new Binding("Enabled", BindingSource, "HasChanges"));
+			// 
+			this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.SaveButton.Click += SaveButton_Click; 
+			this.SaveButton.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.BindingSource, "HasChanges", true));
+			this.SaveButton.Location = DPIScalingHelper.GetScaledPoint(0, 0);
+			this.SaveButton.Name = "SaveButton";
 			this.SaveButton.Size = DPIScalingHelper.GetScaledSize(80, 25);
+			this.SaveButton.TabIndex = 0;
 			this.SaveButton.Text = "Save";
-			this.SaveButton.Click += SaveButton_Click;
-			//
+			// 
 			// CancelButton
-			//
-			this.CancelButton.Anchor = AnchorStyles.Bottom  | AnchorStyles.Right;
-			this.CancelButton.DialogResult = DialogResult.OK;
+			// 
+			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.CancelButton.Click += CancelButton_Click; 
+			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.CancelButton.Location = new System.Drawing.Point(0, 0);
+			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = DPIScalingHelper.GetScaledSize(80, 25);
+			this.CancelButton.TabIndex = 1;
 			this.CancelButton.Text = "Close";
-			this.CancelButton.Click += CancelButton_Click;
-			//
-			// this
-			//
-			this.DataBindings.Add("BizoHasChanges", BindingSource, "HasChanges");
-			this.Text = "Annihilation Special Forces Companion App";
+			// 
+			// VForm
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = DPIScalingHelper.GetScaledSize(331, 301);
 			this.Controls.Add(this.SaveButton);
 			this.Controls.Add(this.CancelButton);
+			this.DataBindings.Add("BizoHasChanges", BindingSource, "HasChanges");
+			this.Icon = Properties.Resources.asflogo;
+			this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.Name = "VForm";
+			this.Text = "Annihilation Special Forces Companion App";
+			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).EndInit();
+			this.ResumeLayout(false);
+
 		}
 		#endregion
 

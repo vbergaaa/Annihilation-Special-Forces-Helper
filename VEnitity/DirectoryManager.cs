@@ -35,7 +35,11 @@ namespace VEntityFramework
 			if (atr != null)
 			{
 				var pathHint = atr.PathHint;
-				var fullDirectory = $"{Directory.GetCurrentDirectory()}/{pathHint}/";
+				var rootDirectory = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\AnnihilationSpecialForcesHelper";
+#if DEBUG
+				rootDirectory = Directory.GetCurrentDirectory();
+#endif
+				var fullDirectory = $"{rootDirectory}\\{pathHint}\\";
 				EnsureDirectoryExists(fullDirectory);
 				return fullDirectory;
 			}

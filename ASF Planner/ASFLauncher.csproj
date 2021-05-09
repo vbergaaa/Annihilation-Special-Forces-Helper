@@ -5,6 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>ASF_Planner</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <PackageIcon>asflogo.ico</PackageIcon>
+    <ApplicationIcon>asflogo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +27,13 @@
   <ItemGroup>
     <ProjectReference Include="..\VUserInterface\VUserInterface.csproj" />
     <ProjectReference Include="..\VEnitity\VEntityFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Downloads\asflogo.ico">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

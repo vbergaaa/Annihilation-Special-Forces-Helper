@@ -187,6 +187,7 @@ namespace VUserInterface
 			this.Controls.Add(this.TitleLabel);
 			this.Controls.Add(this.LeftPanel);
 			this.Controls.Add(this.RightPanel);
+			this.Icon = Properties.Resources.asflogo;
 			this.Name = "MainForm";
 			this.Text = "Annihilation Special Forces Companion App";
 			this.LeftPanel.ResumeLayout(false);
