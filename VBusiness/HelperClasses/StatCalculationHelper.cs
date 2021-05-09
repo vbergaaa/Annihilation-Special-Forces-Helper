@@ -16,7 +16,7 @@ namespace VBusiness.HelperClasses
 
 		public static double GetToughness(VLoadout loadout)
 		{
-			if (loadout.UseUnitStats && loadout.CurrentUnit != null)
+			if (loadout.UseUnitStats && loadout.CurrentUnit.UnitData.Type != UnitType.None)
 			{
 				var difficulty = loadout.UnitConfiguration.Difficulty;
 				var rawEnemyDamages = GetEnemyCompositionStats(difficulty, CompositionOptions.AttackingUnitsOnly);
@@ -86,7 +86,7 @@ namespace VBusiness.HelperClasses
 
 		public static double GetDamage(VLoadout loadout)
 		{
-			if (loadout.UseUnitStats && loadout.CurrentUnit != null)
+			if (loadout.UseUnitStats && loadout.CurrentUnit.UnitData.Type != UnitType.None)
 			{
 				var crits = GetCritChances(loadout);
 				var composition = GetEnemyCompositionStats(loadout.UnitConfiguration.Difficulty, CompositionOptions.Normal);
