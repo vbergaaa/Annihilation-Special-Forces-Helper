@@ -1,28 +1,22 @@
 # Annihilation-Special-Forces-Helper
-A program used to assist players who play the SC2 Custom Arcade Game, "Annihilation Special Forces" created by Jessy
+This is a program used to assist players who play the SC2 Custom Arcade Game, "Annihilation Special Forces" created by <Cruxis>jessy
 
-You can use this program to plan and create your in game loadouts. It accurately shows your player statistics, going beyond the in-game stats by including unit specific buffs from things like perks, souls, and ranks.
+You can use this program to plan and create your in game loadouts, limiting them to your available perk points, gems, souls and challenge points. It shows you your player statistics, going beyond the in-game stats by including stats for unit specific buffs, such as infusions, essence, and rank.
 
-It also shows you unit statistics for any unit in the game, allowing you to compare statistics of different units with any upgrades.
+It also contains data for unit statistics for most units in the game, allowing you to compare statistics of different units with any perks, rank, upgrades, etc. 
 
 ## Download Instructions
-To run this program, you will need to have Microsoft .NET Core installed on you computer. To check if you have this, you can run the following command from a command prompt window:
-`dotnet --version`
+Head to the [releases page](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases) and find the most recent release.
+Download it and run the installer ASFSetup.exe. Follow the prompts to install the program.
 
-If the version number is less than 3, or the command 'dotnet' could not be found, you will need to install .Net Core Runtime from [here](https://dotnet.microsoft.com/download/dotnet-core/current/runtime)
+This program makes use of Microsoft .NET Core 3 runtime libraries. If you don't already have them on your machine, the installer will download them the first time you run it.
 
-Once you have dotnet installed, download <b>ASF.zip</b> from the newest release on the releases page, found [here](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases).
+Once you have installed the program, there will be a shortcut on your destop named 'ASF Companion App'. Use this as the main entry point for the app.
+The app can also be found as an excutable in 'C:/Program Files (x86)/vbergaaa/ASF Companion App/', or wherever you specified the install.
 
-Once you have downloaded the zip file, extract the files and run ASFLauncher.exe.
-
-If you are updating to a new version of this program, you will need copy the "Loadouts", "Souls", and "Profile" folders from your old directory to the new directory to retain your previous data.
+If you find an issue or wish to request a feature, please create a new issue [here](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/issues), or contact me through the ASF discord, available in game.
 
 ### Feature roadmap:
-1. Add a Power Soul into a loadout
-2. Add more information about enemies and rooms to improve Damage and Toughness statistics
-3. Adding an economy calculator to help you determine which eco perks will give you the most value.
-4. Add an RP tracking/logging system
-
-### Potiential future features
-- Adding a helper that suggests different perks or gems to increase stats with best stats/cost ratio.
-- Add a replay parser to automatically read played games and update your profile as you play
+- Add an economy calculator to help you determine cost of units, and cost of upgrades, and informs you which eco perks will give you the most value.
+- Add an RP tracking/logging system to keep your profile up to date and allow you to view a history of your games.
+- Adding a helper that suggests different perks or gems to increase stats/economy with best value/cost ratio.
