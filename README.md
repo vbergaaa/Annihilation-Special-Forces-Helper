@@ -3,7 +3,7 @@ This is a program used to assist players who play the SC2 Custom Arcade Game, "A
 
 You can use this program to plan and create your in game loadouts, limiting them to your available perk points, gems, souls and challenge points. It shows you your player statistics, going beyond the in-game stats by including stats for unit specific buffs, such as infusions, essence, and rank.
 
-It also contains data for unit statistics for most units in the game, allowing you to compare statistics of different units with any perks, rank, upgrades, etc. 
+It also contains data for unit statistics for most units in the game, allowing you to compare base statistics of different units with any perks, rank, upgrades, etc. 
 
 ## Download Instructions
 Head to the [releases page](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases) and find the most recent release.
@@ -19,4 +19,5 @@ If you find an issue or wish to request a feature, please create a new issue [he
 ### Feature roadmap:
 - Add an economy calculator to help you determine cost of units, and cost of upgrades, and informs you which eco perks will give you the most value.
 - Add an RP tracking/logging system to keep your profile up to date and allow you to view a history of your games.
+- Add unit specific abilities and buffs to try and make unit stats more reflective of reality.
 - Adding a helper that suggests different perks or gems to increase stats/economy with best value/cost ratio.
