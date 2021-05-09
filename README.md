@@ -7,7 +7,7 @@ It also contains data for unit statistics for most units in the game, allowing y
 
 ## Download Instructions
 Head to the [releases page](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases) and find the most recent release.
-Download it and run the installer ASFSetup.exe. Follow the prompts to install the program.
+Download the ASF.zip file, extract it, and run the installer Setup.exe. Follow the prompts to complete installation.
 
 This program makes use of Microsoft .NET Core 3 runtime libraries. If you don't already have them on your machine, the installer will download them the first time you run it.
 
