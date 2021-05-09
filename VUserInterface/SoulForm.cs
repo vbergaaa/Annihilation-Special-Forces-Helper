@@ -36,7 +36,8 @@ namespace VUserInterface
 			{
 				TypeDropBox.SelectedValueChanged -= TypeComboBox_SelectionChanged;
 				var items = TypeDropBox.List;
-				TypeDropBox.SelectedIndex = (int)Parent.Type;
+				var index = GetOrderedSoulsList().IndexOf(Parent.Type);
+				TypeDropBox.SelectedIndex = index;
 				TypeDropBox.SelectedValueChanged += TypeComboBox_SelectionChanged;
 				isParentInitialised = true;
 			}
