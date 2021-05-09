@@ -28,7 +28,7 @@ namespace VBusiness.ChallengePoints
 					var effectiveCPDifference = GetCPDifference(base.CurrentLevel, oldValue);
 					OnCPLevelChanged(effectiveCPDifference);
 					ChallengePointCollection.RefreshPropertyBinding(nameof(ChallengePointCollection.TotalCost));
-					((ChallengePointCollection)ChallengePointCollection).SetCPLimits(Color);
+					((ChallengePointCollection)ChallengePointCollection).SetAllCPLimits();
 				}
 			}
 		}
@@ -55,6 +55,68 @@ namespace VBusiness.ChallengePoints
 
 		#endregion
 
+		#region MinLevel
+
+		public override int MinValue
+		{
+			get
+			{
+				if (IsLoading || CurrentLevel == 0)
+				{
+					return 0;
+				}
+
+				return CanSellCP()
+					? CurrentLevel - 1
+					: CurrentLevel;
+			}
+		}
+
+		bool CanSellCP()
+		{
+			return ChallengePointCollection.CanSellCP(Tier, Color);
+		}
+
+		#endregion
+
+		#region MaxLevel
+
+		public override int MaxValue
+		{
+			get
+			{
+				if (IsLoading)
+				{
+					return 10;
+				}
+
+				if (HasUnlockedTier())
+				{
+					if (!ChallengePointCollection.Loadout.ShouldRestrict)
+					{
+						return 10;
+					}
+
+					return CanAffordNextLevel()
+						? CurrentLevel + 1
+						: CurrentLevel;
+				}
+				return CurrentLevel;
+			}
+		}
+
+		bool CanAffordNextLevel()
+		{
+			return NextLevelCost <= ChallengePointCollection.RemainingCP;
+		}
+
+		bool HasUnlockedTier()
+		{
+			return ChallengePointCollection.HasUnlockedTier(Tier, Color);
+		}
+
+		#endregion
+
 		#region NextLevelCost
 
 		public override int NextLevelCost => 1 + CurrentLevel * CostIncrement;
@@ -74,19 +136,6 @@ namespace VBusiness.ChallengePoints
 				}
 				return total;
 			}
-		}
-
-		#endregion
-
-		#endregion
-
-		#region Methods
-
-		#region SetDefaultValues
-
-		protected override void SetDefaultValuesCore()
-		{
-			MaxValue = int.MaxValue;
 		}
 
 		#endregion

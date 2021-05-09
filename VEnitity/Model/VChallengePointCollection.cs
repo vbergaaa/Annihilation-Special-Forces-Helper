@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Data;
+﻿using System;
+using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
@@ -138,6 +139,31 @@ namespace VEntityFramework.Model
 			Acceleration.RefreshPropertyBinding(nameof(Acceleration.MaxValue));
 		}
 
+		public void RefreshMinLevelBindings()
+		{
+			Attack.RefreshPropertyBinding(nameof(Attack.MinValue));
+			CriticalDamage.RefreshPropertyBinding(nameof(CriticalDamage.MinValue));
+			CriticalChance.RefreshPropertyBinding(nameof(CriticalChance.MinValue));
+			AttackSpeed.RefreshPropertyBinding(nameof(AttackSpeed.MinValue));
+			Health.RefreshPropertyBinding(nameof(Health.MinValue));
+			Shields.RefreshPropertyBinding(nameof(Shields.MinValue));
+			DefensiveEssence.RefreshPropertyBinding(nameof(DefensiveEssence.MinValue));
+			DamageReduction.RefreshPropertyBinding(nameof(DamageReduction.MinValue));
+			Mining.RefreshPropertyBinding(nameof(Mining.MinValue));
+			Kills.RefreshPropertyBinding(nameof(Kills.MinValue));
+			Veterancy.RefreshPropertyBinding(nameof(Veterancy.MinValue));
+			Acceleration.RefreshPropertyBinding(nameof(Acceleration.MinValue));
+		}
+
+		public virtual bool HasUnlockedTier(CPTier tier, CPColor color)
+		{
+			return false;
+		}
+
+		public virtual bool CanSellCP(CPTier tier, CPColor color)
+		{
+			return false;
+		}
 		#endregion
 	}
 }

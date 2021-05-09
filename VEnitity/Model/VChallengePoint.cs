@@ -43,52 +43,13 @@ namespace VEntityFramework.Model
 
 		#region MinValue
 
-		public int MinValue
-		{
-			get => fMinValue;
-			set
-			{
-				fMinValue = value;
-				OnPropertyChanged(nameof(MinValue));
-			}
-		}
-		int fMinValue;
+		public virtual int MinValue { get; }
 
 		#endregion
 
 		#region MaxValue
 
-		public int MaxValue
-		{
-			get
-			{
-				if (IsSettingHasChangesSuspended)
-				{
-					return int.MaxValue;
-				}
-				else if (ChallengePointCollection.Loadout.ShouldRestrict && CurrentLevel < fMaxValue)
-				{
-					if (CanAffordNextLevel())
-					{
-						return int.MaxValue;
-					}
-					return CurrentLevel;
-				}
-				return fMaxValue;
-			}
-			set
-			{
-				fMaxValue = value;
-				OnPropertyChanged(nameof(MaxValue));
-			}
-		}
-		int fMaxValue;
-
-		bool CanAffordNextLevel()
-		{
-			return NextLevelCost <= ChallengePointCollection.RemainingCP;
-		}
-
+		public virtual int MaxValue { get; }
 
 		#endregion
 

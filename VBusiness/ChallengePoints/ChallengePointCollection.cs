@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness.ChallengePoints
@@ -150,95 +151,58 @@ namespace VBusiness.ChallengePoints
 
 		public void SetAllCPLimits()
 		{
-			SetCPLimits(CPColor.Red);
-			SetCPLimits(CPColor.Green);
-			SetCPLimits(CPColor.Blue);
-		}
-
-		internal void SetCPLimits(CPColor color)
-		{
-			LockTier1IfNecessary(color);
-			LockTier2IfNecessary(color);
+			RefreshMinLevelBindings();
+			RefreshMaxLevelBindings();
 		}
 
 		#region Tier 1
 
-		void LockTier1IfNecessary(CPColor color)
+		public override bool CanSellCP(CPTier tier, CPColor color)
 		{
-			var tier1 = AllCP.Where(cp => cp.Color == color && cp.Tier == CPTier.One);
+			ErrorReporter.ReportDebug(tier == CPTier.None, "Where is this coming from");
+			ErrorReporter.ReportDebug(tier != CPTier.One && tier != CPTier.Two, "uncomment t3 statement below to activate tier 3. Please test.");
 
-			if (ShouldLockTier1MinValues(color))
+			var canSell = true;
+
+			//if (tier == CPTier.Three)
+			//{
+			//	return true;
+			//}
+
+			//if (AllCP.Any(cp => cp.Color == color && cp.Tier == CPTier.Three && cp.CurrentLevel > 0))
+			//{
+			//	canSell = AllCP.Where(cp => cp.Color == color && cp.Tier <= CPTier.Two).Sum(cp => cp.CurrentLevel) > 5;
+			//}
+
+			if (tier == CPTier.Two)
 			{
-				LockMinValues(tier1);
+				return canSell;
 			}
-			else
+
+			if (AllCP.Any(cp => cp.Color == color && cp.Tier == CPTier.Two && cp.CurrentLevel > 0))
 			{
-				UnlockMinValues(tier1);
+				canSell = AllCP.Where(cp => cp.Color == color && cp.Tier == CPTier.One).Sum(cp => cp.CurrentLevel) > 2;
 			}
-		}
 
-		bool ShouldLockTier1MinValues(CPColor color)
-		{
-			return AllCP.Where(cp => cp.Color == color && cp.Tier == CPTier.One).Sum(cp => cp.CurrentLevel) <= 2
-				&& AllCP.Where(cp => cp.Color == color && cp.Tier == CPTier.Two).Sum(cp => cp.CurrentLevel) > 0;
-		}
-
-		#endregion
-
-		#region Tier 2
-
-		void LockTier2IfNecessary(CPColor color)
-		{
-			var tier2 = AllCP.Where(cp => cp.Color == color && cp.Tier == CPTier.Two);
-			if (ShouldLockTier2MaxValues(color))
-			{
-				LockMaxValues(tier2);
-			}
-			else
-			{
-				UnlockMaxValues(tier2);
-			}
-		}
-
-		bool ShouldLockTier2MaxValues(CPColor color)
-		{
-			return AllCP.Where(cp => cp.Color == color && cp.Tier == CPTier.One).Sum(cp => cp.CurrentLevel) < 2;
+			return canSell;
 		}
 
 		#endregion
 
-		#region Common
+		#region HasUnlockedTier
 
-		void LockMinValues(IEnumerable<VChallengePoint> tier)
+		public override bool HasUnlockedTier(CPTier tier, CPColor color)
 		{
-			foreach (var cp in tier)
-			{
-				cp.MinValue = cp.CurrentLevel;
-			}
-		}
+			ErrorReporter.ReportDebug(tier == CPTier.None, "Where is this coming from");
+			ErrorReporter.ReportDebug(tier != CPTier.One && tier != CPTier.Two, "uncomment t3 in switch to activate");
 
-		void UnlockMinValues(IEnumerable<VChallengePoint> tier1)
-		{
-			foreach (var cp in tier1)
+			return tier switch
 			{
-				cp.MinValue = 0;
-			}
-		}
-
-		void LockMaxValues(IEnumerable<VChallengePoint> tier)
-		{
-			foreach (var cp in tier)
-			{
-				cp.MaxValue = 0;
-			}
-		}
-
-		void UnlockMaxValues(IEnumerable<VChallengePoint> tier1)
-		{
-			foreach (var cp in tier1)
-			{
-				cp.MaxValue = int.MaxValue;
-			}
+				CPTier.One => true,
+				CPTier.Two => AllCP.Where(cp => cp.Color == color && cp.Tier <= CPTier.One).Sum(cp => cp.CurrentLevel) >= 2 && (Loadout.Profile.ChallengePoints >= 10 || !Loadout.ShouldRestrict),
+				//CPTier.Three => AllCP.Where(cp => cp.Color == color && cp.Tier <= CPTier.Two).Sum(cp => cp.CurrentLevel) >= 5 && (Loadout.Profile.ChallengePoints >= 20 || !Loadout.ShouldRestrict),
+				_ => false
+			};
 		}
 
 		#endregion
