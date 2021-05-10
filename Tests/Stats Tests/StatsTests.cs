@@ -130,6 +130,37 @@ namespace Tests
 			Assert.That(loadout.Stats.ShieldsForBinding, Is.AtLeast(expected - 1) & Is.AtMost(expected + 1));
 		}
 
+		[Test]
+		public void TestArmorOverall()
+		{
+			/// have tested these calculations in game and have them explained here
+			/// Unit base armor: 2
+			/// Unit armor increment: .35
+			/// Upgrade level: 20
+			/// Total Raw Armor: 9
+			/// 200% player armor = x2
+			/// +10 infuse = x2
+			/// SSA rank buff = x1.1
+			/// Super Omega buff = x1.2 (tooltip says 100% but is only 20% in test
+			/// Trifecta bonus buff = x1.1
+			/// +25 infuse = +25
+			/// total = 9 * 2 * 2 * 1.1 * 1.1 * 1.2 + 25
+			/// 77.272 armor total
+			var loadout = GetTestLoadout();
+			loadout.CurrentUnit = VUnit.New(UnitType.WarpLord, loadout);
+			loadout.Upgrades.HealthArmorUpgrade = 20;
+			loadout.Upgrades.ShieldsArmorUpgrade = 20;
+			loadout.Gems.HealthArmorGem.CurrentLevel = 100;
+			loadout.Gems.ShieldsArmorGem.CurrentLevel = 100;
+			loadout.CurrentUnit.CurrentInfusion = 10;
+			loadout.CurrentUnit.UnitRank = UnitRankType.XDZ;
+			((PerkCollection)loadout.Perks).TrifectaPower.DesiredLevel = 15;
+			loadout.CurrentUnit.EssenceStacks = 25;
+
+			Assert.That(loadout.Stats.UnitHealthArmor, Is.EqualTo(77.272));
+			Assert.That(loadout.Stats.UnitShieldsArmor, Is.EqualTo(77.272));
+		}
+
 		VLoadout GetTestLoadout()
 		{
 			var loadout = new Loadout();

@@ -28,10 +28,10 @@ namespace VBusiness.Perks
 			{
 				PerkCollection.Loadout.Stats.Attack += 1.5 * diff;
 				PerkCollection.Loadout.Stats.UpdateAttackSpeed("Trifecta", 1.5 * diff);
-				PerkCollection.Loadout.Stats.UpdateHealth("Core", 1.5 * diff);
-				PerkCollection.Loadout.Stats.HealthArmor += 1 * diff;
-				PerkCollection.Loadout.Stats.UpdateShields("Core", 1.5 * diff);
-				PerkCollection.Loadout.Stats.ShieldsArmor += 1 * diff;
+				PerkCollection.Loadout.Stats.UpdateHealth("Trifecta", 1.5 * diff);
+				PerkCollection.Loadout.Stats.UpdateHealthArmor("Trifecta", diff);
+				PerkCollection.Loadout.Stats.UpdateShields("Trifecta", 1.5 * diff);
+				PerkCollection.Loadout.Stats.UpdateShieldsArmor("Trifecta", diff);
 			}
 
 			if (PerkCollection.Loadout.CurrentUnit.UnitRank >= UnitRankType.Z && ((PerkCollection)PerkCollection).UpgradeCache.DesiredLevel > 0)
@@ -40,15 +40,15 @@ namespace VBusiness.Perks
 				{
 					PerkCollection.Loadout.Stats.Attack += 15;
 					PerkCollection.Loadout.Stats.UpdateAttackSpeed("Trifecta", 15);
-					PerkCollection.Loadout.Stats.UpdateHealth("Core", 15);
-					PerkCollection.Loadout.Stats.UpdateShields("Core", 15);
+					PerkCollection.Loadout.Stats.UpdateHealth("Trifecta", 15);
+					PerkCollection.Loadout.Stats.UpdateShields("Trifecta", 15);
 				}
 				if (DesiredLevel - diff == MaxLevel)
 				{
 					PerkCollection.Loadout.Stats.Attack -= 15;
 					PerkCollection.Loadout.Stats.UpdateAttackSpeed("Trifecta", -15);
-					PerkCollection.Loadout.Stats.UpdateHealth("Core", -15);
-					PerkCollection.Loadout.Stats.UpdateShields("Core", -15);
+					PerkCollection.Loadout.Stats.UpdateHealth("Trifecta", -15);
+					PerkCollection.Loadout.Stats.UpdateShields("Trifecta", -15);
 				}
 			}
 		}

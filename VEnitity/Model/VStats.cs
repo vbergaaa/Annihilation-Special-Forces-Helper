@@ -163,16 +163,26 @@ namespace VEntityFramework.Model
 
 		public double HealthArmor
 		{
-			get => fHealthArmor;
-			set
+			get
 			{
-				fHealthArmor = value;
-				OnPropertyChanged(nameof(HealthArmorForBinding));
-				OnPropertyChanged(nameof(Toughness));
-				OnPropertyChanged(nameof(Recovery));
+				var totalArmor = 100.0;
+				foreach (var kvp in HealthArmorDictionary)
+				{
+					totalArmor *= (100 + kvp.Value) / 100;
+				}
+				return totalArmor;
 			}
 		}
-		double fHealthArmor;
+
+		StatsDictionary HealthArmorDictionary => fHealthArmorDictionary ??= new StatsDictionary("HealthArmor");
+		StatsDictionary fHealthArmorDictionary;
+
+		public void UpdateHealthArmor(string key, double amount)
+		{
+			HealthArmorDictionary.Update(key, amount);
+			OnPropertyChanged(nameof(HealthArmor));
+			OnPropertyChanged(nameof(Toughness));
+		}
 
 		#endregion
 
@@ -208,16 +218,26 @@ namespace VEntityFramework.Model
 
 		public double ShieldsArmor
 		{
-			get => fShieldsArmor;
-			set
+			get
 			{
-				fShieldsArmor = value;
-				OnPropertyChanged(nameof(ShieldsArmorForBinding));
-				OnPropertyChanged(nameof(Toughness));
-				OnPropertyChanged(nameof(Recovery));
+				var totalArmor = 100.0;
+				foreach (var kvp in ShieldsArmorDictionary)
+				{
+					totalArmor *= (100 + kvp.Value) / 100;
+				}
+				return totalArmor;
 			}
 		}
-		double fShieldsArmor;
+
+		StatsDictionary ShieldsArmorDictionary => fShieldsArmorDictionary ??= new StatsDictionary("ShieldsArmor");
+		StatsDictionary fShieldsArmorDictionary;
+
+		public void UpdateShieldsArmor(string key, double amount)
+		{
+			ShieldsArmorDictionary.Update(key, amount);
+			OnPropertyChanged(nameof(ShieldsArmor));
+			OnPropertyChanged(nameof(Toughness));
+		}
 
 		#endregion
 
