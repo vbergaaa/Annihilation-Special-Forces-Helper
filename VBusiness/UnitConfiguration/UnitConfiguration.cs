@@ -121,7 +121,7 @@ namespace VBusiness
 				Loadout.Stats.UpdateHealthArmor("Core", -difference);
 				Loadout.Stats.UpdateShields("Core", -difference);
 				Loadout.Stats.UpdateShieldsArmor("Core", -difference);
-				Loadout.Stats.Acceleration -= difference;
+				Loadout.Stats.UpdateAcceleration("Core", -difference);
 			}
 		}
 

@@ -7,11 +7,9 @@ namespace VEntityFramework
 {
 	public static class ErrorReporter
 	{
-		public static void ReportDebug(string message)
-		{
-			ReportDebug(true, message);
-		}
-
+		/// TODO: make this obsolete - 
+		/// it runs the condition before checking if we are in debug, which can be expensive and run frequently
+		/// we should try to avoid this to improve release performance
 		public static void ReportDebug(bool condition, string message)
 		{
 #if DEBUG
@@ -21,5 +19,15 @@ namespace VEntityFramework
 			}
 #endif
 		}
+
+		public static void ReportDebug(string message, Func<bool> codeToRun = null)
+		{
+#if DEBUG
+			if (codeToRun())
+			{
+				throw new DeveloperException(message);
+			}
+		}
+#endif
 	}
 }

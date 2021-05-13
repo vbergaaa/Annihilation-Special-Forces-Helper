@@ -25,7 +25,9 @@ namespace VEntityFramework.Model
 				Add(key, amount);
 			}
 
-			ErrorReporter.ReportDebug(this[key] < 0, $"Why do you have less then 0 of this Stat? Dictionary:{debugName}, key:{key}, value:{this[key]}");
+			ErrorReporter.ReportDebug(
+				$"Why do you have less then 0 of this Stat? Dictionary:{debugName}, key:{key}, value:{this[key]}",
+				() => key == "CORE" ? this[key] + 17 < 0: this[key] < 0);
 		}
 
 		public void UpdateExpontiental(string key, double value, int quantity)

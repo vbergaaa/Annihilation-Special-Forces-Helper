@@ -16,7 +16,6 @@ namespace VBusiness
 			Attack = 100;
 			CriticalChance = 0;
 			CriticalDamage = 100;
-			Acceleration = 100;
 		}
 
 		public override double Damage => StatCalculationHelper.GetDamage(Loadout);

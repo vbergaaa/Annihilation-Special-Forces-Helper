@@ -63,6 +63,39 @@ namespace Tests
 			Assert.That(loadout.Stats.AttackForBinding, Is.EqualTo(expected));
 		}
 
+		[Test]
+		public void TestAttackOverall()
+		{
+			/// have tested these calculations in game and have them explained here
+			/// Unit base atk: 11
+			/// Unit armor increment: .6
+			/// Upgrade level: 30
+			/// Total Raw Armor: 29
+			/// 200% player atk = +100%
+			/// +10 infuse = +100%
+			/// Z rank buff = +20%
+			/// Super Omega buff = +100%
+			/// Trifecta bonus buff = +30% (+15% without cache)
+			/// +24 essence = +120%
+			/// Adrenaline+super rush = +20%
+			/// total = 29 + 490% 
+			/// total = 171.1
+
+			var loadout = GetTestLoadout();
+			loadout.CurrentUnit = VUnit.New(UnitType.WarpLord, loadout);
+			loadout.Upgrades.AttackUpgrade = 30;
+			loadout.Gems.AttackGem.CurrentLevel = 100;
+			loadout.CurrentUnit.CurrentInfusion = 10;
+			loadout.CurrentUnit.UnitRank = UnitRankType.XDZ;
+			((PerkCollection)loadout.Perks).TrifectaPower.DesiredLevel = 15;
+			((PerkCollection)loadout.Perks).UpgradeCache.DesiredLevel = 1;
+			((PerkCollection)loadout.Perks).AdrenalineRush.DesiredLevel = 15;
+			((PerkCollection)loadout.Perks).SuperRush.DesiredLevel = 10;
+			loadout.CurrentUnit.EssenceStacks = 24;
+
+			Assert.That(loadout.Stats.UnitAttack, Is.EqualTo(171.1));
+		}
+
 		[TestCase(10, 0, 0, 0, 120)]
 		[TestCase(0, 20, 0, 0, 120)]
 		[TestCase(0, 0, 20, 0, 122.02)]
@@ -90,6 +123,41 @@ namespace Tests
 			Assert.That(loadout.Stats.AttackSpeedForBinding, Is.EqualTo(expected));
 		}
 
+		[Test]
+		public void TestAtkSpeedOverall()
+		{
+			/// have tested these calculations in game and have them explained here
+			/// Unit base atk speed: 1.5
+			/// Upgrade level: x0.96%^5
+			/// Total Raw Armor: 1.223
+			/// 120% player atk speed = / 1.2
+			/// x10 infuse = / 2
+			/// Z rank buff = / 1.15
+			/// Super Omega buff = / 2
+			/// Trifecta bonus buff = / 1.3
+			/// x25 essence = / 1.01^25
+			/// Adrenaline+super rush = /1.2
+			/// Accel = / 1.2
+			/// Void Buff = / 2
+			/// total = 1.22305 / (26.5032)
+			/// total = 0.04615
+
+			var loadout = GetTestLoadout();
+			loadout.CurrentUnit = VUnit.New(UnitType.WarpLord, loadout);
+			loadout.Upgrades.AttackSpeedUpgrade = 5;
+			loadout.Gems.AttackSpeedGem.CurrentLevel = 20;
+			loadout.CurrentUnit.CurrentInfusion = 10;
+			loadout.CurrentUnit.UnitRank = UnitRankType.XYZ;
+			((PerkCollection)loadout.Perks).TrifectaPower.DesiredLevel = 15;
+			((PerkCollection)loadout.Perks).UpgradeCache.DesiredLevel = 1;
+			((PerkCollection)loadout.Perks).AdrenalineRush.DesiredLevel = 15;
+			((PerkCollection)loadout.Perks).SuperRush.DesiredLevel = 10;
+			((PerkCollection)loadout.Perks).Alacrity2.DesiredLevel = 20;
+			loadout.CurrentUnit.EssenceStacks = 25;
+
+			Assert.That(loadout.Stats.UnitAttackSpeed, Is.EqualTo(0.0462).Within(0.0001));
+		}
+
 		[TestCase(0, 0, 0, 100)]
 		[TestCase(0, 9, 0, 145)]
 		[TestCase(5, 0, 0, 150)]
@@ -107,7 +175,36 @@ namespace Tests
 			unit.EssenceStacks = essence;
 			loadout.Gems.HealthGem.CurrentLevel = (short)stats;
 
-			Assert.That(loadout.Stats.HealthForBinding, Is.AtLeast(expected-1) & Is.AtMost(expected + 1));
+			Assert.That(loadout.Stats.HealthForBinding, Is.AtLeast(expected - 1) & Is.AtMost(expected + 1));
+		}
+
+		[Test]
+		public void TestHealthAndShieldsOverall()
+		{
+			/// have tested these calculations in game and have them explained here
+			/// Unit base armor: 100
+			/// 200% player health = +100%
+			/// +10 infuse = +100%
+			/// SSA rank buff = +10%
+			/// Super Omega buff = +100%
+			/// Trifecta bonus buff = +30%
+			/// +25 infuse = x 225%
+			/// total = 100 + 340% * 2.25
+			/// = 440 * 2.25
+			/// = 990 health total
+			/// BaseShields = 150 so 1485 total
+			var loadout = GetTestLoadout();
+			loadout.CurrentUnit = VUnit.New(UnitType.WarpLord, loadout);
+			loadout.Gems.HealthGem.CurrentLevel = 100;
+			loadout.Gems.ShieldsGem.CurrentLevel = 100;
+			loadout.CurrentUnit.CurrentInfusion = 10;
+			loadout.CurrentUnit.UnitRank = UnitRankType.XDZ;
+			((PerkCollection)loadout.Perks).TrifectaPower.DesiredLevel = 15;
+			((PerkCollection)loadout.Perks).UpgradeCache.DesiredLevel = 15;
+			loadout.CurrentUnit.EssenceStacks = 25;
+
+			Assert.That(loadout.Stats.UnitHealth, Is.EqualTo(990).Within(0.001));
+			Assert.That(loadout.Stats.UnitShields, Is.EqualTo(1485).Within(0.001));
 		}
 
 		[TestCase(0, 0, 0, 150)]
