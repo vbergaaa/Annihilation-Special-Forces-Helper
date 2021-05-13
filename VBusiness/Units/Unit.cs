@@ -55,12 +55,12 @@ namespace VBusiness.Units
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
 			{
 				Loadout.Stats.Attack += 10 * levelDifference;
-				Loadout.Stats.UpdateAttackSpeed("Infuse", 10 * levelDifference);
 				Loadout.Stats.UpdateHealth("Core", 10 * levelDifference);
-				Loadout.Stats.HealthArmor += 10 * levelDifference;
+				Loadout.Stats.UpdateHealthArmor("Infuse", 10 * levelDifference);
 				Loadout.Stats.UpdateShields("Core", 10 * levelDifference);
-				Loadout.Stats.ShieldsArmor += 10 * levelDifference;
-				Loadout.Stats.Acceleration += 10 * levelDifference;
+				Loadout.Stats.UpdateShieldsArmor("Infuse", 10 * levelDifference);
+				Loadout.Stats.UpdateAcceleration("Infuse", 10 * levelDifference);
+				// Attack Speed gets applied here via accel
 			}
 		}
 
@@ -140,12 +140,12 @@ namespace VBusiness.Units
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
 			{
 				Loadout.Stats.Attack += 5 * levelDifference;
-				Loadout.Stats.UpdateAttackSpeed("Essence", 1, levelDifference);
 				Loadout.Stats.UpdateHealth("Essence", 5 * levelDifference);
 				Loadout.Stats.UpdateShields("Essence", 5 * levelDifference);
 				Loadout.Stats.AdditiveArmor += (1 + (0.03 * Loadout.Stats.DefensiveEssenceStacks)) * levelDifference;
 				Loadout.Stats.MoveSpeed += 2.5 * levelDifference;
-				Loadout.Stats.Acceleration += 1 * levelDifference;
+				Loadout.Stats.UpdateAcceleration("Essence", 1, levelDifference);
+				// Attack speed gets increased here via acceleration
 			}
 		}
 
@@ -226,7 +226,7 @@ namespace VBusiness.Units
 		#region Calculated Stats
 
 		public override double Attack => UnitData.BaseAttack + Upgrades.AttackUpgrade * UnitData.AttackIncrement;
-		public override double AttackSpeed => UnitData.BaseAttackSpeed / Math.Pow(1.04, Upgrades.AttackSpeedUpgrade);
+		public override double AttackSpeed => UnitData.BaseAttackSpeed * Math.Pow(0.96, Upgrades.AttackSpeedUpgrade);
 		public override double Health => UnitData.BaseHealth + Upgrades.HealthUpgrade * UnitData.HealthIncrement;
 		public override double HealthRegen => UnitData.BaseHealthRegen + Upgrades.HealthUpgrade * UnitData.HealthRegenIncrement;
 		public override double HealthArmor => UnitData.BaseHealthArmor + Upgrades.HealthArmorUpgrade * UnitData.HealthArmorIncrement;

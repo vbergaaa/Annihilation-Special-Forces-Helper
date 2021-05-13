@@ -24,7 +24,7 @@ namespace VBusiness.Perks
 
 		protected override void OnLevelChanged(int difference)
 		{
-			PerkCollection.Loadout.Stats.HealthArmor += 2 * difference;
+			PerkCollection.Loadout.Stats.UpdateHealthArmor("Core", 2 * difference);
 		}
 	}
 }

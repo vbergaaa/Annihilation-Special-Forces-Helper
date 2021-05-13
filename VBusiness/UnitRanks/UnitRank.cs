@@ -97,11 +97,11 @@ namespace VBusiness.Ranks
 		public void ActivateOmegaBuff()
 		{
 			Loadout.Stats.Attack += 50;
-			Loadout.Stats.UpdateAttackSpeed("Rank", 50);
-			Loadout.Stats.UpdateHealth("Rank", 50);
-			Loadout.Stats.HealthArmor += 50;
-			Loadout.Stats.UpdateShields("Rank", 50);
-			Loadout.Stats.ShieldsArmor += 50;
+			Loadout.Stats.UpdateAttackSpeed("Omega", 50);
+			Loadout.Stats.UpdateHealth("Core", 50);
+			Loadout.Stats.UpdateHealthArmor("Omega", 10); // we were lied to
+			Loadout.Stats.UpdateShields("Core", 50);
+			Loadout.Stats.UpdateShieldsArmor("Omega", 10);
 			Loadout.Stats.CriticalChance += 5;
 			Loadout.Stats.CriticalDamage += 10;
 		}
@@ -109,11 +109,11 @@ namespace VBusiness.Ranks
 		public void ActivateSuperOmegaBuff()
 		{
 			Loadout.Stats.Attack += 100;
-			Loadout.Stats.UpdateAttackSpeed("Rank", 100);
-			Loadout.Stats.UpdateHealth("Rank", 100);
-			Loadout.Stats.HealthArmor += 100;
-			Loadout.Stats.UpdateShields("Rank", 100);
-			Loadout.Stats.ShieldsArmor += 100;
+			Loadout.Stats.UpdateAttackSpeed("Omega", 100);
+			Loadout.Stats.UpdateHealth("Core", 100);
+			Loadout.Stats.UpdateHealthArmor("Omega", 20);
+			Loadout.Stats.UpdateShields("Core", 100);
+			Loadout.Stats.UpdateShieldsArmor("Omega", 20);
 			Loadout.Stats.CriticalChance += 10;
 			Loadout.Stats.CriticalDamage += 20;
 		}
@@ -121,11 +121,11 @@ namespace VBusiness.Ranks
 		public void DeactivateOmegaBuff()
 		{
 			Loadout.Stats.Attack -= 50;
-			Loadout.Stats.UpdateAttackSpeed("Rank", -50);
-			Loadout.Stats.UpdateHealth("Rank", -50);
-			Loadout.Stats.HealthArmor -= 50;
-			Loadout.Stats.UpdateShields("Rank", -50);
-			Loadout.Stats.ShieldsArmor -= 50;
+			Loadout.Stats.UpdateAttackSpeed("Omega", -50);
+			Loadout.Stats.UpdateHealth("Core", -50);
+			Loadout.Stats.UpdateHealthArmor("Omega", -10);
+			Loadout.Stats.UpdateShields("Core", -50);
+			Loadout.Stats.UpdateShieldsArmor("Omega", -10);
 			Loadout.Stats.CriticalChance -= 5;
 			Loadout.Stats.CriticalDamage -= 10;
 		}
@@ -133,11 +133,11 @@ namespace VBusiness.Ranks
 		public void DeactivateSuperOmegaBuff()
 		{
 			Loadout.Stats.Attack -= 100;
-			Loadout.Stats.UpdateAttackSpeed("Rank", -100);
-			Loadout.Stats.UpdateHealth("Rank", -100);
-			Loadout.Stats.HealthArmor -= 100;
-			Loadout.Stats.UpdateShields("Rank", -100);
-			Loadout.Stats.ShieldsArmor -= 100;
+			Loadout.Stats.UpdateAttackSpeed("Omega", -100);
+			Loadout.Stats.UpdateHealth("Core", -100);
+			Loadout.Stats.UpdateHealthArmor("Omega", -20);
+			Loadout.Stats.UpdateShields("Core", -100);
+			Loadout.Stats.UpdateShieldsArmor("Omega", -20);
 			Loadout.Stats.CriticalChance -= 10;
 			Loadout.Stats.CriticalDamage -= 20;
 		}
@@ -154,9 +154,15 @@ namespace VBusiness.Ranks
 
 		#region VoidBuffs
 
-		public void ActivateVoidBuff() { }
+		public void ActivateVoidBuff()
+		{
+			Loadout.Stats.UpdateAcceleration("Void", 100);
+		}
 
-		public void DeactivateVoidBuff() { }
+		public void DeactivateVoidBuff()
+		{
+			Loadout.Stats.UpdateAcceleration("Void", -100);
+		}
 
 		#endregion
 
@@ -368,17 +374,17 @@ namespace VBusiness.Ranks
 			{
 				Loadout.Stats.Attack -= 1.5 * trifectaLevel;
 				Loadout.Stats.UpdateAttackSpeed("Trifecta", -1.5 * trifectaLevel);
-				Loadout.Stats.UpdateHealth("Trifecta", -1.5 * trifectaLevel);
-				Loadout.Stats.HealthArmor -= 1 * trifectaLevel;
-				Loadout.Stats.UpdateShields("Trifecta", -1.5 * trifectaLevel);
-				Loadout.Stats.ShieldsArmor -= 1 * trifectaLevel;
+				Loadout.Stats.UpdateHealth("Core", -1.5 * trifectaLevel);
+				Loadout.Stats.UpdateHealthArmor("Trifecta", - trifectaLevel);
+				Loadout.Stats.UpdateShields("Core", -1.5 * trifectaLevel);
+				Loadout.Stats.UpdateShieldsArmor("Trifecta", -trifectaLevel);
 			}
 			if (Rank >= UnitRankType.Z && perks.UpgradeCache.DesiredLevel > 0 && trifectaLevel == perks.TrifectaPower.MaxLevel)
 			{
 				Loadout.Stats.Attack -= 1.5 * trifectaLevel;
 				Loadout.Stats.UpdateAttackSpeed("Trifecta", -1.5 * trifectaLevel);
-				Loadout.Stats.UpdateHealth("Trifecta", -1.5 * trifectaLevel);
-				Loadout.Stats.UpdateShields("Trifecta", -1.5 * trifectaLevel);
+				Loadout.Stats.UpdateHealth("Core", -1.5 * trifectaLevel);
+				Loadout.Stats.UpdateShields("Core", -1.5 * trifectaLevel);
 			}
 		}
 
@@ -390,17 +396,17 @@ namespace VBusiness.Ranks
 			{
 				Loadout.Stats.Attack += 1.5 * trifectaLevel;
 				Loadout.Stats.UpdateAttackSpeed("Trifecta", 1.5 * trifectaLevel);
-				Loadout.Stats.UpdateHealth("Trifecta", 1.5 * trifectaLevel);
-				Loadout.Stats.HealthArmor += 1 * trifectaLevel;
-				Loadout.Stats.UpdateShields("Trifecta", 1.5 * trifectaLevel);
-				Loadout.Stats.ShieldsArmor += 1 * trifectaLevel;
+				Loadout.Stats.UpdateHealth("Core", 1.5 * trifectaLevel);
+				Loadout.Stats.UpdateHealthArmor("Trifecta", trifectaLevel);
+				Loadout.Stats.UpdateShields("Core", 1.5 * trifectaLevel);
+				Loadout.Stats.UpdateShieldsArmor("Trifecta", trifectaLevel);
 			}
 			if (Rank >= UnitRankType.Z && perks.UpgradeCache.DesiredLevel > 0 && trifectaLevel == perks.TrifectaPower.MaxLevel)
 			{
 				Loadout.Stats.Attack += 1.5 * trifectaLevel;
 				Loadout.Stats.UpdateAttackSpeed("Trifecta", 1.5 * trifectaLevel);
-				Loadout.Stats.UpdateHealth("Trifecta", 1.5 * trifectaLevel);
-				Loadout.Stats.UpdateShields("Trifecta", 1.5 * trifectaLevel);
+				Loadout.Stats.UpdateHealth("Core", 1.5 * trifectaLevel);
+				Loadout.Stats.UpdateShields("Core", 1.5 * trifectaLevel);
 			}
 		}
 		#endregion
@@ -413,10 +419,10 @@ namespace VBusiness.Ranks
 			{
 				Loadout.Stats.Attack += Attack;
 				Loadout.Stats.UpdateAttackSpeed("Rank", AttackSpeed);
-				Loadout.Stats.UpdateHealth("Rank", Vitals);
-				Loadout.Stats.HealthArmor += Vitals;
-				Loadout.Stats.UpdateShields("Rank", Vitals);
-				Loadout.Stats.ShieldsArmor += Vitals;
+				Loadout.Stats.UpdateHealth("Core", Vitals);
+				Loadout.Stats.UpdateHealthArmor("Rank", Armor);
+				Loadout.Stats.UpdateShields("Core", Vitals);
+				Loadout.Stats.UpdateShieldsArmor("Rank", Armor);
 				Loadout.Stats.UpdateDamageIncrease("Rank", DamageIncrease);
 				Loadout.Stats.UpdateDamageReduction("Rank", DamageReduction);
 				Loadout.Stats.CooldownReduction += Speed;
@@ -441,10 +447,10 @@ namespace VBusiness.Ranks
 			{
 				Loadout.Stats.Attack -= Attack;
 				Loadout.Stats.UpdateAttackSpeed("Rank", -AttackSpeed);
-				Loadout.Stats.UpdateHealth("Rank", -Vitals);
-				Loadout.Stats.HealthArmor -= Vitals;
-				Loadout.Stats.UpdateShields("Rank", -Vitals);
-				Loadout.Stats.ShieldsArmor -= Vitals;
+				Loadout.Stats.UpdateHealth("Core", -Vitals);
+				Loadout.Stats.UpdateHealthArmor("Rank", -Armor);
+				Loadout.Stats.UpdateShields("Core", -Vitals);
+				Loadout.Stats.UpdateShieldsArmor("Rank", -Armor);
 				Loadout.Stats.UpdateDamageIncrease("Rank", -DamageIncrease);
 				Loadout.Stats.UpdateDamageReduction("Rank", -DamageReduction);
 				Loadout.Stats.CooldownReduction -= Speed;

@@ -43,18 +43,18 @@ namespace VBusiness
 				Loadout.Stats.Attack += 30;
 				Loadout.Stats.UpdateAttackSpeed("Core", 20);
 				Loadout.Stats.UpdateHealth("Core", 25);
-				Loadout.Stats.HealthArmor += 20;
+				Loadout.Stats.UpdateHealthArmor("Core", 20);
 				Loadout.Stats.UpdateShields("Core", 25);
-				Loadout.Stats.ShieldsArmor += 20;
+				Loadout.Stats.UpdateShieldsArmor("Core", 20);
 			}
 			else
 			{
 				Loadout.Stats.Attack -= 30;
 				Loadout.Stats.UpdateAttackSpeed("Core", -20);
-				Loadout.Stats.UpdateHealth("Core", 25);
-				Loadout.Stats.HealthArmor -= 20;
+				Loadout.Stats.UpdateHealth("Core", -25);
+				Loadout.Stats.UpdateHealthArmor("Core", -20);
 				Loadout.Stats.UpdateShields("Core", -25);
-				Loadout.Stats.ShieldsArmor -= 20;
+				Loadout.Stats.UpdateShieldsArmor("Core", -20);
 			}
 		}
 
@@ -118,10 +118,10 @@ namespace VBusiness
 				Loadout.Stats.Attack -= difference;
 				Loadout.Stats.UpdateAttackSpeed("Core", -difference);
 				Loadout.Stats.UpdateHealth("Core", -difference);
-				Loadout.Stats.HealthArmor -= difference;
-				Loadout.Stats.UpdateHealth("Core", -difference);
-				Loadout.Stats.ShieldsArmor -= difference;
-				Loadout.Stats.Acceleration -= difference;
+				Loadout.Stats.UpdateHealthArmor("Core", -difference);
+				Loadout.Stats.UpdateShields("Core", -difference);
+				Loadout.Stats.UpdateShieldsArmor("Core", -difference);
+				Loadout.Stats.UpdateAcceleration("Core", -difference);
 			}
 		}
 

@@ -341,8 +341,8 @@ namespace VBusiness.Souls
 			{
 				Loadout.Stats.Attack += Attack;
 				Loadout.Stats.UpdateAttackSpeed("Core", AttackSpeed);
-				Loadout.Stats.HealthArmor += Armor;
-				Loadout.Stats.ShieldsArmor += Armor;
+				Loadout.Stats.UpdateHealthArmor("Core", Armor);
+				Loadout.Stats.UpdateShieldsArmor("Core", Armor);
 				Loadout.Stats.UpdateHealth("Core", Vitals);
 				Loadout.Stats.UpdateShields("Core", Vitals);
 				Loadout.Stats.CriticalChance += CriticalChance;
@@ -359,8 +359,8 @@ namespace VBusiness.Souls
 		{
 			Loadout.Stats.Attack -= Attack;
 			Loadout.Stats.UpdateAttackSpeed("Core", -AttackSpeed);
-			Loadout.Stats.HealthArmor -= Armor;
-			Loadout.Stats.ShieldsArmor -= Armor;
+			Loadout.Stats.UpdateHealthArmor("Core", -Armor);
+			Loadout.Stats.UpdateShieldsArmor("Core", -Armor);
 			Loadout.Stats.UpdateHealth("Core", -Vitals);
 			Loadout.Stats.UpdateShields("Core", -Vitals);
 			Loadout.Stats.CriticalChance -= CriticalChance;

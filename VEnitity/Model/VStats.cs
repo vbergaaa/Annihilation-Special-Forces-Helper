@@ -163,16 +163,26 @@ namespace VEntityFramework.Model
 
 		public double HealthArmor
 		{
-			get => fHealthArmor;
-			set
+			get
 			{
-				fHealthArmor = value;
-				OnPropertyChanged(nameof(HealthArmorForBinding));
-				OnPropertyChanged(nameof(Toughness));
-				OnPropertyChanged(nameof(Recovery));
+				var totalArmor = 100.0;
+				foreach (var kvp in HealthArmorDictionary)
+				{
+					totalArmor *= (100 + kvp.Value) / 100;
+				}
+				return totalArmor;
 			}
 		}
-		double fHealthArmor;
+
+		StatsDictionary HealthArmorDictionary => fHealthArmorDictionary ??= new StatsDictionary("HealthArmor");
+		StatsDictionary fHealthArmorDictionary;
+
+		public void UpdateHealthArmor(string key, double amount)
+		{
+			HealthArmorDictionary.Update(key, amount);
+			OnPropertyChanged(nameof(HealthArmor));
+			OnPropertyChanged(nameof(Toughness));
+		}
 
 		#endregion
 
@@ -208,16 +218,26 @@ namespace VEntityFramework.Model
 
 		public double ShieldsArmor
 		{
-			get => fShieldsArmor;
-			set
+			get
 			{
-				fShieldsArmor = value;
-				OnPropertyChanged(nameof(ShieldsArmorForBinding));
-				OnPropertyChanged(nameof(Toughness));
-				OnPropertyChanged(nameof(Recovery));
+				var totalArmor = 100.0;
+				foreach (var kvp in ShieldsArmorDictionary)
+				{
+					totalArmor *= (100 + kvp.Value) / 100;
+				}
+				return totalArmor;
 			}
 		}
-		double fShieldsArmor;
+
+		StatsDictionary ShieldsArmorDictionary => fShieldsArmorDictionary ??= new StatsDictionary("ShieldsArmor");
+		StatsDictionary fShieldsArmorDictionary;
+
+		public void UpdateShieldsArmor(string key, double amount)
+		{
+			ShieldsArmorDictionary.Update(key, amount);
+			OnPropertyChanged(nameof(ShieldsArmor));
+			OnPropertyChanged(nameof(Toughness));
+		}
 
 		#endregion
 
@@ -325,17 +345,39 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		// from what I can tell, you get 1% accel per essence, and it is multiplicative to the 10% accel you get per infuse, so I think it makes sense to store these values separately
+		#region Acceleration
+
 		public double Acceleration
 		{
-			get => fAcceleration;
-			set
+			get
 			{
-				fAcceleration = value;
-				OnPropertyChanged(nameof(AccelerationForBinding));
+				var Acceleration = 100.0;
+				foreach (var kvp in AccelerationDictionary)
+				{
+					Acceleration = Acceleration * (100 + kvp.Value) / 100;
+				}
+				return Acceleration;
 			}
 		}
-		double fAcceleration;
+
+		StatsDictionary AccelerationDictionary => fAccelerationDictionary ??= new StatsDictionary("Acceleration");
+		StatsDictionary fAccelerationDictionary;
+
+		public void UpdateAcceleration(string key, double value, int? quantity = null)
+		{
+			if (!quantity.HasValue)
+			{
+				AccelerationDictionary.Update(key, value);
+			}
+			else if (quantity.Value != 0)
+			{
+				AccelerationDictionary.UpdateExpontiental(key, value, quantity.Value);
+			}
+			OnPropertyChanged(nameof(AccelerationForBinding));
+			OnPropertyChanged(nameof(Damage));
+		}
+
+		#endregion
 
 		public double MoveSpeed { get; set; } // it looks like the 2.4477% move speed per essence is stacked multiplicatively, so it is exponential, where the 10% move speed from essence is additive (linear) they are multiplied to get the result
 
@@ -362,7 +404,7 @@ namespace VEntityFramework.Model
 		#region UnitStats
 
 		public double UnitAttack => CurrentUnit.Attack * Attack / 100;
-		public double UnitAttackSpeed => CurrentUnit.AttackSpeed / AttackSpeed * 100;
+		public double UnitAttackSpeed => CurrentUnit.AttackSpeed / (AttackSpeed * Acceleration)  * 10000;
 		public double UnitHealth => CurrentUnit.Health * Health / 100;
 		public double UnitHealthArmor => CurrentUnit.HealthArmor * HealthArmor / 100 + AdditiveArmor;
 		public double UnitShields => CurrentUnit.Shields * Shields / 100;

@@ -12,12 +12,12 @@ namespace VBusiness.Souls
 
 		public override void ActivateUniqueEffect()
 		{
-			Loadout.Stats.Acceleration += 10;
+			Loadout.Stats.UpdateAcceleration("Core", 10);
 		}
 
 		public override void DeactivateUniqueEffect()
 		{
-			Loadout.Stats.Acceleration -= 10;
+			Loadout.Stats.UpdateAcceleration("Core", -10);
 		}
 	}
 }

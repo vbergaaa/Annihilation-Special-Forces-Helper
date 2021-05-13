@@ -14,16 +14,18 @@ namespace VBusiness.Souls
 		{
 			Loadout.Stats.Attack += 20;
 			Loadout.Stats.UpdateAttackSpeed("stitan", 20);
-			Loadout.Stats.UpdateHealth("stitan", 20);
-			Loadout.Stats.UpdateShields("stitan", 20);
+			Loadout.Stats.UpdateHealth("Core", 20);
+			Loadout.Stats.UpdateShields("Core", 20);
+			VEntityFramework.ErrorReporter.ReportDebug("Check how this works for health and shields.");
+			VEntityFramework.ErrorReporter.ReportDebug("Check how this works for acceleration");
 		}
 
 		public override void DeactivateUniqueEffect()
 		{
 			Loadout.Stats.Attack -= 20;
 			Loadout.Stats.UpdateAttackSpeed("stitan", -20);
-			Loadout.Stats.UpdateShields("stitan", -20);
-			Loadout.Stats.Loadout.Stats.UpdateHealth("stitan", -20);
+			Loadout.Stats.UpdateShields("Core", -20);
+			Loadout.Stats.UpdateHealth("Core", -20);
 		}
 	}
 }

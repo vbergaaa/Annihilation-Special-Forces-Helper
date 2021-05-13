@@ -26,10 +26,10 @@ namespace VBusiness.Perks
 		{
 			PerkCollection.Loadout.Stats.Attack += 1 * difference;
 			PerkCollection.Loadout.Stats.UpdateAttackSpeed("Core", difference);
-			PerkCollection.Loadout.Stats.UpdateHealth("Core", 1 * difference);
-			PerkCollection.Loadout.Stats.HealthArmor += 1 * difference;
-			PerkCollection.Loadout.Stats.UpdateShields("Core", 1 * difference);
-			PerkCollection.Loadout.Stats.ShieldsArmor += 1 * difference;
+			PerkCollection.Loadout.Stats.UpdateHealth("Core", difference);
+			PerkCollection.Loadout.Stats.UpdateHealthArmor("Core", difference);
+			PerkCollection.Loadout.Stats.UpdateShields("Core", difference);
+			PerkCollection.Loadout.Stats.UpdateShieldsArmor("Core", difference);
 		}
 	}
 }
