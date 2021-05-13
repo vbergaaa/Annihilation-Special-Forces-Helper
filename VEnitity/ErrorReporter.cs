@@ -27,7 +27,7 @@ namespace VEntityFramework
 			{
 				throw new DeveloperException(message);
 			}
-		}
 #endif
+		}
 	}
 }
