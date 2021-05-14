@@ -154,6 +154,14 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Income
+
+		[VXML(false)]
+		public virtual object IncomeManager => fIncomeManager ??= new object();
+		public object fIncomeManager;
+
+		#endregion
+
 		#region Units
 
 		public virtual BusinessObjectList<VUnit> Units { get; }

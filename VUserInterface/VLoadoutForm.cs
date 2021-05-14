@@ -83,6 +83,15 @@ namespace VUserInterface
 			SoulsControl.Visible = visibility;
 		}
 
+		void InfoPanelVisibility(object sender, EventArgs e)
+		{
+			if (sender is Button button)
+			{
+				StatsControl.Visible = button.Text == "Stats";
+				IncomeControl.Visible = button.Text == "Income";
+			}
+		}
+
 		#endregion
 
 		#region RestrictCheckBox_CheckChanged

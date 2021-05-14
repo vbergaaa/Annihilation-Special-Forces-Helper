@@ -1,8 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
 using VBusiness.Loadouts;
-using VBusiness.Perks;
-using VUserInterface;
 using VUserInterface.CommonControls;
 
 namespace VUserInterface
@@ -40,7 +38,11 @@ namespace VUserInterface
 			this.LoadoutBindingSource = new System.Windows.Forms.BindingSource();
 			this.LoadoutNameTextBox = new VTextBox();
 			this.SlotNumberTextBox = new VTextBox();
+			this.InfoPanel = new DPIPanel();
+			this.StatsButton = new DPIButton();
+			this.IncomeButton = new DPIButton();
 			this.StatsControl = new VStatsControl();
+			this.IncomeControl = new IncomeControl();
 			this.PerksButton = new DPIButton();
 			this.GemsButton = new DPIButton();
 			this.SoulsButton = new DPIButton();
@@ -161,10 +163,46 @@ namespace VUserInterface
 			this.LoadoutConfigurationControl.Name= "LoadoutConfigurationControl";
 			this.LoadoutConfigurationControl.Visible = false;
 			//
+			// InfoPanel
+			//
+			this.InfoPanel.Controls.Add(StatsButton);
+			this.InfoPanel.Controls.Add(IncomeButton);
+			this.InfoPanel.Controls.Add(StatsControl);
+			this.InfoPanel.Controls.Add(IncomeControl);
+			this.InfoPanel.Location = DPIScalingHelper.GetScaledPoint(620,50);
+			this.InfoPanel.Name = "InfoPanel";
+			this.InfoPanel.Size = DPIScalingHelper.GetScaledSize(175, 340);
+			//
+			// StatsButton
+			//
+			this.StatsButton.Click += InfoPanelVisibility;
+			this.StatsButton.FlatStyle = FlatStyle.Flat;
+			this.StatsButton.Location = DPIScalingHelper.GetScaledPoint(0, 0);
+			this.StatsButton.Name = "StatsButton";
+			this.StatsButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
+			this.StatsButton.Text = "Stats";
+			//
+			// IncomeButton
+			//
+			this.IncomeButton.Click += InfoPanelVisibility;
+			this.IncomeButton.FlatStyle = FlatStyle.Flat;
+			this.IncomeButton.Location = DPIScalingHelper.GetScaledPoint(90, 0);
+			this.IncomeButton.Name = "IncomeButton";
+			this.IncomeButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
+			this.IncomeButton.Text = "Income";
+			//
 			// StatsControl
 			//
 			this.StatsControl.DataBindings.Add("Stats", this.LoadoutBindingSource, "Stats");
-			this.StatsControl.Location = DPIScalingHelper.GetScaledPoint(620, 50);
+			this.StatsControl.Name = "StatsControl";
+			this.StatsControl.Location = DPIScalingHelper.GetScaledPoint(0, 30);
+			//
+			// IncomeControl
+			//
+			this.IncomeControl.DataBindings.Add("IncomeManager", this.LoadoutBindingSource, "IncomeManager");
+			this.IncomeControl.Name = "IncomeControl";
+			this.IncomeControl.Location = DPIScalingHelper.GetScaledPoint(0, 30);
+			this.IncomeControl.Visible = false;
 			//
 			// PerksButton
 			//
@@ -222,7 +260,7 @@ namespace VUserInterface
 			this.Controls.Add(LoadoutNameTextBox);
 			this.Controls.Add(PerkPageControl);
 			this.Controls.Add(SlotNumberTextBox);
-			this.Controls.Add(StatsControl);
+			this.Controls.Add(InfoPanel);
 			this.Controls.Add(PerksButton);
 			this.Controls.Add(GemsButton);
 			this.Controls.Add(SoulsButton);
@@ -269,5 +307,9 @@ namespace VUserInterface
 		private VStatsControl StatsControl;
 		private VCheckControl RestrictCheckBox;
 		private VCheckControl UseUnitStatsCheckBox;
+		private Panel InfoPanel;
+		private Button StatsButton;
+		private Button IncomeButton;
+		private IncomeControl IncomeControl;
 	}
 }
