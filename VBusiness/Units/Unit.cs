@@ -45,6 +45,8 @@ namespace VBusiness.Units
 				if (oldValue != base.CurrentInfusion && IsCurrentUnit)
 				{
 					Loadout.RefreshPropertyBinding(nameof(Loadout.Units));
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.UnitKillCost));
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.UnitMineralCost));
 					UpdateStatsFromInfuse(base.CurrentInfusion - oldValue);
 				}
 			}

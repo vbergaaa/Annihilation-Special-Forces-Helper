@@ -179,6 +179,8 @@ namespace VEntityFramework.Model
 					fCurrentUnit = value;
 					OnPropertyChanged(nameof(CurrentUnit));
 					OnPropertyChanged(nameof(Units));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.UnitMineralCost));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.UnitKillCost));
 				}
 			}
 		}

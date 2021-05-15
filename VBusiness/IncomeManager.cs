@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using VBusiness.Units;
 using VEntityFramework.Model;
 
 namespace VBusiness
@@ -50,6 +49,13 @@ namespace VBusiness
 				}
 			}
 		}
+
+		#endregion
+
+		#region UnitCost
+
+		public override double UnitMineralCost => new UnitCostHelper(Loadout).GetUnitCost(Loadout.CurrentUnit).Minerals;
+		public override double UnitKillCost => new UnitCostHelper(Loadout).GetUnitCost(Loadout.CurrentUnit).Kills;
 
 		#endregion
 	}

@@ -19,11 +19,20 @@ namespace VBusiness.Units
 			return GetRawUnitCost(piece.Unit, piece.Infuse);
 		}
 
+		public UnitCost GetUnitCost(VUnit unit)
+		{
+			return GetUnitCost(unit.UnitData.Type, unit.CurrentInfusion);
+		}
+
 		public UnitCost GetUnitCost(UnitType unitType, int infuse)
 		{
-			var cost = GetRawUnitCost(unitType, infuse);
-			var effectiveDW = (1 + loadout.IncomeManager.DoubleWarp / 100.0 + loadout.IncomeManager.TripleWarp / 50.0);
-			return cost / (effectiveDW, 1);
+			if (unitType != UnitType.None)
+			{
+				var cost = GetRawUnitCost(unitType, infuse);
+				var effectiveDW = (1 + loadout.IncomeManager.DoubleWarp / 100.0 + loadout.IncomeManager.TripleWarp / 50.0);
+				return cost / (effectiveDW, 1);
+			}
+			return new UnitCost(0, 0);
 		}
 
 		UnitCost GetRawUnitCost(UnitType unitType, int infuse)

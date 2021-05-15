@@ -34,6 +34,8 @@ namespace VUserInterface
 			components = new System.ComponentModel.Container();
 			this.DoubleWarpLabel = new VLabel();
 			this.TripleWarpLabel = new VLabel();
+			this.UnitMineralCostLabel = new VLabel();
+			this.UnitKillCostLabel = new VLabel();
 			this.bindingSource = new System.Windows.Forms.BindingSource();
 			this.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -42,11 +44,31 @@ namespace VUserInterface
 			//
 			this.bindingSource.DataSource = typeof(IncomeManager);
 			//
+			// UnitMineralCostLabel
+			//
+			this.UnitMineralCostLabel.Caption = "Mineral Cost:";
+			this.UnitMineralCostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "UnitMineralCost", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.UnitMineralCostLabel.Location = DPIScalingHelper.GetScaledPoint(120, 20);
+			this.UnitMineralCostLabel.Name = "UnitMineralCostLabel";
+			this.UnitMineralCostLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
+			this.UnitMineralCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.UnitMineralCostLabel.UseNumberSuffixes = true;
+			//
+			// UnitKillCostLabel
+			//
+			this.UnitKillCostLabel.Caption = "Kill Cost:";
+			this.UnitKillCostLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "UnitKillCost", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.UnitKillCostLabel.Location = DPIScalingHelper.GetScaledPoint(120, 40);
+			this.UnitKillCostLabel.Name = "UnitKillCostLabel";
+			this.UnitKillCostLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
+			this.UnitKillCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.UnitKillCostLabel.UseNumberSuffixes = true;
+			//
 			// DoubleWarpLabel
 			//
 			this.DoubleWarpLabel.Caption = "Double Warp:";
 			this.DoubleWarpLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "DoubleWarp"));
-			this.DoubleWarpLabel.Location = DPIScalingHelper.GetScaledPoint(120, 20);
+			this.DoubleWarpLabel.Location = DPIScalingHelper.GetScaledPoint(120, 60);
 			this.DoubleWarpLabel.Name = "DoubleWarpLabel";
 			this.DoubleWarpLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.DoubleWarpLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -55,7 +77,7 @@ namespace VUserInterface
 			//
 			this.TripleWarpLabel.Caption = "Triple Warp:";
 			this.TripleWarpLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "TripleWarp"));
-			this.TripleWarpLabel.Location = DPIScalingHelper.GetScaledPoint(120, 40);
+			this.TripleWarpLabel.Location = DPIScalingHelper.GetScaledPoint(120, 80);
 			this.TripleWarpLabel.Name = "TripleWarpLabel";
 			this.TripleWarpLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.TripleWarpLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -64,6 +86,8 @@ namespace VUserInterface
 			//
 			this.Controls.Add(DoubleWarpLabel);
 			this.Controls.Add(TripleWarpLabel);
+			this.Controls.Add(UnitMineralCostLabel);
+			this.Controls.Add(UnitKillCostLabel);
 			this.Size = DPIScalingHelper.GetScaledSize(175, 310);
 			this.Text = "Income";
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
@@ -76,5 +100,7 @@ namespace VUserInterface
 		private VLabel DoubleWarpLabel;
 		private VLabel TripleWarpLabel;
 		private System.Windows.Forms.BindingSource bindingSource;
+		private VLabel UnitMineralCostLabel;
+		private VLabel UnitKillCostLabel;
 	}
 }

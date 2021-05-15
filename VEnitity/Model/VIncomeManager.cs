@@ -22,6 +22,7 @@ namespace VEntityFramework.Model
 				{
 					fDoubleWarp = value;
 					RefreshPropertyBinding(nameof(DoubleWarp));
+					RefreshPropertyBinding(nameof(UnitMineralCost));
 				}
 			}
 		}
@@ -36,10 +37,14 @@ namespace VEntityFramework.Model
 				{
 					fTripleWarp = value;
 					RefreshPropertyBinding(nameof(TripleWarp));
+					RefreshPropertyBinding(nameof(UnitMineralCost));
 				}
 			}
 		}
 		int fTripleWarp;
+
+		public virtual double UnitMineralCost { get; }
+		public virtual double UnitKillCost { get; }
 
 		public VLoadout Loadout { get; }
 	}
