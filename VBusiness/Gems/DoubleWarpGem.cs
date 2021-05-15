@@ -14,6 +14,17 @@ namespace VBusiness.Gems
 
 		protected override decimal IncrementCost => .33m;
 
-		//protected override void OnPerkLevelChanged(int difference) => GemCollection.Loadout.Stats.DoubleWarp += difference;
+		protected override void OnPerkLevelChanged(int difference)
+		{
+			base.OnPerkLevelChanged(difference);
+			
+			if (GemCollection.Loadout.Perks.DoubleWarp.DesiredLevel
+				+ GemCollection.Loadout.Perks.DoubleWarp2.DesiredLevel
+				+ GemCollection.Loadout.Perks.DoubleWarp3.DesiredLevel
+				+ GemCollection.Loadout.Perks.DoubleWarp4.DesiredLevel < 100)
+			{
+				GemCollection.Loadout.IncomeManager.DoubleWarp += difference;
+			}
+		}
 	}
 }

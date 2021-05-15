@@ -21,5 +21,11 @@ namespace VBusiness.Perks
 		protected override string PerkName => "Triple Warp II";
 
 		protected override short MaxLevelCore => 20;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			base.OnLevelChanged(difference);
+			PerkCollection.Loadout.IncomeManager.TripleWarp += difference;
+		}
 	}
 }

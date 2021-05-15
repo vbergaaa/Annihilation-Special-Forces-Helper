@@ -27,6 +27,23 @@ namespace VBusiness.Perks
 			base.OnLevelChanged(difference);
 			PerkCollection.Loadout.Gems.RefreshPropertyBinding("EconomyGem");
 			PerkCollection.Loadout.Gems.RefreshPropertyBinding("RemainingGems");
+			PerkCollection.Loadout.IncomeManager.DoubleWarp += difference;
+
+			var currentPerkDW = PerkCollection.DoubleWarp.DesiredLevel
+				+ PerkCollection.DoubleWarp2.DesiredLevel
+				+ PerkCollection.DoubleWarp3.DesiredLevel
+				+ PerkCollection.DoubleWarp4.DesiredLevel;
+
+			if (currentPerkDW == 100)
+			{
+				PerkCollection.Loadout.IncomeManager.DoubleWarp -= PerkCollection.Loadout.Gems.DoubleWarpGem.CurrentLevel;
+				PerkCollection.Loadout.IncomeManager.TripleWarp += PerkCollection.Loadout.Gems.TripleWarpGem.CurrentLevel;
+			}
+			else if (currentPerkDW - difference == 100)
+			{
+				PerkCollection.Loadout.IncomeManager.DoubleWarp += PerkCollection.Loadout.Gems.DoubleWarpGem.CurrentLevel;
+				PerkCollection.Loadout.IncomeManager.TripleWarp -= PerkCollection.Loadout.Gems.TripleWarpGem.CurrentLevel;
+			}
 		}
 	}
 }

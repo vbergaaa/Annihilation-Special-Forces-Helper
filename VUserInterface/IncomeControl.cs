@@ -1,4 +1,5 @@
-﻿using VUserInterface.CommonControls;
+﻿using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
@@ -9,6 +10,18 @@ namespace VUserInterface
 			InitializeComponent();
 		}
 
-		public object IncomeManager { get; set; }
+		public VIncomeManager IncomeManager
+		{
+			get => fIncomeManager;
+			set
+			{
+				if (value != null && value != fIncomeManager)
+				{
+					fIncomeManager = value;
+					bindingSource.DataSource = fIncomeManager;
+				}
+			}
+		}
+		VIncomeManager fIncomeManager;
 	}
 }

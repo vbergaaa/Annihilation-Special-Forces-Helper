@@ -40,12 +40,12 @@ namespace VUserInterface
 			//
 			// statsBindingSource
 			//
-			//this.bindingSource.DataSource = typeof(Stats);
+			this.bindingSource.DataSource = typeof(IncomeManager);
 			//
 			// DoubleWarpLabel
 			//
 			this.DoubleWarpLabel.Caption = "Double Warp:";
-			//this.DoubleWarpLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "DoubleWarp"));
+			this.DoubleWarpLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "DoubleWarp"));
 			this.DoubleWarpLabel.Location = DPIScalingHelper.GetScaledPoint(120, 20);
 			this.DoubleWarpLabel.Name = "DoubleWarpLabel";
 			this.DoubleWarpLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
@@ -54,7 +54,7 @@ namespace VUserInterface
 			// TripleWarpLabel
 			//
 			this.TripleWarpLabel.Caption = "Triple Warp:";
-			//this.TripleWarpLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "TripleWarp"));
+			this.TripleWarpLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "TripleWarp"));
 			this.TripleWarpLabel.Location = DPIScalingHelper.GetScaledPoint(120, 40);
 			this.TripleWarpLabel.Name = "TripleWarpLabel";
 			this.TripleWarpLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
@@ -65,7 +65,7 @@ namespace VUserInterface
 			this.Controls.Add(DoubleWarpLabel);
 			this.Controls.Add(TripleWarpLabel);
 			this.Size = DPIScalingHelper.GetScaledSize(175, 310);
-			this.Text = "Stats";
+			this.Text = "Income";
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

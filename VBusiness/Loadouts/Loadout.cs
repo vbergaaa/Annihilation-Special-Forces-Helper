@@ -87,6 +87,13 @@ namespace VBusiness.Loadouts
 
 		#endregion
 
+		#region Income
+
+		public override VIncomeManager IncomeManager => fIncomeManager ??= new IncomeManager(this);
+		VIncomeManager fIncomeManager;
+
+		#endregion
+
 		#region Units
 
 		[VXML(true)]

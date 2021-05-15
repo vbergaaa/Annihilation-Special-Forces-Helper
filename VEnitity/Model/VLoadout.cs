@@ -157,8 +157,7 @@ namespace VEntityFramework.Model
 		#region Income
 
 		[VXML(false)]
-		public virtual object IncomeManager => fIncomeManager ??= new object();
-		public object fIncomeManager;
+		public virtual VIncomeManager IncomeManager { get; }
 
 		#endregion
 
