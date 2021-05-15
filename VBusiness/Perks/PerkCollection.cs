@@ -44,7 +44,7 @@ namespace VBusiness.Perks
 
 		#region Attack
 
-		public VPerk Attack
+		public override VPerk Attack
 		{
 			get
 			{
@@ -61,7 +61,7 @@ namespace VBusiness.Perks
 
 		#region AttackSpeed
 
-		public VPerk AttackSpeed
+		public override VPerk AttackSpeed
 		{
 			get
 			{
@@ -78,7 +78,7 @@ namespace VBusiness.Perks
 
 		#region Health
 
-		public VPerk Health
+		public override VPerk Health
 		{
 			get
 			{
@@ -95,7 +95,7 @@ namespace VBusiness.Perks
 
 		#region HealthArmor
 
-		public VPerk HealthArmor
+		public override VPerk HealthArmor
 		{
 			get
 			{
@@ -112,7 +112,7 @@ namespace VBusiness.Perks
 
 		#region Shields
 
-		public VPerk Shields
+		public override VPerk Shields
 		{
 			get
 			{
@@ -129,7 +129,7 @@ namespace VBusiness.Perks
 
 		#region ShieldsArmor
 
-		public VPerk ShieldsArmor
+		public override VPerk ShieldsArmor
 		{
 			get
 			{
@@ -146,7 +146,7 @@ namespace VBusiness.Perks
 
 		#region KillEfficiency
 
-		public VPerk KillEfficiency
+		public override VPerk KillEfficiency
 		{
 			get
 			{
@@ -163,7 +163,7 @@ namespace VBusiness.Perks
 
 		#region KillRecycle
 
-		public VPerk KillRecycle
+		public override VPerk KillRecycle
 		{
 			get
 			{
@@ -180,7 +180,7 @@ namespace VBusiness.Perks
 
 		#region MaximumPotiential
 
-		public VPerk MaximumPotiential
+		public override VPerk MaximumPotiential
 		{
 			get
 			{
@@ -197,7 +197,7 @@ namespace VBusiness.Perks
 
 		#region Veterancy
 
-		public VPerk Veterancy
+		public override VPerk Veterancy
 		{
 			get
 			{
@@ -214,7 +214,7 @@ namespace VBusiness.Perks
 
 		#region Rank
 
-		public VPerk Rank
+		public override VPerk Rank
 		{
 			get
 			{
@@ -231,7 +231,7 @@ namespace VBusiness.Perks
 
 		#region InfusionRecycle
 
-		public VPerk InfusionRecycle
+		public override VPerk InfusionRecycle
 		{
 			get
 			{
@@ -248,7 +248,7 @@ namespace VBusiness.Perks
 
 		#region DoubleWarp
 
-		public VPerk DoubleWarp
+		public override VPerk DoubleWarp
 		{
 			get
 			{
@@ -265,7 +265,7 @@ namespace VBusiness.Perks
 
 		#region StartingMinerals
 
-		public VPerk StartingMinerals
+		public override VPerk StartingMinerals
 		{
 			get
 			{
@@ -282,7 +282,7 @@ namespace VBusiness.Perks
 
 		#region MasterTrainer
 
-		public VPerk MasterTrainer
+		public override VPerk MasterTrainer
 		{
 			get
 			{
@@ -299,7 +299,7 @@ namespace VBusiness.Perks
 
 		#region ExtraSupply
 
-		public VPerk ExtraSupply
+		public override VPerk ExtraSupply
 		{
 			get
 			{
@@ -316,7 +316,7 @@ namespace VBusiness.Perks
 
 		#region MineralJackpot
 
-		public VPerk MineralJackpot
+		public override VPerk MineralJackpot
 		{
 			get
 			{
@@ -333,7 +333,7 @@ namespace VBusiness.Perks
 
 		#region AutomaticRefinery
 
-		public VPerk AutomaticRefinery
+		public override VPerk AutomaticRefinery
 		{
 			get
 			{
@@ -350,7 +350,7 @@ namespace VBusiness.Perks
 
 		#region AdrenalineRush
 
-		public VPerk AdrenalineRush
+		public override VPerk AdrenalineRush
 		{
 			get
 			{
@@ -367,7 +367,7 @@ namespace VBusiness.Perks
 
 		#region CriticalChance
 
-		public VPerk CriticalChance
+		public override VPerk CriticalChance
 		{
 			get
 			{
@@ -384,7 +384,7 @@ namespace VBusiness.Perks
 
 		#region CriticalDamage
 
-		public VPerk CriticalDamage
+		public override VPerk CriticalDamage
 		{
 			get
 			{
@@ -401,7 +401,7 @@ namespace VBusiness.Perks
 
 		#region DamageReduction
 
-		public VPerk DamageReduction
+		public override VPerk DamageReduction
 		{
 			get
 			{
@@ -418,7 +418,7 @@ namespace VBusiness.Perks
 
 		#region OverSpeed
 
-		public VPerk OverSpeed
+		public override VPerk OverSpeed
 		{
 			get
 			{
@@ -435,7 +435,7 @@ namespace VBusiness.Perks
 
 		#region UnitSpecialization
 
-		public VPerk UnitSpecialization
+		public override VPerk UnitSpecialization
 		{
 			get
 			{
@@ -452,7 +452,7 @@ namespace VBusiness.Perks
 
 		#region KillEfficiency2
 
-		public VPerk KillEfficiency2
+		public override VPerk KillEfficiency2
 		{
 			get
 			{
@@ -469,7 +469,7 @@ namespace VBusiness.Perks
 
 		#region MaximumGather
 
-		public VPerk MaximumGather
+		public override VPerk MaximumGather
 		{
 			get
 			{
@@ -486,7 +486,7 @@ namespace VBusiness.Perks
 
 		#region MaximumPotiential2
 
-		public VPerk MaximumPotiential2
+		public override VPerk MaximumPotiential2
 		{
 			get
 			{
@@ -503,7 +503,7 @@ namespace VBusiness.Perks
 
 		#region QuickStart
 
-		public VPerk QuickStart
+		public override VPerk QuickStart
 		{
 			get
 			{
@@ -520,7 +520,7 @@ namespace VBusiness.Perks
 
 		#region RankRevision
 
-		public VPerk RankRevision
+		public override VPerk RankRevision
 		{
 			get
 			{
@@ -537,7 +537,7 @@ namespace VBusiness.Perks
 
 		#region Veterancy2
 
-		public VPerk Veterancy2
+		public override VPerk Veterancy2
 		{
 			get
 			{
@@ -554,7 +554,7 @@ namespace VBusiness.Perks
 
 		#region BuildingRecycle
 
-		public VPerk BuildingRecycle
+		public override VPerk BuildingRecycle
 		{
 			get
 			{
@@ -571,7 +571,7 @@ namespace VBusiness.Perks
 
 		#region CriticalCollection
 
-		public VPerk CriticalCollection
+		public override VPerk CriticalCollection
 		{
 			get
 			{
@@ -588,7 +588,7 @@ namespace VBusiness.Perks
 
 		#region CriticalHarvest
 
-		public VPerk CriticalHarvest
+		public override VPerk CriticalHarvest
 		{
 			get
 			{
@@ -606,7 +606,7 @@ namespace VBusiness.Perks
 
 		#region DoubleWarp2
 
-		public VPerk DoubleWarp2
+		public override VPerk DoubleWarp2
 		{
 			get
 			{
@@ -623,7 +623,7 @@ namespace VBusiness.Perks
 
 		#region ExpertMiner
 
-		public VPerk ExpertMiner
+		public override VPerk ExpertMiner
 		{
 			get
 			{
@@ -640,7 +640,7 @@ namespace VBusiness.Perks
 
 		#region MineralJackpot2
 
-		public VPerk MineralJackpot2
+		public override VPerk MineralJackpot2
 		{
 			get
 			{
@@ -657,7 +657,7 @@ namespace VBusiness.Perks
 
 		#region AcceleratedFusion
 
-		public VPerk AcceleratedFusion
+		public override VPerk AcceleratedFusion
 		{
 			get
 			{
@@ -674,7 +674,7 @@ namespace VBusiness.Perks
 
 		#region FastLearner
 
-		public VPerk FastLearner
+		public override VPerk FastLearner
 		{
 			get
 			{
@@ -691,7 +691,7 @@ namespace VBusiness.Perks
 
 		#region MiningExpertise
 
-		public VPerk MiningExpertise
+		public override VPerk MiningExpertise
 		{
 			get
 			{
@@ -708,7 +708,7 @@ namespace VBusiness.Perks
 
 		#region TrainingCenter
 
-		public VPerk TrainingCenter
+		public override VPerk TrainingCenter
 		{
 			get
 			{
@@ -725,7 +725,7 @@ namespace VBusiness.Perks
 
 		#region TrifectaPower
 
-		public VPerk TrifectaPower
+		public override VPerk TrifectaPower
 		{
 			get
 			{
@@ -742,7 +742,7 @@ namespace VBusiness.Perks
 
 		#region UnitStorage
 
-		public VPerk UnitStorage
+		public override VPerk UnitStorage
 		{
 			get
 			{
@@ -759,7 +759,7 @@ namespace VBusiness.Perks
 
 		#region Alacrity
 
-		public VPerk Alacrity
+		public override VPerk Alacrity
 		{
 			get
 			{
@@ -776,7 +776,7 @@ namespace VBusiness.Perks
 
 		#region BalancedTraining
 
-		public VPerk BalancedTraining
+		public override VPerk BalancedTraining
 		{
 			get
 			{
@@ -793,7 +793,7 @@ namespace VBusiness.Perks
 
 		#region CooldownSpeed
 
-		public VPerk CooldownSpeed
+		public override VPerk CooldownSpeed
 		{
 			get
 			{
@@ -810,7 +810,7 @@ namespace VBusiness.Perks
 
 		#region CriticalChance2
 
-		public VPerk CriticalChance2
+		public override VPerk CriticalChance2
 		{
 			get
 			{
@@ -827,7 +827,7 @@ namespace VBusiness.Perks
 
 		#region CriticalDamage2
 
-		public VPerk CriticalDamage2
+		public override VPerk CriticalDamage2
 		{
 			get
 			{
@@ -844,7 +844,7 @@ namespace VBusiness.Perks
 
 		#region RedCrits
 
-		public VPerk RedCrits
+		public override VPerk RedCrits
 		{
 			get
 			{
@@ -861,7 +861,7 @@ namespace VBusiness.Perks
 
 		#region InfusionRecycle2
 
-		public VPerk InfusionRecycle2
+		public override VPerk InfusionRecycle2
 		{
 			get
 			{
@@ -878,7 +878,7 @@ namespace VBusiness.Perks
 
 		#region KillHarvest
 
-		public VPerk KillHarvest
+		public override VPerk KillHarvest
 		{
 			get
 			{
@@ -895,7 +895,7 @@ namespace VBusiness.Perks
 
 		#region MaximumGather2
 
-		public VPerk MaximumGather2
+		public override VPerk MaximumGather2
 		{
 			get
 			{
@@ -912,7 +912,7 @@ namespace VBusiness.Perks
 
 		#region MaximumPotiental3
 
-		public VPerk MaximumPotiental3
+		public override VPerk MaximumPotiental3
 		{
 			get
 			{
@@ -929,7 +929,7 @@ namespace VBusiness.Perks
 
 		#region RankRevision2
 
-		public VPerk RankRevision2
+		public override VPerk RankRevision2
 		{
 			get
 			{
@@ -946,7 +946,7 @@ namespace VBusiness.Perks
 
 		#region Veterancy3
 
-		public VPerk Veterancy3
+		public override VPerk Veterancy3
 		{
 			get
 			{
@@ -963,7 +963,7 @@ namespace VBusiness.Perks
 
 		#region AutomaticRefinery2
 
-		public VPerk AutomaticRefinery2
+		public override VPerk AutomaticRefinery2
 		{
 			get
 			{
@@ -980,7 +980,7 @@ namespace VBusiness.Perks
 
 		#region CriticalHarvest2
 
-		public VPerk CriticalHarvest2
+		public override VPerk CriticalHarvest2
 		{
 			get
 			{
@@ -997,7 +997,7 @@ namespace VBusiness.Perks
 
 		#region DoubleWarp3
 
-		public VPerk DoubleWarp3
+		public override VPerk DoubleWarp3
 		{
 			get
 			{
@@ -1014,7 +1014,7 @@ namespace VBusiness.Perks
 
 		#region MineralJackpot3
 
-		public VPerk MineralJackpot3
+		public override VPerk MineralJackpot3
 		{
 			get
 			{
@@ -1031,7 +1031,7 @@ namespace VBusiness.Perks
 
 		#region SuperJackpot
 
-		public VPerk SuperJackpot
+		public override VPerk SuperJackpot
 		{
 			get
 			{
@@ -1048,7 +1048,7 @@ namespace VBusiness.Perks
 
 		#region TripleWarp
 
-		public VPerk TripleWarp
+		public override VPerk TripleWarp
 		{
 			get
 			{
@@ -1065,7 +1065,7 @@ namespace VBusiness.Perks
 
 		#region Alacrity2
 
-		public VPerk Alacrity2
+		public override VPerk Alacrity2
 		{
 			get
 			{
@@ -1082,7 +1082,7 @@ namespace VBusiness.Perks
 
 		#region BalancedTraining2
 
-		public VPerk BalancedTraining2
+		public override VPerk BalancedTraining2
 		{
 			get
 			{
@@ -1099,7 +1099,7 @@ namespace VBusiness.Perks
 
 		#region CriticalChance3
 
-		public VPerk CriticalChance3
+		public override VPerk CriticalChance3
 		{
 			get
 			{
@@ -1116,7 +1116,7 @@ namespace VBusiness.Perks
 
 		#region CriticalDamage3
 
-		public VPerk CriticalDamage3
+		public override VPerk CriticalDamage3
 		{
 			get
 			{
@@ -1133,7 +1133,7 @@ namespace VBusiness.Perks
 
 		#region DamageReduction2
 
-		public VPerk DamageReduction2
+		public override VPerk DamageReduction2
 		{
 			get
 			{
@@ -1150,7 +1150,7 @@ namespace VBusiness.Perks
 
 		#region SuperRush
 
-		public VPerk SuperRush
+		public override VPerk SuperRush
 		{
 			get
 			{
@@ -1167,7 +1167,7 @@ namespace VBusiness.Perks
 
 		#region InfusionRecycle3
 
-		public VPerk InfusionRecycle3
+		public override VPerk InfusionRecycle3
 		{
 			get
 			{
@@ -1184,7 +1184,7 @@ namespace VBusiness.Perks
 
 		#region MaximumPotential4
 
-		public VPerk MaximumPotential4
+		public override VPerk MaximumPotential4
 		{
 			get
 			{
@@ -1201,7 +1201,7 @@ namespace VBusiness.Perks
 
 		#region Veterancy4
 
-		public VPerk Veterancy4
+		public override VPerk Veterancy4
 		{
 			get
 			{
@@ -1218,7 +1218,7 @@ namespace VBusiness.Perks
 
 		#region KillRecycle2
 
-		public VPerk KillRecycle2
+		public override VPerk KillRecycle2
 		{
 			get
 			{
@@ -1235,7 +1235,7 @@ namespace VBusiness.Perks
 
 		#region DNAStart
 
-		public VPerk DNAStart
+		public override VPerk DNAStart
 		{
 			get
 			{
@@ -1252,7 +1252,7 @@ namespace VBusiness.Perks
 
 		#region RankRevision3
 
-		public VPerk RankRevision3
+		public override VPerk RankRevision3
 		{
 			get
 			{
@@ -1269,7 +1269,7 @@ namespace VBusiness.Perks
 
 		#region DoubleWarp4
 
-		public VPerk DoubleWarp4
+		public override VPerk DoubleWarp4
 		{
 			get
 			{
@@ -1286,7 +1286,7 @@ namespace VBusiness.Perks
 
 		#region TripleWarp2
 
-		public VPerk TripleWarp2
+		public override VPerk TripleWarp2
 		{
 			get
 			{
@@ -1303,7 +1303,7 @@ namespace VBusiness.Perks
 
 		#region SuperJackpot2
 
-		public VPerk SuperJackpot2
+		public override VPerk SuperJackpot2
 		{
 			get
 			{
@@ -1320,7 +1320,7 @@ namespace VBusiness.Perks
 
 		#region StartingMinerals2
 
-		public VPerk StartingMinerals2
+		public override VPerk StartingMinerals2
 		{
 			get
 			{
@@ -1337,7 +1337,7 @@ namespace VBusiness.Perks
 
 		#region MasterTrainer2
 
-		public VPerk MasterTrainer2
+		public override VPerk MasterTrainer2
 		{
 			get
 			{
@@ -1354,7 +1354,7 @@ namespace VBusiness.Perks
 
 		#region ExtraSupply2
 
-		public VPerk ExtraSupply2
+		public override VPerk ExtraSupply2
 		{
 			get
 			{
@@ -1371,7 +1371,7 @@ namespace VBusiness.Perks
 
 		#region BlackCrits
 
-		public VPerk BlackCrits
+		public override VPerk BlackCrits
 		{
 			get
 			{
@@ -1388,7 +1388,7 @@ namespace VBusiness.Perks
 
 		#region BlackMarket
 
-		public VPerk BlackMarket
+		public override VPerk BlackMarket
 		{
 			get
 			{
@@ -1405,7 +1405,7 @@ namespace VBusiness.Perks
 
 		#region DominatorDamage
 
-		public VPerk DominatorDamage
+		public override VPerk DominatorDamage
 		{
 			get
 			{
@@ -1422,7 +1422,7 @@ namespace VBusiness.Perks
 
 		#region DominatorSpeed
 
-		public VPerk DominatorSpeed
+		public override VPerk DominatorSpeed
 		{
 			get
 			{
@@ -1439,7 +1439,7 @@ namespace VBusiness.Perks
 
 		#region Fearless
 
-		public VPerk Fearless
+		public override VPerk Fearless
 		{
 			get
 			{
@@ -1456,7 +1456,7 @@ namespace VBusiness.Perks
 
 		#region UpgradeCache
 
-		public VPerk UpgradeCache
+		public override VPerk UpgradeCache
 		{
 			get
 			{
@@ -1586,17 +1586,17 @@ namespace VBusiness.Perks
 			}
 		}
 
-		public override VPerk Perk1 => allPerks.Where(p => p.Page == Page && p.Position == 1).FirstOrDefault();
+		public override VPerk  Perk1 => allPerks.Where(p => p.Page == Page && p.Position == 1).FirstOrDefault();
 
-		public override VPerk Perk2 => allPerks.Where(p => p.Page == Page && p.Position == 2).FirstOrDefault();
+		public override VPerk  Perk2 => allPerks.Where(p => p.Page == Page && p.Position == 2).FirstOrDefault();
 
-		public override VPerk Perk3 => allPerks.Where(p => p.Page == Page && p.Position == 3).FirstOrDefault();
+		public override VPerk  Perk3 => allPerks.Where(p => p.Page == Page && p.Position == 3).FirstOrDefault();
 
-		public override VPerk Perk4 => allPerks.Where(p => p.Page == Page && p.Position == 4).FirstOrDefault();
+		public override VPerk  Perk4 => allPerks.Where(p => p.Page == Page && p.Position == 4).FirstOrDefault();
 
-		public override VPerk Perk5 => allPerks.Where(p => p.Page == Page && p.Position == 5).FirstOrDefault();
+		public override VPerk  Perk5 => allPerks.Where(p => p.Page == Page && p.Position == 5).FirstOrDefault();
 
-		public override VPerk Perk6 => allPerks.Where(p => p.Page == Page && p.Position == 6).FirstOrDefault();
+		public override VPerk  Perk6 => allPerks.Where(p => p.Page == Page && p.Position == 6).FirstOrDefault();
 
 		public VPerk[] OrderedPerksForDebug => allPerks.OrderBy(p => p.Page).ThenBy(p => p.Position).ToArray();
 
