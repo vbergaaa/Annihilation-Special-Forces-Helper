@@ -44,5 +44,11 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => 0.8;
 
 		public UnitType[] SpecTypes => new UnitType[0];
+
+		public UnitType BasicType => UnitType.Probe;
+
+		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
+
+		public Evolution Evolution => Evolution.DNA1;
 	}
 }

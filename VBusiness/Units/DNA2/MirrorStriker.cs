@@ -46,5 +46,11 @@ namespace VBusiness.Units
 		double IUnitData.ShieldArmorIncrement => 0.6;
 
 		public UnitType[] SpecTypes => new[] { UnitType.Striker };
+
+		public UnitType BasicType => UnitType.Striker;
+
+		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.DarkStriker);
+
+		public Evolution Evolution => Evolution.DNA2;
 	}
 }

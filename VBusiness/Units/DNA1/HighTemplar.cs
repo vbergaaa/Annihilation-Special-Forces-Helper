@@ -45,5 +45,11 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => 1;
 
 		public UnitType[] SpecTypes => new[] { UnitType.Templar };
+
+		public UnitType BasicType => UnitType.Templar;
+
+		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
+
+		public Evolution Evolution => Evolution.DNA1;
 	}
 }

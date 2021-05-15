@@ -45,5 +45,11 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => 1.2;
 
 		public UnitType[] SpecTypes => new[] { UnitType.WarpLord };
+
+		public UnitType BasicType => UnitType.WarpLord;
+
+		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.DarkWarpLord);
+
+		public Evolution Evolution => Evolution.DNA2;
 	}
 }

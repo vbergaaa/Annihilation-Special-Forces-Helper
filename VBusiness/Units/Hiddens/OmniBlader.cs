@@ -46,5 +46,19 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => 20;
 
 		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery, UnitType.LightAdept };
+
+		public UnitType BasicType => UnitType.LightAdept;
+
+		public IEnumerable<UnitRecepePiece> Recepe
+		{
+			get
+			{
+				yield return new UnitRecepePiece(UnitType.BladeMaster, 7, UnitRankType.SSZ, 1);
+				yield return new UnitRecepePiece(UnitType.BladeDancer, 3, UnitRankType.XX, 2);
+				yield return new UnitRecepePiece(UnitType.ForgedAdept, 10, UnitRankType.XX, 2);
+			}
+		}
+
+		public Evolution Evolution => Evolution.SuperHero;
 	}
 }

@@ -46,5 +46,11 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => 2.5;
 
 		public UnitType[] SpecTypes => new[] { UnitType.Dreadnought };
+
+		public UnitType BasicType => UnitType.Dreadnought;
+
+		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.UnstableDreadnought);
+
+		public Evolution Evolution => Evolution.DNA2;
 	}
 }

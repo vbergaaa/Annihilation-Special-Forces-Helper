@@ -26,5 +26,33 @@ namespace VEntityFramework.Model
 		double ShieldRegenIncrement { get; }
 		double ShieldArmorIncrement { get; }
 		UnitType[] SpecTypes { get; }
+		UnitType BasicType { get; }
+		IEnumerable<UnitRecepePiece> Recepe { get; }
+		Evolution Evolution { get; }
+	}
+
+	public struct UnitRecepePiece
+	{
+		public UnitRecepePiece(UnitType unit, int inf, UnitRankType rank, int qty)
+		{
+			Unit = unit;
+			Infuse = inf;
+			Rank = rank;
+			Quantity = qty;
+		}
+		public UnitType Unit { get; }
+		public int Infuse { get; }
+		public UnitRankType Rank { get; }
+		public int Quantity { get; }
+	}
+
+	public enum Evolution
+	{
+		Basic,
+		DNA1,
+		DNA2,
+		Hero,
+		SuperHero,
+		Annihilator
 	}
 }

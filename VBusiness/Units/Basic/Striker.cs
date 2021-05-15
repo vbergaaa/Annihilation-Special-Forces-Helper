@@ -45,5 +45,11 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => 1;
 
 		public UnitType[] SpecTypes => new[] { UnitType.Striker };
+
+		public UnitType BasicType => Type;
+
+		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
+
+		public Evolution Evolution => Evolution.Basic;
 	}
 }

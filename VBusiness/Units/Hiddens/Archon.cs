@@ -46,5 +46,18 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => 1.3;
 
 		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar };
+
+		public UnitType BasicType => UnitType.DarkShadow;
+
+		public IEnumerable<UnitRecepePiece> Recepe
+		{
+			get
+			{
+				yield return new UnitRecepePiece(UnitType.Templar, 1, UnitRankType.SSS, 1);
+				yield return new UnitRecepePiece(UnitType.DarkShadow, 3, UnitRankType.SS, 4);
+			}
+		}
+
+		public Evolution Evolution => Evolution.DNA1;
 	}
 }

@@ -45,5 +45,11 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => 2;
 
 		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow };
+
+		public UnitType BasicType => UnitType.DarkShadow;
+
+		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
+
+		public Evolution Evolution => Evolution.DNA1;
 	}
 }

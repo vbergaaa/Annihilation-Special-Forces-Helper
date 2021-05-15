@@ -35,7 +35,7 @@ namespace VEntityFramework.Model
 			return (VUnit)BizoCreator.Create(typeof(VUnit), "Unit", loadout, type);
 		}
 
-		static IUnitData GetUnitData(UnitType type)
+		static IUnitData GetNewUnitData(UnitType type)
 		{
 			var typeFullName = type != UnitType.None 
 				? $"VBusiness.Units.{type}"
@@ -45,6 +45,23 @@ namespace VEntityFramework.Model
 			var ctor = myType.GetConstructors()[0];
 			return (IUnitData)ctor.Invoke(null);
 		}
+
+		#endregion
+
+		#region GetUnitData
+
+		public static IUnitData GetUnitData(UnitType type)
+		{
+			if (UnitDataDictionary.TryGetValue(type, out var data))
+			{
+				return data;
+			}
+			data = GetNewUnitData(type);
+			UnitDataDictionary[type] = data;
+			return data;
+		}
+		static IDictionary<UnitType, IUnitData> UnitDataDictionary => fUnitDataDictionary ??= new Dictionary<UnitType, IUnitData>();
+		static IDictionary<UnitType, IUnitData> fUnitDataDictionary;
 
 		#endregion
 

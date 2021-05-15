@@ -45,5 +45,11 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => -0.35;
 
 		public UnitType[] SpecTypes => new[] { UnitType.ShieldBattery };
+
+		public UnitType BasicType => UnitType.ShieldBattery;
+
+		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
+
+		public Evolution Evolution => Evolution.DNA1;
 	}
 }

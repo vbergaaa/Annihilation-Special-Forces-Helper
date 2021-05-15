@@ -45,5 +45,11 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => 1.25;
 
 		public UnitType[] SpecTypes => new[] { UnitType.LightAdept };
+
+		public UnitType BasicType => Type;
+
+		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
+
+		public Evolution Evolution => Evolution.Basic;
 	}
 }

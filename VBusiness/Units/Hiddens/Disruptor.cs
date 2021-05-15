@@ -46,5 +46,19 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => 2;
 
 		public UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
+
+		public UnitType BasicType => UnitType.Dreadnought;
+
+		public IEnumerable<UnitRecepePiece> Recepe
+		{
+			get
+			{
+				yield return new UnitRecepePiece(UnitType.UnstableDreadnought, 3, UnitRankType.SS, 1);
+				yield return new UnitRecepePiece(UnitType.Reaver, 3, UnitRankType.S, 1);
+				yield return new UnitRecepePiece(UnitType.Striker, 1, UnitRankType.S, 5);
+			}
+		}
+
+		public Evolution Evolution => Evolution.DNA1;
 	}
 }

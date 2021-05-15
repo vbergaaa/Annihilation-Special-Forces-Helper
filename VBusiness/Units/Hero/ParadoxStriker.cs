@@ -45,5 +45,11 @@ namespace VBusiness.Units
 		double IUnitData.ShieldArmorIncrement => 0.75;
 
 		public UnitType[] SpecTypes => new[] { UnitType.Striker };
+
+		public UnitType BasicType => UnitType.Striker;
+
+		public IEnumerable<UnitRecepePiece> Recepe { get { yield return new UnitRecepePiece(UnitType.MirrorStriker, 10, UnitRankType.None, 1); } }
+
+		public Evolution Evolution => Evolution.Hero;
 	}
 }

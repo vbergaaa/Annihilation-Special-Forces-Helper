@@ -12,7 +12,7 @@ namespace VBusiness.Units
 	{
 		public UnitType Type => UnitType.TerminatorWarpLord;
 
-		double IUnitData.BaseAttack =>30;
+		double IUnitData.BaseAttack => 30;
 
 		double IUnitData.BaseAttackSpeed => 0.8;
 
@@ -45,5 +45,11 @@ namespace VBusiness.Units
 		double IUnitData.AttackIncrement => 2.2;
 
 		public UnitType[] SpecTypes => new[] { UnitType.WarpLord };
+
+		public UnitType BasicType => UnitType.WarpLord;
+
+		public IEnumerable<UnitRecepePiece> Recepe { get { yield return new UnitRecepePiece(UnitType.BerserkerWarpLord, 10, UnitRankType.None, 1); } }
+
+		public Evolution Evolution => Evolution.Hero;
 	}
 }
