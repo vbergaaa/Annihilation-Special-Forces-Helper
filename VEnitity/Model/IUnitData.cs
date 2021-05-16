@@ -33,17 +33,24 @@ namespace VEntityFramework.Model
 
 	public struct UnitRecepePiece
 	{
-		public UnitRecepePiece(UnitType unit, int inf, UnitRankType rank, int qty)
+		public UnitRecepePiece(UnitType unit, int inf, UnitRankType rank, int qty) : this(unit, inf, rank, qty, true)
+		{
+		}
+
+		public UnitRecepePiece(UnitType unit, int inf, UnitRankType rank, int qty, bool canUseForEvo)
 		{
 			Unit = unit;
 			Infuse = inf;
 			Rank = rank;
 			Quantity = qty;
+			CanUseForEvo = canUseForEvo;
 		}
+
 		public UnitType Unit { get; }
 		public int Infuse { get; }
 		public UnitRankType Rank { get; }
 		public int Quantity { get; }
+		public bool CanUseForEvo { get; }
 	}
 
 	public enum Evolution

@@ -39,9 +39,12 @@ namespace VBusiness.Units
 		{
 			IUnitData unitData = VUnit.GetUnitData(unitType);
 
-			var cost = GetBaseCreationCost(unitData);
-			cost += GetInfusionCosts(unitData, infuse);
-			cost += GetRankCost(rank);
+			// theres some horrible spaghetti with the logic for adding two UnitCost structs because we don't want to sum the ExcessKills.
+			// It takes the Excess Kills from the element on the right side of the '+' operator.
+			// Please ensure you leave these cost additions in this order to avoid breaking this accidently
+			var cost = GetRankCost(rank);
+			cost += GetBaseCreationCost(unitData);
+			cost += GetInfusionCosts(unitData, infuse, cost.ExcessKills);
 			return cost;
 		}
 
@@ -51,37 +54,32 @@ namespace VBusiness.Units
 			return new UnitCost(0, rankCost);
 		}
 
-		UnitCost GetInfusionCosts(IUnitData unitData, int infuse)
+		UnitCost GetInfusionCosts(IUnitData unitData, int infuse, int excessKills)
 		{
 			if (infuse == 0)
 			{
-				return new UnitCost(0, 0);
+				return new UnitCost(0, 0, excessKills);
 			}
 
 			var material = new UnitRecepePiece(unitData.BasicType, (int)unitData.Evolution, UnitRankType.None, 1);
 			var materialCost = GetRawUnitCost(material);
-			var mainUnitFeedCost = GetFeedCost(infuse);
+			var mainUnitFeedCost = GetFeedCost(infuse, unitData.Type, excessKills);
 			var materialQty = UnitsRequiredForInfuse(infuse);
-			return new UnitCost(materialCost.Minerals * materialQty, materialCost.Kills * materialQty + mainUnitFeedCost);
+			return new UnitCost(materialCost.Minerals * materialQty, materialCost.Kills * materialQty + mainUnitFeedCost.Cost, mainUnitFeedCost.ExcessKills);
 		}
 
-		double GetFeedCost(int infuse)
+		(double Cost, int ExcessKills) GetFeedCost(int infuse, UnitType unitType, int currentUnitFeed)
 		{
-			return infuse switch
-			{
-				0 => 0,
-				1 => 200,
-				2 => 600,
-				3 => 1200,
-				4 => 2000,
-				5 => 3000,
-				6 => 4200,
-				7 => 5600,
-				8 => 7200,
-				9 => 9000,
-				10 => 11000,
-				_ => GetInvalidZero()
-			};
+			ErrorReporter.ReportDebug("Infuse doesn't go there", () => infuse < 0 || infuse > 10);
+			var coreCost = infuse * (infuse + 1) * 100;
+
+			currentUnitFeed = unitType.IsCoreBasic()
+				? loadout.IncomeManager.Veterancy
+				: currentUnitFeed;
+			var cost = coreCost - currentUnitFeed;
+			var excessKills = Math.Max(0, -cost);
+			cost = Math.Max(0, cost);
+			return (cost, excessKills);
 		}
 
 		int UnitsRequiredForInfuse(double infuse)
@@ -102,14 +100,25 @@ namespace VBusiness.Units
 			if (unitData.Evolution == Evolution.Basic && !unitData.Type.IsHidden())
 			{
 				var cost = unitData.Type.GetBasicUnitRawCost();
-				return new UnitCost(cost, 0);
+				return new UnitCost(cost, 0, loadout.IncomeManager.Veterancy);
 			}
 			else
 			{
 				var cost = new UnitCost(0, 0);
 				foreach (var piece in unitData.Recepe)
 				{
-					cost += GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank) * piece.Quantity;
+					var newCost = GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank) * piece.Quantity;
+					if (!piece.CanUseForEvo)
+					{
+						newCost.ExcessKills = 0;
+						cost = newCost + cost; // don't += this as '+' is sensitive to left and right
+					}
+					else
+					{
+						var excessKills = Math.Max(newCost.ExcessKills, cost.ExcessKills);
+						cost += newCost;
+						cost.ExcessKills = excessKills;
+					}
 				}
 				return cost;
 			}
@@ -122,16 +131,16 @@ namespace VBusiness.Units
 
 		public static IEnumerable<UnitRecepePiece> GetDNA1Recipe(UnitType type)
 		{
-			yield return new UnitRecepePiece(type, 3, UnitRankType.None, 1);
-			yield return new UnitRecepePiece(type, 1, UnitRankType.None, 5);
+			yield return new UnitRecepePiece(type, 3, UnitRankType.None, 1, true);
+			yield return new UnitRecepePiece(type, 1, UnitRankType.None, 5, false);
 
-			ErrorReporter.ReportDebug("This should always be a basic unit", () => !type.IsBasic());
+			ErrorReporter.ReportDebug("This should always be a basic unit", () => !type.IsCoreBasic());
 		}
 
 		public static IEnumerable<UnitRecepePiece> GetDNA2Recipe(UnitType type)
 		{
-			yield return new UnitRecepePiece(type, 5, UnitRankType.None, 1);
-			yield return new UnitRecepePiece(type, 1, UnitRankType.None, 4);
+			yield return new UnitRecepePiece(type, 5, UnitRankType.None, 1, true);
+			yield return new UnitRecepePiece(type, 1, UnitRankType.None, 4, false);
 
 			ErrorReporter.ReportDebug("This should always be a dna1 unit", () => !type.IsDNA1());
 		}
@@ -139,19 +148,24 @@ namespace VBusiness.Units
 
 	public struct UnitCost
 	{
-		public UnitCost(double mins, double kills)
+		public UnitCost(double mins, double kills, int excessKills)
 		{
 			Minerals = mins;
 			Kills = kills;
+			ExcessKills = excessKills;
+		}
+		public UnitCost(double mins, double kills) : this (mins, kills, 0)
+		{
 		}
 
 		public double Minerals { get; set; }
 		public double Kills { get; set; }
+		public int ExcessKills { get; set; }
 
-		public static UnitCost operator -(UnitCost a) => new UnitCost(-a.Minerals, -a.Kills);
-		public static UnitCost operator +(UnitCost a, UnitCost b) => new UnitCost(a.Minerals + b.Minerals, a.Kills + b.Kills);
+		public static UnitCost operator -(UnitCost a) => new UnitCost(-a.Minerals, -a.Kills, a.ExcessKills);
+		public static UnitCost operator +(UnitCost a, UnitCost b) => new UnitCost(a.Minerals + b.Minerals, a.Kills + b.Kills, b.ExcessKills);
 		public static UnitCost operator -(UnitCost a, UnitCost b) => a += (-b);
-		public static UnitCost operator *(UnitCost a, double b) => new UnitCost(a.Minerals * b, a.Kills * b);
-		public static UnitCost operator /(UnitCost a, (double, double) b) => new UnitCost(a.Minerals / b.Item1, a.Kills / b.Item2);
+		public static UnitCost operator *(UnitCost a, double b) => new UnitCost(a.Minerals * b, a.Kills * b, a.ExcessKills);
+		public static UnitCost operator /(UnitCost a, (double, double) b) => new UnitCost(a.Minerals / b.Item1, a.Kills / b.Item2, a.ExcessKills);
 	}
 }

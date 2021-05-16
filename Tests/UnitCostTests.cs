@@ -22,6 +22,7 @@ namespace Tests
 		[TestCase(UnitType.TerminatorWarpLord, 1, 392000, 47800)]
 		[TestCase(UnitType.TerminatorWarpLord, 10, 682000, 93400)]
 		[TestCase(UnitType.Prisoner, 5, 159250, 15400)]
+		// The test cases below are for sanity and could possibly be wrong
 		[TestCase(UnitType.Ascendant, 10, 3367500, 221364.28)]
 		[TestCase(UnitType.CrimsonArchon, 10, 4403500, 784046.98)]
 		[TestCase(UnitType.WingedArchon, 10, 6078750, 2085314.68)]
@@ -44,9 +45,9 @@ namespace Tests
 		[TestCase(UnitType.BerserkerWarpLord, 100, 20, 84166.67)]
 		public void TestUnitCostWithTWLoadout(UnitType type, int dw, int tw, double expected)
 		{
-			var loadout = TestHelper.GetEmptyLoadout();
-			loadout.AddDoubleWarp(dw);
-			loadout.AddTripleWarp(tw);
+			var loadout = TestHelper.GetEmptyLoadout()
+				.AddDoubleWarp(dw)
+				.AddTripleWarp(tw);
 			var cost = new UnitCostHelper(loadout).GetUnitCost(type, 0, UnitRankType.None);
 
 			Assert.That(cost.Minerals, Is.EqualTo(expected).Within(0.01));
@@ -69,6 +70,41 @@ namespace Tests
 				Assert.That(cost.Minerals, Is.GreaterThan(0));
 				Assert.That(cost.Kills, Is.GreaterThan(0));
 			}
+		}
+
+		[TestCase(UnitType.WarpLord, 0, 0, 0)]
+		[TestCase(UnitType.WarpLord, 1, 0, 200)]
+		[TestCase(UnitType.WarpLord, 1, 100, 100)]
+		[TestCase(UnitType.WarpLord, 1, 200, 0)]
+		[TestCase(UnitType.WarpLord, 1, 300, 0)]
+		[TestCase(UnitType.WarpLord, 2, 100, 500)]
+		[TestCase(UnitType.WarpLord, 2, 300, 300)]
+		[TestCase(UnitType.WarpLord, 5, 800, 2200)]
+		[TestCase(UnitType.DarkWarpLord, 0, 0, 2200)]
+		[TestCase(UnitType.DarkWarpLord, 0, 100, 1600)]
+		[TestCase(UnitType.DarkWarpLord, 1, 100, 1900)]
+		[TestCase(UnitType.DarkWarpLord, 0, 200, 1000)]
+		[TestCase(UnitType.DarkWarpLord, 1, 200, 1200)]
+		[TestCase(UnitType.DarkWarpLord, 1, 300, 1100)]
+		[TestCase(UnitType.DarkWarpLord, 2, 300, 1500)]
+		[TestCase(UnitType.DarkWarpLord, 0, 2000, 0)]
+		[TestCase(UnitType.DarkWarpLord, 1, 2000, 0)]
+		[TestCase(UnitType.DarkWarpLord, 2, 2000, 0)]
+		[TestCase(UnitType.DarkWarpLord, 3, 2000, 400)]
+		[TestCase(UnitType.Dragoon, 2, 400, 200+299)] // +299 is for ranks
+		// The test cases below are for sanity and could possibly be wrong
+		[TestCase(UnitType.ParadoxStriker, 10, 750, 41550)]
+		[TestCase(UnitType.OmniBlader, 10, 750, 948175)]
+		[TestCase(UnitType.PurificationWalker, 10, 750, 154443)]
+		[TestCase(UnitType.WingedArchon, 10, 750, 1871214)]
+		public void TestVeterancy(UnitType unit, int infuse, int vet, double expectedCost)
+		{
+			var loadout = TestHelper.GetEmptyLoadout()
+				.AddVeterancy(vet);
+			var helper = new UnitCostHelper(loadout);
+			var cost = helper.GetUnitCost(unit, infuse, UnitRankType.None).Kills;
+
+			Assert.That(cost, Is.EqualTo(expectedCost).Within(1));
 		}
 	}
 }

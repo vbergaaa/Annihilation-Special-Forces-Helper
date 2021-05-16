@@ -31,19 +31,22 @@ namespace Tests
 			return loadout;
 		}
 
-		public static void AddDoubleWarp(this VLoadout loadout, int dw)
+		public static VLoadout AddDoubleWarp(this VLoadout loadout, int dw)
 		{
-			loadout.Perks.DoubleWarp.DesiredLevel = (short)Math.Max(0, dw);
-			loadout.Perks.DoubleWarp2.DesiredLevel = (short)Math.Max(0, dw - 10);
-			loadout.Perks.DoubleWarp3.DesiredLevel = (short)Math.Max(0, dw - 30);
-			loadout.Perks.DoubleWarp4.DesiredLevel = (short)Math.Max(0, dw - 60);
+			loadout.IncomeManager.DoubleWarp += dw;
+			return loadout;
 		}
 
-		public static void AddTripleWarp(this VLoadout loadout, int tw)
+		public static VLoadout AddTripleWarp(this VLoadout loadout, int tw)
 		{
-			loadout.Perks.TripleWarp.DesiredLevel = (short)Math.Max(0, tw);
-			loadout.Perks.TripleWarp2.DesiredLevel = (short)Math.Max(0, tw - 10);
-			loadout.Gems.TripleWarpGem.CurrentLevel = (short)Math.Max(0, tw - 30);
+			loadout.IncomeManager.TripleWarp += tw;
+			return loadout;
+		}
+
+		public static VLoadout AddVeterancy(this VLoadout loadout, int vet)
+		{
+			loadout.IncomeManager.Veterancy += vet;
+			return loadout;
 		}
 	}
 }

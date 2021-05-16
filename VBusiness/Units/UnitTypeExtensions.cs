@@ -7,7 +7,7 @@ namespace VBusiness.Units
 {
 	public static class UnitTypeExtensions
 	{
-		public static bool IsBasic(this UnitType unitType)
+		public static bool IsCoreBasic(this UnitType unitType)
 		{
 			return unitType <= UnitType.Dominator;
 		}
