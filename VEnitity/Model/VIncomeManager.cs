@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VEntityFramework.Data;
+﻿using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
@@ -104,6 +101,25 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fVeterency;
+
+		#endregion
+
+		#region InfuseRecycle
+
+		public int InfuseRecycle
+		{
+			get => fInfuseRecycle;
+			set
+			{
+				if (fInfuseRecycle != value)
+				{
+					fInfuseRecycle = value;
+					RefreshPropertyBinding(nameof(InfuseRecycle));
+					RefreshPropertyBinding(nameof(UnitKillCost));
+				}
+			}
+		}
+		int fInfuseRecycle;
 
 		#endregion
 

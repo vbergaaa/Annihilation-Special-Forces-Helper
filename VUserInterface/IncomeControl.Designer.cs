@@ -37,6 +37,8 @@ namespace VUserInterface
 			this.UnitMineralCostLabel = new VLabel();
 			this.UnitKillCostLabel = new VLabel();
 			this.VeterancyLabel = new VLabel();
+			this.InfuseRecycleLabel = new VLabel();
+			this.RankRevisionLabel = new VLabel();
 			this.bindingSource = new System.Windows.Forms.BindingSource();
 			this.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -92,6 +94,24 @@ namespace VUserInterface
 			this.VeterancyLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.VeterancyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
+			// VeterencyLabel
+			//
+			this.InfuseRecycleLabel.Caption = "Infuse Recycle:";
+			this.InfuseRecycleLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "InfuseRecycle"));
+			this.InfuseRecycleLabel.Location = DPIScalingHelper.GetScaledPoint(120, 120);
+			this.InfuseRecycleLabel.Name = "InfuseRecycleLabel";
+			this.InfuseRecycleLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
+			this.InfuseRecycleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			//
+			// VeterencyLabel
+			//
+			this.RankRevisionLabel.Caption = "Rank Revision:";
+			this.RankRevisionLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "RankRevision"));
+			this.RankRevisionLabel.Location = DPIScalingHelper.GetScaledPoint(120, 140);
+			this.RankRevisionLabel.Name = "RankRevisionLabel";
+			this.RankRevisionLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
+			this.RankRevisionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			//
 			// StatsControl
 			//
 			this.Controls.Add(DoubleWarpLabel);
@@ -99,6 +119,8 @@ namespace VUserInterface
 			this.Controls.Add(UnitMineralCostLabel);
 			this.Controls.Add(UnitKillCostLabel);
 			this.Controls.Add(VeterancyLabel);
+			this.Controls.Add(InfuseRecycleLabel);
+			this.Controls.Add(RankRevisionLabel);
 			this.Size = DPIScalingHelper.GetScaledSize(175, 310);
 			this.Text = "Income";
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
@@ -111,6 +133,8 @@ namespace VUserInterface
 		private VLabel DoubleWarpLabel;
 		private VLabel TripleWarpLabel;
 		private VLabel VeterancyLabel;
+		private VLabel InfuseRecycleLabel;
+		private VLabel RankRevisionLabel;
 		private System.Windows.Forms.BindingSource bindingSource;
 		private VLabel UnitMineralCostLabel;
 		private VLabel UnitKillCostLabel;

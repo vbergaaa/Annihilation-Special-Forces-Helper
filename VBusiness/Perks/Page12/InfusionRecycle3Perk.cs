@@ -21,5 +21,11 @@ namespace VBusiness.Perks
 		protected override string PerkName => "Infusion Recycle III";
 
 		protected override short MaxLevelCore => 20;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			base.OnLevelChanged(difference);
+			PerkCollection.Loadout.IncomeManager.InfuseRecycle += difference * 5;
+		}
 	}
 }
