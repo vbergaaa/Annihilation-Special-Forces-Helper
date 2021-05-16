@@ -88,6 +88,25 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Veterency
+
+		public int Veterancy
+		{
+			get => fVeterency;
+			set
+			{
+				if (fVeterency != value)
+				{
+					fVeterency = value;
+					RefreshPropertyBinding(nameof(Veterancy));
+					RefreshPropertyBinding(nameof(UnitKillCost));
+				}
+			}
+		}
+		int fVeterency;
+
+		#endregion
+
 		public virtual double UnitMineralCost { get; }
 		public virtual double UnitKillCost { get; }
 

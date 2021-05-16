@@ -36,6 +36,7 @@ namespace VUserInterface
 			this.TripleWarpLabel = new VLabel();
 			this.UnitMineralCostLabel = new VLabel();
 			this.UnitKillCostLabel = new VLabel();
+			this.VeterancyLabel = new VLabel();
 			this.bindingSource = new System.Windows.Forms.BindingSource();
 			this.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -82,12 +83,22 @@ namespace VUserInterface
 			this.TripleWarpLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.TripleWarpLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
+			// VeterencyLabel
+			//
+			this.VeterancyLabel.Caption = "Veterancy:";
+			this.VeterancyLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Veterancy"));
+			this.VeterancyLabel.Location = DPIScalingHelper.GetScaledPoint(120, 100);
+			this.VeterancyLabel.Name = "VeterancyLabel";
+			this.VeterancyLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
+			this.VeterancyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			//
 			// StatsControl
 			//
 			this.Controls.Add(DoubleWarpLabel);
 			this.Controls.Add(TripleWarpLabel);
 			this.Controls.Add(UnitMineralCostLabel);
 			this.Controls.Add(UnitKillCostLabel);
+			this.Controls.Add(VeterancyLabel);
 			this.Size = DPIScalingHelper.GetScaledSize(175, 310);
 			this.Text = "Income";
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
@@ -99,6 +110,7 @@ namespace VUserInterface
 
 		private VLabel DoubleWarpLabel;
 		private VLabel TripleWarpLabel;
+		private VLabel VeterancyLabel;
 		private System.Windows.Forms.BindingSource bindingSource;
 		private VLabel UnitMineralCostLabel;
 		private VLabel UnitKillCostLabel;

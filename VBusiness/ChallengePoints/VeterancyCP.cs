@@ -22,6 +22,7 @@ namespace VBusiness.ChallengePoints
 
 		public override void OnCPLevelChanged(int difference)
 		{
+			ChallengePointCollection.Loadout.IncomeManager.Veterancy += 10 * difference;
 		}
 
 		#endregion

@@ -22,5 +22,11 @@ namespace VBusiness.Perks
 		protected override short MaxLevelCore => 10;
 
 		protected override string PerkName => "Veterancy II";
+
+		protected override void OnLevelChanged(int difference)
+		{
+			base.OnLevelChanged(difference);
+			PerkCollection.Loadout.IncomeManager.Veterancy += difference * 10;
+		}
 	}
 }
