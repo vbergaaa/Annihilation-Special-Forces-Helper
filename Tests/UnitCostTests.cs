@@ -22,19 +22,19 @@ namespace Tests
 		[TestCase(UnitType.TerminatorWarpLord, 1, 392000, 47800)]
 		[TestCase(UnitType.TerminatorWarpLord, 10, 682000, 93400)]
 		[TestCase(UnitType.Prisoner, 5, 159250, 15400)]
-		[TestCase(UnitType.Ascendant, 10, 3367500, 65200)]
-		[TestCase(UnitType.CrimsonArchon, 10, 4403500, 193600)]
-		[TestCase(UnitType.WingedArchon, 10, 6078750, 397000)]
-		[TestCase(UnitType.BladeMaster, 10, 2304250, 149800)]
-		[TestCase(UnitType.OmniBlader, 10, 5062750, 355400)]
-		[TestCase(UnitType.PurificationWalker, 10, 3972000, 104000)]
+		[TestCase(UnitType.Ascendant, 10, 3367500, 221364.28)]
+		[TestCase(UnitType.CrimsonArchon, 10, 4403500, 784046.98)]
+		[TestCase(UnitType.WingedArchon, 10, 6078750, 2085314.68)]
+		[TestCase(UnitType.BladeMaster, 10, 2304250, 258862.13)]
+		[TestCase(UnitType.OmniBlader, 10, 5062750, 1132375.20)]
+		[TestCase(UnitType.PurificationWalker, 10, 3972000, 219593.39)]
 		public void TestUnitEmptyLoadout(UnitType type, int infuse, double expectedMinerals, double expectedKills)
 		{
 			var loadout = TestHelper.GetEmptyLoadout();
-			var cost = new UnitCostHelper(loadout).GetUnitCost(type, infuse);
+			var cost = new UnitCostHelper(loadout).GetUnitCost(type, infuse, UnitRankType.None);
 
 			Assert.That(cost.Minerals, Is.EqualTo(expectedMinerals));
-			Assert.That(cost.Kills, Is.EqualTo(expectedKills));
+			Assert.That(cost.Kills, Is.EqualTo(expectedKills).Within(0.01));
 		}
 
 		[TestCase(UnitType.BerserkerWarpLord, 0, 0, 202000)]
@@ -47,7 +47,7 @@ namespace Tests
 			var loadout = TestHelper.GetEmptyLoadout();
 			loadout.AddDoubleWarp(dw);
 			loadout.AddTripleWarp(tw);
-			var cost = new UnitCostHelper(loadout).GetUnitCost(type, 0);
+			var cost = new UnitCostHelper(loadout).GetUnitCost(type, 0, UnitRankType.None);
 
 			Assert.That(cost.Minerals, Is.EqualTo(expected).Within(0.01));
 		}
@@ -64,7 +64,7 @@ namespace Tests
 				{
 					continue;
 				}
-				var cost = helper.GetUnitCost(unit, 5);
+				var cost = helper.GetUnitCost(unit, 5, UnitRankType.None);
 
 				Assert.That(cost.Minerals, Is.GreaterThan(0));
 				Assert.That(cost.Kills, Is.GreaterThan(0));

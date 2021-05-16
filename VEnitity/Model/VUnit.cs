@@ -172,6 +172,7 @@ namespace VEntityFramework.Model
 				{
 					fUnitRank = value;
 					HasChanges = true;
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.UnitKillCost));
 				}
 			}
 		}

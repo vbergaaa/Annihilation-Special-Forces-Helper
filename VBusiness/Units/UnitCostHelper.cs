@@ -16,32 +16,39 @@ namespace VBusiness.Units
 
 		UnitCost GetRawUnitCost(UnitRecepePiece piece)
 		{
-			return GetRawUnitCost(piece.Unit, piece.Infuse);
+			return GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank);
 		}
 
 		public UnitCost GetUnitCost(VUnit unit)
 		{
-			return GetUnitCost(unit.UnitData.Type, unit.CurrentInfusion);
+			return GetUnitCost(unit.UnitData.Type, unit.CurrentInfusion, unit.UnitRank);
 		}
 
-		public UnitCost GetUnitCost(UnitType unitType, int infuse)
+		public UnitCost GetUnitCost(UnitType unitType, int infuse, UnitRankType rank)
 		{
 			if (unitType != UnitType.None)
 			{
-				var cost = GetRawUnitCost(unitType, infuse);
+				var cost = GetRawUnitCost(unitType, infuse, rank);
 				var effectiveDW = (1 + loadout.IncomeManager.DoubleWarp / 100.0 + loadout.IncomeManager.TripleWarp / 50.0);
 				return cost / (effectiveDW, 1);
 			}
 			return new UnitCost(0, 0);
 		}
 
-		UnitCost GetRawUnitCost(UnitType unitType, int infuse)
+		UnitCost GetRawUnitCost(UnitType unitType, int infuse, UnitRankType rank)
 		{
 			IUnitData unitData = VUnit.GetUnitData(unitType);
 
 			var cost = GetBaseCreationCost(unitData);
 			cost += GetInfusionCosts(unitData, infuse);
+			cost += GetRankCost(rank);
 			return cost;
+		}
+
+		UnitCost GetRankCost(UnitRankType rank)
+		{
+			var rankCost = UnitRankUpHelper.GetRankCost(rank, loadout.IncomeManager.RankRevision);
+			return new UnitCost(0, rankCost);
 		}
 
 		UnitCost GetInfusionCosts(IUnitData unitData, int infuse)
@@ -102,7 +109,7 @@ namespace VBusiness.Units
 				var cost = new UnitCost(0, 0);
 				foreach (var piece in unitData.Recepe)
 				{
-					cost += GetRawUnitCost(piece.Unit, piece.Infuse) * piece.Quantity;
+					cost += GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank) * piece.Quantity;
 				}
 				return cost;
 			}

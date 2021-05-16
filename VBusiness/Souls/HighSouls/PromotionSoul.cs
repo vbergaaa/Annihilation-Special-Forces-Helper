@@ -8,6 +8,18 @@ namespace VBusiness.Souls
 		{
 		}
 
-		public override VEntityFramework.Model.SoulType Type => VEntityFramework.Model.SoulType.Promotion;
+		public override SoulType Type => SoulType.Promotion;
+
+		public override void ActivateUniqueEffect()
+		{
+			base.ActivateUniqueEffect();
+			Loadout.IncomeManager.RankRevision += 15;
+		}
+
+		public override void DeactivateUniqueEffect()
+		{
+			base.ActivateUniqueEffect();
+			Loadout.IncomeManager.RankRevision -= 15;
+		}
 	}
 }

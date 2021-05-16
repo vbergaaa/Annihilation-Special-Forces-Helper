@@ -13,6 +13,8 @@ namespace VEntityFramework.Model
 		}
 		public override string BizoName => "IncomeManager";
 
+		#region Double Warp
+
 		public virtual int DoubleWarp
 		{
 			get => fDoubleWarp;
@@ -27,7 +29,11 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fDoubleWarp;
-		
+
+		#endregion
+
+		#region Triple Warp
+
 		public virtual int TripleWarp
 		{
 			get => fTripleWarp;
@@ -42,6 +48,27 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fTripleWarp;
+
+		#endregion
+
+		#region Rank Revision
+
+		public virtual int RankRevision
+		{
+			get => fRankRevision;
+			set
+			{
+				if (fRankRevision != value)
+				{
+					fRankRevision = value;
+					RefreshPropertyBinding(nameof(RankRevision));
+					RefreshPropertyBinding(nameof(UnitKillCost));
+				}
+			}
+		}
+		int fRankRevision;
+
+		#endregion
 
 		public virtual double UnitMineralCost { get; }
 		public virtual double UnitKillCost { get; }

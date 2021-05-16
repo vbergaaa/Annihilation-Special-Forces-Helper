@@ -21,5 +21,10 @@ namespace VBusiness.Perks
 		protected override string PerkName => "Rank Revision III";
 
 		protected override short MaxLevelCore => 5;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			PerkCollection.Loadout.IncomeManager.RankRevision += difference * 5;
+		}
 	}
 }
