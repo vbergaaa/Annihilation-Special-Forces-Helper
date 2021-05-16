@@ -47,7 +47,7 @@ namespace VBusiness.Units
 
 		UnitCost GetRankCost(UnitRankType rank)
 		{
-			var rankCost = UnitRankUpHelper.GetRankCost(rank, loadout.IncomeManager.RankRevision);
+			var rankCost = UnitRankUpHelper.GetRankCost(rank, loadout.IncomeManager.RankRevision, loadout.IncomeManager.HasRefundSoul);
 			return new UnitCost(0, rankCost);
 		}
 

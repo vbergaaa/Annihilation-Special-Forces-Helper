@@ -70,6 +70,24 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region HasRefundSoul
+
+		public bool HasRefundSoul
+		{
+			get => fHasRefundSoul;
+			set
+			{
+				if (fHasRefundSoul != value)
+				{
+					fHasRefundSoul = value;
+					RefreshPropertyBinding(nameof(UnitKillCost));
+				}
+			}
+		}
+		bool fHasRefundSoul;
+
+		#endregion
+
 		public virtual double UnitMineralCost { get; }
 		public virtual double UnitKillCost { get; }
 
