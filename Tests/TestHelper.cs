@@ -1,5 +1,6 @@
 ﻿using System;
 using VBusiness.Loadouts;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace Tests
@@ -76,6 +77,19 @@ namespace Tests
 		public static VLoadout AddBlackMarket(this VLoadout loadout, bool addBM = true)
 		{
 			loadout.Perks.BlackMarket.DesiredLevel = (short)(addBM ? 1 : 0);
+			return loadout;
+		}
+
+		public static VLoadout SetSpec(this VLoadout loadout, UnitType spec, int specLevel = 10, bool hasAllSpec = false)
+		{
+			loadout.UnitSpec = spec;
+			loadout.Perks.UnitSpecialization.DesiredLevel = (short)specLevel;
+
+			if (hasAllSpec)
+			{
+				ErrorReporter.ReportDebug("spec level must be 10 if you want all spec", () => specLevel != 10);
+				loadout.Perks.UpgradeCache.DesiredLevel = 1;
+			}
 			return loadout;
 		}
 	}

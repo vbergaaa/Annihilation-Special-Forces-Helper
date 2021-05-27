@@ -179,6 +179,8 @@ namespace VBusiness.Loadouts
 						((Unit)CurrentUnit).RemoveStatsFromSpec(true);
 					}
 				}
+
+				IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.UnitMineralCost));
 			}
 		}
 

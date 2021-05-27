@@ -43,6 +43,8 @@ DNA Start: +1 base dna1 infuse";
 			ApplyCooldownSpeedBonus(difference, perks);
 			ApplyAdrenalineRushBonus(difference, perks);
 			ApplyTrifectaBonus(difference, perks);
+
+			PerkCollection.Loadout.IncomeManager.RefreshPropertyBinding(nameof(PerkCollection.Loadout.IncomeManager.UnitMineralCost));
 		}
 
 		void ApplyTrifectaBonus(int difference, PerkCollection perks)

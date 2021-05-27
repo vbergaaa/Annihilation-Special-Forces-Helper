@@ -22,7 +22,14 @@ namespace VBusiness.Units
 			return unitType >= UnitType.Dragoon;
 		}
 
-		public static int GetBasicUnitRawCost(this UnitType unitType)
+		public static double GetBasicUnitMineralCost(this UnitType unitType, VLoadout loadout)
+		{
+			var rawCost = GetBasicUnitRawCost(unitType);
+			var cost = ApplyUnitSpec(unitType, loadout, rawCost);
+			return cost;
+		}
+
+		static double GetBasicUnitRawCost(UnitType unitType)
 		{
 			return unitType switch
 			{
@@ -37,6 +44,24 @@ namespace VBusiness.Units
 				UnitType.Dominator => 70000,
 				_ => GetInvalidZero(),
 			};
+		}
+
+		static double ApplyUnitSpec(UnitType unitType, VLoadout loadout, double rawCost)
+		{
+			if ((loadout.Perks.UnitSpecialization.DesiredLevel > 0
+				&& loadout.UnitSpec != UnitType.None
+				&& unitType == loadout.UnitSpec)
+				|| (loadout.Perks.UnitSpecialization.DesiredLevel == 10
+				&& loadout.Perks.UpgradeCache.DesiredLevel > 0))
+			{
+				rawCost *= 1 - 0.02 * loadout.Perks.UnitSpecialization.DesiredLevel;
+			}
+			else if (loadout.UnitSpec != UnitType.None && loadout.Perks.UnitSpecialization.DesiredLevel > 0)
+			{
+				rawCost *= 2 - 0.1 * loadout.Perks.UnitSpecialization.DesiredLevel;
+			}
+
+			return rawCost;
 		}
 
 		static int GetInvalidZero()

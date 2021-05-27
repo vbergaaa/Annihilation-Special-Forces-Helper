@@ -29,6 +29,8 @@ namespace VBusiness.Perks
 				PerkCollection.Loadout.Stats.UpdateDamageIncrease("Spec", 2 * difference);
 				PerkCollection.Loadout.Stats.UpdateDamageReduction("Spec", difference);
 			}
+
+			PerkCollection.Loadout.IncomeManager.RefreshPropertyBinding(nameof(PerkCollection.Loadout.IncomeManager.UnitMineralCost));
 		}
 	}
 }

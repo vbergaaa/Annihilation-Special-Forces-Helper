@@ -119,12 +119,12 @@ namespace VBusiness.Units
 		{
 			if (unitData.Evolution == Evolution.Basic && !unitData.Type.IsHidden())
 			{
-				var cost = unitData.Type.GetBasicUnitRawCost();
+				var cost = unitData.Type.GetBasicUnitMineralCost(loadout);
 				return new UnitCost(cost, 0, loadout.IncomeManager.Veterancy);
 			}
 			else if (unitData.Evolution == Evolution.DNA1 && !unitData.Type.IsHidden() && loadout.Perks.BlackMarket.DesiredLevel > 0)
 			{
-				var mineralCost = unitData.BasicType.GetBasicUnitRawCost() * 15;
+				var mineralCost = unitData.BasicType.GetBasicUnitMineralCost(loadout) * 15;
 				return new UnitCost(mineralCost, 2200, loadout.IncomeManager.Veterancy);
 			}
 			else

@@ -255,5 +255,27 @@ namespace Tests
 			Assert.That(cost.Minerals, Is.EqualTo(expectedMins).Within(1));
 			Assert.That(cost.Kills, Is.EqualTo(expectedKills).Within(1));
 		}
+
+		[TestCase(UnitType.WarpLord, 10, UnitType.Striker, false, 2000)]
+		[TestCase(UnitType.WarpLord, 10, UnitType.WarpLord, false, 1600)]
+		[TestCase(UnitType.DarkWarpLord, 10, UnitType.WarpLord, false, 24000)]
+		[TestCase(UnitType.DarkWarpLord, 10, UnitType.Striker, true, 24000)]
+		[TestCase(UnitType.Dragoon, 10, UnitType.None, false, 28000)]
+		[TestCase(UnitType.Dragoon, 10, UnitType.Dreadnought, false, 24800)]
+		[TestCase(UnitType.Dragoon, 10, UnitType.Striker, false, 25600)]
+		[TestCase(UnitType.Dragoon, 10, UnitType.None, true, 22400)]
+		[TestCase(UnitType.Dragoon, 1, UnitType.Templar, false, 53200)]
+		[TestCase(UnitType.Dragoon, 1, UnitType.Dreadnought, false, 38480)]
+		[TestCase(UnitType.Dragoon, 1, UnitType.Striker, false, 42160)]
+		public void TestSpecUnitCost(UnitType unit, int specLevel, UnitType spec, bool hasAllSpec, double expectedCost)
+		{
+			var loadout = TestHelper.GetEmptyLoadout()
+				.SetSpec(spec, specLevel, hasAllSpec);
+
+			var helper = new UnitCostHelper(loadout);
+			var cost = helper.GetUnitCost(unit, 0, UnitRankType.None);
+
+			Assert.That(cost.Minerals, Is.EqualTo(expectedCost).Within(1));
+		}
 	}
 }
