@@ -49,15 +49,21 @@ namespace Tests
 			return loadout;
 		}
 
-		public static VLoadout AddInfuseRecycle(this VLoadout loadout, int vet)
+		public static VLoadout AddInfuseRecycle(this VLoadout loadout, int infuseRec)
 		{
-			loadout.IncomeManager.InfuseRecycle += vet;
+			loadout.IncomeManager.InfuseRecycle += infuseRec;
 			return loadout;
 		}
 
-		public static VLoadout AddKillRecycle(this VLoadout loadout, int vet)
+		public static VLoadout AddKillRecycle(this VLoadout loadout, int kr)
 		{
-			loadout.IncomeManager.KillRecycle += vet;
+			loadout.IncomeManager.KillRecycle += kr;
+			return loadout;
+		}
+
+		public static VLoadout AddQuickStartCharges(this VLoadout loadout, int charges)
+		{
+			loadout.Perks.QuickStart.DesiredLevel += (byte)charges;
 			return loadout;
 		}
 	}

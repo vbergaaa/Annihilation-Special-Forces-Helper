@@ -171,5 +171,51 @@ namespace Tests
 
 			Assert.That(cost, Is.EqualTo(expectedCost).Within(1));
 		}
+
+		[TestCase(UnitType.WarpLord, 0, 0, 0, 2000, 0)]
+		[TestCase(UnitType.WarpLord, 0, 1, 0, 2000, 0)]
+		[TestCase(UnitType.WarpLord, 2, 0, 0, 6000, 600)]
+		[TestCase(UnitType.WarpLord, 2, 1, 0, 6000, 600)]
+		[TestCase(UnitType.WarpLord, 3, 0, 0, 10000, 1200)]
+		[TestCase(UnitType.WarpLord, 3, 1, 0, 2000, 0)]
+		[TestCase(UnitType.WarpLord, 4, 0, 0, 14000, 2000)]
+		[TestCase(UnitType.WarpLord, 4, 1, 0, 6000, 800)]
+		[TestCase(UnitType.WarpLord, 4, 2, 0, 6000, 800)]
+		[TestCase(UnitType.WarpLord, 4, 1, 200, 6000, 600)]
+		[TestCase(UnitType.DarkWarpLord, 0, 0, 200, 30000, 1000)]
+		[TestCase(UnitType.DarkWarpLord, 0, 1, 200, 22000, 0)]
+		[TestCase(UnitType.DarkWarpLord, 1, 1, 200, 26000, 0)]
+		[TestCase(UnitType.DarkWarpLord, 2, 1, 200, 30000, 400)]
+		[TestCase(UnitType.BerserkerWarpLord, 0, 0, 200, 202000, 8800)]
+		[TestCase(UnitType.BerserkerWarpLord, 0, 1, 200, 194000, 7600)]
+		[TestCase(UnitType.BerserkerWarpLord, 0, 2, 200, 186000, 6400)]
+		[TestCase(UnitType.BerserkerWarpLord, 0, 3, 200, 178000, 5200)]
+		public void TestQuickStart(UnitType unit, int infuse, int qsCharges, int vet, double expectedMins, double expectedKills)
+		{
+			var loadout = TestHelper.GetEmptyLoadout()
+				.AddVeterancy(vet)
+				.AddQuickStartCharges(qsCharges);
+			var helper = new UnitCostHelper(loadout);
+			var cost = helper.GetUnitCost(unit, infuse, UnitRankType.None);
+
+			Assert.That(cost.Minerals, Is.EqualTo(expectedMins).Within(1));
+			Assert.That(cost.Kills, Is.EqualTo(expectedKills).Within(1));
+		}
+
+		[TestCase(UnitType.WarpLord, 4, 1, 200, 50, 0, 6000, 550)]
+		[TestCase(UnitType.WarpLord, 4, 1, 200, 0, 25, 6000, 550)]
+		public void TestQuickStartIntegration(UnitType unit, int infuse, int qsCharges, int vet, int infuseRecycle, int killRecycle, double expectedMins, double expectedKills)
+		{
+			var loadout = TestHelper.GetEmptyLoadout()
+				.AddVeterancy(vet)
+				.AddInfuseRecycle(infuseRecycle)
+				.AddKillRecycle(killRecycle)
+				.AddQuickStartCharges(qsCharges);
+			var helper = new UnitCostHelper(loadout);
+			var cost = helper.GetUnitCost(unit, infuse, UnitRankType.None);
+
+			Assert.That(cost.Minerals, Is.EqualTo(expectedMins).Within(1));
+			Assert.That(cost.Kills, Is.EqualTo(expectedKills).Within(1));
+		}
 	}
 }

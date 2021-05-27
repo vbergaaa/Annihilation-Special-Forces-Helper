@@ -28,6 +28,7 @@ namespace VBusiness.Units
 
 		public UnitCost GetUnitCost(UnitType unitType, int infuse, UnitRankType rank)
 		{
+			ResetCalculationVariables();
 			if (unitType != UnitType.None)
 			{
 				var cost = GetRawUnitCost(unitType, infuse, rank);
@@ -63,20 +64,33 @@ namespace VBusiness.Units
 				return new UnitCost(0, 0, excessKills);
 			}
 
+			var isUsingQs = false;
+			if (unitData.Type.IsCoreBasic() && infusion >= 3 && TryUseQSCharge())
+			{
+				isUsingQs = true;
+			}
+
 			var material = new UnitRecepePiece(unitData.BasicType, (int)unitData.Evolution, UnitRankType.None, 1);
 			var materialCost = GetRawUnitCost(material);
-			var mainUnitFeedCost = GetFeedCost(infusion, unitData.Type, excessKills);
-			var materialQty = UnitsRequiredForInfuse(infusion);
-			var killRecycleRefund = GetKillRecycleRefund(materialCost, infusion);
-			var infuseRecycleRefund = infusion * loadout.IncomeManager.InfuseRecycle;
+			var mainUnitFeedCost = GetFeedCost(infusion, unitData.Type, excessKills, isUsingQs);
+			var materialQty = UnitsRequiredForInfuse(infusion, isUsingQs);
+			var killRecycleRefund = GetKillRecycleRefund(materialCost, infusion, isUsingQs);
+			var infuseRecycleRefund = GetInfuseRecycleRefund(infusion, isUsingQs);
 			var totalKillCost = materialCost.Kills * materialQty + mainUnitFeedCost.Cost - infuseRecycleRefund - killRecycleRefund;
 			return new UnitCost(materialCost.Minerals * materialQty, totalKillCost, mainUnitFeedCost.ExcessKills);
 		}
 
-		(double Cost, int ExcessKills) GetFeedCost(int infuse, UnitType unitType, int currentUnitFeed)
+		int GetInfuseRecycleRefund(int infusion, bool isUsingQs)
+		{
+			infusion -= isUsingQs ? 3 : 0;
+			return infusion * loadout.IncomeManager.InfuseRecycle;
+		}
+
+		(double Cost, int ExcessKills) GetFeedCost(int infuse, UnitType unitType, int currentUnitFeed, bool isUsingQs)
 		{
 			ErrorReporter.ReportDebug("Infuse doesn't go there", () => infuse < 0 || infuse > 10);
 			var coreCost = infuse * (infuse + 1) * 100;
+			coreCost -= isUsingQs ? 1200 : 0;
 
 			currentUnitFeed = unitType.IsCoreBasic()
 				? loadout.IncomeManager.Veterancy
@@ -87,17 +101,12 @@ namespace VBusiness.Units
 			return (cost, excessKills);
 		}
 
-		int UnitsRequiredForInfuse(double infuse)
+		int UnitsRequiredForInfuse(double infuse, bool isUsingQs)
 		{
 			var x = (infuse + 1) / 2;
-			return (int)(Math.Floor(x) * Math.Floor(x + 0.5));
-		}
+			var unitsRequired = (int)(Math.Floor(x) * Math.Floor(x + 0.5));
 
-		int GetInvalidZero()
-		{
-			ErrorReporter.ReportDebug("Invalid Switch Option");
-			return 0;
-			throw new NotImplementedException();
+			return isUsingQs ? unitsRequired - 4 : unitsRequired;
 		}
 
 		UnitCost GetBaseCreationCost(IUnitData unitData)
@@ -114,19 +123,21 @@ namespace VBusiness.Units
 
 				foreach (var piece in unitData.Recepe)
 				{
-					var rawCost = GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank);
-					costs.AddMultiple((rawCost, piece.CanUseForEvo), piece.Quantity);
-					var newCost = rawCost * piece.Quantity;
-					if (!piece.CanUseForEvo)
+					for (var i = 0; i < piece.Quantity; i++)
 					{
-						newCost.ExcessKills = 0;
-						cost = newCost + cost; // don't += this as '+' is sensitive to left and right
-					}
-					else
-					{
-						var excessKills = Math.Max(newCost.ExcessKills, cost.ExcessKills);
-						cost += newCost;
-						cost.ExcessKills = excessKills;
+						var newCost = GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank);
+						costs.Add((newCost, piece.CanUseForEvo));
+						if (!piece.CanUseForEvo)
+						{
+							newCost.ExcessKills = 0;
+							cost = newCost + cost; // don't += this as '+' is sensitive to left and right
+						}
+						else
+						{
+							var excessKills = Math.Max(newCost.ExcessKills, cost.ExcessKills);
+							cost += newCost;
+							cost.ExcessKills = excessKills;
+						}
 					}
 				}
 				var killRecycleRefund = GetKillRecycleRefund(costs);
@@ -157,10 +168,11 @@ namespace VBusiness.Units
 			return 0;
 		}
 
-		double GetKillRecycleRefund(UnitCost materialCost, int infusion = 1)
+		double GetKillRecycleRefund(UnitCost materialCost, int infusion = 1, bool isUsingQs = false)
 		{
 			var killRecycle = (double)loadout.IncomeManager.KillRecycle;
 
+			infusion -= isUsingQs ? 3 : 0;
 			if (killRecycle > 0)
 			{
 				killRecycle /= 100.0;
@@ -169,6 +181,32 @@ namespace VBusiness.Units
 
 			return 0;
 		}
+
+		#region Resetable variables
+
+		#region Quick Start
+
+		bool TryUseQSCharge()
+		{
+			if (qsCharges > 0)
+			{
+				qsCharges--;
+				return true;
+			}
+			return false;
+		}
+		int qsCharges { get; set; }
+
+		#endregion
+
+		void ResetCalculationVariables()
+		{
+			qsCharges = loadout.Perks.QuickStart.DesiredLevel;
+		}
+
+		#endregion
+
+		#region Recipes
 
 		public static IEnumerable<UnitRecepePiece> GetEmptyRecipe()
 		{
@@ -190,6 +228,8 @@ namespace VBusiness.Units
 
 			ErrorReporter.ReportDebug("This should always be a dna1 unit", () => !type.IsDNA1());
 		}
+
+		#endregion
 	}
 
 	public struct UnitCost
