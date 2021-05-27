@@ -38,6 +38,7 @@ namespace VUserInterface
 			this.UnitKillCostLabel = new VLabel();
 			this.VeterancyLabel = new VLabel();
 			this.InfuseRecycleLabel = new VLabel();
+			this.KillRecycleLabel = new VLabel();
 			this.RankRevisionLabel = new VLabel();
 			this.bindingSource = new System.Windows.Forms.BindingSource();
 			this.SuspendLayout();
@@ -94,22 +95,33 @@ namespace VUserInterface
 			this.VeterancyLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.VeterancyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
-			// VeterencyLabel
+			// InfuseRecycleLabel
 			//
-			this.InfuseRecycleLabel.Caption = "Infuse Recycle:";
+			this.InfuseRecycleLabel.Caption = "Infusion Recycle:";
 			this.InfuseRecycleLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "InfuseRecycle"));
 			this.InfuseRecycleLabel.Location = DPIScalingHelper.GetScaledPoint(120, 120);
 			this.InfuseRecycleLabel.Name = "InfuseRecycleLabel";
 			this.InfuseRecycleLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.InfuseRecycleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
+			// KillRecycleLabel
+			//
+			this.KillRecycleLabel.Caption = "Kill Recycle:";
+			this.KillRecycleLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "KillRecycle"));
+			this.KillRecycleLabel.Location = DPIScalingHelper.GetScaledPoint(120, 140);
+			this.KillRecycleLabel.Name = "KillRecycleLabel";
+			this.KillRecycleLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
+			this.KillRecycleLabel.Suffix = "%";
+			this.KillRecycleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			//
 			// VeterencyLabel
 			//
 			this.RankRevisionLabel.Caption = "Rank Revision:";
 			this.RankRevisionLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "RankRevision"));
-			this.RankRevisionLabel.Location = DPIScalingHelper.GetScaledPoint(120, 140);
+			this.RankRevisionLabel.Location = DPIScalingHelper.GetScaledPoint(120, 160);
 			this.RankRevisionLabel.Name = "RankRevisionLabel";
 			this.RankRevisionLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
+			this.RankRevisionLabel.Suffix = "%";
 			this.RankRevisionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// StatsControl
@@ -120,6 +132,7 @@ namespace VUserInterface
 			this.Controls.Add(UnitKillCostLabel);
 			this.Controls.Add(VeterancyLabel);
 			this.Controls.Add(InfuseRecycleLabel);
+			this.Controls.Add(KillRecycleLabel);
 			this.Controls.Add(RankRevisionLabel);
 			this.Size = DPIScalingHelper.GetScaledSize(175, 310);
 			this.Text = "Income";
@@ -134,6 +147,7 @@ namespace VUserInterface
 		private VLabel TripleWarpLabel;
 		private VLabel VeterancyLabel;
 		private VLabel InfuseRecycleLabel;
+		private VLabel KillRecycleLabel;
 		private VLabel RankRevisionLabel;
 		private System.Windows.Forms.BindingSource bindingSource;
 		private VLabel UnitMineralCostLabel;

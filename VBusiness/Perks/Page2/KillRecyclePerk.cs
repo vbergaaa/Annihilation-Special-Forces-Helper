@@ -21,5 +21,11 @@ namespace VBusiness.Perks
 		protected override short MaxLevelCore => 5;
 
 		protected override string PerkName => "Kill Recycle";
+
+		protected override void OnLevelChanged(int difference)
+		{
+			base.OnLevelChanged(difference);
+			PerkCollection.Loadout.IncomeManager.KillRecycle += difference * 5;
+		}
 	}
 }

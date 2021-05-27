@@ -27,11 +27,12 @@ namespace VUserInterface.CommonControls
 			get => Label.Text;
 			set
 			{
-				Label.Text = value is Enum @enum
+				var text = value is Enum @enum
 					? Enums.AsString(@enum.GetType(), @enum, EnumFormat.Description, EnumFormat.Name)
 					: UseNumberSuffixes
 						? GetSuffixedNumber(value.ToString())
 						: value.ToString();
+				Label.Text = text + Suffix;
 			}
 		}
 
@@ -69,5 +70,6 @@ namespace VUserInterface.CommonControls
 		}
 
 		public bool UseNumberSuffixes { get; set; }
+		public string Suffix { get; set; }
 	}
 }

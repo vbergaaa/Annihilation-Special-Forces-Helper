@@ -123,6 +123,25 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region KillRecycle
+
+		public int KillRecycle
+		{
+			get => fKillRecycle;
+			set
+			{
+				if (fKillRecycle != value)
+				{
+					fKillRecycle = value;
+					RefreshPropertyBinding(nameof(KillRecycle));
+					RefreshPropertyBinding(nameof(UnitKillCost));
+				}
+			}
+		}
+		int fKillRecycle;
+
+		#endregion
+
 		public virtual double UnitMineralCost { get; }
 		public virtual double UnitKillCost { get; }
 
