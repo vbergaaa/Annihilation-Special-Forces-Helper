@@ -245,6 +245,10 @@ namespace VBusiness.Units
 		void ResetCalculationVariables()
 		{
 			qsCharges = loadout.Perks.QuickStart.DesiredLevel;
+			if (qsCharges == 3 && loadout.Perks.UpgradeCache.DesiredLevel == 1)
+			{
+				qsCharges += 2;
+			}
 			hasUsedDNAStart = false;
 			hasFullKillRecycle = loadout.Perks.KillRecycle.DesiredLevel == 5 && loadout.Perks.UpgradeCache.DesiredLevel == 1;
 		}
