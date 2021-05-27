@@ -91,8 +91,8 @@ namespace Tests
 		[TestCase(UnitType.DarkWarpLord, 1, 2000, 0)]
 		[TestCase(UnitType.DarkWarpLord, 2, 2000, 0)]
 		[TestCase(UnitType.DarkWarpLord, 3, 2000, 400)]
-		[TestCase(UnitType.Dragoon, 2, 400, 200+299)] // +299 is for ranks
-		// The test cases below are for sanity and could possibly be wrong
+		[TestCase(UnitType.Dragoon, 2, 400, 200 + 299)] // +299 is for ranks
+														// The test cases below are for sanity and could possibly be wrong
 		[TestCase(UnitType.ParadoxStriker, 10, 750, 41550)]
 		[TestCase(UnitType.OmniBlader, 10, 750, 948175)]
 		[TestCase(UnitType.PurificationWalker, 10, 750, 154443)]
@@ -101,6 +101,38 @@ namespace Tests
 		{
 			var loadout = TestHelper.GetEmptyLoadout()
 				.AddVeterancy(vet);
+			var helper = new UnitCostHelper(loadout);
+			var cost = helper.GetUnitCost(unit, infuse, UnitRankType.None).Kills;
+
+			Assert.That(cost, Is.EqualTo(expectedCost).Within(1));
+		}
+
+		[TestCase(UnitType.WarpLord, 0, 0, 0, 0)]
+		[TestCase(UnitType.WarpLord, 1, 0, 0, 200)]
+		[TestCase(UnitType.WarpLord, 1, 0, 50, 150)]
+		[TestCase(UnitType.WarpLord, 1, 100, 50, 50)]
+		[TestCase(UnitType.WarpLord, 1, 200, 50, -50)]
+		[TestCase(UnitType.WarpLord, 1, 600, 50, -50)]
+		[TestCase(UnitType.WarpLord, 1, 100, 150, -50)]
+		[TestCase(UnitType.WarpLord, 2, 100, 150, 200)]
+		[TestCase(UnitType.WarpLord, 2, 600, 150, -300)]
+		[TestCase(UnitType.WarpLord, 3, 600, 150, 150)]
+		[TestCase(UnitType.DarkWarpLord, 0, 200, 50, 600)]
+		[TestCase(UnitType.DarkWarpLord, 0, 400, 100, 0)]
+		[TestCase(UnitType.DarkWarpLord, 1, 400, 100, 0)]
+		[TestCase(UnitType.DarkWarpLord, 2, 400, 100, 200)]
+		[TestCase(UnitType.DarkWarpLord, 0, 600, 200, -1000)]
+		[TestCase(UnitType.BerserkerWarpLord, 0, 600, 200, -5600)]
+		// The test cases below are for sanity and could possibly be wrong
+		[TestCase(UnitType.ParadoxStriker, 10, 600, 200, 400)]
+		[TestCase(UnitType.OmniBlader, 10, 600, 200, 772575)]
+		[TestCase(UnitType.PurificationWalker, 10, 600, 200, 100193)]
+		[TestCase(UnitType.WingedArchon, 10, 600, 200, 1675314)]
+		public void TestInfuseRecycle(UnitType unit, int infuse, int vet, int infuseRecycle, double expectedCost)
+		{
+			var loadout = TestHelper.GetEmptyLoadout()
+				.AddVeterancy(vet)
+				.AddInfuseRecycle(infuseRecycle);
 			var helper = new UnitCostHelper(loadout);
 			var cost = helper.GetUnitCost(unit, infuse, UnitRankType.None).Kills;
 

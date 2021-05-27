@@ -65,7 +65,9 @@ namespace VBusiness.Units
 			var materialCost = GetRawUnitCost(material);
 			var mainUnitFeedCost = GetFeedCost(infuse, unitData.Type, excessKills);
 			var materialQty = UnitsRequiredForInfuse(infuse);
-			return new UnitCost(materialCost.Minerals * materialQty, materialCost.Kills * materialQty + mainUnitFeedCost.Cost, mainUnitFeedCost.ExcessKills);
+			var infuseRecycleRefund = infuse * loadout.IncomeManager.InfuseRecycle;
+			var totalKillCost = materialCost.Kills * materialQty + mainUnitFeedCost.Cost - infuseRecycleRefund;
+			return new UnitCost(materialCost.Minerals * materialQty, totalKillCost, mainUnitFeedCost.ExcessKills);
 		}
 
 		(double Cost, int ExcessKills) GetFeedCost(int infuse, UnitType unitType, int currentUnitFeed)

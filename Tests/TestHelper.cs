@@ -48,5 +48,11 @@ namespace Tests
 			loadout.IncomeManager.Veterancy += vet;
 			return loadout;
 		}
+
+		public static VLoadout AddInfuseRecycle(this VLoadout loadout, int vet)
+		{
+			loadout.IncomeManager.InfuseRecycle += vet;
+			return loadout;
+		}
 	}
 }
