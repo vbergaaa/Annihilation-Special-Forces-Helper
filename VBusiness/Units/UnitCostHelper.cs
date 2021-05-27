@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using VBusiness.HelperClasses;
 using VEntityFramework;
 using VEntityFramework.Model;
 
@@ -54,19 +56,20 @@ namespace VBusiness.Units
 			return new UnitCost(0, rankCost);
 		}
 
-		UnitCost GetInfusionCosts(IUnitData unitData, int infuse, int excessKills)
+		UnitCost GetInfusionCosts(IUnitData unitData, int infusion, int excessKills)
 		{
-			if (infuse == 0)
+			if (infusion == 0)
 			{
 				return new UnitCost(0, 0, excessKills);
 			}
 
 			var material = new UnitRecepePiece(unitData.BasicType, (int)unitData.Evolution, UnitRankType.None, 1);
 			var materialCost = GetRawUnitCost(material);
-			var mainUnitFeedCost = GetFeedCost(infuse, unitData.Type, excessKills);
-			var materialQty = UnitsRequiredForInfuse(infuse);
-			var infuseRecycleRefund = infuse * loadout.IncomeManager.InfuseRecycle;
-			var totalKillCost = materialCost.Kills * materialQty + mainUnitFeedCost.Cost - infuseRecycleRefund;
+			var mainUnitFeedCost = GetFeedCost(infusion, unitData.Type, excessKills);
+			var materialQty = UnitsRequiredForInfuse(infusion);
+			var killRecycleRefund = GetKillRecycleRefund(materialCost, infusion);
+			var infuseRecycleRefund = infusion * loadout.IncomeManager.InfuseRecycle;
+			var totalKillCost = materialCost.Kills * materialQty + mainUnitFeedCost.Cost - infuseRecycleRefund - killRecycleRefund;
 			return new UnitCost(materialCost.Minerals * materialQty, totalKillCost, mainUnitFeedCost.ExcessKills);
 		}
 
@@ -107,9 +110,13 @@ namespace VBusiness.Units
 			else
 			{
 				var cost = new UnitCost(0, 0);
+				var costs = new List<(UnitCost, bool)>();
+
 				foreach (var piece in unitData.Recepe)
 				{
-					var newCost = GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank) * piece.Quantity;
+					var rawCost = GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank);
+					costs.AddMultiple((rawCost, piece.CanUseForEvo), piece.Quantity);
+					var newCost = rawCost * piece.Quantity;
 					if (!piece.CanUseForEvo)
 					{
 						newCost.ExcessKills = 0;
@@ -122,8 +129,45 @@ namespace VBusiness.Units
 						cost.ExcessKills = excessKills;
 					}
 				}
+				var killRecycleRefund = GetKillRecycleRefund(costs);
+				cost.Kills -= killRecycleRefund;
 				return cost;
 			}
+		}
+
+		double GetKillRecycleRefund(List<(UnitCost, bool)> costs)
+		{
+			var killRecycle = (double)loadout.IncomeManager.KillRecycle;
+
+			if (killRecycle > 0)
+			{
+				killRecycle /= 100.0;
+				var orderedCosts = costs.OrderBy(x => !x.Item2).ThenBy(x => x.Item1.ExcessKills).ToList();
+
+				// main unit refund
+				var refundAmount = GetKillRecycleRefund(orderedCosts[0].Item1);
+
+				// sacrificed unit refund
+				if (orderedCosts.Count() > 1)
+				{
+					refundAmount += GetKillRecycleRefund(orderedCosts[1].Item1);
+				}
+				return refundAmount;
+			}
+			return 0;
+		}
+
+		double GetKillRecycleRefund(UnitCost materialCost, int infusion = 1)
+		{
+			var killRecycle = (double)loadout.IncomeManager.KillRecycle;
+
+			if (killRecycle > 0)
+			{
+				killRecycle /= 100.0;
+				return killRecycle * infusion * materialCost.ExcessKills;
+			}
+
+			return 0;
 		}
 
 		public static IEnumerable<UnitRecepePiece> GetEmptyRecipe()

@@ -138,5 +138,38 @@ namespace Tests
 
 			Assert.That(cost, Is.EqualTo(expectedCost).Within(1));
 		}
+
+		[TestCase(UnitType.WarpLord, 1, 0, 0, 200)]
+		[TestCase(UnitType.WarpLord, 1, 100, 0, 100)]
+		[TestCase(UnitType.WarpLord, 1, 0, 25, 200)]
+		[TestCase(UnitType.WarpLord, 1, 100, 25, 75)]
+		[TestCase(UnitType.WarpLord, 1, 200, 25, -50)]
+		[TestCase(UnitType.WarpLord, 1, 200, 5, -10)]
+		[TestCase(UnitType.WarpLord, 1, 600, 25, -150)]
+		[TestCase(UnitType.WarpLord, 2, 600, 25, -300)]
+		[TestCase(UnitType.WarpLord, 3, 600, 25, 150)]
+		[TestCase(UnitType.DarkWarpLord, 0, 1600, 25, -3650)]
+		[TestCase(UnitType.DarkWarpLord, 0, 600, 25, -700)]
+		[TestCase(UnitType.DarkWarpLord, 1, 600, 25, -750)]
+		[TestCase(UnitType.DarkWarpLord, 2, 600, 25, -600)]
+		[TestCase(UnitType.DarkWarpLord, 3, 600, 25, -400)]
+		[TestCase(UnitType.DarkWarpLord, 4, 600, 25, 0)]
+		[TestCase(UnitType.DarkWarpLord, 5, 600, 25, 450)]
+		[TestCase(UnitType.BerserkerWarpLord, 0, 600, 25, -2550)]
+		// The test cases below are for sanity and could possibly be wrong
+		[TestCase(UnitType.ParadoxStriker, 10, 600, 25, 14950)]
+		[TestCase(UnitType.OmniBlader, 10, 600, 25, 831175)]
+		[TestCase(UnitType.PurificationWalker, 10, 600, 25, 101043)]
+		[TestCase(UnitType.WingedArchon, 10, 600, 25, 1741114)]
+		public void TestKillRecycle(UnitType unit, int infuse, int vet, int killRecycle, double expectedCost)
+		{
+			var loadout = TestHelper.GetEmptyLoadout()
+				.AddVeterancy(vet)
+				.AddKillRecycle(killRecycle);
+			var helper = new UnitCostHelper(loadout);
+			var cost = helper.GetUnitCost(unit, infuse, UnitRankType.None).Kills;
+
+			Assert.That(cost, Is.EqualTo(expectedCost).Within(1));
+		}
 	}
 }

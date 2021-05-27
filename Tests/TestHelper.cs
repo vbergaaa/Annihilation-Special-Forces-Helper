@@ -54,5 +54,11 @@ namespace Tests
 			loadout.IncomeManager.InfuseRecycle += vet;
 			return loadout;
 		}
+
+		public static VLoadout AddKillRecycle(this VLoadout loadout, int vet)
+		{
+			loadout.IncomeManager.KillRecycle += vet;
+			return loadout;
+		}
 	}
 }
