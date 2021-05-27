@@ -180,7 +180,7 @@ namespace VBusiness.Loadouts
 					}
 				}
 
-				IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.UnitMineralCost));
+				IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutMineralCost));
 			}
 		}
 

@@ -14,6 +14,7 @@ namespace VBusiness.Units
 		public UnitCostHelper(VLoadout loadout)
 		{
 			this.loadout = loadout;
+			ResetCalculationVariables();
 		}
 
 		UnitCost GetRawUnitCost(UnitRecepePiece piece)
@@ -23,12 +24,22 @@ namespace VBusiness.Units
 
 		public UnitCost GetUnitCost(VUnit unit)
 		{
-			return GetUnitCost(unit.UnitData.Type, unit.CurrentInfusion, unit.UnitRank);
+			return GetUnitCost(new VUnit[] { unit });
+		}
+
+		public UnitCost GetUnitCost(IEnumerable<VUnit> units)
+		{
+			ResetCalculationVariables();
+			var cost = new UnitCost();
+			foreach (var unit in units)
+			{
+				cost += GetUnitCost(unit.UnitData.Type, unit.CurrentInfusion, unit.UnitRank);
+			}
+			return cost;
 		}
 
 		public UnitCost GetUnitCost(UnitType unitType, int infuse, UnitRankType rank)
 		{
-			ResetCalculationVariables();
 			if (unitType != UnitType.None)
 			{
 				var cost = GetRawUnitCost(unitType, infuse, rank);
@@ -255,7 +266,7 @@ namespace VBusiness.Units
 
 		#endregion
 
-		void ResetCalculationVariables()
+		internal void ResetCalculationVariables()
 		{
 			qsCharges = loadout.Perks.QuickStart.DesiredLevel;
 			if (qsCharges == 3 && loadout.Perks.UpgradeCache.DesiredLevel == 1)

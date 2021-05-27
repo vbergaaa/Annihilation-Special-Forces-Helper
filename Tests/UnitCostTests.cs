@@ -61,6 +61,7 @@ namespace Tests
 			var units = Enums.GetValues<UnitType>();
 			foreach (var unit in units)
 			{
+				helper.ResetCalculationVariables();
 				if (unit == UnitType.None)
 				{
 					continue;

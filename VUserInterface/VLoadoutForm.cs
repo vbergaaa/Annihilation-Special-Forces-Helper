@@ -89,6 +89,8 @@ namespace VUserInterface
 			{
 				StatsControl.Visible = button.Text == "Stats";
 				IncomeControl.Visible = button.Text == "Income";
+				UseUnitStatsCheckBox.Visible = button.Text == "Stats";
+				UseSingleUnitEcoCheckBox.Visible = button.Text == "Income";
 			}
 		}
 

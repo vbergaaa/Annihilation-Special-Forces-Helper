@@ -21,7 +21,7 @@ namespace VEntityFramework.Model
 				{
 					fDoubleWarp = value;
 					RefreshPropertyBinding(nameof(DoubleWarp));
-					RefreshPropertyBinding(nameof(UnitMineralCost));
+					RefreshPropertyBinding(nameof(LoadoutMineralCost));
 				}
 			}
 		}
@@ -40,7 +40,7 @@ namespace VEntityFramework.Model
 				{
 					fTripleWarp = value;
 					RefreshPropertyBinding(nameof(TripleWarp));
-					RefreshPropertyBinding(nameof(UnitMineralCost));
+					RefreshPropertyBinding(nameof(LoadoutMineralCost));
 				}
 			}
 		}
@@ -59,7 +59,7 @@ namespace VEntityFramework.Model
 				{
 					fRankRevision = value;
 					RefreshPropertyBinding(nameof(RankRevision));
-					RefreshPropertyBinding(nameof(UnitKillCost));
+					RefreshPropertyBinding(nameof(LoadoutKillCost));
 				}
 			}
 		}
@@ -77,7 +77,7 @@ namespace VEntityFramework.Model
 				if (fHasRefundSoul != value)
 				{
 					fHasRefundSoul = value;
-					RefreshPropertyBinding(nameof(UnitKillCost));
+					RefreshPropertyBinding(nameof(LoadoutKillCost));
 				}
 			}
 		}
@@ -96,7 +96,7 @@ namespace VEntityFramework.Model
 				{
 					fVeterency = value;
 					RefreshPropertyBinding(nameof(Veterancy));
-					RefreshPropertyBinding(nameof(UnitKillCost));
+					RefreshPropertyBinding(nameof(LoadoutKillCost));
 				}
 			}
 		}
@@ -115,7 +115,7 @@ namespace VEntityFramework.Model
 				{
 					fInfuseRecycle = value;
 					RefreshPropertyBinding(nameof(InfuseRecycle));
-					RefreshPropertyBinding(nameof(UnitKillCost));
+					RefreshPropertyBinding(nameof(LoadoutKillCost));
 				}
 			}
 		}
@@ -134,7 +134,7 @@ namespace VEntityFramework.Model
 				{
 					fKillRecycle = value;
 					RefreshPropertyBinding(nameof(KillRecycle));
-					RefreshPropertyBinding(nameof(UnitKillCost));
+					RefreshPropertyBinding(nameof(LoadoutKillCost));
 				}
 			}
 		}
@@ -142,6 +142,8 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		public virtual double LoadoutMineralCost { get; }
+		public virtual double LoadoutKillCost { get; }
 		public virtual double UnitMineralCost { get; }
 		public virtual double UnitKillCost { get; }
 

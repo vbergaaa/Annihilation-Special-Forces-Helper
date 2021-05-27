@@ -179,8 +179,8 @@ namespace VEntityFramework.Model
 					fCurrentUnit = value;
 					OnPropertyChanged(nameof(CurrentUnit));
 					OnPropertyChanged(nameof(Units));
-					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.UnitMineralCost));
-					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.UnitKillCost));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutMineralCost));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutKillCost));
 				}
 			}
 		}
@@ -275,7 +275,29 @@ namespace VEntityFramework.Model
 		bool fUseUnitStats;
 
 		#endregion
-		
+
+		#region UseSingleUnitEco
+
+		[VXML(true)]
+		public bool UseSingleUnitEco
+		{
+			get => fUseSingleUnitEco;
+			set
+			{
+				if (value != fUseSingleUnitEco)
+				{
+					fUseSingleUnitEco = value;
+					HasChanges = true;
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutKillCost));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutMineralCost));
+					OnPropertyChanged(nameof(UseSingleUnitEco));
+				}
+			}
+		}
+		bool fUseSingleUnitEco;
+
+		#endregion
+
 		#region UnitSpec
 
 		[VXML(true)]

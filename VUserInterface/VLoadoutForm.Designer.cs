@@ -59,6 +59,7 @@ namespace VUserInterface
 			this.AvailableCPLabel = new VLabel();
 			this.RestrictCheckBox = new VCheckControl();
 			this.UseUnitStatsCheckBox = new VCheckControl();
+			this.UseSingleUnitEcoCheckBox = new VCheckControl();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
 			this.SuspendLayout();
 			//
@@ -96,6 +97,14 @@ namespace VUserInterface
 			this.UseUnitStatsCheckBox.Caption = "Use Unit Statistics";
 			this.UseUnitStatsCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "UseUnitStats");
 			this.UseUnitStatsCheckBox.Location = DPIScalingHelper.GetScaledPoint(720, 20);
+			//
+			// UseSingleUnitEcoCheckBox
+			//
+			this.UseSingleUnitEcoCheckBox.Name = "UseSingleUnitEcoCheckBox";
+			this.UseSingleUnitEcoCheckBox.Caption = "Current Unit Cost Only";
+			this.UseSingleUnitEcoCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "UseSingleUnitEco");
+			this.UseSingleUnitEcoCheckBox.Location = DPIScalingHelper.GetScaledPoint(720, 20);
+			this.UseSingleUnitEcoCheckBox.Visible = false;
 			//
 			// AvailablePPLabel
 			//
@@ -277,6 +286,7 @@ namespace VUserInterface
 			this.Controls.Add(AvailableCPLabel);
 			this.Controls.Add(RestrictCheckBox);
 			this.Controls.Add(UseUnitStatsCheckBox);
+			this.Controls.Add(UseSingleUnitEcoCheckBox);
 			this.Name = "LoadoutForm";
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
@@ -307,6 +317,7 @@ namespace VUserInterface
 		private VStatsControl StatsControl;
 		private VCheckControl RestrictCheckBox;
 		private VCheckControl UseUnitStatsCheckBox;
+		private VCheckControl UseSingleUnitEcoCheckBox;
 		private Panel InfoPanel;
 		private Button StatsButton;
 		private Button IncomeButton;
