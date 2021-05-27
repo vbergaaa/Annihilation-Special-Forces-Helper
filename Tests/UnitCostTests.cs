@@ -298,5 +298,20 @@ namespace Tests
 
 			Assert.That(cost, Is.EqualTo(expected).Within(1));
 		}
+
+		[Test]
+		public void TestDNAStartCacheUpgrade()
+		{
+			var loadout = TestHelper.GetEmptyLoadout()
+				.AddBlackMarket()
+				.AddDNAStartLevel(5)
+				.AddUpgradeCache();
+
+			var helper = new UnitCostHelper(loadout);
+			var cost = helper.GetUnitCost(UnitType.BerserkerWarpLord, 0, UnitRankType.None);
+
+			Assert.That(cost.Kills, Is.EqualTo(2200 * 5).Within(1));
+			Assert.That(cost.Minerals, Is.EqualTo(30000 * 5));
+		}
 	}
 }

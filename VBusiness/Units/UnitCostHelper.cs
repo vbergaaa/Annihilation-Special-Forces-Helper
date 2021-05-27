@@ -74,6 +74,10 @@ namespace VBusiness.Units
 			{
 				infuseDiscount = loadout.Perks.DNAStart.DesiredLevel;
 			}
+			else if(shouldGrantDNAFreeInf1 && unitData.Type.IsDNA1())
+			{
+				infuseDiscount = 1;
+			}
 
 			var material = new UnitRecepePiece(unitData.BasicType, (int)unitData.Evolution, UnitRankType.None, 1);
 			var materialCost = GetRawUnitCost(material);
@@ -236,7 +240,13 @@ namespace VBusiness.Units
 
 		#endregion
 
-		#region FullKillRecycle
+		#region shouldGrantDNAFreeInf1
+
+		bool shouldGrantDNAFreeInf1;
+
+		#endregion
+
+		#region hasFullKillRecycle
 
 		bool hasFullKillRecycle;
 
@@ -250,6 +260,7 @@ namespace VBusiness.Units
 				qsCharges += 2;
 			}
 			hasUsedDNAStart = false;
+			shouldGrantDNAFreeInf1 = loadout.Perks.DNAStart.DesiredLevel == 5 && loadout.Perks.UpgradeCache.DesiredLevel == 1;
 			hasFullKillRecycle = loadout.Perks.KillRecycle.DesiredLevel == 5 && loadout.Perks.UpgradeCache.DesiredLevel == 1;
 		}
 
