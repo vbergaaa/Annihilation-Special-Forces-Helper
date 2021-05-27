@@ -58,7 +58,7 @@ namespace Tests
 
 		public static VLoadout AddKillRecycle(this VLoadout loadout, int kr)
 		{
-			loadout.IncomeManager.KillRecycle += kr;
+			loadout.Perks.KillRecycle.DesiredLevel = (byte)(kr / 5);
 			return loadout;
 		}
 
@@ -90,6 +90,12 @@ namespace Tests
 				ErrorReporter.ReportDebug("spec level must be 10 if you want all spec", () => specLevel != 10);
 				loadout.Perks.UpgradeCache.DesiredLevel = 1;
 			}
+			return loadout;
+		}
+
+		public static VLoadout AddUpgradeCache(this VLoadout loadout, bool cache = true)
+		{
+			loadout.Perks.UpgradeCache.DesiredLevel = (short)(cache ? 1 : 0);
 			return loadout;
 		}
 	}

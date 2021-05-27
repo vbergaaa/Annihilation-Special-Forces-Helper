@@ -277,5 +277,26 @@ namespace Tests
 
 			Assert.That(cost.Minerals, Is.EqualTo(expectedCost).Within(1));
 		}
+
+		[TestCase(UnitType.WarpLord, 0, 600, 25, 0)]
+		[TestCase(UnitType.WarpLord, 1, 600, 25, -150)]
+		[TestCase(UnitType.WarpLord, 2, 600, 25, -300)]
+		[TestCase(UnitType.WarpLord, 3, 600, 25, 0)]
+		[TestCase(UnitType.WarpLord, 4, 600, 25, 500)]
+		[TestCase(UnitType.WarpLord, 5, 600, 25, 1050)]
+		[TestCase(UnitType.DarkWarpLord, 0, 600, 25, -1250)]
+		[TestCase(UnitType.DarkWarpLord, 0, 1600, 25, -5450)]
+		[TestCase(UnitType.Dragoon, 0, 600, 250, -700 + 299)] //299 from rank C
+		public void TestKillRecycleCacheUpgrade(UnitType unit, int infuse, int vet, int killRec, double expected)
+		{
+			var loadout = TestHelper.GetEmptyLoadout()
+				.AddVeterancy(vet)
+				.AddKillRecycle(killRec)
+				.AddUpgradeCache();
+			var helper = new UnitCostHelper(loadout);
+			var cost = helper.GetUnitCost(unit, infuse, UnitRankType.None).Kills;
+
+			Assert.That(cost, Is.EqualTo(expected).Within(1));
+		}
 	}
 }

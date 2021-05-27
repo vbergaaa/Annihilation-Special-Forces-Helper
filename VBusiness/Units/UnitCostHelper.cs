@@ -79,7 +79,7 @@ namespace VBusiness.Units
 			var materialCost = GetRawUnitCost(material);
 			var mainUnitFeedCost = GetFeedCost(infusion, unitData.Type, excessKills, infuseDiscount);
 			var materialQty = UnitsRequiredForInfuse(infusion, infuseDiscount);
-			var killRecycleRefund = GetKillRecycleRefund(materialCost, infusion, infuseDiscount);
+			var killRecycleRefund = GetKillRecycleRefund(materialCost, infusion, infuseDiscount, materialQty);
 			var infuseRecycleRefund = GetInfuseRecycleRefund(infusion, infuseDiscount);
 			var totalKillCost = materialCost.Kills * materialQty + mainUnitFeedCost.Cost - infuseRecycleRefund - killRecycleRefund;
 			return new UnitCost(materialCost.Minerals * materialQty, totalKillCost, mainUnitFeedCost.ExcessKills);
@@ -160,7 +160,6 @@ namespace VBusiness.Units
 		double GetKillRecycleRefund(List<(UnitCost, bool)> costs)
 		{
 			var killRecycle = (double)loadout.IncomeManager.KillRecycle;
-
 			if (killRecycle > 0)
 			{
 				killRecycle /= 100.0;
@@ -174,16 +173,29 @@ namespace VBusiness.Units
 				{
 					refundAmount += GetKillRecycleRefund(orderedCosts[1].Item1);
 				}
+
+				if (hasFullKillRecycle && orderedCosts.Count > 2)
+				{
+					for (var i = 2; i < orderedCosts.Count; i++)
+					{
+						refundAmount += GetKillRecycleRefund(orderedCosts[i].Item1);
+					}
+				}
 				return refundAmount;
 			}
 			return 0;
 		}
 
-		double GetKillRecycleRefund(UnitCost materialCost, int infusion = 1, int infuseDiscount = 0)
+		double GetKillRecycleRefund(UnitCost materialCost, int infusion = 1, int infuseDiscount = 0, int materialCount = 1)
 		{
 			var killRecycle = (double)loadout.IncomeManager.KillRecycle;
 
-			if (killRecycle > 0)
+			if (hasFullKillRecycle)
+			{
+				killRecycle /= 100.0;
+				return killRecycle * materialCount * materialCost.ExcessKills;
+			}
+			else if (killRecycle > 0)
 			{
 				killRecycle /= 100.0;
 				return killRecycle * (infusion - infuseDiscount) * materialCost.ExcessKills;
@@ -224,10 +236,17 @@ namespace VBusiness.Units
 
 		#endregion
 
+		#region FullKillRecycle
+
+		bool hasFullKillRecycle;
+
+		#endregion
+
 		void ResetCalculationVariables()
 		{
 			qsCharges = loadout.Perks.QuickStart.DesiredLevel;
 			hasUsedDNAStart = false;
+			hasFullKillRecycle = loadout.Perks.KillRecycle.DesiredLevel == 5 && loadout.Perks.UpgradeCache.DesiredLevel == 1;
 		}
 
 		#endregion
