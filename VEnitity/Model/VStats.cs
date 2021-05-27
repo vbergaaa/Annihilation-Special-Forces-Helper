@@ -415,7 +415,7 @@ namespace VEntityFramework.Model
 		#region PlayerStats
 
 		double PlayerAttack => Attack;
-		double PlayerAttackSpeed => AttackSpeed;
+		double PlayerAttackSpeed => AttackSpeed * Acceleration / 100;
 		double PlayerHealth => Health;
 		double PlayerHealthArmor => HealthArmor;
 		double PlayerShields => Shields;

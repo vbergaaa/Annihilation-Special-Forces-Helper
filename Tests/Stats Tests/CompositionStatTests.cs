@@ -15,26 +15,26 @@ namespace Tests.Stats_Tests
 		// They're far too complicated to work out manually.
 		// They are just simply what they were when I made this test,
 		// so I don't accidently change something
-		[TestCase(DifficultyLevel.Brutal,		3684331.87, 379487907.43)]
-		[TestCase(DifficultyLevel.Divine,       898983.86, 5006238.04)]
-		[TestCase(DifficultyLevel.Easy,         5323594.36, 379487907.43)]
-		[TestCase(DifficultyLevel.Hard,         4451032.61, 379487907.43)]
-		[TestCase(DifficultyLevel.Hell,         2137632.35, 355534217.12)]
-		[TestCase(DifficultyLevel.Impossible,   184116.02, 1086245.25)]
-		[TestCase(DifficultyLevel.Insane,       3888504.95, 379487907.43)]
-		[TestCase(DifficultyLevel.Mythic,       1473574.14, 19666151.44)]
-		[TestCase(DifficultyLevel.Nightmare,    3016633.29, 379487907.43)]
-		[TestCase(DifficultyLevel.Normal,       5336903.33, 379487907.43)]
-		[TestCase(DifficultyLevel.Titanic,      1842527.37, 76179651.25)]
-		[TestCase(DifficultyLevel.Torment,      2434846.99, 362301325.40)]
-		[TestCase(DifficultyLevel.VeryEasy,		5332221.36, 379487907.43)]
-		[TestCase(DifficultyLevel.VeryHard,		4197127.85, 379487907.43)]
+		[TestCase(DifficultyLevel.Brutal,		9812134, 199373199)]
+		[TestCase(DifficultyLevel.Divine,       2117927, 2656003)]
+		[TestCase(DifficultyLevel.Easy,         14177828, 199373199)]
+		[TestCase(DifficultyLevel.Hard,         11854016, 199373199)]
+		[TestCase(DifficultyLevel.Hell,         5386411, 188366064)]
+		[TestCase(DifficultyLevel.Impossible,   426217, 580488)]
+		[TestCase(DifficultyLevel.Insane,       10355889, 199373199)]
+		[TestCase(DifficultyLevel.Mythic,       3531988, 10327791)]
+		[TestCase(DifficultyLevel.Nightmare,    8033915, 199373199)]
+		[TestCase(DifficultyLevel.Normal,       14213273, 199373199)]
+		[TestCase(DifficultyLevel.Titanic,      4529566, 39874158)]
+		[TestCase(DifficultyLevel.Torment,      6235095, 191484105)]
+		[TestCase(DifficultyLevel.VeryEasy,		14200803, 199373199)]
+		[TestCase(DifficultyLevel.VeryHard,		11177816, 199373199)]
 		public void TestCalculatedStats(DifficultyLevel difficulty, double expectedDamage, double expectedToughness)
 		{
 			var loadout = LoadMaxAll();
 			loadout.UnitConfiguration.DifficultyLevel = difficulty;
-			Assert.That(loadout.Stats.Damage, Is.EqualTo(expectedDamage).Within(0.01));
-			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expectedToughness).Within(0.01));
+			Assert.That(loadout.Stats.Damage, Is.EqualTo(expectedDamage).Within(1));
+			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expectedToughness).Within(1));
 		}
 
 		VLoadout LoadMaxAll()
