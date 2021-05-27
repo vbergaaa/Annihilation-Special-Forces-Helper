@@ -66,5 +66,11 @@ namespace Tests
 			loadout.Perks.QuickStart.DesiredLevel += (byte)charges;
 			return loadout;
 		}
+
+		public static VLoadout AddDNAStartLevel(this VLoadout loadout, int level)
+		{
+			loadout.Perks.DNAStart.DesiredLevel += (byte)level;
+			return loadout;
+		}
 	}
 }

@@ -64,33 +64,37 @@ namespace VBusiness.Units
 				return new UnitCost(0, 0, excessKills);
 			}
 
-			var isUsingQs = false;
+			var infuseDiscount = 0;
 			if (unitData.Type.IsCoreBasic() && infusion >= 3 && TryUseQSCharge())
 			{
-				isUsingQs = true;
+				infuseDiscount = 3;
+			}
+
+			if (unitData.Type.IsDNA1() && infusion >= loadout.Perks.DNAStart.DesiredLevel && TryUseDNAStart())
+			{
+				infuseDiscount = loadout.Perks.DNAStart.DesiredLevel;
 			}
 
 			var material = new UnitRecepePiece(unitData.BasicType, (int)unitData.Evolution, UnitRankType.None, 1);
 			var materialCost = GetRawUnitCost(material);
-			var mainUnitFeedCost = GetFeedCost(infusion, unitData.Type, excessKills, isUsingQs);
-			var materialQty = UnitsRequiredForInfuse(infusion, isUsingQs);
-			var killRecycleRefund = GetKillRecycleRefund(materialCost, infusion, isUsingQs);
-			var infuseRecycleRefund = GetInfuseRecycleRefund(infusion, isUsingQs);
+			var mainUnitFeedCost = GetFeedCost(infusion, unitData.Type, excessKills, infuseDiscount);
+			var materialQty = UnitsRequiredForInfuse(infusion, infuseDiscount);
+			var killRecycleRefund = GetKillRecycleRefund(materialCost, infusion, infuseDiscount);
+			var infuseRecycleRefund = GetInfuseRecycleRefund(infusion, infuseDiscount);
 			var totalKillCost = materialCost.Kills * materialQty + mainUnitFeedCost.Cost - infuseRecycleRefund - killRecycleRefund;
 			return new UnitCost(materialCost.Minerals * materialQty, totalKillCost, mainUnitFeedCost.ExcessKills);
 		}
 
-		int GetInfuseRecycleRefund(int infusion, bool isUsingQs)
+		int GetInfuseRecycleRefund(int infusion, int infuseDiscount)
 		{
-			infusion -= isUsingQs ? 3 : 0;
-			return infusion * loadout.IncomeManager.InfuseRecycle;
+			return (infusion - infuseDiscount) * loadout.IncomeManager.InfuseRecycle;
 		}
 
-		(double Cost, int ExcessKills) GetFeedCost(int infuse, UnitType unitType, int currentUnitFeed, bool isUsingQs)
+		(double Cost, int ExcessKills) GetFeedCost(int infuse, UnitType unitType, int currentUnitFeed, int infuseDiscount)
 		{
+			ErrorReporter.ReportDebug($"param:{nameof(infuseDiscount)} should never be higher then param:{nameof(infuse)}", () => infuseDiscount > infuse);
 			ErrorReporter.ReportDebug("Infuse doesn't go there", () => infuse < 0 || infuse > 10);
-			var coreCost = infuse * (infuse + 1) * 100;
-			coreCost -= isUsingQs ? 1200 : 0;
+			var coreCost = infuse * (infuse + 1) * 100 - infuseDiscount * (infuseDiscount + 1) * 100;
 
 			currentUnitFeed = unitType.IsCoreBasic()
 				? loadout.IncomeManager.Veterancy
@@ -101,12 +105,14 @@ namespace VBusiness.Units
 			return (cost, excessKills);
 		}
 
-		int UnitsRequiredForInfuse(double infuse, bool isUsingQs)
+		int UnitsRequiredForInfuse(double infuse, double infuseDiscount)
 		{
 			var x = (infuse + 1) / 2;
 			var unitsRequired = (int)(Math.Floor(x) * Math.Floor(x + 0.5));
 
-			return isUsingQs ? unitsRequired - 4 : unitsRequired;
+			var y = (infuseDiscount + 1) / 2;
+			unitsRequired -= (int)(Math.Floor(y) * Math.Floor(y + 0.5));
+			return unitsRequired;
 		}
 
 		UnitCost GetBaseCreationCost(IUnitData unitData)
@@ -168,15 +174,14 @@ namespace VBusiness.Units
 			return 0;
 		}
 
-		double GetKillRecycleRefund(UnitCost materialCost, int infusion = 1, bool isUsingQs = false)
+		double GetKillRecycleRefund(UnitCost materialCost, int infusion = 1, int infuseDiscount = 0)
 		{
 			var killRecycle = (double)loadout.IncomeManager.KillRecycle;
 
-			infusion -= isUsingQs ? 3 : 0;
 			if (killRecycle > 0)
 			{
 				killRecycle /= 100.0;
-				return killRecycle * infusion * materialCost.ExcessKills;
+				return killRecycle * (infusion - infuseDiscount) * materialCost.ExcessKills;
 			}
 
 			return 0;
@@ -195,13 +200,29 @@ namespace VBusiness.Units
 			}
 			return false;
 		}
-		int qsCharges { get; set; }
+		int qsCharges;
+
+		#endregion
+
+		#region DNA Start
+
+		bool TryUseDNAStart()
+		{
+			if (!hasUsedDNAStart)
+			{
+				hasUsedDNAStart = true;
+				return true;
+			}
+			return false;
+		}
+		bool hasUsedDNAStart;
 
 		#endregion
 
 		void ResetCalculationVariables()
 		{
 			qsCharges = loadout.Perks.QuickStart.DesiredLevel;
+			hasUsedDNAStart = false;
 		}
 
 		#endregion

@@ -217,5 +217,24 @@ namespace Tests
 			Assert.That(cost.Minerals, Is.EqualTo(expectedMins).Within(1));
 			Assert.That(cost.Kills, Is.EqualTo(expectedKills).Within(1));
 		}
+
+		[TestCase(UnitType.DarkWarpLord, 0, 0, 30000, 1000)]
+		[TestCase(UnitType.DarkWarpLord, 5, 0, 66000, 4000)]
+		[TestCase(UnitType.DarkWarpLord, 5, 1, 62000, 3800)]
+		[TestCase(UnitType.DarkWarpLord, 5, 2, 58000, 3400)]
+		[TestCase(UnitType.DarkWarpLord, 5, 3, 50000, 2800)]
+		[TestCase(UnitType.DarkWarpLord, 5, 4, 42000, 2000)]
+		[TestCase(UnitType.DarkWarpLord, 5, 5, 30000, 1000)]
+		public void TestDNAStart(UnitType unit, int infuse, int dnaStart, double expectedMins, double expectedKills)
+		{
+			var loadout = TestHelper.GetEmptyLoadout()
+				.AddVeterancy(200)
+				.AddDNAStartLevel(dnaStart);
+			var helper = new UnitCostHelper(loadout);
+			var cost = helper.GetUnitCost(unit, infuse, UnitRankType.None);
+
+			Assert.That(cost.Minerals, Is.EqualTo(expectedMins).Within(1));
+			Assert.That(cost.Kills, Is.EqualTo(expectedKills).Within(1));
+		}
 	}
 }
