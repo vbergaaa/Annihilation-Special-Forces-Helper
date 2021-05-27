@@ -21,5 +21,12 @@ namespace VBusiness.Perks
 		protected override short MaxLevelCore => 3;
 
 		protected override string PerkName => "Quick Start";
+
+		protected override void OnLevelChanged(int difference)
+		{
+			base.OnLevelChanged(difference);
+			PerkCollection.Loadout.IncomeManager.RefreshPropertyBinding(nameof(PerkCollection.Loadout.IncomeManager.UnitKillCost));
+			PerkCollection.Loadout.IncomeManager.RefreshPropertyBinding(nameof(PerkCollection.Loadout.IncomeManager.UnitMineralCost));
+		}
 	}
 }

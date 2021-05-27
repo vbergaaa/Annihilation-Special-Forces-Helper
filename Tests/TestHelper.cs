@@ -72,5 +72,11 @@ namespace Tests
 			loadout.Perks.DNAStart.DesiredLevel += (byte)level;
 			return loadout;
 		}
+
+		public static VLoadout AddBlackMarket(this VLoadout loadout, bool addBM = true)
+		{
+			loadout.Perks.BlackMarket.DesiredLevel = (short)(addBM ? 1 : 0);
+			return loadout;
+		}
 	}
 }

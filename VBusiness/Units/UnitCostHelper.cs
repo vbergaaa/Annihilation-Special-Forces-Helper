@@ -122,6 +122,11 @@ namespace VBusiness.Units
 				var cost = unitData.Type.GetBasicUnitRawCost();
 				return new UnitCost(cost, 0, loadout.IncomeManager.Veterancy);
 			}
+			else if (unitData.Evolution == Evolution.DNA1 && !unitData.Type.IsHidden() && loadout.Perks.BlackMarket.DesiredLevel > 0)
+			{
+				var mineralCost = unitData.BasicType.GetBasicUnitRawCost() * 15;
+				return new UnitCost(mineralCost, 2200, loadout.IncomeManager.Veterancy);
+			}
 			else
 			{
 				var cost = new UnitCost(0, 0);

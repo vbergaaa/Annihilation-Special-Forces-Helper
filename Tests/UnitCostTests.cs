@@ -236,5 +236,24 @@ namespace Tests
 			Assert.That(cost.Minerals, Is.EqualTo(expectedMins).Within(1));
 			Assert.That(cost.Kills, Is.EqualTo(expectedKills).Within(1));
 		}
+
+		[TestCase(UnitType.DarkWarpLord, 0, 600, 200, 25, 0, 30000, 2200)]
+		[TestCase(UnitType.DarkWarpLord, 1, 600, 200, 25, 0, 34000, 1550)]
+		[TestCase(UnitType.DarkWarpLord, 2, 600, 200, 25, 0, 38000, 900)]
+		[TestCase(UnitType.DarkWarpLord, 2, 600, 200, 25, 1, 34000, 1550)]
+		public void TestBlackMarket(UnitType unit, int infuse, int vet, int infRec, int killRec, int dnaStart, double expectedMins, double expectedKills)
+		{
+			var loadout = TestHelper.GetEmptyLoadout()
+				.AddVeterancy(vet)
+				.AddBlackMarket()
+				.AddKillRecycle(killRec)
+				.AddInfuseRecycle(infRec)
+				.AddDNAStartLevel(dnaStart);
+			var helper = new UnitCostHelper(loadout);
+			var cost = helper.GetUnitCost(unit, infuse, UnitRankType.None);
+
+			Assert.That(cost.Minerals, Is.EqualTo(expectedMins).Within(1));
+			Assert.That(cost.Kills, Is.EqualTo(expectedKills).Within(1));
+		}
 	}
 }
