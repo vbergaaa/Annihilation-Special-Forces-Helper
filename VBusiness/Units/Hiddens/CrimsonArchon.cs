@@ -53,9 +53,9 @@ namespace VBusiness.Units
 		{
 			get
 			{
-				yield return new UnitRecepePiece(UnitType.DarkArchon, 10, UnitRankType.SXD, 1);
 				yield return new UnitRecepePiece(UnitType.Ascendant, 10, UnitRankType.X, 1);
 				yield return new UnitRecepePiece(UnitType.BloodAvenger, 5, UnitRankType.X, 1);
+				yield return new UnitRecepePiece(UnitType.DarkArchon, 10, UnitRankType.SXD, 1);
 			}
 		}
 

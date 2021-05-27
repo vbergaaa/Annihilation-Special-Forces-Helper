@@ -51,8 +51,8 @@ namespace VBusiness.Units
 		{
 			get
 			{
-				yield return new UnitRecepePiece(UnitType.BladeDancer, 7, UnitRankType.X, 1);
 				yield return new UnitRecepePiece(UnitType.SplitterAdept, 3, UnitRankType.SS, 1);
+				yield return new UnitRecepePiece(UnitType.BladeDancer, 7, UnitRankType.X, 1);
 				yield return new UnitRecepePiece(UnitType.LightAdept, 10, UnitRankType.SSS, 1);
 			}
 		}

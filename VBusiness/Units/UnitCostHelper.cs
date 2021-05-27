@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using VBusiness.HelperClasses;
+using VBusiness.Loadouts;
 using VEntityFramework;
 using VEntityFramework.Model;
 
@@ -59,6 +59,9 @@ namespace VBusiness.Units
 
 		UnitCost GetInfusionCosts(IUnitData unitData, int infusion, int excessKills)
 		{
+#if DEBUG
+			RecordDNAStartUnit(unitData, infusion);
+#endif
 			if (infusion == 0)
 			{
 				return new UnitCost(0, 0, excessKills);
@@ -262,6 +265,10 @@ namespace VBusiness.Units
 			hasUsedDNAStart = false;
 			shouldGrantDNAFreeInf1 = loadout.Perks.DNAStart.DesiredLevel == 5 && loadout.Perks.UpgradeCache.DesiredLevel == 1;
 			hasFullKillRecycle = loadout.Perks.KillRecycle.DesiredLevel == 5 && loadout.Perks.UpgradeCache.DesiredLevel == 1;
+
+#if DEBUG
+			firstDNAStart = UnitType.None;
+#endif
 		}
 
 		#endregion
@@ -289,6 +296,23 @@ namespace VBusiness.Units
 			ErrorReporter.ReportDebug("This should always be a dna1 unit", () => !type.IsDNA1());
 		}
 
+		#endregion
+
+		#region DEBUG
+#if DEBUG
+		void RecordDNAStartUnit(IUnitData unitData, int infusion)
+		{
+			if (unitData.Type.IsDNA1() && infusion >= loadout.Perks.DNAStart.DesiredLevel)
+			{
+				// we need to use a loadout that does not contain spec for the error reporter as it can cause an error if two units have the same cost but spec makes one cheaper then the other
+				var emptyLoadout = new Loadout();
+				ErrorReporter.ReportDebug($"DNA start should have used the most expensive DNA. It was used on the DNA with a {firstDNAStart} as a base unit instead of a {unitData.BasicType} as the base unit. Consider changing the recepe order to ensure this occurs.", () => firstDNAStart != UnitType.None && firstDNAStart.GetBasicUnitMineralCost(emptyLoadout) < unitData.BasicType.GetBasicUnitMineralCost(emptyLoadout));
+				firstDNAStart = firstDNAStart != UnitType.None ? firstDNAStart : unitData.BasicType;
+			}
+		}
+
+		UnitType firstDNAStart;
+#endif
 		#endregion
 	}
 

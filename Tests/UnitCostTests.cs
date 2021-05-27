@@ -299,8 +299,11 @@ namespace Tests
 			Assert.That(cost, Is.EqualTo(expected).Within(1));
 		}
 
-		[Test]
-		public void TestDNAStartCacheUpgrade()
+		[TestCase(UnitType.BerserkerWarpLord, 0, 30000 * 5, 2200 * 5)]
+		[TestCase(UnitType.DarkWarpLord, 0, 30000, 2200)]
+		[TestCase(UnitType.DarkWarpLord, 1, 30000, 2200)]
+		[TestCase(UnitType.DarkWarpLord, 2, 34000, 2800)]
+		public void TestDNAStartCacheUpgrade(UnitType unit, int inf, double expectedMinerals, double expectedKills)
 		{
 			var loadout = TestHelper.GetEmptyLoadout()
 				.AddBlackMarket()
@@ -308,10 +311,10 @@ namespace Tests
 				.AddUpgradeCache();
 
 			var helper = new UnitCostHelper(loadout);
-			var cost = helper.GetUnitCost(UnitType.BerserkerWarpLord, 0, UnitRankType.None);
+			var cost = helper.GetUnitCost(unit, inf, UnitRankType.None);
 
-			Assert.That(cost.Kills, Is.EqualTo(2200 * 5).Within(1));
-			Assert.That(cost.Minerals, Is.EqualTo(30000 * 5));
+			Assert.That(cost.Kills, Is.EqualTo(expectedKills).Within(1));
+			Assert.That(cost.Minerals, Is.EqualTo(expectedMinerals));
 		}
 	}
 }

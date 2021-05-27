@@ -53,9 +53,9 @@ namespace VBusiness.Units
 		{
 			get
 			{
+				yield return new UnitRecepePiece(UnitType.Disruptor, 3, UnitRankType.SS, 1);
 				yield return new UnitRecepePiece(UnitType.Colossus, 7, UnitRankType.X, 1);
 				yield return new UnitRecepePiece(UnitType.WrathWalker, 3, UnitRankType.SS, 1);
-				yield return new UnitRecepePiece(UnitType.Disruptor, 3, UnitRankType.SS, 1);
 			}
 		}
 
