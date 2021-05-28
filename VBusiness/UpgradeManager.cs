@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.HelperClasses;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
 
@@ -148,6 +149,24 @@ namespace VBusiness
 				Stats.RefreshPropertyBinding("Toughness");
 				Stats.RefreshPropertyBinding("Recovery");
 				Stats.RefreshPropertyBinding("ShieldsArmor");
+			}
+		}
+
+		#endregion
+
+		#region Cost
+
+		public override double UpgradesCost
+		{
+			get
+			{
+				var cost = VCalculator.Calculate(500, 100, 0, AttackUpgrade);
+				cost += VCalculator.Calculate(1000, 1500, 0, AttackSpeedUpgrade);
+				cost += VCalculator.Calculate(400, 50, 0, HealthUpgrade);
+				cost += VCalculator.Calculate(400, 70, 0, HealthArmorUpgrade);
+				cost += VCalculator.Calculate(400, 50, 0, ShieldsUpgrade);
+				cost += VCalculator.Calculate(400, 70, 0, ShieldsArmorUpgrade);
+				return cost;
 			}
 		}
 

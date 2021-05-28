@@ -20,6 +20,13 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Stats
+
+		[VXML(false)]
+		public VLoadout Loadout => Parent as VLoadout;
+
+		#endregion
+
 		#region Properties
 
 		#region AttackUpgrade
@@ -35,6 +42,7 @@ namespace VEntityFramework.Model
 					fAttackUpgrade = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(AttackUpgrade));
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.LoadoutMineralCost));
 				}
 			}
 		}
@@ -55,6 +63,7 @@ namespace VEntityFramework.Model
 					fAttackSpeedUpgrade = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(AttackSpeedUpgrade));
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.LoadoutMineralCost));
 				}
 			}
 		}
@@ -76,6 +85,7 @@ namespace VEntityFramework.Model
 					fHealthUpgrade = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(HealthUpgrade));
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.LoadoutMineralCost));
 				}
 			}
 		}
@@ -96,6 +106,7 @@ namespace VEntityFramework.Model
 					fHealthArmorUpgrade = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(HealthArmorUpgrade));
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.LoadoutMineralCost));
 				}
 			}
 		}
@@ -116,6 +127,7 @@ namespace VEntityFramework.Model
 					fShieldsUpgrade = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(ShieldsUpgrade));
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.LoadoutMineralCost));
 				}
 			}
 		}
@@ -136,6 +148,7 @@ namespace VEntityFramework.Model
 					fShieldsArmorUpgrade = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(ShieldsArmorUpgrade));
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.LoadoutMineralCost));
 				}
 			}
 		}
@@ -153,6 +166,8 @@ namespace VEntityFramework.Model
 		public int MaxShieldsArmor => 100;
 
 		#endregion
+
+		public virtual double UpgradesCost { get; }
 
 		#endregion
 
