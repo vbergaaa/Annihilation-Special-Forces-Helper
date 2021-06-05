@@ -27,5 +27,7 @@ namespace VBusiness.Rooms
 				new EnemyQuantity(EnemyType.Zergling, 40),
 			};
 		}
+
+		protected internal override RoomNumber AdditionalOpenRooms => RoomNumber.Room8;
 	}
 }

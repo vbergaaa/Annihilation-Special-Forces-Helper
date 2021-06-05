@@ -25,6 +25,8 @@ namespace Tests
 					Assert.That(() => room.GetBoss, Throws.Nothing);
 					Assert.That(() => room.MineralPatches, Throws.Nothing);
 					Assert.That(() => room.RoomNumber, Throws.Nothing);
+
+					Assert.That(room.AdditionalOpenRooms, Is.EqualTo(RoomNumber.None).Or.GreaterThan(room.RoomNumber));
 				}
 			}
 		}

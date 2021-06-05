@@ -26,5 +26,7 @@ namespace VBusiness.Rooms
 				new EnemyQuantity(EnemyType.InfestedTerran, 18),
 			};
 		}
+
+		protected internal override RoomNumber AdditionalOpenRooms => RoomNumber.Room3;
 	}
 }

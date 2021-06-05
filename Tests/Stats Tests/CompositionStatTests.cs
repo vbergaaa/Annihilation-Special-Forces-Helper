@@ -17,7 +17,7 @@ namespace Tests.Stats_Tests
 		// so I don't accidently change something
 		[TestCase(DifficultyLevel.Brutal,		9812134, 199373199)]
 		[TestCase(DifficultyLevel.Divine,       2117927, 2656003)]
-		[TestCase(DifficultyLevel.Easy,         14177992, 199373199)]
+		[TestCase(DifficultyLevel.Easy,         14178245, 199373199)]
 		[TestCase(DifficultyLevel.Hard,         11854016, 199373199)]
 		[TestCase(DifficultyLevel.Hell,         5386411, 188366064)]
 		[TestCase(DifficultyLevel.Impossible,   426217, 580488)]

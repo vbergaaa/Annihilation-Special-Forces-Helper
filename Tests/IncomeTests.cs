@@ -7,8 +7,8 @@ namespace Tests
 {
 	public class IncomeTests
 	{
-		[TestCase(RoomNumber.Room8, DifficultyLevel.Easy, 9 * 60, 0)]
-		[TestCase(RoomNumber.Room8, DifficultyLevel.Impossible, 5 * 60, 60)]
+		[TestCase(RoomNumber.Room7, DifficultyLevel.Easy, 9 * 100, 0)]
+		[TestCase(RoomNumber.Room7, DifficultyLevel.Impossible, 5 * 100, 100)]
 		[TestCase(RoomNumber.Room5, DifficultyLevel.Easy, 10 * 20 + 40 * 4, 0)]
 		[TestCase(RoomNumber.Room5, DifficultyLevel.Impossible, 10 * 35 + 80 * 5, 80)]
 		public void TestResourcesPerWave(RoomNumber room, DifficultyLevel diff, double expectedMinerals, double expectedKills)
