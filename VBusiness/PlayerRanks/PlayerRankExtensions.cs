@@ -27,5 +27,10 @@ namespace VBusiness.PlayerRanks
 				_ => (26 + (int)rank) / 3 // should cover all ranks after dominator
 			};
 		}
+
+		public static DifficultyLevel GetRecommendedDifficulty(this PlayerRank rank)
+		{
+			return (DifficultyLevel)GetMaxPerkPage(rank);
+		}
 	}
 }

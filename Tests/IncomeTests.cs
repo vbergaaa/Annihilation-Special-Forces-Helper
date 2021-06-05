@@ -14,8 +14,8 @@ namespace Tests
 		public void TestResourcesPerWave(RoomNumber room, DifficultyLevel diff, double expectedMinerals, double expectedKills)
 		{
 			var loadout = TestHelper.GetEmptyLoadout();
-			loadout.SetFarmRoom(room);
 			loadout.SetDifficulty(diff);
+			loadout.SetFarmRoom(room);
 			var calc = new IncomeCalculator(loadout);
 
 			Assert.That(calc.GetMineralsPerWave(), Is.EqualTo(expectedMinerals));

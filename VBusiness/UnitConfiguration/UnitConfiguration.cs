@@ -73,11 +73,14 @@ namespace VBusiness
 				{
 					base.DifficultyLevel = value;
 
-					Difficulty = null;
 					if (value != DifficultyLevel.None)
 					{
-						Difficulty = Difficulty = DifficultyHelper.New(value);
+						Difficulty = DifficultyHelper.New(value);
 						Loadout.IncomeManager.FarmRoom = (RoomNumber)Math.Min((int)Loadout.IncomeManager.FarmRoom, (int)Difficulty.RoomToClear);
+					}
+					else
+					{
+						Difficulty = null;
 					}
 
 					Loadout.Stats.RefreshPropertyBinding("Toughness");
@@ -92,7 +95,7 @@ namespace VBusiness
 
 		public override VDifficulty Difficulty
 		{
-			get => base.Difficulty ?? new Normal(); //TODO: make this default to recommended from player rank
+			get => base.Difficulty ?? DifficultyHelper.New(Profile.Profile.GetProfile().GetRecommendedDifficulty());
 			set
 			{
 				if (base.Difficulty != value)

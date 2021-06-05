@@ -1,4 +1,5 @@
 ﻿using System;
+using VBusiness.PlayerRanks;
 using VBusiness.Souls;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
@@ -76,6 +77,11 @@ namespace VBusiness.Profile
 		protected override string GetSaveNameForXML()
 		{
 			return Name;
+		}
+
+		internal DifficultyLevel GetRecommendedDifficulty()
+		{
+			return Rank.GetRecommendedDifficulty();
 		}
 
 		#endregion
