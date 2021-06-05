@@ -8,6 +8,7 @@ using EnumsNET;
 using System.Linq;
 using VBusiness.Units;
 using VBusiness.Loadouts;
+using VBusiness.Rooms;
 
 namespace VUserInterface
 {
@@ -70,6 +71,16 @@ namespace VUserInterface
 			get => fUnitSpecList ??= BindingHelper<UnitType>.ConvertForBinding(VUnit.ValidSpecTypes().ToList());
 		}
 		List<object> fUnitSpecList;
+
+		#endregion
+
+		#region FarmRoom
+
+		List<object> FarmRoomList
+		{
+			get => fFarmRoomList ??= BindingHelper<RoomNumber>.ConvertForBinding(Enums.GetValues<RoomNumber>().ToList());
+		}
+		List<object> fFarmRoomList;
 
 		#endregion
 	}

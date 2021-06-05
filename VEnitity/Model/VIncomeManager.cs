@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Data;
+﻿using VBusiness.Rooms;
+using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
@@ -147,6 +148,27 @@ namespace VEntityFramework.Model
 		public virtual double UnitMineralCost { get; }
 		public virtual double UnitKillCost { get; }
 
+		#region Persistent Properties
+
+		[VXML(true)]
+		public virtual RoomNumber FarmRoom
+		{
+			get => fFarmRoom;
+			set
+			{
+				if (value != fFarmRoom)
+				{
+					fFarmRoom = value;
+					HasChanges = true;
+					OnPropertyChanged(nameof(FarmRoom));
+				}
+			}
+		}
+		RoomNumber fFarmRoom;
+
+		#endregion
+
+		[VXML(false)]
 		public VLoadout Loadout { get; }
 	}
 }

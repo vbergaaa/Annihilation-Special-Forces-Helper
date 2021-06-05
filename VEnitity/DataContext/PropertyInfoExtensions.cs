@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using VBusiness.Rooms;
 using VEntityFramework.Model;
 
 namespace VEntityFramework.Data
@@ -114,6 +115,7 @@ namespace VEntityFramework.Data
 				"DifficultyLevel" => EnumHelper.GetEnumFromDescription<DifficultyLevel>(value),
 				"SoulType" => EnumHelper.GetEnumFromDescription<SoulType>(value),
 				"UnitType" => EnumHelper.GetEnumFromDescription<UnitType>(value),
+				"RoomNumber" => EnumHelper.GetEnumFromDescription<RoomNumber>(value),
 				_ => HandleUnknownType(propertyType),
 			};
 		}

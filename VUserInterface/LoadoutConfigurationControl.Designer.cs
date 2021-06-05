@@ -38,6 +38,8 @@ namespace VUserInterface
 			this.UpgradeControl = new UpgradeControl();
 			this.UpgradesLabel = new VLabel();
 			this.SettingsLabel = new VLabel();
+			this.FarmRoomDropBox = new VDropBox();
+			this.IncomeLabel = new VLabel();
 			this.SoloBonusCheckBox = new VCheckControl();
 			this.AdrenalineRushCheckBox = new VCheckControl();
 			this.DifficultyDropBox = new VDropBox();
@@ -81,6 +83,13 @@ namespace VUserInterface
 			this.UnitSpecDropBox.Location = DPIScalingHelper.GetScaledPoint(125, 90);
 			this.UnitSpecDropBox.Caption = "UnitSpec:";
 			//
+			// FarmRoomComboBox
+			//
+			this.FarmRoomDropBox.DataBindings.Add("SelectedValue", BindingSource, "IncomeManager.FarmRoom");
+			this.FarmRoomDropBox.List = FarmRoomList;
+			this.FarmRoomDropBox.Location = DPIScalingHelper.GetScaledPoint(125, 180);
+			this.FarmRoomDropBox.Caption = "Farming Room:";
+			//
 			// UpgradesLabel
 			//
 			this.UpgradesLabel.Location = DPIScalingHelper.GetScaledPoint(300, 30);
@@ -93,6 +102,12 @@ namespace VUserInterface
 			this.SettingsLabel.Name = "SettingsLabel";
 			this.SettingsLabel.Text = "Settings";
 			//
+			// IncomeLabel
+			//
+			this.IncomeLabel.Location = DPIScalingHelper.GetScaledPoint(50, 160);
+			this.IncomeLabel.Name = "IncomeLabel";
+			this.IncomeLabel.Text = "Income";
+			//
 			// VLoadoutConfigurationControl
 			//
 			this.Controls.Add(UpgradeControl);
@@ -101,7 +116,9 @@ namespace VUserInterface
 			this.Controls.Add(AdrenalineRushCheckBox);
 			this.Controls.Add(DifficultyDropBox);
 			this.Controls.Add(UnitSpecDropBox);
+			this.Controls.Add(FarmRoomDropBox);
 			this.Controls.Add(SettingsLabel);
+			this.Controls.Add(IncomeLabel);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).EndInit();
 		}
@@ -110,11 +127,13 @@ namespace VUserInterface
 
 		VLabel UpgradesLabel;
 		VLabel SettingsLabel;
+		VLabel IncomeLabel;
 		BindingSource BindingSource;
 		UpgradeControl UpgradeControl;
 		VCheckControl SoloBonusCheckBox;
 		VCheckControl AdrenalineRushCheckBox;
 		VDropBox DifficultyDropBox;
 		VDropBox UnitSpecDropBox;
+		VDropBox FarmRoomDropBox;
 	}
 }
