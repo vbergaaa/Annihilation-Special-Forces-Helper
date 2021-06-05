@@ -23,6 +23,8 @@ namespace VBusiness.Enemies
 
 		public override double HealthArmorIncrement => 3.5;
 
+		public override int MineralBounty => 35;
+
 		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Roach, 8) };
 
 		internal override IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(int tierUpLevels)

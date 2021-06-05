@@ -19,5 +19,8 @@ namespace VBusiness.Enemies
 		public override double HealthIncrement => 100;
 
 		public override double HealthArmorIncrement => 5;
+
+		public override int MineralBounty => 12;
+		public override int KillBounty => 2;
 	}
 }

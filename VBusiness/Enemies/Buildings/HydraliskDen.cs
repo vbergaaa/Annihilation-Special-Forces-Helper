@@ -22,6 +22,8 @@ namespace VBusiness.Enemies
 
 		public override double HealthArmorIncrement => 5.5;
 
+		public override int MineralBounty => 5000;
+
 		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Hydralisk, 20) };
 	}
 }

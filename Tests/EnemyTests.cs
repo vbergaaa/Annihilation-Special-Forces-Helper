@@ -42,6 +42,25 @@ namespace Tests
 					{
 						Assert.That(enemy.Attack, Is.EqualTo(0), type.ToString());
 					}
+					Assert.That(() => enemy.KillBounty, Throws.Nothing);
+					Assert.That(() => enemy.MineralBounty, Throws.Nothing);
+				}
+			}
+		}
+
+
+		[Test]
+		public void TestPropertiesDoNotThrow()
+		{
+			var enemyTypes = Enums.GetValues<EnemyType>();
+
+			foreach (var type in enemyTypes)
+			{
+				if (type != EnemyType.None)
+				{
+					var enemy = EnemyUnit.New(type);
+					Assert.That(() => enemy.KillBounty, Throws.Nothing);
+					Assert.That(() => enemy.MineralBounty, Throws.Nothing);
 				}
 			}
 		}

@@ -22,6 +22,8 @@ namespace VBusiness.Enemies
 
 		public override double HealthArmorIncrement => 2;
 
+		public override int MineralBounty => 2000;
+
 		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.InfestedTerran, 20) };
 	}
 }

@@ -17,6 +17,8 @@ namespace VBusiness.Enemies
 		public abstract double AttackIncrement { get; }
 		public abstract double HealthIncrement { get; }
 		public abstract double HealthArmorIncrement { get; }
+		public abstract int MineralBounty { get; }
+		public virtual int KillBounty { get; }
 
 		public static EnemyUnit New(EnemyType unitType)
 		{

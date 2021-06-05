@@ -22,6 +22,10 @@ namespace VBusiness.Enemies
 
 		public override double HealthArmorIncrement => 0;
 
+		public override int MineralBounty => 60000;
+
+		public override int KillBounty => 3500;
+
 		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.EmpressQueen, 20) };
 	}
 }
