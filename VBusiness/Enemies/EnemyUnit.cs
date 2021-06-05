@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using VBusiness.HelperClasses;
+using VBusiness.Rooms;
 using VEntityFramework;
 using VEntityFramework.Model;
 
@@ -46,7 +47,7 @@ namespace VBusiness.Enemies
 		public static EnemyType FirstBoss => EnemyType.SergeantRamone;
 		public static EnemyType LastBoss => EnemyType.EvolutionChamber - 1;
 
-		internal virtual IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(int tierUpLevels)
+		internal virtual IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(int tierUpLevels, RoomNumber room)
 		{
 			if (EnemyType.IsBoss() || EnemyType.IsBuilding())
 			{

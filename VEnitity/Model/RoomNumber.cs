@@ -38,19 +38,19 @@ namespace VBusiness.Rooms
 		Room14,
 		[Description("Hard Room 3")]
 		Room15,
-		[Description("Insane Room 1")]
+		[Description("Hard Room 4")]
 		Room16,
-		[Description("Insane Room 2")]
+		[Description("Insane Room 1")]
 		Room17,
-		[Description("Insane Room 3")]
+		[Description("Insane Room 2")]
 		Room18,
-		[Description("Nightmare Room 1")]
+		[Description("Insane Room 3")]
 		Room19,
-		[Description("Nightmare Room 2")]
+		[Description("Nightmare Room 1")]
 		Room20,
-		[Description("Nightmare Room 3")]
+		[Description("Nightmare Room 2")]
 		Room21,
-		[Description("Nightmare Room 4")]
+		[Description("Nightmare Room 3")]
 		Room22,
 		[Description("Torment Room 1")]
 		Room23,

@@ -1,5 +1,6 @@
 ﻿using System;
 using VBusiness.Loadouts;
+using VBusiness.Rooms;
 using VEntityFramework;
 using VEntityFramework.Model;
 
@@ -96,6 +97,18 @@ namespace Tests
 		public static VLoadout AddUpgradeCache(this VLoadout loadout, bool cache = true)
 		{
 			loadout.Perks.UpgradeCache.DesiredLevel = (short)(cache ? 1 : 0);
+			return loadout;
+		}
+
+		public static VLoadout SetDifficulty(this VLoadout loadout, DifficultyLevel level)
+		{
+			loadout.UnitConfiguration.DifficultyLevel = level;
+			return loadout;
+		}
+
+		public static VLoadout SetFarmRoom(this VLoadout loadout, RoomNumber room)
+		{
+			loadout.IncomeManager.FarmRoom = room;
 			return loadout;
 		}
 	}

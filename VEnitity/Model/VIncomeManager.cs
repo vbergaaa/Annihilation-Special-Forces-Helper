@@ -147,6 +147,8 @@ namespace VEntityFramework.Model
 		public virtual double LoadoutKillCost { get; }
 		public virtual double UnitMineralCost { get; }
 		public virtual double UnitKillCost { get; }
+		public virtual double MineralsPerWave { get; }
+		public virtual double KillsPerWave { get; }
 
 		#region Persistent Properties
 

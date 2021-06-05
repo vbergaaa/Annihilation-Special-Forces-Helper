@@ -42,23 +42,23 @@ namespace VBusiness.HelperClasses
 		static void AddRoomToComposition(List<EnemyQuantity> composition, RoomNumber roomToClear, VDifficulty difficulty, CompositionOptions options)
 		{
 			var room = Room.New(roomToClear);
-			AddAllIncludingSpawns(composition, room.EnemiesPerWave, difficulty, options);
-			AddAllIncludingSpawns(composition, room.EnemiesPerWave, difficulty, options);
-			AddAllIncludingSpawns(composition, room.EnemiesPerWave, difficulty, options);
-			AddAllIncludingSpawns(composition, room.Buildings, difficulty, options);
-			AddAllIncludingSpawns(composition, room.GetBoss, difficulty, options);
+			AddAllIncludingSpawns(composition, room.EnemiesPerWave, difficulty, roomToClear, options);
+			AddAllIncludingSpawns(composition, room.EnemiesPerWave, difficulty, roomToClear, options);
+			AddAllIncludingSpawns(composition, room.EnemiesPerWave, difficulty, roomToClear, options);
+			AddAllIncludingSpawns(composition, room.Buildings, difficulty, roomToClear, options);
+			AddAllIncludingSpawns(composition, room.GetBoss, difficulty, roomToClear, options);
 		}
 
-		static void AddAllIncludingSpawns(List<EnemyQuantity> composition, EnemyType unit, VDifficulty difficulty, CompositionOptions options)
+		static void AddAllIncludingSpawns(List<EnemyQuantity> composition, EnemyType unit, VDifficulty difficulty, RoomNumber room, CompositionOptions options)
 		{
-			AddAllIncludingSpawns(composition, new[] { new EnemyQuantity(unit, 1) }, difficulty, options);
+			AddAllIncludingSpawns(composition, new[] { new EnemyQuantity(unit, 1) }, difficulty, room, options);
 		}
 
-		static void AddAllIncludingSpawns(List<EnemyQuantity> composition, IEnumerable<EnemyQuantity> enemiesToAdd, VDifficulty difficulty, CompositionOptions options)
+		static void AddAllIncludingSpawns(List<EnemyQuantity> composition, IEnumerable<EnemyQuantity> enemiesToAdd, VDifficulty difficulty, RoomNumber room, CompositionOptions options)
 		{
 			enemiesToAdd = enemiesToAdd.TierUp(difficulty.UnitTierIncrease);
 			composition.AddRange(enemiesToAdd.Where(e => e.Type != EnemyType.None && (e.Type.CanAttack() || !options.HasFlag(CompositionOptions.AttackingUnitsOnly))));
-			composition.AddRange(enemiesToAdd.SelectRecursive(e => e.Type.GetAdditionalSpawns(difficulty.UnitTierIncrease).Multiply(e.Quantity)));
+			composition.AddRange(enemiesToAdd.SelectRecursive(e => e.Type.GetAdditionalSpawns(difficulty.UnitTierIncrease, room).Multiply(e.Quantity)));
 		}
 
 		internal static EnemyQuantity TierUp(EnemyQuantity enemy, int tierUp)

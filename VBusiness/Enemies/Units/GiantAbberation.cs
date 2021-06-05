@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using VBusiness.HelperClasses;
+using VBusiness.Rooms;
 using VEntityFramework.Model;
 
 namespace VBusiness.Enemies
@@ -27,9 +28,9 @@ namespace VBusiness.Enemies
 
 		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Roach, 8) };
 
-		internal override IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(int tierUpLevels)
+		internal override IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(int tierUpLevels, RoomNumber room)
 		{
-			return tierUpLevels > 0
+			return tierUpLevels > 0 && room > RoomNumber.Room23
 				? Array.Empty<EnemyQuantity>()
 				: UnitsSpawnedOnDeath;
 		}

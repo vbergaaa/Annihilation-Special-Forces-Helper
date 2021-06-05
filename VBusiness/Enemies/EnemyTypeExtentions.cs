@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using VBusiness.HelperClasses;
+using VBusiness.Rooms;
 using VEntityFramework.Model;
 
 namespace VBusiness.Enemies
@@ -45,9 +46,9 @@ namespace VBusiness.Enemies
 			return type >= EnemyUnit.FirstBoss && type <= EnemyUnit.LastBoss;
 		}
 
-		public static IEnumerable<EnemyQuantity> GetAdditionalSpawns(this EnemyType parentType, int tierUpLevels)
+		public static IEnumerable<EnemyQuantity> GetAdditionalSpawns(this EnemyType parentType, int tierUpLevels, RoomNumber room)
 		{
-			var key = new OnDeathCacheKey { Type = parentType, TierUp = tierUpLevels };
+			var key = new OnDeathCacheKey { Type = parentType, TierUp = tierUpLevels, Room = room };
 			if (AdditionalSpawnsCache.ContainsKey(key))
 			{
 				return AdditionalSpawnsCache[key];
@@ -58,7 +59,7 @@ namespace VBusiness.Enemies
 			}
 
 			var unit = EnemyUnit.New(parentType);
-			var additionalUnitsSpawned = unit.GetUnitsSpawnedOnDeath(tierUpLevels);
+			var additionalUnitsSpawned = unit.GetUnitsSpawnedOnDeath(tierUpLevels, room);
 			return (AdditionalSpawnsCache[key] = additionalUnitsSpawned);
 		}
 
@@ -69,6 +70,7 @@ namespace VBusiness.Enemies
 		{
 			public EnemyType Type { get; set; }
 			public int TierUp { get; set; }
+			public RoomNumber Room { get; set; }
 		}
 	}
 }

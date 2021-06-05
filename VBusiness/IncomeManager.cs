@@ -1,4 +1,6 @@
 ﻿using System;
+using VBusiness.HelperClasses;
+using VBusiness.Rooms;
 using VBusiness.Units;
 using VEntityFramework.Model;
 
@@ -52,6 +54,21 @@ namespace VBusiness
 
 		#endregion
 
+		#region FarmRoom
+
+		public override RoomNumber FarmRoom
+		{
+			get => base.FarmRoom;
+			set
+			{
+				base.FarmRoom = value;
+				RefreshPropertyBinding(nameof(MineralsPerWave));
+				RefreshPropertyBinding(nameof(KillsPerWave));
+			}
+		}
+
+		#endregion
+
 		#region UnitCost
 
 		public override double LoadoutKillCost => Loadout.UseSingleUnitEco ? UnitKillCost : GetFullLoadoutCost().Kills;
@@ -66,6 +83,13 @@ namespace VBusiness
 
 		public override double UnitMineralCost => new UnitCostHelper(Loadout).GetUnitCost(Loadout.CurrentUnit).Minerals;
 		public override double UnitKillCost => new UnitCostHelper(Loadout).GetUnitCost(Loadout.CurrentUnit).Kills;
+
+		#endregion
+
+		#region IncomePerWave
+
+		public override double MineralsPerWave => FarmRoom != RoomNumber.None ? new IncomeCalculator(Loadout).GetMineralsPerWave() : 0;
+		public override double KillsPerWave => FarmRoom != RoomNumber.None ? new IncomeCalculator(Loadout).GetKillsPerWave() : 0;
 
 		#endregion
 	}

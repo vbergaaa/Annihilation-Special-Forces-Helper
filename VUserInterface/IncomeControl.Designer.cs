@@ -40,6 +40,8 @@ namespace VUserInterface
 			this.InfuseRecycleLabel = new VLabel();
 			this.KillRecycleLabel = new VLabel();
 			this.RankRevisionLabel = new VLabel();
+			this.MineralsPerWaveLabel = new VLabel();
+			this.KillsPerWaveLabel = new VLabel();
 			this.bindingSource = new System.Windows.Forms.BindingSource();
 			this.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -124,6 +126,24 @@ namespace VUserInterface
 			this.RankRevisionLabel.Suffix = "%";
 			this.RankRevisionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
+			// MineralsPerWaveLabel
+			//
+			this.MineralsPerWaveLabel.Caption = "Minerals Per Wave:";
+			this.MineralsPerWaveLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "MineralsPerWave"));
+			this.MineralsPerWaveLabel.Location = DPIScalingHelper.GetScaledPoint(120, 180);
+			this.MineralsPerWaveLabel.Name = "MineralsPerWaveLabel";
+			this.MineralsPerWaveLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
+			this.MineralsPerWaveLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			//
+			// KillsPerWaveLabel
+			//
+			this.KillsPerWaveLabel.Caption = "Kills Per Wave:";
+			this.KillsPerWaveLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "KillsPerWave"));
+			this.KillsPerWaveLabel.Location = DPIScalingHelper.GetScaledPoint(120, 200);
+			this.KillsPerWaveLabel.Name = "KillsPerWaveLabel";
+			this.KillsPerWaveLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
+			this.KillsPerWaveLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			//
 			// StatsControl
 			//
 			this.Controls.Add(DoubleWarpLabel);
@@ -134,6 +154,8 @@ namespace VUserInterface
 			this.Controls.Add(InfuseRecycleLabel);
 			this.Controls.Add(KillRecycleLabel);
 			this.Controls.Add(RankRevisionLabel);
+			this.Controls.Add(MineralsPerWaveLabel);
+			this.Controls.Add(KillsPerWaveLabel);
 			this.Size = DPIScalingHelper.GetScaledSize(175, 310);
 			this.Text = "Income";
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
@@ -149,6 +171,8 @@ namespace VUserInterface
 		private VLabel InfuseRecycleLabel;
 		private VLabel KillRecycleLabel;
 		private VLabel RankRevisionLabel;
+		private VLabel MineralsPerWaveLabel;
+		private VLabel KillsPerWaveLabel;
 		private System.Windows.Forms.BindingSource bindingSource;
 		private VLabel LoadoutMineralCostLabel;
 		private VLabel LoadoutKillCostLabel;
