@@ -1,8 +1,10 @@
-﻿using NUnit.Framework;
+﻿using EnumsNET;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using VBusiness;
+using VBusiness.Rooms;
 
 namespace Tests
 {
@@ -11,14 +13,19 @@ namespace Tests
 		[Test]
 		public void TestRoomsDontThrow()
 		{
-			for (var i = 1; i <= 33; i++)
+			var rooms = Enums.GetValues<RoomNumber>();
+
+			foreach (var roomType in rooms)
 			{
-				var room = Room.New(i);
-				Assert.That(() => room.Buildings, Throws.Nothing);
-				Assert.That(() => room.EnemiesPerWave, Throws.Nothing);
-				Assert.That(() => room.GetBoss, Throws.Nothing);
-				Assert.That(() => room.MineralPatches, Throws.Nothing);
-				Assert.That(() => room.RoomNumber, Throws.Nothing);
+				if (roomType != RoomNumber.None)
+				{
+					var room = Room.New(roomType);
+					Assert.That(() => room.Buildings, Throws.Nothing);
+					Assert.That(() => room.EnemiesPerWave, Throws.Nothing);
+					Assert.That(() => room.GetBoss, Throws.Nothing);
+					Assert.That(() => room.MineralPatches, Throws.Nothing);
+					Assert.That(() => room.RoomNumber, Throws.Nothing);
+				}
 			}
 		}
 	}

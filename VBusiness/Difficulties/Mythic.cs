@@ -20,7 +20,7 @@ namespace VBusiness.Difficulties
 
 		public override double AttackSpeed => 1.6;
 
-		public override int RoomToClear => 27;
+		public override VBusiness.Rooms.RoomNumber RoomToClear => VBusiness.Rooms.RoomNumber.Room27;
 
 		public override int FearChance => 11;
 

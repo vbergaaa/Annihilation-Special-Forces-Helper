@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using VBusiness.HelperClasses;
+using VBusiness.Rooms;
 using VEntityFramework;
 using VEntityFramework.Model;
 
@@ -8,9 +9,9 @@ namespace VBusiness
 {
 	public abstract class Room
 	{
-		public static Room New(int number)
+		public static Room New(RoomNumber number)
 		{
-			var roomType = System.Type.GetType($"VBusiness.Rooms.Room{number}");
+			var roomType = Type.GetType($"VBusiness.Rooms.{number}");
 
 			if (roomType == null)
 			{
@@ -22,7 +23,7 @@ namespace VBusiness
 			return ret;
 
 		}
-		public abstract int RoomNumber { get; }
+		public abstract RoomNumber RoomNumber { get; }
 		public IEnumerable<EnemyQuantity> Buildings => GetBuildings();
 		public IEnumerable<EnemyQuantity> EnemiesPerWave => GetEnemies();
 

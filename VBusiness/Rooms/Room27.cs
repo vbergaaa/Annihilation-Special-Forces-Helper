@@ -7,7 +7,7 @@ namespace VBusiness.Rooms
 	public class Room27 : Room
 	{
 		// Mythic Room 2
-		public override int RoomNumber => 27;
+		public override RoomNumber RoomNumber => RoomNumber.Room27;
 
 		public override int MineralPatches => 0;
 

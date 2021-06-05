@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using VBusiness.Enemies;
+using VBusiness.Rooms;
 using VEntityFramework.Model;
 
 namespace VBusiness.HelperClasses
@@ -38,7 +39,7 @@ namespace VBusiness.HelperClasses
 			return ConsolidateComposition(composition);
 		}
 
-		static void AddRoomToComposition(List<EnemyQuantity> composition, int roomToClear, VDifficulty difficulty, CompositionOptions options)
+		static void AddRoomToComposition(List<EnemyQuantity> composition, RoomNumber roomToClear, VDifficulty difficulty, CompositionOptions options)
 		{
 			var room = Room.New(roomToClear);
 			AddAllIncludingSpawns(composition, room.EnemiesPerWave, difficulty, options);

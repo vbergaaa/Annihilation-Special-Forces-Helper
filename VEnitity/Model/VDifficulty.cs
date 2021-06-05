@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using VBusiness.Rooms;
 
 namespace VEntityFramework.Model
 {
@@ -93,7 +94,7 @@ namespace VEntityFramework.Model
 
 		#region RoomToClear
 
-		public abstract int RoomToClear { get; }
+		public abstract RoomNumber RoomToClear { get; }
 
 		#endregion
 

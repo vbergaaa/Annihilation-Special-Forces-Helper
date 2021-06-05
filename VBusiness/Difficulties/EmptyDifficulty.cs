@@ -32,6 +32,6 @@ namespace VBusiness.Difficulties
 
 		public override int UnitTierIncrease => 0;
 
-		public override int RoomToClear => 0;
+		public override VBusiness.Rooms.RoomNumber RoomToClear => VBusiness.Rooms.RoomNumber.None;
 	}
 }

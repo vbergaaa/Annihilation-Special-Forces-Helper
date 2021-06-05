@@ -241,7 +241,7 @@ namespace VBusiness.HelperClasses
 		static double GetTitanicDRChance(EnemyType type) => type.IsHeroic() ? 0.3 : 0.2;
 		static double GetEnemyDamage(EnemyUnit unit, bool isTitanic, VDifficulty difficulty)
 		{
-			var unitDamage = unit.Attack + unit.AttackIncrement * (difficulty.RoomToClear + difficulty.StartingUpgrades);
+			var unitDamage = unit.Attack + unit.AttackIncrement * ((int)difficulty.RoomToClear + difficulty.StartingUpgrades);
 			var damageModifier = difficulty.Damage;
 			if (unit.EnemyType.IsHeroic())
 			{
@@ -266,7 +266,7 @@ namespace VBusiness.HelperClasses
 
 		static double GetEnemyArmor(EnemyUnit unit, bool hasTitanicBuff, VDifficulty difficulty)
 		{
-			var baseArmor = unit.HealthArmor + (difficulty.RoomToClear + difficulty.StartingUpgrades) * unit.HealthArmorIncrement;
+			var baseArmor = unit.HealthArmor + ((int)difficulty.RoomToClear + difficulty.StartingUpgrades) * unit.HealthArmorIncrement;
 			var totalArmor = baseArmor * difficulty.Armor;
 			totalArmor *= hasTitanicBuff ? 1.5 : 1; // multiplicitive armor from titan buff
 			if (unit.EnemyType.IsHeroic())

@@ -8,7 +8,7 @@ namespace VBusiness.Rooms
 	{
 		// Divine Room 2
 		
-		public override int RoomNumber => 29;
+		public override RoomNumber RoomNumber => RoomNumber.Room29;
 
 		public override int MineralPatches => 0;
 

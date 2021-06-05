@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Model;
+﻿using VBusiness.Rooms;
+using VEntityFramework.Model;
 
 namespace VBusiness.Difficulties
 {
@@ -20,7 +21,7 @@ namespace VBusiness.Difficulties
 
 		public override double AttackSpeed => 1.2;
 
-		public override int RoomToClear => 19;
+		public override VBusiness.Rooms.RoomNumber RoomToClear => VBusiness.Rooms.RoomNumber.Room19;
 
 		public override int FearChance => 0;
 

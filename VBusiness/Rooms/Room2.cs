@@ -6,7 +6,7 @@ namespace VBusiness.Rooms
 {
 	public class Room2 : Room
 	{
-		public override int RoomNumber => 2;
+		public override RoomNumber RoomNumber => RoomNumber.Room2;
 
 		public override int MineralPatches => 6;
 

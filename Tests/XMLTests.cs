@@ -107,6 +107,7 @@ namespace Tests
 			loadout.UnitSpec = UnitType.Templar;
 			loadout.Name = "XMLTEST";
 			loadout.Slot = 9999;
+			loadout.IncomeManager.FarmRoom = VBusiness.Rooms.RoomNumber.Room5;
 		}
 
 		private void AddSouls(Loadout loadout)
