@@ -1,4 +1,5 @@
 ﻿using System;
+using VBusiness.Difficulties;
 using VBusiness.HelperClasses;
 using VBusiness.Rooms;
 using VBusiness.Units;
@@ -61,7 +62,11 @@ namespace VBusiness
 			get => base.FarmRoom;
 			set
 			{
-				base.FarmRoom = value;
+				var difficulty = Loadout.UnitConfiguration.Difficulty;
+				base.FarmRoom = difficulty.Difficulty != DifficultyLevel.None
+					? (RoomNumber)Math.Min((int)value, (int)difficulty.RoomToClear)
+					: value;
+
 				RefreshPropertyBinding(nameof(MineralsPerWave));
 				RefreshPropertyBinding(nameof(KillsPerWave));
 			}

@@ -2,6 +2,8 @@
 using VBusiness.Perks;
 using VBusiness.HelperClasses;
 using VBusiness.Difficulties;
+using System;
+using VBusiness.Rooms;
 
 namespace VBusiness
 {
@@ -71,9 +73,13 @@ namespace VBusiness
 				{
 					base.DifficultyLevel = value;
 
-					Difficulty = value != DifficultyLevel.None
-						? Difficulty = DifficultyHelper.New(value)
-						: null;
+					Difficulty = null;
+					if (value != DifficultyLevel.None)
+					{
+						Difficulty = Difficulty = DifficultyHelper.New(value);
+						Loadout.IncomeManager.FarmRoom = (RoomNumber)Math.Min((int)Loadout.IncomeManager.FarmRoom, (int)Difficulty.RoomToClear);
+					}
+
 					Loadout.Stats.RefreshPropertyBinding("Toughness");
 					Loadout.Stats.RefreshPropertyBinding("Damage");
 				}
