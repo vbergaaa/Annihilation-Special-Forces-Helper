@@ -221,6 +221,25 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region HasGreed
+
+		public bool HasGreed
+		{
+			get => fHasGreed;
+			set
+			{
+				if (fHasGreed != value)
+				{
+					fHasGreed = value;
+					RefreshPropertyBinding(nameof(HasGreed));
+					RefreshPropertyBinding(nameof(MineralsPerMinute));
+				}
+			}
+		}
+		bool fHasGreed;
+
+		#endregion
+
 		public virtual double LoadoutMineralCost { get; }
 		public virtual double LoadoutKillCost { get; }
 		public virtual double UnitMineralCost { get; }

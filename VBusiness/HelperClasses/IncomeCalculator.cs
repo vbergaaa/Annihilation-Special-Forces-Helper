@@ -104,6 +104,11 @@ namespace VBusiness.HelperClasses
 
 			mineralsPerKill = mineralJackpotAmount * jackpotChance;
 			killsPerKill = killJackpotAmount * jackpotChance + loadout.IncomeManager.MaximumGather / 100;
+
+			if (loadout.IncomeManager.HasGreed)
+			{
+				killsPerKill += 0.2;
+			}
 		}
 
 		double mineralsPerKill;
