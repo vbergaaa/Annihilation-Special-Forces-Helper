@@ -57,27 +57,33 @@ namespace VBusiness.HelperClasses
 		{
 			if (loadout.UnitConfiguration.DifficultyLevel >= DifficultyLevel.Brutal)
 			{
-				if (loadout.IncomeManager.BrutaliskOverride.Bruta1)
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta1
+					&& loadout.IncomeManager.FarmRoom >= Rooms.RoomNumber.Room9)
 				{
 					yield return EnemyUnit.New(EnemyType.Bruta1).BrutaSpawns;
 				}
-				if (loadout.IncomeManager.BrutaliskOverride.Bruta2)
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta2
+					&& loadout.IncomeManager.FarmRoom >= Rooms.RoomNumber.Room12)
 				{
 					yield return EnemyUnit.New(EnemyType.Bruta2).BrutaSpawns;
 				}
-				if (loadout.IncomeManager.BrutaliskOverride.Bruta3)
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta3
+					&& loadout.IncomeManager.FarmRoom >= Rooms.RoomNumber.Room17)
 				{
 					yield return EnemyUnit.New(EnemyType.Bruta3).BrutaSpawns;
 				}
-				if (loadout.IncomeManager.BrutaliskOverride.Bruta4)
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta4
+					&& loadout.IncomeManager.FarmRoom >= Rooms.RoomNumber.Room21)
 				{
 					yield return EnemyUnit.New(EnemyType.Bruta4).BrutaSpawns;
 				}
-				if (loadout.IncomeManager.BrutaliskOverride.Bruta5)
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta5
+					&& loadout.IncomeManager.FarmRoom >= Rooms.RoomNumber.Room24)
 				{
 					yield return EnemyUnit.New(EnemyType.Bruta5).BrutaSpawns;
 				}
-				if (loadout.IncomeManager.BrutaliskOverride.Bruta6)
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta6
+					&& loadout.IncomeManager.FarmRoom >= Rooms.RoomNumber.Room31)
 				{
 					yield return EnemyUnit.New(EnemyType.Bruta6).BrutaSpawns;
 				}
