@@ -6,7 +6,7 @@ You can use this program to plan and create your in game loadouts, limiting them
 It also contains data for unit statistics for most units in the game, allowing you to compare base statistics of different units with any perks, rank, upgrades, etc. 
 
 ## Download Instructions
-Download [the most recent release](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/download/v1.0.1/ASFv1.0.1.zip), extract it, and run the installer Setup.exe. Follow the prompts to complete installation.
+Download [the most recent release](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/download/v1.1/ASFv1.1.zip), extract it, and run the installer Setup.exe. Follow the prompts to complete installation.
 
 This program makes use of Microsoft .NET Core 3 runtime libraries. If you don't already have them on your machine, the installer will download them the first time you run it.
 
