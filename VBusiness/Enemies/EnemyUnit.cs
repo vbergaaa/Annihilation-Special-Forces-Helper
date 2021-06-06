@@ -49,6 +49,13 @@ namespace VBusiness.Enemies
 		public static EnemyType LastBoss => EnemyType.EvolutionChamber - 1;
 		public static EnemyType FirstBruta => EnemyType.Bruta1;
 
+		public static RoomNumber Bruta1Room => RoomNumber.Room9;
+		public static RoomNumber Bruta2Room => RoomNumber.Room12;
+		public static RoomNumber Bruta3Room => RoomNumber.Room17;
+		public static RoomNumber Bruta4Room => RoomNumber.Room21;
+		public static RoomNumber Bruta5Room => RoomNumber.Room24;
+		public static RoomNumber Bruta6Room => RoomNumber.Room31;
+
 		internal virtual IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(int tierUpLevels, RoomNumber room)
 		{
 			if (EnemyType.IsBoss() || EnemyType.IsBuilding())

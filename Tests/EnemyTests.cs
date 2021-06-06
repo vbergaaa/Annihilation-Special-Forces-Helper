@@ -3,7 +3,9 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness;
 using VBusiness.Enemies;
+using VBusiness.HelperClasses;
 using VEntityFramework.Model;
 
 namespace Tests
@@ -62,6 +64,34 @@ namespace Tests
 					Assert.That(() => enemy.MineralBounty, Throws.Nothing);
 				}
 			}
+		}
+
+		[Test]
+		public void TestBrutaRooms()
+		{
+			var roomNumber = EnemyUnit.Bruta1Room;
+			var room = Room.New(roomNumber);
+			Assert.That(room.Bruta, Is.Not.EqualTo(new EnemyQuantity()));
+
+			roomNumber = EnemyUnit.Bruta2Room;
+			room = Room.New(roomNumber);
+			Assert.That(room.Bruta, Is.Not.EqualTo(new EnemyQuantity()));
+
+			roomNumber = EnemyUnit.Bruta3Room;
+			room = Room.New(roomNumber);
+			Assert.That(room.Bruta, Is.Not.EqualTo(new EnemyQuantity()));
+
+			roomNumber = EnemyUnit.Bruta4Room;
+			room = Room.New(roomNumber);
+			Assert.That(room.Bruta, Is.Not.EqualTo(new EnemyQuantity()));
+
+			roomNumber = EnemyUnit.Bruta5Room;
+			room = Room.New(roomNumber);
+			Assert.That(room.Bruta, Is.Not.EqualTo(new EnemyQuantity()));
+
+			roomNumber = EnemyUnit.Bruta6Room;
+			room = Room.New(roomNumber);
+			Assert.That(room.Bruta, Is.Not.EqualTo(new EnemyQuantity()));
 		}
 	}
 }
