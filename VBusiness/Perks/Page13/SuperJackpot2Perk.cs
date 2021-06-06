@@ -21,5 +21,12 @@ namespace VBusiness.Perks
 		protected override string PerkName => "Super Jackpot II";
 
 		protected override short MaxLevelCore => 20;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			base.OnLevelChanged(difference);
+
+			PerkCollection.Loadout.IncomeManager.SuperJackpot += difference;
+		}
 	}
 }

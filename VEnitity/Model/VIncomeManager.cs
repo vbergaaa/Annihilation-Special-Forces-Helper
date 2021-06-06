@@ -143,6 +143,46 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region MineralJackpot
+
+		public int MineralJackpot
+		{
+			get => fMineralJackpot;
+			set
+			{
+				if (fMineralJackpot != value)
+				{
+					fMineralJackpot = value;
+					RefreshPropertyBinding(nameof(MineralJackpot));
+					RefreshPropertyBinding(nameof(MineralsPerMinute));
+					RefreshPropertyBinding(nameof(KillsPerMinute));
+				}
+			}
+		}
+		int fMineralJackpot;
+
+		#endregion
+
+		#region SuperJackpot
+
+		public int SuperJackpot
+		{
+			get => fSuperJackpot;
+			set
+			{
+				if (fSuperJackpot != value)
+				{
+					fSuperJackpot = value;
+					RefreshPropertyBinding(nameof(SuperJackpot));
+					RefreshPropertyBinding(nameof(MineralsPerMinute));
+					RefreshPropertyBinding(nameof(KillsPerMinute));
+				}
+			}
+		}
+		int fSuperJackpot;
+
+		#endregion
+
 		public virtual double LoadoutMineralCost { get; }
 		public virtual double LoadoutKillCost { get; }
 		public virtual double UnitMineralCost { get; }

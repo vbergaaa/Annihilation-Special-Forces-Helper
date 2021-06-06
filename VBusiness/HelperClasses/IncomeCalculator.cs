@@ -27,6 +27,7 @@ namespace VBusiness.HelperClasses
 
 		Resources GetIncomePerMinute()
 		{
+			GetLoadoutValues();
 			var units = Room.New(loadout.IncomeManager.FarmRoom).EnemiesPerWave.TierUp(loadout.UnitConfiguration.Difficulty.UnitTierIncrease).ToList();
 			units.AddRange(units.SelectRecursive(e => e.Type.GetAdditionalSpawns(loadout.UnitConfiguration.Difficulty.UnitTierIncrease, loadout.IncomeManager.FarmRoom).Multiply(e.Quantity)));
 
@@ -37,16 +38,16 @@ namespace VBusiness.HelperClasses
 			foreach (var unit in units)
 			{
 				var enemy = EnemyUnit.New(unit.Type);
-				totalKills += enemy.KillBounty * unit.Quantity * spawnsPerMinute;
-				totalMinerals += enemy.MineralBounty * unit.Quantity * spawnsPerMinute;
+				totalKills += (enemy.KillBounty + killsPerKill) * unit.Quantity * spawnsPerMinute;
+				totalMinerals += (enemy.MineralBounty + mineralsPerKill) * unit.Quantity * spawnsPerMinute;
 			}
 
 			spawnsPerMinute = 60.0 / 9.0; // 9 secounds looks like the first bruta wave period
 			foreach (var unit in GetBrutaWaves())
 			{
 				var enemy = EnemyUnit.New(unit.Type);
-				totalKills += enemy.KillBounty * unit.Quantity * spawnsPerMinute;
-				totalMinerals += enemy.MineralBounty * unit.Quantity * spawnsPerMinute;
+				totalKills += (enemy.KillBounty + killsPerKill) * unit.Quantity * spawnsPerMinute;
+				totalMinerals += (enemy.MineralBounty + mineralsPerKill) * unit.Quantity * spawnsPerMinute;
 			}
 
 			return new Resources(totalMinerals, totalKills);
@@ -82,6 +83,20 @@ namespace VBusiness.HelperClasses
 				}
 			}
 		}
+
+		void GetLoadoutValues()
+		{
+			var jackpotChance = loadout.IncomeManager.MineralJackpot / 500.0;
+			var sjpPoints = loadout.IncomeManager.SuperJackpot;
+			var mineralJackpotAmount = 100 + 10 * sjpPoints;
+			var killJackpotAmount = sjpPoints;
+
+			mineralsPerKill = mineralJackpotAmount * jackpotChance;
+			killsPerKill = killJackpotAmount * jackpotChance;
+		}
+
+		double mineralsPerKill;
+		double killsPerKill;
 
 		struct Resources
 		{

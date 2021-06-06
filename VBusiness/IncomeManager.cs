@@ -95,8 +95,8 @@ namespace VBusiness
 
 		#region IncomePerWave
 
-		public override double MineralsPerMinute => FarmRoom != RoomNumber.None ? new IncomeCalculator(Loadout).GetMineralsPerMinute() : 0;
-		public override double KillsPerMinute => FarmRoom != RoomNumber.None ? new IncomeCalculator(Loadout).GetKillsPerMinute() : 0;
+		public override double MineralsPerMinute => FarmRoom != RoomNumber.None ? Math.Round(new IncomeCalculator(Loadout).GetMineralsPerMinute(), 1) : 0;
+		public override double KillsPerMinute => FarmRoom != RoomNumber.None ? Math.Round(new IncomeCalculator(Loadout).GetKillsPerMinute(), 1) : 0;
 
 		#endregion
 
