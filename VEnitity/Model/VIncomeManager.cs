@@ -202,6 +202,25 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region HasUrusy
+
+		public bool HasUrusy
+		{
+			get => fHasUrusy;
+			set
+			{
+				if (fHasUrusy != value)
+				{
+					fHasUrusy = value;
+					RefreshPropertyBinding(nameof(HasUrusy));
+					RefreshPropertyBinding(nameof(MineralsPerMinute));
+				}
+			}
+		}
+		bool fHasUrusy;
+
+		#endregion
+
 		public virtual double LoadoutMineralCost { get; }
 		public virtual double LoadoutKillCost { get; }
 		public virtual double UnitMineralCost { get; }

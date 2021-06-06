@@ -50,6 +50,11 @@ namespace VBusiness.HelperClasses
 				totalMinerals += (enemy.MineralBounty + mineralsPerKill) * unit.Quantity * spawnsPerMinute;
 			}
 
+			if (loadout.IncomeManager.HasUrusy)
+			{
+				totalMinerals += 600;
+			}
+
 			return new Resources(totalMinerals, totalKills);
 		}
 
