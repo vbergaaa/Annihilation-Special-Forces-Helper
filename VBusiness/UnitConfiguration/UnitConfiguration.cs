@@ -76,7 +76,11 @@ namespace VBusiness
 					if (value != DifficultyLevel.None)
 					{
 						Difficulty = DifficultyHelper.New(value);
-						Loadout.IncomeManager.FarmRoom = (RoomNumber)Math.Min((int)Loadout.IncomeManager.FarmRoom, (int)Difficulty.RoomToClear);
+
+						if (!IsSettingDefaultValues)
+						{
+							Loadout.IncomeManager.FarmRoom = (RoomNumber)Math.Min((int)Loadout.IncomeManager.FarmRoom, (int)Difficulty.RoomToClear);
+						}
 					}
 					else
 					{
@@ -102,24 +106,24 @@ namespace VBusiness
 				{
 					var oldDiff = base.Difficulty;
 					base.Difficulty = value;
-					UpdateDifficulty(oldDiff);
+					UpdateDifficulty(value, oldDiff);
 				}
 			}
 		}
 
-		void UpdateDifficulty(VDifficulty oldDiff)
+		void UpdateDifficulty(VDifficulty newDiff, VDifficulty oldDiff)
 		{
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
 			{
-				UpdateTormentReduction(oldDiff);
-				UpdateCritReduction(oldDiff);
+				UpdateTormentReduction(newDiff, oldDiff);
+				UpdateCritReduction(newDiff, oldDiff);
 			}
 		}
 
-		void UpdateTormentReduction(VDifficulty oldDiff)
+		void UpdateTormentReduction(VDifficulty newDiff, VDifficulty oldDiff)
 		{
 			var oldTormentReduction = oldDiff?.TormentReduction ?? 0;
-			var newTormentReduction = Difficulty.TormentReduction;
+			var newTormentReduction = newDiff?.TormentReduction ?? 0;
 			var difference = newTormentReduction - oldTormentReduction;
 
 			if (difference != 0)
@@ -134,10 +138,10 @@ namespace VBusiness
 			}
 		}
 
-		void UpdateCritReduction(VDifficulty oldDiff)
+		void UpdateCritReduction(VDifficulty newDiff, VDifficulty oldDiff)
 		{
 			var oldCritReduction = oldDiff?.CritReduction ?? 0;
-			var newCritReduction = Difficulty.CritReduction;
+			var newCritReduction = newDiff?.CritReduction ?? 0;
 			var difference = newCritReduction - oldCritReduction;
 
 			if (difference != 0)
@@ -151,6 +155,13 @@ namespace VBusiness
 		#endregion
 
 		#region Methods
+
+		protected override void SetDefaultValuesCore()
+		{
+			base.SetDefaultValuesCore();
+
+			DifficultyLevel = Profile.Profile.GetProfile().GetRecommendedDifficulty();
+		}
 
 		#endregion
 	}

@@ -9,7 +9,6 @@ namespace VEntityFramework.Model
 
 		public VUnitConfiguration(VLoadout loadout) : base(loadout)
 		{
-			Loadout = loadout;
 		}
 
 		#endregion
@@ -25,7 +24,7 @@ namespace VEntityFramework.Model
 		#region Loadout
 
 		[VXML(false)]
-		public VLoadout Loadout { get; private set; }
+		public VLoadout Loadout => Parent as VLoadout;
 
 		#endregion
 
@@ -62,8 +61,8 @@ namespace VEntityFramework.Model
 					fDifficultyLevel = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(DifficultyLevel));
-					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.MineralsPerMinute));
-					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.KillsPerMinute));
+					Loadout?.IncomeManager?.RefreshPropertyBinding(nameof(Loadout.IncomeManager.MineralsPerMinute));
+					Loadout?.IncomeManager?.RefreshPropertyBinding(nameof(Loadout.IncomeManager.KillsPerMinute));
 				}
 			}
 		}
