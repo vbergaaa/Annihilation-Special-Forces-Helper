@@ -26,6 +26,10 @@ namespace VBusiness.Units
 		{
 			var rawCost = GetBasicUnitRawCost(unitType);
 			var cost = ApplyUnitSpec(unitType, loadout, rawCost);
+			if (loadout.IncomeManager.HasSales)
+			{
+				cost *= 0.8;
+			}
 			return cost;
 		}
 

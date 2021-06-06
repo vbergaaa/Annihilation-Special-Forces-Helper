@@ -232,11 +232,30 @@ namespace VEntityFramework.Model
 				{
 					fHasGreed = value;
 					RefreshPropertyBinding(nameof(HasGreed));
-					RefreshPropertyBinding(nameof(MineralsPerMinute));
+					RefreshPropertyBinding(nameof(KillsPerMinute));
 				}
 			}
 		}
 		bool fHasGreed;
+
+		#endregion
+
+		#region HasSales
+
+		public bool HasSales
+		{
+			get => fHasSales;
+			set
+			{
+				if (fHasSales != value)
+				{
+					fHasSales = value;
+					RefreshPropertyBinding(nameof(HasSales));
+					RefreshPropertyBinding(nameof(UnitMineralCost));
+				}
+			}
+		}
+		bool fHasSales;
 
 		#endregion
 
