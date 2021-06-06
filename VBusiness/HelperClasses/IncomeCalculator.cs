@@ -92,7 +92,7 @@ namespace VBusiness.HelperClasses
 			var killJackpotAmount = sjpPoints;
 
 			mineralsPerKill = mineralJackpotAmount * jackpotChance;
-			killsPerKill = killJackpotAmount * jackpotChance;
+			killsPerKill = killJackpotAmount * jackpotChance + loadout.IncomeManager.MaximumGather / 100;
 		}
 
 		double mineralsPerKill;

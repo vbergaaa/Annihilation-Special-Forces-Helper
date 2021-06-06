@@ -183,6 +183,25 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region MaximumGather
+
+		public double MaximumGather
+		{
+			get => fMaximumGather;
+			set
+			{
+				if (fMaximumGather != value)
+				{
+					fMaximumGather = value;
+					RefreshPropertyBinding(nameof(MaximumGather));
+					RefreshPropertyBinding(nameof(KillsPerMinute));
+				}
+			}
+		}
+		double fMaximumGather;
+
+		#endregion
+
 		public virtual double LoadoutMineralCost { get; }
 		public virtual double LoadoutKillCost { get; }
 		public virtual double UnitMineralCost { get; }
