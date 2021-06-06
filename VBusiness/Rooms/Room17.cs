@@ -27,5 +27,7 @@ namespace VBusiness.Rooms
 				new EnemyQuantity(EnemyType.Hydralisk, 10),
 			};
 		}
+
+		public override EnemyType Bruta => EnemyType.Bruta3;
 	}
 }

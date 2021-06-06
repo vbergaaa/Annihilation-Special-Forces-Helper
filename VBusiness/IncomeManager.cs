@@ -3,6 +3,7 @@ using VBusiness.Difficulties;
 using VBusiness.HelperClasses;
 using VBusiness.Rooms;
 using VBusiness.Units;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness
@@ -69,6 +70,7 @@ namespace VBusiness
 
 				RefreshPropertyBinding(nameof(MineralsPerWave));
 				RefreshPropertyBinding(nameof(KillsPerWave));
+				BrutaliskOverride.RefreshAllBrutas();
 			}
 		}
 
@@ -95,6 +97,13 @@ namespace VBusiness
 
 		public override double MineralsPerWave => FarmRoom != RoomNumber.None ? new IncomeCalculator(Loadout).GetMineralsPerWave() : 0;
 		public override double KillsPerWave => FarmRoom != RoomNumber.None ? new IncomeCalculator(Loadout).GetKillsPerWave() : 0;
+
+		#endregion
+
+		#region BrutaliskOverride
+
+		public override VBrutaliskOverride BrutaliskOverride => fBrutaliskOverride ??= new BrutaliskOverride(this);
+		VBrutaliskOverride fBrutaliskOverride;
 
 		#endregion
 	}

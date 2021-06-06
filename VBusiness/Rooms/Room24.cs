@@ -30,5 +30,7 @@ namespace VBusiness.Rooms
 				new EnemyQuantity(EnemyType.Infestor, 4),
 			};
 		}
+
+		public override EnemyType Bruta => EnemyType.Bruta5;
 	}
 }

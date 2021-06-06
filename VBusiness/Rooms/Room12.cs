@@ -29,5 +29,7 @@ namespace VBusiness.Rooms
 				new EnemyQuantity(EnemyType.GiantAbberation, 4),
 			};
 		}
+
+		public override EnemyType Bruta => EnemyType.Bruta2;
 	}
 }

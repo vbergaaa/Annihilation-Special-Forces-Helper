@@ -30,5 +30,7 @@ namespace VBusiness.Rooms
 				new EnemyQuantity(EnemyType.Zergling, 48),
 			};
 		}
+
+		public override EnemyType Bruta => EnemyType.Bruta1;
 	}
 }

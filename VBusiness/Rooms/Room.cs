@@ -47,5 +47,7 @@ namespace VBusiness
 		protected abstract IEnumerable<EnemyQuantity> GetBuildings();
 		protected abstract IEnumerable<EnemyQuantity> GetEnemies();
 		protected internal virtual RoomNumber AdditionalOpenRooms => RoomNumber.None;
+
+		public virtual EnemyType Bruta { get; }
 	}
 }

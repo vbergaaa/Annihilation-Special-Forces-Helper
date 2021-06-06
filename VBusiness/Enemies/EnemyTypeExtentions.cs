@@ -38,7 +38,7 @@ namespace VBusiness.Enemies
 
 		public static bool IsBuilding(this EnemyType type)
 		{
-			return type > EnemyUnit.LastBoss;
+			return type > EnemyUnit.LastBoss && type < EnemyUnit.FirstBruta;
 		}
 
 		public static bool IsBoss(this EnemyType type)

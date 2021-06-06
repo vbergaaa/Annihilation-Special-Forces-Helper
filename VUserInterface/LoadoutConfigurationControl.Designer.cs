@@ -44,6 +44,8 @@ namespace VUserInterface
 			this.AdrenalineRushCheckBox = new VCheckControl();
 			this.DifficultyDropBox = new VDropBox();
 			this.UnitSpecDropBox = new VDropBox();
+			this.BrutaliskOverrideControl = new BrutaliskOverrideControl();
+			this.BrutaliskOverrideCheckBox = new VCheckControl();
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
 			//
 			// BindingSource
@@ -90,6 +92,22 @@ namespace VUserInterface
 			this.FarmRoomDropBox.Location = DPIScalingHelper.GetScaledPoint(125, 180);
 			this.FarmRoomDropBox.Caption = "Farming Room:";
 			//
+			// BrutaliskOverrideControl
+			//
+			this.BrutaliskOverrideControl.Caption = "Brutalisks";
+			this.BrutaliskOverrideControl.DataBindings.Add("BrutaliskOverride", BindingSource, "IncomeManager.BrutaliskOverride");
+			this.BrutaliskOverrideControl.Enabled = false;
+			this.BrutaliskOverrideControl.Location = DPIScalingHelper.GetScaledPoint(125, 235);
+			this.BrutaliskOverrideControl.Name = "BrutaliskOverrideControl";
+			//
+			// BrutaliskOverrideCheckBox
+			//
+			this.BrutaliskOverrideCheckBox.DataBindings.Add("Checked", BindingSource, "IncomeManager.BrutaliskOverride.ShouldOverrideBrutalisks");
+			this.BrutaliskOverrideCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 210);
+			this.BrutaliskOverrideCheckBox.Caption = "Override Brutalisks";
+			this.BrutaliskOverrideCheckBox.Name = "BrutaliskOverrideCheckBox";
+			this.BrutaliskOverrideCheckBox.CheckedChanged += BrutaliskOverrideCheckBox_CheckedChanged;
+			//
 			// UpgradesLabel
 			//
 			this.UpgradesLabel.Location = DPIScalingHelper.GetScaledPoint(300, 30);
@@ -119,6 +137,8 @@ namespace VUserInterface
 			this.Controls.Add(FarmRoomDropBox);
 			this.Controls.Add(SettingsLabel);
 			this.Controls.Add(IncomeLabel);
+			this.Controls.Add(BrutaliskOverrideControl);
+			this.Controls.Add(BrutaliskOverrideCheckBox);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).EndInit();
 		}
@@ -135,5 +155,7 @@ namespace VUserInterface
 		VDropBox DifficultyDropBox;
 		VDropBox UnitSpecDropBox;
 		VDropBox FarmRoomDropBox;
+		BrutaliskOverrideControl BrutaliskOverrideControl;
+		VCheckControl BrutaliskOverrideCheckBox;
 	}
 }

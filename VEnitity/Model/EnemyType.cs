@@ -65,5 +65,13 @@ namespace VEntityFramework.Model
 		Hive,
 		[Description("Pygalisk Cavern")]
 		PygaliskCavern,
+
+		// Brutas
+		Bruta1,
+		Bruta2,
+		Bruta3,
+		Bruta4,
+		Bruta5,
+		Bruta6,
 	}
 }

@@ -152,6 +152,8 @@ namespace VEntityFramework.Model
 
 		#region Persistent Properties
 
+		#region FarmRoom
+
 		[VXML(true)]
 		public virtual RoomNumber FarmRoom
 		{
@@ -167,6 +169,14 @@ namespace VEntityFramework.Model
 			}
 		}
 		RoomNumber fFarmRoom;
+
+		#endregion
+
+		#region BrutaliskOverride
+
+		public virtual VBrutaliskOverride BrutaliskOverride { get; }
+
+		#endregion
 
 		#endregion
 

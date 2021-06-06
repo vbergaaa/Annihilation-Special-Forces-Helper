@@ -54,6 +54,17 @@ namespace VUserInterface
 			}
 		}
 
+		#region Events
+
+		void BrutaliskOverrideCheckBox_CheckedChanged(object sender, System.EventArgs e)
+		{
+			var checkbox = sender as VCheckControl;
+			BrutaliskOverrideControl.Enabled = checkbox.Checked;
+			BrutaliskOverrideControl.Refresh();
+		}
+
+		#endregion
+
 		#region Difficulty
 
 		List<object> DifficultyList
