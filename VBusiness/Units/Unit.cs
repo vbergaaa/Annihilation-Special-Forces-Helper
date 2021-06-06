@@ -197,11 +197,15 @@ namespace VBusiness.Units
 				max += perks.MaximumPotential4.DesiredLevel * 50;
 			}
 			var activeSouls = Loadout.ActiveSoulTypes;
+
+			var allowBoth = max >= 2000;
+			var hungerSelected = false;
 			if (activeSouls.Contains(SoulType.Hunger))
 			{
 				max += 200;
+				hungerSelected = true;
 			}
-			if (activeSouls.Contains(SoulType.GhostForce))
+			if (activeSouls.Contains(SoulType.GhostForce) && (!hungerSelected || allowBoth))
 			{
 				max += 200;
 			}

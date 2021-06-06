@@ -98,7 +98,8 @@ namespace VEntityFramework.Model
 			get
 			{
 				var souls = new List<VSoul>() { Souls.Soul1, Souls.Soul2, Souls.Soul3 };
-				var types = souls.Select(s => s.Type);
+				var types = souls.Select(s => s.Type).ToList();
+				types.AddRange(Souls.SoulPowers.ActiveSouls);
 				return types;
 			}
 		}
