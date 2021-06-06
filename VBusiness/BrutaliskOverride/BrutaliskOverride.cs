@@ -88,7 +88,7 @@ namespace VBusiness
 		{
 			ErrorReporter.ReportDebug("Should only contain Brutas", () => type < EnemyType.Bruta1 && type != EnemyType.None);
 
-			return IncomeManager.Loadout.UnitConfiguration.Difficulty.Difficulty > DifficultyLevel.Brutal
+			return IncomeManager.Loadout.UnitConfiguration.Difficulty.Difficulty >= DifficultyLevel.Brutal
 				&& IncomeManager.FarmRoom != RoomNumber.None
 				&& Room.New(IncomeManager.Loadout.IncomeManager.FarmRoom).Bruta == type;
 		}

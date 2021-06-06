@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using System.Linq;
 using VBusiness.Enemies;
 using VEntityFramework.Model;
@@ -14,32 +15,72 @@ namespace VBusiness.HelperClasses
 			this.loadout = loadout;
 		}
 
-		public double GetKillsPerWave()
+		public double GetKillsPerMinute()
 		{
-			return GetIncomePerWave().Kills;
+			return GetIncomePerMinute().Kills;
 		}
 
-		public double GetMineralsPerWave()
+		public double GetMineralsPerMinute()
 		{
-			return GetIncomePerWave().Minerals;
+			return GetIncomePerMinute().Minerals;
 		}
 
-		Resources GetIncomePerWave()
+		Resources GetIncomePerMinute()
 		{
 			var units = Room.New(loadout.IncomeManager.FarmRoom).EnemiesPerWave.TierUp(loadout.UnitConfiguration.Difficulty.UnitTierIncrease).ToList();
 			units.AddRange(units.SelectRecursive(e => e.Type.GetAdditionalSpawns(loadout.UnitConfiguration.Difficulty.UnitTierIncrease, loadout.IncomeManager.FarmRoom).Multiply(e.Quantity)));
 
 			var totalKills = 0.0;
 			var totalMinerals = 0.0;
+			var spawnsPerMinute = 60.0 / 17.0; // 17 seconds looks like the standard wave period
 
 			foreach (var unit in units)
 			{
 				var enemy = EnemyUnit.New(unit.Type);
-				totalKills += enemy.KillBounty * unit.Quantity;
-				totalMinerals += enemy.MineralBounty * unit.Quantity;
+				totalKills += enemy.KillBounty * unit.Quantity * spawnsPerMinute;
+				totalMinerals += enemy.MineralBounty * unit.Quantity * spawnsPerMinute;
+			}
+
+			spawnsPerMinute = 60.0 / 9.0; // 9 secounds looks like the first bruta wave period
+			foreach (var unit in GetBrutaWaves())
+			{
+				var enemy = EnemyUnit.New(unit.Type);
+				totalKills += enemy.KillBounty * unit.Quantity * spawnsPerMinute;
+				totalMinerals += enemy.MineralBounty * unit.Quantity * spawnsPerMinute;
 			}
 
 			return new Resources(totalMinerals, totalKills);
+		}
+
+		IEnumerable<EnemyQuantity> GetBrutaWaves()
+		{
+			if (loadout.UnitConfiguration.DifficultyLevel >= DifficultyLevel.Brutal)
+			{
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta1)
+				{
+					yield return EnemyUnit.New(EnemyType.Bruta1).BrutaSpawns;
+				}
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta2)
+				{
+					yield return EnemyUnit.New(EnemyType.Bruta2).BrutaSpawns;
+				}
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta3)
+				{
+					yield return EnemyUnit.New(EnemyType.Bruta3).BrutaSpawns;
+				}
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta4)
+				{
+					yield return EnemyUnit.New(EnemyType.Bruta4).BrutaSpawns;
+				}
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta5)
+				{
+					yield return EnemyUnit.New(EnemyType.Bruta5).BrutaSpawns;
+				}
+				if (loadout.IncomeManager.BrutaliskOverride.Bruta6)
+				{
+					yield return EnemyUnit.New(EnemyType.Bruta6).BrutaSpawns;
+				}
+			}
 		}
 
 		struct Resources
@@ -51,6 +92,8 @@ namespace VBusiness.HelperClasses
 			}
 			public double Kills { get; set; }
 			public double Minerals { get; set; }
+
+			public static Resources operator +(Resources a, Resources b) => new Resources(a.Minerals + b.Minerals, a.Kills + b.Kills);
 		}
 	}
 }

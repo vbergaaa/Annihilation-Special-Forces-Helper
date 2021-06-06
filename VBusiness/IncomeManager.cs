@@ -68,8 +68,8 @@ namespace VBusiness
 					? (RoomNumber)Math.Min((int)value, (int)difficulty.RoomToClear)
 					: value;
 
-				RefreshPropertyBinding(nameof(MineralsPerWave));
-				RefreshPropertyBinding(nameof(KillsPerWave));
+				RefreshPropertyBinding(nameof(MineralsPerMinute));
+				RefreshPropertyBinding(nameof(KillsPerMinute));
 				BrutaliskOverride.RefreshAllBrutas();
 			}
 		}
@@ -95,8 +95,8 @@ namespace VBusiness
 
 		#region IncomePerWave
 
-		public override double MineralsPerWave => FarmRoom != RoomNumber.None ? new IncomeCalculator(Loadout).GetMineralsPerWave() : 0;
-		public override double KillsPerWave => FarmRoom != RoomNumber.None ? new IncomeCalculator(Loadout).GetKillsPerWave() : 0;
+		public override double MineralsPerMinute => FarmRoom != RoomNumber.None ? new IncomeCalculator(Loadout).GetMineralsPerMinute() : 0;
+		public override double KillsPerMinute => FarmRoom != RoomNumber.None ? new IncomeCalculator(Loadout).GetKillsPerMinute() : 0;
 
 		#endregion
 

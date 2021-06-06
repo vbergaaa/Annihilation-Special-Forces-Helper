@@ -62,6 +62,8 @@ namespace VEntityFramework.Model
 					fDifficultyLevel = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(DifficultyLevel));
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.MineralsPerMinute));
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.KillsPerMinute));
 				}
 			}
 		}

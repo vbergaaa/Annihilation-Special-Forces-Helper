@@ -48,7 +48,6 @@ namespace Tests
 			}
 		}
 
-
 		[Test]
 		public void TestPropertiesDoNotThrow()
 		{

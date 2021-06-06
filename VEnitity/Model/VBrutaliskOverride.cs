@@ -110,6 +110,8 @@ namespace VEntityFramework.Model
 					fShouldOverrideBrutalisks = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(ShouldOverrideBrutalisks));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.MineralsPerMinute));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.KillsPerMinute));
 				}
 			}
 		}
@@ -126,6 +128,8 @@ namespace VEntityFramework.Model
 					fBrutaOverride1 = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(BrutaOverride1));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.MineralsPerMinute));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.KillsPerMinute));
 				}
 			}
 		}
@@ -142,6 +146,8 @@ namespace VEntityFramework.Model
 					fBrutaOverride2 = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(BrutaOverride2));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.MineralsPerMinute));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.KillsPerMinute));
 				}
 			}
 		}
@@ -158,6 +164,8 @@ namespace VEntityFramework.Model
 					fBrutaOverride3 = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(BrutaOverride3));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.MineralsPerMinute));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.KillsPerMinute));
 				}
 			}
 		}
@@ -174,6 +182,8 @@ namespace VEntityFramework.Model
 					fBrutaOverride4 = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(BrutaOverride4));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.MineralsPerMinute));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.KillsPerMinute));
 				}
 			}
 		}
@@ -190,6 +200,8 @@ namespace VEntityFramework.Model
 					fBrutaOverride5 = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(BrutaOverride5));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.MineralsPerMinute));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.KillsPerMinute));
 				}
 			}
 		}
@@ -206,6 +218,8 @@ namespace VEntityFramework.Model
 					fBrutaOverride6 = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(BrutaOverride6));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.MineralsPerMinute));
+					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.KillsPerMinute));
 				}
 			}
 		}

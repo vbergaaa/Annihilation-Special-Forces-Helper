@@ -40,8 +40,8 @@ namespace VUserInterface
 			this.InfuseRecycleLabel = new VLabel();
 			this.KillRecycleLabel = new VLabel();
 			this.RankRevisionLabel = new VLabel();
-			this.MineralsPerWaveLabel = new VLabel();
-			this.KillsPerWaveLabel = new VLabel();
+			this.MineralsPerMinuteLabel = new VLabel();
+			this.KillsPerMinuteLabel = new VLabel();
 			this.bindingSource = new System.Windows.Forms.BindingSource();
 			this.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -126,23 +126,23 @@ namespace VUserInterface
 			this.RankRevisionLabel.Suffix = "%";
 			this.RankRevisionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
-			// MineralsPerWaveLabel
+			// MineralsPerMinuteLabel
 			//
-			this.MineralsPerWaveLabel.Caption = "Minerals Per Wave:";
-			this.MineralsPerWaveLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "MineralsPerWave"));
-			this.MineralsPerWaveLabel.Location = DPIScalingHelper.GetScaledPoint(120, 180);
-			this.MineralsPerWaveLabel.Name = "MineralsPerWaveLabel";
-			this.MineralsPerWaveLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
-			this.MineralsPerWaveLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MineralsPerMinuteLabel.Caption = "Minerals / min:";
+			this.MineralsPerMinuteLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "MineralsPerMinute"));
+			this.MineralsPerMinuteLabel.Location = DPIScalingHelper.GetScaledPoint(120, 180);
+			this.MineralsPerMinuteLabel.Name = "MineralsPerMinuteLabel";
+			this.MineralsPerMinuteLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
+			this.MineralsPerMinuteLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
-			// KillsPerWaveLabel
+			// KillsPerMinuteLabel
 			//
-			this.KillsPerWaveLabel.Caption = "Kills Per Wave:";
-			this.KillsPerWaveLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "KillsPerWave"));
-			this.KillsPerWaveLabel.Location = DPIScalingHelper.GetScaledPoint(120, 200);
-			this.KillsPerWaveLabel.Name = "KillsPerWaveLabel";
-			this.KillsPerWaveLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
-			this.KillsPerWaveLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.KillsPerMinuteLabel.Caption = "Kills / min:";
+			this.KillsPerMinuteLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "KillsPerMinute"));
+			this.KillsPerMinuteLabel.Location = DPIScalingHelper.GetScaledPoint(120, 200);
+			this.KillsPerMinuteLabel.Name = "KillsPerMinuteLabel";
+			this.KillsPerMinuteLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
+			this.KillsPerMinuteLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// StatsControl
 			//
@@ -154,8 +154,8 @@ namespace VUserInterface
 			this.Controls.Add(InfuseRecycleLabel);
 			this.Controls.Add(KillRecycleLabel);
 			this.Controls.Add(RankRevisionLabel);
-			this.Controls.Add(MineralsPerWaveLabel);
-			this.Controls.Add(KillsPerWaveLabel);
+			this.Controls.Add(MineralsPerMinuteLabel);
+			this.Controls.Add(KillsPerMinuteLabel);
 			this.Size = DPIScalingHelper.GetScaledSize(175, 310);
 			this.Text = "Income";
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
@@ -171,8 +171,8 @@ namespace VUserInterface
 		private VLabel InfuseRecycleLabel;
 		private VLabel KillRecycleLabel;
 		private VLabel RankRevisionLabel;
-		private VLabel MineralsPerWaveLabel;
-		private VLabel KillsPerWaveLabel;
+		private VLabel MineralsPerMinuteLabel;
+		private VLabel KillsPerMinuteLabel;
 		private System.Windows.Forms.BindingSource bindingSource;
 		private VLabel LoadoutMineralCostLabel;
 		private VLabel LoadoutKillCostLabel;
