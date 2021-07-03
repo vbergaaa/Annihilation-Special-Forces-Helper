@@ -15,7 +15,7 @@ namespace VBusiness.Rooms
 			return new List<EnemyQuantity>()
 			{
 				new EnemyQuantity(EnemyType.SpineCrawler, 13),
-				new EnemyQuantity(EnemyType.SpawningPool, 4),
+				new EnemyQuantity(EnemyType.SpawningPool, 3),
 				new EnemyQuantity(EnemyType.Hatchery, 1),
 				new EnemyQuantity(EnemyType.SporeCrawler, 1),
 			};
