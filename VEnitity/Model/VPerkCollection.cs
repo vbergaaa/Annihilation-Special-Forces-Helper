@@ -102,6 +102,12 @@ namespace VEntityFramework.Model
 		public virtual VPerk DominatorSpeed { get; }
 		public virtual VPerk Fearless { get; }
 		public virtual VPerk UpgradeCache { get; }
+		public virtual VPerk DestroyerVitals { get; }
+		public virtual VPerk DestroyerArmor { get; }
+		public virtual VPerk LimitlessEssence { get; }
+		public virtual VPerk OverInfuse { get; }
+		public virtual VPerk DestroyerWarp { get; }
+		public virtual VPerk DestroyerRankRevision { get; }
 
 		#endregion
 

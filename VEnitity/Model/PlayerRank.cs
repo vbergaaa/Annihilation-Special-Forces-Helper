@@ -35,5 +35,10 @@ namespace VEntityFramework.Model
 		ArchDominator,
 		[Description("Exalted Dominator")]
 		ExaltedDominator,
+		Destroyer,
+		[Description("Arch Destroyer")]
+		ArchDestroyer,
+		[Description("Exalted Destroyer")]
+		ExaltedDestroyer,
 	}
 }

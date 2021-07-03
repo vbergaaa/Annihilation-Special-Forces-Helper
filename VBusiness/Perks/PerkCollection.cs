@@ -1471,6 +1471,108 @@ namespace VBusiness.Perks
 
 		#endregion
 
+		#region DestroyerVitals
+
+		public override VPerk DestroyerVitals
+		{
+			get
+			{
+				if (fDestroyerVitals == null)
+				{
+					fDestroyerVitals = new DestroyerVitalsPerk(this);
+				}
+				return fDestroyerVitals;
+			}
+		}
+		VPerk fDestroyerVitals;
+
+		#endregion
+
+		#region DestroyerArmor
+
+		public override VPerk DestroyerArmor
+		{
+			get
+			{
+				if (fDestroyerArmor == null)
+				{
+					fDestroyerArmor = new DestroyerArmorPerk(this);
+				}
+				return fDestroyerArmor;
+			}
+		}
+		VPerk fDestroyerArmor;
+
+		#endregion
+
+		#region LimitlessEssence
+
+		public override VPerk LimitlessEssence
+		{
+			get
+			{
+				if (fLimitlessEssence == null)
+				{
+					fLimitlessEssence = new LimitlessEssencePerk(this);
+				}
+				return fLimitlessEssence;
+			}
+		}
+		VPerk fLimitlessEssence;
+
+		#endregion
+
+		#region OverInfuse
+
+		public override VPerk OverInfuse
+		{
+			get
+			{
+				if (fOverInfuse == null)
+				{
+					fOverInfuse = new OverInfusePerk(this);
+				}
+				return fOverInfuse;
+			}
+		}
+		VPerk fOverInfuse;
+
+		#endregion
+
+		#region DestroyerWarp
+
+		public override VPerk DestroyerWarp
+		{
+			get
+			{
+				if (fDestroyerWarp == null)
+				{
+					fDestroyerWarp = new DestroyerWarpPerk(this);
+				}
+				return fDestroyerWarp;
+			}
+		}
+		VPerk fDestroyerWarp;
+
+		#endregion
+
+		#region DestroyerRankRevision
+
+		public override VPerk DestroyerRankRevision
+		{
+			get
+			{
+				if (fDestroyerRankRevision == null)
+				{
+					fDestroyerRankRevision = new DestroyerRankRevisionPerk(this);
+				}
+				return fDestroyerRankRevision;
+			}
+		}
+		VPerk fDestroyerRankRevision;
+
+		#endregion
+
 		#endregion
 
 		#region AllPerks
@@ -1565,6 +1667,12 @@ namespace VBusiness.Perks
 				DominatorSpeed,
 				Fearless,
 				UpgradeCache,
+				DestroyerVitals,
+				DestroyerArmor,
+				LimitlessEssence,
+				OverInfuse,
+				DestroyerWarp,
+				DestroyerRankRevision,
 			};
 
 			allPerks = perks;
