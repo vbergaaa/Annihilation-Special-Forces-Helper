@@ -14,9 +14,9 @@ namespace VBusiness.Perks
 
 		public override byte Position => 6;
 
-		public override int StartingCost => 2500;
+		public override int StartingCost => 25000;
 
-		public override int IncrementCost => 4;
+		public override int IncrementCost => 4000;
 
 		protected override string PerkName => "Destroyer Rank Revision";
 

@@ -120,5 +120,6 @@ namespace VEntityFramework.Model
 		Mythic,
 		Divine,
 		Impossible,
+		ZeroV,
 	}
 }
