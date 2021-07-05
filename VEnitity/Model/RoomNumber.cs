@@ -74,5 +74,11 @@ namespace VBusiness.Rooms
 		Room32,
 		[Description("Impossible Room 3")]
 		Room33,
+		[Description("Zero V Room 1")]
+		Room34,
+		[Description("Zero V Room 2")]
+		Room35,
+		[Description("Zero V Room 3")]
+		Room36,
 	}
 }

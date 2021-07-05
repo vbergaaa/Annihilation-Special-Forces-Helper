@@ -36,6 +36,6 @@ namespace VBusiness.Difficulties
 
 		public override int BaseUpgradeCost => 300;
 
-		public override RoomNumber RoomToClear => throw new NotImplementedException();
+		public override RoomNumber RoomToClear => RoomNumber.Room36;
 	}
 }
