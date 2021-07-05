@@ -92,6 +92,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region BaseUpgradeCost
+
+		public virtual int BaseUpgradeCost { get; }
+
+		#endregion
+
 		#region RoomToClear
 
 		public abstract RoomNumber RoomToClear { get; }
