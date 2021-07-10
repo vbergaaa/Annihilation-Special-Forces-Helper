@@ -31,7 +31,7 @@ namespace VUserInterface
 
 		void RefreshPageLimits(object sender, EventArgs e)
 		{
-			var perksControl = this.Controls.Find("PerkPageControl", false)[0];
+			var perksControl = this.Controls.Find("PerkPageControl", true)[0];
 			if (perksControl is VPerkCollectionControl control)
 			{
 				control.RestrictPerkPageButtons();
