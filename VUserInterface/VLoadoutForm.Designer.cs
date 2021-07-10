@@ -34,29 +34,28 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			this.MainTabControl = new DPITabControl();
+			this.DetailsTabPage = new DPITabPage();
+			this.PerksTabPage = new DPITabPage();
+			this.GemsTabPage = new DPITabPage();
+			this.SoulsTabPage = new DPITabPage();
+			this.CPTabPage = new DPITabPage();
+			this.ConfigTabPage = new DPITabPage();
+			this.UnitTabPage = new DPITabPage();
+			this.InfoTabControl = new DPITabControl();
+			this.StatsTabPage = new DPITabPage();
+			this.IncomeTabPage = new DPITabPage();
 			this.PerkPageControl = new VPerkCollectionControl();
 			this.LoadoutBindingSource = new System.Windows.Forms.BindingSource();
 			this.LoadoutNameTextBox = new VTextBox();
 			this.SlotNumberTextBox = new VTextBox();
-			this.InfoPanel = new DPIPanel();
-			this.StatsButton = new DPIButton();
-			this.IncomeButton = new DPIButton();
 			this.StatsControl = new VStatsControl();
 			this.IncomeControl = new IncomeControl();
-			this.PerksButton = new DPIButton();
-			this.GemsButton = new DPIButton();
-			this.SoulsButton = new DPIButton();
-			this.ChallengePointCollectionButton = new DPIButton();
-			this.UnitButton = new DPIButton();
-			this.UpgradesButton = new DPIButton();
 			this.GemsControl = new VGemCollectionControl();
 			this.SoulsControl = new VLoadoutSoulsControl();
 			this.ChallengePointCollectionControl = new ChallengePointCollectionControl();
 			this.UnitControl = new UnitConfigurationControl();
 			this.LoadoutConfigurationControl = new LoadoutConfigurationControl();
-			this.AvailablePPLabel = new VLabel();
-			this.AvailableGemsLabel = new VLabel();
-			this.AvailableCPLabel = new VLabel();
 			this.RestrictCheckBox = new VCheckControl();
 			this.UseUnitStatsCheckBox = new VCheckControl();
 			this.UseSingleUnitEcoCheckBox = new VCheckControl();
@@ -67,18 +66,100 @@ namespace VUserInterface
 			//
 			this.LoadoutBindingSource.DataSource = typeof(Loadout);
 			//
+			// MainTabControl
+			//
+			this.MainTabControl.Anchor |= AnchorStyles.Right | AnchorStyles.Bottom;
+			this.MainTabControl.Name = "MainTabControl";
+			this.MainTabControl.Location = DPIScalingHelper.GetScaledPoint(5, 5);
+			this.MainTabControl.Size = DPIScalingHelper.GetScaledSize(600, 410);
+			this.MainTabControl.TabPages.Add(DetailsTabPage);
+			this.MainTabControl.TabPages.Add(PerksTabPage);
+			this.MainTabControl.TabPages.Add(GemsTabPage);
+			this.MainTabControl.TabPages.Add(SoulsTabPage);
+			this.MainTabControl.TabPages.Add(CPTabPage);
+			this.MainTabControl.TabPages.Add(ConfigTabPage);
+			this.MainTabControl.TabPages.Add(UnitTabPage);
+			//
+			// DetailsTabPage
+			//
+			this.DetailsTabPage.Name = "DetailsTabPage";
+			this.DetailsTabPage.Text = "Details";
+			this.DetailsTabPage.Controls.Add(LoadoutNameTextBox);
+			this.DetailsTabPage.Controls.Add(SlotNumberTextBox);
+			this.DetailsTabPage.Controls.Add(RestrictCheckBox);
+			//
+			// PerksTabPage
+			//
+			this.PerksTabPage.Name = "PerksTabPage";
+			this.PerksTabPage.Text = "Perks";
+			this.PerksTabPage.Controls.Add(PerkPageControl);
+			//
+			// GemsTabPage
+			//
+			this.GemsTabPage.Name = "GemsTabPage";
+			this.GemsTabPage.Text = "Gems";
+			this.GemsTabPage.Controls.Add(GemsControl);
+			//
+			// SoulsTabPage
+			//
+			this.SoulsTabPage.Name = "SoulsTabPage";
+			this.SoulsTabPage.Text = "Souls";
+			this.SoulsTabPage.Controls.Add(SoulsControl);
+			//
+			// CPTabPage
+			//
+			this.CPTabPage.Name = "CPTabPage";
+			this.CPTabPage.Text = "Challenge Points";
+			this.CPTabPage.Controls.Add(ChallengePointCollectionControl);
+			//
+			// ConfigTabPage
+			//
+			this.ConfigTabPage.Name = "ConfigTabPage";
+			this.ConfigTabPage.Text = "Configuration";
+			this.ConfigTabPage.Controls.Add(LoadoutConfigurationControl);
+			//
+			// UnitTabPage
+			//
+			this.UnitTabPage.Name = "UnitTabPage";
+			this.UnitTabPage.Text = "Units";
+			this.UnitTabPage.Controls.Add(UnitControl);
+			//
+			// InfoTabControl
+			//
+			this.InfoTabControl.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
+			this.InfoTabControl.Name = "InfoTabControl";
+			//this.InfoTabControl.Dock = DockStyle.Fill;
+			this.InfoTabControl.Location = DPIScalingHelper.GetScaledPoint(605, 5);
+			this.InfoTabControl.Size = DPIScalingHelper.GetScaledSize(190, 410);
+			this.InfoTabControl.TabPages.Add(StatsTabPage);
+			this.InfoTabControl.TabPages.Add(IncomeTabPage);
+			//
+			// StatsTabPage
+			//
+			this.StatsTabPage.Name = "StatsTabPage";
+			this.StatsTabPage.Text = "Stats";
+			this.StatsTabPage.Controls.Add(UseUnitStatsCheckBox);
+			this.StatsTabPage.Controls.Add(StatsControl);
+			//
+			// IncomeTabPage
+			//
+			this.IncomeTabPage.Name = "IncomeTabPage";
+			this.IncomeTabPage.Text = "Income";
+			this.IncomeTabPage.Controls.Add(UseSingleUnitEcoCheckBox);
+			this.IncomeTabPage.Controls.Add(IncomeControl);
+			//
 			// LoadoutNameTextBox
 			//
 			this.LoadoutNameTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Name", true);
-			this.LoadoutNameTextBox.Location = DPIScalingHelper.GetScaledPoint(250, 20);
+			this.LoadoutNameTextBox.Location = DPIScalingHelper.GetScaledPoint(200, 20);
 			this.LoadoutNameTextBox.Name = "LoadoutNameTextBox";
-			this.LoadoutNameTextBox.Caption = "LoadoutName";
+			this.LoadoutNameTextBox.Caption = "Name";
 			this.LoadoutNameTextBox.Width = 100;
 			//
 			// SlotNumberTextBox
 			//
 			this.SlotNumberTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Slot", true);
-			this.SlotNumberTextBox.Location = DPIScalingHelper.GetScaledPoint(100, 20);
+			this.SlotNumberTextBox.Location = DPIScalingHelper.GetScaledPoint(200, 50);
 			this.SlotNumberTextBox.Name = "SlotNumberTextBox";
 			this.SlotNumberTextBox.Width = 30;
 			this.SlotNumberTextBox.Caption = "Save Slot";
@@ -86,119 +167,60 @@ namespace VUserInterface
 			// RestrictCheckBox
 			//
 			this.RestrictCheckBox.Name = "RestrictCheckBox";
-			this.RestrictCheckBox.Caption = "Use Profile Limits";
-			this.RestrictCheckBox.CheckedChanged += RestrictCheckBox_CheckedChanged;
+			this.RestrictCheckBox.Caption = "Restrict loadout to profile limits";
 			this.RestrictCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "ShouldRestrict");
-			this.RestrictCheckBox.Location = DPIScalingHelper.GetScaledPoint(500, 20);
+			this.RestrictCheckBox.Location = DPIScalingHelper.GetScaledPoint(200, 110);
 			//
 			// UseUnitStatsCheckBox
 			//
 			this.UseUnitStatsCheckBox.Name = "UseUnitStatsCheckBox";
 			this.UseUnitStatsCheckBox.Caption = "Use Unit Statistics";
 			this.UseUnitStatsCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "UseUnitStats");
-			this.UseUnitStatsCheckBox.Location = DPIScalingHelper.GetScaledPoint(720, 20);
+			this.UseUnitStatsCheckBox.Location = DPIScalingHelper.GetScaledPoint(140, 10);
 			//
 			// UseSingleUnitEcoCheckBox
 			//
 			this.UseSingleUnitEcoCheckBox.Name = "UseSingleUnitEcoCheckBox";
 			this.UseSingleUnitEcoCheckBox.Caption = "Current Unit Cost Only";
 			this.UseSingleUnitEcoCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "UseSingleUnitEco");
-			this.UseSingleUnitEcoCheckBox.Location = DPIScalingHelper.GetScaledPoint(720, 20);
-			this.UseSingleUnitEcoCheckBox.Visible = false;
-			//
-			// AvailablePPLabel
-			//
-			this.AvailablePPLabel.AutoSize = true;
-			this.AvailablePPLabel.DataBindings.Add("Text", LoadoutBindingSource, "RemainingPerkPoints");
-			this.AvailablePPLabel.Location = DPIScalingHelper.GetScaledPoint(120, 90);
-			this.AvailablePPLabel.Name = "AvailablePPLabel";
-			this.AvailablePPLabel.Caption = "Available PP:";
-			this.AvailablePPLabel.MaximumSize = DPIScalingHelper.GetScaledSize(150, 100);
-			//
-			// AvailableCPLabel
-			//
-			this.AvailableCPLabel.AutoSize = true;
-			this.AvailableCPLabel.DataBindings.Add("Text", LoadoutBindingSource, "ChallengePoints.RemainingCP");
-			this.AvailableCPLabel.Location = DPIScalingHelper.GetScaledPoint(500, 90);
-			this.AvailableCPLabel.Name = "AvailableCPLabel";
-			this.AvailableCPLabel.Caption = "Available CP:";
-			this.AvailableCPLabel.MaximumSize = DPIScalingHelper.GetScaledSize(150, 100);
-			//
-			// AvailableGemsLabel
-			//
-			this.AvailableGemsLabel.AutoSize = true;
-			this.AvailableGemsLabel.DataBindings.Add("Text", LoadoutBindingSource, "Gems.RemainingGems");
-			this.AvailableGemsLabel.Location = DPIScalingHelper.GetScaledPoint(320, 90);
-			this.AvailableGemsLabel.Name = "AvailableGemsLabel";
-			this.AvailableGemsLabel.Caption = "Available Gems:";
-			this.AvailableGemsLabel.MaximumSize = DPIScalingHelper.GetScaledSize(150, 100);
+			this.UseSingleUnitEcoCheckBox.Location = DPIScalingHelper.GetScaledPoint(140, 10);
 			//
 			// PerkPageControl
 			//
-			this.PerkPageControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
+			this.PerkPageControl.Location = DPIScalingHelper.GetScaledPoint(5, 10);
 			this.PerkPageControl.DataBindings.Add("Perks", this.LoadoutBindingSource, "Perks");
 			this.PerkPageControl.DataBindings.Add("Text", this.LoadoutBindingSource, "Perks.PageTitle");
 			this.PerkPageControl.Name = "PerkPageControl";
 			//
 			// GemsControl
 			//
-			this.GemsControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
+			this.GemsControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
 			this.GemsControl.DataBindings.Add("Gems", this.LoadoutBindingSource, "Gems");
 			this.GemsControl.Text = "Gem";
 			//
 			// UnitControl
 			//
-			this.UnitControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
+			this.UnitControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
 			this.UnitControl.DataBindings.Add("UnitConfiguration", this.LoadoutBindingSource, "UnitConfiguration");
 			this.UnitControl.Text = "Gem";
 			//
 			// SoulsControl
 			//
-			this.SoulsControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
+			this.SoulsControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
 			this.SoulsControl.DataBindings.Add("Souls", this.LoadoutBindingSource, "Souls");
 			this.SoulsControl.Text = "Soul";
 			//
 			// ChallengePointCollectionControl
 			//
-			this.ChallengePointCollectionControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
+			this.ChallengePointCollectionControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
 			this.ChallengePointCollectionControl.DataBindings.Add("ChallengePointCollection", this.LoadoutBindingSource, "ChallengePoints");
 			this.ChallengePointCollectionControl.Text = "Challenge Points";
-			this.ChallengePointCollectionControl.Visible = false;
 			//
 			// UpgradeControl
 			//
-			this.LoadoutConfigurationControl.Location = DPIScalingHelper.GetScaledPoint(25, 120);
+			this.LoadoutConfigurationControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
 			this.LoadoutConfigurationControl.DataBindings.Add("Loadout", this.LoadoutBindingSource, ".");
 			this.LoadoutConfigurationControl.Name= "LoadoutConfigurationControl";
-			this.LoadoutConfigurationControl.Visible = false;
-			//
-			// InfoPanel
-			//
-			this.InfoPanel.Controls.Add(StatsButton);
-			this.InfoPanel.Controls.Add(IncomeButton);
-			this.InfoPanel.Controls.Add(StatsControl);
-			this.InfoPanel.Controls.Add(IncomeControl);
-			this.InfoPanel.Location = DPIScalingHelper.GetScaledPoint(620,50);
-			this.InfoPanel.Name = "InfoPanel";
-			this.InfoPanel.Size = DPIScalingHelper.GetScaledSize(175, 340);
-			//
-			// StatsButton
-			//
-			this.StatsButton.Click += InfoPanelVisibility;
-			this.StatsButton.FlatStyle = FlatStyle.Flat;
-			this.StatsButton.Location = DPIScalingHelper.GetScaledPoint(0, 0);
-			this.StatsButton.Name = "StatsButton";
-			this.StatsButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
-			this.StatsButton.Text = "Stats";
-			//
-			// IncomeButton
-			//
-			this.IncomeButton.Click += InfoPanelVisibility;
-			this.IncomeButton.FlatStyle = FlatStyle.Flat;
-			this.IncomeButton.Location = DPIScalingHelper.GetScaledPoint(90, 0);
-			this.IncomeButton.Name = "IncomeButton";
-			this.IncomeButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
-			this.IncomeButton.Text = "Income";
 			//
 			// StatsControl
 			//
@@ -211,82 +233,14 @@ namespace VUserInterface
 			this.IncomeControl.DataBindings.Add("IncomeManager", this.LoadoutBindingSource, "IncomeManager");
 			this.IncomeControl.Name = "IncomeControl";
 			this.IncomeControl.Location = DPIScalingHelper.GetScaledPoint(0, 30);
-			this.IncomeControl.Visible = false;
-			//
-			// PerksButton
-			//
-			this.PerksButton.Location = DPIScalingHelper.GetScaledPoint(30, 55);
-			this.PerksButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
-			this.PerksButton.Text = "Perks";
-			this.PerksButton.FlatStyle = FlatStyle.Flat;
-			this.PerksButton.Click += ControlVisibilityToggled;
-			//
-			// GemsButton
-			//
-			this.GemsButton.Location = DPIScalingHelper.GetScaledPoint(123, 55);
-			this.GemsButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
-			this.GemsButton.Text = "Gems";
-			this.GemsButton.FlatStyle = FlatStyle.Flat;
-			this.GemsButton.Click += ControlVisibilityToggled;
-			//
-			// SoulsButton
-			//
-			this.SoulsButton.Location = DPIScalingHelper.GetScaledPoint(216, 55);
-			this.SoulsButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
-			this.SoulsButton.Text = "Souls";
-			this.SoulsButton.FlatStyle = FlatStyle.Flat;
-			this.SoulsButton.Click += ControlVisibilityToggled;
-			//
-			// ChallengePointCollectionButton
-			//
-			this.ChallengePointCollectionButton.Location = DPIScalingHelper.GetScaledPoint(309, 55);
-			this.ChallengePointCollectionButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
-			this.ChallengePointCollectionButton.Text = "CP";
-			this.ChallengePointCollectionButton.FlatStyle = FlatStyle.Flat;
-			this.ChallengePointCollectionButton.Click += ControlVisibilityToggled;
-			//
-			// UnitButton
-			//
-			this.UnitButton.Location = DPIScalingHelper.GetScaledPoint(402, 55);
-			this.UnitButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
-			this.UnitButton.Text = "Unit";
-			this.UnitButton.FlatStyle = FlatStyle.Flat;
-			this.UnitButton.Click += ControlVisibilityToggled;
-			//
-			// UpgradesButton
-			//
-			this.UpgradesButton.Location = DPIScalingHelper.GetScaledPoint(495, 55);
-			this.UpgradesButton.Size = DPIScalingHelper.GetScaledSize(85, 28);
-			this.UpgradesButton.Text = "Config";
-			this.UpgradesButton.FlatStyle = FlatStyle.Flat;
-			this.UpgradesButton.Click += ControlVisibilityToggled;
 			//
 			// PerkPlanningForm
 			//
 			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = DPIScalingHelper.GetScaledSize(800, 450);
-			this.Controls.Add(LoadoutNameTextBox);
-			this.Controls.Add(PerkPageControl);
-			this.Controls.Add(SlotNumberTextBox);
-			this.Controls.Add(InfoPanel);
-			this.Controls.Add(PerksButton);
-			this.Controls.Add(GemsButton);
-			this.Controls.Add(SoulsButton);
-			this.Controls.Add(ChallengePointCollectionButton);
-			this.Controls.Add(UnitButton);
-			this.Controls.Add(UpgradesButton);
-			this.Controls.Add(GemsControl);
-			this.Controls.Add(SoulsControl);
-			this.Controls.Add(ChallengePointCollectionControl);
-			this.Controls.Add(LoadoutConfigurationControl);
-			this.Controls.Add(UnitControl);
-			this.Controls.Add(AvailablePPLabel);
-			this.Controls.Add(AvailableGemsLabel);
-			this.Controls.Add(AvailableCPLabel);
-			this.Controls.Add(RestrictCheckBox);
-			this.Controls.Add(UseUnitStatsCheckBox);
-			this.Controls.Add(UseSingleUnitEcoCheckBox);
+			this.Controls.Add(MainTabControl);
+			this.Controls.Add(InfoTabControl);
 			this.Name = "LoadoutForm";
 			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
@@ -296,15 +250,17 @@ namespace VUserInterface
 
 		#endregion
 
-		private System.Windows.Forms.Button PerksButton;
-		private System.Windows.Forms.Button GemsButton;
-		private System.Windows.Forms.Button SoulsButton;
-		private System.Windows.Forms.Button ChallengePointCollectionButton;
-		private System.Windows.Forms.Button UnitButton;
-		private System.Windows.Forms.Button UpgradesButton;
-		private VLabel AvailablePPLabel;
-		private VLabel AvailableGemsLabel;
-		private VLabel AvailableCPLabel;
+		private System.Windows.Forms.TabControl MainTabControl;
+		private System.Windows.Forms.TabPage DetailsTabPage;
+		private System.Windows.Forms.TabPage PerksTabPage;
+		private System.Windows.Forms.TabPage GemsTabPage;
+		private System.Windows.Forms.TabPage SoulsTabPage;
+		private System.Windows.Forms.TabPage CPTabPage;
+		private System.Windows.Forms.TabPage ConfigTabPage;
+		private System.Windows.Forms.TabPage UnitTabPage;
+		private System.Windows.Forms.TabControl InfoTabControl;
+		private System.Windows.Forms.TabPage StatsTabPage;
+		private System.Windows.Forms.TabPage IncomeTabPage;
 		private VTextBox SlotNumberTextBox;
 		private VTextBox LoadoutNameTextBox;
 		private VUserInterface.VPerkCollectionControl PerkPageControl;
@@ -318,9 +274,6 @@ namespace VUserInterface
 		private VCheckControl RestrictCheckBox;
 		private VCheckControl UseUnitStatsCheckBox;
 		private VCheckControl UseSingleUnitEcoCheckBox;
-		private Panel InfoPanel;
-		private Button StatsButton;
-		private Button IncomeButton;
 		private IncomeControl IncomeControl;
 	}
 }
