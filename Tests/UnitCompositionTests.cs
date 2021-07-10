@@ -18,18 +18,18 @@ namespace Tests
 			// Queens, 12 - 8(hatch), 4(ram)
 			// Abberation, 105 - 57(19*3 spawns), 48(queens)
 			// InfestedTerran, 1090 - 120(40*3 spawns), 470(spines), 80(evo chamber), 420(abberation)
-			// Zergling, 198 - 108(36*3 spawns), 80(spawningpool), 10(spore)
+			// Zergling, 178 - 108(36*3 spawns), 60(spawningpool), 10(spore)
 
 			// Buildings
 			// SporeCrawler, 1
 			// SpineCrawler, 47
 
-			var totalUnits = 1454.0;
+			var totalUnits = 1434.0;
 			var difficulty = new VeryEasy();
 			var expectedComp = new List<(EnemyType, double)>
 			{
 				(EnemyType.InfestedTerran, 1090 / totalUnits),
-				(EnemyType.Zergling, 198 / totalUnits),
+				(EnemyType.Zergling, 178 / totalUnits),
 				(EnemyType.Abberation, 105 / totalUnits),
 				(EnemyType.SergeantRamone, 1 / totalUnits),
 				(EnemyType.Queen, 12 / totalUnits),
