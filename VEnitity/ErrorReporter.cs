@@ -23,7 +23,7 @@ namespace VEntityFramework
 		public static void ReportDebug(string message, Func<bool> codeToRun = null)
 		{
 #if DEBUG
-			if (codeToRun())
+			if (codeToRun == null || codeToRun())
 			{
 				throw new DeveloperException(message);
 			}
