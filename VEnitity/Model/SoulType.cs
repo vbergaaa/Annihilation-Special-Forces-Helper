@@ -19,6 +19,8 @@ namespace VEntityFramework.Model
 		Titan,
 		Divine,
 		Black,
+		[Description("Half Pitch Black")]
+		HalfPitchBlack,
 
 		// Uniques
 		// Lowest
@@ -96,6 +98,14 @@ namespace VEntityFramework.Model
 		Sanctuary,
 		Domination,
 		Shadows,
+
+		// Half Pitch Black
+		[Description("Beginner Limit Breaking")]
+		BeginnerLimitBreaking,
+		[Description("Experimental Ranking")]
+		ExperimentalRanking,
+		[Description("Half Pitch Black Soul 3")]
+		HPBSoul3
 	}
 
 	public static class SoulTypeExtentions
