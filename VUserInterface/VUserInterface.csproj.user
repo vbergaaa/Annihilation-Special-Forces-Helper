@@ -20,6 +20,12 @@
     <Compile Update="CommonControls\DPIScaling\DPILabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="CommonControls\DPIScaling\DPITabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="CommonControls\DPIScaling\DPITabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="CommonControls\DPIScaling\DPIUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,7 +108,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="VPerkCollectionControl.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="VPerkControl.cs">
       <SubType>Component</SubType>

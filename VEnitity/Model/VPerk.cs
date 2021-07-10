@@ -53,6 +53,9 @@ namespace VEntityFramework.Model
 						OnLevelChanged(fDesiredLevel - oldValue);
 					}
 					PerkCollection?.Loadout?.RefreshPropertyBinding(nameof(PerkCollection.Loadout.RemainingPerkPoints));
+					PerkCollection?.RefreshPropertyBinding(nameof(PerkCollection.RemainingCost));
+					PerkCollection?.RefreshPropertyBinding(nameof(PerkCollection.TotalCost));
+					PerkCollection?.RefreshPropertyBinding(nameof(PerkCollection.PageCost));
 				}
 
 				PerkCollection.RefreshMaxLevelBindings();

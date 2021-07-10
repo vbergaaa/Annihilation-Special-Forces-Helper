@@ -42,6 +42,10 @@ namespace VUserInterface
 			this.Perk5Control = new VPerkControl();
 			this.Perk6Control = new VPerkControl();
 			this.perksBindingSource = new System.Windows.Forms.BindingSource();
+			this.MainGroupBox = new DPIGroupBox();
+			this.PageCostLabel = new VLabel();
+			this.TotalCostLabel = new VLabel();
+			this.RemainingCostLabel = new VLabel();
 			this.page1Button = new VUserInterface.CommonControls.VButton();
 			this.page2Button = new VUserInterface.CommonControls.VButton();
 			this.page3Button = new VUserInterface.CommonControls.VButton();
@@ -100,6 +104,30 @@ namespace VUserInterface
 			// perksBindingSource
 			// 
 			this.perksBindingSource.DataSource = typeof(PerkCollection);
+			//
+			// PageCostLabel;
+			//
+			this.PageCostLabel.DataBindings.Add("Text", perksBindingSource, "PageCost");
+			this.PageCostLabel.Caption = "Cost of Page:";
+			this.PageCostLabel.Location = DPIScalingHelper.GetScaledPoint(100, 0);
+			this.PageCostLabel.Name = "PageCostLabel";
+			this.PageCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			//
+			// TotalCostLabel;
+			//
+			this.TotalCostLabel.DataBindings.Add("Text", perksBindingSource, "TotalCost");
+			this.TotalCostLabel.Caption = "Total Cost:";
+			this.TotalCostLabel.Location = DPIScalingHelper.GetScaledPoint(300, 0);
+			this.TotalCostLabel.Name = "TotalCostLabel";
+			this.TotalCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			//
+			// RemainingCostLabel;
+			//
+			this.RemainingCostLabel.DataBindings.Add("Text", perksBindingSource, "RemainingCost");
+			this.RemainingCostLabel.Caption = "Available PP:";
+			this.RemainingCostLabel.Location = DPIScalingHelper.GetScaledPoint(500, 0);
+			this.RemainingCostLabel.Name = "RemainingCostLabel";
+			this.TotalCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
 			//
 			// page1Button
 			//
@@ -237,32 +265,43 @@ namespace VUserInterface
 			this.nextPageButton.TabIndex = 8;
 			this.nextPageButton.Text = ">";
 			//
+			// MainGroupBox
+			//
+			this.MainGroupBox.Name = "MainGroupBox";
+			this.MainGroupBox.Location = DPIScalingHelper.GetScaledPoint(0, 30);
+			this.MainGroupBox.Text = "Perks";
+			this.MainGroupBox.Controls.Add(Perk1Control);
+			this.MainGroupBox.Controls.Add(Perk2Control);
+			this.MainGroupBox.Controls.Add(Perk3Control);
+			this.MainGroupBox.Controls.Add(Perk4Control);
+			this.MainGroupBox.Controls.Add(Perk5Control);
+			this.MainGroupBox.Controls.Add(Perk6Control);
+			this.MainGroupBox.Controls.Add(page1Button);
+			this.MainGroupBox.Controls.Add(page2Button);
+			this.MainGroupBox.Controls.Add(page3Button);
+			this.MainGroupBox.Controls.Add(page4Button);
+			this.MainGroupBox.Controls.Add(page5Button);
+			this.MainGroupBox.Controls.Add(page6Button);
+			this.MainGroupBox.Controls.Add(page7Button);
+			this.MainGroupBox.Controls.Add(page8Button);
+			this.MainGroupBox.Controls.Add(page9Button);
+			this.MainGroupBox.Controls.Add(page10Button);
+			this.MainGroupBox.Controls.Add(page11Button);
+			this.MainGroupBox.Controls.Add(page12Button);
+			this.MainGroupBox.Controls.Add(page13Button);
+			this.MainGroupBox.Controls.Add(page14Button);
+			this.MainGroupBox.Controls.Add(page15Button);
+			this.MainGroupBox.Controls.Add(previousPageButton);
+			this.MainGroupBox.Controls.Add(nextPageButton);
+			this.MainGroupBox.Size = DPIScalingHelper.GetScaledSize(589, 271);
+			//
 			// VPerkPageControl
 			//
-			this.Controls.Add(Perk1Control);
-			this.Controls.Add(Perk2Control);
-			this.Controls.Add(Perk3Control);
-			this.Controls.Add(Perk4Control);
-			this.Controls.Add(Perk5Control);
-			this.Controls.Add(Perk6Control);
-			this.Controls.Add(page1Button);
-			this.Controls.Add(page2Button);
-			this.Controls.Add(page3Button);
-			this.Controls.Add(page4Button);
-			this.Controls.Add(page5Button);
-			this.Controls.Add(page6Button);
-			this.Controls.Add(page7Button);
-			this.Controls.Add(page8Button);
-			this.Controls.Add(page9Button);
-			this.Controls.Add(page10Button);
-			this.Controls.Add(page11Button);
-			this.Controls.Add(page12Button);
-			this.Controls.Add(page13Button);
-			this.Controls.Add(page14Button);
-			this.Controls.Add(page15Button);
-			this.Controls.Add(previousPageButton);
-			this.Controls.Add(nextPageButton);
-			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
+			this.Controls.Add(PageCostLabel);
+			this.Controls.Add(TotalCostLabel);
+			this.Controls.Add(RemainingCostLabel);
+			this.Controls.Add(MainGroupBox);
+			this.Size = DPIScalingHelper.GetScaledSize(589, 302);
 			((System.ComponentModel.ISupportInitialize)(this.perksBindingSource)).EndInit();
 		}
 
@@ -292,5 +331,9 @@ namespace VUserInterface
 		private VButton page15Button;
 		private VButton previousPageButton;
 		private VButton nextPageButton;
+		private VLabel PageCostLabel;
+		private VLabel TotalCostLabel;
+		private VLabel RemainingCostLabel;
+		private DPIGroupBox MainGroupBox;
 	}
 }

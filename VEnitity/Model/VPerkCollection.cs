@@ -127,9 +127,9 @@ namespace VEntityFramework.Model
 		#endregion
 
 		public abstract int MaxPage { get; }
-		public abstract int RemainingCost { get; }
-		public abstract int CurrentCost { get; }
-		public abstract int TotalCost { get; }
+		public abstract long RemainingCost { get; }
+		public abstract long TotalCost { get; }
+		public abstract int PageCost { get; }
 
 		#region Page
 
@@ -151,6 +151,7 @@ namespace VEntityFramework.Model
 					OnPropertyChanged(nameof(Perk5));
 					OnPropertyChanged(nameof(Perk6));
 					OnPropertyChanged(nameof(PageTitle));
+					OnPropertyChanged(nameof(PageCost));
 				}
 			}
 		}

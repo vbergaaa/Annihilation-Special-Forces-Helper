@@ -190,7 +190,7 @@ namespace VBusiness.Loadouts
 
 		public override long PerkPointsCost
 		{
-			get => Perks.RemainingCost + Souls.SoulCosts;
+			get => Perks.TotalCost + Souls.SoulCosts;
 		}
 
 		#endregion

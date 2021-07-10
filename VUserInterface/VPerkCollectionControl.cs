@@ -5,11 +5,17 @@ using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class VPerkCollectionControl : DPIGroupBox
+	public partial class VPerkCollectionControl : DPIUserControl
 	{
 		public VPerkCollectionControl()
 		{
 			InitializeComponent();
+		}
+
+		public new string Text
+		{
+			get => MainGroupBox.Text;
+			set => MainGroupBox.Text = value;
 		}
 
 		public PerkCollection Perks { get; set; }
