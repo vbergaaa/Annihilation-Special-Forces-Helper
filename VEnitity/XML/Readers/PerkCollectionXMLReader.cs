@@ -120,6 +120,12 @@ namespace VEntityFramework.XML
 				"14_4" => type.GetProperty("UpgradeCache"),
 				"14_5" => type.GetProperty("Fearless"),
 				"14_6" => type.GetProperty("BlackMarket"),
+				"15_1" => type.GetProperty("DestroyerVitals"),
+				"15_2" => type.GetProperty("DestroyerArmor"),
+				"15_3" => type.GetProperty("LimitlessEssence"),
+				"15_4" => type.GetProperty("OverInfuse"),
+				"15_5" => type.GetProperty("DestroyerWarp"),
+				"15_6" => type.GetProperty("DestroyerRankRevision"),
 				_ => null
 			};
 		}
