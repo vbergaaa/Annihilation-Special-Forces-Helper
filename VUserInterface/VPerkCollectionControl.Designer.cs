@@ -129,7 +129,7 @@ namespace VUserInterface
 			//
 			this.page4Button.Click += UpdatePage;
 			this.page4Button.DisableStyleChanging = true;
-			this.page4Button.Location = DPIScalingHelper.GetScaledPoint(122, 234);
+			this.page4Button.Location = DPIScalingHelper.GetScaledPoint(132, 234);
 			this.page4Button.Size = DPIScalingHelper.GetScaledSize(27, 27);
 			this.page4Button.Text = "4";
 			//
