@@ -42,9 +42,7 @@ namespace VBusiness.Units
 		{
 			if (unitType != UnitType.None)
 			{
-				var cost = GetRawUnitCost(unitType, infuse, rank);
-				var effectiveDW = (1 + loadout.IncomeManager.DoubleWarp / 100.0 + loadout.IncomeManager.TripleWarp / 50.0);
-				return cost / (effectiveDW, 1);
+				return GetRawUnitCost(unitType, infuse, rank);
 			}
 			return new UnitCost(0, 0);
 		}
@@ -149,7 +147,8 @@ namespace VBusiness.Units
 			else if (unitData.Evolution == Evolution.DNA1 && !unitData.Type.IsHidden() && loadout.Perks.BlackMarket.DesiredLevel > 0)
 			{
 				var mineralCost = unitData.BasicType.GetBasicUnitMineralCost(loadout) * 15;
-				return new UnitCost(mineralCost, 2200, loadout.IncomeManager.Veterancy);
+				var killCost = 2200 / (1 + loadout.IncomeManager.DoubleWarp / 100.0 + loadout.IncomeManager.TripleWarp / 50.0);
+				return new UnitCost(mineralCost, killCost, loadout.IncomeManager.Veterancy);
 			}
 			else
 			{

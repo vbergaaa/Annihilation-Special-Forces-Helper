@@ -43,6 +43,7 @@ namespace Tests
 		[TestCase(UnitType.BerserkerWarpLord, 10, 0, 183636.36)]
 		[TestCase(UnitType.BerserkerWarpLord, 50, 20, 106315.789)]
 		[TestCase(UnitType.BerserkerWarpLord, 100, 20, 84166.67)]
+		[TestCase(UnitType.BerserkerWarpLord, 100, 100, 50500)]
 		public void TestUnitCostWithTWLoadout(UnitType type, int dw, int tw, double expected)
 		{
 			var loadout = TestHelper.GetEmptyLoadout()

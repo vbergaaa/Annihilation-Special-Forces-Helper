@@ -30,6 +30,7 @@ namespace VBusiness.Units
 			{
 				cost *= 0.9;
 			}
+			cost /= (1 + loadout.IncomeManager.DoubleWarp / 100.0 + loadout.IncomeManager.TripleWarp / 50.0);
 			return cost;
 		}
 
