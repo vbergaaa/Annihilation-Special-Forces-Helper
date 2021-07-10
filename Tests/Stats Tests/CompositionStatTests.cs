@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
@@ -27,23 +28,23 @@ namespace Tests.Stats_Tests
 		[TestCase(DifficultyLevel.Normal,       14214922, 199373199)]
 		[TestCase(DifficultyLevel.Titanic,      4529566, 39874158)]
 		[TestCase(DifficultyLevel.Torment,      6235095, 191484105)]
-		[TestCase(DifficultyLevel.VeryEasy,		14200516, 199373199)]
+		[TestCase(DifficultyLevel.VeryEasy,		14200778, 199373199)]
 		[TestCase(DifficultyLevel.VeryHard,		11177816, 199373199)]
 		public void TestCalculatedStats(DifficultyLevel difficulty, double expectedDamage, double expectedToughness)
 		{
-			var loadout = LoadMaxAll();
+			var loadout = LoadMaxPage14();
 			loadout.UnitConfiguration.DifficultyLevel = difficulty;
 			Assert.That(loadout.Stats.Damage, Is.EqualTo(expectedDamage).Within(1));
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expectedToughness).Within(1));
 		}
 
-		VLoadout LoadMaxAll()
+		VLoadout LoadMaxPage14()
 		{
 			var loadout = new Loadout();
 			loadout.UseUnitStats = true;
 			loadout.ShouldRestrict = false;
 			var perks = loadout.Perks as PerkCollection;
-			foreach (var perk in perks.AllPerks)
+			foreach (var perk in perks.AllPerks.Where(p => p.Page <= 14))
 			{
 				perk.DesiredLevel = perk.MaxLevel;
 			}
