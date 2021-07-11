@@ -19,7 +19,7 @@ namespace VBusiness.Units
 
 		UnitCost GetRawUnitCost(UnitRecepePiece piece)
 		{
-			return GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank);
+			return GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank, false);
 		}
 
 		public UnitCost GetUnitCost(VUnit unit)
@@ -33,21 +33,21 @@ namespace VBusiness.Units
 			var cost = new UnitCost();
 			foreach (var unit in units)
 			{
-				cost += GetUnitCost(unit.UnitData.Type, unit.CurrentInfusion, unit.UnitRank);
+				cost += GetUnitCost(unit.UnitData.Type, unit.CurrentInfusion, unit.UnitRank, unit.IsLimitBroken);
 			}
 			return cost;
 		}
 
-		public UnitCost GetUnitCost(UnitType unitType, int infuse, UnitRankType rank)
+		public UnitCost GetUnitCost(UnitType unitType, int infuse, UnitRankType rank, bool isLimitBroken = false)
 		{
 			if (unitType != UnitType.None)
 			{
-				return GetRawUnitCost(unitType, infuse, rank);
+				return GetRawUnitCost(unitType, infuse, rank, isLimitBroken);
 			}
 			return new UnitCost(0, 0);
 		}
 
-		UnitCost GetRawUnitCost(UnitType unitType, int infuse, UnitRankType rank)
+		UnitCost GetRawUnitCost(UnitType unitType, int infuse, UnitRankType rank, bool isLimitBroken)
 		{
 			IUnitData unitData = VUnit.GetUnitData(unitType);
 
@@ -55,7 +55,7 @@ namespace VBusiness.Units
 			// It takes the Excess Kills from the element on the right side of the '+' operator.
 			// Please ensure you leave these cost additions in this order to avoid breaking this accidently
 			var cost = GetRankCost(rank);
-			cost += GetBaseCreationCost(unitData);
+			cost += GetBaseCreationCost(unitData, isLimitBroken);
 			cost += GetInfusionCosts(unitData, infuse, cost.ExcessKills);
 			return cost;
 		}
@@ -142,9 +142,15 @@ namespace VBusiness.Units
 			return unitsRequired;
 		}
 
-		UnitCost GetBaseCreationCost(IUnitData unitData)
+		UnitCost GetBaseCreationCost(IUnitData unitData, bool isLimitBroken)
 		{
-			if (unitData.Evolution == Evolution.Basic && !unitData.Type.IsHidden())
+			if (isLimitBroken)
+			{
+				var cost = GetRawUnitCost(unitData.Type, 10, UnitRankType.XD, false);
+				cost += GetRawUnitCost(unitData.Type, 10, UnitRankType.None, false);
+				return cost;
+			}
+			else if (unitData.Evolution == Evolution.Basic && !unitData.Type.IsHidden())
 			{
 				var cost = unitData.Type.GetBasicUnitMineralCost(loadout);
 				return new UnitCost(cost, 0, loadout.IncomeManager.Veterancy);
@@ -164,7 +170,7 @@ namespace VBusiness.Units
 				{
 					for (var i = 0; i < piece.Quantity; i++)
 					{
-						var newCost = GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank);
+						var newCost = GetRawUnitCost(piece.Unit, piece.Infuse, piece.Rank, false);
 						costs.Add((newCost, piece.CanUseForEvo));
 						if (!piece.CanUseForEvo)
 						{
