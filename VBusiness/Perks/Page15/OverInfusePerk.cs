@@ -21,5 +21,11 @@ namespace VBusiness.Perks
 		protected override string PerkName => "Overinfuse";
 
 		protected override short MaxLevelCore => 3;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			base.OnLevelChanged(difference);
+			PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding(nameof(PerkCollection.Loadout.CurrentUnit.MaximumInfusion));
+		}
 	}
 }

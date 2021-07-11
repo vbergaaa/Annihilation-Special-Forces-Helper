@@ -21,6 +21,7 @@ namespace VBusiness.Units
 			{
 				if (base.CurrentInfusion > MaximumInfusion)
 				{
+					UpdateStatsFromInfuse(MaximumInfusion - base.CurrentInfusion);
 					base.CurrentInfusion = MaximumInfusion;
 				}
 				return base.CurrentInfusion;
@@ -70,7 +71,16 @@ namespace VBusiness.Units
 
 		#region MaximumInfuse
 
-		public override int MaximumInfusion => MaximumKills > 2000 ? 10 : MaximumKills / 200;
+		public override int MaximumInfusion
+		{
+			get
+			{
+				var maxInfuse = 10 + (IsLimitBroken
+					? Loadout.Perks.OverInfuse.DesiredLevel
+					: 0);
+				return MaximumKills >= maxInfuse * 200 ? maxInfuse : MaximumKills / 200;
+			}
+		}
 
 		#endregion
 
@@ -249,18 +259,25 @@ namespace VBusiness.Units
 
 		public override bool IsLimitBroken
 		{
-			get => Loadout.Perks.LimitlessEssence.DesiredLevel > 0 && base.IsLimitBroken;
+			get
+			{
+				if (base.IsLimitBroken && Loadout.Perks.LimitlessEssence.DesiredLevel == 0)
+				{
+					IsLimitBroken = false;
+				}
+				return base.IsLimitBroken;
+			}
 			set
 			{
-				var wasLimitBroken = IsLimitBroken;
+				var wasLimitBroken = base.IsLimitBroken;
 				base.IsLimitBroken = value;
 
-				if (IsLimitBroken && !wasLimitBroken)
+				if (base.IsLimitBroken && !wasLimitBroken)
 				{
 					UpdateStatsFromEssence((int)LimitlessEssenceStacks);
 				}
 
-				if (wasLimitBroken && !IsLimitBroken)
+				if (wasLimitBroken && !base.IsLimitBroken)
 				{
 					UpdateStatsFromEssence(-(int)LimitlessEssenceStacks);
 				}
