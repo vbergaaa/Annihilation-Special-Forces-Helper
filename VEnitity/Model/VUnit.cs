@@ -199,10 +199,17 @@ namespace VEntityFramework.Model
 					fCurrentEssence = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(EssenceStacks));
+					OnPropertyChanged(nameof(CurrentKills));
 				}
 			}
 		}
 		int fCurrentEssence;
+
+		#endregion
+
+		#region CurrentKills
+
+		public virtual int CurrentKills { get; set; }
 
 		#endregion
 

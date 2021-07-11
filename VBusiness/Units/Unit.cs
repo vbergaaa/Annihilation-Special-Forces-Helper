@@ -180,6 +180,16 @@ namespace VBusiness.Units
 
 		#endregion
 
+		#region CurrentKills
+
+		public override int CurrentKills
+		{
+			get => EssenceStacks * 100;
+			set => EssenceStacks = value / 100;
+		}
+
+		#endregion
+
 		#region MaximumKills
 
 		public override int MaximumKills

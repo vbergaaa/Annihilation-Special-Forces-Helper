@@ -38,7 +38,7 @@ namespace VUserInterface
 			this.BindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.InfusionIncrementor = new VUserInterface.CommonControls.VIncrementor();
 			this.RankDropBox = new VUserInterface.CommonControls.VDropBox();
-			this.EssenceIncrementor = new VUserInterface.CommonControls.VIncrementor();
+			this.KillIncrementor = new VUserInterface.CommonControls.VIncrementor();
 			this.IsLimitBrokenCheckBox = new VCheckControl();
 			this.UnitTypeLabel = new VLabel();
 			this.TitleLabel = new VLabel();
@@ -101,16 +101,16 @@ namespace VUserInterface
 			this.RankDropBox.TabIndex = 2;
 			//this.RankDropBox.SelectedValueChanged += UpdateUnitsListBindings;
 			// 
-			// EssenceIncrementor
+			// KillIncrementor
 			// 
-			this.EssenceIncrementor.Caption = "Essence:";
-			this.EssenceIncrementor.DataBindings.Add("Value", BindingSource, "EssenceStacks");
-			this.EssenceIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaximumEssence");
-			this.EssenceIncrementor.IncrementAmount = 1;
-			this.EssenceIncrementor.Location = DPIScalingHelper.GetScaledPoint(106, 120);
-			this.EssenceIncrementor.Name = "EssenceIncrementor";
-			this.EssenceIncrementor.TabIndex = 3;
-			this.EssenceIncrementor.Value = 0;
+			this.KillIncrementor.Caption = "Kills:";
+			this.KillIncrementor.DataBindings.Add("Value", BindingSource, "CurrentKills");
+			this.KillIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaximumKills");
+			this.KillIncrementor.IncrementAmount = 100;
+			this.KillIncrementor.Location = DPIScalingHelper.GetScaledPoint(106, 120);
+			this.KillIncrementor.Name = "KillIncrementor";
+			this.KillIncrementor.TabIndex = 3;
+			this.KillIncrementor.Value = 0;
 			//
 			// SpecCheckBox
 			//
@@ -141,7 +141,7 @@ namespace VUserInterface
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.DataBindings.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged;
-			this.Controls.Add(this.EssenceIncrementor);
+			this.Controls.Add(this.KillIncrementor);
 			this.Controls.Add(this.RankDropBox);
 			this.Controls.Add(this.InfusionIncrementor);
 			this.Controls.Add(this.UnitTypeDropBox);
@@ -162,7 +162,7 @@ namespace VUserInterface
 		private CommonControls.VDropBox UnitTypeDropBox;
 		private CommonControls.VIncrementor InfusionIncrementor;
 		private CommonControls.VDropBox RankDropBox;
-		private CommonControls.VIncrementor EssenceIncrementor;
+		private CommonControls.VIncrementor KillIncrementor;
 		private CommonControls.VCheckControl IsLimitBrokenCheckBox;
 		System.Windows.Forms.BindingSource BindingSource;
 		VLabel UnitTypeLabel;
