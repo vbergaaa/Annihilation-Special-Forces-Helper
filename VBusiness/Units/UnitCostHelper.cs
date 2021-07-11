@@ -64,7 +64,12 @@ namespace VBusiness.Units
 		{
 			var rankCost = UnitRankUpHelper.GetRankCost(rank, loadout.IncomeManager.RankRevision, loadout.IncomeManager.HasRefundSoul);
 
-			if (hasRSS && rank >= UnitRankType.SS)
+			if (hasRSSS && rank >= UnitRankType.SSS)
+			{
+				hasRSSS = false;
+				rankCost -= UnitRankUpHelper.GetRankCost(UnitRankType.SSS, loadout.IncomeManager.RankRevision, loadout.IncomeManager.HasRefundSoul);
+			}
+			else if (hasRSS && rank >= UnitRankType.SS)
 			{
 				hasRSS = false;
 				rankCost -= UnitRankUpHelper.GetRankCost(UnitRankType.SS, loadout.IncomeManager.RankRevision, loadout.IncomeManager.HasRefundSoul);
@@ -282,6 +287,7 @@ namespace VBusiness.Units
 			shouldGrantDNAFreeInf1 = loadout.Perks.DNAStart.DesiredLevel == 5 && loadout.Perks.UpgradeCache.DesiredLevel == 1;
 			hasFullKillRecycle = loadout.Perks.KillRecycle.DesiredLevel == 5 && loadout.Perks.UpgradeCache.DesiredLevel == 1;
 			hasRSS = loadout.IncomeManager.HasRSS;
+			hasRSSS = loadout.IncomeManager.HasRSSS;
 
 #if DEBUG
 			firstDNAStart = UnitType.None;
@@ -289,6 +295,7 @@ namespace VBusiness.Units
 		}
 
 		bool hasRSS;
+		bool hasRSSS;
 
 		#endregion
 

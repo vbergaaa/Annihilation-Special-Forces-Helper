@@ -12,5 +12,17 @@ namespace VBusiness.Souls
 		}
 
 		public override SoulType Type => SoulType.ExperimentalRanking;
+
+		public override void ActivateUniqueEffect()
+		{
+			base.ActivateUniqueEffect();
+			Loadout.IncomeManager.HasRSSS = true;
+		}
+
+		public override void DeactivateUniqueEffect()
+		{
+			base.DeactivateUniqueEffect();
+			Loadout.IncomeManager.HasRSSS = false;
+		}
 	}
 }

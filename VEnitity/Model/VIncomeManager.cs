@@ -278,6 +278,25 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region HasRSS
+
+		public bool HasRSSS
+		{
+			get => fHasRSSS;
+			set
+			{
+				if (fHasRSSS != value)
+				{
+					fHasRSSS = value;
+					RefreshPropertyBinding(nameof(HasRSSS));
+					RefreshPropertyBinding(nameof(UnitKillCost));
+				}
+			}
+		}
+		bool fHasRSSS;
+
+		#endregion
+
 		public virtual double LoadoutMineralCost { get; }
 		public virtual double LoadoutKillCost { get; }
 		public virtual double UnitMineralCost { get; }
