@@ -222,7 +222,6 @@ namespace VUserInterface
 			this.Controls.Add(MainTabControl);
 			this.Controls.Add(InfoTabControl);
 			this.Name = "LoadoutForm";
-			this.Text = "Create/Edit Loadout";
 			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
 			this.ResumeLayout();
 			this.PerformLayout();

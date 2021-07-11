@@ -64,7 +64,10 @@ namespace VEntityFramework.Data
 
 		protected virtual void OnSaved()
 		{
+			BizoSaved?.Invoke(this, new EventArgs());
 		}
+
+		public event EventHandler BizoSaved;
 
 		public void RunPreSaveValidation()
 		{

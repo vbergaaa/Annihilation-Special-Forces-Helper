@@ -466,6 +466,8 @@ namespace VBusiness.Souls
 
 		protected override void OnSaving()
 		{
+			base.OnSaving();
+
 			DeleteSoulsInSaveSlot();
 		}
 
