@@ -12,9 +12,9 @@ using VBusiness.Rooms;
 
 namespace VUserInterface
 {
-	public partial class LoadoutConfigurationControl : DPIUserControl
+	public partial class LoadoutIncomeControl : DPIUserControl
 	{
-		public LoadoutConfigurationControl()
+		public LoadoutIncomeControl()
 		{
 			InitializeComponent();
 		}

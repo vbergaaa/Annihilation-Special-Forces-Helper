@@ -40,7 +40,8 @@ namespace VUserInterface
 			this.GemsTabPage = new DPITabPage();
 			this.SoulsTabPage = new DPITabPage();
 			this.CPTabPage = new DPITabPage();
-			this.ConfigTabPage = new DPITabPage();
+			this.UpgradesTabPage = new DPITabPage();
+			this.IncomeConfigurationTabPage = new DPITabPage();
 			this.UnitTabPage = new DPITabPage();
 			this.InfoTabControl = new DPITabControl();
 			this.StatsTabPage = new DPITabPage();
@@ -53,7 +54,8 @@ namespace VUserInterface
 			this.SoulsControl = new VLoadoutSoulsControl();
 			this.ChallengePointCollectionControl = new ChallengePointCollectionControl();
 			this.UnitControl = new UnitConfigurationControl();
-			this.LoadoutConfigurationControl = new LoadoutConfigurationControl();
+			this.UpgradeControl = new UpgradeControl();
+			this.LoadoutIncomeControl = new LoadoutIncomeControl();
 			this.UseUnitStatsCheckBox = new VCheckControl();
 			this.UseSingleUnitEcoCheckBox = new VCheckControl();
 			this.DetailsControl = new LoadoutDetailsControl();
@@ -75,7 +77,8 @@ namespace VUserInterface
 			this.MainTabControl.TabPages.Add(GemsTabPage);
 			this.MainTabControl.TabPages.Add(SoulsTabPage);
 			this.MainTabControl.TabPages.Add(CPTabPage);
-			this.MainTabControl.TabPages.Add(ConfigTabPage);
+			this.MainTabControl.TabPages.Add(UpgradesTabPage);
+			this.MainTabControl.TabPages.Add(IncomeConfigurationTabPage);
 			this.MainTabControl.TabPages.Add(UnitTabPage);
 			//
 			// DetailsTabPage
@@ -108,11 +111,17 @@ namespace VUserInterface
 			this.CPTabPage.Text = "Challenge Points";
 			this.CPTabPage.Controls.Add(ChallengePointCollectionControl);
 			//
+			// UpgradesTabPage
+			//
+			this.UpgradesTabPage.Name = "UpgradesTabPage";
+			this.UpgradesTabPage.Text = "Upgrades";
+			this.UpgradesTabPage.Controls.Add(UpgradeControl);
+			//
 			// ConfigTabPage
 			//
-			this.ConfigTabPage.Name = "ConfigTabPage";
-			this.ConfigTabPage.Text = "Configuration";
-			this.ConfigTabPage.Controls.Add(LoadoutConfigurationControl);
+			this.IncomeConfigurationTabPage.Name = "IncomeConfigurationTabPage";
+			this.IncomeConfigurationTabPage.Text = "Income";
+			this.IncomeConfigurationTabPage.Controls.Add(LoadoutIncomeControl);
 			//
 			// UnitTabPage
 			//
@@ -196,11 +205,17 @@ namespace VUserInterface
 			this.ChallengePointCollectionControl.DataBindings.Add("ChallengePointCollection", this.LoadoutBindingSource, "ChallengePoints");
 			this.ChallengePointCollectionControl.Text = "Challenge Points";
 			//
-			// UpgradeControl
+			// UpgradesControl
 			//
-			this.LoadoutConfigurationControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
-			this.LoadoutConfigurationControl.DataBindings.Add("Loadout", this.LoadoutBindingSource, ".");
-			this.LoadoutConfigurationControl.Name= "LoadoutConfigurationControl";
+			this.UpgradeControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
+			this.UpgradeControl.DataBindings.Add("Upgrades", this.LoadoutBindingSource, "Upgrades");
+			this.UpgradeControl.Name = "UpgradesControl";
+			//
+			// LoadoutIncomeControl
+			//
+			this.LoadoutIncomeControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
+			this.LoadoutIncomeControl.DataBindings.Add("Loadout", this.LoadoutBindingSource, ".");
+			this.LoadoutIncomeControl.Name = "LoadoutConfigurationControl";
 			//
 			// StatsControl
 			//
@@ -235,7 +250,8 @@ namespace VUserInterface
 		private System.Windows.Forms.TabPage GemsTabPage;
 		private System.Windows.Forms.TabPage SoulsTabPage;
 		private System.Windows.Forms.TabPage CPTabPage;
-		private System.Windows.Forms.TabPage ConfigTabPage;
+		private System.Windows.Forms.TabPage UpgradesTabPage;
+		private System.Windows.Forms.TabPage IncomeConfigurationTabPage;
 		private System.Windows.Forms.TabPage UnitTabPage;
 		private System.Windows.Forms.TabControl InfoTabControl;
 		private System.Windows.Forms.TabPage StatsTabPage;
@@ -245,7 +261,8 @@ namespace VUserInterface
 		private VUserInterface.VLoadoutSoulsControl SoulsControl;
 		private VUserInterface.ChallengePointCollectionControl ChallengePointCollectionControl;
 		private VUserInterface.UnitConfigurationControl UnitControl;
-		private VUserInterface.LoadoutConfigurationControl LoadoutConfigurationControl;
+		private VUserInterface.UpgradeControl UpgradeControl;
+		private VUserInterface.LoadoutIncomeControl LoadoutIncomeControl;
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;
 		private VStatsControl StatsControl;
 		private VCheckControl UseUnitStatsCheckBox;

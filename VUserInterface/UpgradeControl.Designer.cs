@@ -50,7 +50,7 @@ namespace VUserInterface
 			this.AttackIncrementor.Caption = "Attack";
 			this.AttackIncrementor.DataBindings.Add("Value", BindingSource, "AttackUpgrade");
 			this.AttackIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxAttack");
-			this.AttackIncrementor.Location = DPIScalingHelper.GetScaledPoint(90, 0);
+			this.AttackIncrementor.Location = DPIScalingHelper.GetScaledPoint(125, 0);
 			this.AttackIncrementor.Name = "AttackIncrementor";
 			this.AttackIncrementor.Size = DPIScalingHelper.GetScaledSize(155, 28);
 			this.AttackIncrementor.TabIndex = 0;
@@ -60,7 +60,7 @@ namespace VUserInterface
 			this.AttackSpeedIncrementor.Caption = "Attack Speed";
 			this.AttackSpeedIncrementor.DataBindings.Add("Value", BindingSource, "AttackSpeedUpgrade");
 			this.AttackSpeedIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxAttackSpeed");
-			this.AttackSpeedIncrementor.Location = DPIScalingHelper.GetScaledPoint(90, 30);
+			this.AttackSpeedIncrementor.Location = DPIScalingHelper.GetScaledPoint(125, 30);
 			this.AttackSpeedIncrementor.Name = "AttackSpeedIncrementor";
 			this.AttackSpeedIncrementor.Size = DPIScalingHelper.GetScaledSize(190, 28);
 			this.AttackSpeedIncrementor.TabIndex = 1;
@@ -70,7 +70,7 @@ namespace VUserInterface
 			this.ShieldsIncrementor.Caption = "Shields";
 			this.ShieldsIncrementor.DataBindings.Add("Value", BindingSource, "ShieldsUpgrade");
 			this.ShieldsIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxShields");
-			this.ShieldsIncrementor.Location = DPIScalingHelper.GetScaledPoint(90, 60);
+			this.ShieldsIncrementor.Location = DPIScalingHelper.GetScaledPoint(125, 60);
 			this.ShieldsIncrementor.Name = "ShieldsIncrementor";
 			this.ShieldsIncrementor.Size = DPIScalingHelper.GetScaledSize(158, 28);
 			this.ShieldsIncrementor.TabIndex = 2;
@@ -80,7 +80,7 @@ namespace VUserInterface
 			this.ShieldsArmorIncrementor.Caption = "Shields Armor";
 			this.ShieldsArmorIncrementor.DataBindings.Add("Value", BindingSource, "ShieldsArmorUpgrade");
 			this.ShieldsArmorIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxShieldsArmor");
-			this.ShieldsArmorIncrementor.Location = DPIScalingHelper.GetScaledPoint(90, 90);
+			this.ShieldsArmorIncrementor.Location = DPIScalingHelper.GetScaledPoint(125, 90);
 			this.ShieldsArmorIncrementor.Name = "ShieldsArmorIncrementor";
 			this.ShieldsArmorIncrementor.Size = DPIScalingHelper.GetScaledSize(195, 28);
 			this.ShieldsArmorIncrementor.TabIndex = 3;
@@ -90,7 +90,7 @@ namespace VUserInterface
 			this.HealthIncrementor.Caption = "Health";
 			this.HealthIncrementor.DataBindings.Add("Value", BindingSource, "HealthUpgrade");
 			this.HealthIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxHealth");
-			this.HealthIncrementor.Location = DPIScalingHelper.GetScaledPoint(90, 120);
+			this.HealthIncrementor.Location = DPIScalingHelper.GetScaledPoint(125, 120);
 			this.HealthIncrementor.Name = "HealthIncrementor";
 			this.HealthIncrementor.Size = DPIScalingHelper.GetScaledSize(156, 28);
 			this.HealthIncrementor.TabIndex = 4;
@@ -100,7 +100,7 @@ namespace VUserInterface
 			this.HealthArmorIncrementor.Caption = "Health Armor";
 			this.HealthArmorIncrementor.DataBindings.Add("Value", BindingSource, "HealthArmorUpgrade");
 			this.HealthArmorIncrementor.DataBindings.Add("MaxValue", BindingSource, "MaxHealthArmor");
-			this.HealthArmorIncrementor.Location = DPIScalingHelper.GetScaledPoint(90, 150);
+			this.HealthArmorIncrementor.Location = DPIScalingHelper.GetScaledPoint(125, 150);
 			this.HealthArmorIncrementor.Name = "HealthArmorIncrementor";
 			this.HealthArmorIncrementor.Size = DPIScalingHelper.GetScaledSize(193, 28);
 			this.HealthArmorIncrementor.TabIndex = 5;
@@ -114,7 +114,7 @@ namespace VUserInterface
 			this.Controls.Add(this.AttackSpeedIncrementor);
 			this.Controls.Add(this.AttackIncrementor);
 			this.Name = "UpgradeControl";
-			this.Size = DPIScalingHelper.GetScaledSize(230, 233);
+			this.Size = DPIScalingHelper.GetScaledSize(250, 233);
 			this.ResumeLayout(false);
 
 		}
