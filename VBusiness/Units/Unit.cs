@@ -109,6 +109,7 @@ namespace VBusiness.Units
 			{
 				if (base.EssenceStacks > MaximumEssence)
 				{
+					UpdateStatsFromEssence(MaximumEssence - base.EssenceStacks);
 					base.EssenceStacks = MaximumEssence;
 				}
 				return base.EssenceStacks;
@@ -209,6 +210,11 @@ namespace VBusiness.Units
 			{
 				max += 200;
 			}
+
+			if (IsLimitBroken)
+			{
+				max += (int)(Loadout.Perks.LimitlessEssence.DesiredLevel / 2.0) * 100;
+			}
 			return max;
 		}
 
@@ -226,6 +232,37 @@ namespace VBusiness.Units
 					|| hasAllSpec;
 			}
 		}
+
+		#endregion
+
+		#region IsLimitBroken
+
+		public override bool IsLimitBroken
+		{
+			get => Loadout.Perks.LimitlessEssence.DesiredLevel > 0 && base.IsLimitBroken;
+			set
+			{
+				var wasLimitBroken = IsLimitBroken;
+				base.IsLimitBroken = value;
+
+				if (IsLimitBroken && !wasLimitBroken)
+				{
+					UpdateStatsFromEssence((int)LimitlessEssenceStacks);
+				}
+
+				if (wasLimitBroken && !IsLimitBroken)
+				{
+					UpdateStatsFromEssence(-(int)LimitlessEssenceStacks);
+				}
+				RefreshPropertyBinding(nameof(EssenceStacks));
+
+				Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.LoadoutKillCost));
+				Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.LoadoutMineralCost));
+				Loadout.Stats.RefreshAllBindings();
+			}
+		}
+
+		public override bool IsLimitBroken_Readonly => Loadout.Perks.LimitlessEssence.DesiredLevel > 0;
 
 		#endregion
 
@@ -250,6 +287,7 @@ namespace VBusiness.Units
 		protected override void SetDefaultValuesCore()
 		{
 			base.SetDefaultValuesCore();
+			LimitlessEssenceStacks = 5;
 		}
 
 		#endregion

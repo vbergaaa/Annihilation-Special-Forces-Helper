@@ -22,5 +22,24 @@ Increase maximum kill count and maximum life essence stacks by 50 for limit brok
 		protected override string PerkName => "Limitless Essence";
 
 		protected override short MaxLevelCore => 60;
+
+		protected override void OnLevelChanged(int difference)
+		{
+			base.OnLevelChanged(difference);
+
+			if (difference == DesiredLevel || DesiredLevel == 0)
+			{
+				PerkCollection.Loadout.IncomeManager.RefreshPropertyBinding(nameof(PerkCollection.Loadout.IncomeManager.LoadoutKillCost));
+				PerkCollection.Loadout.IncomeManager.RefreshPropertyBinding(nameof(PerkCollection.Loadout.IncomeManager.LoadoutMineralCost));
+				PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding(nameof(PerkCollection.Loadout.CurrentUnit.IsLimitBroken));
+				PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding(nameof(PerkCollection.Loadout.CurrentUnit.IsLimitBroken_Readonly));
+			}
+
+			if (PerkCollection.Loadout.CurrentUnit.IsLimitBroken || DesiredLevel == 0)
+			{
+				PerkCollection.Loadout.Stats.RefreshAllBindings();
+			}
+			PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding("MaximumEssence");
+		}
 	}
 }

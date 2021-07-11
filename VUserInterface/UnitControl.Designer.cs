@@ -39,6 +39,7 @@ namespace VUserInterface
 			this.InfusionIncrementor = new VUserInterface.CommonControls.VIncrementor();
 			this.RankDropBox = new VUserInterface.CommonControls.VDropBox();
 			this.EssenceIncrementor = new VUserInterface.CommonControls.VIncrementor();
+			this.IsLimitBrokenCheckBox = new VCheckControl();
 			this.UnitTypeLabel = new VLabel();
 			this.TitleLabel = new VLabel();
 			this.AddButton = new DPIButton();
@@ -118,10 +119,18 @@ namespace VUserInterface
 			this.SpecCheckBox.Enabled = false;
 			this.SpecCheckBox.Location = DPIScalingHelper.GetScaledPoint(106, 150);
 			this.SpecCheckBox.Name = "SpecCheckBox";
+			//
+			// IsLimitBrokenCheckBox
+			//
+			this.IsLimitBrokenCheckBox.Caption = "Is Limit Broken";
+			this.IsLimitBrokenCheckBox.DataBindings.Add("Checked", BindingSource, "IsLimitBroken");
+			this.IsLimitBrokenCheckBox.DataBindings.Add("Enabled", BindingSource, "IsLimitBroken_Readonly");
+			this.IsLimitBrokenCheckBox.Location = DPIScalingHelper.GetScaledPoint(106, 180);
+			this.IsLimitBrokenCheckBox.Name = "IsLimitBrokenCheckBox";
 			// 
 			// AddButton
 			// 
-			this.AddButton.Location = DPIScalingHelper.GetScaledPoint(106, 180);
+			this.AddButton.Location = DPIScalingHelper.GetScaledPoint(106, 210);
 			this.AddButton.Name = "AddButton";
 			this.AddButton.TabIndex = 4;
 			this.AddButton.Text = "Add";
@@ -140,8 +149,9 @@ namespace VUserInterface
 			this.Controls.Add(this.UnitTypeLabel);
 			this.Controls.Add(this.AddButton);
 			this.Controls.Add(this.SpecCheckBox);
+			this.Controls.Add(this.IsLimitBrokenCheckBox);
 			this.Name = "UnitControl";
-			this.Size = DPIScalingHelper.GetScaledSize(256, 210);
+			this.Size = DPIScalingHelper.GetScaledSize(256, 240);
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).EndInit();
 			this.ResumeLayout(false);
 		}
@@ -153,6 +163,7 @@ namespace VUserInterface
 		private CommonControls.VIncrementor InfusionIncrementor;
 		private CommonControls.VDropBox RankDropBox;
 		private CommonControls.VIncrementor EssenceIncrementor;
+		private CommonControls.VCheckControl IsLimitBrokenCheckBox;
 		System.Windows.Forms.BindingSource BindingSource;
 		VLabel UnitTypeLabel;
 		System.Windows.Forms.Button AddButton;

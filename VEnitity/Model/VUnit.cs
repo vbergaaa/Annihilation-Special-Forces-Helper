@@ -218,6 +218,46 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region IsLimitBroken
+
+		[VXML(true)]
+		public virtual bool IsLimitBroken
+		{
+			get => fIsLimitBroken;
+			set
+			{
+				if (value != fIsLimitBroken)
+				{
+					fIsLimitBroken = value;
+					HasChanges = true;
+					OnPropertyChanged(nameof(IsLimitBroken));
+				}
+			}
+		}
+		bool fIsLimitBroken;
+
+		public virtual bool IsLimitBroken_Readonly { get; }
+
+		#endregion
+
+		#region LimitlessEssenceStacks
+
+		public virtual double LimitlessEssenceStacks
+		{
+			get => Math.Floor(fLimitlessEssenceStacks);
+			set
+			{
+				if (value != fLimitlessEssenceStacks)
+				{
+					fLimitlessEssenceStacks = value;
+					HasChanges = true;
+				}
+			}
+		}
+		double fLimitlessEssenceStacks;
+
+		#endregion
+
 		#region Stats
 
 		#region Calculated Stats
