@@ -245,6 +245,11 @@ namespace VEntityFramework.Model
 				}
 			}
 		}
+		public bool RemoveProfileLimits
+		{
+			get => !ShouldRestrict;
+			set => ShouldRestrict = !value;
+		}
 
 		void OnShouldRestrictChanged()
 		{

@@ -40,10 +40,6 @@ namespace VUserInterface
 			this.SettingsLabel = new VLabel();
 			this.FarmRoomDropBox = new VDropBox();
 			this.IncomeLabel = new VLabel();
-			this.SoloBonusCheckBox = new VCheckControl();
-			this.AdrenalineRushCheckBox = new VCheckControl();
-			this.DifficultyDropBox = new VDropBox();
-			this.UnitSpecDropBox = new VDropBox();
 			this.BrutaliskOverrideControl = new BrutaliskOverrideControl();
 			this.BrutaliskOverrideCheckBox = new VCheckControl();
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
@@ -57,33 +53,6 @@ namespace VUserInterface
 			this.UpgradeControl.DataBindings.Add("Upgrades", BindingSource, "Upgrades");
 			this.UpgradeControl.Location = DPIScalingHelper.GetScaledPoint(300, 60);
 			this.UpgradeControl.Name = "UpgradeControl";
-			//
-			// SoloBonusCheckBox
-			//
-			this.SoloBonusCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 120);
-			this.SoloBonusCheckBox.Caption = "Solo Bonus:";
-			this.SoloBonusCheckBox.DataBindings.Add("Checked", BindingSource, "UnitConfiguration.HasSoloBonus");
-			//
-			// AdrenalineRushCheckBox
-			//
-			this.AdrenalineRushCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 150);
-			this.AdrenalineRushCheckBox.Caption = "Adrenaline Rush:";
-			this.AdrenalineRushCheckBox.DataBindings.Add("Checked", BindingSource, "UnitConfiguration.HasAdrenalineBuffActive");
-			this.AdrenalineRushCheckBox.Visible = false;
-			//
-			// DifficutlyComboBox
-			//
-			this.DifficultyDropBox.DataBindings.Add("SelectedValue", BindingSource, "UnitConfiguration.DifficultyLevel");
-			this.DifficultyDropBox.List = DifficultyList;
-			this.DifficultyDropBox.Location = DPIScalingHelper.GetScaledPoint(125, 60);
-			this.DifficultyDropBox.Caption = "Difficulty:";
-			//
-			// UnitSpecComboBox
-			//
-			this.UnitSpecDropBox.DataBindings.Add("SelectedValue", BindingSource, "UnitSpec");
-			this.UnitSpecDropBox.List = UnitSpecList;
-			this.UnitSpecDropBox.Location = DPIScalingHelper.GetScaledPoint(125, 90);
-			this.UnitSpecDropBox.Caption = "UnitSpec:";
 			//
 			// FarmRoomComboBox
 			//
@@ -130,10 +99,6 @@ namespace VUserInterface
 			//
 			this.Controls.Add(UpgradeControl);
 			this.Controls.Add(UpgradesLabel);
-			this.Controls.Add(SoloBonusCheckBox);
-			this.Controls.Add(AdrenalineRushCheckBox);
-			this.Controls.Add(DifficultyDropBox);
-			this.Controls.Add(UnitSpecDropBox);
 			this.Controls.Add(FarmRoomDropBox);
 			this.Controls.Add(SettingsLabel);
 			this.Controls.Add(IncomeLabel);
@@ -150,10 +115,6 @@ namespace VUserInterface
 		VLabel IncomeLabel;
 		BindingSource BindingSource;
 		UpgradeControl UpgradeControl;
-		VCheckControl SoloBonusCheckBox;
-		VCheckControl AdrenalineRushCheckBox;
-		VDropBox DifficultyDropBox;
-		VDropBox UnitSpecDropBox;
 		VDropBox FarmRoomDropBox;
 		BrutaliskOverrideControl BrutaliskOverrideControl;
 		VCheckControl BrutaliskOverrideCheckBox;

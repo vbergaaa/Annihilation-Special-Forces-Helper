@@ -47,8 +47,6 @@ namespace VUserInterface
 			this.IncomeTabPage = new DPITabPage();
 			this.PerkPageControl = new VPerkCollectionControl();
 			this.LoadoutBindingSource = new System.Windows.Forms.BindingSource();
-			this.LoadoutNameTextBox = new VTextBox();
-			this.SlotNumberTextBox = new VTextBox();
 			this.StatsControl = new VStatsControl();
 			this.IncomeControl = new IncomeControl();
 			this.GemsControl = new VGemCollectionControl();
@@ -56,9 +54,9 @@ namespace VUserInterface
 			this.ChallengePointCollectionControl = new ChallengePointCollectionControl();
 			this.UnitControl = new UnitConfigurationControl();
 			this.LoadoutConfigurationControl = new LoadoutConfigurationControl();
-			this.RestrictCheckBox = new VCheckControl();
 			this.UseUnitStatsCheckBox = new VCheckControl();
 			this.UseSingleUnitEcoCheckBox = new VCheckControl();
+			this.DetailsControl = new LoadoutDetailsControl();
 			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
 			this.SuspendLayout();
 			//
@@ -84,9 +82,7 @@ namespace VUserInterface
 			//
 			this.DetailsTabPage.Name = "DetailsTabPage";
 			this.DetailsTabPage.Text = "Details";
-			this.DetailsTabPage.Controls.Add(LoadoutNameTextBox);
-			this.DetailsTabPage.Controls.Add(SlotNumberTextBox);
-			this.DetailsTabPage.Controls.Add(RestrictCheckBox);
+			this.DetailsTabPage.Controls.Add(DetailsControl);
 			//
 			// PerksTabPage
 			//
@@ -148,29 +144,6 @@ namespace VUserInterface
 			this.IncomeTabPage.Controls.Add(UseSingleUnitEcoCheckBox);
 			this.IncomeTabPage.Controls.Add(IncomeControl);
 			//
-			// LoadoutNameTextBox
-			//
-			this.LoadoutNameTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Name", true);
-			this.LoadoutNameTextBox.Location = DPIScalingHelper.GetScaledPoint(200, 20);
-			this.LoadoutNameTextBox.Name = "LoadoutNameTextBox";
-			this.LoadoutNameTextBox.Caption = "Name";
-			this.LoadoutNameTextBox.Width = 100;
-			//
-			// SlotNumberTextBox
-			//
-			this.SlotNumberTextBox.DataBindings.Add("Text", this.LoadoutBindingSource, "Slot", true);
-			this.SlotNumberTextBox.Location = DPIScalingHelper.GetScaledPoint(200, 50);
-			this.SlotNumberTextBox.Name = "SlotNumberTextBox";
-			this.SlotNumberTextBox.Width = 30;
-			this.SlotNumberTextBox.Caption = "Save Slot";
-			//
-			// RestrictCheckBox
-			//
-			this.RestrictCheckBox.Name = "RestrictCheckBox";
-			this.RestrictCheckBox.Caption = "Restrict loadout to profile limits";
-			this.RestrictCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "ShouldRestrict");
-			this.RestrictCheckBox.Location = DPIScalingHelper.GetScaledPoint(200, 110);
-			//
 			// UseUnitStatsCheckBox
 			//
 			this.UseUnitStatsCheckBox.Name = "UseUnitStatsCheckBox";
@@ -191,6 +164,13 @@ namespace VUserInterface
 			this.PerkPageControl.DataBindings.Add("Perks", this.LoadoutBindingSource, "Perks");
 			this.PerkPageControl.DataBindings.Add("Text", this.LoadoutBindingSource, "Perks.PageTitle");
 			this.PerkPageControl.Name = "PerkPageControl";
+			//
+			// DetailsControl
+			//
+			this.DetailsControl.Dock = DockStyle.Fill;
+			this.DetailsControl.Location = DPIScalingHelper.GetScaledPoint(0, 0);
+			this.DetailsControl.DataBindings.Add("Loadout", this.LoadoutBindingSource, ".");
+			this.DetailsControl.Name = "PerkPageControl";
 			//
 			// GemsControl
 			//
@@ -261,8 +241,6 @@ namespace VUserInterface
 		private System.Windows.Forms.TabControl InfoTabControl;
 		private System.Windows.Forms.TabPage StatsTabPage;
 		private System.Windows.Forms.TabPage IncomeTabPage;
-		private VTextBox SlotNumberTextBox;
-		private VTextBox LoadoutNameTextBox;
 		private VUserInterface.VPerkCollectionControl PerkPageControl;
 		private VUserInterface.VGemCollectionControl GemsControl;
 		private VUserInterface.VLoadoutSoulsControl SoulsControl;
@@ -271,9 +249,9 @@ namespace VUserInterface
 		private VUserInterface.LoadoutConfigurationControl LoadoutConfigurationControl;
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;
 		private VStatsControl StatsControl;
-		private VCheckControl RestrictCheckBox;
 		private VCheckControl UseUnitStatsCheckBox;
 		private VCheckControl UseSingleUnitEcoCheckBox;
 		private IncomeControl IncomeControl;
+		private LoadoutDetailsControl DetailsControl;
 	}
 }

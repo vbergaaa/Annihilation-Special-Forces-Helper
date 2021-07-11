@@ -23,6 +23,11 @@ namespace VUserInterface.CommonControls
 				{
 					fList = value;
 					this.ComboBox.DataSource = value;
+
+					// I don't understand why this is needed, but it appears there is some 
+					// cases where ComboBox.Items doesn't update to the datasource, and this
+					// is the only way I can make this happen on demand.
+					this.ComboBox.CreateControl();
 				}
 			}
 		}
