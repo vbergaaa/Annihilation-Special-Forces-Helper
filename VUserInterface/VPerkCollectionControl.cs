@@ -68,9 +68,9 @@ namespace VUserInterface
 		{
 			if (Perks != null)
 			{
-				foreach (var control in Controls)
+				foreach (var control in MainGroupBox.Controls)
 				{
-					if (control is Button button && int.TryParse(button.Text, out var pageNum))
+					if (control is VButton button && int.TryParse(button.Text, out var pageNum))
 					{
 						button.Enabled = pageNum <= Perks.MaxPage;
 					}
