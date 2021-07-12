@@ -4,7 +4,7 @@ using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class VGemCollectionControl : DPIGroupBox
+	public partial class VGemCollectionControl : DPIUserControl
 	{
 		public VGemCollectionControl()
 		{
@@ -18,7 +18,7 @@ namespace VUserInterface
 			base.OnBindingContextChanged(e);
 			if (Gems != null)
 			{
-				this.gemsBindingSource.DataSource = Gems;
+				this.BindingSource.DataSource = Gems;
 			}
 		}
 	}

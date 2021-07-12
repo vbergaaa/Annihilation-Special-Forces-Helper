@@ -169,7 +169,7 @@ namespace VUserInterface
 			//
 			// PerkPageControl
 			//
-			this.PerkPageControl.Location = DPIScalingHelper.GetScaledPoint(5, 10);
+			this.PerkPageControl.Location = DPIScalingHelper.GetScaledPoint(0, 10);
 			this.PerkPageControl.DataBindings.Add("Perks", this.LoadoutBindingSource, "Perks");
 			this.PerkPageControl.DataBindings.Add("Text", this.LoadoutBindingSource, "Perks.PageTitle");
 			this.PerkPageControl.Name = "PerkPageControl";
@@ -183,9 +183,9 @@ namespace VUserInterface
 			//
 			// GemsControl
 			//
-			this.GemsControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
+			this.GemsControl.Location = DPIScalingHelper.GetScaledPoint(0, 10);
 			this.GemsControl.DataBindings.Add("Gems", this.LoadoutBindingSource, "Gems");
-			this.GemsControl.Text = "Gem";
+			this.GemsControl.Name = "GemsControl";
 			//
 			// UnitControl
 			//
