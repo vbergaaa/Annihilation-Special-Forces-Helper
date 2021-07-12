@@ -324,9 +324,11 @@ namespace VEntityFramework.Model
 		}
 		UnitType fUnitSpec;
 
+		public virtual bool UnitSpec_Readonly { get; }
+
 		#endregion
 
-#endregion
+		#endregion
 
 		#region Implementation
 

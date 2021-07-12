@@ -93,6 +93,7 @@ namespace VUserInterface
 			// UnitSpecComboBox
 			//
 			this.UnitSpecDropBox.DataBindings.Add("SelectedValue", BindingSource, "UnitSpec");
+			this.UnitSpecDropBox.DataBindings.Add("Enabled", BindingSource, "UnitSpec_Readonly");
 			this.UnitSpecDropBox.List = UnitSpecList;
 			this.UnitSpecDropBox.Location = DPIScalingHelper.GetScaledPoint(100, 110);
 			this.UnitSpecDropBox.Name = "UnitSpecDropBox";

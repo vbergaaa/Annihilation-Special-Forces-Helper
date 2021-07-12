@@ -163,7 +163,16 @@ namespace VBusiness.Loadouts
 
 		public override UnitType UnitSpec
 		{
-			get => base.UnitSpec;
+			get
+			{
+				if (Perks.UnitSpecialization.DesiredLevel > 0 && !(Perks.UnitSpecialization.DesiredLevel == Perks.UnitSpecialization.MaxLevel && Perks.UpgradeCache.DesiredLevel > 0))
+				{
+					// if these are true, then we have either no spec, or all specs. We will display no spec
+					// TODO: add unit spec type 'All'
+					return UnitType.None;
+				}
+				return base.UnitSpec;
+			}
 			set
 			{
 				var unitHadSpec = CurrentUnit.HasUnitSpec;
@@ -183,6 +192,8 @@ namespace VBusiness.Loadouts
 				IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutMineralCost));
 			}
 		}
+
+		public override bool UnitSpec_Readonly => Perks.UnitSpecialization.DesiredLevel > 0 && !(Perks.UnitSpecialization.DesiredLevel == Perks.UnitSpecialization.MaxLevel && Perks.UpgradeCache.DesiredLevel > 0);
 
 		#endregion
 

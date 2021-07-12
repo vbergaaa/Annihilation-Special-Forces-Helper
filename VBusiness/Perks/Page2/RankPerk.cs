@@ -21,5 +21,12 @@ namespace VBusiness.Perks
 		protected override short MaxLevelCore => 1;
 
 		protected override string PerkName => "Rank";
+
+		protected override void OnLevelChanged(int difference)
+		{
+			base.OnLevelChanged(difference);
+			PerkCollection.Loadout.RefreshPropertyBinding(nameof(PerkCollection.Loadout.UnitSpec_Readonly));
+			PerkCollection.Loadout.RefreshPropertyBinding(nameof(PerkCollection.Loadout.UnitSpec));
+		}
 	}
 }
