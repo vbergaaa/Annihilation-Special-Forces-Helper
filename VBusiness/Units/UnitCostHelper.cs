@@ -56,7 +56,7 @@ namespace VBusiness.Units
 			// Please ensure you leave these cost additions in this order to avoid breaking this accidently
 			var cost = GetRankCost(rank);
 			cost += GetBaseCreationCost(unitData, isLimitBroken);
-			cost += GetInfusionCosts(unitData, infuse, cost.ExcessKills);
+			cost += GetInfusionCosts(unitData, infuse, cost.CurrentUnitKills);
 			return cost;
 		}
 
@@ -82,37 +82,88 @@ namespace VBusiness.Units
 #if DEBUG
 			RecordDNAStartUnit(unitData, infusion);
 #endif
-			if (infusion == 0)
+			if (infusion < 11)
 			{
-				return new UnitCost(0, 0, excessKills);
-			}
+				if (infusion == 0)
+				{
+					return new UnitCost(0, 0, excessKills);
+				}
 
-			var infuseDiscount = 0;
-			if (unitData.Type.IsCoreBasic() && infusion >= 3 && TryUseQSCharge())
-			{
-				infuseDiscount = 3;
-			}
+				var infuseDiscount = 0;
+				if (unitData.Type.IsCoreBasic() && infusion >= 3 && TryUseQSCharge())
+				{
+					infuseDiscount = 3;
+				}
 
-			if (unitData.Type.IsDNA1() && infusion >= loadout.Perks.DNAStart.DesiredLevel && TryUseDNAStart())
-			{
-				infuseDiscount = loadout.Perks.DNAStart.DesiredLevel;
-			}
-			else if(shouldGrantDNAFreeInf1 && unitData.Type.IsDNA1())
-			{
-				infuseDiscount = 1;
-			}
+				if (unitData.Type.IsDNA1() && infusion >= loadout.Perks.DNAStart.DesiredLevel && TryUseDNAStart())
+				{
+					infuseDiscount = loadout.Perks.DNAStart.DesiredLevel;
+				}
+				else if(shouldGrantDNAFreeInf1 && unitData.Type.IsDNA1())
+				{
+					infuseDiscount = 1;
+				}
 
-			var material = new UnitRecepePiece(unitData.BasicType, (int)unitData.Evolution, UnitRankType.None, 1);
-			var materialCost = GetRawUnitCost(material);
-			var mainUnitFeedCost = GetFeedCost(infusion, unitData.Type, excessKills, infuseDiscount);
-			var materialQty = UnitsRequiredForInfuse(infusion, infuseDiscount);
-			var killRecycleRefund = GetKillRecycleRefund(materialCost, infusion, infuseDiscount, materialQty);
-			var infuseRecycleRefund = GetInfuseRecycleRefund(infusion, infuseDiscount);
-			var totalKillCost = materialCost.Kills * materialQty + mainUnitFeedCost.Cost - infuseRecycleRefund - killRecycleRefund;
-			return new UnitCost(materialCost.Minerals * materialQty, totalKillCost, mainUnitFeedCost.ExcessKills);
+				var material = new UnitRecepePiece(unitData.BasicType, (int)unitData.Evolution, UnitRankType.None, 1);
+				var materialCost = GetRawUnitCost(material);
+				var mainUnitFeedCost = GetFeedCost(infusion, unitData.Type, excessKills, infuseDiscount);
+				var materialQty = UnitsRequiredForInfuse(infusion, infuseDiscount);
+				var killRecycleRefund = GetKillRecycleRefund(materialCost, infusion, infuseDiscount, materialQty);
+				var infuseRecycleRefund = GetInfuseRecycleRefund(infusion, infuseDiscount);
+				var totalKillCost = materialCost.Kills * materialQty + mainUnitFeedCost.Cost - infuseRecycleRefund - killRecycleRefund;
+				return new UnitCost(materialCost.Minerals * materialQty, totalKillCost, mainUnitFeedCost.ExcessKills);
+			}
+			else
+			{
+				return GetOverInfusionCosts(unitData, infusion, excessKills);
+			}
 		}
 
-		int GetInfuseRecycleRefund(int infusion, int infuseDiscount)
+		UnitCost GetOverInfusionCosts(IUnitData unitData, int infusion, int excessKills)
+		{
+			// over infuse logic. Because this is annoyingly complex, it gets comments
+
+			// We use recursion to get the cost of the previous infuse, then add on our current infusion
+			var previousInfCost = GetInfusionCosts(unitData, infusion - 1, excessKills);
+			var material = new UnitRecepePiece(unitData.BasicType, 10, UnitRankType.None, 1);
+
+			// Get the material count - this may not be correct, I only tested inf10->11, which was 11 units
+			var materialQty = infusion;
+
+
+			// check see if any qs charges will be involved in the cost of the infuse materials
+			UnitCost qsMaterialCost = default;
+			var remainingQsCharges = qsCharges;
+			if (remainingQsCharges > 0)
+			{
+				// cost of the infuse feed if we have a qs charge
+				qsMaterialCost = GetRawUnitCost(material);
+
+				// as we need 10+ mats, we are going to exhaust our QS charges
+				// at this stage it isn't possible to have more than 10 QS charges
+				qsCharges = 0;
+			}
+
+			// get the cost of our unit without any qs charges
+			var fullMaterialCost = GetRawUnitCost(material);
+
+			// cost of feed, e.g, 3000 for inf 11, 4000 for inf 12;
+			var mainUnitFeedCost = 2000 + (infusion - 10) * 1000;
+
+			// at this stage it seems unrealistic we will get more than 11,000 vet, so it's unlikely there will be any kills on our materials.
+			var killRecycleRefund = 0;
+
+			// as we use recursion for each infuse, we should only get the bonus of one here
+			var infuseRecycleRefund = GetInfuseRecycleRefund(1);
+
+			// finally we can total it all together
+			var materialKills = fullMaterialCost.Kills * (materialQty - remainingQsCharges) + qsMaterialCost.Kills * remainingQsCharges;
+			var materialMinerals = fullMaterialCost.Minerals * (materialQty - remainingQsCharges) + qsMaterialCost.Minerals * remainingQsCharges;
+			var totalKillCost = materialKills + mainUnitFeedCost - infuseRecycleRefund - killRecycleRefund;
+			return new UnitCost(previousInfCost.Minerals + materialMinerals, previousInfCost.Kills + totalKillCost, 0);
+		}
+
+		int GetInfuseRecycleRefund(int infusion, int infuseDiscount = 0)
 		{
 			return (infusion - infuseDiscount) * loadout.IncomeManager.InfuseRecycle;
 		}
@@ -164,7 +215,7 @@ namespace VBusiness.Units
 			else
 			{
 				var cost = new UnitCost(0, 0);
-				var costs = new List<(UnitCost, bool)>();
+				var costs = new List<(UnitCost UnitCost, bool CanUseForEvo)>();
 
 				foreach (var piece in unitData.Recepe)
 				{
@@ -174,14 +225,14 @@ namespace VBusiness.Units
 						costs.Add((newCost, piece.CanUseForEvo));
 						if (!piece.CanUseForEvo)
 						{
-							newCost.ExcessKills = 0;
+							newCost.CurrentUnitKills = 0;
 							cost = newCost + cost; // don't += this as '+' is sensitive to left and right
 						}
 						else
 						{
-							var excessKills = Math.Max(newCost.ExcessKills, cost.ExcessKills);
+							var excessKills = Math.Max(newCost.CurrentUnitKills, cost.CurrentUnitKills);
 							cost += newCost;
-							cost.ExcessKills = excessKills;
+							cost.CurrentUnitKills = excessKills;
 						}
 					}
 				}
@@ -191,28 +242,28 @@ namespace VBusiness.Units
 			}
 		}
 
-		double GetKillRecycleRefund(List<(UnitCost, bool)> costs)
+		double GetKillRecycleRefund(List<(UnitCost UnitCost, bool CanUseForEvo)> costs)
 		{
 			var killRecycle = (double)loadout.IncomeManager.KillRecycle;
 			if (killRecycle > 0)
 			{
 				killRecycle /= 100.0;
-				var orderedCosts = costs.OrderBy(x => !x.Item2).ThenBy(x => x.Item1.ExcessKills).ToList();
+				var orderedCosts = costs.OrderBy(x => !x.CanUseForEvo).ThenBy(x => x.UnitCost.CurrentUnitKills).ToList();
 
 				// main unit refund
-				var refundAmount = GetKillRecycleRefund(orderedCosts[0].Item1);
+				var refundAmount = GetKillRecycleRefund(orderedCosts[0].UnitCost);
 
 				// sacrificed unit refund
 				if (orderedCosts.Count() > 1)
 				{
-					refundAmount += GetKillRecycleRefund(orderedCosts[1].Item1);
+					refundAmount += GetKillRecycleRefund(orderedCosts[1].UnitCost);
 				}
 
 				if (hasFullKillRecycle && orderedCosts.Count > 2)
 				{
 					for (var i = 2; i < orderedCosts.Count; i++)
 					{
-						refundAmount += GetKillRecycleRefund(orderedCosts[i].Item1);
+						refundAmount += GetKillRecycleRefund(orderedCosts[i].UnitCost);
 					}
 				}
 				return refundAmount;
@@ -227,12 +278,12 @@ namespace VBusiness.Units
 			if (hasFullKillRecycle)
 			{
 				killRecycle /= 100.0;
-				return killRecycle * materialCount * materialCost.ExcessKills;
+				return killRecycle * materialCount * materialCost.CurrentUnitKills;
 			}
 			else if (killRecycle > 0)
 			{
 				killRecycle /= 100.0;
-				return killRecycle * (infusion - infuseDiscount) * materialCost.ExcessKills;
+				return killRecycle * (infusion - infuseDiscount) * materialCost.CurrentUnitKills;
 			}
 
 			return 0;
@@ -354,7 +405,7 @@ namespace VBusiness.Units
 		{
 			Minerals = mins;
 			Kills = kills;
-			ExcessKills = excessKills;
+			CurrentUnitKills = excessKills;
 		}
 		public UnitCost(double mins, double kills) : this (mins, kills, 0)
 		{
@@ -362,12 +413,12 @@ namespace VBusiness.Units
 
 		public double Minerals { get; set; }
 		public double Kills { get; set; }
-		public int ExcessKills { get; set; }
+		public int CurrentUnitKills { get; set; }
 
-		public static UnitCost operator -(UnitCost a) => new UnitCost(-a.Minerals, -a.Kills, a.ExcessKills);
-		public static UnitCost operator +(UnitCost a, UnitCost b) => new UnitCost(a.Minerals + b.Minerals, a.Kills + b.Kills, b.ExcessKills);
+		public static UnitCost operator -(UnitCost a) => new UnitCost(-a.Minerals, -a.Kills, a.CurrentUnitKills);
+		public static UnitCost operator +(UnitCost a, UnitCost b) => new UnitCost(a.Minerals + b.Minerals, a.Kills + b.Kills, b.CurrentUnitKills);
 		public static UnitCost operator -(UnitCost a, UnitCost b) => a += (-b);
-		public static UnitCost operator *(UnitCost a, double b) => new UnitCost(a.Minerals * b, a.Kills * b, a.ExcessKills);
-		public static UnitCost operator /(UnitCost a, (double, double) b) => new UnitCost(a.Minerals / b.Item1, a.Kills / b.Item2, a.ExcessKills);
+		public static UnitCost operator *(UnitCost a, double b) => new UnitCost(a.Minerals * b, a.Kills * b, a.CurrentUnitKills);
+		public static UnitCost operator /(UnitCost a, (double, double) b) => new UnitCost(a.Minerals / b.Item1, a.Kills / b.Item2, a.CurrentUnitKills);
 	}
 }
