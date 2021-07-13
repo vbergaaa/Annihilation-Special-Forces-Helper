@@ -75,10 +75,9 @@ namespace VBusiness.Units
 		{
 			get
 			{
-				var maxInfuse = 10 + (IsLimitBroken
-					? Loadout.Perks.OverInfuse.DesiredLevel
-					: 0);
-				return MaximumKills >= maxInfuse * 200 ? maxInfuse : MaximumKills / 200;
+				return IsLimitBroken && MaximumKills >= 3000
+					? 10 + (MaximumKills - 2000) / 1000
+					: MaximumKills >= 2000 ? 10 : MaximumKills / 200;
 			}
 		}
 
