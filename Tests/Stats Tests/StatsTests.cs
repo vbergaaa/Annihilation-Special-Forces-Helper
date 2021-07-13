@@ -21,8 +21,7 @@ namespace Tests
 		[TestCase(10, 20, 15, 40, 63.28)]
 		public void TestDamageReduction(short specPerks, int statsDR, short rankDr, double otherDr, double expectedDR)
 		{
-			var loadout = new Loadout();
-			loadout.ShouldRestrict = false;
+			var loadout = TestHelper.GetEmptyLoadout();
 			loadout.CurrentUnit = VUnit.New(UnitType.WarpLord, loadout);
 			loadout.UnitSpec = UnitType.WarpLord;
 			var perks = (PerkCollection)loadout.Perks;

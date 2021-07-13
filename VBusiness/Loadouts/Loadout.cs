@@ -169,9 +169,9 @@ namespace VBusiness.Loadouts
 				{
 					// if these are true, then we have either no spec, or all specs. We will display no spec
 					// TODO: add unit spec type 'All'
-					return UnitType.None;
+					return base.UnitSpec;
 				}
-				return base.UnitSpec;
+				return UnitType.None;
 			}
 			set
 			{

@@ -132,7 +132,7 @@ namespace VBusiness.HelperClasses
 		static IEnumerable<(double Chance, double Damage, double VoidBuffBonus)> GetBaseDamageDealt(IEnumerable<(double Chance, EnemyStatCard Enemy)> compositionStats, VLoadout loadout)
 		{
 			var unitDamage = loadout.Stats.UnitAttack;
-			unitDamage *= loadout.Stats.DamageIncrease / 100;
+			unitDamage *= 1 + loadout.Stats.DamageIncrease / 100;
 			unitDamage *= (1 - loadout.UnitConfiguration.Difficulty.DamageReduction / 100.0);
 			if (loadout.UnitConfiguration.DifficultyLevel >= DifficultyLevel.Hard)
 			{
