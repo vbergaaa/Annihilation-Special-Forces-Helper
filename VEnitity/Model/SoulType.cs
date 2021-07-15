@@ -105,7 +105,7 @@ namespace VEntityFramework.Model
 		[Description("Experimental Ranking")]
 		ExperimentalRanking,
 		[Description("Half Pitch Black Soul 3")]
-		HPBSoul3
+		ExperimentalEvolution
 	}
 
 	public static class SoulTypeExtentions
