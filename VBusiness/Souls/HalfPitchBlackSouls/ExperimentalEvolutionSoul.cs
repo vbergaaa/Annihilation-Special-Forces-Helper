@@ -9,6 +9,7 @@ namespace VBusiness.Souls
 		}
 
 		public override SoulType Type => SoulType.ExperimentalEvolution;
+
 		public override void ActivateUniqueEffect()
 		{
 			Loadout.IncomeManager.InfuseRecycle += 100;

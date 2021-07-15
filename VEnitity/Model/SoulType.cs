@@ -104,7 +104,7 @@ namespace VEntityFramework.Model
 		BeginnerLimitBreaking,
 		[Description("Experimental Ranking")]
 		ExperimentalRanking,
-		[Description("Half Pitch Black Soul 3")]
+		[Description("Experimental Evolution")]
 		ExperimentalEvolution
 	}
 
