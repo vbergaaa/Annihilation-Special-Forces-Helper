@@ -143,6 +143,10 @@ namespace VBusiness.Loadouts
 				unit.UpdateStatsFromInfuse(-unit.CurrentInfusion);
 				unit.UpdateStatsFromEssence(-unit.EssenceStacks);
 				unit.RemoveStatsFromSpec(unit.HasUnitSpec);
+				if (unit.IsLimitBroken)
+				{
+					unit.UpdateStatsFromEssence(-unit.LimitlessEssenceStacks);
+				}
 			}
 		}
 
@@ -154,6 +158,10 @@ namespace VBusiness.Loadouts
 				unit.UpdateStatsFromInfuse(unit.CurrentInfusion);
 				unit.UpdateStatsFromEssence(unit.EssenceStacks);
 				unit.AddStatsFromSpec();
+				if (unit.IsLimitBroken)
+				{
+					unit.UpdateStatsFromEssence(unit.LimitlessEssenceStacks);
+				}
 			}
 		}
 

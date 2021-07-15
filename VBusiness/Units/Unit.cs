@@ -233,6 +233,11 @@ namespace VBusiness.Units
 			if (IsLimitBroken)
 			{
 				max += (int)(Loadout.Perks.LimitlessEssence.DesiredLevel / 2.0) * 100;
+
+				if (activeSouls.Contains(SoulType.BeginnerLimitBreaking))
+				{
+					max += 400;
+				}
 			}
 			return max;
 		}
@@ -289,6 +294,23 @@ namespace VBusiness.Units
 		}
 
 		public override bool IsLimitBroken_Readonly => Loadout.Perks.LimitlessEssence.DesiredLevel > 0;
+
+		#endregion
+
+		#region Limitless Essense
+
+		public override int LimitlessEssenceStacks
+		{
+			get => base.LimitlessEssenceStacks;
+			set
+			{
+				if (IsLimitBroken)
+				{
+					UpdateStatsFromEssence(value - base.LimitlessEssenceStacks);
+				}
+				base.LimitlessEssenceStacks = value;
+			}
+		}
 
 		#endregion
 

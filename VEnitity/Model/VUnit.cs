@@ -249,9 +249,9 @@ namespace VEntityFramework.Model
 
 		#region LimitlessEssenceStacks
 
-		public virtual double LimitlessEssenceStacks
+		public virtual int LimitlessEssenceStacks
 		{
-			get => Math.Floor(fLimitlessEssenceStacks);
+			get => fLimitlessEssenceStacks;
 			set
 			{
 				if (value != fLimitlessEssenceStacks)
@@ -261,7 +261,7 @@ namespace VEntityFramework.Model
 				}
 			}
 		}
-		double fLimitlessEssenceStacks;
+		int fLimitlessEssenceStacks;
 
 		#endregion
 
