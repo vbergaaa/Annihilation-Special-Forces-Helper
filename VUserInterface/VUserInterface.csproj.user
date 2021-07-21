@@ -74,6 +74,9 @@
     <Compile Update="ProfileControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="RegistryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="SingleSoulControl.cs">
       <SubType>Component</SubType>
     </Compile>

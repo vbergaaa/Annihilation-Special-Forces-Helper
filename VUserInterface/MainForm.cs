@@ -19,6 +19,7 @@ namespace VUserInterface
 				ProfilePanel.Visible = button.Name == ProfileButton.Name;
 				LoadoutsPanel.Visible = button.Name == LoadoutsButton.Name;
 				SoulsPanel.Visible = button.Name == SoulsButton.Name;
+				RegistryPanel.Visible = button.Name == RegistryButton.Name;
 			}
 		}
 
@@ -33,6 +34,11 @@ namespace VUserInterface
 		}
 
 		void ProfileButton_Click(object sender, EventArgs e)
+		{
+			ChangeMainPanel(sender, e);
+		}
+
+		void RegistryButton_Click(object sender, EventArgs e)
 		{
 			ChangeMainPanel(sender, e);
 		}

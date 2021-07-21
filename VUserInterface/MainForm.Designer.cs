@@ -43,12 +43,15 @@ namespace VUserInterface
 			this.SoulsButton = new VUserInterface.CommonControls.VButton();
 			this.LoadoutsButton = new VUserInterface.CommonControls.VButton();
 			this.ProfileButton = new VUserInterface.CommonControls.VButton();
+			this.RegistryButton = new VButton();
 			this.RightPanel = new VUserInterface.CommonControls.DPIPanel();
 			this.ProfilePanel = new VUserInterface.CommonControls.DPIPanel();
+			this.RegistryPanel = new DPIPanel();
 			this.LoadoutsPanel = new VUserInterface.CommonControls.DPIPanel();
 			this.SoulsPanel = new VUserInterface.CommonControls.DPIPanel();
 			this.SoulCollectionButton = new VButton();
 			this.ProfileControl = new ProfileControl();
+			this.RegistryControl = new RegistryControl();
 			this.LeftPanel.SuspendLayout();
 			this.RightPanel.SuspendLayout();
 			this.LoadoutsPanel.SuspendLayout();
@@ -89,6 +92,7 @@ namespace VUserInterface
 			this.LeftPanel.Controls.Add(this.SoulsButton);
 			this.LeftPanel.Controls.Add(this.LoadoutsButton);
 			this.LeftPanel.Controls.Add(this.ProfileButton);
+			this.LeftPanel.Controls.Add(this.RegistryButton);
 			this.LeftPanel.Controls.Add(this.SoulCollectionButton);
 			this.LeftPanel.Location = DPIScalingHelper.GetScaledPoint(0, 35);
 			this.LeftPanel.Name = "LeftPanel";
@@ -136,11 +140,23 @@ namespace VUserInterface
 			this.ProfileButton.Visible = true;
 			this.ProfileButton.Click += new System.EventHandler(this.ProfileButton_Click);
 			// 
+			// RegistryButton
+			// 
+			this.RegistryButton.Location = DPIScalingHelper.GetScaledPoint(12, 207);
+			this.RegistryButton.Name = "RegistryButton";
+			this.RegistryButton.Size = DPIScalingHelper.GetScaledSize(182, 31);
+			this.RegistryButton.TabIndex = 0;
+			this.RegistryButton.Text = "Settings";
+			this.RegistryButton.UseVisualStyleBackColor = true;
+			this.RegistryButton.Visible = true;
+			this.RegistryButton.Click += new System.EventHandler(this.RegistryButton_Click);
+			// 
 			// RightPanel
 			// 
 			this.RightPanel.Controls.Add(this.ProfilePanel);
 			this.RightPanel.Controls.Add(this.LoadoutsPanel);
 			this.RightPanel.Controls.Add(this.SoulsPanel);
+			this.RightPanel.Controls.Add(this.RegistryPanel);
 			this.RightPanel.Location = DPIScalingHelper.GetScaledPoint(200, 35);
 			this.RightPanel.Name = "RightPanel";
 			this.RightPanel.Size = DPIScalingHelper.GetScaledSize(450, 400);
@@ -172,12 +188,27 @@ namespace VUserInterface
 			this.SoulsPanel.Size = DPIScalingHelper.GetScaledSize(450, 400);
 			this.SoulsPanel.TabIndex = 1;
 			this.SoulsPanel.Visible = false;
+			// 
+			// RegistryPanel
+			// 
+			this.RegistryPanel.Controls.Add(this.RegistryControl);
+			this.RegistryPanel.Location = DPIScalingHelper.GetScaledPoint(0, 0);
+			this.RegistryPanel.Name = "RegistryPanel";
+			this.RegistryPanel.Size = DPIScalingHelper.GetScaledSize(450, 400);
+			this.RegistryPanel.TabIndex = 1;
+			this.RegistryPanel.Visible = false;
 			//
 			// ProfileControl
 			//
 			this.ProfileControl.Name = "ProfileControl";
 			this.ProfileControl.Size = DPIScalingHelper.GetScaledSize(350, 300);
 			this.ProfileControl.Location = DPIScalingHelper.GetScaledPoint(0, 0);
+			//
+			// RegistryControl
+			//
+			this.RegistryControl.Name = "RegistryControl";
+			this.RegistryControl.Size = DPIScalingHelper.GetScaledSize(350, 300);
+			this.RegistryControl.Location = DPIScalingHelper.GetScaledPoint(0, 0);
 			// 
 			// MainForm
 			// 
@@ -203,15 +234,18 @@ namespace VUserInterface
 		private Panel LeftPanel;
 		private Panel RightPanel;
 		private Panel ProfilePanel;
+		private Panel RegistryPanel;
 		private Panel LoadoutsPanel;
 		private Panel SoulsPanel;
 		private VLoadList LoadoutsLoadList;
 		private VLoadList SoulsLoadList;
 		private ProfileControl ProfileControl;
+		private RegistryControl RegistryControl;
 		private VLabel TitleLabel;
 		private VButton SoulsButton;
 		private VButton LoadoutsButton;
 		private VButton ProfileButton;
 		private VButton SoulCollectionButton;
+		private VButton RegistryButton;
 	}
 }
