@@ -1,6 +1,8 @@
-﻿using System;
+﻿using StarCodeDecryptor;
+using System;
 using VBusiness.PlayerRanks;
 using VBusiness.Souls;
+using VEntityFramework;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
 
@@ -12,8 +14,33 @@ namespace VBusiness.Profile
 
 		public static Profile GetProfile()
 		{
-			return VDataContext.Instance.Get<Profile>();
+			if (fProfile == null)
+			{
+				UpdateProfileFromBank();
+			}
+			return fProfile;
 		}
+
+		private static void UpdateProfileFromBank()
+		{
+			fProfile = VDataContext.Instance.Get<Profile>();
+
+#if DEBUG
+			try
+			{
+				var bankReader = new ASFBankDecoder();
+				fProfile.RankPoints = bankReader.RankPoints;
+				fProfile.Gems = bankReader.Gems;
+				fProfile.Save();
+			}
+			catch
+			{
+				ErrorReporter.ReportDebug("Something went wrong reading the bank");
+			}
+#endif
+		}
+
+		static Profile fProfile;
 
 		#endregion
 

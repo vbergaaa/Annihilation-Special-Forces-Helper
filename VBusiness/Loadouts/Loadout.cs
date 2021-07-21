@@ -25,8 +25,7 @@ namespace VBusiness.Loadouts
 
 		#region Profile
 
-		public override VProfile Profile { get => fProfile ??= VDataContext.Instance.Get<VBusiness.Profile.Profile>(); }
-		VProfile fProfile;
+		public override VProfile Profile => VBusiness.Profile.Profile.GetProfile();
 
 		#endregion
 

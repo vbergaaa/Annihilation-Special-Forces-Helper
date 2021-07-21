@@ -21,7 +21,7 @@ namespace VUserInterface
 
 		public VProfile Profile
 		{
-			get => fProfile ??= VDataContext.Instance.Get<Profile>();
+			get => fProfile ??= VBusiness.Profile.Profile.GetProfile();
 			set => fProfile = value;
 		}
 
