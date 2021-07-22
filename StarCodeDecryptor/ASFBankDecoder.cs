@@ -63,6 +63,16 @@ namespace StarCodeDecryptor
 
 		#endregion
 
+		#region Saves
+
+		public string GetPerksStringAtSaveSlot(int slot)
+		{
+			var bankString = ExtractValueFromXml("Loads", $"Save{slot}");
+			return Starcode.Decrypt(bankString, Key, 3);
+		}
+
+		#endregion
+
 		#region Bank
 
 		public XmlDocument Bank

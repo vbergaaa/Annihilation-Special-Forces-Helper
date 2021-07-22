@@ -11,7 +11,7 @@ namespace Tests
 		[Test]
 		public void TestGettingBankFile()
 		{
-			var decoder = new ASFBankDecoder();
+			var decoder = new ASFBankDecoder(null);
 			Assert.That(decoder.RankPoints, Is.InstanceOf(typeof(int)));
 			Assert.That(decoder.Gems, Is.InstanceOf(typeof(int)));
 			Assert.That(() => decoder.Key, Throws.Nothing);

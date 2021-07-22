@@ -8,23 +8,43 @@ namespace VEntityFramework.Model
 	{
 		#region Property
 
-		#region SyncWithBank
+		#region SyncProfileWithBank
 
 		[VXML(true)]
 		public bool SyncProfileWithBank
 		{
-			get => fSyncWithBank;
+			get => fSyncProfileWithBank;
 			set
 			{
-				if (fSyncWithBank != value)
+				if (fSyncProfileWithBank != value)
 				{
-					fSyncWithBank = value;
+					fSyncProfileWithBank = value;
 					HasChanges = true;
 					OnPropertyChanged(nameof(SyncProfileWithBank));
 				}
 			}
 		}
-		bool fSyncWithBank;
+		bool fSyncProfileWithBank;
+
+		#endregion
+
+		#region SyncLoadoutsWithBank
+
+		[VXML(true)]
+		public bool SyncLoadoutsWithBank
+		{
+			get => fSyncLoadoutsWithBank;
+			set
+			{
+				if (fSyncLoadoutsWithBank != value)
+				{
+					fSyncLoadoutsWithBank = value;
+					HasChanges = true;
+					OnPropertyChanged(nameof(SyncLoadoutsWithBank));
+				}
+			}
+		}
+		bool fSyncLoadoutsWithBank;
 
 		#endregion
 

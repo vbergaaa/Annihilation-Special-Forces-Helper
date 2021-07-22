@@ -1673,7 +1673,9 @@ namespace VBusiness.Perks
 				OverInfuse,
 				DestroyerWarp,
 				DestroyerRankRevision,
-			};
+			}
+			.OrderBy(x => x.Page)
+			.ThenBy(x => x.Position);
 
 			allPerks = perks;
 		}

@@ -36,7 +36,8 @@ namespace VUserInterface
 		{
 			components = new System.ComponentModel.Container();
 			this.BindingSource = new BindingSource();
-			this.SyncBankControl = new VCheckControl();
+			this.SyncProfileBankCheckControl = new VCheckControl();
+			this.SyncLoadoutBankCheckControl = new VCheckControl();
 			this.TitleLabel = new VLabel();
 			this.SaveButton = new VButton();
 			//
@@ -61,16 +62,24 @@ namespace VUserInterface
 			this.SaveButton.Text = "Save";
 			this.SaveButton.Click += new System.EventHandler(this.SaveEditButton_Click);
 			//
-			// SyncBankControl
+			// SyncProfileBankControl
 			//
-			this.SyncBankControl.Caption = "Sync Profile With Bank:";
-			this.SyncBankControl.DataBindings.Add("Checked", BindingSource, "SyncProfileWithBank");
-			this.SyncBankControl.Location = DPIScalingHelper.GetScaledPoint(200, 70);
-			this.SyncBankControl.Name = "SyncBankControl";
+			this.SyncProfileBankCheckControl.Caption = "Sync Profile With Bank:";
+			this.SyncProfileBankCheckControl.DataBindings.Add("Checked", BindingSource, "SyncProfileWithBank");
+			this.SyncProfileBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 70);
+			this.SyncProfileBankCheckControl.Name = "SyncBankControl";
+			//
+			// SyncLoadoutBankControl
+			//
+			this.SyncLoadoutBankCheckControl.Caption = "Sync Loadouts With Bank:";
+			this.SyncLoadoutBankCheckControl.DataBindings.Add("Checked", BindingSource, "SyncLoadoutsWithBank");
+			this.SyncLoadoutBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 100);
+			this.SyncLoadoutBankCheckControl.Name = "SyncBankControl";
 			//
 			// RegistryControl
 			//
-			this.Controls.Add(SyncBankControl);
+			this.Controls.Add(SyncProfileBankCheckControl);
+			this.Controls.Add(SyncLoadoutBankCheckControl);
 			this.Controls.Add(SaveButton);
 			this.Controls.Add(TitleLabel);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,7 +88,8 @@ namespace VUserInterface
 		#endregion
 
 		BindingSource BindingSource;
-		VCheckControl SyncBankControl;
+		VCheckControl SyncProfileBankCheckControl;
+		VCheckControl SyncLoadoutBankCheckControl;
 		VLabel TitleLabel;
 		VButton SaveButton;
 	}

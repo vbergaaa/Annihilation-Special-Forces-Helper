@@ -20,6 +20,7 @@ namespace VBusiness
 		{
 			base.SetDefaultValuesCore();
 			SyncProfileWithBank = true;
+			SyncLoadoutsWithBank = true;
 		}
 	}
 }
