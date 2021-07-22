@@ -16,28 +16,27 @@ namespace VBusiness.Profile
 		{
 			if (fProfile == null)
 			{
-				UpdateProfileFromBank();
+				fProfile = VDataContext.Instance.Get<Profile>();
 			}
 			return fProfile;
 		}
 
-		private static void UpdateProfileFromBank()
+		public override void OnLoaded()
 		{
-			fProfile = VDataContext.Instance.Get<Profile>();
 
-#if DEBUG
-			try
+			if (Registry.Instance.SyncProfileWithBank)
 			{
-				var bankReader = new ASFBankDecoder();
-				fProfile.RankPoints = bankReader.RankPoints;
-				fProfile.Gems = bankReader.Gems;
-				fProfile.Save();
+				try
+				{
+					var bankReader = new ASFBankDecoder(Registry.Instance.BankFileOverride);
+					RankPoints = bankReader.RankPoints;
+					Gems = bankReader.Gems;
+				}
+				catch
+				{
+					ErrorReporter.ReportDebug("Something went wrong reading the bank");
+				}
 			}
-			catch
-			{
-				ErrorReporter.ReportDebug("Something went wrong reading the bank");
-			}
-#endif
 		}
 
 		static Profile fProfile;

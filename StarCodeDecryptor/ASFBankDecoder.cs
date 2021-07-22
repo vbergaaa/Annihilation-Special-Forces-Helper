@@ -9,6 +9,11 @@ namespace StarCodeDecryptor
 {
 	public class ASFBankDecoder
 	{
+		public ASFBankDecoder(string bankPathOverride)
+		{
+			this.fBankPathOverride = bankPathOverride;
+		}
+
 		#region Key
 
 		public string Key
@@ -67,7 +72,9 @@ namespace StarCodeDecryptor
 				if (fBank == null)
 				{
 					var xml = new XmlDocument();
-					var xmlPath = GetBankFilePath();
+					var xmlPath = string.IsNullOrEmpty(fBankPathOverride)
+						? GetDefaultBankFilePath()
+						: fBankPathOverride;
 					xml.Load(xmlPath);
 					fBank = xml;
 				}
@@ -76,7 +83,9 @@ namespace StarCodeDecryptor
 		}
 		XmlDocument fBank;
 
-		string GetBankFilePath()
+		string fBankPathOverride = null;
+
+		string GetDefaultBankFilePath()
 		{
 			var rootLocation = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\StarCraft II\\Accounts";
 			var files = Directory.GetFiles(rootLocation, "TDUHOK.SC2Bank", SearchOption.AllDirectories);

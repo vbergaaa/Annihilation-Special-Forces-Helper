@@ -28,6 +28,26 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region BankFileOverride
+
+		[VXML(true)]
+		public string BankFileOverride
+		{
+			get => fBankFileOverride;
+			set
+			{
+				if (fBankFileOverride != value)
+				{
+					fBankFileOverride = value;
+					HasChanges = true;
+					OnPropertyChanged(nameof(BankFileOverride));
+				}
+			}
+		}
+		string fBankFileOverride;
+
+		#endregion
+
 		#endregion
 
 		public override string BizoName => "Registry";

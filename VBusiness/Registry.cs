@@ -8,18 +8,18 @@ namespace VBusiness
 {
 	public class Registry : VRegistry
 	{
-		#region GetRegistry
+		#region Instance
 
-		public static Registry GetRegistry()
-		{
-			if (fRegistry == null)
-			{
-				fRegistry = VDataContext.Instance.Get<Registry>();
-			}
-			return fRegistry;
-		}
+		[VXML(false)]
+		public static Registry Instance => fRegistry ??= VDataContext.Instance.Get<Registry>();
 		static Registry fRegistry;
 
 		#endregion
+
+		protected override void SetDefaultValuesCore()
+		{
+			base.SetDefaultValuesCore();
+			SyncProfileWithBank = true;
+		}
 	}
 }

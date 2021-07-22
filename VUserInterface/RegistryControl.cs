@@ -18,7 +18,7 @@ namespace VUserInterface
 
 		public Registry Registry
 		{
-			get => fRegistry ??= Registry.GetRegistry();
+			get => fRegistry ??= Registry.Instance;
 			set => fRegistry = value;
 		}
 
