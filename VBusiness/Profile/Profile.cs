@@ -31,12 +31,29 @@ namespace VBusiness.Profile
 					var bankReader = new ASFBankDecoder(Registry.Instance.BankFileOverride);
 					RankPoints = bankReader.RankPoints;
 					Gems = bankReader.Gems;
+					ModScore = GetTotalModScoresFromString(bankReader.ModScores);
 				}
 				catch
 				{
 					ErrorReporter.ReportDebug("Something went wrong reading the bank");
 				}
 			}
+		}
+
+		int GetTotalModScoresFromString(string modScores)
+		{
+			var totalScore = 0;
+			while (modScores.Length > 0)
+			{
+				var score = modScores.Substring(0, 7);
+				if (score == "?%465gd")
+				{
+					break;
+				}
+				totalScore += int.Parse(score);
+				modScores = modScores.Substring(7);
+			}
+			return totalScore;
 		}
 
 		static Profile fProfile;

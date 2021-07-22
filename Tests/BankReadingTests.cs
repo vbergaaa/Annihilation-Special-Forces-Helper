@@ -15,6 +15,8 @@ namespace Tests
 			Assert.That(decoder.RankPoints, Is.InstanceOf(typeof(int)));
 			Assert.That(decoder.Gems, Is.InstanceOf(typeof(int)));
 			Assert.That(() => decoder.Key, Throws.Nothing);
+
+			Assert.That(decoder.ModScores, Is.EqualTo(""));
 		}
 	}
 }

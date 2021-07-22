@@ -73,6 +73,20 @@ namespace StarCodeDecryptor
 
 		#endregion
 
+		#region ModScores
+
+		public string ModScores
+		{
+			get
+			{
+				var gems = ExtractValueFromXml("534G%#", "H*H");
+				gems = Starcode.Decrypt(gems, Key, 2);
+				return gems;
+			}
+		}
+
+		#endregion
+
 		#region Bank
 
 		public XmlDocument Bank
