@@ -113,16 +113,20 @@ namespace VUserInterface.CommonControls
 			if (value == IncrementorStyle.Compact)
 			{
 				ValueLabel.Size = DPIScalingHelper.GetScaledSize(23, 23);
-				ValueLabel.Left -= 5;
-				IncrementButton.Left -= 30;
-				this.Left += 30;
+				ValueLabel.Left -= DPIScalingHelper.GetScaledX(5);
+				IncrementButton.Left -= DPIScalingHelper.GetScaledX(30);
+				CoreControl.Width -= DPIScalingHelper.GetScaledX(30);
+				this.Width -= DPIScalingHelper.GetScaledX(30);
+				this.Left += DPIScalingHelper.GetScaledX(30);
 			}
 			if (value == IncrementorStyle.Normal)
 			{
 				ValueLabel.Size = DPIScalingHelper.GetScaledSize(43, 23);
-				ValueLabel.Left += 5;
-				IncrementButton.Left += 30;
-				this.Left -= 30;
+				ValueLabel.Left += DPIScalingHelper.GetScaledX(5);
+				IncrementButton.Left += DPIScalingHelper.GetScaledX(30);
+				CoreControl.Width += DPIScalingHelper.GetScaledX(30);
+				this.Width += DPIScalingHelper.GetScaledX(30);
+				this.Left -= DPIScalingHelper.GetScaledX(30);
 			}
 		}
 

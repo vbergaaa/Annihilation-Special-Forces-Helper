@@ -128,5 +128,21 @@ namespace VBusiness.Profile
 		}
 
 		#endregion
+
+#if DEBUG
+		public DisposableAction TemporarilyModifyProfile(int rp, int modScore)
+		{
+			var oldRp = RankPoints;
+			var oldModScore = ModScore;
+			RankPoints = rp;
+			ModScore = modScore;
+
+			return new DisposableAction(() =>
+			{
+				RankPoints = oldRp;
+				ModScore = oldModScore;
+			});
+		}
+#endif
 	}
 }

@@ -13,5 +13,16 @@ namespace VBusiness.Mods
 		public override string BizoName => "GlassCannon";
 
 		public override string Name => "Glass Cannon";
+
+		protected override void OnModLevelChanged(int diff)
+		{
+			base.OnModLevelChanged(diff);
+
+			Loadout.Stats.UpdateDamageReduction("Core", -2 * diff);
+			Loadout.Stats.UpdateHealthArmor("Core", -4 * diff);
+			Loadout.Stats.UpdateShieldsArmor("Core", -4 * diff);
+
+			Loadout.Stats.RefreshAllBindings();
+		}
 	}
 }

@@ -106,6 +106,12 @@ namespace VBusiness.HelperClasses
 			var stats = loadout.Stats;
 			var critChances = new CritChances();
 
+			if (stats.CriticalChance <= 0)
+			{
+				critChances.RegularChance = 1.0;
+				return critChances;
+			}
+
 			var remainingChance = 1.0;
 
 			var blackCritChance = perks.BlackCrits.DesiredLevel > 0 ? stats.CriticalChance / 300.0 : 0;

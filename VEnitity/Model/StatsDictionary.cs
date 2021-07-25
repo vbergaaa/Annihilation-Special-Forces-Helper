@@ -25,9 +25,10 @@ namespace VEntityFramework.Model
 				Add(key, amount);
 			}
 
-			ErrorReporter.ReportDebug(
-				$"Why do you have less then 0 of this Stat? Dictionary:{debugName}, key:{key}, value:{this[key]}",
-				() => key == "CORE" ? this[key] + 19 < 0: this[key] < 0);
+			// Disabling this error because there are lots of reasons to have less than 0, when you consider mods, torment reduction, etc. Can maybe come up with a suitable error report in the future that allows for these things
+			//	ErrorReporter.ReportDebug(
+			//	$"Why do you have less then 0 of this Stat? Dictionary:{debugName}, key:{key}, value:{this[key]}",
+			//	() => key == "CORE" ? this[key] + 19 < 0: this[key] < 0);
 		}
 
 		public void UpdateExpontiental(string key, double value, int quantity)

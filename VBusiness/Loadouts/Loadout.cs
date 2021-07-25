@@ -224,7 +224,7 @@ namespace VBusiness.Loadouts
 
 		#region RemainingPerkPoints
 
-		public override long RemainingPerkPoints => Profile.PerkPoints - PerkPointsCost;
+		public override long RemainingPerkPoints => (Profile.PerkPoints - (int)(Profile.PerkPoints * Mods.Taxes.CurrentLevel * 0.06)) - PerkPointsCost;
 
 		public override bool CanAffordCurrentLoadout
 		{

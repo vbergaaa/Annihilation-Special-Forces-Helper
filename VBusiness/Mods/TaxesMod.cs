@@ -11,5 +11,11 @@ namespace VBusiness.Mods
 		public override int Score => 10;
 
 		public override string BizoName => "Taxes";
+
+		protected override void OnModLevelChanged(int diff)
+		{
+			Loadout.RefreshPropertyBinding(nameof(Loadout.RemainingPerkPoints));
+			Loadout.Perks.RefreshPropertyBinding(nameof(Loadout.Perks.RemainingCost));
+		}
 	}
 }
