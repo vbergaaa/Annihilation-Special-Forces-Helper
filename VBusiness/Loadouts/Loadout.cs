@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using VBusiness.ChallengePoints;
 using VBusiness.Gems;
+using VBusiness.Mods;
 using VBusiness.Perks;
 using VBusiness.Souls;
 using VBusiness.Units;
@@ -91,6 +92,13 @@ namespace VBusiness.Loadouts
 
 		public override VIncomeManager IncomeManager => fIncomeManager ??= new IncomeManager(this);
 		VIncomeManager fIncomeManager;
+
+		#endregion
+
+		#region Mods
+
+		public override VModsCollection Mods => fMods ??= new ModsCollection(this);
+		VModsCollection fMods;
 
 		#endregion
 

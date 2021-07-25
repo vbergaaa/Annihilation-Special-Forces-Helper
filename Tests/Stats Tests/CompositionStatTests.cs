@@ -40,7 +40,7 @@ namespace Tests.Stats_Tests
 
 		VLoadout LoadMaxPage14()
 		{
-			var loadout = TestHelper.GetEmptyLoadout();
+			var loadout = TestHelper.GetTestLoadout();
 			var perks = loadout.Perks as PerkCollection;
 			foreach (var perk in perks.AllPerks.Where(p => p.Page <= 14))
 			{

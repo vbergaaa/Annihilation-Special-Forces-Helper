@@ -46,6 +46,7 @@ namespace VUserInterface
 			this.InfoTabControl = new DPITabControl();
 			this.StatsTabPage = new DPITabPage();
 			this.IncomeTabPage = new DPITabPage();
+			this.ModsTabPage = new DPITabPage();
 			this.PerkPageControl = new VPerkCollectionControl();
 			this.LoadoutBindingSource = new System.Windows.Forms.BindingSource();
 			this.StatsControl = new VStatsControl();
@@ -56,6 +57,7 @@ namespace VUserInterface
 			this.UnitControl = new UnitConfigurationControl();
 			this.UpgradeControl = new UpgradeControl();
 			this.LoadoutIncomeControl = new LoadoutIncomeControl();
+			this.ModsControl = new ModCollectionControl();
 			this.UseUnitStatsCheckBox = new VCheckControl();
 			this.UseSingleUnitEcoCheckBox = new VCheckControl();
 			this.DetailsControl = new LoadoutDetailsControl();
@@ -80,6 +82,7 @@ namespace VUserInterface
 			this.MainTabControl.TabPages.Add(UpgradesTabPage);
 			this.MainTabControl.TabPages.Add(IncomeConfigurationTabPage);
 			this.MainTabControl.TabPages.Add(UnitTabPage);
+			this.MainTabControl.TabPages.Add(ModsTabPage);
 			//
 			// DetailsTabPage
 			//
@@ -128,6 +131,12 @@ namespace VUserInterface
 			this.UnitTabPage.Name = "UnitTabPage";
 			this.UnitTabPage.Text = "Units";
 			this.UnitTabPage.Controls.Add(UnitControl);
+			//
+			// ModsTabPage
+			//
+			this.ModsTabPage.Name = "ModsTabPage";
+			this.ModsTabPage.Text = "Mods";
+			this.ModsTabPage.Controls.Add(ModsControl);
 			//
 			// InfoTabControl
 			//
@@ -217,6 +226,13 @@ namespace VUserInterface
 			this.LoadoutIncomeControl.DataBindings.Add("Loadout", this.LoadoutBindingSource, ".");
 			this.LoadoutIncomeControl.Name = "LoadoutConfigurationControl";
 			//
+			// ModsControl
+			//
+			this.ModsControl.DataBindings.Add("Mods", this.LoadoutBindingSource, "Mods");
+			this.ModsControl.Dock = DockStyle.Fill;
+			this.ModsControl.Location = DPIScalingHelper.GetScaledPoint(0, 30);
+			this.ModsControl.Name = "ModsControl";
+			//
 			// StatsControl
 			//
 			this.StatsControl.DataBindings.Add("Stats", this.LoadoutBindingSource, "Stats");
@@ -256,6 +272,7 @@ namespace VUserInterface
 		private System.Windows.Forms.TabControl InfoTabControl;
 		private System.Windows.Forms.TabPage StatsTabPage;
 		private System.Windows.Forms.TabPage IncomeTabPage;
+		private System.Windows.Forms.TabPage ModsTabPage;
 		private VUserInterface.VPerkCollectionControl PerkPageControl;
 		private VUserInterface.VGemCollectionControl GemsControl;
 		private VUserInterface.VLoadoutSoulsControl SoulsControl;
@@ -263,6 +280,7 @@ namespace VUserInterface
 		private VUserInterface.UnitConfigurationControl UnitControl;
 		private VUserInterface.UpgradeControl UpgradeControl;
 		private VUserInterface.LoadoutIncomeControl LoadoutIncomeControl;
+		private VUserInterface.ModCollectionControl ModsControl;
 		private System.Windows.Forms.BindingSource LoadoutBindingSource;
 		private VStatsControl StatsControl;
 		private VCheckControl UseUnitStatsCheckBox;

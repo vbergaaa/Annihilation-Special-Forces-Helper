@@ -31,7 +31,7 @@ namespace Tests
 		[TestCase(UnitType.PurificationWalker, 10, 3972000, 219593.39)]
 		public void TestUnitEmptyLoadout(UnitType type, int infuse, double expectedMinerals, double expectedKills)
 		{
-			var loadout = TestHelper.GetEmptyLoadout();
+			var loadout = TestHelper.GetTestLoadout();
 			var cost = new UnitCostHelper(loadout).GetUnitCost(type, infuse, UnitRankType.None);
 
 			Assert.That(cost.Minerals, Is.EqualTo(expectedMinerals));
@@ -46,7 +46,7 @@ namespace Tests
 		[TestCase(UnitType.BerserkerWarpLord, 100, 100, 50500)]
 		public void TestUnitCostWithTWLoadout(UnitType type, int dw, int tw, double expected)
 		{
-			var loadout = TestHelper.GetEmptyLoadout()
+			var loadout = TestHelper.GetTestLoadout()
 				.AddDoubleWarp(dw)
 				.AddTripleWarp(tw);
 			var cost = new UnitCostHelper(loadout).GetUnitCost(type, 0, UnitRankType.None);
@@ -57,7 +57,7 @@ namespace Tests
 		[Test]
 		public void TestAllUnitsHaveCost()
 		{
-			var loadout = TestHelper.GetEmptyLoadout();
+			var loadout = TestHelper.GetTestLoadout();
 			var helper = new UnitCostHelper(loadout);
 			var units = Enums.GetValues<UnitType>();
 			foreach (var unit in units)
@@ -101,7 +101,7 @@ namespace Tests
 		[TestCase(UnitType.WingedArchon, 10, 750, 1871214)]
 		public void TestVeterancy(UnitType unit, int infuse, int vet, double expectedCost)
 		{
-			var loadout = TestHelper.GetEmptyLoadout()
+			var loadout = TestHelper.GetTestLoadout()
 				.AddVeterancy(vet);
 			var helper = new UnitCostHelper(loadout);
 			var cost = helper.GetUnitCost(unit, infuse, UnitRankType.None).Kills;
@@ -132,7 +132,7 @@ namespace Tests
 		[TestCase(UnitType.WingedArchon, 10, 600, 200, 1675314)]
 		public void TestInfuseRecycle(UnitType unit, int infuse, int vet, int infuseRecycle, double expectedCost)
 		{
-			var loadout = TestHelper.GetEmptyLoadout()
+			var loadout = TestHelper.GetTestLoadout()
 				.AddVeterancy(vet)
 				.AddInfuseRecycle(infuseRecycle);
 			var helper = new UnitCostHelper(loadout);
@@ -165,7 +165,7 @@ namespace Tests
 		[TestCase(UnitType.WingedArchon, 10, 600, 25, 1741114)]
 		public void TestKillRecycle(UnitType unit, int infuse, int vet, int killRecycle, double expectedCost)
 		{
-			var loadout = TestHelper.GetEmptyLoadout()
+			var loadout = TestHelper.GetTestLoadout()
 				.AddVeterancy(vet)
 				.AddKillRecycle(killRecycle);
 			var helper = new UnitCostHelper(loadout);
@@ -194,7 +194,7 @@ namespace Tests
 		[TestCase(UnitType.BerserkerWarpLord, 0, 3, 200, 178000, 5200)]
 		public void TestQuickStart(UnitType unit, int infuse, int qsCharges, int vet, double expectedMins, double expectedKills)
 		{
-			var loadout = TestHelper.GetEmptyLoadout()
+			var loadout = TestHelper.GetTestLoadout()
 				.AddVeterancy(vet)
 				.AddQuickStartCharges(qsCharges);
 			var helper = new UnitCostHelper(loadout);
@@ -208,7 +208,7 @@ namespace Tests
 		[TestCase(UnitType.WarpLord, 4, 1, 200, 0, 25, 6000, 550)]
 		public void TestQuickStartIntegration(UnitType unit, int infuse, int qsCharges, int vet, int infuseRecycle, int killRecycle, double expectedMins, double expectedKills)
 		{
-			var loadout = TestHelper.GetEmptyLoadout()
+			var loadout = TestHelper.GetTestLoadout()
 				.AddVeterancy(vet)
 				.AddInfuseRecycle(infuseRecycle)
 				.AddKillRecycle(killRecycle)
@@ -229,7 +229,7 @@ namespace Tests
 		[TestCase(UnitType.DarkWarpLord, 5, 5, 30000, 1000)]
 		public void TestDNAStart(UnitType unit, int infuse, int dnaStart, double expectedMins, double expectedKills)
 		{
-			var loadout = TestHelper.GetEmptyLoadout()
+			var loadout = TestHelper.GetTestLoadout()
 				.AddVeterancy(200)
 				.AddDNAStartLevel(dnaStart);
 			var helper = new UnitCostHelper(loadout);
@@ -245,7 +245,7 @@ namespace Tests
 		[TestCase(UnitType.DarkWarpLord, 2, 600, 200, 25, 1, 34000, 1550)]
 		public void TestBlackMarket(UnitType unit, int infuse, int vet, int infRec, int killRec, int dnaStart, double expectedMins, double expectedKills)
 		{
-			var loadout = TestHelper.GetEmptyLoadout()
+			var loadout = TestHelper.GetTestLoadout()
 				.AddVeterancy(vet)
 				.AddBlackMarket()
 				.AddKillRecycle(killRec)
@@ -271,7 +271,7 @@ namespace Tests
 		[TestCase(UnitType.Dragoon, 1, UnitType.Striker, false, 42160)]
 		public void TestSpecUnitCost(UnitType unit, int specLevel, UnitType spec, bool hasAllSpec, double expectedCost)
 		{
-			var loadout = TestHelper.GetEmptyLoadout()
+			var loadout = TestHelper.GetTestLoadout()
 				.SetSpec(spec, specLevel, hasAllSpec);
 
 			var helper = new UnitCostHelper(loadout);
@@ -291,7 +291,7 @@ namespace Tests
 		[TestCase(UnitType.Dragoon, 0, 600, 250, -700 + 299)] //299 from rank C
 		public void TestKillRecycleCacheUpgrade(UnitType unit, int infuse, int vet, int killRec, double expected)
 		{
-			var loadout = TestHelper.GetEmptyLoadout()
+			var loadout = TestHelper.GetTestLoadout()
 				.AddVeterancy(vet)
 				.AddKillRecycle(killRec)
 				.AddUpgradeCache();
@@ -307,7 +307,7 @@ namespace Tests
 		[TestCase(UnitType.DarkWarpLord, 2, 34000, 2800)]
 		public void TestDNAStartCacheUpgrade(UnitType unit, int inf, double expectedMinerals, double expectedKills)
 		{
-			var loadout = TestHelper.GetEmptyLoadout()
+			var loadout = TestHelper.GetTestLoadout()
 				.AddBlackMarket()
 				.AddDNAStartLevel(5)
 				.AddUpgradeCache();

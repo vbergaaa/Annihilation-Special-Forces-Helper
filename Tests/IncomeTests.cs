@@ -13,7 +13,7 @@ namespace Tests
 		[TestCase(RoomNumber.Room5, DifficultyLevel.Impossible, (10 * 35 + 80 * 5) * 60.0 / 17.0, 80 * 60.0 / 17)]
 		public void TestResourcesPerWave(RoomNumber room, DifficultyLevel diff, double expectedMinerals, double expectedKills)
 		{
-			var loadout = TestHelper.GetEmptyLoadout();
+			var loadout = TestHelper.GetTestLoadout();
 			loadout.SetDifficulty(diff);
 			loadout.SetFarmRoom(room);
 			var calc = new IncomeCalculator(loadout);
@@ -26,7 +26,7 @@ namespace Tests
 		[TestCase(RoomNumber.Room9, DifficultyLevel.Brutal, 3141.1, 0)]
 		public void TestResourcesPerWaveForBrutas(RoomNumber room, DifficultyLevel diff, double expectedMinerals, double expectedKills)
 		{
-			var loadout = TestHelper.GetEmptyLoadout();
+			var loadout = TestHelper.GetTestLoadout();
 			loadout.SetDifficulty(diff);
 			loadout.SetFarmRoom(room);
 			var calc = new IncomeCalculator(loadout);

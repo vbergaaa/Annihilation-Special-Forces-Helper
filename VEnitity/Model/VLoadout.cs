@@ -162,6 +162,12 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region Mods
+
+		public virtual VModsCollection Mods { get; }
+
+		#endregion
+
 		#region Units
 
 		public virtual BusinessObjectList<VUnit> Units { get; }

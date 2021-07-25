@@ -89,6 +89,7 @@ namespace VBusiness
 
 					Loadout.Stats.RefreshPropertyBinding("Toughness");
 					Loadout.Stats.RefreshPropertyBinding("Damage");
+					Loadout.Mods.RefreshPropertyBinding(nameof(Loadout.Mods.TotalModScore));
 				}
 			}
 		}

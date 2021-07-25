@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using VBusiness.Loadouts;
 using VBusiness.Rooms;
 using VEntityFramework;
@@ -8,13 +9,9 @@ namespace Tests
 {
 	public static class TestHelper
 	{
-		public static VLoadout GetEmptyLoadout()
+		public static VLoadout GetTestLoadout()
 		{
-			var loadout = new Loadout()
-			{
-				UseUnitStats = true,
-				ShouldRestrict = false,
-			};
+			var loadout = GetEmptyLoadout();
 			loadout.Perks.MaximumPotiential.DesiredLevel = 8;
 			loadout.Perks.MaximumPotiential2.DesiredLevel = 10;
 			loadout.Perks.MaximumPotiental3.DesiredLevel = 10;
@@ -23,9 +20,20 @@ namespace Tests
 			return loadout;
 		}
 
+		public static VLoadout GetEmptyLoadout()
+		{
+			var loadout = new Loadout()
+			{
+				UseUnitStats = true,
+				ShouldRestrict = false,
+			};
+
+			return loadout;
+		}
+
 		public static VLoadout GetMaxDWLoadout()
 		{
-			var loadout = GetEmptyLoadout();
+			var loadout = GetTestLoadout();
 			loadout.Perks.DoubleWarp.DesiredLevel = loadout.Perks.DoubleWarp.MaxLevel;
 			loadout.Perks.DoubleWarp4.DesiredLevel = loadout.Perks.DoubleWarp4.MaxLevel;
 			loadout.Perks.DoubleWarp2.DesiredLevel = loadout.Perks.DoubleWarp2.MaxLevel;
