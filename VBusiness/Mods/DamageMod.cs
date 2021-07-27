@@ -11,5 +11,10 @@ namespace VBusiness.Mods
 		public override int Score => 10;
 
 		public override string BizoName => "Damage";
+
+		protected override void OnModLevelChanged(int diff)
+		{
+			Loadout.Stats.RefreshPropertyBinding(nameof(Loadout.Stats.Toughness));
+		}
 	}
 }

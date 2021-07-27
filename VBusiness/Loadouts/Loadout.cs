@@ -307,7 +307,8 @@ namespace VBusiness.Loadouts
 				loadoutName = loadoutName.TrimStart('0');
 				Name = loadoutName;
 				perkString = perkString.Substring(15);
-
+				var oldShouldRestrict = ShouldRestrict;
+				ShouldRestrict = false;
 				foreach (var perk in ((PerkCollection)Perks).AllPerks)
 				{
 					if (!string.IsNullOrEmpty(perkString))
@@ -321,6 +322,7 @@ namespace VBusiness.Loadouts
 						perk.DesiredLevel = (short)perkValue;
 					}
 				}
+				ShouldRestrict = oldShouldRestrict;
 			}
 		}
 

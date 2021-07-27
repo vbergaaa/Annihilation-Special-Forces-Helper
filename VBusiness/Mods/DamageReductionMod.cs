@@ -13,5 +13,12 @@ namespace VBusiness.Mods
 		public override string BizoName => "DamageReduction";
 
 		public override string Name => "Damage Reduction";
+
+		protected override void OnModLevelChanged(int diff)
+		{
+			base.OnModLevelChanged(diff);
+
+			Loadout.Stats.RefreshPropertyBinding(nameof(Loadout.Stats.Damage));
+		}
 	}
 }

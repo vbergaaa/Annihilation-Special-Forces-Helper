@@ -18,8 +18,7 @@ namespace VBusiness.HelperClasses
 		{
 			if (loadout.UseUnitStats && loadout.CurrentUnit.UnitData.Type != UnitType.None)
 			{
-				var difficulty = loadout.UnitConfiguration.Difficulty;
-				var rawEnemyDamages = GetEnemyCompositionStats(difficulty, CompositionOptions.AttackingUnitsOnly);
+				var rawEnemyDamages = GetEnemyCompositionStats(loadout, CompositionOptions.AttackingUnitsOnly);
 
 				var shieldToughness = GetShieldToughness(loadout, rawEnemyDamages, loadout.Stats);
 				var healthToughness = GetHealthToughness(loadout, rawEnemyDamages, loadout.Stats);
@@ -89,7 +88,7 @@ namespace VBusiness.HelperClasses
 			if (loadout.UseUnitStats && loadout.CurrentUnit.UnitData.Type != UnitType.None)
 			{
 				var crits = GetCritChances(loadout);
-				var composition = GetEnemyCompositionStats(loadout.UnitConfiguration.Difficulty, CompositionOptions.Normal);
+				var composition = GetEnemyCompositionStats(loadout, CompositionOptions.Normal);
 				var baseDamages = GetBaseDamageDealt(composition, loadout);
 				var totalDamages = ApplyCrits(baseDamages, crits, loadout.Stats.CriticalDamage);
 				var averageDamagePerHit = totalDamages.Sum(x => (x.Chance * x.Damage));
@@ -139,10 +138,12 @@ namespace VBusiness.HelperClasses
 		{
 			var unitDamage = loadout.Stats.UnitAttack;
 			unitDamage *= 1 + loadout.Stats.DamageIncrease / 100;
+			unitDamage *= 1 - 0.06 * loadout.Mods.DamageReduction.CurrentLevel;
+			unitDamage *= 1 - 0.01 * loadout.Mods.Rank.CurrentLevel;
 			unitDamage *= (1 - loadout.UnitConfiguration.Difficulty.DamageReduction / 100.0);
 			if (loadout.UnitConfiguration.DifficultyLevel >= DifficultyLevel.Hard)
 			{
-				unitDamage *= (1 - 0.1); // 10DR from spire buff
+				unitDamage *= (1 - (0.1 * (1 + loadout.Mods.Potency.CurrentLevel * 0.1))); // 10DR from spire buff (can be 20% with max potency mod)
 			}
 			var hasQuasarBuff = loadout.CurrentUnit.UnitRank >= UnitRankType.SXDZ;
 			var hasVoidBuff = loadout.CurrentUnit.UnitRank >= UnitRankType.XYZ;
@@ -189,12 +190,12 @@ namespace VBusiness.HelperClasses
 
 		#region GetEnemyCompositionStats
 
-		static IEnumerable<(double Chance, EnemyStatCard Enemy)> GetEnemyCompositionStats(VDifficulty difficulty, CompositionOptions options)
+		static IEnumerable<(double Chance, EnemyStatCard Enemy)> GetEnemyCompositionStats(VLoadout loadout, CompositionOptions options)
 		{
-			var unitComp = GetEnemyUnitComposition(difficulty, options);
-			var composition = unitComp.Select(x => (x.Chance, GetEnemyStats(x.Enemy, difficulty)));
+			var unitComp = GetEnemyUnitComposition(loadout.UnitConfiguration.Difficulty, options);
+			var composition = unitComp.Select(x => (x.Chance, GetEnemyStats(x.Enemy, loadout)));
 
-			if (difficulty.Difficulty >= DifficultyLevel.Mythic)
+			if (loadout.UnitConfiguration.DifficultyLevel >= DifficultyLevel.Mythic)
 			{
 				composition = composition.SelectMany(x => ApplyMythicBossAttacks(x));
 			}
@@ -206,7 +207,7 @@ namespace VBusiness.HelperClasses
 		{
 			if (UnitCompOverride != null)
 			{
-				return UnitCompOverride.Select(x => (x.Item2, new EnemyStatCard { Type = x.Item1 }));
+				return UnitCompOverride.Select(x => (x.Chance, new EnemyStatCard { Type = x.Type }));
 			}
 			var comp = UnitCompositionGenerator.GetComposition(difficulty, options);
 			if (difficulty.Difficulty < DifficultyLevel.Titanic)
@@ -233,11 +234,11 @@ namespace VBusiness.HelperClasses
 			}
 		}
 
-		static EnemyStatCard GetEnemyStats(EnemyStatCard stats, VDifficulty difficulty)
+		static EnemyStatCard GetEnemyStats(EnemyStatCard stats, VLoadout loadout)
 		{
 			var unit = EnemyUnit.New(stats.Type);
-			stats.Damage = GetEnemyDamage(unit, stats.IsTitan, difficulty);
-			stats.Armor = GetEnemyArmor(unit, stats.IsTitan, difficulty);
+			stats.Damage = GetEnemyDamage(unit, stats.IsTitan, loadout);
+			stats.Armor = GetEnemyArmor(unit, stats.IsTitan, loadout);
 			stats.TitanicDR = stats.IsTitan ? GetTitanicDR(stats.Type) : 0;
 			stats.TitanicDRChance = stats.IsTitan ? GetTitanicDRChance(stats.Type) : 0;
 			return stats;
@@ -245,14 +246,19 @@ namespace VBusiness.HelperClasses
 
 		static double GetTitanicDR(EnemyType type) => type.IsHeroic() ? 0.6 : 0.8;
 		static double GetTitanicDRChance(EnemyType type) => type.IsHeroic() ? 0.3 : 0.2;
-		static double GetEnemyDamage(EnemyUnit unit, bool isTitanic, VDifficulty difficulty)
+		static double GetEnemyDamage(EnemyUnit unit, bool isTitanic, VLoadout loadout)
 		{
+			var difficulty = loadout.UnitConfiguration.Difficulty;
+
 			var unitDamage = unit.Attack + unit.AttackIncrement * ((int)difficulty.RoomToClear + difficulty.StartingUpgrades);
+
 			var damageModifier = difficulty.Damage;
 			if (unit.EnemyType.IsHeroic())
 			{
 				damageModifier += difficulty.MythicBoss / 100.0; // additive mythic bonus
 			}
+
+			damageModifier += Math.Pow(1.07, loadout.Mods.Damage.CurrentLevel) - 1; // additive damage mod calc (tested additive with difficulty buff, untested with rest)
 
 			if (isTitanic)
 			{
@@ -263,15 +269,24 @@ namespace VBusiness.HelperClasses
 
 			if (difficulty.Difficulty >= DifficultyLevel.Hard)
 			{
-				damageModifier += 0.2; // assumed additive spire buff
+				damageModifier += 0.2 * (1 + loadout.Mods.Potency.CurrentLevel * 0.1); // additive spire buff 'damage'
 			}
+
+			if (loadout.Mods.Rank.CurrentLevel >= (int)UnitRankType.SD)
+			{
+				damageModifier += 0.05; // assumed additive
+			}
+
 			unitDamage *= damageModifier;
 			unitDamage *= (1 + difficulty.DamageIncrease / 100.0);
+			unitDamage *= (1 + loadout.Mods.Rank.CurrentLevel / 50.0); // 2% DI per rank in mods
+
 			return unitDamage;
 		}
 
-		static double GetEnemyArmor(EnemyUnit unit, bool hasTitanicBuff, VDifficulty difficulty)
+		static double GetEnemyArmor(EnemyUnit unit, bool hasTitanicBuff, VLoadout loadout)
 		{
+			var difficulty = loadout.UnitConfiguration.Difficulty;
 			var baseArmor = unit.HealthArmor + ((int)difficulty.RoomToClear + difficulty.StartingUpgrades) * unit.HealthArmorIncrement;
 			var totalArmor = baseArmor * difficulty.Armor;
 			totalArmor *= hasTitanicBuff ? 1.5 : 1; // multiplicitive armor from titan buff
@@ -281,8 +296,16 @@ namespace VBusiness.HelperClasses
 			}
 			if (difficulty.Difficulty >= DifficultyLevel.Hard)
 			{
-				totalArmor *= (1 + 0.2); // spire buff, haven't tested if multiplicitive or not, assuming it is as others were
+				totalArmor *= (1 + (0.2 * (1 + loadout.Mods.Potency.CurrentLevel * 0.1))); // spire buff, haven't tested if multiplicitive or not, assuming it is as others were
 			}
+
+			totalArmor *= Math.Pow(1.07, loadout.Mods.Armor.CurrentLevel);
+
+			if (loadout.Mods.Rank.CurrentLevel >= (int)UnitRankType.SA)
+			{
+				totalArmor *= 1.05;
+			}
+
 			return totalArmor;
 		}
 
