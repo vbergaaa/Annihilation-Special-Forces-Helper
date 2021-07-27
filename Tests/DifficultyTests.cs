@@ -1,5 +1,9 @@
 ﻿using EnumsNET;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using VBusiness.Enemies;
 using VBusiness.HelperClasses;
 using VEntityFramework.Model;
 

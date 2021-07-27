@@ -56,7 +56,7 @@ namespace VBusiness.Enemies
 		public static RoomNumber Bruta5Room => RoomNumber.Room24;
 		public static RoomNumber Bruta6Room => RoomNumber.Room31;
 
-		internal virtual IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(int tierUpLevels, RoomNumber room)
+		internal virtual IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(double tierUpLevels, RoomNumber room)
 		{
 			if (EnemyType.IsBoss() || EnemyType.IsBuilding())
 			{

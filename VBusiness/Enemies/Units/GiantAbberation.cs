@@ -28,7 +28,7 @@ namespace VBusiness.Enemies
 
 		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Roach, 8) };
 
-		internal override IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(int tierUpLevels, RoomNumber room)
+		internal override IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(double tierUpLevels, RoomNumber room)
 		{
 			return tierUpLevels > 0 && room > RoomNumber.Room23
 				? Array.Empty<EnemyQuantity>()

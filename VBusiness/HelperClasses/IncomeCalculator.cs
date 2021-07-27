@@ -28,7 +28,7 @@ namespace VBusiness.HelperClasses
 		Resources GetIncomePerMinute()
 		{
 			GetLoadoutValues();
-			var units = Room.New(loadout.IncomeManager.FarmRoom).EnemiesPerWave.TierUp(loadout.UnitConfiguration.Difficulty.UnitTierIncrease).ToList();
+			var units = Room.New(loadout.IncomeManager.FarmRoom).EnemiesPerWave.TierUp(loadout.UnitConfiguration.Difficulty.UnitTierIncrease + loadout.Mods.Tier.CurrentLevel / 10.0).ToList();
 			units.AddRange(units.SelectRecursive(e => e.Type.GetAdditionalSpawns(loadout.UnitConfiguration.Difficulty.UnitTierIncrease, loadout.IncomeManager.FarmRoom).Multiply(e.Quantity)));
 
 			var totalKills = 0.0;

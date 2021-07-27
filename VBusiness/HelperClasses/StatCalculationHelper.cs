@@ -192,7 +192,7 @@ namespace VBusiness.HelperClasses
 
 		static IEnumerable<(double Chance, EnemyStatCard Enemy)> GetEnemyCompositionStats(VLoadout loadout, CompositionOptions options)
 		{
-			var unitComp = GetEnemyUnitComposition(loadout.UnitConfiguration.Difficulty, options);
+			var unitComp = GetEnemyUnitComposition(loadout, options);
 			var composition = unitComp.Select(x => (x.Chance, GetEnemyStats(x.Enemy, loadout)));
 
 			if (loadout.UnitConfiguration.DifficultyLevel >= DifficultyLevel.Mythic)
@@ -203,21 +203,18 @@ namespace VBusiness.HelperClasses
 			return composition;
 		}
 
-		static IEnumerable<(double Chance, EnemyStatCard Enemy)> GetEnemyUnitComposition(VDifficulty difficulty, CompositionOptions options)
+		static IEnumerable<(double Chance, EnemyStatCard Enemy)> GetEnemyUnitComposition(VLoadout loadout, CompositionOptions options)
 		{
+			var difficulty = loadout.UnitConfiguration.Difficulty;
 			if (UnitCompOverride != null)
 			{
 				return UnitCompOverride.Select(x => (x.Chance, new EnemyStatCard { Type = x.Type }));
 			}
-			var comp = UnitCompositionGenerator.GetComposition(difficulty, options);
-			if (difficulty.Difficulty < DifficultyLevel.Titanic)
-			{
-				return comp.Select(x => (x.Item2, new EnemyStatCard { Type = x.Item1 }));
-			}
-			else
-			{
-				return ApplyTitanicBuffedComposition(comp, difficulty.TitanChance);
-			}
+			var comp = UnitCompositionGenerator.GetComposition(difficulty, options, loadout.Mods.Tier.CurrentLevel / 10.0);
+
+			return difficulty.Difficulty < DifficultyLevel.Titanic
+				? comp.Select(x => (x.Item2, new EnemyStatCard { Type = x.Item1 }))
+				: ApplyTitanicBuffedComposition(comp, difficulty.TitanChance);
 		}
 
 		static IEnumerable<(double Chance, EnemyStatCard Enemy)> ApplyMythicBossAttacks((double Chance, EnemyStatCard Enemy) x)
