@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness.Mods
@@ -194,6 +195,13 @@ namespace VBusiness.Mods
 			{
 				var difficulty = Loadout.UnitConfiguration.DifficultyLevel;
 				var coreScore = AllMods.Sum(x => x.Score * x.CurrentLevel);
+
+				if (difficulty >= DifficultyLevel.Impossible)
+				{
+					coreScore -= Tier.CurrentLevel * Tier.Score; // tier up mod isn't implemented in Imp+ yet
+					ErrorReporter.ReportDebug("Time to fix this, as tier should now be implemented for Imp+", () => difficulty > DifficultyLevel.ZeroV);
+				}
+
 				var maxModBonuses = AllMods.Count(x => x.CurrentLevel == x.MaxValue);
 				var score = coreScore * (1 + maxModBonuses * 0.005);
 
