@@ -7,7 +7,7 @@ namespace VBusiness.Difficulties
 	{
 		public override DifficultyLevel Difficulty => DifficultyLevel.Divine;
 
-		public override int TormentReduction => 15;
+		public override int TormentReduction => 16;
 
 		public override double Health => 1.8;
 

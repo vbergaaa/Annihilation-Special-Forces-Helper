@@ -126,7 +126,13 @@ namespace VBusiness
 			var oldTormentReduction = oldDiff?.TormentReduction ?? 0;
 			var newTormentReduction = newDiff?.TormentReduction ?? 0;
 			var difference = newTormentReduction - oldTormentReduction;
+			difference *= 1 ;
 
+			UpdateTormentReduction(difference * (1 + Loadout.Mods.Difficulty.CurrentLevel / 10.0));
+		}
+
+		internal void UpdateTormentReduction(double difference)
+		{
 			if (difference != 0)
 			{
 				Loadout.Stats.Attack -= difference;
@@ -136,6 +142,7 @@ namespace VBusiness
 				Loadout.Stats.UpdateShields("Core", -difference);
 				Loadout.Stats.UpdateShieldsArmor("Core", -difference);
 				Loadout.Stats.UpdateAcceleration("Core", -difference);
+				Loadout.Stats.CriticalDamage -= difference;
 			}
 		}
 
@@ -145,6 +152,11 @@ namespace VBusiness
 			var newCritReduction = newDiff?.CritReduction ?? 0;
 			var difference = newCritReduction - oldCritReduction;
 
+			UpdateCritReduction(difference * (1 + Loadout.Mods.Difficulty.CurrentLevel / 10.0));
+		}
+
+		internal void UpdateCritReduction(double difference)
+		{
 			if (difference != 0)
 			{
 				Loadout.Stats.CriticalDamage -= difference;

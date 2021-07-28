@@ -214,7 +214,7 @@ namespace VBusiness.HelperClasses
 
 			return difficulty.Difficulty < DifficultyLevel.Titanic
 				? comp.Select(x => (x.Item2, new EnemyStatCard { Type = x.Item1 }))
-				: ApplyTitanicBuffedComposition(comp, difficulty.TitanChance);
+				: ApplyTitanicBuffedComposition(comp, difficulty.TitanChance * (1 + loadout.Mods.Difficulty.CurrentLevel / 10));
 		}
 
 		static IEnumerable<(double Chance, EnemyStatCard Enemy)> ApplyMythicBossAttacks((double Chance, EnemyStatCard Enemy) x)
@@ -252,7 +252,7 @@ namespace VBusiness.HelperClasses
 			var damageModifier = difficulty.Damage;
 			if (unit.EnemyType.IsHeroic())
 			{
-				damageModifier += difficulty.MythicBoss / 100.0; // additive mythic bonus
+				damageModifier += (difficulty.MythicBoss * (1 + loadout.Mods.Difficulty.CurrentLevel / 10.0)) / 100.0; // additive mythic bonus
 			}
 
 			damageModifier += Math.Pow(1.07, loadout.Mods.Damage.CurrentLevel) - 1; // additive damage mod calc (tested additive with difficulty buff, untested with rest)
@@ -289,7 +289,7 @@ namespace VBusiness.HelperClasses
 			totalArmor *= hasTitanicBuff ? 1.5 : 1; // multiplicitive armor from titan buff
 			if (unit.EnemyType.IsHeroic())
 			{
-				totalArmor *= (1 + difficulty.MythicBoss / 100.0); // mulitplicitive armor from mythic bonus 
+				totalArmor *= (1 + difficulty.MythicBoss * (1 + loadout.Mods.Difficulty.CurrentLevel / 10.0) / 100.0); // mulitplicitive armor from mythic bonus 
 			}
 			if (difficulty.Difficulty >= DifficultyLevel.Hard)
 			{
