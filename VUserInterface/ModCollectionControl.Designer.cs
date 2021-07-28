@@ -71,6 +71,7 @@ namespace VUserInterface
 			this.TotalModScoreLabel.Caption = "Score";
 			this.TotalModScoreLabel.Name = "TotalModScoreLabel";
 			this.TotalModScoreLabel.Location = DPIScalingHelper.GetScaledPoint(100, 30);
+			this.TotalModScoreLabel.Size = DPIScalingHelper.GetScaledSize(29, 50);
 			//
 			// DifficultyDropBox
 			//

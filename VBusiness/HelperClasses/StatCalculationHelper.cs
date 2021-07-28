@@ -130,7 +130,7 @@ namespace VBusiness.HelperClasses
 
 			critChances.RegularChance = remainingChance;
 
-			ErrorReporter.ReportDebug(critChances.RegularChance + critChances.YellowChance + critChances.RedChance + critChances.BlackChance != 1, "your crit calculations need to equal 100");
+			ErrorReporter.ReportDebug("your crit calculations need to equal 100", () => Math.Round(critChances.RegularChance + critChances.YellowChance + critChances.RedChance + critChances.BlackChance, 6) != 1);
 			return critChances;
 		}
 
