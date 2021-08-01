@@ -67,7 +67,11 @@ namespace Tests
 				{
 					continue;
 				}
-				var cost = helper.GetUnitCost(unit, 5, UnitRankType.None);
+
+				var infuse = UnitType.Artifact == unit
+					? 0
+					: 5;
+				var cost = helper.GetUnitCost(unit, infuse, UnitRankType.None);
 
 				Assert.That(cost.Minerals, Is.GreaterThan(0));
 				Assert.That(cost.Kills, Is.GreaterThan(0));

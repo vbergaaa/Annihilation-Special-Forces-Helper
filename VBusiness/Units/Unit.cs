@@ -101,6 +101,8 @@ namespace VBusiness.Units
 			}
 		}
 
+		public bool UnitRank_Modifiable => UnitData.Type != UnitType.Artifact;
+
 		private void SetRankFromType(UnitRankType value)
 		{
 			var rank = Ranks.UnitRank.New(value);
@@ -208,6 +210,11 @@ namespace VBusiness.Units
 
 		int GetMaxKills()
 		{
+			if (UnitData.Type == UnitType.Artifact)
+			{
+				return 0;
+			}
+
 			var max = 600;
 			if (Loadout.Perks is PerkCollection perks)
 			{
@@ -293,7 +300,7 @@ namespace VBusiness.Units
 			}
 		}
 
-		public override bool IsLimitBroken_Readonly => Loadout.Perks.LimitlessEssence.DesiredLevel > 0;
+		public override bool IsLimitBroken_Modifiable => Loadout.Perks.LimitlessEssence.DesiredLevel > 0 && UnitData.Type != UnitType.Artifact;
 
 		#endregion
 

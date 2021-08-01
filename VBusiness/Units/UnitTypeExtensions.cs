@@ -47,6 +47,7 @@ namespace VBusiness.Units
 				UnitType.Dreadnought => 8000,
 				UnitType.Templar => 20000,
 				UnitType.Dominator => 70000,
+				UnitType.None => 0, // this can happen if we just want a rank only, like for artifact recipe
 				_ => GetInvalidZero(),
 			};
 		}

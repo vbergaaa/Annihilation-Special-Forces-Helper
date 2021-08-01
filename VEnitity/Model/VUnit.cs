@@ -243,7 +243,7 @@ namespace VEntityFramework.Model
 		}
 		bool fIsLimitBroken;
 
-		public virtual bool IsLimitBroken_Readonly { get; }
+		public virtual bool IsLimitBroken_Modifiable { get; }
 
 		#endregion
 

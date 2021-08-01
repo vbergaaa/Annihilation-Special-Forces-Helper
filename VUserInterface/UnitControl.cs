@@ -73,7 +73,7 @@ namespace VUserInterface
 
 		#region Units Type
 
-		List<object> UnitsTypesList
+		internal List<object> UnitsTypesList
 		{
 			get => fUnitsTypesList ??= GetUnitTypes();
 		}
@@ -202,7 +202,9 @@ namespace VUserInterface
 				UnitType.DarkArchon,
 				UnitType.Ascendant,
 				UnitType.CrimsonArchon,
-				UnitType.WingedArchon
+				UnitType.WingedArchon,
+				string.Empty,
+				UnitType.Artifact
 			};
 
 			return list;

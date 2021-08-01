@@ -90,5 +90,6 @@ namespace VEntityFramework.Model
 		CrimsonArchon,
 		[Description("Winged Archon")]
 		WingedArchon,
+		Artifact,
 	}
 }

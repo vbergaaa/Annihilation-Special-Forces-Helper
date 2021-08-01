@@ -1,8 +1,7 @@
-﻿
-using System.Collections.Generic;
-using VBusiness.Units;
+﻿using System.Runtime.CompilerServices;
 using VUserInterface.CommonControls;
 
+[assembly: InternalsVisibleTo("Tests")]
 namespace VUserInterface
 {
 	partial class UnitControl
@@ -93,6 +92,7 @@ namespace VUserInterface
 			// RankDropBox
 			// 
 			this.RankDropBox.Caption = "Rank";
+			this.RankDropBox.DataBindings.Add("Enabled", BindingSource, "UnitRank_Modifiable");
 			this.RankDropBox.DataBindings.Add("SelectedValue", BindingSource, "UnitRank");
 			this.RankDropBox.List = RanksList;
 			this.RankDropBox.Location = DPIScalingHelper.GetScaledPoint(106, 60);
@@ -124,7 +124,7 @@ namespace VUserInterface
 			//
 			this.IsLimitBrokenCheckBox.Caption = "Is Limit Broken";
 			this.IsLimitBrokenCheckBox.DataBindings.Add("Checked", BindingSource, "IsLimitBroken");
-			this.IsLimitBrokenCheckBox.DataBindings.Add("Enabled", BindingSource, "IsLimitBroken_Readonly");
+			this.IsLimitBrokenCheckBox.DataBindings.Add("Enabled", BindingSource, "IsLimitBroken_Modifiable");
 			this.IsLimitBrokenCheckBox.Location = DPIScalingHelper.GetScaledPoint(106, 180);
 			this.IsLimitBrokenCheckBox.Name = "IsLimitBrokenCheckBox";
 			// 

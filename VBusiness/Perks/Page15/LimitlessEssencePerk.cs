@@ -32,7 +32,7 @@ Increase maximum kill count and maximum life essence stacks by 50 for limit brok
 				PerkCollection.Loadout.IncomeManager.RefreshPropertyBinding(nameof(PerkCollection.Loadout.IncomeManager.LoadoutKillCost));
 				PerkCollection.Loadout.IncomeManager.RefreshPropertyBinding(nameof(PerkCollection.Loadout.IncomeManager.LoadoutMineralCost));
 				PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding(nameof(PerkCollection.Loadout.CurrentUnit.IsLimitBroken));
-				PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding(nameof(PerkCollection.Loadout.CurrentUnit.IsLimitBroken_Readonly));
+				PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding(nameof(PerkCollection.Loadout.CurrentUnit.IsLimitBroken_Modifiable));
 			}
 
 			if (PerkCollection.Loadout.CurrentUnit.IsLimitBroken || DesiredLevel == 0)
