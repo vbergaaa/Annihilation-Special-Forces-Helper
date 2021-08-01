@@ -50,7 +50,7 @@ namespace VUserInterface
 			this.PerkPageControl = new VPerkCollectionControl();
 			this.LoadoutBindingSource = new System.Windows.Forms.BindingSource();
 			this.StatsControl = new VStatsControl();
-			this.IncomeControl = new IncomeControl();
+			this.IncomeControl = new IncomeStatisticsControl();
 			this.GemsControl = new VGemCollectionControl();
 			this.SoulsControl = new VLoadoutSoulsControl();
 			this.ChallengePointCollectionControl = new ChallengePointCollectionControl();
@@ -285,7 +285,7 @@ namespace VUserInterface
 		private VStatsControl StatsControl;
 		private VCheckControl UseUnitStatsCheckBox;
 		private VCheckControl UseSingleUnitEcoCheckBox;
-		private IncomeControl IncomeControl;
+		private IncomeStatisticsControl IncomeControl;
 		private LoadoutDetailsControl DetailsControl;
 	}
 }

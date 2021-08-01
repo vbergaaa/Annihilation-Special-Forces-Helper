@@ -3,7 +3,7 @@ using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	partial class IncomeControl
+	partial class IncomeStatisticsControl
 	{
 		/// <summary> 
 		/// Required designer variable.

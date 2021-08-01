@@ -62,7 +62,7 @@
     <Compile Update="GemControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="IncomeControl.cs">
+    <Compile Update="IncomeStatisticsControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="LoadoutDetailsControl.cs">

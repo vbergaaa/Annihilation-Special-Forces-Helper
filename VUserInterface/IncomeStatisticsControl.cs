@@ -3,9 +3,9 @@ using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public partial class IncomeControl : DPIGroupBox
+	public partial class IncomeStatisticsControl : DPIGroupBox
 	{
-		public IncomeControl()
+		public IncomeStatisticsControl()
 		{
 			InitializeComponent();
 		}

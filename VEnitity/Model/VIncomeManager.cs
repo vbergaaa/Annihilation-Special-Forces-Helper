@@ -297,6 +297,27 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region HasInfinitySpawner
+		
+		[VXML(true)]
+		public bool HasInfinitySpawner
+		{
+			get => fHasInfinitySpawner;
+			set
+			{
+				if (fHasInfinitySpawner != value)
+				{
+					fHasInfinitySpawner = value;
+					RefreshPropertyBinding(nameof(HasInfinitySpawner));
+					RefreshPropertyBinding(nameof(MineralsPerMinute));
+					RefreshPropertyBinding(nameof(KillsPerMinute));
+				}
+			}
+		}
+		bool fHasInfinitySpawner;
+
+		#endregion
+
 		public virtual double LoadoutMineralCost { get; }
 		public virtual double LoadoutKillCost { get; }
 		public virtual double UnitMineralCost { get; }

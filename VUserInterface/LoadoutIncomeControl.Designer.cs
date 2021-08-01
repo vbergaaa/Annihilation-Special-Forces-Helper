@@ -38,6 +38,7 @@ namespace VUserInterface
 			this.FarmRoomDropBox = new VDropBox();
 			this.BrutaliskOverrideControl = new BrutaliskOverrideControl();
 			this.BrutaliskOverrideCheckBox = new VCheckControl();
+			this.InfinitySpawnerCheckBox = new VCheckControl();
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
 			//
 			// BindingSource
@@ -67,11 +68,19 @@ namespace VUserInterface
 			this.BrutaliskOverrideCheckBox.Name = "BrutaliskOverrideCheckBox";
 			this.BrutaliskOverrideCheckBox.CheckedChanged += BrutaliskOverrideCheckBox_CheckedChanged;
 			//
+			// InfinitySpawnerCheckBox
+			//
+			this.InfinitySpawnerCheckBox.DataBindings.Add("Checked", BindingSource, "IncomeManager.HasInfinitySpawner");
+			this.InfinitySpawnerCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 110);
+			this.InfinitySpawnerCheckBox.Caption = "Infinity Spawner";
+			this.InfinitySpawnerCheckBox.Name = "InfinitySpawnerCheckBox";
+			//
 			// VLoadoutConfigurationControl
 			//
 			this.Controls.Add(FarmRoomDropBox);
 			this.Controls.Add(BrutaliskOverrideControl);
 			this.Controls.Add(BrutaliskOverrideCheckBox);
+			this.Controls.Add(InfinitySpawnerCheckBox);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).EndInit();
 		}
@@ -82,5 +91,6 @@ namespace VUserInterface
 		VDropBox FarmRoomDropBox;
 		BrutaliskOverrideControl BrutaliskOverrideControl;
 		VCheckControl BrutaliskOverrideCheckBox;
+		VCheckControl InfinitySpawnerCheckBox;
 	}
 }
