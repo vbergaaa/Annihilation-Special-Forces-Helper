@@ -16,20 +16,20 @@ namespace Tests.Stats_Tests
 		// They're far too complicated to work out manually.
 		// They are just simply what they were when I made this test,
 		// so I don't accidently change something
-		[TestCase(DifficultyLevel.Brutal,		16126369, 199373199)]
-		[TestCase(DifficultyLevel.Divine,       4078702, 2601555)]
-		[TestCase(DifficultyLevel.Easy,         22886012, 199373199)]
-		[TestCase(DifficultyLevel.Hard,         19251537, 199373199)]
-		[TestCase(DifficultyLevel.Hell,         8960955, 188366064)]
-		[TestCase(DifficultyLevel.Impossible,   1964511, 580488)]
-		[TestCase(DifficultyLevel.Insane,       16973106, 199373199)]
-		[TestCase(DifficultyLevel.Mythic,       6165723, 10327791)]
-		[TestCase(DifficultyLevel.Nightmare,    13340921, 199373199)]
-		[TestCase(DifficultyLevel.Normal,       22989313, 199373199)]
-		[TestCase(DifficultyLevel.Titanic,      7676389, 39874158)]
-		[TestCase(DifficultyLevel.Torment,      10287806, 191484105)]
-		[TestCase(DifficultyLevel.VeryEasy,		22889736, 199373199)]
-		[TestCase(DifficultyLevel.VeryHard,		18180084, 199373199)]
+		[TestCase(DifficultyLevel.Brutal,		16158767, 199373199)]
+		[TestCase(DifficultyLevel.Divine,       4085083, 2601555)]
+		[TestCase(DifficultyLevel.Easy,         22940201, 199373199)]
+		[TestCase(DifficultyLevel.Hard,         19264105, 199373199)]
+		[TestCase(DifficultyLevel.Hell,         8969264, 188366064)]
+		[TestCase(DifficultyLevel.Impossible,   1967891, 580488)]
+		[TestCase(DifficultyLevel.Insane,       17005123, 199373199)]
+		[TestCase(DifficultyLevel.Mythic,       6177724, 10327791)]
+		[TestCase(DifficultyLevel.Nightmare,    13368830, 199373199)]
+		[TestCase(DifficultyLevel.Normal,       22994801, 199373199)]
+		[TestCase(DifficultyLevel.Titanic,      7692197, 39874158)]
+		[TestCase(DifficultyLevel.Torment,      10312348, 191484105)]
+		[TestCase(DifficultyLevel.VeryEasy,		22898807, 199373199)]
+		[TestCase(DifficultyLevel.VeryHard,		18223585, 199373199)]
 		public void TestCalculatedStats(DifficultyLevel difficulty, double expectedDamage, double expectedToughness)
 		{
 			var loadout = LoadMaxPage14();

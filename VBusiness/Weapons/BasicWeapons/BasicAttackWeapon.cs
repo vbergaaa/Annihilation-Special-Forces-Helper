@@ -53,7 +53,7 @@ namespace VBusiness.Weapons
 			return totalDps;
 		}
 
-		double CritModifier(ICritChances crits, double critDamage)
+		internal static double CritModifier(ICritChances crits, double critDamage)
 		{
 			var totalCritDamage = critDamage / 100.0;
 			var avgCritMultiplier = (1 * crits.RegularChance)

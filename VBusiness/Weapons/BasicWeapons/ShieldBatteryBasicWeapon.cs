@@ -1,6 +1,9 @@
-﻿namespace VBusiness.Weapons
+﻿using VEntityFramework.Interfaces;
+using VEntityFramework.Model;
+
+namespace VBusiness.Weapons
 {
-	public class ShieldBatteryBasicWeapon : BasicAttackWeapon
+	public class ShieldBatteryBasicWeapon : BasicHealWeapon
 	{
 		public override double BaseAttack => -5;
 

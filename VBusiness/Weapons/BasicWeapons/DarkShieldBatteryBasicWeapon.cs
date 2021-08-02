@@ -1,6 +1,6 @@
 ﻿namespace VBusiness.Weapons
 {
-	public class DarkShieldBatteryBasicWeapon : BasicAttackWeapon
+	public class DarkShieldBatteryBasicWeapon : BasicHealWeapon
 	{
 		public override double BaseAttack => -7;
 
