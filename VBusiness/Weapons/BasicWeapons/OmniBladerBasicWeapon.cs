@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace VBusiness.Weapons.BasicWeapons
+﻿namespace VBusiness.Weapons.BasicWeapons
 {
 	public class OmniBladerBasicWeapon : BasicAttackWeapon
 	{
@@ -13,5 +9,7 @@ namespace VBusiness.Weapons.BasicWeapons
 		public override double AttackCount => 52;
 
 		public override double AttackIncrement => 2;
+
+		public override double ArmorPenetration => 40;
 	}
 }

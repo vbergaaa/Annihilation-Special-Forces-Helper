@@ -16,6 +16,8 @@ namespace VBusiness.Weapons
 
 		public abstract double AttackIncrement { get; }
 
+		public virtual double ArmorPenetration => 0;
+
 		public virtual double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy, ICritChances crits)
 		{
 			// get damage of weapon scaled with damage increase and damage reduction
@@ -33,6 +35,9 @@ namespace VBusiness.Weapons
 			var bonusCritDamage = loadout.CurrentUnit.UnitRank >= UnitRankType.XYZ
 				? enemyArmor / 5
 				: 0;
+
+			// determine the effective armor when armor pierce is considered
+			enemyArmor *= (1 - ArmorPenetration / 100);
 
 			// get the core damage dealt to the unit, before crits.
 			// if the enemy has more armor than the weapon can deal, deal 0.5 damage
