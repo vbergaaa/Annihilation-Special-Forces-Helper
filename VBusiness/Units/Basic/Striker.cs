@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -10,12 +11,6 @@ namespace VBusiness.Units
 
 	public class Striker : IUnitData
 	{
-		double IUnitData.BaseAttack => 15;
-
-		double IUnitData.BaseAttackSpeed => 1.5;
-
-		double IUnitData.AttackCount => 2;
-
 		double IUnitData.BaseHealth => 125;
 
 		double IUnitData.BaseHealthArmor => 3;
@@ -42,8 +37,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.4;
 
-		double IUnitData.AttackIncrement => 1;
-
 		public UnitType[] SpecTypes => new[] { UnitType.Striker };
 
 		public UnitType BasicType => Type;
@@ -51,5 +44,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
 
 		public Evolution Evolution => Evolution.Basic;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new StrikerBasicWeapon();
+			}
+		}
 	}
 }

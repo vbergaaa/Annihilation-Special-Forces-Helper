@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -8,12 +9,6 @@ namespace VBusiness.Units
 	public class EmptyUnit : IUnitData
 	{
 		public UnitType Type => UnitType.None;
-
-		double IUnitData.BaseAttack =>0;
-
-		double IUnitData.BaseAttackSpeed => 0;
-
-		double IUnitData.AttackCount => 0;
 
 		double IUnitData.BaseHealth => 0;
 
@@ -39,8 +34,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0;
 
-		double IUnitData.AttackIncrement => 0;
-
 		public UnitType[] SpecTypes => new UnitType[0];
 
 		public UnitType BasicType => UnitType.None;
@@ -48,5 +41,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
 
 		public Evolution Evolution => Evolution.Basic;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new EmptyWeapon();
+			}
+		}
 	}
 }

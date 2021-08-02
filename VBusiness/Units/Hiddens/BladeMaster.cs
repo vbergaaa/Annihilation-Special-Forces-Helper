@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -10,12 +11,6 @@ namespace VBusiness.Units
 	public class BladeMaster : IUnitData
 	{
 		public UnitType Type => UnitType.BladeMaster;
-
-		double IUnitData.BaseAttack =>15;
-
-		double IUnitData.BaseAttackSpeed => 2.3;
-
-		double IUnitData.AttackCount => 20;
 
 		double IUnitData.BaseHealth => 700;
 
@@ -41,8 +36,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 1.1;
 
-		double IUnitData.AttackIncrement => 1.5;
-
 		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery, UnitType.LightAdept };
 
 		public UnitType BasicType => UnitType.LightAdept;
@@ -58,5 +51,13 @@ namespace VBusiness.Units
 		}
 
 		public Evolution Evolution => Evolution.Hero;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new BladeMasterBasicWeapon();
+			}
+		}
 	}
 }

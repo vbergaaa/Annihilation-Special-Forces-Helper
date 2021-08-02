@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -11,12 +12,6 @@ namespace VBusiness.Units
 
 	public class Dreadnought : IUnitData
 	{
-		double IUnitData.BaseAttack => 25;
-
-		double IUnitData.BaseAttackSpeed => 2;
-
-		double IUnitData.AttackCount => 1;
-
 		double IUnitData.BaseHealth => 300;
 
 		double IUnitData.BaseHealthArmor => 6;
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.45;
 
-		double IUnitData.AttackIncrement => 1.5;
-
 		public UnitType[] SpecTypes => new[] { UnitType.Dreadnought };
 
 		public UnitType BasicType => Type;
@@ -52,5 +45,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
 
 		public Evolution Evolution => Evolution.Basic;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new DreadnoughtBasicWeapon();
+			}
+		}
 	}
 }

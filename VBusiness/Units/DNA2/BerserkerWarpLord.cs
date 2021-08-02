@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -11,12 +12,6 @@ namespace VBusiness.Units
 	public class BerserkerWarpLord : IUnitData
 	{
 		public UnitType Type => UnitType.BerserkerWarpLord;
-
-		double IUnitData.BaseAttack =>16;
-
-		double IUnitData.BaseAttackSpeed => 1;
-
-		double IUnitData.AttackCount => 2;
 
 		double IUnitData.BaseHealth => 225;
 
@@ -42,8 +37,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.6;
 
-		double IUnitData.AttackIncrement => 1.2;
-
 		public UnitType[] SpecTypes => new[] { UnitType.WarpLord };
 
 		public UnitType BasicType => UnitType.WarpLord;
@@ -51,5 +44,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.DarkWarpLord);
 
 		public Evolution Evolution => Evolution.DNA2;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new BerserkerWarpLordBasicWeapon();
+			}
+		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -11,12 +12,6 @@ namespace VBusiness.Units
 	public class HighTemplar : IUnitData
 	{
 		public UnitType Type => UnitType.HighTemplar;
-
-		double IUnitData.BaseAttack =>20;
-
-		double IUnitData.BaseAttackSpeed => 1.5;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 650;
 
@@ -42,8 +37,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.65;
 
-		double IUnitData.AttackIncrement => 1;
-
 		public UnitType[] SpecTypes => new[] { UnitType.Templar };
 
 		public UnitType BasicType => UnitType.Templar;
@@ -51,5 +44,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
 		public Evolution Evolution => Evolution.DNA1;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new TemplarBasicWeapon(); // as far as I can tell, this is the same weapon as the regular temp
+			}
+		}
 	}
 }

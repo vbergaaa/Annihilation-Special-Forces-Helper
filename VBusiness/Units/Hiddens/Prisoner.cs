@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -12,12 +13,6 @@ namespace VBusiness.Units
 	public class Prisoner : IUnitData
 	{
 		public UnitType Type => UnitType.Prisoner;
-
-		double IUnitData.BaseAttack =>15;
-
-		double IUnitData.BaseAttackSpeed => 1.4;
-
-		double IUnitData.AttackCount => 2;
 
 		double IUnitData.BaseHealth => 275;
 
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.65;
 
-		double IUnitData.AttackIncrement => 1.5;
-
 		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery };
 
 		public UnitType BasicType => UnitType.WarpLord;
@@ -60,5 +53,13 @@ namespace VBusiness.Units
 		}
 
 		public Evolution Evolution => Evolution.DNA1;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new PrisonerBasicWeapon();
+			}
+		}
 	}
 }

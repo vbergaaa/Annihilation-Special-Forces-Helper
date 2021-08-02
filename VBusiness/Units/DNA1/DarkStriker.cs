@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -14,12 +13,6 @@ namespace VBusiness.Units
 	public class DarkStriker : IUnitData
 	{
 		public UnitType Type => UnitType.DarkStriker;
-
-		double IUnitData.BaseAttack =>22;
-
-		double IUnitData.BaseAttackSpeed => 1.4;
-
-		double IUnitData.AttackCount => 1; // this is technically 3, but for single target damage, it's effectively 1
 
 		double IUnitData.BaseHealth => 160;
 
@@ -45,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.5;
 
-		double IUnitData.AttackIncrement => 1.25;
-
 		public UnitType[] SpecTypes => new[] { UnitType.Striker };
 
 		public UnitType BasicType => UnitType.Striker;
@@ -54,5 +45,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
 		public Evolution Evolution => Evolution.DNA1;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new DarkStrikerBasicWeapon();
+			}
+		}
 	}
 }

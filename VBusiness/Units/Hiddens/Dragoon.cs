@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -12,12 +13,6 @@ namespace VBusiness.Units
 	public class Dragoon : IUnitData
 	{
 		public UnitType Type => UnitType.Dragoon;
-
-		double IUnitData.BaseAttack =>15;
-
-		double IUnitData.BaseAttackSpeed => 1.3;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 250;
 
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.6;
 
-		double IUnitData.AttackIncrement => 1;
-
 		public UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
 
 		public UnitType BasicType => UnitType.Dreadnought;
@@ -59,5 +52,13 @@ namespace VBusiness.Units
 		}
 
 		public Evolution Evolution => Evolution.Basic;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new DragoonBasicWeapon();
+			}
+		}
 	}
 }

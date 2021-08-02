@@ -6,6 +6,7 @@ using VBusiness.Difficulties;
 using VBusiness.Enemies;
 using VBusiness.Perks;
 using VEntityFramework;
+using VEntityFramework.Interfaces;
 using VEntityFramework.Model;
 
 namespace VBusiness.HelperClasses
@@ -89,12 +90,16 @@ namespace VBusiness.HelperClasses
 			{
 				var crits = GetCritChances(loadout);
 				var composition = GetEnemyCompositionStats(loadout, CompositionOptions.Normal);
-				var baseDamages = GetBaseDamageDealt(composition, loadout);
-				var totalDamages = ApplyCrits(baseDamages, crits, loadout.Stats.CriticalDamage);
-				var averageDamagePerHit = totalDamages.Sum(x => (x.Chance * x.Damage));
-				var dps = averageDamagePerHit / loadout.Stats.UnitAttackSpeed * loadout.CurrentUnit.UnitData.AttackCount;
 
-				return Math.Round(dps, 2);
+				var totalDamage = 0.0;
+
+				foreach (var weapon in loadout.CurrentUnit.UnitData.Weapons)
+				{
+					var damages = composition.Select(x => (x.Chance, Damage: weapon.GetDamageToEnemy(loadout, x.Enemy, crits)));
+					var avgDamage = damages.Sum(x => (x.Chance * x.Damage));
+					totalDamage += avgDamage;
+				}
+				return Math.Round(totalDamage, 2);
 			}
 			return 0;
 		}
@@ -134,58 +139,6 @@ namespace VBusiness.HelperClasses
 			return critChances;
 		}
 
-		static IEnumerable<(double Chance, double Damage, double VoidBuffBonus)> GetBaseDamageDealt(IEnumerable<(double Chance, EnemyStatCard Enemy)> compositionStats, VLoadout loadout)
-		{
-			var unitDamage = loadout.Stats.UnitAttack;
-			unitDamage *= 1 + loadout.Stats.DamageIncrease / 100;
-			unitDamage *= 1 - 0.06 * loadout.Mods.DamageReduction.CurrentLevel;
-			unitDamage *= 1 - 0.01 * loadout.Mods.Rank.CurrentLevel;
-			unitDamage *= (1 - loadout.UnitConfiguration.Difficulty.DamageReduction / 100.0);
-			if (loadout.UnitConfiguration.DifficultyLevel >= DifficultyLevel.Hard)
-			{
-				unitDamage *= (1 - (0.1 * (1 + loadout.Mods.Potency.CurrentLevel * 0.1))); // 10DR from spire buff (can be 20% with max potency mod)
-			}
-			var hasQuasarBuff = loadout.CurrentUnit.UnitRank >= UnitRankType.SXDZ;
-			var hasVoidBuff = loadout.CurrentUnit.UnitRank >= UnitRankType.XYZ;
-
-			return compositionStats.SelectMany(x => GetTotalDamageDealt(x.Chance, x.Enemy, unitDamage, hasQuasarBuff, hasVoidBuff));
-		}
-
-		static IEnumerable<(double Chance, double Damage, double VoidBuffBonus)> GetTotalDamageDealt(double chance, EnemyStatCard stats, double damage, bool hasQuasarBuff, bool hasVoidBuff)
-		{
-			if (hasQuasarBuff)
-			{
-				stats.Armor *= 1 - 0.3;
-			}
-
-			var voidBuffBonus = hasVoidBuff ? stats.Armor / 5 : 0;
-
-			if (stats.TitanicDRChance > 0)
-			{
-				yield return (chance * stats.TitanicDRChance, Math.Max(damage * (1 - stats.TitanicDR) - stats.Armor, 0.5), voidBuffBonus);
-				yield return (chance * (1 - stats.TitanicDRChance), Math.Max(damage - stats.Armor, 0.5), voidBuffBonus);
-			}
-			else
-			{
-				yield return (chance, Math.Max(damage - stats.Armor, 0.5), voidBuffBonus);
-			}
-		}
-
-		static IEnumerable<(double Chance, double Damage)> ApplyCrits(IEnumerable<(double Chance, double Damage, double VoidBuffBonus)> damages, CritChances crits, double critDamage)
-		{
-			return damages.Select(e => (e.Chance, e.Damage * GetCritDamageModifier(crits, critDamage, e.VoidBuffBonus)));
-		}
-
-		static double GetCritDamageModifier(CritChances crits, double critDamage, double voidBuff)
-		{
-			var totalCritDamage = critDamage / 100.0 + ((int)voidBuff) / 100.0;
-			var avgCritMultiplier = (1 * crits.RegularChance)
-				+ (1 + totalCritDamage) * crits.YellowChance
-				+ (1 + 2 * totalCritDamage) * crits.RedChance
-				+ (1 + 3.5 * totalCritDamage) * crits.BlackChance;
-			return avgCritMultiplier;
-		}
-
 		#endregion
 
 		#region GetEnemyCompositionStats
@@ -194,6 +147,7 @@ namespace VBusiness.HelperClasses
 		{
 			var unitComp = GetEnemyUnitComposition(loadout, options);
 			var composition = unitComp.Select(x => (x.Chance, GetEnemyStats(x.Enemy, loadout)));
+			composition = ApplyTitanicDamageReduction(composition);
 
 			if (loadout.UnitConfiguration.DifficultyLevel >= DifficultyLevel.Mythic)
 			{
@@ -201,6 +155,24 @@ namespace VBusiness.HelperClasses
 			}
 
 			return composition;
+		}
+
+		static IEnumerable<(double Chance, EnemyStatCard)> ApplyTitanicDamageReduction(IEnumerable<(double Chance, EnemyStatCard Enemy)> composition)
+		{
+			foreach (var unit in composition)
+			{
+				if (!unit.Enemy.IsTitan)
+				{
+					yield return unit;
+				}
+				else
+				{
+					yield return (unit.Chance * (1 - GetTitanicDRChance(unit.Enemy.Type)), unit.Enemy);
+					var newEnemy = unit.Enemy;
+					newEnemy.UpdateDamageReduction(GetTitanicDR(unit.Enemy.Type) * 100);
+					yield return (unit.Chance * GetTitanicDRChance(unit.Enemy.Type), newEnemy);
+				}
+			}
 		}
 
 		static IEnumerable<(double Chance, EnemyStatCard Enemy)> GetEnemyUnitComposition(VLoadout loadout, CompositionOptions options)
@@ -236,8 +208,14 @@ namespace VBusiness.HelperClasses
 			var unit = EnemyUnit.New(stats.Type);
 			stats.Damage = GetEnemyDamage(unit, stats.IsTitan, loadout);
 			stats.Armor = GetEnemyArmor(unit, stats.IsTitan, loadout);
-			stats.TitanicDR = stats.IsTitan ? GetTitanicDR(stats.Type) : 0;
-			stats.TitanicDRChance = stats.IsTitan ? GetTitanicDRChance(stats.Type) : 0;
+			stats.UpdateDamageReduction(loadout.UnitConfiguration.Difficulty.DamageReduction);
+			stats.UpdateDamageReduction(loadout.Mods.DamageReduction.CurrentLevel * 6);
+			stats.UpdateDamageReduction(loadout.Mods.Rank.CurrentLevel * 1);
+
+			if (loadout.UnitConfiguration.DifficultyLevel >= DifficultyLevel.Hard)
+			{
+				stats.UpdateDamageReduction(10 * (1 + loadout.Mods.Potency.CurrentLevel * 0.1)); // 10DR from spire buff (can be 20% with max potency mod)
+			}
 			return stats;
 		}
 
@@ -317,22 +295,27 @@ namespace VBusiness.HelperClasses
 
 		internal static IEnumerable<(EnemyType Type, double Chance)> UnitCompOverride;
 
-		struct EnemyStatCard
+		struct EnemyStatCard : IEnemyStatCard
 		{
 			public EnemyType Type { get; set; }
 			public bool IsTitan { get; set; }
 			public double Damage { get; set; }
 			public double Armor { get; set; }
-			public double TitanicDR{ get; set; }
-			public double TitanicDRChance{ get; set; }
 			public double DamageIncrease { get; set; }
+			public double DamageReduction { get; set; }
+			public void UpdateDamageReduction(double dr)
+			{
+				var damageTaken = 100 - DamageReduction;
+				var newDamageTaken = damageTaken * (1 - dr / 100);
+				DamageReduction = 100 - newDamageTaken;
+			}
 
 #if DEBUG // this is for debugging display - DebuggerDisplayAttribute doesn't appear to work for nested classes
 			public override string ToString() => $"{Type} - tit:{IsTitan}, atk:{Damage}";
 #endif
 		}
 
-		struct CritChances
+		struct CritChances : ICritChances
 		{
 			public double YellowChance { get; set; }
 			public double RedChance { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons.BasicWeapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -12,12 +13,6 @@ namespace VBusiness.Units
 		// EffectData: OmniDanceDamage
 
 		public UnitType Type => UnitType.OmniBlader;
-
-		double IUnitData.BaseAttack =>25;
-
-		double IUnitData.BaseAttackSpeed => 2;
-
-		double IUnitData.AttackCount => 52;
 
 		double IUnitData.BaseHealth => 1000;
 
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 1.4;
 
-		double IUnitData.AttackIncrement => 20;
-
 		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery, UnitType.LightAdept };
 
 		public UnitType BasicType => UnitType.LightAdept;
@@ -60,5 +53,13 @@ namespace VBusiness.Units
 		}
 
 		public Evolution Evolution => Evolution.SuperHero;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new OmniBladerBasicWeapon();
+			}
+		}
 	}
 }

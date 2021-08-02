@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -12,12 +13,6 @@ namespace VBusiness.Units
 	public class Archon : IUnitData
 	{
 		public UnitType Type => UnitType.Archon;
-
-		double IUnitData.BaseAttack =>25;
-
-		double IUnitData.BaseAttackSpeed => 1.4;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 10;
 
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.7;
 
-		double IUnitData.AttackIncrement => 1.3;
-
 		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar };
 
 		public UnitType BasicType => UnitType.DarkShadow;
@@ -59,5 +52,13 @@ namespace VBusiness.Units
 		}
 
 		public Evolution Evolution => Evolution.DNA1;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new ArchonBasicWeapon();
+			}
+		}
 	}
 }

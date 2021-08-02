@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -12,12 +13,6 @@ namespace VBusiness.Units
 	public class Ascendant : IUnitData
 	{
 		public UnitType Type => UnitType.Ascendant;
-
-		double IUnitData.BaseAttack =>25;
-
-		double IUnitData.BaseAttackSpeed => 1.4;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 500;
 
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.9;
 
-		double IUnitData.AttackIncrement => 2;
-
 		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar, UnitType.ShieldBattery };
 
 		public UnitType BasicType => UnitType.Templar;
@@ -60,5 +53,13 @@ namespace VBusiness.Units
 		}
 
 		public Evolution Evolution => Evolution.DNA2;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new AscendentBasicWeapon();
+			}
+		}
 	}
 }

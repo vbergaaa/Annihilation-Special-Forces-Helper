@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -11,12 +12,6 @@ namespace VBusiness.Units
 	public class DarkShieldBattery : IUnitData
 	{
 		public UnitType Type => UnitType.DarkShieldBattery;
-
-		double IUnitData.BaseAttack =>-7;
-
-		double IUnitData.BaseAttackSpeed => 1.4;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 75;
 
@@ -42,8 +37,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.45;
 
-		double IUnitData.AttackIncrement => -0.35;
-
 		public UnitType[] SpecTypes => new[] { UnitType.ShieldBattery };
 
 		public UnitType BasicType => UnitType.ShieldBattery;
@@ -51,5 +44,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
 		public Evolution Evolution => Evolution.DNA1;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new DarkShieldBatteryBasicWeapon();
+			}
+		}
 	}
 }

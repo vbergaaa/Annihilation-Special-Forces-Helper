@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -12,12 +13,6 @@ namespace VBusiness.Units
 	public class Disruptor : IUnitData
 	{
 		public UnitType Type => UnitType.Disruptor;
-
-		double IUnitData.BaseAttack =>20;
-
-		double IUnitData.BaseAttackSpeed => 1.4;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 500;
 
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.7;
 
-		double IUnitData.AttackIncrement => 2;
-
 		public UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
 
 		public UnitType BasicType => UnitType.Dreadnought;
@@ -60,5 +53,13 @@ namespace VBusiness.Units
 		}
 
 		public Evolution Evolution => Evolution.DNA1;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new DisruptorBasicWeapon();
+			}
+		}
 	}
 }

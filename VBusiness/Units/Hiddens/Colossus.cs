@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -12,12 +13,6 @@ namespace VBusiness.Units
 	public class Colossus : IUnitData
 	{
 		public UnitType Type => UnitType.Colossus;
-
-		double IUnitData.BaseAttack =>20;
-
-		double IUnitData.BaseAttackSpeed => 1.5;
-
-		double IUnitData.AttackCount => 2;
 
 		double IUnitData.BaseHealth => 325;
 
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.7;
 
-		double IUnitData.AttackIncrement => 2.2;
-
 		public UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
 
 		public UnitType BasicType => UnitType.Dragoon;
@@ -52,5 +45,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe { get { yield return new UnitRecepePiece(UnitType.Reaver, 3, UnitRankType.S, 2); } }
 
 		public Evolution Evolution => Evolution.DNA2;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new ColossusBasicWeapon();
+			}
+		}
 	}
 }

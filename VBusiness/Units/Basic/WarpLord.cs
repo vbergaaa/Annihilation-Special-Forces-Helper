@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using VBusiness.Loadouts;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -10,11 +11,6 @@ namespace VBusiness.Units
 	/// Weapon: Psi Blades
 	public class WarpLord : IUnitData
 	{
-		double IUnitData.BaseAttack => 11;
-
-		double IUnitData.BaseAttackSpeed => 1.5;
-
-		double IUnitData.AttackCount => 2;
 
 		double IUnitData.BaseHealth => 100;
 
@@ -42,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.35;
 
-		double IUnitData.AttackIncrement => 0.6;
-
 		public UnitType[] SpecTypes => new[] { UnitType.WarpLord };
 
 		public UnitType BasicType => UnitType.WarpLord;
@@ -51,5 +45,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
 
 		public Evolution Evolution => Evolution.Basic;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new WarpLordBasicWeapon();
+			}
+		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -11,12 +12,6 @@ namespace VBusiness.Units
 	public class ArchDominator : IUnitData
 	{
 		public UnitType Type => UnitType.ArchDominator;
-
-		double IUnitData.BaseAttack =>60;
-
-		double IUnitData.BaseAttackSpeed => 1.4;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 1000;
 
@@ -42,8 +37,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.75;
 
-		double IUnitData.AttackIncrement => 3.5;
-
 		public UnitType[] SpecTypes => new[] { UnitType.Dominator };
 
 		public UnitType BasicType => UnitType.Dominator;
@@ -51,5 +44,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
 		public Evolution Evolution => Evolution.DNA1;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new ArchDominatorBasicWeapon();
+			}
+		}
 	}
 }

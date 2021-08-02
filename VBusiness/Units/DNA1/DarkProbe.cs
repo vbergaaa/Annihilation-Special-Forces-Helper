@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -10,12 +11,6 @@ namespace VBusiness.Units
 	public class DarkProbe : IUnitData
 	{
 		public UnitType Type => UnitType.DarkProbe;
-
-		double IUnitData.BaseAttack =>12;
-
-		double IUnitData.BaseAttackSpeed => 1.3;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 50;
 
@@ -41,8 +36,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.3;
 
-		double IUnitData.AttackIncrement => 0.8;
-
 		public UnitType[] SpecTypes => new UnitType[0];
 
 		public UnitType BasicType => UnitType.Probe;
@@ -50,5 +43,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
 		public Evolution Evolution => Evolution.DNA1;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new DarkProbeBasicWeapon();
+			}
+		}
 	}
 }

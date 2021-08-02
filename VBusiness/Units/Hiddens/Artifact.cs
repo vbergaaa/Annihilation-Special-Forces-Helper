@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -8,12 +9,6 @@ namespace VBusiness.Units
 	public class Artifact : IUnitData
 	{
 		public UnitType Type => UnitType.Artifact;
-
-		double IUnitData.AttackCount => 1;
-
-		double IUnitData.BaseAttack => 0;
-
-		double IUnitData.BaseAttackSpeed => 1;
 
 		double IUnitData.BaseHealth => 0;
 
@@ -26,8 +21,6 @@ namespace VBusiness.Units
 		double IUnitData.BaseShieldsArmor => 0;
 
 		double IUnitData.BaseShieldsRegen => 0;
-
-		double IUnitData.AttackIncrement => 0;
 
 		double IUnitData.HealthIncrement => 0;
 
@@ -58,5 +51,13 @@ namespace VBusiness.Units
 		}
 
 		Evolution IUnitData.Evolution => Evolution.Basic;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new EmptyWeapon();
+			}
+		}
 	}
 }

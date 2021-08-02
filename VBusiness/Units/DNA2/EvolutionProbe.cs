@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -12,12 +13,6 @@ namespace VBusiness.Units
 		// EffectData: DarkParticleBeam2
 
 		public UnitType Type => UnitType.EvolutionProbe;
-
-		double IUnitData.BaseAttack =>22;
-
-		double IUnitData.BaseAttackSpeed => 1;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 100;
 
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.6;
 
-		double IUnitData.AttackIncrement => 1.2;
-
 		public UnitType[] SpecTypes => new UnitType[0];
 
 		public UnitType BasicType => UnitType.Probe;
@@ -52,5 +45,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.DarkProbe);
 
 		public Evolution Evolution => Evolution.DNA2;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new EvolutionProbeBasicWeapon();
+			}
+		}
 	}
 }

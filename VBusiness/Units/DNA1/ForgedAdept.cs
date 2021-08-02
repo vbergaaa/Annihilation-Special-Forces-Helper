@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -12,12 +13,6 @@ namespace VBusiness.Units
 	public class ForgedAdept : IUnitData
 	{
 		public UnitType Type => UnitType.ForgedAdept;
-
-		double IUnitData.BaseAttack =>35;
-
-		double IUnitData.BaseAttackSpeed => 1.3;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 160;
 
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.6;
 
-		double IUnitData.AttackIncrement => 1.6;
-
 		public UnitType[] SpecTypes => new[] { UnitType.LightAdept };
 
 		public UnitType BasicType => UnitType.LightAdept;
@@ -52,5 +45,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
 		public Evolution Evolution => Evolution.DNA1;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new ForgedAdeptBasicWeapon();
+			}
+		}
 	}
 }

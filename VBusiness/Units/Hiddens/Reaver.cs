@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -11,12 +12,6 @@ namespace VBusiness.Units
 	public class Reaver : IUnitData
 	{
 		public UnitType Type => UnitType.Reaver;
-
-		double IUnitData.BaseAttack =>25;
-
-		double IUnitData.BaseAttackSpeed => 2;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 250;
 
@@ -42,8 +37,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.6;
 
-		double IUnitData.AttackIncrement => 2;
-
 		public UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
 
 		public UnitType BasicType => UnitType.Dragoon;
@@ -58,5 +51,13 @@ namespace VBusiness.Units
 		}
 
 		public Evolution Evolution => Evolution.DNA1;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new ReaverBasicWeapon();
+			}
+		}
 	}
 }

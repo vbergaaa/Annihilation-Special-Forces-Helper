@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -11,12 +12,6 @@ namespace VBusiness.Units
 	public class BladeDancer : IUnitData
 	{
 		public UnitType Type => UnitType.BladeDancer;
-
-		double IUnitData.BaseAttack =>10;
-
-		double IUnitData.BaseAttackSpeed => 2.5;
-
-		double IUnitData.AttackCount => 10;
 
 		double IUnitData.BaseHealth => 500;
 
@@ -42,8 +37,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.9;
 
-		double IUnitData.AttackIncrement => 1;
-
 		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.LightAdept, UnitType.ShieldBattery };
 
 		public UnitType BasicType => UnitType.LightAdept;
@@ -58,5 +51,13 @@ namespace VBusiness.Units
 		}
 
 		public Evolution Evolution => Evolution.DNA2;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new BladeDancerBasicWeapon();
+			}
+		}
 	}
 }

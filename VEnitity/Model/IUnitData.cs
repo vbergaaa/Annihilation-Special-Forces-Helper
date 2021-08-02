@@ -9,16 +9,12 @@ namespace VEntityFramework.Model
 	{
 		[VXML(true, "Key")]
 		UnitType Type { get; }
-		double AttackCount { get; }
-		double BaseAttack { get; }
-		double BaseAttackSpeed { get; }
 		double BaseHealth { get; }
 		double BaseHealthArmor { get; }
 		double BaseHealthRegen { get; }
 		double BaseShields { get; }
 		double BaseShieldsArmor { get; }
 		double BaseShieldsRegen { get; }
-		double AttackIncrement { get; }
 		double HealthIncrement { get; }
 		double HealthRegenIncrement { get; }
 		double HealthArmorIncrement { get; }
@@ -29,6 +25,7 @@ namespace VEntityFramework.Model
 		UnitType BasicType { get; }
 		IEnumerable<UnitRecepePiece> Recepe { get; }
 		Evolution Evolution { get; }
+		IEnumerable<IWeaponData> Weapons { get; }
 	}
 
 	public struct UnitRecepePiece

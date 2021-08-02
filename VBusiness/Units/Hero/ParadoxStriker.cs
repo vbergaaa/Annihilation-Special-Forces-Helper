@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -11,12 +12,6 @@ namespace VBusiness.Units
 	public class ParadoxStriker : IUnitData
 	{
 		public UnitType Type => UnitType.ParadoxStriker;
-
-		double IUnitData.AttackCount => 1; // Multihsot: 7, Greater Multishot:
-
-		double IUnitData.BaseAttack => 36;
-
-		double IUnitData.BaseAttackSpeed => 1.2;
 
 		double IUnitData.BaseHealth => 320;
 
@@ -29,8 +24,6 @@ namespace VBusiness.Units
 		double IUnitData.BaseShieldsArmor => 10;
 
 		double IUnitData.BaseShieldsRegen => 5;
-
-		double IUnitData.AttackIncrement => 2;
 
 		double IUnitData.HealthIncrement => 12;
 
@@ -51,5 +44,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe { get { yield return new UnitRecepePiece(UnitType.MirrorStriker, 10, UnitRankType.None, 1); } }
 
 		public Evolution Evolution => Evolution.Hero;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new ParadoxStrikerBasicWeapon();
+			}
+		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -11,12 +12,6 @@ namespace VBusiness.Units
 	public class DarkAvenger : IUnitData
 	{
 		public UnitType Type => UnitType.DarkAvenger;
-
-		double IUnitData.BaseAttack => 30;
-
-		double IUnitData.BaseAttackSpeed => 0.9;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 15;
 
@@ -42,8 +37,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.4;
 
-		double IUnitData.AttackIncrement => 2;
-
 		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow };
 
 		public UnitType BasicType => UnitType.DarkShadow;
@@ -51,5 +44,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
 		public Evolution Evolution => Evolution.DNA1;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new DarkAvengerBasicWeapon();
+			}
+		}
 	}
 }

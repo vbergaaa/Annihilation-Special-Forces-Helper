@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -13,12 +14,6 @@ namespace VBusiness.Units
 	{
 		public UnitType Type => UnitType.MirrorStriker;
 
-		double IUnitData.AttackCount => 1; // Multishot = 5, Greater Multishot = 11?
-
-		double IUnitData.BaseAttack => 28;
-
-		double IUnitData.BaseAttackSpeed => 1.3;
-
 		double IUnitData.BaseHealth => 250;
 
 		double IUnitData.BaseHealthArmor => 7;
@@ -30,8 +25,6 @@ namespace VBusiness.Units
 		double IUnitData.BaseShieldsArmor => 7;
 
 		double IUnitData.BaseShieldsRegen => 4;
-
-		double IUnitData.AttackIncrement => 1.6;
 
 		double IUnitData.HealthIncrement => 8;
 
@@ -52,5 +45,13 @@ namespace VBusiness.Units
 		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.DarkStriker);
 
 		public Evolution Evolution => Evolution.DNA2;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new MirrorStrikerBasicWeapon();
+			}
+		}
 	}
 }

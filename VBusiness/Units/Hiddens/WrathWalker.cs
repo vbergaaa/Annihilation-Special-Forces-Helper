@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -12,12 +13,6 @@ namespace VBusiness.Units
 	public class WrathWalker : IUnitData
 	{
 		public UnitType Type => UnitType.WrathWalker;
-
-		double IUnitData.BaseAttack =>35;
-
-		double IUnitData.BaseAttackSpeed => 1.2;
-
-		double IUnitData.AttackCount => 1; // 3, but on 3 separate targets
 
 		double IUnitData.BaseHealth => 325;
 
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 0.7;
 
-		double IUnitData.AttackIncrement => 2;
-
 		public UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
 
 		public UnitType BasicType => UnitType.Dragoon;
@@ -59,5 +52,13 @@ namespace VBusiness.Units
 		}
 
 		public Evolution Evolution => Evolution.DNA2;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new WrathWalkerBasicWeapon();
+			}
+		}
 	}
 }

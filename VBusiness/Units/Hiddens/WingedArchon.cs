@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -12,12 +13,6 @@ namespace VBusiness.Units
 	public class WingedArchon : IUnitData
 	{
 		public UnitType Type => UnitType.WingedArchon;
-
-		double IUnitData.BaseAttack =>65;
-
-		double IUnitData.BaseAttackSpeed => 1.1;
-
-		double IUnitData.AttackCount => 1;
 
 		double IUnitData.BaseHealth => 60;
 
@@ -43,8 +38,6 @@ namespace VBusiness.Units
 
 		double IUnitData.ShieldArmorIncrement => 1.3;
 
-		double IUnitData.AttackIncrement => 4.2;
-
 		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar, UnitType.ShieldBattery, UnitType.WarpLord };
 
 		public UnitType BasicType => UnitType.DarkShadow;
@@ -60,5 +53,13 @@ namespace VBusiness.Units
 		}
 
 		public Evolution Evolution => Evolution.SuperHero;
+
+		public IEnumerable<IWeaponData> Weapons
+		{
+			get
+			{
+				yield return new WingedArchonBasicWeapon();
+			}
+		}
 	}
 }
