@@ -73,7 +73,7 @@ DNA Start: +1 base dna1 infuse";
 		{
 			if (perks.CooldownSpeed.DesiredLevel == perks.CooldownSpeed.MaxLevel)
 			{
-				PerkCollection.Loadout.Stats.CooldownReduction += 20 * difference;
+				PerkCollection.Loadout.Stats.UpdateCooldownSpeed("Core", 20 * difference);
 			}
 		}
 	}

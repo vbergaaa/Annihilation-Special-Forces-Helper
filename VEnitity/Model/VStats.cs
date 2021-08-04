@@ -381,7 +381,40 @@ namespace VEntityFramework.Model
 
 		public double MoveSpeed { get; set; } // it looks like the 2.4477% move speed per essence is stacked multiplicatively, so it is exponential, where the 10% move speed from essence is additive (linear) they are multiplied to get the result
 
-		public double CooldownReduction { get; set; } // the tests for accel above were actually done on CDR, so is more accurately on this. not sure if they are the same thing at this stage
+		#region CooldownSpeed
+
+		public double CooldownSpeed
+		{
+			get
+			{
+				var cooldownSpeed = 100.0;
+				foreach (var kvp in CooldownSpeedDictionary)
+				{
+					cooldownSpeed = cooldownSpeed * (100 + kvp.Value) / 100;
+				}
+				cooldownSpeed = cooldownSpeed * Acceleration / 100;
+				return cooldownSpeed;
+			}
+		}
+
+		StatsDictionary CooldownSpeedDictionary => fCooldownSpeedDictionary ??= new StatsDictionary("CooldownSpeed");
+		StatsDictionary fCooldownSpeedDictionary;
+
+		public void UpdateCooldownSpeed(string key, double value, int? quantity = null)
+		{
+			if (!quantity.HasValue)
+			{
+				CooldownSpeedDictionary.Update(key, value);
+			}
+			else if (quantity.Value != 0)
+			{
+				CooldownSpeedDictionary.UpdateExpontiental(key, value, quantity.Value);
+			}
+			OnPropertyChanged(nameof(Damage));
+			OnPropertyChanged(nameof(Toughness));
+		}
+
+		#endregion
 
 		#region DefensiveEssenceStacks
 
@@ -404,7 +437,7 @@ namespace VEntityFramework.Model
 		#region UnitStats
 
 		public double UnitAttack => CurrentUnit.Attack * Attack / 100;
-		public double UnitAttackSpeed => CurrentUnit.AttackSpeed / (AttackSpeed * Acceleration)  * 10000;
+		public double UnitAttackSpeed => CurrentUnit.AttackSpeed / (AttackSpeed * Acceleration) * 10000;
 		public double UnitHealth => CurrentUnit.Health * Health / 100;
 		public double UnitHealthArmor => CurrentUnit.HealthArmor * HealthArmor / 100 + AdditiveArmor;
 		public double UnitShields => CurrentUnit.Shields * Shields / 100;

@@ -1,7 +1,6 @@
 ﻿using EnumsNET;
 using System;
 using VBusiness.Perks;
-using VBusiness.Souls;
 using VEntityFramework;
 using VEntityFramework.Model;
 
@@ -375,7 +374,7 @@ namespace VBusiness.Ranks
 				Loadout.Stats.Attack -= 1.5 * trifectaLevel;
 				Loadout.Stats.UpdateAttackSpeed("Trifecta", -1.5 * trifectaLevel);
 				Loadout.Stats.UpdateHealth("Core", -1.5 * trifectaLevel);
-				Loadout.Stats.UpdateHealthArmor("Trifecta", - trifectaLevel);
+				Loadout.Stats.UpdateHealthArmor("Trifecta", -trifectaLevel);
 				Loadout.Stats.UpdateShields("Core", -1.5 * trifectaLevel);
 				Loadout.Stats.UpdateShieldsArmor("Trifecta", -trifectaLevel);
 			}
@@ -425,7 +424,7 @@ namespace VBusiness.Ranks
 				Loadout.Stats.UpdateShieldsArmor("Rank", Armor);
 				Loadout.Stats.UpdateDamageIncrease("Rank", DamageIncrease);
 				Loadout.Stats.UpdateDamageReduction("Rank", DamageReduction);
-				Loadout.Stats.CooldownReduction += Speed;
+				Loadout.Stats.UpdateCooldownSpeed("Rank", Speed);
 				Loadout.Stats.MoveSpeed += Speed;
 
 				ActivateMegaBuffs();
@@ -453,7 +452,7 @@ namespace VBusiness.Ranks
 				Loadout.Stats.UpdateShieldsArmor("Rank", -Armor);
 				Loadout.Stats.UpdateDamageIncrease("Rank", -DamageIncrease);
 				Loadout.Stats.UpdateDamageReduction("Rank", -DamageReduction);
-				Loadout.Stats.CooldownReduction -= Speed;
+				Loadout.Stats.UpdateCooldownSpeed("Rank", -Speed);
 				Loadout.Stats.MoveSpeed -= Speed;
 
 				DeactivateMegaBuffs();

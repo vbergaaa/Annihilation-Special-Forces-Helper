@@ -26,16 +26,17 @@ namespace VBusiness.Perks
 		{
 			base.OnLevelChanged(difference);
 
-			PerkCollection.Loadout.Stats.CooldownReduction += 2 * difference;
+			PerkCollection.Loadout.Stats.UpdateCooldownSpeed("Core", 2 * difference);
 
 			var perks = PerkCollection as PerkCollection;
 			if (DesiredLevel == MaxLevel && perks.UpgradeCache.DesiredLevel == 1)
 			{
-				PerkCollection.Loadout.Stats.CooldownReduction += 20;
+
+				PerkCollection.Loadout.Stats.UpdateCooldownSpeed("Core", 20);
 			}
 			else if (DesiredLevel - difference == MaxLevel && perks.UpgradeCache.DesiredLevel == 1)
 			{
-				PerkCollection.Loadout.Stats.CooldownReduction -= 20;
+				PerkCollection.Loadout.Stats.UpdateCooldownSpeed("Core", -20);
 			}
 		}
 	}

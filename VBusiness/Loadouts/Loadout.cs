@@ -235,7 +235,6 @@ namespace VBusiness.Loadouts
 					var penalty = availablePP * (Mods.Taxes.CurrentLevel * 0.06);
 					availablePP -= (int)penalty;
 				}
-				var x = 1843040;
 
 				return (int)availablePP - PerkPointsCost;
 			}
