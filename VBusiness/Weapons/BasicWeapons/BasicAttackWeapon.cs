@@ -21,7 +21,7 @@ namespace VBusiness.Weapons
 		public virtual double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy, ICritChances crits)
 		{
 			// get damage of weapon scaled with damage increase and damage reduction
-			var rawDamage = BaseAttack + loadout.Upgrades.AttackUpgrade * AttackIncrement;
+			double rawDamage = GetWeaponDamage(loadout);
 			rawDamage *= loadout.Stats.Attack / 100;
 			rawDamage *= 1 + loadout.Stats.DamageIncrease / 100;
 			rawDamage *= (1 - enemy.DamageReduction / 100);
@@ -45,17 +45,26 @@ namespace VBusiness.Weapons
 
 			// apply an average crit modifier to increase the damage dealt
 			var totalDamage = effectiveDamage * CritModifier(crits, loadout.Stats.CriticalDamage + bonusCritDamage);
-			
+
 			// multiple the attack by the number of units hit
 			totalDamage *= AttackCount;
 
 			// divide damage by attack speed to get the damage dealt per second
+			var totalDps = totalDamage / GetActualWeaponPeriod(loadout);
+			return totalDps;
+		}
+
+		protected virtual double GetWeaponDamage(VLoadout loadout)
+		{
+			return BaseAttack + loadout.Upgrades.AttackUpgrade * AttackIncrement;
+		}
+
+		protected virtual double GetActualWeaponPeriod(VLoadout loadout)
+		{
 			var rawAttackSpeed = BaseAttackPeriod * Math.Pow(0.96, loadout.Upgrades.AttackSpeedUpgrade);
 			var actualAttackSpeed = rawAttackSpeed / (loadout.Stats.AttackSpeed / 100);
 			actualAttackSpeed /= loadout.Stats.Acceleration / 100;
-
-			var totalDps = totalDamage / actualAttackSpeed;
-			return totalDps;
+			return actualAttackSpeed;
 		}
 
 		internal static double CritModifier(ICritChances crits, double critDamage)
