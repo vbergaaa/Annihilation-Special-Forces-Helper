@@ -1,6 +1,5 @@
 ﻿using StarCodeDecryptor;
 using System;
-using System.Collections.Generic;
 using VBusiness.ChallengePoints;
 using VBusiness.Gems;
 using VBusiness.Mods;
@@ -112,7 +111,7 @@ namespace VBusiness.Loadouts
 
 		#region CurrentUnit
 
-		public override VUnit CurrentUnit 
+		public override VUnit CurrentUnit
 		{
 			get
 			{
@@ -224,7 +223,23 @@ namespace VBusiness.Loadouts
 
 		#region RemainingPerkPoints
 
-		public override long RemainingPerkPoints => (Profile.PerkPoints - (int)(Profile.PerkPoints * Mods.Taxes.CurrentLevel * 0.06)) - PerkPointsCost;
+		public override long RemainingPerkPoints
+		{
+			get
+			{
+				var availablePP = Profile.PerkPoints;
+
+				if (Mods.Taxes.CurrentLevel > 0)
+				{
+					availablePP = availablePP / 100 * 100;
+					var penalty = availablePP * (Mods.Taxes.CurrentLevel * 0.06);
+					availablePP -= (int)penalty;
+				}
+				var x = 1843040;
+
+				return (int)availablePP - PerkPointsCost;
+			}
+		}
 
 		public override bool CanAffordCurrentLoadout
 		{

@@ -1,7 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using VBusiness.Mods;
 using VBusiness.Profile;
 using VEntityFramework.Model;
@@ -17,7 +14,7 @@ namespace Tests
 		{
 			var loadout = TestHelper.GetTestLoadout();
 			loadout.UnitConfiguration.DifficultyLevel = diff;
-			foreach(var mod in loadout.Mods.AllMods)
+			foreach (var mod in loadout.Mods.AllMods)
 			{
 				mod.CurrentLevel = mod.MaxValue;
 			}
@@ -30,7 +27,10 @@ namespace Tests
 		[TestCase(100, 0, 10, 40)]
 		[TestCase(1000000, 20000, 0, 2000000)]
 		[TestCase(1000000, 20000, 10, 800000)]
-		[TestCase(2058906, 23512, 10, 1790799)]
+		[TestCase(2099326, 23938, 10, 1843040)]
+		[TestCase(2099326, 23938, 5, 3225320)]
+		[TestCase(2099326, 23938, 1, 4331144)]
+		[TestCase(2099326, 23938, 0, 4607631)]
 		public void Taxes(int rp, int modScore, short taxes, int expected)
 		{
 			var profile = Profile.GetProfile();
