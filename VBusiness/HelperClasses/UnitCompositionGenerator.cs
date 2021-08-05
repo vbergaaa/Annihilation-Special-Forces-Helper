@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using VBusiness.Enemies;
@@ -13,7 +12,7 @@ namespace VBusiness.HelperClasses
 		static IDictionary<CompositionCacheKey, IEnumerable<(EnemyType, double)>> Cache => fCache ??= new Dictionary<CompositionCacheKey, IEnumerable<(EnemyType, double)>>();
 		static IDictionary<CompositionCacheKey, IEnumerable<(EnemyType, double)>> fCache;
 
-		internal static IEnumerable<(EnemyType, double)> GetComposition(VDifficulty difficulty, CompositionOptions options = CompositionOptions.Normal, double modTierIncrease = 0.0)
+		internal static IEnumerable<(EnemyType, double)> GetComposition(VDifficulty difficulty, CompositionOptions options = CompositionOptions.Attack, double modTierIncrease = 0.0)
 		{
 			var compositionKey = new CompositionCacheKey { Difficulty = difficulty, Options = options, TierUp = difficulty.UnitTierIncrease + modTierIncrease };
 			if (Cache.TryGetValue(compositionKey, out var composition))
@@ -26,7 +25,6 @@ namespace VBusiness.HelperClasses
 				Cache[compositionKey] = composition;
 				return composition;
 			}
-
 		}
 
 		static IEnumerable<(EnemyType, double)> GetNewComposition(CompositionCacheKey key)
@@ -57,7 +55,7 @@ namespace VBusiness.HelperClasses
 		static void AddAllIncludingSpawns(List<EnemyQuantity> composition, IEnumerable<EnemyQuantity> enemiesToAdd, RoomNumber room, CompositionOptions options, double tierUp)
 		{
 			enemiesToAdd = enemiesToAdd.TierUp(tierUp);
-			composition.AddRange(enemiesToAdd.Where(e => e.Type != EnemyType.None && (e.Type.CanAttack() || !options.HasFlag(CompositionOptions.AttackingUnitsOnly))));
+			composition.AddRange(enemiesToAdd.Where(e => e.Type != EnemyType.None && (e.Type.CanAttack() || !options.HasFlag(CompositionOptions.Defence))));
 			composition.AddRange(enemiesToAdd.SelectRecursive(e => e.Type.GetAdditionalSpawns(tierUp, room).Multiply(e.Quantity)));
 		}
 
@@ -104,7 +102,7 @@ namespace VBusiness.HelperClasses
 
 	enum CompositionOptions
 	{
-		Normal,
-		AttackingUnitsOnly
+		Attack,
+		Defence
 	}
 }

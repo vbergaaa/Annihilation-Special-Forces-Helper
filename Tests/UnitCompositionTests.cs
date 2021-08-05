@@ -1,8 +1,6 @@
 ﻿using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using VBusiness.Difficulties;
 using VBusiness.HelperClasses;
 using VEntityFramework.Model;
@@ -37,7 +35,7 @@ namespace Tests
 				(EnemyType.SporeCrawler, 1 / totalUnits),
 				(EnemyType.SpineCrawler, 47 / totalUnits),
 			};
-			var actual = UnitCompositionGenerator.GetComposition(difficulty, CompositionOptions.AttackingUnitsOnly).ToList();
+			var actual = UnitCompositionGenerator.GetComposition(difficulty, CompositionOptions.Defence).ToList();
 
 			AssertCompositionsMatch(expectedComp, actual);
 		}

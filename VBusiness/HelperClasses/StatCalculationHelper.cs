@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using VBusiness.Difficulties;
 using VBusiness.Enemies;
 using VBusiness.Perks;
 using VEntityFramework;
@@ -19,7 +17,7 @@ namespace VBusiness.HelperClasses
 		{
 			if (loadout.UseUnitStats && loadout.CurrentUnit.UnitData.Type != UnitType.None)
 			{
-				var rawEnemyDamages = GetEnemyCompositionStats(loadout, CompositionOptions.AttackingUnitsOnly);
+				var rawEnemyDamages = GetEnemyCompositionStats(loadout, CompositionOptions.Defence);
 
 				var shieldToughness = GetShieldToughness(loadout, rawEnemyDamages, loadout.Stats);
 				var healthToughness = GetHealthToughness(loadout, rawEnemyDamages, loadout.Stats);
@@ -89,10 +87,10 @@ namespace VBusiness.HelperClasses
 			if (loadout.UseUnitStats && loadout.CurrentUnit.UnitData.Type != UnitType.None)
 			{
 				var crits = GetCritChances(loadout);
-				var composition = GetEnemyCompositionStats(loadout, CompositionOptions.Normal);
+				var composition = GetEnemyCompositionStats(loadout, CompositionOptions.Attack);
+				composition = AdjustComposition(composition, CompositionOptions.Attack);
 
 				var totalDamage = 0.0;
-
 				foreach (var weapon in loadout.CurrentUnit.UnitData.Weapons)
 				{
 					var damages = composition.Select(x => (x.Chance, Damage: weapon.GetDamageToEnemy(loadout, x.Enemy, crits)));
@@ -102,6 +100,25 @@ namespace VBusiness.HelperClasses
 				return Math.Round(totalDamage, 2);
 			}
 			return 0;
+		}
+
+		static IEnumerable<(double Chance, EnemyStatCard Enemy)> AdjustComposition(IEnumerable<(double Chance, EnemyStatCard Enemy)> composition, CompositionOptions options)
+		{
+			// the idea of this method is to give the strongest heroic units in a composition the highest representation.
+			// without doing this, the app may say a unit is incredibly strong on paper because it does massive damage to weak mobs, yet can't take out the strongest enemy type.
+			// so this finds the strongest heroic unit, and gives it a 50% representation of the entire composition.
+
+			var strongestHeroic = options == CompositionOptions.Attack
+				? composition.Where(x => x.Enemy.Type.IsHeroic()).OrderByDescending(x => x.Enemy.Armor).Select(x => x.Enemy.Type).First()
+				: composition.Where(x => x.Enemy.Type.IsHeroic()).OrderByDescending(x => x.Enemy.Damage).Select(x => x.Enemy.Type).First();
+
+			var representation = composition.Where(x => x.Enemy.Type == strongestHeroic).Sum(x => x.Chance);
+			var multiplierA = 0.5 / representation;
+			var multiplierB = 0.5 / (1 - representation);
+
+			var strongestMobs = composition.Where(x => x.Enemy.Type == strongestHeroic).Select(x => (x.Chance * multiplierA, x.Enemy));
+			var regularMobs = composition.Where(x => x.Enemy.Type != strongestHeroic).Select(x => (x.Chance * multiplierB, x.Enemy));
+			return strongestMobs.Union(regularMobs);
 		}
 
 		static CritChances GetCritChances(VLoadout loadout)
@@ -238,8 +255,8 @@ namespace VBusiness.HelperClasses
 			if (isTitanic)
 			{
 				damageModifier += unit.EnemyType.IsHeroic()
-					? 0.5				// additive heroic titan buff
-					: 2;				// additive regular titan buff
+					? 0.5               // additive heroic titan buff
+					: 2;                // additive regular titan buff
 			}
 
 			if (difficulty.Difficulty >= DifficultyLevel.Hard)
@@ -311,7 +328,7 @@ namespace VBusiness.HelperClasses
 			}
 
 #if DEBUG // this is for debugging display - DebuggerDisplayAttribute doesn't appear to work for nested classes
-			public override string ToString() => $"{Type} - tit:{IsTitan}, atk:{Damage}";
+			public override string ToString() => $"{Type} - tit:{IsTitan}, Arm:{Armor}, DR:{DamageReduction}";
 #endif
 		}
 
