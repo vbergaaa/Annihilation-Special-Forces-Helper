@@ -18,6 +18,9 @@ namespace VBusiness.Weapons
 
 		public override double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy, ICritChances crits)
 		{
+			if (enemy.Type == EnemyType.MonarchQueen)
+			{
+			}
 			return base.GetDamageToEnemy(loadout, enemy, crits);
 		}
 	}
