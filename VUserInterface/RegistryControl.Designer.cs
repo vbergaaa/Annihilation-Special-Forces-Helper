@@ -70,14 +70,14 @@ namespace VUserInterface
 			//
 			// SyncLoadoutBankControl
 			//
-			this.SyncLoadoutBankCheckControl.Caption = "Sync Loadouts on app start:";
+			this.SyncLoadoutBankCheckControl.Caption = "Sync all loadouts on app start:";
 			this.SyncLoadoutBankCheckControl.DataBindings.Add("Checked", BindingSource, "SyncLoadoutsWithBank");
 			this.SyncLoadoutBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 100);
 			this.SyncLoadoutBankCheckControl.Name = "SyncBankControl";
 			//
 			// SyncSoulBankControl
 			//
-			this.SyncSoulBankCheckControl.Caption = "Sync Souls on app start:";
+			this.SyncSoulBankCheckControl.Caption = "Sync all souls on app start:";
 			this.SyncSoulBankCheckControl.DataBindings.Add("Checked", BindingSource, "SyncSoulsWithBank");
 			this.SyncSoulBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 130);
 			this.SyncSoulBankCheckControl.Name = "SyncBankControl";

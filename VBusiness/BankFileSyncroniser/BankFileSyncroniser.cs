@@ -71,8 +71,11 @@ namespace VBusiness
 				? VDataContext.Instance.ReadFromXML<Loadout>(loadoutName)
 				: VDataContext.Instance.NewWithoutCache<Loadout>();
 
-			loadout.Slot = i;
-			UpdateLoadout(loadout);
+			if (loadout.SyncWithBank)
+			{
+				loadout.Slot = i;
+				UpdateLoadout(loadout);
+			}
 		}
 
 		public static void UpdateLoadout(VLoadout loadout)
@@ -122,7 +125,14 @@ namespace VBusiness
 		{
 			for (var i = 1; i <= 10; i++)
 			{
-				UpdateSoul(i);
+				try
+				{
+					UpdateSoul(i);
+				}
+				catch (Exception ex)
+				{
+					ErrorReporter.ReportDebug($"Failed to sync soul {ex.Message}");
+				}
 			}
 		}
 

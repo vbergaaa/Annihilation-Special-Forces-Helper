@@ -294,6 +294,17 @@ namespace VBusiness.Loadouts
 			Stats = new Stats(this);
 			ShouldRestrict = true;
 			UseUnitStats = true;
+			SyncWithBank = true;
+		}
+
+		public override void OnLoaded()
+		{
+			base.OnLoaded();
+
+			if (SyncWithBank)
+			{
+				BankFileSyncroniser.UpdateLoadout(this);
+			}
 		}
 
 		#endregion

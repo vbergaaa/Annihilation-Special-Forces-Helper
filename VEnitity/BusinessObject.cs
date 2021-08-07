@@ -151,7 +151,7 @@ namespace VEntityFramework.Data
 		}
 		BusinessObject fParent;
 
-#endregion
+		#endregion
 
 		#region HasChanges
 
@@ -186,7 +186,8 @@ namespace VEntityFramework.Data
 			suspendSettingHasChangesIncrement++;
 			childHasChangesDisposables = Children.Select(c => c.SuspendSettingHasChanges()).ToList();
 
-			return new DisposableAction(() => {
+			return new DisposableAction(() =>
+			{
 				suspendSettingHasChangesIncrement--;
 
 				foreach (var disposable in childHasChangesDisposables)
@@ -214,7 +215,8 @@ namespace VEntityFramework.Data
 		{
 			IsLoading = true;
 
-			return new DisposableAction(() => {
+			return new DisposableAction(() =>
+			{
 				IsLoading = false;
 				OnLoaded();
 			});
@@ -240,9 +242,9 @@ namespace VEntityFramework.Data
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(bindingName));
 		}
 
-#endregion
+		#endregion
 
-#region LoadedFromXML
+		#region LoadedFromXML
 
 		internal event EventHandler<OnLoadedEventArgs> LoadedFromXML;
 
@@ -254,8 +256,8 @@ namespace VEntityFramework.Data
 
 		public virtual void OnLoaded() { }
 
-#endregion
+		#endregion
 
-#endregion
+		#endregion
 	}
 }

@@ -38,6 +38,7 @@ namespace VUserInterface
 			this.BindingSource = new BindingSource();
 			this.LoadoutNameTextBox = new VTextBox();
 			this.SlotNumberTextBox = new VTextBox();
+			this.SyncWithBankCheckBox = new VCheckControl();
 			this.RemoveProfileRestrictionsCheckBox = new VCheckControl();
 			this.DifficultyDropBox = new VDropBox();
 			this.SoloBonusCheckBox = new VCheckControl();
@@ -68,12 +69,19 @@ namespace VUserInterface
 			this.SlotNumberTextBox.Width = 30;
 			this.SlotNumberTextBox.Caption = "Save Slot";
 			//
+			// SyncWithBankCheckBox
+			//
+			this.SyncWithBankCheckBox.Name = "SyncWithBankCheckBox";
+			this.SyncWithBankCheckBox.Caption = "Sync Loadout on opening";
+			this.SyncWithBankCheckBox.DataBindings.Add("Checked", BindingSource, "SyncWithBank");
+			this.SyncWithBankCheckBox.Location = DPIScalingHelper.GetScaledPoint(500, 20);
+			//
 			// RestrictCheckBox
 			//
 			this.RemoveProfileRestrictionsCheckBox.Name = "RemoveProfileRestrictionsCheckBox";
 			this.RemoveProfileRestrictionsCheckBox.Caption = "Remove Loadout Restrictions";
 			this.RemoveProfileRestrictionsCheckBox.DataBindings.Add("Checked", BindingSource, "RemoveProfileLimits");
-			this.RemoveProfileRestrictionsCheckBox.Location = DPIScalingHelper.GetScaledPoint(500, 20);
+			this.RemoveProfileRestrictionsCheckBox.Location = DPIScalingHelper.GetScaledPoint(500, 50);
 			//
 			// SoloBonusCheckBox
 			//
@@ -104,27 +112,28 @@ namespace VUserInterface
 			this.TotalPerkPointsLabel.Caption = "Total Perk Points:";
 			this.TotalPerkPointsLabel.DataBindings.Add("Text", BindingSource, "PerkPointsCost");
 			this.TotalPerkPointsLabel.Name = "TotalPerkPointsLabel";
-			this.TotalPerkPointsLabel.Location = DPIScalingHelper.GetScaledPoint(450, 50);
+			this.TotalPerkPointsLabel.Location = DPIScalingHelper.GetScaledPoint(450, 80);
 			//
 			// TotalGemsLabel
 			//
 			this.TotalGemsLabel.Caption = "Total Gems:";
 			this.TotalGemsLabel.DataBindings.Add("Text", BindingSource, "Gems.TotalCost");
 			this.TotalGemsLabel.Name = "TotalGemsLabel";
-			this.TotalGemsLabel.Location = DPIScalingHelper.GetScaledPoint(450, 80);
+			this.TotalGemsLabel.Location = DPIScalingHelper.GetScaledPoint(450, 110);
 			//
 			// TotalCPLabel
 			//
 			this.TotalCPLabel.Caption = "Total Challenge Points:";
 			this.TotalCPLabel.DataBindings.Add("Text", BindingSource, "ChallengePoints.TotalCost");
 			this.TotalCPLabel.Name = "TotalCPLabel";
-			this.TotalCPLabel.Location = DPIScalingHelper.GetScaledPoint(450, 110);
+			this.TotalCPLabel.Location = DPIScalingHelper.GetScaledPoint(450, 140);
 			// 
 			// LoadoutDetailsControl
 			//
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(LoadoutNameTextBox);
 			this.Controls.Add(SlotNumberTextBox);
+			this.Controls.Add(SyncWithBankCheckBox);
 			this.Controls.Add(RemoveProfileRestrictionsCheckBox);
 			this.Controls.Add(SoloBonusCheckBox);
 			this.Controls.Add(DifficultyDropBox);
@@ -139,6 +148,7 @@ namespace VUserInterface
 
 		#endregion
 
+		private VCheckControl SyncWithBankCheckBox;
 		private VCheckControl RemoveProfileRestrictionsCheckBox;
 		private VTextBox SlotNumberTextBox;
 		private VTextBox LoadoutNameTextBox;

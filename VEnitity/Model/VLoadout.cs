@@ -335,6 +335,26 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region SyncWithBank
+
+		[VXML(true)]
+		public bool SyncWithBank
+		{
+			get => fSyncWithBank;
+			set
+			{
+				if (value != fSyncWithBank)
+				{
+					fSyncWithBank = value;
+					HasChanges = true;
+					OnPropertyChanged(nameof(SyncWithBank));
+				}
+			}
+		}
+		bool fSyncWithBank;
+
+		#endregion
+
 		#endregion
 
 		#region Implementation
