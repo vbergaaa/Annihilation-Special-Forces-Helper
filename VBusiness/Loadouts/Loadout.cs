@@ -1,6 +1,4 @@
-﻿using StarCodeDecryptor;
-using System;
-using VBusiness.ChallengePoints;
+﻿using VBusiness.ChallengePoints;
 using VBusiness.Gems;
 using VBusiness.Mods;
 using VBusiness.Perks;
@@ -296,48 +294,6 @@ namespace VBusiness.Loadouts
 			Stats = new Stats(this);
 			ShouldRestrict = true;
 			UseUnitStats = true;
-		}
-
-		public override void OnLoaded()
-		{
-			base.OnLoaded();
-
-			try
-			{
-				SetPerksFromBank();
-			}
-			catch (Exception ex)
-			{
-				ErrorReporter.ReportDebug($"Failed to set perks from bank file: ${ex.Message}");
-			}
-		}
-
-		void SetPerksFromBank()
-		{
-			if (Slot > 0 && Slot <= 10 && Registry.Instance.SyncLoadoutsWithBank)
-			{
-				var perkString = new ASFBankDecoder(Registry.Instance.BankFileOverride).GetPerksStringAtSaveSlot(Slot);
-				var loadoutName = perkString.Substring(0, 15);
-				loadoutName = loadoutName.TrimStart('0');
-				Name = loadoutName;
-				perkString = perkString.Substring(15);
-				var oldShouldRestrict = ShouldRestrict;
-				ShouldRestrict = false;
-				foreach (var perk in ((PerkCollection)Perks).AllPerks)
-				{
-					if (!string.IsNullOrEmpty(perkString))
-					{
-						var perkLength = Math.Max(2, perk.MaxLevel.ToString().Length);
-						var perkValue = int.Parse(perkString.Substring(0, perkLength));
-						perkString = perkString.Substring(perkLength);
-
-						ErrorReporter.ReportDebug("PerkString read a value that is not a valid rank for this perk. Perk = {}, MaxValue = {}, BankValue = {}", () => perkValue < 0 && perkValue > perk.MaxLevel);
-
-						perk.DesiredLevel = (short)perkValue;
-					}
-				}
-				ShouldRestrict = oldShouldRestrict;
-			}
 		}
 
 		#endregion

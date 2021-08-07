@@ -1,6 +1,4 @@
-﻿
-using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using VBusiness;
 using VUserInterface.CommonControls;
 
@@ -38,6 +36,7 @@ namespace VUserInterface
 			this.BindingSource = new BindingSource();
 			this.SyncProfileBankCheckControl = new VCheckControl();
 			this.SyncLoadoutBankCheckControl = new VCheckControl();
+			this.SyncSoulBankCheckControl = new VCheckControl();
 			this.TitleLabel = new VLabel();
 			this.SaveButton = new VButton();
 			//
@@ -64,22 +63,30 @@ namespace VUserInterface
 			//
 			// SyncProfileBankControl
 			//
-			this.SyncProfileBankCheckControl.Caption = "Sync Profile With Bank:";
+			this.SyncProfileBankCheckControl.Caption = "Sync Profile on app start:";
 			this.SyncProfileBankCheckControl.DataBindings.Add("Checked", BindingSource, "SyncProfileWithBank");
 			this.SyncProfileBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 70);
 			this.SyncProfileBankCheckControl.Name = "SyncBankControl";
 			//
 			// SyncLoadoutBankControl
 			//
-			this.SyncLoadoutBankCheckControl.Caption = "Sync Loadouts With Bank:";
+			this.SyncLoadoutBankCheckControl.Caption = "Sync Loadouts on app start:";
 			this.SyncLoadoutBankCheckControl.DataBindings.Add("Checked", BindingSource, "SyncLoadoutsWithBank");
 			this.SyncLoadoutBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 100);
 			this.SyncLoadoutBankCheckControl.Name = "SyncBankControl";
+			//
+			// SyncSoulBankControl
+			//
+			this.SyncSoulBankCheckControl.Caption = "Sync Souls on app start:";
+			this.SyncSoulBankCheckControl.DataBindings.Add("Checked", BindingSource, "SyncSoulsWithBank");
+			this.SyncSoulBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 130);
+			this.SyncSoulBankCheckControl.Name = "SyncBankControl";
 			//
 			// RegistryControl
 			//
 			this.Controls.Add(SyncProfileBankCheckControl);
 			this.Controls.Add(SyncLoadoutBankCheckControl);
+			this.Controls.Add(SyncSoulBankCheckControl);
 			this.Controls.Add(SaveButton);
 			this.Controls.Add(TitleLabel);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -90,6 +97,7 @@ namespace VUserInterface
 		BindingSource BindingSource;
 		VCheckControl SyncProfileBankCheckControl;
 		VCheckControl SyncLoadoutBankCheckControl;
+		VCheckControl SyncSoulBankCheckControl;
 		VLabel TitleLabel;
 		VButton SaveButton;
 	}

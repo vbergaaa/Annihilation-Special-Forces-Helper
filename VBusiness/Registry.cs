@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VEntityFramework.Data;
+﻿using VEntityFramework.Data;
 using VEntityFramework.Model;
 
 namespace VBusiness
@@ -12,6 +9,7 @@ namespace VBusiness
 
 		[VXML(false)]
 		public static Registry Instance => fRegistry ??= VDataContext.Instance.Get<Registry>();
+
 		static Registry fRegistry;
 
 		#endregion
@@ -21,6 +19,7 @@ namespace VBusiness
 			base.SetDefaultValuesCore();
 			SyncProfileWithBank = true;
 			SyncLoadoutsWithBank = true;
+			SyncSoulsWithBank = true;
 		}
 	}
 }

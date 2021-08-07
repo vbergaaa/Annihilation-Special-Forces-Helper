@@ -1,8 +1,5 @@
 ﻿using NUnit.Framework;
 using StarCodeDecryptor;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Tests
 {
@@ -15,6 +12,7 @@ namespace Tests
 			Assert.That(decoder.RankPoints, Is.InstanceOf(typeof(int)));
 			Assert.That(decoder.Gems, Is.InstanceOf(typeof(int)));
 			Assert.That(() => decoder.Key, Throws.Nothing);
+			Assert.That(decoder.GetSoulString(9), Is.EqualTo(""));
 		}
 	}
 }

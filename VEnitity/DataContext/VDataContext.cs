@@ -54,6 +54,13 @@ namespace VEntityFramework.Data
 			return (T)BizoCreator.Create(typeof(T));
 		}
 
+		// Gets any matching bizo otherwise creates a new one
+		public T NewWithoutCache<T>() where T : BusinessObject
+		{
+			var bizo = (T)BizoCreator.Create(typeof(T));
+			return bizo;
+		}
+
 		public T ReadFirstWithCache<T>() where T : BusinessObject
 		{
 			var cache = BizoCache.Instance;

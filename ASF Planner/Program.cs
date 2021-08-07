@@ -1,5 +1,7 @@
 using System;
 using System.Windows.Forms;
+using VBusiness;
+using VBusiness.Profile;
 using VUserInterface;
 
 namespace ASFLauncher
@@ -12,10 +14,29 @@ namespace ASFLauncher
 		[STAThread]
 		static void Main()
 		{
+			InitialiseFilesFromBank();
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm());
+		}
+
+		static void InitialiseFilesFromBank()
+		{
+			if (Registry.Instance.SyncProfileWithBank)
+			{
+				BankFileSyncroniser.UpdateProfile(Profile.GetProfile());
+			}
+
+			if (Registry.Instance.SyncLoadoutsWithBank)
+			{
+				BankFileSyncroniser.UpdateAllLoadouts();
+			}
+
+			if (Registry.Instance.SyncSoulsWithBank)
+			{
+				BankFileSyncroniser.UpdateAllSouls();
+			}
 		}
 	}
 }

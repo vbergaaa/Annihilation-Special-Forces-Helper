@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml;
 
 namespace StarCodeDecryptor
@@ -31,6 +30,17 @@ namespace StarCodeDecryptor
 				return fKey;
 			}
 		}
+
+		public string GetSoulString(int soulSlot)
+		{
+			var charAsInt = 64 + soulSlot;
+			var lastChar = (char)charAsInt;
+			var encryptedSoul = ExtractValueFromXml("01020304050", "LUOS" + lastChar);
+			var soulString = Starcode.Decrypt(encryptedSoul, Key, 5);
+
+			return soulString;
+		}
+
 		string fKey;
 
 		#endregion

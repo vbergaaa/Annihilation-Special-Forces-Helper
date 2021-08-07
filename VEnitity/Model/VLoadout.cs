@@ -251,6 +251,7 @@ namespace VEntityFramework.Model
 				}
 			}
 		}
+
 		public bool RemoveProfileLimits
 		{
 			get => !ShouldRestrict;

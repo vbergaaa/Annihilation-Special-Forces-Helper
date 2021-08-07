@@ -48,6 +48,26 @@ namespace VEntityFramework.Model
 
 		#endregion
 
+		#region SyncSoulsWithBank
+
+		[VXML(true)]
+		public bool SyncSoulsWithBank
+		{
+			get => fSyncSoulsWithBank;
+			set
+			{
+				if (fSyncSoulsWithBank != value)
+				{
+					fSyncSoulsWithBank = value;
+					HasChanges = true;
+					OnPropertyChanged(nameof(SyncSoulsWithBank));
+				}
+			}
+		}
+		bool fSyncSoulsWithBank;
+
+		#endregion
+
 		#region BankFileOverride
 
 		[VXML(true)]
