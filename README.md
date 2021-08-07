@@ -13,7 +13,7 @@ It also contains economy data, such as:
   - Income data, for any room on any difficulty, configured to your current perks and souls.
 
 ## Download Instructions
-Download [the most recent release](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/download/v1.3/ASF_v1.3.zip), extract it, and run the installer Setup.exe. Follow the prompts to complete installation.
+Download [the most recent release](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/download/v1.3.1/ASFv1.3.1.zip), extract it, and run the installer Setup.exe. Follow the prompts to complete installation.
 
 This program makes use of Microsoft .NET Core 3 runtime libraries. If you don't already have them on your machine, the installer will download them the first time you run it.
 
