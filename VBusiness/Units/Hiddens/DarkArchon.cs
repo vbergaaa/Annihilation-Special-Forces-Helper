@@ -58,6 +58,7 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new DarkArchonBasicWeapon();
+				yield return new DarkArchonBasicAttackAOE();
 			}
 		}
 	}

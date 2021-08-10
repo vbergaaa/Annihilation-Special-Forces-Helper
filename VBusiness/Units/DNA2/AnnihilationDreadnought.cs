@@ -51,6 +51,7 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new AnnihilationDreadnoughtBasicWeapon();
+				yield return new AnnihilationDreadnaughtBasicAtkAOE();
 			}
 		}
 	}

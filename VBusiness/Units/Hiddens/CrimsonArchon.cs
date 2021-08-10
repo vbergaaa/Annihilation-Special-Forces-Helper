@@ -59,6 +59,7 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new CrimsonArchonBasicWeapon();
+				yield return new CrimsonArchonBasicAttackAOE();
 			}
 		}
 	}

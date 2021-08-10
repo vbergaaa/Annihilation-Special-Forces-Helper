@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using VBusiness.Weapons;
 using VEntityFramework.Model;
 
@@ -58,6 +56,7 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new DragoonBasicWeapon();
+				yield return new DragoonBasicAttackAOE();
 			}
 		}
 	}
