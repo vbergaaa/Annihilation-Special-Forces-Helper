@@ -8,43 +8,43 @@ namespace VBusiness.Units
 	// Main Effect: PhaseDisruptors
 	// Splash Effect: ImmortalSplashDamage
 
-	public class Dreadnought : IUnitData
+	public class Dreadnought : CommonUnitData
 	{
-		double IUnitData.BaseHealth => 300;
+		public override double BaseHealth => 300;
 
-		double IUnitData.BaseHealthArmor => 6;
+		public override double BaseHealthArmor => 6;
 
-		double IUnitData.BaseHealthRegen => 5;
+		public override double BaseHealthRegen => 5;
 
-		double IUnitData.BaseShields => 450;
+		public override double BaseShields => 450;
 
-		double IUnitData.BaseShieldsArmor => 6;
+		public override double BaseShieldsArmor => 6;
 
-		double IUnitData.BaseShieldsRegen => 5;
+		public override double BaseShieldsRegen => 5;
 
-		public UnitType Type => UnitType.Dreadnought;
+		public override UnitType Type => UnitType.Dreadnought;
 
-		double IUnitData.HealthIncrement => 7;
+		public override double HealthIncrement => 7;
 
-		double IUnitData.HealthRegenIncrement => 0.5;
+		public override double HealthRegenIncrement => 0.5;
 
-		double IUnitData.ShieldIncrement => 18;
+		public override double ShieldIncrement => 18;
 
-		double IUnitData.ShieldRegenIncrement => 1.1992;
+		public override double ShieldRegenIncrement => 1.1992;
 
-		double IUnitData.HealthArmorIncrement => 0.45;
+		public override double HealthArmorIncrement => 0.45;
 
-		double IUnitData.ShieldArmorIncrement => 0.45;
+		public override double ShieldArmorIncrement => 0.45;
 
-		public UnitType[] SpecTypes => new[] { UnitType.Dreadnought };
+		public override UnitType[] SpecTypes => new[] { UnitType.Dreadnought };
 
-		public UnitType BasicType => Type;
+		public override UnitType BasicType => Type;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
 
-		public Evolution Evolution => Evolution.Basic;
+		public override Evolution Evolution => Evolution.Basic;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

@@ -8,39 +8,39 @@ namespace VBusiness.Units
 	// WeaponData: Dragoon
 	// EffectData: DragoonDamage
 
-	public class Dragoon : IUnitData
+	public class Dragoon : CommonUnitData
 	{
-		public UnitType Type => UnitType.Dragoon;
+		public override UnitType Type => UnitType.Dragoon;
 
-		double IUnitData.BaseHealth => 250;
+		public override double BaseHealth => 250;
 
-		double IUnitData.BaseHealthArmor => 6;
+		public override double BaseHealthArmor => 6;
 
-		double IUnitData.BaseHealthRegen => 5;
+		public override double BaseHealthRegen => 5;
 
-		double IUnitData.BaseShields => 325;
+		public override double BaseShields => 325;
 
-		double IUnitData.BaseShieldsArmor => 6;
+		public override double BaseShieldsArmor => 6;
 
-		double IUnitData.BaseShieldsRegen => 5;
+		public override double BaseShieldsRegen => 5;
 
-		double IUnitData.HealthIncrement => 5;
+		public override double HealthIncrement => 5;
 
-		double IUnitData.HealthRegenIncrement => 0.3007;
+		public override double HealthRegenIncrement => 0.3007;
 
-		double IUnitData.ShieldIncrement => 10;
+		public override double ShieldIncrement => 10;
 
-		double IUnitData.ShieldRegenIncrement => 0.8007;
+		public override double ShieldRegenIncrement => 0.8007;
 
-		double IUnitData.HealthArmorIncrement => 0.6;
+		public override double HealthArmorIncrement => 0.6;
 
-		double IUnitData.ShieldArmorIncrement => 0.6;
+		public override double ShieldArmorIncrement => 0.6;
 
-		public UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
+		public override UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
 
-		public UnitType BasicType => UnitType.Dreadnought;
+		public override UnitType BasicType => UnitType.Dreadnought;
 
-		public IEnumerable<UnitRecepePiece> Recepe
+		public override IEnumerable<UnitRecepePiece> Recepe
 		{
 			get
 			{
@@ -49,9 +49,9 @@ namespace VBusiness.Units
 			}
 		}
 
-		public Evolution Evolution => Evolution.Basic;
+		public override Evolution Evolution => Evolution.Basic;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

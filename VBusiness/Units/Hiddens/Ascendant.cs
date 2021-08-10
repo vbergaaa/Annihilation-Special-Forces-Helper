@@ -10,39 +10,39 @@ namespace VBusiness.Units
 	// WeaponData: AscendantWeapon
 	// EffectData: AscendantWeaponDamage
 
-	public class Ascendant : IUnitData
+	public class Ascendant : CommonUnitData
 	{
-		public UnitType Type => UnitType.Ascendant;
+		public override UnitType Type => UnitType.Ascendant;
 
-		double IUnitData.BaseHealth => 500;
+		public override double BaseHealth => 500;
 
-		double IUnitData.BaseHealthArmor => 10;
+		public override double BaseHealthArmor => 10;
 
-		double IUnitData.BaseHealthRegen => 2;
+		public override double BaseHealthRegen => 2;
 
-		double IUnitData.BaseShields => 1000;
+		public override double BaseShields => 1000;
 
-		double IUnitData.BaseShieldsArmor => 10;
+		public override double BaseShieldsArmor => 10;
 
-		double IUnitData.BaseShieldsRegen => 10;
+		public override double BaseShieldsRegen => 10;
 
-		double IUnitData.HealthIncrement => 10;
+		public override double HealthIncrement => 10;
 
-		double IUnitData.HealthRegenIncrement => 0.3007;
+		public override double HealthRegenIncrement => 0.3007;
 
-		double IUnitData.ShieldIncrement => 20;
+		public override double ShieldIncrement => 20;
 
-		double IUnitData.ShieldRegenIncrement => 1;
+		public override double ShieldRegenIncrement => 1;
 
-		double IUnitData.HealthArmorIncrement => 0.9;
+		public override double HealthArmorIncrement => 0.9;
 
-		double IUnitData.ShieldArmorIncrement => 0.9;
+		public override double ShieldArmorIncrement => 0.9;
 
-		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar, UnitType.ShieldBattery };
+		public override UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar, UnitType.ShieldBattery };
 
-		public UnitType BasicType => UnitType.Templar;
+		public override UnitType BasicType => UnitType.Templar;
 
-		public IEnumerable<UnitRecepePiece> Recepe
+		public override IEnumerable<UnitRecepePiece> Recepe
 		{
 			get
 			{
@@ -52,9 +52,9 @@ namespace VBusiness.Units
 			}
 		}
 
-		public Evolution Evolution => Evolution.DNA2;
+		public override Evolution Evolution => Evolution.DNA2;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

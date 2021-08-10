@@ -8,43 +8,43 @@ namespace VBusiness.Units
 	// Weapon: WarpBlades
 	// Effect: WarpBladesDamage
 
-	public class DarkWarpLord : IUnitData
+	public class DarkWarpLord : CommonUnitData
 	{
-		public UnitType Type => UnitType.DarkWarpLord;
+		public override UnitType Type => UnitType.DarkWarpLord;
 
-		double IUnitData.BaseHealth => 150;
+		public override double BaseHealth => 150;
 
-		double IUnitData.BaseHealthArmor => 3;
+		public override double BaseHealthArmor => 3;
 
-		double IUnitData.BaseHealthRegen => 3;
+		public override double BaseHealthRegen => 3;
 
-		double IUnitData.BaseShields => 200;
+		public override double BaseShields => 200;
 
-		double IUnitData.BaseShieldsArmor => 3;
+		public override double BaseShieldsArmor => 3;
 
-		double IUnitData.BaseShieldsRegen => 5;
+		public override double BaseShieldsRegen => 5;
 
-		double IUnitData.HealthIncrement => 5;
+		public override double HealthIncrement => 5;
 
-		double IUnitData.HealthRegenIncrement => 0.25;
+		public override double HealthRegenIncrement => 0.25;
 
-		double IUnitData.ShieldIncrement => 10;
+		public override double ShieldIncrement => 10;
 
-		double IUnitData.ShieldRegenIncrement => 0.8007;
+		public override double ShieldRegenIncrement => 0.8007;
 
-		double IUnitData.HealthArmorIncrement => 0.45;
+		public override double HealthArmorIncrement => 0.45;
 
-		double IUnitData.ShieldArmorIncrement => 0.45;
+		public override double ShieldArmorIncrement => 0.45;
 
-		public UnitType[] SpecTypes => new[] { UnitType.WarpLord };
+		public override UnitType[] SpecTypes => new[] { UnitType.WarpLord };
 
-		public UnitType BasicType => UnitType.WarpLord;
+		public override UnitType BasicType => UnitType.WarpLord;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
-		public Evolution Evolution => Evolution.DNA1;
+		public override Evolution Evolution => Evolution.DNA1;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

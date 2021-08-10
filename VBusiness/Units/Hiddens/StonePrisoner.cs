@@ -9,39 +9,39 @@ namespace VBusiness.Units
 	// UnitData: StoneZealot
 	// EffectData: EyeBeamsGround (NOT StoneZealot)
 
-	public class StonePrisoner : IUnitData
+	public class StonePrisoner : CommonUnitData
 	{
-		public UnitType Type => UnitType.StonePrisoner;
+		public override UnitType Type => UnitType.StonePrisoner;
 
-		double IUnitData.BaseHealth => 600;
+		public override double BaseHealth => 600;
 
-		double IUnitData.BaseHealthArmor => 6;
+		public override double BaseHealthArmor => 6;
 
-		double IUnitData.BaseHealthRegen => 10;
+		public override double BaseHealthRegen => 10;
 
-		double IUnitData.BaseShields => 0;
+		public override double BaseShields => 0;
 
-		double IUnitData.BaseShieldsArmor => 0;
+		public override double BaseShieldsArmor => 0;
 
-		double IUnitData.BaseShieldsRegen => 0;
+		public override double BaseShieldsRegen => 0;
 
-		double IUnitData.HealthIncrement => 12;
+		public override double HealthIncrement => 12;
 
-		double IUnitData.HealthRegenIncrement => 1.1015;
+		public override double HealthRegenIncrement => 1.1015;
 
-		double IUnitData.ShieldIncrement => 0;
+		public override double ShieldIncrement => 0;
 
-		double IUnitData.ShieldRegenIncrement => 0;
+		public override double ShieldRegenIncrement => 0;
 
-		double IUnitData.HealthArmorIncrement => 0.7;
+		public override double HealthArmorIncrement => 0.7;
 
-		double IUnitData.ShieldArmorIncrement => 0;
+		public override double ShieldArmorIncrement => 0;
 
-		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery };
+		public override UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery };
 
-		public UnitType BasicType => UnitType.WarpLord;
+		public override UnitType BasicType => UnitType.WarpLord;
 
-		public IEnumerable<UnitRecepePiece> Recepe
+		public override IEnumerable<UnitRecepePiece> Recepe
 		{
 			get
 			{
@@ -50,9 +50,9 @@ namespace VBusiness.Units
 			}
 		}
 
-		public Evolution Evolution => Evolution.DNA2;
+		public override Evolution Evolution => Evolution.DNA2;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

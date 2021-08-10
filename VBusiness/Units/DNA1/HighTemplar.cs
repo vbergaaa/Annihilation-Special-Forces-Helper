@@ -9,43 +9,43 @@ namespace VBusiness.Units
 	// UnitData: HighArchonTemplar
 	// WeaponData: HighTemplarWeapon
 
-	public class HighTemplar : IUnitData
+	public class HighTemplar : CommonUnitData
 	{
-		public UnitType Type => UnitType.HighTemplar;
+		public override UnitType Type => UnitType.HighTemplar;
 
-		double IUnitData.BaseHealth => 650;
+		public override double BaseHealth => 650;
 
-		double IUnitData.BaseHealthArmor => 7;
+		public override double BaseHealthArmor => 7;
 
-		double IUnitData.BaseHealthRegen => 3;
+		public override double BaseHealthRegen => 3;
 
-		double IUnitData.BaseShields => 650;
+		public override double BaseShields => 650;
 
-		double IUnitData.BaseShieldsArmor => 7;
+		public override double BaseShieldsArmor => 7;
 
-		double IUnitData.BaseShieldsRegen => 6;
+		public override double BaseShieldsRegen => 6;
 
-		double IUnitData.HealthIncrement => 8;
+		public override double HealthIncrement => 8;
 
-		double IUnitData.HealthRegenIncrement => 0.6992;
+		public override double HealthRegenIncrement => 0.6992;
 
-		double IUnitData.ShieldIncrement => 8;
+		public override double ShieldIncrement => 8;
 
-		double IUnitData.ShieldRegenIncrement => 0.6992;
+		public override double ShieldRegenIncrement => 0.6992;
 
-		double IUnitData.HealthArmorIncrement => 0.65;
+		public override double HealthArmorIncrement => 0.65;
 
-		double IUnitData.ShieldArmorIncrement => 0.65;
+		public override double ShieldArmorIncrement => 0.65;
 
-		public UnitType[] SpecTypes => new[] { UnitType.Templar };
+		public override UnitType[] SpecTypes => new[] { UnitType.Templar };
 
-		public UnitType BasicType => UnitType.Templar;
+		public override UnitType BasicType => UnitType.Templar;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
-		public Evolution Evolution => Evolution.DNA1;
+		public override Evolution Evolution => Evolution.DNA1;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

@@ -9,43 +9,43 @@ namespace VBusiness.Units
 	// Unit: Adept
 	// Weapon: Adept
 	// Effect: AdeptDamage
-	public class LightAdept : IUnitData
+	public class LightAdept : CommonUnitData
 	{
-		double IUnitData.BaseHealth => 125;
+		public override double BaseHealth => 125;
 
-		double IUnitData.BaseHealthArmor => 3;
+		public override double BaseHealthArmor => 3;
 
-		double IUnitData.BaseHealthRegen => 3;
+		public override double BaseHealthRegen => 3;
 
-		double IUnitData.BaseShields => 175;
+		public override double BaseShields => 175;
 
-		double IUnitData.BaseShieldsArmor => 3;
+		public override double BaseShieldsArmor => 3;
 
-		double IUnitData.BaseShieldsRegen => 5;
+		public override double BaseShieldsRegen => 5;
 
-		public UnitType Type => UnitType.LightAdept;
+		public override UnitType Type => UnitType.LightAdept;
 
-		double IUnitData.HealthIncrement => 5;
+		public override double HealthIncrement => 5;
 
-		double IUnitData.HealthRegenIncrement => 0.3007;
+		public override double HealthRegenIncrement => 0.3007;
 
-		double IUnitData.ShieldIncrement => 7;
+		public override double ShieldIncrement => 7;
 
-		double IUnitData.ShieldRegenIncrement => 1;
+		public override double ShieldRegenIncrement => 1;
 
-		double IUnitData.HealthArmorIncrement => 0.45;
+		public override double HealthArmorIncrement => 0.45;
 
-		double IUnitData.ShieldArmorIncrement => 0.45;
+		public override double ShieldArmorIncrement => 0.45;
 
-		public UnitType[] SpecTypes => new[] { UnitType.LightAdept };
+		public override UnitType[] SpecTypes => new[] { UnitType.LightAdept };
 
-		public UnitType BasicType => Type;
+		public override UnitType BasicType => Type;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
 
-		public Evolution Evolution => Evolution.Basic;
+		public override Evolution Evolution => Evolution.Basic;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

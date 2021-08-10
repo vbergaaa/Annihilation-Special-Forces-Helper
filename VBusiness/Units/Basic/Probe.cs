@@ -9,43 +9,43 @@ namespace VBusiness.Units
 	// UnitData name = Probe
 	// WeaponData name = ParticleBeam
 
-	public class Probe : IUnitData
+	public class Probe : CommonUnitData
 	{
-		public UnitType Type => UnitType.Probe;
+		public override UnitType Type => UnitType.Probe;
 
-		double IUnitData.BaseHealth => 35;
+		public override double BaseHealth => 35;
 
-		double IUnitData.BaseHealthArmor => 2;
+		public override double BaseHealthArmor => 2;
 
-		double IUnitData.BaseHealthRegen => 0.3007;
+		public override double BaseHealthRegen => 0.3007;
 
-		double IUnitData.BaseShields => 50;
+		public override double BaseShields => 50;
 
-		double IUnitData.BaseShieldsArmor => 2;
+		public override double BaseShieldsArmor => 2;
 
-		double IUnitData.BaseShieldsRegen => 3;
+		public override double BaseShieldsRegen => 3;
 
-		double IUnitData.HealthIncrement => 3;
+		public override double HealthIncrement => 3;
 
-		double IUnitData.HealthRegenIncrement => 0.1992;
+		public override double HealthRegenIncrement => 0.1992;
 
-		double IUnitData.ShieldIncrement => 5;
+		public override double ShieldIncrement => 5;
 
-		double IUnitData.ShieldRegenIncrement => 0.3007;
+		public override double ShieldRegenIncrement => 0.3007;
 
-		double IUnitData.HealthArmorIncrement => 0.2;
+		public override double HealthArmorIncrement => 0.2;
 
-		double IUnitData.ShieldArmorIncrement => 0.2;
+		public override double ShieldArmorIncrement => 0.2;
 
-		public UnitType[] SpecTypes => new UnitType[0];
+		public override UnitType[] SpecTypes => new UnitType[0];
 
-		public UnitType BasicType => Type;
+		public override UnitType BasicType => Type;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
 
-		public Evolution Evolution => Evolution.Basic;
+		public override Evolution Evolution => Evolution.Basic;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

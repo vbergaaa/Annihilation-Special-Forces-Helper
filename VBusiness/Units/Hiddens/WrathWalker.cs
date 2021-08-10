@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using VBusiness.Weapons;
 using VEntityFramework.Model;
 
@@ -10,39 +8,39 @@ namespace VBusiness.Units
 	// WeaponData: ColossusTaldarimChargedBeam
 	// EffectData: ColossusTaldarminDamage
 
-	public class WrathWalker : IUnitData
+	public class WrathWalker : CommonUnitData
 	{
-		public UnitType Type => UnitType.WrathWalker;
+		public override UnitType Type => UnitType.WrathWalker;
 
-		double IUnitData.BaseHealth => 325;
+		public override double BaseHealth => 325;
 
-		double IUnitData.BaseHealthArmor => 7;
+		public override double BaseHealthArmor => 7;
 
-		double IUnitData.BaseHealthRegen => 7;
+		public override double BaseHealthRegen => 7;
 
-		double IUnitData.BaseShields => 400;
+		public override double BaseShields => 400;
 
-		double IUnitData.BaseShieldsArmor => 7;
+		public override double BaseShieldsArmor => 7;
 
-		double IUnitData.BaseShieldsRegen => 7;
+		public override double BaseShieldsRegen => 7;
 
-		double IUnitData.HealthIncrement => 7;
+		public override double HealthIncrement => 7;
 
-		double IUnitData.HealthRegenIncrement => 0.5;
+		public override double HealthRegenIncrement => 0.5;
 
-		double IUnitData.ShieldIncrement => 12;
+		public override double ShieldIncrement => 12;
 
-		double IUnitData.ShieldRegenIncrement => 1;
+		public override double ShieldRegenIncrement => 1;
 
-		double IUnitData.HealthArmorIncrement => 0.7;
+		public override double HealthArmorIncrement => 0.7;
 
-		double IUnitData.ShieldArmorIncrement => 0.7;
+		public override double ShieldArmorIncrement => 0.7;
 
-		public UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
+		public override UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
 
-		public UnitType BasicType => UnitType.Dragoon;
+		public override UnitType BasicType => UnitType.Dragoon;
 
-		public IEnumerable<UnitRecepePiece> Recepe
+		public override IEnumerable<UnitRecepePiece> Recepe
 		{
 			get
 			{
@@ -51,9 +49,9 @@ namespace VBusiness.Units
 			}
 		}
 
-		public Evolution Evolution => Evolution.DNA2;
+		public override Evolution Evolution => Evolution.DNA2;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

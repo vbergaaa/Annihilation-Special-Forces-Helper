@@ -1,48 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VBusiness.Weapons.BasicWeapons;
+﻿using System.Collections.Generic;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
 {
-	public class OmniBlader : IUnitData
+	public class OmniBlader : CommonUnitData
 	{
 		// UnitData: OmniBlader
 		// WeaponData: OmniDance
 		// EffectData: OmniDanceDamage
 
-		public UnitType Type => UnitType.OmniBlader;
+		public override UnitType Type => UnitType.OmniBlader;
 
-		double IUnitData.BaseHealth => 1000;
+		public override double BaseHealth => 1000;
 
-		double IUnitData.BaseHealthArmor => 16;
+		public override double BaseHealthArmor => 16;
 
-		double IUnitData.BaseHealthRegen => 15;
+		public override double BaseHealthRegen => 15;
 
-		double IUnitData.BaseShields => 1500;
+		public override double BaseShields => 1500;
 
-		double IUnitData.BaseShieldsArmor => 16;
+		public override double BaseShieldsArmor => 16;
 
-		double IUnitData.BaseShieldsRegen => 30;
+		public override double BaseShieldsRegen => 30;
 
-		double IUnitData.HealthIncrement => 23;
+		public override double HealthIncrement => 23;
 
-		double IUnitData.HealthRegenIncrement => 1.8007;
+		public override double HealthRegenIncrement => 1.8007;
 
-		double IUnitData.ShieldIncrement => 32;
+		public override double ShieldIncrement => 32;
 
-		double IUnitData.ShieldRegenIncrement => 2.5;
+		public override double ShieldRegenIncrement => 2.5;
 
-		double IUnitData.HealthArmorIncrement => 1.4;
+		public override double HealthArmorIncrement => 1.4;
 
-		double IUnitData.ShieldArmorIncrement => 1.4;
+		public override double ShieldArmorIncrement => 1.4;
 
-		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery, UnitType.LightAdept };
+		public override UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery, UnitType.LightAdept };
 
-		public UnitType BasicType => UnitType.LightAdept;
+		public override UnitType BasicType => UnitType.LightAdept;
 
-		public IEnumerable<UnitRecepePiece> Recepe
+		public override IEnumerable<UnitRecepePiece> Recepe
 		{
 			get
 			{
@@ -52,13 +50,14 @@ namespace VBusiness.Units
 			}
 		}
 
-		public Evolution Evolution => Evolution.SuperHero;
+		public override Evolution Evolution => Evolution.SuperHero;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{
 				yield return new OmniBladerBasicWeapon();
+				yield return new OmniBladerUnboundAssault();
 			}
 		}
 	}

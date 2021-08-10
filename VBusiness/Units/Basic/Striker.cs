@@ -9,43 +9,43 @@ namespace VBusiness.Units
 	// Stalker
 	// ParticleDisruptor / ParticleDisruptorU
 
-	public class Striker : IUnitData
+	public class Striker : CommonUnitData
 	{
-		double IUnitData.BaseHealth => 125;
+		public override double BaseHealth => 125;
 
-		double IUnitData.BaseHealthArmor => 3;
+		public override double BaseHealthArmor => 3;
 
-		double IUnitData.BaseHealthRegen => 1;
+		public override double BaseHealthRegen => 1;
 
-		double IUnitData.BaseShields => 160;
+		public override double BaseShields => 160;
 
-		double IUnitData.BaseShieldsArmor => 3;
+		public override double BaseShieldsArmor => 3;
 
-		double IUnitData.BaseShieldsRegen => 2;
+		public override double BaseShieldsRegen => 2;
 
-		public UnitType Type => UnitType.Striker;
+		public override UnitType Type => UnitType.Striker;
 
-		double IUnitData.HealthIncrement => 4;
+		public override double HealthIncrement => 4;
 
-		double IUnitData.HealthRegenIncrement => 0.3007;
+		public override double HealthRegenIncrement => 0.3007;
 
-		double IUnitData.ShieldIncrement => 6;
+		public override double ShieldIncrement => 6;
 
-		double IUnitData.ShieldRegenIncrement => 0.5;
+		public override double ShieldRegenIncrement => 0.5;
 
-		double IUnitData.HealthArmorIncrement => 0.4;
+		public override double HealthArmorIncrement => 0.4;
 
-		double IUnitData.ShieldArmorIncrement => 0.4;
+		public override double ShieldArmorIncrement => 0.4;
 
-		public UnitType[] SpecTypes => new[] { UnitType.Striker };
+		public override UnitType[] SpecTypes => new[] { UnitType.Striker };
 
-		public UnitType BasicType => Type;
+		public override UnitType BasicType => Type;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
 
-		public Evolution Evolution => Evolution.Basic;
+		public override Evolution Evolution => Evolution.Basic;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

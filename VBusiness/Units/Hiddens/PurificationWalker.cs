@@ -6,43 +6,43 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Units
 {
-	public class PurificationWalker : IUnitData
+	public class PurificationWalker : CommonUnitData
 	{
 		// UnitData: ColossusPurifier
 		// WeaponData: ColossusPurifierThermalLances
 		// EffectData: ColossusPurifierThermalLancesDamage
 
-		public UnitType Type => UnitType.PurificationWalker;
+		public override UnitType Type => UnitType.PurificationWalker;
 
-		double IUnitData.BaseHealth => 600;
+		public override double BaseHealth => 600;
 
-		double IUnitData.BaseHealthArmor => 8;
+		public override double BaseHealthArmor => 8;
 
-		double IUnitData.BaseHealthRegen => 5;
+		public override double BaseHealthRegen => 5;
 
-		double IUnitData.BaseShields => 850;
+		public override double BaseShields => 850;
 
-		double IUnitData.BaseShieldsArmor => 8;
+		public override double BaseShieldsArmor => 8;
 
-		double IUnitData.BaseShieldsRegen => 5;
+		public override double BaseShieldsRegen => 5;
 
-		double IUnitData.HealthIncrement => 12;
+		public override double HealthIncrement => 12;
 
-		double IUnitData.HealthRegenIncrement => 1;
+		public override double HealthRegenIncrement => 1;
 
-		double IUnitData.ShieldIncrement => 18;
+		public override double ShieldIncrement => 18;
 
-		double IUnitData.ShieldRegenIncrement => 1.5;
+		public override double ShieldRegenIncrement => 1.5;
 
-		double IUnitData.HealthArmorIncrement => 1.1;
+		public override double HealthArmorIncrement => 1.1;
 
-		double IUnitData.ShieldArmorIncrement => 1.1;
+		public override double ShieldArmorIncrement => 1.1;
 
-		public UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
+		public override UnitType[] SpecTypes => new[] { UnitType.Striker, UnitType.Dreadnought };
 
-		public UnitType BasicType => UnitType.Dragoon;
+		public override UnitType BasicType => UnitType.Dragoon;
 
-		public IEnumerable<UnitRecepePiece> Recepe
+		public override IEnumerable<UnitRecepePiece> Recepe
 		{
 			get
 			{
@@ -52,9 +52,9 @@ namespace VBusiness.Units
 			}
 		}
 
-		public Evolution Evolution => Evolution.Hero;
+		public override Evolution Evolution => Evolution.Hero;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

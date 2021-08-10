@@ -6,47 +6,47 @@ using VEntityFramework.Model;
 
 namespace VBusiness.Units
 {
-	public class EvolutionProbe : IUnitData
+	public class EvolutionProbe : CommonUnitData
 	{
 		// UnitData: EvolutionProbe
 		// WeaponData: EvolutionParticleBeam
 		// EffectData: DarkParticleBeam2
 
-		public UnitType Type => UnitType.EvolutionProbe;
+		public override UnitType Type => UnitType.EvolutionProbe;
 
-		double IUnitData.BaseHealth => 100;
+		public override double BaseHealth => 100;
 
-		double IUnitData.BaseHealthArmor => 6;
+		public override double BaseHealthArmor => 6;
 
-		double IUnitData.BaseHealthRegen => 0;
+		public override double BaseHealthRegen => 0;
 
-		double IUnitData.BaseShields => 200;
+		public override double BaseShields => 200;
 
-		double IUnitData.BaseShieldsArmor => 6;
+		public override double BaseShieldsArmor => 6;
 
-		double IUnitData.BaseShieldsRegen => 5;
+		public override double BaseShieldsRegen => 5;
 
-		double IUnitData.HealthIncrement => 10;
+		public override double HealthIncrement => 10;
 
-		double IUnitData.HealthRegenIncrement => 0.6015;
+		public override double HealthRegenIncrement => 0.6015;
 
-		double IUnitData.ShieldIncrement => 16;
+		public override double ShieldIncrement => 16;
 
-		double IUnitData.ShieldRegenIncrement => 1;
+		public override double ShieldRegenIncrement => 1;
 
-		double IUnitData.HealthArmorIncrement => 0.6;
+		public override double HealthArmorIncrement => 0.6;
 
-		double IUnitData.ShieldArmorIncrement => 0.6;
+		public override double ShieldArmorIncrement => 0.6;
 
-		public UnitType[] SpecTypes => new UnitType[0];
+		public override UnitType[] SpecTypes => new UnitType[0];
 
-		public UnitType BasicType => UnitType.Probe;
+		public override UnitType BasicType => UnitType.Probe;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.DarkProbe);
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.DarkProbe);
 
-		public Evolution Evolution => Evolution.DNA2;
+		public override Evolution Evolution => Evolution.DNA2;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

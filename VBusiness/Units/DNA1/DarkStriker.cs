@@ -10,43 +10,43 @@ namespace VBusiness.Units
 	// EffectData: ParticleDisruptors3
 	// EffectDamage: ParticleDisruptorsU3
 
-	public class DarkStriker : IUnitData
+	public class DarkStriker : CommonUnitData
 	{
-		public UnitType Type => UnitType.DarkStriker;
+		public override UnitType Type => UnitType.DarkStriker;
 
-		double IUnitData.BaseHealth => 160;
+		public override double BaseHealth => 160;
 
-		double IUnitData.BaseHealthArmor => 4.5;
+		public override double BaseHealthArmor => 4.5;
 
-		double IUnitData.BaseHealthRegen => 2;
+		public override double BaseHealthRegen => 2;
 
-		double IUnitData.BaseShields => 200;
+		public override double BaseShields => 200;
 
-		double IUnitData.BaseShieldsArmor => 4.5;
+		public override double BaseShieldsArmor => 4.5;
 
-		double IUnitData.BaseShieldsRegen => 2; // from in-game test
+		public override double BaseShieldsRegen => 2; // from in-game test
 
-		double IUnitData.HealthIncrement => 6;
+		public override double HealthIncrement => 6;
 
-		double IUnitData.HealthRegenIncrement => 0.3515;
+		public override double HealthRegenIncrement => 0.3515;
 
-		double IUnitData.ShieldIncrement => 8;
+		public override double ShieldIncrement => 8;
 
-		double IUnitData.ShieldRegenIncrement => 0.6992;
+		public override double ShieldRegenIncrement => 0.6992;
 
-		double IUnitData.HealthArmorIncrement => 0.5;
+		public override double HealthArmorIncrement => 0.5;
 
-		double IUnitData.ShieldArmorIncrement => 0.5;
+		public override double ShieldArmorIncrement => 0.5;
 
-		public UnitType[] SpecTypes => new[] { UnitType.Striker };
+		public override UnitType[] SpecTypes => new[] { UnitType.Striker };
 
-		public UnitType BasicType => UnitType.Striker;
+		public override UnitType BasicType => UnitType.Striker;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
-		public Evolution Evolution => Evolution.DNA1;
+		public override Evolution Evolution => Evolution.DNA1;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

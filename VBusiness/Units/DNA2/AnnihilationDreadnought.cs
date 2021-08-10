@@ -10,43 +10,43 @@ namespace VBusiness.Units
 	// WeaponData: AnnihilatorParticleDisruptors
 	// EffectData: AnnihilatorParticleDisruptors
 
-	public class AnnihilationDreadnought : IUnitData
+	public class AnnihilationDreadnought : CommonUnitData
 	{
-		public UnitType Type => UnitType.AnnihilationDreadnought;
+		public override UnitType Type => UnitType.AnnihilationDreadnought;
 
-		double IUnitData.BaseHealth => 425;
+		public override double BaseHealth => 425;
 
-		double IUnitData.BaseHealthArmor => 8;
+		public override double BaseHealthArmor => 8;
 
-		double IUnitData.BaseHealthRegen => 8;
+		public override double BaseHealthRegen => 8;
 
-		double IUnitData.BaseShields => 600;
+		public override double BaseShields => 600;
 
-		double IUnitData.BaseShieldsArmor => 8;
+		public override double BaseShieldsArmor => 8;
 
-		double IUnitData.BaseShieldsRegen => 8;
+		public override double BaseShieldsRegen => 8;
 
-		double IUnitData.HealthIncrement => 11.8; // should be 11, but looks like a bug in the game code making health regen apply as health increment
+		public override double HealthIncrement => 11.8; // should be 11, but looks like a bug in the game code making health regen apply as health increment
 
-		double IUnitData.HealthRegenIncrement => 0; // should be 0.8;
+		public override double HealthRegenIncrement => 0; // should be 0.8;
 
-		double IUnitData.ShieldIncrement => 25;
+		public override double ShieldIncrement => 25;
 
-		double IUnitData.ShieldRegenIncrement => 2;
+		public override double ShieldRegenIncrement => 2;
 
-		double IUnitData.HealthArmorIncrement => 0.7;
+		public override double HealthArmorIncrement => 0.7;
 
-		double IUnitData.ShieldArmorIncrement => 0.7;
+		public override double ShieldArmorIncrement => 0.7;
 
-		public UnitType[] SpecTypes => new[] { UnitType.Dreadnought };
+		public override UnitType[] SpecTypes => new[] { UnitType.Dreadnought };
 
-		public UnitType BasicType => UnitType.Dreadnought;
+		public override UnitType BasicType => UnitType.Dreadnought;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.UnstableDreadnought);
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.UnstableDreadnought);
 
-		public Evolution Evolution => Evolution.DNA2;
+		public override Evolution Evolution => Evolution.DNA2;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

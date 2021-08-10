@@ -8,43 +8,43 @@ namespace VBusiness.Units
 {
 	//UnitData = DarkProbe
 	//WeaponData = DarkParticleBeam
-	public class DarkProbe : IUnitData
+	public class DarkProbe : CommonUnitData
 	{
-		public UnitType Type => UnitType.DarkProbe;
+		public override UnitType Type => UnitType.DarkProbe;
 
-		double IUnitData.BaseHealth => 50;
+		public override double BaseHealth => 50;
 
-		double IUnitData.BaseHealthArmor => 4;
+		public override double BaseHealthArmor => 4;
 
-		double IUnitData.BaseHealthRegen => 0;
+		public override double BaseHealthRegen => 0;
 
-		double IUnitData.BaseShields => 100;
+		public override double BaseShields => 100;
 
-		double IUnitData.BaseShieldsArmor => 4;
+		public override double BaseShieldsArmor => 4;
 
-		double IUnitData.BaseShieldsRegen => 5;
+		public override double BaseShieldsRegen => 5;
 
-		double IUnitData.HealthIncrement => 5;
+		public override double HealthIncrement => 5;
 
-		double IUnitData.HealthRegenIncrement => 0.3007;
+		public override double HealthRegenIncrement => 0.3007;
 
-		double IUnitData.ShieldIncrement => 8;
+		public override double ShieldIncrement => 8;
 
-		double IUnitData.ShieldRegenIncrement => 0.5;
+		public override double ShieldRegenIncrement => 0.5;
 
-		double IUnitData.HealthArmorIncrement => 0.3;
+		public override double HealthArmorIncrement => 0.3;
 
-		double IUnitData.ShieldArmorIncrement => 0.3;
+		public override double ShieldArmorIncrement => 0.3;
 
-		public UnitType[] SpecTypes => new UnitType[0];
+		public override UnitType[] SpecTypes => new UnitType[0];
 
-		public UnitType BasicType => UnitType.Probe;
+		public override UnitType BasicType => UnitType.Probe;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
-		public Evolution Evolution => Evolution.DNA1;
+		public override Evolution Evolution => Evolution.DNA1;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

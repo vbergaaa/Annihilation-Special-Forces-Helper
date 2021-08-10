@@ -7,43 +7,43 @@ namespace VBusiness.Units
 	// UnitData: ZealotAiur
 	// WeaponData: SolariteReaper
 
-	public class BerserkerWarpLord : IUnitData
+	public class BerserkerWarpLord : CommonUnitData
 	{
-		public UnitType Type => UnitType.BerserkerWarpLord;
+		public override UnitType Type => UnitType.BerserkerWarpLord;
 
-		double IUnitData.BaseHealth => 225;
+		public override double BaseHealth => 225;
 
-		double IUnitData.BaseHealthArmor => 5;
+		public override double BaseHealthArmor => 5;
 
-		double IUnitData.BaseHealthRegen => 4;
+		public override double BaseHealthRegen => 4;
 
-		double IUnitData.BaseShields => 320;
+		public override double BaseShields => 320;
 
-		double IUnitData.BaseShieldsArmor => 5;
+		public override double BaseShieldsArmor => 5;
 
-		double IUnitData.BaseShieldsRegen => 4;
+		public override double BaseShieldsRegen => 4;
 
-		double IUnitData.HealthIncrement => 7;
+		public override double HealthIncrement => 7;
 
-		double IUnitData.HealthRegenIncrement => 0.3984;
+		public override double HealthRegenIncrement => 0.3984;
 
-		double IUnitData.ShieldIncrement => 13;
+		public override double ShieldIncrement => 13;
 
-		double IUnitData.ShieldRegenIncrement => 1;
+		public override double ShieldRegenIncrement => 1;
 
-		double IUnitData.HealthArmorIncrement => 0.6;
+		public override double HealthArmorIncrement => 0.6;
 
-		double IUnitData.ShieldArmorIncrement => 0.6;
+		public override double ShieldArmorIncrement => 0.6;
 
-		public UnitType[] SpecTypes => new[] { UnitType.WarpLord };
+		public override UnitType[] SpecTypes => new[] { UnitType.WarpLord };
 
-		public UnitType BasicType => UnitType.WarpLord;
+		public override UnitType BasicType => UnitType.WarpLord;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.DarkWarpLord);
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.DarkWarpLord);
 
-		public Evolution Evolution => Evolution.DNA2;
+		public override Evolution Evolution => Evolution.DNA2;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

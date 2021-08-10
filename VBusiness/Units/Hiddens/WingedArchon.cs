@@ -8,39 +8,39 @@ namespace VBusiness.Units
 	// WeaponData: WingedTorrent
 	// EffectData: WingedArchonWeaponDamage
 
-	public class WingedArchon : IUnitData
+	public class WingedArchon : CommonUnitData
 	{
-		public UnitType Type => UnitType.WingedArchon;
+		public override UnitType Type => UnitType.WingedArchon;
 
-		double IUnitData.BaseHealth => 60;
+		public override double BaseHealth => 60;
 
-		double IUnitData.BaseHealthArmor => 15;
+		public override double BaseHealthArmor => 15;
 
-		double IUnitData.BaseHealthRegen => 4;
+		public override double BaseHealthRegen => 4;
 
-		double IUnitData.BaseShields => 1600;
+		public override double BaseShields => 1600;
 
-		double IUnitData.BaseShieldsArmor => 15;
+		public override double BaseShieldsArmor => 15;
 
-		double IUnitData.BaseShieldsRegen => 10;
+		public override double BaseShieldsRegen => 10;
 
-		double IUnitData.HealthIncrement => 15;
+		public override double HealthIncrement => 15;
 
-		double IUnitData.HealthRegenIncrement => 1.8007;
+		public override double HealthRegenIncrement => 1.8007;
 
-		double IUnitData.ShieldIncrement => 40;
+		public override double ShieldIncrement => 40;
 
-		double IUnitData.ShieldRegenIncrement => 3;
+		public override double ShieldRegenIncrement => 3;
 
-		double IUnitData.HealthArmorIncrement => 1.3;
+		public override double HealthArmorIncrement => 1.3;
 
-		double IUnitData.ShieldArmorIncrement => 1.3;
+		public override double ShieldArmorIncrement => 1.3;
 
-		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar, UnitType.ShieldBattery, UnitType.WarpLord };
+		public override UnitType[] SpecTypes => new[] { UnitType.DarkShadow, UnitType.Templar, UnitType.ShieldBattery, UnitType.WarpLord };
 
-		public UnitType BasicType => UnitType.DarkShadow;
+		public override UnitType BasicType => UnitType.DarkShadow;
 
-		public IEnumerable<UnitRecepePiece> Recepe
+		public override IEnumerable<UnitRecepePiece> Recepe
 		{
 			get
 			{
@@ -50,9 +50,9 @@ namespace VBusiness.Units
 			}
 		}
 
-		public Evolution Evolution => Evolution.SuperHero;
+		public override Evolution Evolution => Evolution.SuperHero;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

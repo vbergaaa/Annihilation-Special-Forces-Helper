@@ -6,39 +6,39 @@ namespace VBusiness.Units
 {
 	// UnitData: MasterDance
 
-	public class BladeMaster : IUnitData
+	public class BladeMaster : CommonUnitData
 	{
-		public UnitType Type => UnitType.BladeMaster;
+		public override UnitType Type => UnitType.BladeMaster;
 
-		double IUnitData.BaseHealth => 700;
+		public override double BaseHealth => 700;
 
-		double IUnitData.BaseHealthArmor => 12;
+		public override double BaseHealthArmor => 12;
 
-		double IUnitData.BaseHealthRegen => 12;
+		public override double BaseHealthRegen => 12;
 
-		double IUnitData.BaseShields => 1000;
+		public override double BaseShields => 1000;
 
-		double IUnitData.BaseShieldsArmor => 12;
+		public override double BaseShieldsArmor => 12;
 
-		double IUnitData.BaseShieldsRegen => 22;
+		public override double BaseShieldsRegen => 22;
 
-		double IUnitData.HealthIncrement => 16;
+		public override double HealthIncrement => 16;
 
-		double IUnitData.HealthRegenIncrement => 1.3984;
+		public override double HealthRegenIncrement => 1.3984;
 
-		double IUnitData.ShieldIncrement => 24;
+		public override double ShieldIncrement => 24;
 
-		double IUnitData.ShieldRegenIncrement => 2;
+		public override double ShieldRegenIncrement => 2;
 
-		double IUnitData.HealthArmorIncrement => 1.1;
+		public override double HealthArmorIncrement => 1.1;
 
-		double IUnitData.ShieldArmorIncrement => 1.1;
+		public override double ShieldArmorIncrement => 1.1;
 
-		public UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery, UnitType.LightAdept };
+		public override UnitType[] SpecTypes => new[] { UnitType.WarpLord, UnitType.ShieldBattery, UnitType.LightAdept };
 
-		public UnitType BasicType => UnitType.LightAdept;
+		public override UnitType BasicType => UnitType.LightAdept;
 
-		public IEnumerable<UnitRecepePiece> Recepe
+		public override IEnumerable<UnitRecepePiece> Recepe
 		{
 			get
 			{
@@ -48,9 +48,9 @@ namespace VBusiness.Units
 			}
 		}
 
-		public Evolution Evolution => Evolution.Hero;
+		public override Evolution Evolution => Evolution.Hero;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

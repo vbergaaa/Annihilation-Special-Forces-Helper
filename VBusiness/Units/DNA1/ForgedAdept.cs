@@ -10,43 +10,43 @@ namespace VBusiness.Units
 	// WeaponData: DarkPurifierGlaive
 	// EffectData: DarkAdeptDamage
 
-	public class ForgedAdept : IUnitData
+	public class ForgedAdept : CommonUnitData
 	{
-		public UnitType Type => UnitType.ForgedAdept;
+		public override UnitType Type => UnitType.ForgedAdept;
 
-		double IUnitData.BaseHealth => 160;
+		public override double BaseHealth => 160;
 
-		double IUnitData.BaseHealthArmor => 4.5;
+		public override double BaseHealthArmor => 4.5;
 
-		double IUnitData.BaseHealthRegen => 4;
+		public override double BaseHealthRegen => 4;
 
-		double IUnitData.BaseShields => 250;
+		public override double BaseShields => 250;
 
-		double IUnitData.BaseShieldsArmor => 4.5;
+		public override double BaseShieldsArmor => 4.5;
 
-		double IUnitData.BaseShieldsRegen => 6;
+		public override double BaseShieldsRegen => 6;
 
-		double IUnitData.HealthIncrement => 7;
+		public override double HealthIncrement => 7;
 
-		double IUnitData.HealthRegenIncrement => 0.5;
+		public override double HealthRegenIncrement => 0.5;
 
-		double IUnitData.ShieldIncrement => 9;
+		public override double ShieldIncrement => 9;
 
-		double IUnitData.ShieldRegenIncrement => 1;
+		public override double ShieldRegenIncrement => 1;
 
-		double IUnitData.HealthArmorIncrement => 0.6;
+		public override double HealthArmorIncrement => 0.6;
 
-		double IUnitData.ShieldArmorIncrement => 0.6;
+		public override double ShieldArmorIncrement => 0.6;
 
-		public UnitType[] SpecTypes => new[] { UnitType.LightAdept };
+		public override UnitType[] SpecTypes => new[] { UnitType.LightAdept };
 
-		public UnitType BasicType => UnitType.LightAdept;
+		public override UnitType BasicType => UnitType.LightAdept;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA1Recipe(BasicType);
 
-		public Evolution Evolution => Evolution.DNA1;
+		public override Evolution Evolution => Evolution.DNA1;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

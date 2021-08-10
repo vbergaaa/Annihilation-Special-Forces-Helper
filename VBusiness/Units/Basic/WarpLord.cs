@@ -6,44 +6,44 @@ namespace VBusiness.Units
 {
 	/// Unit: Zealot
 	/// Weapon: Psi Blades
-	public class WarpLord : IUnitData
+	public class WarpLord : CommonUnitData
 	{
 
-		double IUnitData.BaseHealth => 100;
+		public override double BaseHealth => 100;
 
-		double IUnitData.BaseHealthArmor => 2;
+		public override double BaseHealthArmor => 2;
 
-		double IUnitData.BaseHealthRegen => 2;
+		public override double BaseHealthRegen => 2;
 
-		double IUnitData.BaseShields => 150;
+		public override double BaseShields => 150;
 
-		double IUnitData.BaseShieldsArmor => 2;
+		public override double BaseShieldsArmor => 2;
 
-		double IUnitData.BaseShieldsRegen => 3;
+		public override double BaseShieldsRegen => 3;
 
-		public UnitType Type => UnitType.WarpLord;
+		public override UnitType Type => UnitType.WarpLord;
 
-		double IUnitData.HealthIncrement => 4;
+		public override double HealthIncrement => 4;
 
-		double IUnitData.HealthRegenIncrement => 0.1992;
+		public override double HealthRegenIncrement => 0.1992;
 
-		double IUnitData.ShieldIncrement => 8;
+		public override double ShieldIncrement => 8;
 
-		double IUnitData.ShieldRegenIncrement => 0.5;
+		public override double ShieldRegenIncrement => 0.5;
 
-		double IUnitData.HealthArmorIncrement => 0.35;
+		public override double HealthArmorIncrement => 0.35;
 
-		double IUnitData.ShieldArmorIncrement => 0.35;
+		public override double ShieldArmorIncrement => 0.35;
 
-		public UnitType[] SpecTypes => new[] { UnitType.WarpLord };
+		public override UnitType[] SpecTypes => new[] { UnitType.WarpLord };
 
-		public UnitType BasicType => UnitType.WarpLord;
+		public override UnitType BasicType => UnitType.WarpLord;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
 
-		public Evolution Evolution => Evolution.Basic;
+		public override Evolution Evolution => Evolution.Basic;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

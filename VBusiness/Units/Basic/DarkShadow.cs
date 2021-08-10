@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using VBusiness.Weapons;
 using VEntityFramework.Model;
 
@@ -9,43 +7,43 @@ namespace VBusiness.Units
 	// Unit: DarkTemplar
 	// Weapon: WarpBlades
 	// Effect: WarpBlades
-	public class DarkShadow : IUnitData
+	public class DarkShadow : CommonUnitData
 	{
-		double IUnitData.BaseHealth => 10;
+		public override double BaseHealth => 10;
 
-		double IUnitData.BaseHealthArmor => 3;
+		public override double BaseHealthArmor => 3;
 
-		double IUnitData.BaseHealthRegen => 5;
+		public override double BaseHealthRegen => 5;
 
-		double IUnitData.BaseShields => 250;
+		public override double BaseShields => 250;
 
-		double IUnitData.BaseShieldsArmor => 3;
+		public override double BaseShieldsArmor => 3;
 
-		double IUnitData.BaseShieldsRegen => 5;
+		public override double BaseShieldsRegen => 5;
 
-		public UnitType Type => UnitType.DarkShadow;
+		public override UnitType Type => UnitType.DarkShadow;
 
-		double IUnitData.HealthIncrement => 1;
+		public override double HealthIncrement => 1;
 
-		double IUnitData.HealthRegenIncrement => 0.1992;
+		public override double HealthRegenIncrement => 0.1992;
 
-		double IUnitData.ShieldIncrement => 10;
+		public override double ShieldIncrement => 10;
 
-		double IUnitData.ShieldRegenIncrement => 1;
+		public override double ShieldRegenIncrement => 1;
 
-		double IUnitData.HealthArmorIncrement => 0.3;
+		public override double HealthArmorIncrement => 0.3;
 
-		double IUnitData.ShieldArmorIncrement => 0.3;
+		public override double ShieldArmorIncrement => 0.3;
 
-		public UnitType[] SpecTypes => new[] { UnitType.DarkShadow };
+		public override UnitType[] SpecTypes => new[] { UnitType.DarkShadow };
 
-		public UnitType BasicType => Type;
+		public override UnitType BasicType => Type;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetEmptyRecipe();
 
-		public Evolution Evolution => Evolution.Basic;
+		public override Evolution Evolution => Evolution.Basic;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{

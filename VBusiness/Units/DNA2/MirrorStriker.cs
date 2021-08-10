@@ -10,43 +10,43 @@ namespace VBusiness.Units
 	// WeaponData: MirrorDisruptor
 	// EffectData: MirrorEntropyLanceDamage
 
-	public class MirrorStriker : IUnitData
+	public class MirrorStriker : CommonUnitData
 	{
-		public UnitType Type => UnitType.MirrorStriker;
+		public override UnitType Type => UnitType.MirrorStriker;
 
-		double IUnitData.BaseHealth => 250;
+		public override double BaseHealth => 250;
 
-		double IUnitData.BaseHealthArmor => 7;
+		public override double BaseHealthArmor => 7;
 
-		double IUnitData.BaseHealthRegen => 5;
+		public override double BaseHealthRegen => 5;
 
-		double IUnitData.BaseShields => 325;
+		public override double BaseShields => 325;
 
-		double IUnitData.BaseShieldsArmor => 7;
+		public override double BaseShieldsArmor => 7;
 
-		double IUnitData.BaseShieldsRegen => 4;
+		public override double BaseShieldsRegen => 4;
 
-		double IUnitData.HealthIncrement => 8;
+		public override double HealthIncrement => 8;
 
-		double IUnitData.HealthRegenIncrement => 0.5;
+		public override double HealthRegenIncrement => 0.5;
 
-		double IUnitData.HealthArmorIncrement => 0.6;
+		public override double HealthArmorIncrement => 0.6;
 
-		double IUnitData.ShieldIncrement => 12;
+		public override double ShieldIncrement => 12;
 
-		double IUnitData.ShieldRegenIncrement => 0.8984;
+		public override double ShieldRegenIncrement => 0.8984;
 		
-		double IUnitData.ShieldArmorIncrement => 0.6;
+		public override double ShieldArmorIncrement => 0.6;
 
-		public UnitType[] SpecTypes => new[] { UnitType.Striker };
+		public override UnitType[] SpecTypes => new[] { UnitType.Striker };
 
-		public UnitType BasicType => UnitType.Striker;
+		public override UnitType BasicType => UnitType.Striker;
 
-		public IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.DarkStriker);
+		public override IEnumerable<UnitRecepePiece> Recepe => UnitCostHelper.GetDNA2Recipe(UnitType.DarkStriker);
 
-		public Evolution Evolution => Evolution.DNA2;
+		public override Evolution Evolution => Evolution.DNA2;
 
-		public IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> Weapons
 		{
 			get
 			{
