@@ -9,5 +9,7 @@
 		public override double AttackCount => 10;
 
 		public override double AttackIncrement => 1;
+
+		public override double ArmorPenetration => 30;
 	}
 }

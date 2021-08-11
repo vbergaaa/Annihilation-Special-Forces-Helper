@@ -1,4 +1,4 @@
-﻿namespace VBusiness.Weapons.BasicWeapons
+﻿namespace VBusiness.Weapons
 {
 	public class OmniBladerBasicWeapon : BasicAttackWeapon
 	{

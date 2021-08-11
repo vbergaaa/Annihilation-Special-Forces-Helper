@@ -5,6 +5,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Weapons\ToBeImplemented\BladeMasterMartialStance.txt" />
+    <None Remove="Weapons\ToBeImplemented\BladeMasterMasterDash.txt" />
+    <None Remove="Weapons\ToBeImplemented\OmniBladerOmniDash.txt" />
+    <None Remove="Weapons\ToBeImplemented\OmniBladerOmniPotence.txt" />
+    <None Remove="Weapons\ToBeImplemented\OmniBladerSupremeMartialStance.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Weapons\ToBeImplemented\TODO\OmniBladerOmniPotence.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\OmniBladerOmniDash.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\OmniBladerSupremeMartialStance.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\BladeMasterMartialStance.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\BladeMasterMasterDash.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\StarCodeDecryptor\StarCodeDecryptor.csproj" />
     <ProjectReference Include="..\VEnitity\VEntityFramework.csproj" />
   </ItemGroup>

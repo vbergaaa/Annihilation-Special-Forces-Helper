@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
@@ -26,6 +25,7 @@ namespace VEntityFramework.Model
 		IEnumerable<UnitRecepePiece> Recepe { get; }
 		Evolution Evolution { get; }
 		IEnumerable<IWeaponData> Weapons { get; }
+		IDisposable ApplyPassiveEffect(VLoadout loadout);
 	}
 
 	public struct UnitRecepePiece

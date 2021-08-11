@@ -86,18 +86,21 @@ namespace VBusiness.HelperClasses
 		{
 			if (loadout.UseUnitStats && loadout.CurrentUnit.UnitData.Type != UnitType.None)
 			{
-				var crits = GetCritChances(loadout);
-				var composition = GetEnemyCompositionStats(loadout, CompositionOptions.Attack);
-				composition = AdjustComposition(composition, CompositionOptions.Attack);
-
-				var totalDamage = 0.0;
-				foreach (var weapon in loadout.CurrentUnit.UnitData.Weapons)
+				using (loadout.CurrentUnit.UnitData.ApplyPassiveEffect(loadout))
 				{
-					var damages = composition.Select(x => (x.Chance, Damage: weapon.GetDamageToEnemy(loadout, x.Enemy, crits)));
-					var avgDamage = damages.Sum(x => (x.Chance * x.Damage));
-					totalDamage += avgDamage;
+					var crits = GetCritChances(loadout);
+					var composition = GetEnemyCompositionStats(loadout, CompositionOptions.Attack);
+					composition = AdjustComposition(composition, CompositionOptions.Attack);
+
+					var totalDamage = 0.0;
+					foreach (var weapon in loadout.CurrentUnit.UnitData.Weapons)
+					{
+						var damages = composition.Select(x => (x.Chance, Damage: weapon.GetDamageToEnemy(loadout, x.Enemy, crits)));
+						var avgDamage = damages.Sum(x => (x.Chance * x.Damage));
+						totalDamage += avgDamage;
+					}
+					return Math.Round(totalDamage, 2);
 				}
-				return Math.Round(totalDamage, 2);
 			}
 			return 0;
 		}

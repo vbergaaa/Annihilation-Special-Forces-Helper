@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -23,5 +24,10 @@ namespace VBusiness.Units
 		public abstract IEnumerable<UnitRecepePiece> Recepe { get; }
 		public abstract Evolution Evolution { get; }
 		public abstract IEnumerable<IWeaponData> Weapons { get; }
+
+		public virtual IDisposable ApplyPassiveEffect(VLoadout loadout)
+		{
+			return null;
+		}
 	}
 }

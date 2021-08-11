@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using VBusiness.Weapons;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -57,6 +59,18 @@ namespace VBusiness.Units
 				yield return new BladeMasterBasicWeapon();
 				yield return new BladeMasterFusedAssault();
 			}
+		}
+
+		public override IDisposable ApplyPassiveEffect(VLoadout loadout)
+		{
+			loadout.Stats.CriticalChance += 15;
+			loadout.Stats.CriticalDamage += 30;
+
+			return new DisposableAction(() =>
+			{
+				loadout.Stats.CriticalChance -= 15;
+				loadout.Stats.CriticalDamage -= 30;
+			});
 		}
 	}
 }

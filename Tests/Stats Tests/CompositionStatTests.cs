@@ -10,20 +10,20 @@ namespace Tests.Stats_Tests
 		// These tests are for santity, to make sure damage and toughness calculations
 		// don't unexpectedly change. These values can be changed as more features/bugs
 		// are added or squashed
-		[TestCase(DifficultyLevel.Brutal, 1883716, 199373199)]
-		[TestCase(DifficultyLevel.Divine, 460294, 2601555)]
-		[TestCase(DifficultyLevel.Easy, 2633051, 199373199)]
-		[TestCase(DifficultyLevel.Hard, 2234284, 199373199)]
-		[TestCase(DifficultyLevel.Hell, 1071747, 188366064)]
-		[TestCase(DifficultyLevel.Impossible, 219940, 580488)]
-		[TestCase(DifficultyLevel.Insane, 1978458, 199373199)]
-		[TestCase(DifficultyLevel.Mythic, 713246, 10327791)]
-		[TestCase(DifficultyLevel.Nightmare, 1567967, 199373199)]
-		[TestCase(DifficultyLevel.Normal, 2653614, 199373199)]
-		[TestCase(DifficultyLevel.Titanic, 900191, 39874158)]
-		[TestCase(DifficultyLevel.Torment, 1227472, 191484105)]
-		[TestCase(DifficultyLevel.VeryEasy, 2624427, 199373199)]
-		[TestCase(DifficultyLevel.VeryHard, 2116570, 199373199)]
+		[TestCase(DifficultyLevel.Brutal, 32568315, 199373199)]
+		[TestCase(DifficultyLevel.Divine, 8587282, 2601555)]
+		[TestCase(DifficultyLevel.Easy, 45532749, 199373199)]
+		[TestCase(DifficultyLevel.Hard, 38619280, 199373199)]
+		[TestCase(DifficultyLevel.Hell, 18829431, 188366064)]
+		[TestCase(DifficultyLevel.Impossible, 4762417, 580488)]
+		[TestCase(DifficultyLevel.Insane, 34201699, 199373199)]
+		[TestCase(DifficultyLevel.Mythic, 12836134, 10327791)]
+		[TestCase(DifficultyLevel.Nightmare, 27132317, 199373199)]
+		[TestCase(DifficultyLevel.Normal, 45870258, 199373199)]
+		[TestCase(DifficultyLevel.Titanic, 15948109, 39874158)]
+		[TestCase(DifficultyLevel.Torment, 21467738, 191484105)]
+		[TestCase(DifficultyLevel.VeryEasy, 45391471, 199373199)]
+		[TestCase(DifficultyLevel.VeryHard, 36586743, 199373199)]
 		public void TestCalculatedStats(DifficultyLevel difficulty, double expectedDamage, double expectedToughness)
 		{
 			var loadout = LoadMaxPage14();

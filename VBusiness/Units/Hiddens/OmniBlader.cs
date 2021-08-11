@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using VBusiness.Weapons;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -59,6 +61,18 @@ namespace VBusiness.Units
 				yield return new OmniBladerBasicWeapon();
 				yield return new OmniBladerUnboundAssault();
 			}
+		}
+
+		public override IDisposable ApplyPassiveEffect(VLoadout loadout)
+		{
+			loadout.Stats.CriticalChance += 20;
+			loadout.Stats.CriticalDamage += 40;
+
+			return new DisposableAction(() =>
+			{
+				loadout.Stats.CriticalChance -= 20;
+				loadout.Stats.CriticalDamage -= 40;
+			});
 		}
 	}
 }
