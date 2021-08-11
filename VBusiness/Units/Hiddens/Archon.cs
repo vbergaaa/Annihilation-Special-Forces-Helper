@@ -57,6 +57,7 @@ namespace VBusiness.Units
 			{
 				yield return new ArchonBasicWeapon();
 				yield return new ArchonBasicAttackAOE();
+				yield return new TemplarStorm();
 			}
 		}
 	}

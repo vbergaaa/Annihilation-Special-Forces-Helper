@@ -58,6 +58,8 @@ namespace VBusiness.Units
 			{
 				yield return new DisruptorBasicWeapon();
 				yield return new DisruptorBasicAttackAOE();
+				yield return new DisruptorDisplacementNova();
+				yield return new DisruptorPurificationNova();
 			}
 		}
 	}

@@ -49,6 +49,7 @@ namespace VBusiness.Units
 			{
 				yield return new BerserkerWarpLordBasicWeapon();
 				yield return new BerserkerWarpLordBasicAttackAOE();
+				yield return new BerserkerWarpLordBerserkerWarpAnnihilation();
 			}
 		}
 	}

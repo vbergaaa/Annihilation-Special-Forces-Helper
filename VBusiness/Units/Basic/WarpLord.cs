@@ -48,6 +48,7 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new WarpLordBasicWeapon();
+				yield return new WarpLordWarpAnnihilation();
 			}
 		}
 	}

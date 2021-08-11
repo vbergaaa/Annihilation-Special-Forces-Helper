@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using VBusiness.Weapons;
 using VEntityFramework.Model;
 
@@ -35,7 +33,7 @@ namespace VBusiness.Units
 		public override double ShieldIncrement => 12;
 
 		public override double ShieldRegenIncrement => 0.8984;
-		
+
 		public override double ShieldArmorIncrement => 0.6;
 
 		public override UnitType[] SpecTypes => new[] { UnitType.Striker };
@@ -51,6 +49,7 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new MirrorStrikerBasicWeapon();
+				yield return new MirrorStrikerGreaterMulti();
 			}
 		}
 	}

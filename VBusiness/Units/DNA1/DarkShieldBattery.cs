@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using VBusiness.Weapons;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -50,7 +50,22 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new DarkShieldBatteryBasicWeapon();
+				yield return new ShieldBatteryDestablisingShield();
 			}
+		}
+
+		public override IDisposable ApplyPassiveEffect(VLoadout loadout)
+		{
+			// increase enemy damage taken by 15%
+			// applies -15% DR to enemies
+			// giving the DSB +15 DI for simplicity
+
+			loadout.Stats.UpdateDamageIncrease("DSB Electric Amplification", 15);
+
+			return new DisposableAction(() =>
+			{
+				loadout.Stats.UpdateDamageIncrease("DSB Electric Amplification", -15);
+			});
 		}
 	}
 }

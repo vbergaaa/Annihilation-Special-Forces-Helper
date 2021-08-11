@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using VBusiness.Weapons;
 using VEntityFramework.Model;
 
@@ -59,6 +57,10 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new PurificationWalkerBasicWeapon();
+				yield return new PurificationWalkerPurificationBeam();
+				yield return new DisruptorDisplacementNova(); // yes, this is right
+				yield return new PurificationWalkerBasicAttackAOE();
+				yield return new PurificationWalkerAutomatedTaldarimBeams();
 			}
 		}
 	}

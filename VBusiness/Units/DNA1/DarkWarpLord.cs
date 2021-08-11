@@ -50,6 +50,7 @@ namespace VBusiness.Units
 			{
 				yield return new DarkWarpLordBasicWeapon();
 				yield return new DarkWarpLordBasicAtkAOE();
+				yield return new DarkWarpLordDarkWarpAnnihilation();
 			}
 		}
 	}

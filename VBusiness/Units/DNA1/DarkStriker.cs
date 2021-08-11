@@ -51,6 +51,7 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new DarkStrikerBasicWeapon();
+				yield return new DarkStrikerGreaterMulti();
 			}
 		}
 	}

@@ -56,6 +56,7 @@ namespace VBusiness.Units
 			{
 				yield return new ReaverBasicWeapon();
 				yield return new ReaverBasicAttackAOE();
+				yield return new ReaverUnstableScarab();
 			}
 		}
 	}

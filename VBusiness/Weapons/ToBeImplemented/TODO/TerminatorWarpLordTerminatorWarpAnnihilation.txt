@@ -1,0 +1,7 @@
+﻿namespace VBusiness.Weapons
+{
+	class TerminatorWarpLordTerminatorWarpAnnihilation2
+	{
+		// the damage of this has been implemented, but whenever it's cast we gain 5% shields, which hasn't been implemented yet
+	}
+}

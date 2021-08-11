@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using VBusiness.Weapons;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -50,7 +50,18 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new ArchDominatorBasicWeapon();
+				yield return new ArchDominatorDuplicatedDiscord();
 			}
+		}
+
+		public override IDisposable ApplyPassiveEffect(VLoadout loadout)
+		{
+			loadout.Stats.UpdateDamageReduction("ADomFortitude", 10);
+
+			return new DisposableAction(() =>
+			{
+				loadout.Stats.UpdateDamageReduction("ADomFortitude", -10);
+			});
 		}
 	}
 }

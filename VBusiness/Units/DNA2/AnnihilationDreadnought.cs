@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using VBusiness.Weapons;
 using VEntityFramework.Model;
 
@@ -52,6 +50,7 @@ namespace VBusiness.Units
 			{
 				yield return new AnnihilationDreadnoughtBasicWeapon();
 				yield return new AnnihilationDreadnaughtBasicAtkAOE();
+				yield return new AnnihilationDreadnoughtAnnihilationCannon();
 			}
 		}
 	}

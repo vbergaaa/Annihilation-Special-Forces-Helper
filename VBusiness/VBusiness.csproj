@@ -5,19 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Weapons\ToBeImplemented\AnnihilationDreadnoughtUnstableBarrier.txt" />
+    <None Remove="Weapons\ToBeImplemented\BerserkerWarpLordBerserkerWarpAnnihilation.txt" />
     <None Remove="Weapons\ToBeImplemented\BladeMasterMartialStance.txt" />
     <None Remove="Weapons\ToBeImplemented\BladeMasterMasterDash.txt" />
+    <None Remove="Weapons\ToBeImplemented\DreadnoughtBarrier.txt" />
+    <None Remove="Weapons\ToBeImplemented\MirrorStrikerBlink.txt" />
     <None Remove="Weapons\ToBeImplemented\OmniBladerOmniDash.txt" />
     <None Remove="Weapons\ToBeImplemented\OmniBladerOmniPotence.txt" />
     <None Remove="Weapons\ToBeImplemented\OmniBladerSupremeMartialStance.txt" />
+    <None Remove="Weapons\ToBeImplemented\ParadoxStrikerBlink.txt" />
+    <None Remove="Weapons\ToBeImplemented\SplitterAdeptSplitTransfer.txt" />
+    <None Remove="Weapons\ToBeImplemented\StonePrisonerGroundSmash.txt" />
+    <None Remove="Weapons\ToBeImplemented\TerminatorWarpLordTerminatorWarpAnnihilation.txt" />
+    <None Remove="Weapons\ToBeImplemented\TerminatorWarpLordTerminatorWhirlwind.txt" />
+    <None Remove="Weapons\ToBeImplemented\UnstableDreadnoughtUnstableBarrier.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Weapons\ToBeImplemented\TODO\OmniBladerOmniPotence.txt" />
-    <Compile Include="Weapons\ToBeImplemented\TODO\OmniBladerOmniDash.txt" />
-    <Compile Include="Weapons\ToBeImplemented\TODO\OmniBladerSupremeMartialStance.txt" />
-    <Compile Include="Weapons\ToBeImplemented\TODO\BladeMasterMartialStance.txt" />
-    <Compile Include="Weapons\ToBeImplemented\TODO\BladeMasterMasterDash.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\SplitterAdeptSplitTransfer.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\TerminatorWarpLordTerminatorWhirlwind.txt" />
   </ItemGroup>
 
   <ItemGroup>

@@ -56,6 +56,8 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new WrathWalkerBasicWeapon();
+				yield return new WrathwalkerTaldarimBeam();
+				yield return new WrathWalkerWrathfulCharge();
 			}
 		}
 	}

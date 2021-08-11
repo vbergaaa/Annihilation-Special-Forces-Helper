@@ -1,0 +1,10 @@
+﻿namespace VBusiness.Weapons
+{
+	class SplitterAdeptSplitTransfer
+	{
+// in normal gameplay, you don't use this ability, so choosing to exclude it
+		// charge cd: 20
+		// atk enemies under shade
+		// shade last 10s
+	}
+}

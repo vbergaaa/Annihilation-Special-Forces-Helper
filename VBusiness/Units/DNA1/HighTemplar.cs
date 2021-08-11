@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using VBusiness.Weapons;
 using VEntityFramework.Model;
 
@@ -49,7 +47,9 @@ namespace VBusiness.Units
 		{
 			get
 			{
-				yield return new TemplarBasicWeapon(); // as far as I can tell, this is the same weapon as the regular temp
+				yield return new TemplarBasicWeapon();
+				yield return new HighTemplarStorm();
+				yield return new HighTemplarAutoStorm();
 			}
 		}
 	}

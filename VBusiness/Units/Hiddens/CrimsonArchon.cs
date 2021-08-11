@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using VBusiness.Weapons;
 using VEntityFramework.Model;
 
@@ -60,6 +58,7 @@ namespace VBusiness.Units
 			{
 				yield return new CrimsonArchonBasicWeapon();
 				yield return new CrimsonArchonBasicAttackAOE();
+				yield return new HighTemplarStorm();
 			}
 		}
 	}
