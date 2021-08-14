@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using VBusiness.Weapons;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -58,7 +60,20 @@ namespace VBusiness.Units
 			{
 				yield return new PrisonerBasicWeapon();
 				yield return new PrisonerBasicAtkAOE();
+				yield return new PrisonerBerserkerAOE();
 			}
+		}
+
+		public override IDisposable ApplyPassiveEffect(VLoadout loadout)
+		{
+			loadout.Stats.Attack += 30;
+			loadout.Stats.UpdateAttackSpeed("Berserker", 30);
+
+			return new DisposableAction(() =>
+			{
+				loadout.Stats.Attack -= 30;
+				loadout.Stats.UpdateAttackSpeed("Berserker", -30);
+			});
 		}
 	}
 }

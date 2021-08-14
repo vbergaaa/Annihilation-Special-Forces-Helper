@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using VBusiness.Weapons;
+using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -57,7 +57,20 @@ namespace VBusiness.Units
 			get
 			{
 				yield return new StonePrisonerBasicWeapon();
+				yield return new StonePrisonerBerserkerAOE();
 			}
+		}
+
+		public override IDisposable ApplyPassiveEffect(VLoadout loadout)
+		{
+			loadout.Stats.Attack += 30;
+			loadout.Stats.UpdateAttackSpeed("Berserker", 30);
+
+			return new DisposableAction(() =>
+			{
+				loadout.Stats.Attack -= 30;
+				loadout.Stats.UpdateAttackSpeed("Berserker", -30);
+			});
 		}
 	}
 }

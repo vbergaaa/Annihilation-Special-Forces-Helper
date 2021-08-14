@@ -9,6 +9,9 @@
     <None Remove="Weapons\ToBeImplemented\BerserkerWarpLordBerserkerWarpAnnihilation.txt" />
     <None Remove="Weapons\ToBeImplemented\BladeMasterMartialStance.txt" />
     <None Remove="Weapons\ToBeImplemented\BladeMasterMasterDash.txt" />
+    <None Remove="Weapons\ToBeImplemented\CrimsonArchonDarkResilience.txt" />
+    <None Remove="Weapons\ToBeImplemented\CrisonArchonShieldMastery.txt" />
+    <None Remove="Weapons\ToBeImplemented\DarkArchonDarkResilience.txt" />
     <None Remove="Weapons\ToBeImplemented\DreadnoughtBarrier.txt" />
     <None Remove="Weapons\ToBeImplemented\MirrorStrikerBlink.txt" />
     <None Remove="Weapons\ToBeImplemented\OmniBladerOmniDash.txt" />
@@ -19,12 +22,23 @@
     <None Remove="Weapons\ToBeImplemented\StonePrisonerGroundSmash.txt" />
     <None Remove="Weapons\ToBeImplemented\TerminatorWarpLordTerminatorWarpAnnihilation.txt" />
     <None Remove="Weapons\ToBeImplemented\TerminatorWarpLordTerminatorWhirlwind.txt" />
+    <None Remove="Weapons\ToBeImplemented\TODO\AnnihilationDreadnoughtAnnihilationCore.txt" />
+    <None Remove="Weapons\ToBeImplemented\TODO\ArchonFamilyOpenFires.txt" />
     <None Remove="Weapons\ToBeImplemented\UnstableDreadnoughtUnstableBarrier.txt" />
+    <None Remove="Weapons\ToBeImplemented\WingedArchonSuperShieldMastery.txt" />
+    <None Remove="Weapons\ToBeImplemented\WingedArchonWingedResilence.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Weapons\ToBeImplemented\TODO\AnnihilationDreadnoughtAnnihilationCore.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\CrisonArchonShieldMastery.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\CrimsonArchonDarkResilience.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\DarkArchonDarkResilience.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\ArchonFamilyOpenFires.txt" />
     <Compile Include="Weapons\ToBeImplemented\TODO\SplitterAdeptSplitTransfer.txt" />
     <Compile Include="Weapons\ToBeImplemented\TODO\TerminatorWarpLordTerminatorWhirlwind.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\WingedArchonWingedResilence.txt" />
+    <Compile Include="Weapons\ToBeImplemented\TODO\WingedArchonSuperShieldMastery.txt" />
   </ItemGroup>
 
   <ItemGroup>

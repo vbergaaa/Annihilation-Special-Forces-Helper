@@ -58,6 +58,7 @@ namespace VBusiness.Units
 				yield return new DarkArchonBasicWeapon();
 				yield return new DarkArchonBasicAttackAOE();
 				yield return new TemplarStorm();
+				yield return new DarkArchonOpenFire();
 			}
 		}
 	}

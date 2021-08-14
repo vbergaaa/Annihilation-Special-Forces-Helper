@@ -1,0 +1,6 @@
+﻿// Archon - done
+//
+// Dark Archon,		gain 1 armor for 5 seconds for each target hit
+// Crimson Archon,	gain 1 armor for 5 seconds for each target hit
+//
+// Winged Archon,	gain 2 armor for 5 seconds for each target hit

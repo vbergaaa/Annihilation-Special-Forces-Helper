@@ -1,8 +1,6 @@
-﻿using VEntityFramework.Model;
-
-namespace VBusiness.Weapons
+﻿namespace VBusiness.Weapons
 {
-	public class LightAdeptBasicWeapon : BasicAttackWeapon
+	public class LightAdeptBasicWeapon : BaseAdeptBounceWeapon
 	{
 		public override double BaseAttack => 25;
 
@@ -10,9 +8,10 @@ namespace VBusiness.Weapons
 
 		public override double AttackIncrement => 1.25;
 
-		protected override double GetActualWeaponPeriod(VLoadout loadout)
-		{
-			return WeaponHelper.GetAttackPeriodWithAdeptAnnihilationTransfer(loadout, base.GetActualWeaponPeriod(loadout), cooldown: 16, aoeTargets: 4, attacksInDuration: 5);
-		}
+		protected override int MaxBounces => 1; // this is really 0, but the base class logic requires this be > 0
+
+		protected override double BounceDamagePercentage => throw new System.NotImplementedException();
+
+		protected override bool IncludeTransferInDamageCalcs => true;
 	}
 }

@@ -59,6 +59,7 @@ namespace VBusiness.Units
 				yield return new CrimsonArchonBasicWeapon();
 				yield return new CrimsonArchonBasicAttackAOE();
 				yield return new HighTemplarStorm();
+				yield return new CrimsonArchonOpenFire();
 			}
 		}
 	}

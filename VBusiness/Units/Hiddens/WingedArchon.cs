@@ -59,6 +59,8 @@ namespace VBusiness.Units
 				yield return new WingedArchonBasicWeapon();
 				yield return new WingedArchonBasicAttackAOE();
 				yield return new WingedArchonWingedStorm();
+				yield return new WingedArchonWingedOpenFire();
+				yield return new WingedArchonWingedPower();
 			}
 		}
 	}

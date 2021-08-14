@@ -122,6 +122,8 @@ namespace VEntityFramework.Model
 			get => fCriticalDamage;
 			set
 			{
+				if (value > fCriticalDamage + 200) 
+				{ }
 				fCriticalDamage = value;
 				OnPropertyChanged(nameof(CriticalDamageForBinding));
 				OnPropertyChanged(nameof(Damage));

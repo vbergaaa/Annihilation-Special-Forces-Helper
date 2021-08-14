@@ -1,0 +1,10 @@
+﻿namespace VBusiness.Weapons
+{
+	class AnnihilationDreadnoughtAnnihilationCore2
+	{
+		// 10% chance on getting hit
+		// .75 cd
+		// when this happens we heal for 5% shields
+		// damagae part is implemented
+	}
+}

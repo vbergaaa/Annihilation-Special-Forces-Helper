@@ -50,6 +50,7 @@ namespace VBusiness.Units
 			{
 				yield return new UnstableDreadnoughtBasicWeapon();
 				yield return new UnstableDreadnoughtBasicAttackAOE();
+				yield return new UnstableDreadnoughtUnstableCore();
 			}
 		}
 	}

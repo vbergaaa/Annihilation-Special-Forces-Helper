@@ -12,9 +12,9 @@ namespace VBusiness.Weapons
 
 		public abstract override double AttackIncrement { get; }
 
-		protected override double GetActualWeaponPeriod(VLoadout loadout)
+		protected internal override double GetActualWeaponPeriod(VLoadout loadout)
 		{
-			return BaseAttackPeriod / (loadout.Stats.CooldownSpeed / 100);
+			return AbilityCooldown / (loadout.Stats.CooldownSpeed / 100);
 		}
 	}
 }

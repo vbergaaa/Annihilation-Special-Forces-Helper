@@ -59,7 +59,7 @@ namespace VBusiness.Weapons
 			return BaseAttack + loadout.Upgrades.AttackUpgrade * AttackIncrement;
 		}
 
-		protected virtual double GetActualWeaponPeriod(VLoadout loadout)
+		protected internal virtual double GetActualWeaponPeriod(VLoadout loadout)
 		{
 			var rawAttackSpeed = BaseAttackPeriod * Math.Pow(0.96, loadout.Upgrades.AttackSpeedUpgrade);
 			var actualAttackSpeed = rawAttackSpeed / (loadout.Stats.AttackSpeed / 100);

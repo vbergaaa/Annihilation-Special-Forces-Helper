@@ -1,8 +1,6 @@
-﻿using VEntityFramework.Model;
-
-namespace VBusiness.Weapons
+﻿namespace VBusiness.Weapons
 {
-	public class ForgedAdeptBasicWeapon : BasicAttackWeapon
+	public class ForgedAdeptBasicWeapon : BaseAdeptBounceWeapon
 	{
 		public override double BaseAttack => 35;
 
@@ -10,9 +8,10 @@ namespace VBusiness.Weapons
 
 		public override double AttackIncrement => 1.6;
 
-		protected override double GetActualWeaponPeriod(VLoadout loadout)
-		{
-			return WeaponHelper.GetAttackPeriodWithAdeptAnnihilationTransfer(loadout, base.GetActualWeaponPeriod(loadout), cooldown: 16, aoeTargets: 4, attacksInDuration: 5);
-		}
+		protected override int MaxBounces => 3;
+
+		protected override double BounceDamagePercentage => 80;
+
+		protected override bool IncludeTransferInDamageCalcs => true;
 	}
 }

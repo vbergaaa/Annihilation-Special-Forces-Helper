@@ -50,6 +50,7 @@ namespace VBusiness.Units
 				yield return new TerminatorWarpLordBasicWeapon();
 				yield return new TerminatorWarpLordBasicAtkAOE();
 				yield return new TerminatorWarpLordTerminatorWarpAnnihilation();
+				yield return new TerminatorWarpLordTerminate();
 			}
 		}
 	}

@@ -51,6 +51,7 @@ namespace VBusiness.Units
 				yield return new AnnihilationDreadnoughtBasicWeapon();
 				yield return new AnnihilationDreadnaughtBasicAtkAOE();
 				yield return new AnnihilationDreadnoughtAnnihilationCannon();
+				yield return new AnnihilationDreadnoughtAnnihilationCore();
 			}
 		}
 	}
