@@ -39,7 +39,7 @@ namespace Tests
 		[TestCase(UnitType.PurificationWalker, 108986)]
 		[TestCase(UnitType.Reaver, 25848)]
 		[TestCase(UnitType.ShieldBattery, 1869)]
-		[TestCase(UnitType.SplitterAdept, 4402)]
+		[TestCase(UnitType.SplitterAdept, 7741)]
 		[TestCase(UnitType.StonePrisoner, 5129)]
 		[TestCase(UnitType.Striker, 2859)]
 		[TestCase(UnitType.Templar, 18544)]

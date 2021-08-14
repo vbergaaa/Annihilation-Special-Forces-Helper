@@ -15,6 +15,6 @@ namespace VBusiness.Weapons
 
 		public double BaseAttackPeriod => 1;
 
-		public double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy, ICritChances crits) => 0;
+		public double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy) => 0;
 	}
 }

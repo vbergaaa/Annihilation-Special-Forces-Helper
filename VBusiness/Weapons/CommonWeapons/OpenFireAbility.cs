@@ -29,9 +29,9 @@ namespace VBusiness.Weapons
 		BasicAOEAttackWeapon baseAOEWeapon;
 		protected abstract BasicAOEAttackWeapon GetNewAOEWeapon();
 
-		public override double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy, ICritChances crits)
+		public override double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy)
 		{
-			var singleTargetDamage = base.GetDamageToEnemy(loadout, enemy, crits);
+			var singleTargetDamage = base.GetDamageToEnemy(loadout, enemy);
 			double averageEnemiesHit = GetAttackCount(loadout);
 			return singleTargetDamage * averageEnemiesHit;
 		}

@@ -24,7 +24,7 @@ namespace VBusiness.Weapons
 
 		protected abstract double TargetsHit { get; }
 
-		public override double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy, ICritChances crits)
+		public override double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy)
 		{
 			var abilityCd = AbilityCooldown / (loadout.Stats.CooldownSpeed / 100);
 			var abilityUptime = Duration / abilityCd;
@@ -32,7 +32,7 @@ namespace VBusiness.Weapons
 
 			var extraAttacksModifier = (TargetsHit - BaseWeapon.AttackCount) / BaseWeapon.AttackCount;
 
-			var baseWeaponDamage = BaseWeapon.GetDamageToEnemy(loadout, enemy, crits);
+			var baseWeaponDamage = BaseWeapon.GetDamageToEnemy(loadout, enemy);
 			return baseWeaponDamage * abilityUptime * extraAttacksModifier * (ProcChance / 100);
 		}
 	}

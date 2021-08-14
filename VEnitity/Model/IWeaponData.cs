@@ -7,6 +7,6 @@ namespace VEntityFramework.Model
 		double AttackIncrement { get; }
 		double BaseAttack { get; }
 		double BaseAttackPeriod { get; }
-		double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy, ICritChances crits);
+		double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy);
 	}
 }

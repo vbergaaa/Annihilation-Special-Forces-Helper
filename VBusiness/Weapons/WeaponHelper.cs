@@ -1,4 +1,6 @@
-﻿using VEntityFramework.Model;
+﻿using VEntityFramework;
+using VEntityFramework.Interfaces;
+using VEntityFramework.Model;
 
 namespace VBusiness.Weapons
 {
@@ -17,5 +19,69 @@ namespace VBusiness.Weapons
 			var attackSpeed = weapon.GetActualWeaponPeriod(loadout);
 			return duration / attackSpeed;
 		}
+
+		public static ICritChances Crits
+		{
+			get
+			{
+				if (crits == default)
+				{
+					ErrorReporter.ReportDebug("Crits gotta be set up first");
+					crits = new CritChances() { RegularChance = 1 };
+				}
+				return crits;
+			}
+		}
+		static ICritChances crits;
+
+		public static void RefreshCritChances(VLoadout loadout)
+		{
+			var critChances = GetCritChances(loadout);
+			crits = critChances;
+		}
+
+		internal static CritChances GetCritChances(VLoadout loadout)
+		{
+			var perks = loadout.Perks;
+			var stats = loadout.Stats;
+			var critChances = new CritChances();
+
+			if (stats.CriticalChance <= 0)
+			{
+				critChances.RegularChance = 1.0;
+			}
+			else
+			{
+				var remainingChance = 1.0;
+
+				var blackCritChance = perks.BlackCrits.DesiredLevel > 0 ? stats.CriticalChance / 300.0 : 0;
+				blackCritChance = blackCritChance > 1 ? 1 : blackCritChance;
+				critChances.BlackChance = blackCritChance;
+				remainingChance -= blackCritChance;
+
+				var redCritChance = perks.RedCrits.DesiredLevel > 0 ? remainingChance * stats.CriticalChance / 200 : 0;
+				redCritChance = redCritChance > remainingChance ? remainingChance : redCritChance;
+				critChances.RedChance = redCritChance;
+				remainingChance -= redCritChance;
+
+				var yellowCritChance = remainingChance * stats.CriticalChance / 100;
+				yellowCritChance = yellowCritChance > remainingChance ? remainingChance : yellowCritChance;
+				critChances.YellowChance = yellowCritChance;
+				remainingChance -= yellowCritChance;
+
+				critChances.RegularChance = remainingChance;
+			}
+
+			ErrorReporter.ReportDebug("your crit calculations need to equal 100", () => System.Math.Round(critChances.RegularChance + critChances.YellowChance + critChances.RedChance + critChances.BlackChance, 6) != 1);
+			return critChances;
+		}
+	}
+
+	struct CritChances : ICritChances
+	{
+		public double YellowChance { get; set; }
+		public double RedChance { get; set; }
+		public double BlackChance { get; set; }
+		public double RegularChance { get; set; }
 	}
 }

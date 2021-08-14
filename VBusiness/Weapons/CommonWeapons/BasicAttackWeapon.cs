@@ -18,7 +18,9 @@ namespace VBusiness.Weapons
 
 		public virtual double ArmorPenetration => 0;
 
-		public virtual double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy, ICritChances crits)
+		protected virtual ICritChances Crits => WeaponHelper.Crits;
+
+		public virtual double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy)
 		{
 			// get damage of weapon scaled with damage increase and damage reduction
 			double rawDamage = GetWeaponDamage(loadout);
@@ -44,7 +46,7 @@ namespace VBusiness.Weapons
 			var effectiveDamage = Math.Max(rawDamage - enemyArmor, 0.5);
 
 			// apply an average crit modifier to increase the damage dealt
-			var totalDamage = effectiveDamage * CritModifier(crits, loadout.Stats.CriticalDamage + bonusCritDamage);
+			var totalDamage = effectiveDamage * CritModifier(Crits, loadout.Stats.CriticalDamage + bonusCritDamage);
 
 			// multiple the attack by the number of units hit
 			totalDamage *= AttackCount;

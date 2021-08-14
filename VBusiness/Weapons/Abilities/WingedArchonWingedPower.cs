@@ -15,10 +15,10 @@ namespace VBusiness.Weapons
 
 		protected override double AbilityCooldown => 60;
 
-		public override double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy, ICritChances crits)
+		public override double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy)
 		{
 			// this effectively gets the damage from open fire, and casts it 7 times in the cooldown time
-			var damageDealtByOpenFire = WingedOpenFireWeapon.GetDamageToEnemy(loadout, enemy, crits) * WingedOpenFireWeapon.GetActualWeaponPeriod(loadout);
+			var damageDealtByOpenFire = WingedOpenFireWeapon.GetDamageToEnemy(loadout, enemy) * WingedOpenFireWeapon.GetActualWeaponPeriod(loadout);
 			damageDealtByOpenFire *= 7;
 			return damageDealtByOpenFire / GetActualWeaponPeriod(loadout);
 		}

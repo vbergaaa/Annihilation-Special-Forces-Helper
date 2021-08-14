@@ -16,7 +16,7 @@ namespace VBusiness.Weapons
 
 		public abstract double AttackIncrement { get; }
 
-		public double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy, ICritChances crits)
+		public double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy)
 		{
 			// get damage of weapon scaled with damage increase
 			var rawHeal = BaseAttack + loadout.Upgrades.AttackUpgrade * AttackIncrement;
@@ -24,7 +24,7 @@ namespace VBusiness.Weapons
 			rawHeal *= 1 + loadout.Stats.DamageIncrease / 100;
 
 			// apply an average crit modifier to increase the damage dealt
-			var totalHealed = rawHeal * BasicAttackWeapon.CritModifier(crits, loadout.Stats.CriticalDamage);
+			var totalHealed = rawHeal * BasicAttackWeapon.CritModifier(WeaponHelper.Crits, loadout.Stats.CriticalDamage);
 
 			// divide damage by attack speed to get the damage dealt per second
 			var rawAttackSpeed = BaseAttackPeriod * Math.Pow(0.96, loadout.Upgrades.AttackSpeedUpgrade);

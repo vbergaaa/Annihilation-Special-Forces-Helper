@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using VBusiness.Enemies;
-using VBusiness.Perks;
-using VEntityFramework;
+using VBusiness.Weapons;
 using VEntityFramework.Interfaces;
 using VEntityFramework.Model;
 
@@ -88,14 +87,14 @@ namespace VBusiness.HelperClasses
 			{
 				using (loadout.CurrentUnit.UnitData.ApplyPassiveEffect(loadout))
 				{
-					var crits = GetCritChances(loadout);
+					WeaponHelper.RefreshCritChances(loadout);
 					var composition = GetEnemyCompositionStats(loadout, CompositionOptions.Attack);
 					composition = AdjustComposition(composition, CompositionOptions.Attack);
 
 					var totalDamage = 0.0;
 					foreach (var weapon in loadout.CurrentUnit.UnitData.Weapons)
 					{
-						var damages = composition.Select(x => (x.Chance, Damage: weapon.GetDamageToEnemy(loadout, x.Enemy, crits)));
+						var damages = composition.Select(x => (x.Chance, Damage: weapon.GetDamageToEnemy(loadout, x.Enemy)));
 						var avgDamage = damages.Sum(x => (x.Chance * x.Damage));
 						totalDamage += avgDamage;
 					}
@@ -122,41 +121,6 @@ namespace VBusiness.HelperClasses
 			var strongestMobs = composition.Where(x => x.Enemy.Type == strongestHeroic).Select(x => (x.Chance * multiplierA, x.Enemy));
 			var regularMobs = composition.Where(x => x.Enemy.Type != strongestHeroic).Select(x => (x.Chance * multiplierB, x.Enemy));
 			return strongestMobs.Union(regularMobs);
-		}
-
-		static CritChances GetCritChances(VLoadout loadout)
-		{
-			var perks = loadout.Perks as PerkCollection;
-			var stats = loadout.Stats;
-			var critChances = new CritChances();
-
-			if (stats.CriticalChance <= 0)
-			{
-				critChances.RegularChance = 1.0;
-				return critChances;
-			}
-
-			var remainingChance = 1.0;
-
-			var blackCritChance = perks.BlackCrits.DesiredLevel > 0 ? stats.CriticalChance / 300.0 : 0;
-			blackCritChance = blackCritChance > 1 ? 1 : blackCritChance;
-			critChances.BlackChance = blackCritChance;
-			remainingChance -= blackCritChance;
-
-			var redCritChance = perks.RedCrits.DesiredLevel > 0 ? remainingChance * stats.CriticalChance / 200 : 0;
-			redCritChance = redCritChance > remainingChance ? remainingChance : redCritChance;
-			critChances.RedChance = redCritChance;
-			remainingChance -= redCritChance;
-
-			var yellowCritChance = remainingChance * stats.CriticalChance / 100;
-			yellowCritChance = yellowCritChance > remainingChance ? remainingChance : yellowCritChance;
-			critChances.YellowChance = yellowCritChance;
-			remainingChance -= yellowCritChance;
-
-			critChances.RegularChance = remainingChance;
-
-			ErrorReporter.ReportDebug("your crit calculations need to equal 100", () => Math.Round(critChances.RegularChance + critChances.YellowChance + critChances.RedChance + critChances.BlackChance, 6) != 1);
-			return critChances;
 		}
 
 		#endregion
@@ -333,14 +297,6 @@ namespace VBusiness.HelperClasses
 #if DEBUG // this is for debugging display - DebuggerDisplayAttribute doesn't appear to work for nested classes
 			public override string ToString() => $"{Type} - tit:{IsTitan}, Arm:{Armor}, DR:{DamageReduction}";
 #endif
-		}
-
-		struct CritChances : ICritChances
-		{
-			public double YellowChance { get; set; }
-			public double RedChance { get; set; }
-			public double BlackChance { get; set; }
-			public double RegularChance { get; set; }
 		}
 
 		#endregion

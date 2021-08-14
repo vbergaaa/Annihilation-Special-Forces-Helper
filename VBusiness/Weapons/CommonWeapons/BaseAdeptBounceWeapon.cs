@@ -31,7 +31,7 @@ namespace VBusiness.Weapons
 			var newAttacksPerSecond = originalAttackPerSecond + additionalAttacksPerSecond;
 			return 1 / newAttacksPerSecond;
 		}
-		public override double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy, ICritChances crits)
+		public override double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy)
 		{
 			// if crit, deal 80%-90% damage to nearby enemy
 			// max bounce 3-4
@@ -41,7 +41,7 @@ namespace VBusiness.Weapons
 			startingDamage *= 1 + loadout.Stats.DamageIncrease / 100;
 			startingDamage *= (1 - enemy.DamageReduction / 100);
 
-			var damageDealt = GetAdeptDamage(loadout, startingDamage, enemy, crits);
+			var damageDealt = GetAdeptDamage(loadout, startingDamage, enemy, Crits);
 
 			// I'm intentionally removing this attack count, because SA deals a *stupid* amount of damage as it is already, 
 			// (100x stronger than SuperHero units at max stats) and we don't need to multiply it by 3. It can be humble
