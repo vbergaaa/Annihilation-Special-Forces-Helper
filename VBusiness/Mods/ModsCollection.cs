@@ -194,33 +194,42 @@ namespace VBusiness.Mods
 			get
 			{
 				var difficulty = Loadout.UnitConfiguration.DifficultyLevel;
-				var coreScore = AllMods.Sum(x => x.Score * x.CurrentLevel);
+				var score = AllMods.Sum(x => x.Score * x.CurrentLevel);
 
 				if (difficulty >= DifficultyLevel.Impossible)
 				{
-					coreScore -= Tier.CurrentLevel * Tier.Score; // tier up mod isn't implemented in Imp+ yet
+					score -= Tier.CurrentLevel * Tier.Score; // tier up mod isn't implemented in Imp+ yet
 					ErrorReporter.ReportDebug("Time to fix this, as tier should now be implemented for Imp+", () => difficulty > DifficultyLevel.ZeroV);
 				}
 
+				if (difficulty >= DifficultyLevel.Hard)
+				{
+					score = (int)(score * (1.0 + .0249 * Potency.CurrentLevel));
+				}
+
+				if (difficulty >= DifficultyLevel.Nightmare)
+				{
+					score = (int)(score * (1.0 + .0249 * Difficulty.CurrentLevel));
+				}
+
 				var maxModBonuses = AllMods.Count(x => x.CurrentLevel == x.MaxValue);
-				var score = coreScore * (1 + maxModBonuses * 0.005);
+				score += score * (maxModBonuses / 2) / 100;
 
 				if (difficulty >= DifficultyLevel.Hard && difficulty < DifficultyLevel.Nightmare)
 				{
-					score *= 0.8;
-					score *= 1 + Potency.CurrentLevel * 0.02485; // using 0.02485 because sc2 has funky rounding errors, and this seems to give our exact result
+					score *= 80;
+					score /= 100;
 				}
 				else if (difficulty >= DifficultyLevel.Nightmare)
 				{
-					score *= 0.64;
-					score *= 1 + Potency.CurrentLevel * 0.02485; // using 0.02485 because sc2 has funky rounding errors, and this seems to give our exact result
-					score *= 1 + Difficulty.CurrentLevel * 0.02485; // using 0.02485 because sc2 has funky rounding errors, and this seems to give our exact result
+					score *= 64;
+					score /= 100;
 				}
 
 #if DEBUG
 				if (PreventRoundingModscoreForTest)
 				{
-					return (int)score;
+					return score;
 				}
 #endif
 				return (int)Math.Min(2000, score);
@@ -231,7 +240,7 @@ namespace VBusiness.Mods
 		internal bool PreventRoundingModscoreForTest { get; set; }
 #endif
 
-#endregion
+		#endregion
 
 
 	}
