@@ -8,9 +8,7 @@ namespace VBusiness
 		#region Instance
 
 		[VXML(false)]
-		public static Registry Instance => fRegistry ??= VDataContext.Instance.Get<Registry>();
-
-		static Registry fRegistry;
+		public static new Registry Instance => (Registry)VRegistry.Instance;
 
 		#endregion
 
@@ -20,6 +18,7 @@ namespace VBusiness
 			SyncProfileWithBank = true;
 			SyncLoadoutsWithBank = true;
 			SyncSoulsWithBank = true;
+			LogVerbosity = LogState.Warning;
 		}
 	}
 }

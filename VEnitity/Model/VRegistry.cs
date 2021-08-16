@@ -6,9 +6,19 @@ namespace VEntityFramework.Model
 	[TopLevelBusinessObject("Registry")]
 	public class VRegistry : BusinessObject
 	{
-		#region Property
-
-		#region SyncProfileWithBank
+		public static VRegistry Instance
+		{
+			get
+			{
+				if (fInstance == null)
+				{
+					fInstance = VDataContext.Instance.Get<VRegistry>();
+				}
+				return fInstance;
+			}
+		}
+		[VXML(false)]
+		static VRegistry fInstance;
 
 		[VXML(true)]
 		public bool SyncProfileWithBank
@@ -26,10 +36,6 @@ namespace VEntityFramework.Model
 		}
 		bool fSyncProfileWithBank;
 
-		#endregion
-
-		#region SyncLoadoutsWithBank
-
 		[VXML(true)]
 		public bool SyncLoadoutsWithBank
 		{
@@ -45,10 +51,6 @@ namespace VEntityFramework.Model
 			}
 		}
 		bool fSyncLoadoutsWithBank;
-
-		#endregion
-
-		#region SyncSoulsWithBank
 
 		[VXML(true)]
 		public bool SyncSoulsWithBank
@@ -66,10 +68,6 @@ namespace VEntityFramework.Model
 		}
 		bool fSyncSoulsWithBank;
 
-		#endregion
-
-		#region BankFileOverride
-
 		[VXML(true)]
 		public string BankFileOverride
 		{
@@ -86,10 +84,9 @@ namespace VEntityFramework.Model
 		}
 		string fBankFileOverride;
 
-		#endregion
-
-		#endregion
-
 		public override string BizoName => "Registry";
+
+		[VXML(true)]
+		public LogState LogVerbosity { get; set; }
 	}
 }

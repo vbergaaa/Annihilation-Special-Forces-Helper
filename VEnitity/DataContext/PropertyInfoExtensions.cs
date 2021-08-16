@@ -116,6 +116,7 @@ namespace VEntityFramework.Data
 				"SoulType" => EnumHelper.GetEnumFromDescription<SoulType>(value),
 				"UnitType" => EnumHelper.GetEnumFromDescription<UnitType>(value),
 				"RoomNumber" => EnumHelper.GetEnumFromDescription<RoomNumber>(value),
+				"LogState" => EnumHelper.GetEnumFromDescription<LogState>(value),
 				_ => HandleUnknownType(propertyType),
 			};
 		}

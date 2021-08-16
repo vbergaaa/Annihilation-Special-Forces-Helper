@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using VEntityFramework.Data;
+using VEntityFramework.Model;
 
 namespace VEntityFramework
 {
@@ -22,12 +21,14 @@ namespace VEntityFramework
 
 		public static void ReportDebug(string message, Func<bool> codeToRun = null)
 		{
-#if DEBUG
 			if (codeToRun == null || codeToRun())
 			{
+				Log.Report(message + "\r\n\r\n" + Environment.StackTrace, LogState.Warning);
+
+#if DEBUG
 				throw new DeveloperException(message);
-			}
 #endif
+			}
 		}
 	}
 }

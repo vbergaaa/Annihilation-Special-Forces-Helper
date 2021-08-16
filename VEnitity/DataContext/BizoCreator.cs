@@ -1,5 +1,6 @@
 ﻿using EnumsNET;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Loader;
@@ -49,7 +50,26 @@ namespace VEntityFramework.DataContext
 				return null;
 			}
 
+			if (VBusinessBizoTypeMappings.TryGetValue(bizoType.FullName, out var mappedType))
+			{
+				var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(Directory.GetCurrentDirectory() + "/VBusiness.dll");
+				var myType = assembly.GetType(mappedType);
+				var ctor = myType.GetConstructors()[0];
+				return (BusinessObject)ctor.Invoke(parameters);
+			}
+
 			return (BusinessObject)bizoType.Assembly.CreateInstance(bizoType.FullName);
+		}
+
+		public static IDictionary<string, string> VBusinessBizoTypeMappings => vBusinessBizoTypeMappings ??= GetVBusinessBizoTypeMappings();
+		static IDictionary<string, string> vBusinessBizoTypeMappings;
+
+		static IDictionary<string, string> GetVBusinessBizoTypeMappings()
+		{
+			return new Dictionary<string, string>()
+			{
+				{ "VEntityFramework.Model.VRegistry", "VBusiness.Registry" }
+			};
 		}
 	}
 }

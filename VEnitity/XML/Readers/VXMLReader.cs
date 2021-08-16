@@ -76,7 +76,7 @@ namespace VEntityFramework.XML
 				var typeName = GetSoulName(documentElement);
 				return BizoCreator.Create(type, typeName);
 			}
-			return (BusinessObject)type.Assembly.CreateInstance(type.FullName);
+			return BizoCreator.Create(type);
 		}
 
 		string GetSoulName(XmlElement documentElement)

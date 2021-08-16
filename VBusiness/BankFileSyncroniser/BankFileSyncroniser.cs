@@ -4,7 +4,6 @@ using System.Linq;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
 using VBusiness.Souls;
-using VEntityFramework;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
 
@@ -28,10 +27,11 @@ namespace VBusiness
 				profile.Gems = decoder.Gems;
 				profile.ModScore = GetTotalModScoresFromString(decoder.ModScores);
 				profile.Save();
+				Log.ReportInfo("Successfully Updated Profile From Bank");
 			}
-			catch
+			catch (Exception ex)
 			{
-				ErrorReporter.ReportDebug("Something went wrong reading the bank");
+				Log.ReportError("Failed to update profile from bank.", ex);
 			}
 		}
 
@@ -76,6 +76,10 @@ namespace VBusiness
 				loadout.Slot = i;
 				UpdateLoadout(loadout);
 			}
+			else
+			{
+				Log.ReportInfo($"Skipped syncing loadout {i} as SyncWithBank was set to false");
+			}
 		}
 
 		public static void UpdateLoadout(VLoadout loadout)
@@ -84,10 +88,12 @@ namespace VBusiness
 			{
 				SetPerksFromString(loadout);
 				loadout.Save();
+				Log.ReportInfo($"Successfully updated loadout {loadout.Slot} from Bank");
+
 			}
 			catch (Exception ex)
 			{
-				ErrorReporter.ReportDebug($"Failed to set perks from bank file: ${ex.Message}");
+				Log.ReportError($"Failed to update loadout {loadout.Slot} from bank.", ex);
 			}
 		}
 
@@ -131,7 +137,7 @@ namespace VBusiness
 				}
 				catch (Exception ex)
 				{
-					ErrorReporter.ReportDebug($"Failed to sync soul {ex.Message}");
+					Log.ReportError($"Failed to sync soul {i}", ex);
 				}
 			}
 		}
@@ -146,19 +152,24 @@ namespace VBusiness
 			{
 				var soul = GetSoulFromString(saveSlot, soulName, soulString);
 				soulString = soulString.Substring(7);
-				soul.Attack = GetNextValue(ref soulString, soul);
-				soul.AttackSpeed = GetNextValue(ref soulString, soul);
-				soul.Vitals = GetNextValue(ref soulString, soul);
-				soul.Minerals = GetNextValue(ref soulString, soul) * 1000;
-				soul.Kills = GetNextValue(ref soulString, soul) * 100;
-				soul.Armor = GetNextValue(ref soulString, soul);
-				soul.CriticalChance = GetNextValue(ref soulString, soul);
-				soul.CriticalDamage = GetNextValue(ref soulString, soul);
+				soul.Attack = GetNextValue(ref soulString);
+				soul.AttackSpeed = GetNextValue(ref soulString);
+				soul.Vitals = GetNextValue(ref soulString);
+				soul.Minerals = GetNextValue(ref soulString) * 1000;
+				soul.Kills = GetNextValue(ref soulString) * 100;
+				soul.Armor = GetNextValue(ref soulString);
+				soul.CriticalChance = GetNextValue(ref soulString);
+				soul.CriticalDamage = GetNextValue(ref soulString);
 				soul.Save();
+				Log.ReportInfo($"Successfully synced soul {saveSlot} with bank");
+			}
+			else
+			{
+				Log.ReportInfo($"Skipped syncing soul {saveSlot} as it appears to be empty");
 			}
 		}
 
-		static int GetNextValue(ref string soulString, Soul soul)
+		static int GetNextValue(ref string soulString)
 		{
 			if (soulString.Length >= 2)
 			{
