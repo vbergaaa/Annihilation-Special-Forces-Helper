@@ -48,7 +48,7 @@ namespace VUserInterface
 			this.IncomeTabPage = new DPITabPage();
 			this.ModsTabPage = new DPITabPage();
 			this.PerkPageControl = new VPerkCollectionControl();
-			this.LoadoutBindingSource = new System.Windows.Forms.BindingSource();
+			this.LoadoutBindingSource = new VBindingSource();
 			this.StatsControl = new VStatsControl();
 			this.IncomeControl = new IncomeStatisticsControl();
 			this.GemsControl = new VGemCollectionControl();

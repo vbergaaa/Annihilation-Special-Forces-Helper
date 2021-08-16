@@ -40,7 +40,7 @@ namespace VUserInterface
 			this.CostLabel = new VLabel();
 			this.CurrentLevelIncrementor = new VIncrementor();
 			this.CostCaption = new VLabel();
-			this.perkBindingSource = new System.Windows.Forms.BindingSource();
+			this.perkBindingSource = new VBindingSource();
 			this.perkInfo = new ToolTip();
 			((System.ComponentModel.ISupportInitialize)(this.perkBindingSource)).BeginInit();
 			// 

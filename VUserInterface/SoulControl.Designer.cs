@@ -44,7 +44,7 @@ namespace VUserInterface
 			this.KillsLabel = new VLabel();
 			this.AddNewSoulButton = new DPIButton();
 			this.SoulComboBox = new System.Windows.Forms.ComboBox();
-			this.BindingSource = new BindingSource();
+			this.BindingSource = new VBindingSource();
 			((ISupportInitialize)this.BindingSource).BeginInit();
 			this.SuspendLayout();
 			//

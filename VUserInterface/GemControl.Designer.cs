@@ -37,7 +37,7 @@ namespace VUserInterface
 			this.CostLabel = new VLabel();
 			this.CurrentLevelCaption = new VLabel();
 			this.CurrentLevelIncrementor = new VIncrementor();
-			this.gemBindingSource = new System.Windows.Forms.BindingSource();
+			this.gemBindingSource = new VBindingSource();
 			((System.ComponentModel.ISupportInitialize)(this.gemBindingSource)).BeginInit();
 			// 
 			// CostCaption

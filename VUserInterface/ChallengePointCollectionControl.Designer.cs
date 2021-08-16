@@ -34,7 +34,7 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.bindingSource = new BindingSource();
+			this.bindingSource = new VBindingSource();
 			this.AttackCPControl = new ChallengePointControl();
 			this.CriticalChanceCPControl = new ChallengePointControl();
 			this.CriticalDamageCPControl = new ChallengePointControl();

@@ -41,7 +41,7 @@ namespace VUserInterface
 			this.Perk4Control = new VPerkControl();
 			this.Perk5Control = new VPerkControl();
 			this.Perk6Control = new VPerkControl();
-			this.perksBindingSource = new System.Windows.Forms.BindingSource();
+			this.perksBindingSource = new VBindingSource();
 			this.MainGroupBox = new DPIGroupBox();
 			this.PageCostLabel = new VLabel();
 			this.TotalCostLabel = new VLabel();

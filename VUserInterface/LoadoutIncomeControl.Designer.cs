@@ -34,7 +34,7 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.BindingSource = new BindingSource();
+			this.BindingSource = new VBindingSource();
 			this.FarmRoomDropBox = new VDropBox();
 			this.BrutaliskOverrideControl = new BrutaliskOverrideControl();
 			this.BrutaliskOverrideCheckBox = new VCheckControl();

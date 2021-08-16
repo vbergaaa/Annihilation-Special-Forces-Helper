@@ -42,7 +42,7 @@ namespace VUserInterface
 			this.RankRevisionLabel = new VLabel();
 			this.MineralsPerMinuteLabel = new VLabel();
 			this.KillsPerMinuteLabel = new VLabel();
-			this.bindingSource = new System.Windows.Forms.BindingSource();
+			this.bindingSource = new VBindingSource();
 			this.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//

@@ -53,7 +53,7 @@ namespace VUserInterface
 			this.Page1Button = new VUserInterface.CommonControls.DPIButton();
 			this.Page2Button = new VUserInterface.CommonControls.DPIButton();
 			this.Page3Button = new VUserInterface.CommonControls.DPIButton();
-			this.BindingSource = new BindingSource();
+			this.BindingSource = new VBindingSource();
 			this.SuspendLayout();
 			//
 			// BindingSource

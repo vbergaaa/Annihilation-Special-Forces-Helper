@@ -35,7 +35,7 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.bindingSource = new BindingSource();
+			this.bindingSource = new VBindingSource();
 			this.Soul1Control = new SoulControl();
 			this.Soul2Control = new SoulControl();
 			this.Soul3Control = new SoulControl();

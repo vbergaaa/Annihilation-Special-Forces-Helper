@@ -41,7 +41,7 @@ namespace VUserInterface
 			this.CheckBox4 = new VCheckBox();
 			this.CheckBox5 = new VCheckBox();
 			this.CheckBox6 = new VCheckBox();
-			this.bindingSource = new BindingSource();
+			this.bindingSource = new VBindingSource();
 			//
 			// bindingSource
 			//

@@ -35,7 +35,7 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.BindingSource = new BindingSource();
+			this.BindingSource = new VBindingSource();
 			this.LoadoutNameTextBox = new VTextBox();
 			this.SlotNumberTextBox = new VTextBox();
 			this.SyncWithBankCheckBox = new VCheckControl();

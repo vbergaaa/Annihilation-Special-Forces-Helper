@@ -36,7 +36,7 @@ namespace VUserInterface
 			this.TypeCaption = new VLabel();
 			this.TypeDropBox = new VDropBox();
 			this.SaveSlotTextBox = new VTextBox();
-			this.BindingSource = new BindingSource();
+			this.BindingSource = new VBindingSource();
 			this.AttackIncrementor = new VIncrementor();
 			this.AttackSpeedIncrementor = new VIncrementor();
 			this.VitalsIncrementor = new VIncrementor();

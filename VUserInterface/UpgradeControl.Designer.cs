@@ -38,7 +38,7 @@ namespace VUserInterface
 			this.ShieldsArmorIncrementor = new VUserInterface.CommonControls.VIncrementor();
 			this.HealthIncrementor = new VUserInterface.CommonControls.VIncrementor();
 			this.HealthArmorIncrementor = new VUserInterface.CommonControls.VIncrementor();
-			this.BindingSource = new System.Windows.Forms.BindingSource();
+			this.BindingSource = new VBindingSource();
 			this.SuspendLayout();
 			//
 			// BindingSource

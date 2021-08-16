@@ -38,7 +38,7 @@ namespace VUserInterface
 			components = new System.ComponentModel.Container();
 			this.TotalModScoreLabel = new VLabel();
 			this.DifficultyDropBox = new VDropBox();
-			this.BindingSource = new BindingSource();
+			this.BindingSource = new VBindingSource();
 			this.DamageIncrementor = new VIncrementor();
 			this.HealthIncrementor = new VIncrementor();
 			this.ArmorIncrementor = new VIncrementor();

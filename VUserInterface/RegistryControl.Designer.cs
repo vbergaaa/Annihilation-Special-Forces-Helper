@@ -33,7 +33,7 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.BindingSource = new BindingSource();
+			this.BindingSource = new VBindingSource();
 			this.SyncProfileBankCheckControl = new VCheckControl();
 			this.SyncLoadoutBankCheckControl = new VCheckControl();
 			this.SyncSoulBankCheckControl = new VCheckControl();

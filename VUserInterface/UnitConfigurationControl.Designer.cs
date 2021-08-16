@@ -36,7 +36,7 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.bindingSource = new BindingSource();
+			this.bindingSource = new VBindingSource();
 			this.UnitsLoadList = new VSelectList();
 			this.CurrentUnitControl = new UnitControl();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();

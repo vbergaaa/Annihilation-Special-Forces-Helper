@@ -38,7 +38,7 @@ namespace VUserInterface
 			components = new System.ComponentModel.Container();
 			this.CostLabel = new VLabel();
 			this.CurrentLevelIncrementor = new VIncrementor();
-			this.bindingSource = new System.Windows.Forms.BindingSource();
+			this.bindingSource = new VBindingSource();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			// 
 			// CostLabel

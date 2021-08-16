@@ -43,7 +43,7 @@ namespace VUserInterface
 			this.CriticalChanceGemControl = new GemControl();
 			this.CriticalDamageGemControl = new GemControl();
 			this.DoubleWarpGemControl = new GemControl();
-			this.BindingSource = new System.Windows.Forms.BindingSource();
+			this.BindingSource = new VBindingSource();
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
 			//
 			// TotalGemsLabel;

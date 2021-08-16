@@ -47,7 +47,7 @@ namespace VUserInterface
 			this.DamageReductionLabel = new VLabel();
 			this.DamageIncreaseLabel = new VLabel();
 			this.AccelLabel = new VLabel();
-			this.statsBindingSource = new System.Windows.Forms.BindingSource();
+			this.statsBindingSource = new VBindingSource();
 			this.DisclaimerLabel = new DPILabel(); 
 			this.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.statsBindingSource)).BeginInit();
