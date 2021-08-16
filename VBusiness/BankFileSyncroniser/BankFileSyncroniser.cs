@@ -83,17 +83,17 @@ namespace VBusiness
 			try
 			{
 				SetPerksFromString(loadout);
+				loadout.Save();
 			}
 			catch (Exception ex)
 			{
 				ErrorReporter.ReportDebug($"Failed to set perks from bank file: ${ex.Message}");
 			}
-			loadout.Save();
 		}
 
 		static void SetPerksFromString(VLoadout loadout)
 		{
-			if (loadout.Slot > 0 && loadout.Slot <= 10 && Registry.Instance.SyncLoadoutsWithBank)
+			if (loadout.Slot > 0 && loadout.Slot <= 10)
 			{
 				var perkString = decoder.GetPerksStringAtSaveSlot(loadout.Slot);
 				var loadoutName = perkString.Substring(0, 15);
