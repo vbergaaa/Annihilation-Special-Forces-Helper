@@ -9,7 +9,7 @@ namespace VUserInterface
 		{
 			if (e.BindingCompleteState != BindingCompleteState.Success)
 			{
-				Log.ReportError("Failed Binding Event", e.Exception);
+				Log.Error("Failed Binding Event", e.Exception);
 			}
 			base.OnBindingComplete(e);
 		}

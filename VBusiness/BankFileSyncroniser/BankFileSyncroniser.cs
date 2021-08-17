@@ -13,7 +13,6 @@ namespace VBusiness
 	{
 
 		static readonly ASFBankDecoder decoder = new ASFBankDecoder(Registry.Instance.BankFileOverride);
-		#region Profile
 
 		public static void UpdateProfile(VProfile profile = null)
 		{
@@ -27,11 +26,11 @@ namespace VBusiness
 				profile.Gems = decoder.Gems;
 				profile.ModScore = GetTotalModScoresFromString(decoder.ModScores);
 				profile.Save();
-				Log.ReportInfo("Successfully Updated Profile From Bank");
+				Log.Info("Successfully Updated Profile From Bank");
 			}
 			catch (Exception ex)
 			{
-				Log.ReportError("Failed to update profile from bank.", ex);
+				Log.Error("Failed to update profile from bank.", ex);
 			}
 		}
 
@@ -50,10 +49,6 @@ namespace VBusiness
 			}
 			return totalScore;
 		}
-
-		#endregion
-
-		#region Perks
 
 		public static void UpdateAllLoadouts()
 		{
@@ -78,7 +73,7 @@ namespace VBusiness
 			}
 			else
 			{
-				Log.ReportInfo($"Skipped syncing loadout {i} as SyncWithBank was set to false");
+				Log.Info($"Skipped syncing loadout {i} as SyncWithBank was set to false");
 			}
 		}
 
@@ -88,12 +83,12 @@ namespace VBusiness
 			{
 				SetPerksFromString(loadout);
 				loadout.Save();
-				Log.ReportInfo($"Successfully updated loadout {loadout.Slot} from Bank");
+				Log.Info($"Successfully updated loadout {loadout.Slot} from Bank");
 
 			}
 			catch (Exception ex)
 			{
-				Log.ReportError($"Failed to update loadout {loadout.Slot} from bank.", ex);
+				Log.Error($"Failed to update loadout {loadout.Slot} from bank.", ex);
 			}
 		}
 
@@ -123,10 +118,6 @@ namespace VBusiness
 			}
 		}
 
-		#endregion
-
-		#region Souls
-
 		public static void UpdateAllSouls()
 		{
 			for (var i = 1; i <= 10; i++)
@@ -137,7 +128,7 @@ namespace VBusiness
 				}
 				catch (Exception ex)
 				{
-					Log.ReportError($"Failed to sync soul {i}", ex);
+					Log.Error($"Failed to sync soul {i}", ex);
 				}
 			}
 		}
@@ -161,11 +152,11 @@ namespace VBusiness
 				soul.CriticalChance = GetNextValue(ref soulString);
 				soul.CriticalDamage = GetNextValue(ref soulString);
 				soul.Save();
-				Log.ReportInfo($"Successfully synced soul {saveSlot} with bank");
+				Log.Info($"Successfully synced soul {saveSlot} with bank");
 			}
 			else
 			{
-				Log.ReportInfo($"Skipped syncing soul {saveSlot} as it appears to be empty");
+				Log.Info($"Skipped syncing soul {saveSlot} as it appears to be empty");
 			}
 		}
 
@@ -225,7 +216,5 @@ namespace VBusiness
 				_ => SoulType.None
 			};
 		}
-
-		#endregion
 	}
 }

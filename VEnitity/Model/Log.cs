@@ -7,7 +7,7 @@ namespace VEntityFramework.Model
 	[TopLevelBusinessObject("Logs")]
 	public class Log : BusinessObject
 	{
-		public static void ReportError(string message, Exception ex)
+		public static void Error(string message, Exception ex)
 		{
 			Report(message, LogState.Error, ex);
 #if DEBUG
@@ -15,7 +15,7 @@ namespace VEntityFramework.Model
 #endif
 		}
 
-		public static void ReportInfo(string message) => Report(message, LogState.Info);
+		public static void Info(string message) => Report(message, LogState.Info);
 		public static void Report(string message, LogState state, Exception ex = null)
 		{
 			var requiredState = VRegistry.Instance.LogVerbosity;

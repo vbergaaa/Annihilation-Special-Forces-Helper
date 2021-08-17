@@ -36,13 +36,21 @@ namespace VEntityFramework.XML
 
 		T ReadXML<T>(string fileName) where T : BusinessObject
 		{
-			var xml = new XmlDocument();
-			var xmlPath = DirectoryManager.GetFullPathWithExtension<T>(fileName);
-			xml.Load(xmlPath);
-			var bizo = (T)CreateBizoFromXML(typeof(T), xml.DocumentElement);
-			bizo.OnLoadedFromXML(new OnLoadedEventArgs(Path.GetFileNameWithoutExtension(fileName)));
-			bizo.XmlLocation = xmlPath;
-			return bizo;
+			try
+			{
+				var xml = new XmlDocument();
+				var xmlPath = DirectoryManager.GetFullPathWithExtension<T>(fileName);
+				xml.Load(xmlPath);
+				var bizo = (T)CreateBizoFromXML(typeof(T), xml.DocumentElement);
+				bizo.OnLoadedFromXML(new OnLoadedEventArgs(Path.GetFileNameWithoutExtension(fileName)));
+				bizo.XmlLocation = xmlPath;
+				return bizo;
+			}
+			catch (Exception ex)
+			{
+				Log.Error($"Failed to read file: {fileName}", ex);
+				return null;
+			}
 		}
 
 		internal BusinessObject CreateBizoFromXML(Type type, XmlElement documentElement)

@@ -18,13 +18,13 @@ namespace ASFLauncher
 		{
 			try
 			{
-				Log.ReportInfo("Begin Initialising files from bank file.");
+				Log.Info("Begin Initialising files from bank file.");
 				InitialiseFilesFromBank();
-				Log.ReportInfo("Finished initialising files from bank.");
+				Log.Info("Finished initialising files from bank.");
 			}
 			catch (Exception ex)
 			{
-				Log.ReportError("Failed to sync bank file", ex);
+				Log.Error("Failed to sync bank file", ex);
 			}
 
 			try
@@ -38,7 +38,7 @@ namespace ASFLauncher
 			}
 			catch (Exception ex)
 			{
-				Log.ReportError("A fatal error occured", ex);
+				Log.Error("A fatal error occured", ex);
 			}
 		}
 
@@ -46,7 +46,7 @@ namespace ASFLauncher
 		{
 			if (args.ExceptionObject is Exception ex)
 			{
-				Log.ReportError("A Global Unhandled Exception occured", ex);
+				Log.Error("A Global Unhandled Exception occured", ex);
 			}
 			else
 			{
@@ -57,13 +57,13 @@ The sender is {sender};
 The stacktrace is:
 {Environment.StackTrace}";
 
-				Log.ReportError(info, null);
+				Log.Error(info, null);
 			}
 		}
 
 		static void ReportError(object sender, ThreadExceptionEventArgs args)
 		{
-			Log.ReportError("A Global Unhandled Exception occured", args.Exception);
+			Log.Error("A Global Unhandled Exception occured", args.Exception);
 		}
 
 		static void InitialiseFilesFromBank()

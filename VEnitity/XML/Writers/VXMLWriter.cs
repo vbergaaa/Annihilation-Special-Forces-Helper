@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.IO;
 using System.Xml;
 using VEntityFramework.Data;
@@ -8,6 +9,8 @@ namespace VEntityFramework.XML
 {
 	class VXMLWriter
 	{
+		int stackOverflowDetector;
+
 		internal void Write(BusinessObject bizo)
 		{
 			var fullFilePath = RenameFileIfNeccessary(bizo);
@@ -43,8 +46,13 @@ namespace VEntityFramework.XML
 
 		void WriteBizoXML(XmlWriter writer, BusinessObject bizo)
 		{
+			stackOverflowDetector += 1;
 			if (bizo != null)
 			{
+				if (stackOverflowDetector >= 20)
+				{
+					GenerateStackOverflowReport(bizo.GetType().FullName);
+				}
 				writer.WriteStartElement(bizo.BizoName);
 				foreach (var property in bizo.GetType().GetProperties())
 				{
@@ -76,6 +84,37 @@ namespace VEntityFramework.XML
 				writer.WriteEndElement();
 				bizo.HasChanges = false;
 			}
+			stackOverflowDetector -= 1;
+		}
+
+		void GenerateStackOverflowReport(string bizoName)
+		{
+			switch (stackOverflowDetector)
+			{
+				case 20:
+					bizo1ForStackOverflowReport = bizoName;
+					break;
+				case 21:
+					bizo2ForStackOverflowReport = bizoName;
+					break;
+				case 22:
+					bizo3ForStackOverflowReport = bizoName;
+					break;
+				case 23:
+					bizo4ForStackOverflowReport = bizoName;
+					break;
+				case 24:
+					bizo5ForStackOverflowReport = bizoName;
+					break;
+				default:
+					throw new StackOverflowException(GetStackOverflowMessage());
+			}
+		}
+
+		string GetStackOverflowMessage()
+		{
+			return $@"A Stack overflow occured when attempting to write a file to xml. The recursion pattern is:
+{bizo1ForStackOverflowReport} > {bizo2ForStackOverflowReport} > {bizo3ForStackOverflowReport} > {bizo4ForStackOverflowReport} > {bizo5ForStackOverflowReport};";
 		}
 
 		void WriteXmlObject(XmlWriter writer, IXmlObject xmlObject)
@@ -119,5 +158,11 @@ namespace VEntityFramework.XML
 		{
 			return DirectoryManager.GetFullDirectory(bizo.GetType()) + bizo.GetSaveNameForXML() + ".xml";
 		}
+
+		string bizo1ForStackOverflowReport;
+		string bizo2ForStackOverflowReport;
+		string bizo3ForStackOverflowReport;
+		string bizo4ForStackOverflowReport;
+		string bizo5ForStackOverflowReport;
 	}
 }
