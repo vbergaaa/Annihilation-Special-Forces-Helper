@@ -210,7 +210,7 @@ namespace VUserInterface
 			//
 			// ChallengePointCollectionControl
 			//
-			this.ChallengePointCollectionControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
+			this.ChallengePointCollectionControl.Location = DPIScalingHelper.GetScaledPoint(5, 10);
 			this.ChallengePointCollectionControl.DataBindings.Add("ChallengePointCollection", this.LoadoutBindingSource, "ChallengePoints");
 			this.ChallengePointCollectionControl.Text = "Challenge Points";
 			//

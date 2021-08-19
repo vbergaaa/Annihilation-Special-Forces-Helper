@@ -50,7 +50,7 @@ namespace VUserInterface
 			//
 			this.TotalGemsLabel.DataBindings.Add("Text", BindingSource, "TotalCost");
 			this.TotalGemsLabel.Caption = "Total Gems:";
-			this.TotalGemsLabel.Location = DPIScalingHelper.GetScaledPoint(100, 0);
+			this.TotalGemsLabel.Location = DPIScalingHelper.GetScaledPoint(200, 0);
 			this.TotalGemsLabel.Name = "TotalGemsLabel";
 			this.TotalGemsLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
 			//
@@ -58,7 +58,7 @@ namespace VUserInterface
 			//
 			this.RemainingGemsLabel.DataBindings.Add("Text", BindingSource, "RemainingGems");
 			this.RemainingGemsLabel.Caption = "Remaining Gems:";
-			this.RemainingGemsLabel.Location = DPIScalingHelper.GetScaledPoint(500, 0);
+			this.RemainingGemsLabel.Location = DPIScalingHelper.GetScaledPoint(450, 0);
 			this.RemainingGemsLabel.Name = "RemainingGemsLabel";
 			this.RemainingGemsLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
 			//

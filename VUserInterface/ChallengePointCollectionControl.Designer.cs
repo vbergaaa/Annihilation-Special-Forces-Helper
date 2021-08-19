@@ -1,5 +1,4 @@
-﻿using System.Security.AccessControl;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using VBusiness.ChallengePoints;
 using VUserInterface.CommonControls;
 
@@ -47,88 +46,108 @@ namespace VUserInterface
 			this.KillsCPControl = new ChallengePointControl();
 			this.VeterancyCPControl = new ChallengePointControl();
 			this.AccelCPControl = new ChallengePointControl();
+			this.AvailableChallengePointsLabel = new VLabel();
+			this.RemainingChallengePointsLabel = new VLabel();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
 			//
 			this.bindingSource.DataSource = typeof(ChallengePointCollection);
 			//
+			// AvailableChallengePointsLabel
+			//
+			this.AvailableChallengePointsLabel.Caption = "Available CP:";
+			this.AvailableChallengePointsLabel.DataBindings.Add("Text", bindingSource, "TotalCost");
+			this.AvailableChallengePointsLabel.Location = DPIScalingHelper.GetScaledPoint(200, 0);
+			this.AvailableChallengePointsLabel.Name = "AvailableChallengePointsLabel";
+			this.AvailableChallengePointsLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			//
+			// RemainingChallengePointsLabel
+			//
+			this.RemainingChallengePointsLabel.Caption = "Remaining CP:";
+			this.RemainingChallengePointsLabel.DataBindings.Add("Text", bindingSource, "RemainingCP");
+			this.RemainingChallengePointsLabel.Location = DPIScalingHelper.GetScaledPoint(450, 0);
+			this.RemainingChallengePointsLabel.Name = "RemainingChallengePointsLabel";
+			this.RemainingChallengePointsLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			//
 			// AttackCPControl
 			//
 			this.AttackCPControl.Caption = "Attack";
 			this.AttackCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Attack");
-			this.AttackCPControl.Location = DPIScalingHelper.GetScaledPoint(35, 20);
+			this.AttackCPControl.Location = DPIScalingHelper.GetScaledPoint(35, 50);
 			//
 			// CriticalDamageCPControl
 			//
 			this.CriticalDamageCPControl.Caption = "Crit Dmg";
 			this.CriticalDamageCPControl.DataBindings.Add("ChallengePoint", bindingSource, "CriticalDamage");
-			this.CriticalDamageCPControl.Location = DPIScalingHelper.GetScaledPoint(30, 80);
+			this.CriticalDamageCPControl.Location = DPIScalingHelper.GetScaledPoint(30, 110);
 			//
 			// CriticalChanceCPControl
 			//
 			this.CriticalChanceCPControl.Caption = "Crit Chance";
 			this.CriticalChanceCPControl.DataBindings.Add("ChallengePoint", bindingSource, "CriticalChance");
-			this.CriticalChanceCPControl.Location = DPIScalingHelper.GetScaledPoint(30, 140);
+			this.CriticalChanceCPControl.Location = DPIScalingHelper.GetScaledPoint(30, 170);
 			//
 			// AttackSpeedCPControl
 			//
 			this.AttackSpeedCPControl.Caption = "Atk Speed";
 			this.AttackSpeedCPControl.DataBindings.Add("ChallengePoint", bindingSource, "AttackSpeed");
-			this.AttackSpeedCPControl.Location = DPIScalingHelper.GetScaledPoint(30, 200);
+			this.AttackSpeedCPControl.Location = DPIScalingHelper.GetScaledPoint(30, 230);
 			//
 			// HealthCPControl
 			//
 			this.HealthCPControl.Caption = "Health";
 			this.HealthCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Health");
-			this.HealthCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 20);
+			this.HealthCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 50);
 			//
 			// ShieldsCPControl
 			//
 			this.ShieldsCPControl.Caption = "Shields";
 			this.ShieldsCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Shields");
-			this.ShieldsCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 80);
+			this.ShieldsCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 110);
 			//
 			// DefensiveEssenceCPControl
 			//
 			this.DefensiveEssenceCPControl.Caption = "Def Ess";
 			this.DefensiveEssenceCPControl.DataBindings.Add("ChallengePoint", bindingSource, "DefensiveEssence");
-			this.DefensiveEssenceCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 140);
+			this.DefensiveEssenceCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 170);
 			//
 			// DamageReductionCPControl
 			//
 			this.DamageReductionCPControl.Caption = "Dmg Rdct";
 			this.DamageReductionCPControl.DataBindings.Add("ChallengePoint", bindingSource, "DamageReduction");
-			this.DamageReductionCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 200);
+			this.DamageReductionCPControl.Location = DPIScalingHelper.GetScaledPoint(208, 230);
 			//
 			// MiningCPControl
 			//
 			this.MiningCPControl.Caption = "Mining";
 			this.MiningCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Mining");
-			this.MiningCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 20);
+			this.MiningCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 50);
 			//
 			// KillsCPControl
 			//
 			this.KillsCPControl.Caption = "Kills";
 			this.KillsCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Kills");
-			this.KillsCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 80);
+			this.KillsCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 110);
 			//
 			// VeterancyCPControl
 			//
 			this.VeterancyCPControl.Caption = "Vet";
 			this.VeterancyCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Veterancy");
-			this.VeterancyCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 140);
+			this.VeterancyCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 170);
 			//
 			// AccelCPControl
 			//
 			this.AccelCPControl.Caption = "Accel";
 			this.AccelCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Acceleration");
-			this.AccelCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 200);
+			this.AccelCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 230);
 			//
 			// ChallengePointCollectionControl
 			//
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
+			this.Controls.Add(AvailableChallengePointsLabel);
+			this.Controls.Add(RemainingChallengePointsLabel);
 			this.Controls.Add(AttackCPControl);
 			this.Controls.Add(CriticalChanceCPControl);
 			this.Controls.Add(CriticalDamageCPControl);
@@ -160,5 +179,7 @@ namespace VUserInterface
 		private ChallengePointControl KillsCPControl;
 		private ChallengePointControl VeterancyCPControl;
 		private ChallengePointControl AccelCPControl;
+		VLabel AvailableChallengePointsLabel;
+		VLabel RemainingChallengePointsLabel;
 	}
 }
