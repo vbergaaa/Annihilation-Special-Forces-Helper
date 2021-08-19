@@ -13,7 +13,7 @@ namespace VBusiness.Weapons
 
 		public double BaseAttack => 0;
 
-		public double BaseAttackPeriod => 1;
+		public double BaseAttackPeriod => 0;
 
 		public double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy) => 0;
 	}
