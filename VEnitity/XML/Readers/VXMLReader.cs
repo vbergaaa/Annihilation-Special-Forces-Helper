@@ -42,8 +42,8 @@ namespace VEntityFramework.XML
 				var xmlPath = DirectoryManager.GetFullPathWithExtension<T>(fileName);
 				xml.Load(xmlPath);
 				var bizo = (T)CreateBizoFromXML(typeof(T), xml.DocumentElement);
-				bizo.OnLoadedFromXML(new OnLoadedEventArgs(Path.GetFileNameWithoutExtension(fileName)));
 				bizo.XmlLocation = xmlPath;
+				bizo.OnLoadedFromXML(new OnLoadedEventArgs(Path.GetFileNameWithoutExtension(fileName)));
 				return bizo;
 			}
 			catch (Exception ex)

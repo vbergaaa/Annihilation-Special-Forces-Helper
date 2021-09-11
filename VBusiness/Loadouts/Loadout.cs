@@ -297,9 +297,9 @@ namespace VBusiness.Loadouts
 			SyncWithBank = true;
 		}
 
-		public override void OnLoaded()
+		protected override void OnLoadedFromXML(OnLoadedEventArgs e)
 		{
-			base.OnLoaded();
+			base.OnLoadedFromXML(e);
 
 			if (SyncWithBank)
 			{

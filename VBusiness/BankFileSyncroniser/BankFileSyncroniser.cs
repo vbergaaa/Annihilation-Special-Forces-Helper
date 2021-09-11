@@ -60,21 +60,46 @@ namespace VBusiness
 
 		static void UpdateLoadout(int i)
 		{
-			var loadoutNames = VDataContext.Instance.GetAllFileNames<Loadout>();
-			var loadoutName = loadoutNames.FirstOrDefault(x => x.StartsWith($"{i}-"));
-			var loadout = loadoutName != null
-				? VDataContext.Instance.ReadFromXML<Loadout>(loadoutName)
-				: VDataContext.Instance.NewWithoutCache<Loadout>();
+			var loadoutName = GetLoadoutNameAndDeleteDuplicates(i);
 
-			if (loadout.SyncWithBank)
+			if (loadoutName != null)
 			{
-				loadout.Slot = i;
-				UpdateLoadout(loadout);
+				VDataContext.Instance.ReadFromXML<Loadout>(loadoutName);
+				Log.Info($"loaded loadout {loadoutName} into the cache, triggering a synchronisation if required.");
+				return;
 			}
-			else
+
+			var loadout = VDataContext.Instance.NewWithoutCache<Loadout>();
+
+			loadout.Slot = i;
+			UpdateLoadout(loadout); ;
+		}
+
+		static string GetLoadoutNameAndDeleteDuplicates(int i)
+		{
+			var loadoutNames = VDataContext.Instance.GetAllFileNames<Loadout>().Where(x => x.StartsWith($"{i}-"));
+
+			if (loadoutNames.Count() > 1)
 			{
-				Log.Info($"Skipped syncing loadout {i} as SyncWithBank was set to false");
+				var perkString = decoder.GetPerksStringAtSaveSlot(i);
+				var loadoutName = perkString.Substring(0, 15);
+				loadoutName = loadoutName.TrimStart('0');
+
+				string matchingLoadout = null;
+				var matchingLoadouts = loadoutNames.Where(x => x.ToLower() == $"{i}-{loadoutName}");
+				if (matchingLoadouts.Count() == 1)
+				{
+					matchingLoadout = matchingLoadouts.Single();
+				}
+
+				foreach (var loadout in loadoutNames.Where(x => x != matchingLoadout))
+				{
+					VDataContext.Instance.Delete<Loadout>(loadout);
+				}
+				return matchingLoadout;
 			}
+
+			return loadoutNames.FirstOrDefault();
 		}
 
 		public static void UpdateLoadout(VLoadout loadout)
@@ -97,10 +122,14 @@ namespace VBusiness
 			if (loadout.Slot > 0 && loadout.Slot <= 10)
 			{
 				var perkString = decoder.GetPerksStringAtSaveSlot(loadout.Slot);
+
 				var loadoutName = perkString.Substring(0, 15);
 				loadoutName = loadoutName.TrimStart('0');
-				loadout.Name = loadoutName;
 				perkString = perkString.Substring(15);
+				if (loadoutName.ToLower() != loadout.Name.ToLower())
+				{
+					loadout.Name = loadoutName;
+				}
 				var oldShouldRestrict = loadout.ShouldRestrict;
 				loadout.ShouldRestrict = false;
 				foreach (var perk in ((PerkCollection)loadout.Perks).AllPerks)

@@ -248,7 +248,7 @@ namespace VEntityFramework.Data
 
 		internal event EventHandler<OnLoadedEventArgs> LoadedFromXML;
 
-		internal virtual void OnLoadedFromXML(OnLoadedEventArgs e)
+		protected internal virtual void OnLoadedFromXML(OnLoadedEventArgs e)
 		{
 			// this is the on loaded event for a top level bizo, we should probably refactor this
 			LoadedFromXML?.Invoke(this, e);
