@@ -7,7 +7,7 @@
 		// cd: 6
 		public override double AttackIncrement => 9.1;
 
-		public override double ArmorPenetration => 60;
+		public override double ArmorPenetration => 40;
 
 		protected override double Radius => 3;
 
