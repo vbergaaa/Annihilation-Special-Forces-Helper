@@ -1,5 +1,6 @@
 # Annihilation-Special-Forces-Helper
-This is a program used to assist players who play the SC2 Custom Arcade Game, "Annihilation Special Forces" created by <Cruxis>jessy
+This is a program used to assist players who play the SC2 Custom Arcade Game, "Annihilation Special Forces" created by <Cruxis>jessy. 
+It is compatible with Windows 10.
 
 You can use this program to plan and create your in game loadouts, limiting them to your available perk points, gems, souls and challenge points. 
   
@@ -13,7 +14,7 @@ It also contains economy data, such as:
   - Income data, for any room on any difficulty, configured to your current perks and souls.
 
 ## Download Instructions
-Download [the most recent release](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/download/v1.3.2/ASFv1.3.2.zip), extract it, and run the installer Setup.exe. Follow the prompts to complete installation.
+For most users, it's recommended you [download the most recent release](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/download/v1.3.3/ASFv1.3.3.zip), extract it, and run the installer Setup.exe. Following the prompts to complete installation. However, some users have reported issues installing .NET runtime libraries through the automatic installer. If you also have this problem, you can download a version that contains the .NET runtime library contained in the package. To do this, head [here](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/tag/v1.3.3) and find the zip that includes your operating system in it's name. If your operatating system isn't listed, please request it by creating an issue [here](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/issues), or contacting me via the ASF discord.
 
 This program makes use of Microsoft .NET Core 3 runtime libraries. If you don't already have them on your machine, the installer should download them the first time you run it.
 
@@ -23,7 +24,6 @@ The app can also be found as an excutable in 'C:/Program Files (x86)/vbergaaa/AS
 If you find an issue or wish to request a feature, please create a new issue [here](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/issues), or contact me through the ASF discord, available via the map in SC2.
 
 ### Feature roadmap:
-- Add further economy calculations, for things such as building recycle and autoref earnings.
-- Add an RP tracking/logging system to keep your profile up to date and allow you to view a history of your games.
-- Add unit specific abilities and buffs to try and make unit stats more reflective of reality.
+- Improve the usability of the stats and income panels, making it clearer what unit/player stats/costs you are looking at at any given time.
+- Add further economy calculations, for things such as building recycle, autoref earnings and training centre.
 - Adding a helper that suggests different perks or gems to increase stats/economy with best value/cost ratio.
