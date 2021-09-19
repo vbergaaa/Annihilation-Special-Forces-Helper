@@ -6,7 +6,7 @@
 		// deals 30-330 in a radius of 5
 		public override double AttackCount => 5 * WeaponHelper.GetEnemiesInRadius(5); // ticks 5 times
 
-		public override double AttackIncrement => 3;
+		public override double AttackIncrement => 2.25;
 
 		protected override double AbilityDamage => 40;
 

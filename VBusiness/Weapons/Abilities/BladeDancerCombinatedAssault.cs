@@ -5,7 +5,7 @@
 		// 10 blades into 1
 		// deals 25-225 damage  (0-100 atk ups)
 		// cd: 15
-		public override double AttackIncrement => 2;
+		public override double AttackIncrement => 1.5;
 
 		protected override double AbilityDamage => 25;
 

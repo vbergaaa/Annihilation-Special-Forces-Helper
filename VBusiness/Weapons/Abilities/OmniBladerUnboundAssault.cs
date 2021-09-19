@@ -7,7 +7,7 @@
 		// cast an additional 13 blades
 		// deal 65-465 damage in 5 radius  (0-100 atk ups)
 		// CD: 15
-		public override double AttackIncrement => 4;
+		public override double AttackIncrement => 3;
 
 		protected override double AbilityDamage => 65;
 

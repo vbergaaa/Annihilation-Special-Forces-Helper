@@ -10,20 +10,20 @@ namespace Tests.Stats_Tests
 		// These tests are for santity, to make sure damage and toughness calculations
 		// don't unexpectedly change. These values can be changed as more features/bugs
 		// are added or squashed
-		[TestCase(DifficultyLevel.Brutal, 32568315, 199373199)]
-		[TestCase(DifficultyLevel.Divine, 8587282, 2601555)]
-		[TestCase(DifficultyLevel.Easy, 45532749, 199373199)]
-		[TestCase(DifficultyLevel.Hard, 38619280, 199373199)]
-		[TestCase(DifficultyLevel.Hell, 18829431, 188366064)]
-		[TestCase(DifficultyLevel.Impossible, 4762417, 580488)]
-		[TestCase(DifficultyLevel.Insane, 34201699, 199373199)]
-		[TestCase(DifficultyLevel.Mythic, 12836134, 10327791)]
-		[TestCase(DifficultyLevel.Nightmare, 27132317, 199373199)]
-		[TestCase(DifficultyLevel.Normal, 45870258, 199373199)]
-		[TestCase(DifficultyLevel.Titanic, 15948109, 39874158)]
-		[TestCase(DifficultyLevel.Torment, 21467738, 191484105)]
-		[TestCase(DifficultyLevel.VeryEasy, 45391471, 199373199)]
-		[TestCase(DifficultyLevel.VeryHard, 36586743, 199373199)]
+		[TestCase(DifficultyLevel.Brutal, 478819113, 199373199)]
+		[TestCase(DifficultyLevel.Divine, 110259189, 2601555)]
+		[TestCase(DifficultyLevel.Easy, 672847251, 199373199)]
+		[TestCase(DifficultyLevel.Hard, 569247640, 199373199)]
+		[TestCase(DifficultyLevel.Hell, 268720925, 188366064)]
+		[TestCase(DifficultyLevel.Impossible, 44760877, 580488)]
+		[TestCase(DifficultyLevel.Insane, 503230120, 199373199)]
+		[TestCase(DifficultyLevel.Mythic, 175518080, 10327791)]
+		[TestCase(DifficultyLevel.Nightmare, 397768242, 199373199)]
+		[TestCase(DifficultyLevel.Normal, 677206614, 199373199)]
+		[TestCase(DifficultyLevel.Titanic, 224547873, 39874158)]
+		[TestCase(DifficultyLevel.Torment, 308452725, 191484105)]
+		[TestCase(DifficultyLevel.VeryEasy, 671014396, 199373199)]
+		[TestCase(DifficultyLevel.VeryHard, 538980776, 199373199)]
 		public void TestCalculatedStats(DifficultyLevel difficulty, double expectedDamage, double expectedToughness)
 		{
 			var loadout = LoadMaxPage14();
