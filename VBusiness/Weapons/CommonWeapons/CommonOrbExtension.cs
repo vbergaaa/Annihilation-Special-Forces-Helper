@@ -29,7 +29,6 @@ namespace VBusiness.Weapons
 					: DurationAbilityEffectAppliesFor * weapon.OrbsPerAttack / weapon.GetActualWeaponPeriod(loadout);
 			}
 
-
 			var orbAttackSpeed = Math.Pow(0.96, loadout.Upgrades.AttackSpeedUpgrade);
 			var attacksPerOrb = OrbFreezeDuration / orbAttackSpeed;
 

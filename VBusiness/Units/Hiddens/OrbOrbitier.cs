@@ -88,5 +88,7 @@ namespace VBusiness.Units
 					}
 				});
 		}
+
+		public override ITemporaryBuffAbility OffensiveBuffAbility => new OrbOrbiterOrbitEmpowerment();
 	}
 }

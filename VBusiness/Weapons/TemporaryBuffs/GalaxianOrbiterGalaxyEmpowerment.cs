@@ -2,7 +2,7 @@
 using VEntityFramework;
 using VEntityFramework.Model;
 
-namespace VBusiness.Weapons.Abilities
+namespace VBusiness.Weapons
 {
 	public class GalaxianOrbiterGalaxyEmpowerment : BaseTemporaryBuff
 	{

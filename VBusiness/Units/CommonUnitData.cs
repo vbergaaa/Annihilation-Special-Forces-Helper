@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using VBusiness.Weapons;
 using VEntityFramework.Model;
 
 namespace VBusiness.Units
@@ -29,5 +30,7 @@ namespace VBusiness.Units
 		{
 			return null;
 		}
+
+		public virtual ITemporaryBuffAbility OffensiveBuffAbility => null;
 	}
 }

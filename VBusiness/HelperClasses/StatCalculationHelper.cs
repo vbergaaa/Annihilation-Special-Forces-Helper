@@ -87,16 +87,35 @@ namespace VBusiness.HelperClasses
 			{
 				using (loadout.CurrentUnit.UnitData.ApplyPassiveEffect(loadout))
 				{
-					WeaponHelper.RefreshCritChances(loadout);
 					var composition = GetEnemyCompositionStats(loadout, CompositionOptions.Attack);
 					composition = AdjustComposition(composition, CompositionOptions.Attack);
 
 					var totalDamage = 0.0;
+
+					var uptime = 1.0;
+					if (loadout.CurrentUnit.UnitData.OffensiveBuffAbility != null)
+					{
+						uptime = Math.Min(1, loadout.CurrentUnit.UnitData.OffensiveBuffAbility.AbilityUptime * loadout.Stats.CooldownSpeed / 100);
+						using (loadout.CurrentUnit.UnitData.OffensiveBuffAbility.ApplyTemporaryBuff(loadout))
+						{
+							WeaponHelper.RefreshCritChances(loadout);
+							foreach (var weapon in loadout.CurrentUnit.UnitData.Weapons)
+							{
+								var damages = composition.Select(x => (x.Chance, Damage: weapon.GetDamageToEnemy(loadout, x.Enemy)));
+								var avgDamage = damages.Sum(x => (x.Chance * x.Damage));
+								totalDamage += avgDamage;
+							}
+							totalDamage *= uptime;
+							uptime = 1 - uptime;
+						}
+					}
+
+					WeaponHelper.RefreshCritChances(loadout);
 					foreach (var weapon in loadout.CurrentUnit.UnitData.Weapons)
 					{
 						var damages = composition.Select(x => (x.Chance, Damage: weapon.GetDamageToEnemy(loadout, x.Enemy)));
 						var avgDamage = damages.Sum(x => (x.Chance * x.Damage));
-						totalDamage += avgDamage;
+						totalDamage += uptime * avgDamage;
 					}
 					return Math.Round(totalDamage, 2);
 				}
