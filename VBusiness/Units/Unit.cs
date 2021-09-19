@@ -236,6 +236,10 @@ namespace VBusiness.Units
 			{
 				max += 200;
 			}
+			if (max >= 2000 && activeSouls.Contains(SoulType.BeginnerLimitBreaking))
+			{
+				max += 400;
+			}
 
 			if (IsLimitBroken)
 			{
@@ -324,7 +328,7 @@ namespace VBusiness.Units
 		#region Calculated Stats
 
 		public override double Attack => UnitData.Weapons.First().BaseAttack + Upgrades.AttackUpgrade * UnitData.Weapons.First().AttackIncrement;
-		public override double AttackSpeed => UnitData.Weapons.First().BaseAttackPeriod* Math.Pow(0.96, Upgrades.AttackSpeedUpgrade);
+		public override double AttackSpeed => UnitData.Weapons.First().BaseAttackPeriod * Math.Pow(0.96, Upgrades.AttackSpeedUpgrade);
 		public override double Health => UnitData.BaseHealth + Upgrades.HealthUpgrade * UnitData.HealthIncrement;
 		public override double HealthRegen => UnitData.BaseHealthRegen + Upgrades.HealthUpgrade * UnitData.HealthRegenIncrement;
 		public override double HealthArmor => UnitData.BaseHealthArmor + Upgrades.HealthArmorUpgrade * UnitData.HealthArmorIncrement;
