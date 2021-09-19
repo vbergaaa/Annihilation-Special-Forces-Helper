@@ -53,5 +53,7 @@ namespace VBusiness.Units
 				yield return new SplitterAdeptBasicWeapon();
 			}
 		}
+
+		public override ITemporaryBuffAbility OffensiveBuffAbility => new SplitterAdeptPrecisionTargetting();
 	}
 }
