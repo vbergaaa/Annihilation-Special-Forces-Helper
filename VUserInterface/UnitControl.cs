@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using VBusiness.HelperClasses;
-using VBusiness.Units;
 using VEntityFramework;
 using VEntityFramework.Model;
 using VUserInterface.CommonControls;
@@ -197,6 +196,10 @@ namespace VUserInterface
 				UnitType.BladeDancer,
 				UnitType.BladeMaster,
 				UnitType.OmniBlader,
+				string.Empty,
+				UnitType.OrbDancer,
+				UnitType.OrbOrbiter,
+				UnitType.GalacticOrbiter,
 				string.Empty,
 				UnitType.Archon,
 				UnitType.DarkArchon,

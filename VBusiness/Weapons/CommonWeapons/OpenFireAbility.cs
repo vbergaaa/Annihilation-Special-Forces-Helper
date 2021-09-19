@@ -29,14 +29,7 @@ namespace VBusiness.Weapons
 		BasicAOEAttackWeapon baseAOEWeapon;
 		protected abstract BasicAOEAttackWeapon GetNewAOEWeapon();
 
-		public override double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy)
-		{
-			var singleTargetDamage = base.GetDamageToEnemy(loadout, enemy);
-			double averageEnemiesHit = GetAttackCount(loadout);
-			return singleTargetDamage * averageEnemiesHit;
-		}
-
-		protected virtual double GetAttackCount(VLoadout loadout)
+		protected override double GetAttackCount(VLoadout loadout)
 		{
 			var stormCoolDown = BaseStorm.GetActualWeaponPeriod(loadout);
 			var stormUptime = Math.Min(4 / stormCoolDown, 1); // all Storms have an uptime of 4 seconds

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace VEntityFramework.Model
 {
 	public enum UnitType
 	{
 		None,
-		
+
 		// Basic
 		Probe,
 		[Description("Warp Lord")]
@@ -91,5 +88,11 @@ namespace VEntityFramework.Model
 		[Description("Winged Archon")]
 		WingedArchon,
 		Artifact,
+		[Description("Orb Dancer")]
+		OrbDancer,
+		[Description("Orb Orbiter")]
+		OrbOrbiter,
+		[Description("Galactic Orbiter")]
+		GalacticOrbiter
 	}
 }

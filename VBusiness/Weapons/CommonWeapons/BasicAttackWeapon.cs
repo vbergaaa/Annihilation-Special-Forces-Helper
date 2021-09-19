@@ -49,7 +49,7 @@ namespace VBusiness.Weapons
 			var totalDamage = effectiveDamage * CritModifier(Crits, loadout.Stats.CriticalDamage + bonusCritDamage);
 
 			// multiple the attack by the number of units hit
-			totalDamage *= AttackCount;
+			totalDamage *= GetAttackCount(loadout);
 
 			// divide damage by attack speed to get the damage dealt per second
 			var totalDps = totalDamage / GetActualWeaponPeriod(loadout);
@@ -77,6 +77,11 @@ namespace VBusiness.Weapons
 				+ (1 + 2 * totalCritDamage) * crits.RedChance
 				+ (1 + 3.5 * totalCritDamage) * crits.BlackChance;
 			return avgCritMultiplier;
+		}
+
+		protected virtual double GetAttackCount(VLoadout loadout)
+		{
+			return AttackCount;
 		}
 	}
 }
