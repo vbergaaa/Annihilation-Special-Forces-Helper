@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using VBusiness;
+using VEntityFramework.HelperClasses;
 using VUserInterface.CommonControls;
 
 namespace VUserInterface
@@ -38,6 +39,7 @@ namespace VUserInterface
 			this.SyncLoadoutBankCheckControl = new VCheckControl();
 			this.SyncSoulBankCheckControl = new VCheckControl();
 			this.TitleLabel = new VLabel();
+			this.VersionLabel = new VLabel();
 			this.SaveButton = new VButton();
 			//
 			// BindingSource
@@ -50,6 +52,12 @@ namespace VUserInterface
 			this.TitleLabel.Location = DPIScalingHelper.GetScaledPoint(120, 22);
 			this.TitleLabel.Text = "Settings";
 			this.TitleLabel.Font = new System.Drawing.Font(this.TitleLabel.Font.FontFamily, 14);
+			//
+			// VersionLabel
+			//
+			this.VersionLabel.Name = "VersionLabel";
+			this.VersionLabel.Location = DPIScalingHelper.GetScaledPoint(120, 220);
+			this.VersionLabel.Text = "Version Date: " + VersionHelper.GetVersionBuildDate().ToString("dd-MMM-yyyy");
 			// 
 			// SaveEditButton
 			// 
@@ -87,6 +95,7 @@ namespace VUserInterface
 			this.Controls.Add(SyncProfileBankCheckControl);
 			this.Controls.Add(SyncLoadoutBankCheckControl);
 			this.Controls.Add(SyncSoulBankCheckControl);
+			this.Controls.Add(VersionLabel);
 			this.Controls.Add(SaveButton);
 			this.Controls.Add(TitleLabel);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -100,5 +109,6 @@ namespace VUserInterface
 		VCheckControl SyncSoulBankCheckControl;
 		VLabel TitleLabel;
 		VButton SaveButton;
+		VLabel VersionLabel;
 	}
 }
