@@ -1,8 +1,10 @@
-﻿using System.Collections;
-using VEntityFramework.Data;
+﻿using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
 {
+	// don't add anything to this. 
+	// it no longer makes sense
+	// if you find yourself changing this file, see if you can move the logic you're writing into VLoadout.cs
 	public abstract class VUnitConfiguration : BusinessObject
 	{
 		#region Constructor
@@ -14,12 +16,6 @@ namespace VEntityFramework.Model
 		#endregion
 
 		#region Properties
-
-		#region Units
-
-		public IList Units => Loadout?.Units;
-
-		#endregion
 
 		#region Loadout
 
@@ -94,7 +90,7 @@ namespace VEntityFramework.Model
 		#region Implementation
 
 		public override string BizoName => "UnitConfiguration";
-		
+
 		#endregion
 	}
 }

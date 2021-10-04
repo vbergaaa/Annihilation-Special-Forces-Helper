@@ -1,6 +1,6 @@
 ﻿namespace VUserInterface.CommonControls
 {
-	partial class VLoadList
+	partial class VSelectList
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -43,7 +43,7 @@
 			this.ListBox.Name = "ListBox";
 			this.ListBox.Size = DPIScalingHelper.GetScaledSize(275, 94);
 			this.ListBox.TabIndex = 0;
-			this.ListBox.SelectedValueChanged += ListBox_SelectedValueChanged; ;
+			this.ListBox.SelectedValueChanged += SelectedIndex_Changed; ;
 			// 
 			// Label
 			// 
@@ -54,6 +54,7 @@
 			// 
 			// NewButton
 			// 
+			this.NewButton.Click += New_Click;
 			this.NewButton.Location = DPIScalingHelper.GetScaledPoint(1, 131);
 			this.NewButton.Name = "NewButton";
 			this.NewButton.Size = DPIScalingHelper.GetScaledSize(85, 23);
@@ -63,6 +64,7 @@
 			// 
 			// OpenButton
 			// 
+			this.OpenButton.Click += Open_Click;
 			this.OpenButton.Location = DPIScalingHelper.GetScaledPoint(96, 131);
 			this.OpenButton.Name = "OpenButton";
 			this.OpenButton.Size = DPIScalingHelper.GetScaledSize(85, 23);
@@ -72,6 +74,7 @@
 			// 
 			// DeleteButton
 			// 
+			this.DeleteButton.Click += Delete_Click;
 			this.DeleteButton.Location = DPIScalingHelper.GetScaledPoint(191, 131);
 			this.DeleteButton.Name = "DeleteButton";
 			this.DeleteButton.Size = DPIScalingHelper.GetScaledSize(85, 23);
@@ -93,10 +96,10 @@
 
 		#endregion
 
-		private System.Windows.Forms.ListBox ListBox;
+		protected System.Windows.Forms.ListBox ListBox;
 		private VLabel Label;
-		protected System.Windows.Forms.Button DeleteButton;
-		protected System.Windows.Forms.Button NewButton;
+		private System.Windows.Forms.Button DeleteButton;
+		private System.Windows.Forms.Button NewButton;
 		protected System.Windows.Forms.Button OpenButton;
 	}
 }

@@ -54,7 +54,7 @@ namespace VUserInterface
 			this.GemsControl = new VGemCollectionControl();
 			this.SoulsControl = new VLoadoutSoulsControl();
 			this.ChallengePointCollectionControl = new ChallengePointCollectionControl();
-			this.UnitControl = new UnitConfigurationControl();
+			this.UnitControl = new UnitsControl();
 			this.UpgradeControl = new UpgradeControl();
 			this.LoadoutIncomeControl = new LoadoutIncomeControl();
 			this.ModsControl = new ModCollectionControl();
@@ -198,9 +198,9 @@ namespace VUserInterface
 			//
 			// UnitControl
 			//
+			this.UnitControl.DataBindings.Add("Loadout", this.LoadoutBindingSource, ".");
 			this.UnitControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
-			this.UnitControl.DataBindings.Add("UnitConfiguration", this.LoadoutBindingSource, "UnitConfiguration");
-			this.UnitControl.Text = "Gem";
+			this.UnitControl.Name = "UnitControl";
 			//
 			// SoulsControl
 			//
@@ -277,7 +277,7 @@ namespace VUserInterface
 		private VUserInterface.VGemCollectionControl GemsControl;
 		private VUserInterface.VLoadoutSoulsControl SoulsControl;
 		private VUserInterface.ChallengePointCollectionControl ChallengePointCollectionControl;
-		private VUserInterface.UnitConfigurationControl UnitControl;
+		private VUserInterface.UnitsControl UnitControl;
 		private VUserInterface.UpgradeControl UpgradeControl;
 		private VUserInterface.LoadoutIncomeControl LoadoutIncomeControl;
 		private VUserInterface.ModCollectionControl ModsControl;

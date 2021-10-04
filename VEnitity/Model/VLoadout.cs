@@ -172,9 +172,6 @@ namespace VEntityFramework.Model
 
 		public virtual BusinessObjectList<VUnit> Units { get; }
 
-		public virtual void AddUnit(VUnit unit) { }
-		public virtual void RemoveUnit(VUnit unit) { }
-
 		[VXML(false)]
 		public virtual VUnit CurrentUnit
 		{
@@ -193,19 +190,13 @@ namespace VEntityFramework.Model
 		}
 		VUnit fCurrentUnit;
 
-		public void SetCurrentUnit(string unitName)
+		public void SetCurrentUnit(VUnit unit)
 		{
-			VUnit currentUnit = null;
-			foreach (var unit in Units)
+			if (unit != CurrentUnit)
 			{
-				if (unit.ToString() == unitName)
-				{
-					currentUnit = unit;
-				}
+				ErrorReporter.ReportDebug(!Units.Contains(unit), "Where are you getting this unit from?");
+				CurrentUnit = unit;
 			}
-			ErrorReporter.ReportDebug(currentUnit == null, "Where are you getting this setstring from?");
-
-			CurrentUnit = currentUnit;
 		}
 
 		#endregion

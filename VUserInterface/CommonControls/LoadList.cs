@@ -1,21 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
-using System.Windows.Forms;
-using VEntityFramework.Data;
+using System.Linq;
 using VBusiness.HelperClasses;
+using VEntityFramework.Data;
 using VEntityFramework.DataContext;
 
 namespace VUserInterface.CommonControls
 {
-	public partial class VLoadList : DPIUserControl
+	public class LoadList : VSelectList
 	{
-		public VLoadList()
-		{
-			InitializeComponent();
-		}
-
-		#region Properties
-
 		public Type BizoType
 		{
 			get => fBizoType;
@@ -23,28 +17,11 @@ namespace VUserInterface.CommonControls
 			{
 				fBizoType = value;
 				RefreshList();
-				this.DeleteButton.Click += Delete_Click;
-				this.NewButton.Click += New_Click;
-				this.OpenButton.Click += Open_Click;
 			}
 		}
 		Type fBizoType;
 
-		public override string Text 
-		{ 
-			get => base.Text;
-			set
-			{
-				base.Text = value;
-				Label.Text = value;
-			} 
-		}
-
-		#endregion
-
-		#region Events
-
-		void Delete_Click(object sender, EventArgs e)
+		protected override void OnDeleteClicked()
 		{
 			var name = (string)ListBox.SelectedItem;
 			if (name != null)
@@ -54,7 +31,7 @@ namespace VUserInterface.CommonControls
 			}
 		}
 
-		void Open_Click(object sender, EventArgs e)
+		protected override void OnOpenClicked()
 		{
 			var context = VDataContext.Instance;
 			var name = (string)ListBox.SelectedItem;
@@ -62,7 +39,7 @@ namespace VUserInterface.CommonControls
 			{
 				var method = typeof(VDataContext).GetMethod(nameof(VDataContext.ReadFromXML), new Type[] { typeof(string) });
 				var generic = method.MakeGenericMethod(BizoType);
-				var bizo = (BusinessObject)generic.Invoke(context, new object[]{ name });
+				var bizo = (BusinessObject)generic.Invoke(context, new object[] { name });
 
 				if (bizo != null)
 				{
@@ -73,7 +50,7 @@ namespace VUserInterface.CommonControls
 			}
 		}
 
-		void New_Click(object sender, EventArgs e)
+		protected override void OnNewClicked()
 		{
 			var bizo = BizoCreator.Create(BizoType);
 			var form = VForm.Create(bizo);
@@ -94,31 +71,6 @@ namespace VUserInterface.CommonControls
 			foreach (var entry in orderedList)
 			{
 				Collection.Add(entry);
-			}
-		}
-
-		public BindingList<string> Collection => fCollection ??= new BindingList<string>();
-		BindingList<string> fCollection;
-
-		#endregion
-
-		public event EventHandler IndexChanged;
-
-		void ListBox_SelectedValueChanged(object sender, System.EventArgs e)
-		{
-			IndexChanged?.Invoke(this, e);
-		}
-
-		public object CurrentItem => ListBox?.SelectedItem;
-		public int CurrentIndex
-		{
-			get => ListBox?.SelectedIndex ?? -1;
-			set
-			{
-				if (ListBox != null)
-				{
-					ListBox.SelectedIndex = value;
-				}
 			}
 		}
 	}

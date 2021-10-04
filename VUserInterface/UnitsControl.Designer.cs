@@ -1,13 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-using VBusiness;
-using VBusiness.Souls;
-using VEntityFramework.Model;
-using VUserInterface.CommonControls;
+﻿using System.Windows.Forms;
+using VBusiness.Loadouts;
 
 namespace VUserInterface
 {
-	partial class UnitConfigurationControl
+	partial class UnitsControl
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -37,46 +33,42 @@ namespace VUserInterface
 		{
 			components = new System.ComponentModel.Container();
 			this.bindingSource = new VBindingSource();
-			this.UnitsLoadList = new VSelectList();
+			this.UnitsLoadList = new UnitSelectList();
 			this.CurrentUnitControl = new UnitControl();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
 			//
-			this.bindingSource.DataSource = typeof(UnitConfiguration);
+			this.bindingSource.DataSource = typeof(Loadout);
 			//
 			// UnitsLoadList
 			//
 			this.UnitsLoadList.DataBindings.Add("List", bindingSource, "Units", true, DataSourceUpdateMode.OnPropertyChanged);
+			this.UnitsLoadList.DataBindings.Add("Loadout", bindingSource, ".", true, DataSourceUpdateMode.OnPropertyChanged);
 			this.UnitsLoadList.Location = DPIScalingHelper.GetScaledPoint(20, 30);
 			this.UnitsLoadList.Name = "UnitsLoadList";
 			this.UnitsLoadList.Size = DPIScalingHelper.GetScaledSize(280, 160);
 			this.UnitsLoadList.TabIndex = 0;
 			this.UnitsLoadList.Text = "Units";
-			this.UnitsLoadList.IndexChanged += UnitsLoadList_IndexChanged;
-			this.UnitsLoadList.NewButtonClicked += UnitsLoadList_NewButtonClicked;
-			this.UnitsLoadList.DeleteButtonClicked += UnitsLoadList_DeleteButtonClicked;
 			//
 			// CurrentUnitControl
 			//
-			this.CurrentUnitControl.DataBindings.Add("Unit", bindingSource, "Loadout.CurrentUnit");
+			this.CurrentUnitControl.DataBindings.Add("Unit", bindingSource, "CurrentUnit");
 			this.CurrentUnitControl.Name = "CurrentUserControl";
 			this.CurrentUnitControl.Location = DPIScalingHelper.GetScaledPoint(290, 30);
-			this.CurrentUnitControl.UnitChanged += CurrentUnitControl_UnitChanged;
 			//
 			// VSoulCollectionControl
 			//
 			this.Controls.Add(UnitsLoadList);
 			this.Controls.Add(CurrentUnitControl);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
-			this.VisibleChanged += UnitConfigurationControl_VisibleChanged;
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
 
 		#endregion
 
 		BindingSource bindingSource;
-		VSelectList UnitsLoadList;
+		UnitSelectList UnitsLoadList;
 		UnitControl CurrentUnitControl;
 	}
 }

@@ -1,16 +1,15 @@
-﻿using VEntityFramework.Model;
+﻿using System;
 using VBusiness.HelperClasses;
-using System;
 using VBusiness.Rooms;
+using VEntityFramework.Model;
 
 namespace VBusiness
 {
+	// don't add anything to this. 
+	// it no longer makes sense
+	// if you find yourself changing this file, see if you can move the logic you're writing into Loadout.cs
 	public class UnitConfiguration : VUnitConfiguration
 	{
-		// Torment Reduction
-
-		// toggle adrenaline rush
-
 		#region Constructor
 
 		public UnitConfiguration(VLoadout loadout) : base(loadout)
@@ -34,7 +33,7 @@ namespace VBusiness
 					TriggerSoloBonus();
 				}
 			}
-		} 
+		}
 
 		void TriggerSoloBonus()
 		{
@@ -124,7 +123,7 @@ namespace VBusiness
 			var oldTormentReduction = oldDiff?.TormentReduction ?? 0;
 			var newTormentReduction = newDiff?.TormentReduction ?? 0;
 			var difference = newTormentReduction - oldTormentReduction;
-			difference *= 1 ;
+			difference *= 1;
 
 			UpdateTormentReduction(difference * (1 + Loadout.Mods.Difficulty.CurrentLevel / 10.0));
 		}
