@@ -1,5 +1,4 @@
-﻿using System;
-using VBusiness.Rooms;
+﻿using VBusiness.Rooms;
 using VEntityFramework.Model;
 
 namespace VBusiness.Difficulties

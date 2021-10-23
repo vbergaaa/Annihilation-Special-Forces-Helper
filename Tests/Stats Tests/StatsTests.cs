@@ -1,11 +1,6 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
-using VBusiness.Ranks;
-using VBusiness.Units;
 using VEntityFramework.Model;
 
 namespace Tests

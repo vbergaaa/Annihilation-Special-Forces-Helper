@@ -1,6 +1,4 @@
-﻿using VEntityFramework.Data;
-
-namespace VEntityFramework.Model
+﻿namespace VEntityFramework.Model
 {
 	public abstract class VUnitRank
 	{

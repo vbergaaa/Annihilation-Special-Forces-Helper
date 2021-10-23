@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using VEntityFramework.Attributes;
+﻿using VEntityFramework.Attributes;
 using VEntityFramework.Data;
 
 namespace VEntityFramework.Model

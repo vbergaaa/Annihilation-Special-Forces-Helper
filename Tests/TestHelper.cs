@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using VBusiness.Loadouts;
+﻿using VBusiness.Loadouts;
 using VBusiness.Rooms;
 using VEntityFramework;
 using VEntityFramework.Model;

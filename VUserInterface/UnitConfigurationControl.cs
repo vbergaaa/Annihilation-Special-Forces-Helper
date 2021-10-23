@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using VBusiness;
 using VEntityFramework.Model;
-using VBusiness.Ranks;
-using VBusiness.HelperClasses;
 using VUserInterface.CommonControls;
-using EnumsNET;
 using System.Linq;
-using VBusiness.Units;
 
 namespace VUserInterface
 {

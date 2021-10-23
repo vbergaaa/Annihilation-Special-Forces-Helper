@@ -1,7 +1,4 @@
-﻿using VEntityFramework.Interfaces;
-using VEntityFramework.Model;
-
-namespace VBusiness.Weapons
+﻿namespace VBusiness.Weapons
 {
 	public class ShieldBatteryBasicWeapon : BasicHealWeapon
 	{
