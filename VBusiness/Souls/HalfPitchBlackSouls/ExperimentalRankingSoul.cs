@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VEntityFramework.Model;
+﻿using VEntityFramework.Model;
 
 namespace VBusiness.Souls
 {
@@ -17,12 +14,14 @@ namespace VBusiness.Souls
 		{
 			base.ActivateUniqueEffect();
 			Loadout.IncomeManager.HasRSSS = true;
+			Loadout.IncomeManager.RankRevision += 15;
 		}
 
 		public override void DeactivateUniqueEffect()
 		{
 			base.DeactivateUniqueEffect();
 			Loadout.IncomeManager.HasRSSS = false;
+			Loadout.IncomeManager.RankRevision -= 15;
 		}
 	}
 }
