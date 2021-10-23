@@ -45,6 +45,7 @@ namespace VUserInterface
 			//
 			this.UnitsLoadList.DataBindings.Add("List", bindingSource, "Units", true, DataSourceUpdateMode.OnPropertyChanged);
 			this.UnitsLoadList.DataBindings.Add("Loadout", bindingSource, ".", true, DataSourceUpdateMode.OnPropertyChanged);
+			this.UnitsLoadList.DataBindings.Add("CurrentUnit", bindingSource, "CurrentUnit", true, DataSourceUpdateMode.OnPropertyChanged);
 			this.UnitsLoadList.Location = DPIScalingHelper.GetScaledPoint(20, 30);
 			this.UnitsLoadList.Name = "UnitsLoadList";
 			this.UnitsLoadList.Size = DPIScalingHelper.GetScaledSize(280, 160);

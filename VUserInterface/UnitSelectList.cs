@@ -32,6 +32,21 @@ namespace VUserInterface
 		}
 		IList<VUnit> fList;
 
+		public VUnit CurrentUnit
+		{
+			get => fCurrentUnit;
+			set
+			{
+				fCurrentUnit = value;
+				if (value != null && Loadout != null)
+				{
+					var index = Loadout.Units.IndexOf(CurrentUnit);
+					SelectedIndex = index;
+				}
+			}
+		}
+		VUnit fCurrentUnit;
+
 		public VLoadout Loadout { get; set; }
 
 		void RefreshCollection(int indexToSelect)
