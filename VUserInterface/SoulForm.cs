@@ -1,8 +1,5 @@
-﻿using EnumsNET;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using VBusiness.HelperClasses;
 using VBusiness.Souls;
 using VEntityFramework.Data;
 using VEntityFramework.Model;

@@ -1,5 +1,4 @@
 ﻿using System;
-using VEntityFramework.Interfaces;
 using VEntityFramework.Model;
 
 namespace VBusiness.Weapons

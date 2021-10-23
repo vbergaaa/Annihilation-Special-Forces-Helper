@@ -1,9 +1,7 @@
 ﻿using System;
-using VBusiness.Difficulties;
 using VBusiness.HelperClasses;
 using VBusiness.Rooms;
 using VBusiness.Units;
-using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness

@@ -1,8 +1,5 @@
 ﻿using EnumsNET;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using VBusiness;
 using VBusiness.Rooms;
 

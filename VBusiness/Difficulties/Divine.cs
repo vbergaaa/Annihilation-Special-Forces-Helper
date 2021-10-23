@@ -1,5 +1,4 @@
-﻿using System;
-using VEntityFramework.Model;
+﻿using VEntityFramework.Model;
 
 namespace VBusiness.Difficulties
 {

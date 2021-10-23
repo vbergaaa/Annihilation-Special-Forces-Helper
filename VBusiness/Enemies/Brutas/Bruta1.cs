@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VBusiness.HelperClasses;
+﻿using VBusiness.HelperClasses;
 using VEntityFramework.Model;
 
 namespace VBusiness.Enemies

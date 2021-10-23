@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using VEntityFramework;
-using VEntityFramework.Model;
 
 namespace VUserInterface.CommonControls
 {

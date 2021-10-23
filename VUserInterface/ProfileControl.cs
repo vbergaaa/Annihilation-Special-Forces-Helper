@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using VEntityFramework.Model;
-using VBusiness.Profile;
-using VEntityFramework.Data;
 using VBusiness.HelperClasses;
-using VBusiness.PlayerRanks;
 using VUserInterface.CommonControls;
 using EnumsNET;
 using System.Linq;

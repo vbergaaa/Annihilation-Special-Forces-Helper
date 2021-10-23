@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using VBusiness.Souls;
-using VEntityFramework;
 using VEntityFramework.Model;
 
 namespace VBusiness

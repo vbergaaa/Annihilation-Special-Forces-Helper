@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace StarCodeDecryptor
+﻿namespace StarCodeDecryptor
 {
 	public static class Starcode
 	{

@@ -1,5 +1,4 @@
-﻿using VBusiness.Units;
-using VEntityFramework.Model;
+﻿using VEntityFramework.Model;
 
 namespace VBusiness.Mods
 {

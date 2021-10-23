@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VEntityFramework.Model;
-
-namespace VBusiness.Enemies
+﻿namespace VBusiness.Enemies
 {
 	public abstract class Bruta : EnemyUnit
 	{

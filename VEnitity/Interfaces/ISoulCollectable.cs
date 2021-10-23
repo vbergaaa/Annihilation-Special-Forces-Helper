@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using VEntityFramework.Model;
+﻿using VEntityFramework.Model;
 
 namespace VEntityFramework.Interfaces
 {
