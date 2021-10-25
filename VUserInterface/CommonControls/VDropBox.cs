@@ -73,7 +73,7 @@ namespace VUserInterface.CommonControls
 
 		void ComboBox_SelectedValueChanged(object sender, EventArgs e)
 		{
-			if (ComboBox.SelectedItem != null && ComboBox.SelectedItem is string)
+			if (!AllowSelectionOfStrings && ComboBox.SelectedItem is string)
 			{
 				if (oldIndex <= ComboBox.SelectedIndex)
 				{
@@ -94,11 +94,13 @@ namespace VUserInterface.CommonControls
 
 		void ComboBox_Format(object sender, ListControlConvertEventArgs e)
 		{
-				e.Value = e.ListItem is Enum value
-					? Enums.AsString(value.GetType(), value, EnumFormat.Description, EnumFormat.Name)
-					: e.ListItem.ToString();
+			e.Value = e.ListItem is Enum value
+				? Enums.AsString(value.GetType(), value, EnumFormat.Description, EnumFormat.Name)
+				: e.ListItem.ToString();
 		}
 
 		#endregion
+
+		public bool AllowSelectionOfStrings { get; set; }
 	}
 }

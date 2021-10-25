@@ -99,15 +99,9 @@ namespace VBusiness.Loadouts
 
 		#endregion
 
-		#region Units
-
 		[VXML(true)]
-		public override BusinessObjectList<VUnit> Units => fUnits ??= new BusinessObjectList<VUnit>(this);
+		public override BusinessObjectList<VUnit> Units => fUnits ??= new UnitsCollection(this);
 		BusinessObjectList<VUnit> fUnits;
-
-		#endregion
-
-		#region CurrentUnit
 
 		public override VUnit CurrentUnit
 		{
@@ -169,10 +163,6 @@ namespace VBusiness.Loadouts
 				}
 			}
 		}
-
-		#endregion
-
-		#region UnitSpec
 
 		public override UnitType UnitSpec
 		{
@@ -245,8 +235,6 @@ namespace VBusiness.Loadouts
 				return RemainingPerkPoints >= 0 && Gems.RemainingGems >= 0 && ChallengePoints.RemainingCP >= 0;
 			}
 		}
-
-		#endregion
 
 		#endregion
 

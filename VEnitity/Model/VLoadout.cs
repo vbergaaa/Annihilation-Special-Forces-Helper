@@ -185,6 +185,7 @@ namespace VEntityFramework.Model
 					OnPropertyChanged(nameof(Units));
 					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutMineralCost));
 					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutKillCost));
+					OnUnitsUpdated();
 				}
 			}
 		}
@@ -198,6 +199,12 @@ namespace VEntityFramework.Model
 				CurrentUnit = unit;
 			}
 		}
+
+		public void OnUnitsUpdated()
+		{
+			UnitsUpdated?.Invoke(this, new EventArgs());
+		}
+		public event EventHandler UnitsUpdated;
 
 		#endregion
 

@@ -48,7 +48,6 @@ namespace VUserInterface
 			this.DamageIncreaseLabel = new VLabel();
 			this.AccelLabel = new VLabel();
 			this.statsBindingSource = new VBindingSource();
-			this.DisclaimerLabel = new DPILabel(); 
 			this.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.statsBindingSource)).BeginInit();
 			//
@@ -183,20 +182,6 @@ namespace VUserInterface
 			this.AccelLabel.Name = "AccelLabel";
 			this.AccelLabel.Size = DPIScalingHelper.GetScaledSize(62, 21);
 			this.AccelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// DisclaimerLabel
-			// 
-			this.DisclaimerLabel.Location = DPIScalingHelper.GetScaledPoint(25, 60);
-			this.DisclaimerLabel.Name = "DisclaimerLabel";
-			this.DisclaimerLabel.Size = DPIScalingHelper.GetScaledSize(130, 20);
-			this.DisclaimerLabel.Text = "What's this?";
-			this.DisclaimerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.DisclaimerLabel.ForeColor = System.Drawing.Color.Blue;
-			this.DisclaimerLabel.Font = new System.Drawing.Font(this.DisclaimerLabel.Font, System.Drawing.FontStyle.Underline);
-			this.DisclaimerLabel.Click += DisclaimerLabel_Click;
-			this.DisclaimerLabel.MouseHover += DisclaimerLabel_MouseHover;
-			this.DisclaimerLabel.MouseMove += DisclaimerLabel_MouseMove;
-			this.DisclaimerLabel.Visible = false;
 			//
 			// StatsControl
 			//
@@ -213,7 +198,6 @@ namespace VUserInterface
 			this.Controls.Add(DamageReductionLabel);
 			this.Controls.Add(DamageIncreaseLabel);
 			this.Controls.Add(AccelLabel);
-			this.Controls.Add(DisclaimerLabel);
 			this.Size = DPIScalingHelper.GetScaledSize(175, 310);
 			this.Text = "Stats";
 			((System.ComponentModel.ISupportInitialize)(this.statsBindingSource)).EndInit();
@@ -238,6 +222,5 @@ namespace VUserInterface
 		private VLabel DamageIncreaseLabel;
 		private VLabel AccelLabel;
 		private System.Windows.Forms.BindingSource statsBindingSource;
-		private Label DisclaimerLabel;
 	}
 }

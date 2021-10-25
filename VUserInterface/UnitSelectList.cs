@@ -25,8 +25,11 @@ namespace VUserInterface
 			{
 				if (value != null && ShouldRefreshList)
 				{
-					fList = value;
-					RefreshCollection(SelectedIndex);
+					using (SuspendRefreshingList())
+					{
+						fList = value;
+						RefreshCollection(Loadout?.Units?.IndexOf(CurrentUnit) ?? -1);
+					}
 				}
 			}
 		}
@@ -82,7 +85,7 @@ namespace VUserInterface
 
 		protected override void OnSelectedIndex_Changed()
 		{
-			if (Loadout != null && SelectedIndex > -1)
+			if (Loadout != null && SelectedIndex > -1 && ShouldRefreshList)
 			{
 				using (SuspendRefreshingList())
 				{

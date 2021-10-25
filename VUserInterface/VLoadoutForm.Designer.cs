@@ -48,7 +48,7 @@ namespace VUserInterface
 			this.IncomeTabPage = new DPITabPage();
 			this.ModsTabPage = new DPITabPage();
 			this.PerkPageControl = new VPerkCollectionControl();
-			this.LoadoutBindingSource = new VBindingSource();
+			this.bindingSource = new VBindingSource();
 			this.StatsControl = new VStatsControl();
 			this.IncomeControl = new IncomeStatisticsControl();
 			this.GemsControl = new VGemCollectionControl();
@@ -58,15 +58,15 @@ namespace VUserInterface
 			this.UpgradeControl = new UpgradeControl();
 			this.LoadoutIncomeControl = new LoadoutIncomeControl();
 			this.ModsControl = new ModCollectionControl();
-			this.UseUnitStatsCheckBox = new VCheckControl();
+			this.UnitForStatsDisplayDropBox = new VDropBox();
 			this.UseSingleUnitEcoCheckBox = new VCheckControl();
 			this.DetailsControl = new LoadoutDetailsControl();
-			((ISupportInitialize)this.LoadoutBindingSource).BeginInit();
+			((ISupportInitialize)this.bindingSource).BeginInit();
 			this.SuspendLayout();
 			//
 			// LoadoutBindingSource
 			//
-			this.LoadoutBindingSource.DataSource = typeof(Loadout);
+			this.bindingSource.DataSource = typeof(Loadout);
 			//
 			// MainTabControl
 			//
@@ -152,7 +152,7 @@ namespace VUserInterface
 			//
 			this.StatsTabPage.Name = "StatsTabPage";
 			this.StatsTabPage.Text = "Stats";
-			this.StatsTabPage.Controls.Add(UseUnitStatsCheckBox);
+			this.StatsTabPage.Controls.Add(UnitForStatsDisplayDropBox);
 			this.StatsTabPage.Controls.Add(StatsControl);
 			//
 			// IncomeTabPage
@@ -164,84 +164,85 @@ namespace VUserInterface
 			//
 			// UseUnitStatsCheckBox
 			//
-			this.UseUnitStatsCheckBox.Name = "UseUnitStatsCheckBox";
-			this.UseUnitStatsCheckBox.Caption = "Use Unit Statistics";
-			this.UseUnitStatsCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "UseUnitStats");
-			this.UseUnitStatsCheckBox.Location = DPIScalingHelper.GetScaledPoint(140, 10);
+			this.UnitForStatsDisplayDropBox.AllowSelectionOfStrings = true;
+			this.UnitForStatsDisplayDropBox.Location = DPIScalingHelper.GetScaledPoint(10, 10);
+			this.UnitForStatsDisplayDropBox.Name = "UnitForStatsDisplayDropBox";
+			this.UnitForStatsDisplayDropBox.SelectedValueChanged += UnitForStatsDisplayDropBox_SelectedValueChanged;
+			this.UnitForStatsDisplayDropBox.Size = DPIScalingHelper.GetScaledSize(165, 30);
 			//
 			// UseSingleUnitEcoCheckBox
 			//
 			this.UseSingleUnitEcoCheckBox.Name = "UseSingleUnitEcoCheckBox";
 			this.UseSingleUnitEcoCheckBox.Caption = "Current Unit Cost Only";
-			this.UseSingleUnitEcoCheckBox.DataBindings.Add("Checked", LoadoutBindingSource, "UseSingleUnitEco");
+			this.UseSingleUnitEcoCheckBox.DataBindings.Add("Checked", bindingSource, "UseSingleUnitEco");
 			this.UseSingleUnitEcoCheckBox.Location = DPIScalingHelper.GetScaledPoint(140, 10);
 			//
 			// PerkPageControl
 			//
 			this.PerkPageControl.Location = DPIScalingHelper.GetScaledPoint(0, 10);
-			this.PerkPageControl.DataBindings.Add("Perks", this.LoadoutBindingSource, "Perks");
-			this.PerkPageControl.DataBindings.Add("Text", this.LoadoutBindingSource, "Perks.PageTitle");
+			this.PerkPageControl.DataBindings.Add("Perks", this.bindingSource, "Perks");
+			this.PerkPageControl.DataBindings.Add("Text", this.bindingSource, "Perks.PageTitle");
 			this.PerkPageControl.Name = "PerkPageControl";
 			//
 			// DetailsControl
 			//
 			this.DetailsControl.Dock = DockStyle.Fill;
 			this.DetailsControl.Location = DPIScalingHelper.GetScaledPoint(0, 0);
-			this.DetailsControl.DataBindings.Add("Loadout", this.LoadoutBindingSource, ".");
+			this.DetailsControl.DataBindings.Add("Loadout", this.bindingSource, ".");
 			this.DetailsControl.Name = "PerkPageControl";
 			//
 			// GemsControl
 			//
 			this.GemsControl.Location = DPIScalingHelper.GetScaledPoint(0, 10);
-			this.GemsControl.DataBindings.Add("Gems", this.LoadoutBindingSource, "Gems");
+			this.GemsControl.DataBindings.Add("Gems", this.bindingSource, "Gems");
 			this.GemsControl.Name = "GemsControl";
 			//
 			// UnitControl
 			//
-			this.UnitControl.DataBindings.Add("Loadout", this.LoadoutBindingSource, ".");
+			this.UnitControl.DataBindings.Add("Loadout", this.bindingSource, ".");
 			this.UnitControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
 			this.UnitControl.Name = "UnitControl";
 			//
 			// SoulsControl
 			//
 			this.SoulsControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
-			this.SoulsControl.DataBindings.Add("Souls", this.LoadoutBindingSource, "Souls");
+			this.SoulsControl.DataBindings.Add("Souls", this.bindingSource, "Souls");
 			this.SoulsControl.Text = "Soul";
 			//
 			// ChallengePointCollectionControl
 			//
 			this.ChallengePointCollectionControl.Location = DPIScalingHelper.GetScaledPoint(5, 10);
-			this.ChallengePointCollectionControl.DataBindings.Add("ChallengePointCollection", this.LoadoutBindingSource, "ChallengePoints");
+			this.ChallengePointCollectionControl.DataBindings.Add("ChallengePointCollection", this.bindingSource, "ChallengePoints");
 			this.ChallengePointCollectionControl.Text = "Challenge Points";
 			//
 			// UpgradesControl
 			//
 			this.UpgradeControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
-			this.UpgradeControl.DataBindings.Add("Upgrades", this.LoadoutBindingSource, "Upgrades");
+			this.UpgradeControl.DataBindings.Add("Upgrades", this.bindingSource, "Upgrades");
 			this.UpgradeControl.Name = "UpgradesControl";
 			//
 			// LoadoutIncomeControl
 			//
 			this.LoadoutIncomeControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
-			this.LoadoutIncomeControl.DataBindings.Add("Loadout", this.LoadoutBindingSource, ".");
+			this.LoadoutIncomeControl.DataBindings.Add("Loadout", this.bindingSource, ".");
 			this.LoadoutIncomeControl.Name = "LoadoutConfigurationControl";
 			//
 			// ModsControl
 			//
-			this.ModsControl.DataBindings.Add("Mods", this.LoadoutBindingSource, "Mods");
+			this.ModsControl.DataBindings.Add("Mods", this.bindingSource, "Mods");
 			this.ModsControl.Dock = DockStyle.Fill;
 			this.ModsControl.Location = DPIScalingHelper.GetScaledPoint(0, 30);
 			this.ModsControl.Name = "ModsControl";
 			//
 			// StatsControl
 			//
-			this.StatsControl.DataBindings.Add("Stats", this.LoadoutBindingSource, "Stats");
+			this.StatsControl.DataBindings.Add("Stats", this.bindingSource, "Stats");
 			this.StatsControl.Name = "StatsControl";
-			this.StatsControl.Location = DPIScalingHelper.GetScaledPoint(0, 30);
+			this.StatsControl.Location = DPIScalingHelper.GetScaledPoint(0, 40);
 			//
 			// IncomeControl
 			//
-			this.IncomeControl.DataBindings.Add("IncomeManager", this.LoadoutBindingSource, "IncomeManager");
+			this.IncomeControl.DataBindings.Add("IncomeManager", this.bindingSource, "IncomeManager");
 			this.IncomeControl.Name = "IncomeControl";
 			this.IncomeControl.Location = DPIScalingHelper.GetScaledPoint(0, 30);
 			//
@@ -253,7 +254,7 @@ namespace VUserInterface
 			this.Controls.Add(MainTabControl);
 			this.Controls.Add(InfoTabControl);
 			this.Name = "LoadoutForm";
-			((ISupportInitialize)this.LoadoutBindingSource).EndInit();
+			((ISupportInitialize)this.bindingSource).EndInit();
 			this.ResumeLayout();
 			this.PerformLayout();
 		}
@@ -281,9 +282,9 @@ namespace VUserInterface
 		private VUserInterface.UpgradeControl UpgradeControl;
 		private VUserInterface.LoadoutIncomeControl LoadoutIncomeControl;
 		private VUserInterface.ModCollectionControl ModsControl;
-		private System.Windows.Forms.BindingSource LoadoutBindingSource;
+		private System.Windows.Forms.BindingSource bindingSource;
 		private VStatsControl StatsControl;
-		private VCheckControl UseUnitStatsCheckBox;
+		protected VDropBox UnitForStatsDisplayDropBox;
 		private VCheckControl UseSingleUnitEcoCheckBox;
 		private IncomeStatisticsControl IncomeControl;
 		private LoadoutDetailsControl DetailsControl;
