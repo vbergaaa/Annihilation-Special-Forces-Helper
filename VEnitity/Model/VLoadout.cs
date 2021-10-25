@@ -267,28 +267,7 @@ namespace VEntityFramework.Model
 		#endregion
 
 		public bool UseUnitStats => CurrentUnit != null && CurrentUnit.UnitData.Type != UnitType.None;
-
-		#region UseSingleUnitEco
-
-		[VXML(true)]
-		public bool UseSingleUnitEco
-		{
-			get => fUseSingleUnitEco;
-			set
-			{
-				if (value != fUseSingleUnitEco)
-				{
-					fUseSingleUnitEco = value;
-					HasChanges = true;
-					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutKillCost));
-					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutMineralCost));
-					OnPropertyChanged(nameof(UseSingleUnitEco));
-				}
-			}
-		}
-		bool fUseSingleUnitEco;
-
-		#endregion
+		public bool UseUnitCosts => CurrentUnit != null && CurrentUnit.UnitData.Type != UnitType.None;
 
 		#region UnitSpec
 

@@ -60,7 +60,7 @@ namespace VEntityFramework.XML
 				// Key is now read before creating the Unit, it no longer sets the unit type after creating an empty unit
 				return false;
 			}
-			else if (bizo.GetType().Name == "Loadout" && childNode.Name == "UseUnitStats")
+			else if (bizo.GetType().Name == "Loadout" && (childNode.Name == "UseUnitStats" || childNode.Name == "UseSingleUnitEco"))
 			{
 				return false; // UseUnitStats is now calculated depending if the current unit is selected or not
 			}
