@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using VBusiness.Loadouts;
 using VEntityFramework;
@@ -99,7 +100,7 @@ namespace VBusiness.Units
 				{
 					infuseDiscount = loadout.Perks.DNAStart.DesiredLevel;
 				}
-				else if(shouldGrantDNAFreeInf1 && unitData.Type.IsDNA1())
+				else if (shouldGrantDNAFreeInf1 && unitData.Type.IsDNA1())
 				{
 					infuseDiscount = 1;
 				}
@@ -389,11 +390,16 @@ namespace VBusiness.Units
 			{
 				// we need to use a loadout that does not contain spec for the error reporter as it can cause an error if two units have the same cost but spec makes one cheaper then the other
 				var emptyLoadout = new Loadout();
-				ErrorReporter.ReportDebug($"DNA start should have used the most expensive DNA. It was used on the DNA with a {firstDNAStart} as a base unit instead of a {unitData.BasicType} as the base unit. Consider changing the recepe order to ensure this occurs.", () => firstDNAStart != UnitType.None && firstDNAStart.GetBasicUnitMineralCost(emptyLoadout) < unitData.BasicType.GetBasicUnitMineralCost(emptyLoadout));
+				if (!hasAlerted && firstDNAStart != UnitType.None && firstDNAStart.GetBasicUnitMineralCost(emptyLoadout) < unitData.BasicType.GetBasicUnitMineralCost(emptyLoadout))
+				{
+					hasAlerted = true;
+					var message = $"DNA start should have used the most expensive DNA. It was used on the DNA with a {firstDNAStart} as a base unit instead of a {unitData.BasicType} as the base unit. Consider changing the recepe order to ensure this occurs.";
+					Debugger.Break(); // I don't want to exception here as this isn't actually a problem. this is less invasive
+				}
 				firstDNAStart = firstDNAStart != UnitType.None ? firstDNAStart : unitData.BasicType;
 			}
 		}
-
+		static bool hasAlerted;
 		UnitType firstDNAStart;
 #endif
 		#endregion
@@ -407,7 +413,7 @@ namespace VBusiness.Units
 			Kills = kills;
 			CurrentUnitKills = excessKills;
 		}
-		public UnitCost(double mins, double kills) : this (mins, kills, 0)
+		public UnitCost(double mins, double kills) : this(mins, kills, 0)
 		{
 		}
 

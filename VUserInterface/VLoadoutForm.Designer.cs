@@ -59,7 +59,7 @@ namespace VUserInterface
 			this.LoadoutIncomeControl = new LoadoutIncomeControl();
 			this.ModsControl = new ModCollectionControl();
 			this.UnitForStatsDisplayDropBox = new VDropBox();
-			this.UseSingleUnitEcoCheckBox = new VCheckControl();
+			this.UnitForIncomeDisplayDropBox = new VDropBox();
 			this.DetailsControl = new LoadoutDetailsControl();
 			((ISupportInitialize)this.bindingSource).BeginInit();
 			this.SuspendLayout();
@@ -159,7 +159,7 @@ namespace VUserInterface
 			//
 			this.IncomeTabPage.Name = "IncomeTabPage";
 			this.IncomeTabPage.Text = "Income";
-			this.IncomeTabPage.Controls.Add(UseSingleUnitEcoCheckBox);
+			this.IncomeTabPage.Controls.Add(UnitForIncomeDisplayDropBox);
 			this.IncomeTabPage.Controls.Add(IncomeControl);
 			//
 			// UnitForStatsDisplayDropBox
@@ -167,15 +167,16 @@ namespace VUserInterface
 			this.UnitForStatsDisplayDropBox.AllowSelectionOfStrings = true;
 			this.UnitForStatsDisplayDropBox.Location = DPIScalingHelper.GetScaledPoint(10, 10);
 			this.UnitForStatsDisplayDropBox.Name = "UnitForStatsDisplayDropBox";
-			this.UnitForStatsDisplayDropBox.SelectedValueChanged += UnitForStatsDisplayDropBox_SelectedValueChanged;
+			this.UnitForStatsDisplayDropBox.SelectedValueChanged += UnitForIncomeDisplayDropBox_SelectedValueChanged;
 			this.UnitForStatsDisplayDropBox.Size = DPIScalingHelper.GetScaledSize(165, 30);
 			//
-			// UseSingleUnitEcoCheckBox
+			// UnitForIncomeDisplayDropBox
 			//
-			this.UseSingleUnitEcoCheckBox.Name = "UseSingleUnitEcoCheckBox";
-			this.UseSingleUnitEcoCheckBox.Caption = "Current Unit Cost Only";
-			this.UseSingleUnitEcoCheckBox.DataBindings.Add("Checked", bindingSource, "UseSingleUnitEco");
-			this.UseSingleUnitEcoCheckBox.Location = DPIScalingHelper.GetScaledPoint(140, 10);
+			this.UnitForIncomeDisplayDropBox.AllowSelectionOfStrings = true;
+			this.UnitForIncomeDisplayDropBox.Location = DPIScalingHelper.GetScaledPoint(10, 10);
+			this.UnitForIncomeDisplayDropBox.Name = "UnitForIncomeDisplayDropBox";
+			this.UnitForIncomeDisplayDropBox.SelectedValueChanged += UnitForStatsDisplayDropBox_SelectedValueChanged;
+			this.UnitForIncomeDisplayDropBox.Size = DPIScalingHelper.GetScaledSize(165, 30);
 			//
 			// PerkPageControl
 			//
@@ -244,7 +245,7 @@ namespace VUserInterface
 			//
 			this.IncomeControl.DataBindings.Add("IncomeManager", this.bindingSource, "IncomeManager");
 			this.IncomeControl.Name = "IncomeControl";
-			this.IncomeControl.Location = DPIScalingHelper.GetScaledPoint(0, 30);
+			this.IncomeControl.Location = DPIScalingHelper.GetScaledPoint(0, 40);
 			//
 			// PerkPlanningForm
 			//
@@ -285,7 +286,7 @@ namespace VUserInterface
 		private System.Windows.Forms.BindingSource bindingSource;
 		private VStatsControl StatsControl;
 		protected VDropBox UnitForStatsDisplayDropBox;
-		private VCheckControl UseSingleUnitEcoCheckBox;
+		protected VDropBox UnitForIncomeDisplayDropBox;
 		private IncomeStatisticsControl IncomeControl;
 		private LoadoutDetailsControl DetailsControl;
 	}

@@ -54,10 +54,13 @@ namespace VUserInterface
 		void RefreshUnitDropdowns()
 		{
 			suspendUpdatingCurrentUnit = true;
-			var newList = GetNewUnitStatsList();
-			UnitForStatsDisplayDropBox.List = newList.Cast<object>().ToList();
+			var newStatsList = GetNewUnitStatsList();
+			var newIncomeList = GetNewUnitIncomeList();
+			UnitForStatsDisplayDropBox.List = newStatsList.Cast<object>().ToList();
+			UnitForIncomeDisplayDropBox.List = newIncomeList.Cast<object>().ToList();
 			var newIndex = Loadout.Units.IndexOf(Loadout.CurrentUnit) + 1;
 			UnitForStatsDisplayDropBox.SelectedIndex = newIndex;
+			UnitForIncomeDisplayDropBox.SelectedIndex = newIndex;
 			suspendUpdatingCurrentUnit = false;
 		}
 
@@ -68,7 +71,32 @@ namespace VUserInterface
 			return list;
 		}
 
-		void UnitForStatsDisplayDropBox_SelectedValueChanged(object sender, System.EventArgs e)
+		List<string> GetNewUnitIncomeList()
+		{
+			var list = new List<string>() { "All Units" };
+			list.AddRange(Loadout.Units.Select(x => x.ToString()));
+			return list;
+		}
+
+		void UnitForStatsDisplayDropBox_SelectedValueChanged(object sender, EventArgs e)
+		{
+			if (!suspendUpdatingCurrentUnit)
+			{
+				var index = UnitForIncomeDisplayDropBox.SelectedIndex;
+
+				if (index <= 0)
+				{
+					// this is currently used to set the current unit on the loadout to be blank
+					VUnit.New(UnitType.None, Loadout);
+				}
+				else
+				{
+					Loadout.SetCurrentUnit(Loadout.Units[index - 1]);
+				}
+			}
+		}
+
+		void UnitForIncomeDisplayDropBox_SelectedValueChanged(object sender, EventArgs e)
 		{
 			if (!suspendUpdatingCurrentUnit)
 			{
