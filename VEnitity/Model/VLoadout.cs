@@ -266,26 +266,7 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region UseUnitStats
-
-		[VXML(true)]
-		public bool UseUnitStats
-		{
-			get => fUseUnitStats;
-			set
-			{
-				if (value != fUseUnitStats)
-				{
-					fUseUnitStats = value;
-					HasChanges = true;
-					Stats.RefreshAllBindings();
-					OnPropertyChanged(nameof(UseUnitStats));
-				}
-			}
-		}
-		bool fUseUnitStats;
-
-		#endregion
+		public bool UseUnitStats => CurrentUnit != null && CurrentUnit.UnitData.Type != UnitType.None;
 
 		#region UseSingleUnitEco
 

@@ -281,7 +281,6 @@ namespace VBusiness.Loadouts
 		{
 			Stats = new Stats(this);
 			ShouldRestrict = true;
-			UseUnitStats = true;
 			SyncWithBank = true;
 		}
 

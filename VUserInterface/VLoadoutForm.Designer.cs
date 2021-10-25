@@ -162,7 +162,7 @@ namespace VUserInterface
 			this.IncomeTabPage.Controls.Add(UseSingleUnitEcoCheckBox);
 			this.IncomeTabPage.Controls.Add(IncomeControl);
 			//
-			// UseUnitStatsCheckBox
+			// UnitForStatsDisplayDropBox
 			//
 			this.UnitForStatsDisplayDropBox.AllowSelectionOfStrings = true;
 			this.UnitForStatsDisplayDropBox.Location = DPIScalingHelper.GetScaledPoint(10, 10);
