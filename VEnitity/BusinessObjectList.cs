@@ -8,7 +8,7 @@ namespace VEntityFramework
 	public class BusinessObjectList<T> : IList<T>, IList
 		where T : BusinessObject
 	{
-		readonly BusinessObject parent;
+		protected readonly BusinessObject parent;
 		readonly IList<T> innerList;
 
 		public BusinessObjectList(BusinessObject parent)
@@ -39,7 +39,7 @@ namespace VEntityFramework
 
 		public object SyncRoot => ((IList)innerList).SyncRoot;
 
-		public void Add(T item)
+		public virtual void Add(T item)
 		{
 			innerList.Add(item);
 		}
@@ -49,7 +49,7 @@ namespace VEntityFramework
 			return ((IList)innerList).Add(value);
 		}
 
-		public void Clear()
+		public virtual void Clear()
 		{
 			innerList.Clear();
 
@@ -91,7 +91,7 @@ namespace VEntityFramework
 			return IndexOf((T)value);
 		}
 
-		public void Insert(int index, T item)
+		public virtual void Insert(int index, T item)
 		{
 			innerList.Insert(index, item);
 		}
@@ -101,7 +101,7 @@ namespace VEntityFramework
 			Insert(index, (T)value);
 		}
 
-		public bool Remove(T item)
+		public virtual bool Remove(T item)
 		{
 			parent.DeregisterChild(item);
 			parent.HasChanges = true;

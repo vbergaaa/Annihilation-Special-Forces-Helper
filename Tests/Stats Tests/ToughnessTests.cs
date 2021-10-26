@@ -15,7 +15,6 @@ namespace Tests.Stats_Tests
 		{
 			var loadout = new Loadout();
 			loadout.UnitConfiguration.DifficultyLevel = DifficultyLevel.VeryEasy;
-			loadout.UseUnitStats = true;
 
 			loadout.Units.Add(VUnit.New(UnitType.None, loadout));
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(0));
@@ -25,25 +24,10 @@ namespace Tests.Stats_Tests
 		}
 
 		[Test]
-		public void TestToughness_UseProfileStats()
-		{
-			var loadout = new Loadout();
-			loadout.Units.Add(VUnit.New(UnitType.WarpLord, loadout));
-			loadout.UnitConfiguration.DifficultyLevel = DifficultyLevel.VeryEasy;
-
-			loadout.UseUnitStats = true;
-			Assert.That(loadout.Stats.Toughness, Is.Not.EqualTo(0));
-
-			loadout.UseUnitStats = false;
-			Assert.That(loadout.Stats.Toughness, Is.EqualTo(0));
-		}
-
-		[Test]
 		public void TestToughness_HasDifficulty()
 		{
 			var loadout = new Loadout();
 			loadout.Units.Add(VUnit.New(UnitType.WarpLord, loadout));
-			loadout.UseUnitStats = true;
 
 			loadout.UnitConfiguration.DifficultyLevel = DifficultyLevel.VeryEasy;
 			Assert.That(loadout.Stats.Toughness, Is.Not.EqualTo(0));
@@ -183,12 +167,12 @@ namespace Tests.Stats_Tests
 			// ling atk = 60;
 			// roach atk = 70;
 			StatCalculationHelper.UnitCompOverride = new List<(EnemyType, double)>
-			{ 
+			{
 				(EnemyType.Zergling, lingChance),
 				(EnemyType.Roach, roachChance)
 			};
 			var loadout = GetLoadout();
-			loadout.Gems.HealthArmorGem.CurrentLevel = 100; 
+			loadout.Gems.HealthArmorGem.CurrentLevel = 100;
 			loadout.Gems.ShieldsArmorGem.CurrentLevel = 100;
 			loadout.Upgrades.HealthArmorUpgrade = 80;
 			loadout.Upgrades.ShieldsArmorUpgrade = 80;
@@ -204,7 +188,6 @@ namespace Tests.Stats_Tests
 			// 300 health
 			var loadout = new Loadout();
 			loadout.Units.Add(VUnit.New(UnitType.WarpLord, loadout));
-			loadout.UseUnitStats = true;
 			loadout.ShouldRestrict = false;
 			loadout.UnitConfiguration.DifficultyLevel = DifficultyLevel.Normal;
 			loadout.Upgrades.HealthArmorUpgrade = 50;

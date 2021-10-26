@@ -1,9 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-using VBusiness.Loadouts;
-using VBusiness.Souls;
+﻿using System.Windows.Forms;
 using VUserInterface.CommonControls;
 
 namespace VUserInterface
@@ -36,8 +31,8 @@ namespace VUserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.LoadoutsLoadList = new VUserInterface.CommonControls.VLoadList();
-			this.SoulsLoadList = new VUserInterface.CommonControls.VLoadList();
+			this.LoadoutsLoadList = new VUserInterface.CommonControls.LoadList();
+			this.SoulsLoadList = new VUserInterface.CommonControls.LoadList();
 			this.TitleLabel = new VUserInterface.CommonControls.VLabel();
 			this.LeftPanel = new VUserInterface.CommonControls.DPIPanel();
 			this.SoulsButton = new VUserInterface.CommonControls.VButton();
@@ -237,8 +232,8 @@ namespace VUserInterface
 		private Panel RegistryPanel;
 		private Panel LoadoutsPanel;
 		private Panel SoulsPanel;
-		private VLoadList LoadoutsLoadList;
-		private VLoadList SoulsLoadList;
+		private LoadList LoadoutsLoadList;
+		private LoadList SoulsLoadList;
 		private ProfileControl ProfileControl;
 		private RegistryControl RegistryControl;
 		private VLabel TitleLabel;

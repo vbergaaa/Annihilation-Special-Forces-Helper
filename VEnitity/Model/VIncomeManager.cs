@@ -298,7 +298,7 @@ namespace VEntityFramework.Model
 		#endregion
 
 		#region HasInfinitySpawner
-		
+
 		[VXML(true)]
 		public bool HasInfinitySpawner
 		{

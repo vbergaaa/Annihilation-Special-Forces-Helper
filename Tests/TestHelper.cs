@@ -22,7 +22,6 @@ namespace Tests
 		{
 			var loadout = new Loadout()
 			{
-				UseUnitStats = true,
 				ShouldRestrict = false,
 			};
 

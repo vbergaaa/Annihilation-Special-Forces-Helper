@@ -172,9 +172,6 @@ namespace VEntityFramework.Model
 
 		public virtual BusinessObjectList<VUnit> Units { get; }
 
-		public virtual void AddUnit(VUnit unit) { }
-		public virtual void RemoveUnit(VUnit unit) { }
-
 		[VXML(false)]
 		public virtual VUnit CurrentUnit
 		{
@@ -188,25 +185,26 @@ namespace VEntityFramework.Model
 					OnPropertyChanged(nameof(Units));
 					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutMineralCost));
 					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutKillCost));
+					OnUnitsUpdated();
 				}
 			}
 		}
 		VUnit fCurrentUnit;
 
-		public void SetCurrentUnit(string unitName)
+		public void SetCurrentUnit(VUnit unit)
 		{
-			VUnit currentUnit = null;
-			foreach (var unit in Units)
+			if (unit != CurrentUnit)
 			{
-				if (unit.ToString() == unitName)
-				{
-					currentUnit = unit;
-				}
+				ErrorReporter.ReportDebug(!Units.Contains(unit), "Where are you getting this unit from?");
+				CurrentUnit = unit;
 			}
-			ErrorReporter.ReportDebug(currentUnit == null, "Where are you getting this setstring from?");
-
-			CurrentUnit = currentUnit;
 		}
+
+		public void OnUnitsUpdated()
+		{
+			UnitsUpdated?.Invoke(this, new EventArgs());
+		}
+		public event EventHandler UnitsUpdated;
 
 		#endregion
 
@@ -268,48 +266,8 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region UseUnitStats
-
-		[VXML(true)]
-		public bool UseUnitStats
-		{
-			get => fUseUnitStats;
-			set
-			{
-				if (value != fUseUnitStats)
-				{
-					fUseUnitStats = value;
-					HasChanges = true;
-					Stats.RefreshAllBindings();
-					OnPropertyChanged(nameof(UseUnitStats));
-				}
-			}
-		}
-		bool fUseUnitStats;
-
-		#endregion
-
-		#region UseSingleUnitEco
-
-		[VXML(true)]
-		public bool UseSingleUnitEco
-		{
-			get => fUseSingleUnitEco;
-			set
-			{
-				if (value != fUseSingleUnitEco)
-				{
-					fUseSingleUnitEco = value;
-					HasChanges = true;
-					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutKillCost));
-					IncomeManager.RefreshPropertyBinding(nameof(IncomeManager.LoadoutMineralCost));
-					OnPropertyChanged(nameof(UseSingleUnitEco));
-				}
-			}
-		}
-		bool fUseSingleUnitEco;
-
-		#endregion
+		public bool UseUnitStats => CurrentUnit != null && CurrentUnit.UnitData.Type != UnitType.None;
+		public bool UseUnitCosts => CurrentUnit != null && CurrentUnit.UnitData.Type != UnitType.None;
 
 		#region UnitSpec
 

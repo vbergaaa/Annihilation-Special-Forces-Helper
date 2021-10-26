@@ -76,13 +76,16 @@ namespace VBusiness
 
 		#region UnitCost
 
-		public override double LoadoutKillCost => Loadout.UseSingleUnitEco ? UnitKillCost : GetFullLoadoutCost().Kills;
-		public override double LoadoutMineralCost => Loadout.UseSingleUnitEco ? UnitMineralCost : GetFullLoadoutCost().Minerals;
+		public override double LoadoutKillCost => Loadout.UseUnitCosts ? UnitKillCost : GetFullLoadoutCost().Kills;
+		public override double LoadoutMineralCost => Loadout.UseUnitCosts ? UnitMineralCost : GetFullLoadoutCost().Minerals;
 
 		UnitCost GetFullLoadoutCost()
 		{
 			var unitCosts = new UnitCostHelper(Loadout).GetUnitCost(Loadout.Units);
-			unitCosts.Minerals += Loadout.Upgrades.UpgradesCost;
+			if (Loadout.Upgrades.IncludeUpgradesInLoadoutCost)
+			{
+				unitCosts.Minerals += Loadout.Upgrades.UpgradesCost;
+			}
 			return unitCosts;
 		}
 

@@ -58,7 +58,11 @@ namespace VEntityFramework.XML
 			{
 				// HasUnitSpec is now calculated from the spec on the loadout, not stored against a unit
 				// Key is now read before creating the Unit, it no longer sets the unit type after creating an empty unit
-				return false; 
+				return false;
+			}
+			else if (bizo.GetType().Name == "Loadout" && (childNode.Name == "UseUnitStats" || childNode.Name == "UseSingleUnitEco"))
+			{
+				return false; // UseUnitStats is now calculated depending if the current unit is selected or not
 			}
 			return true;
 		}
@@ -95,8 +99,8 @@ namespace VEntityFramework.XML
 		void ReadListIntoBizo(BusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
 		{
 			var list = (IList)matchingProperty.GetValue(bizo);
-			var listType = list.GetType().GetGenericArguments()[0];
-			var listBaseMemberName = list.GetType().GetGenericArguments()[0].Name;
+			var listType = GetGenericTypeArgument(list.GetType());
+			var listBaseMemberName = listType.Name;
 
 			foreach (XmlNode node in childNode.ChildNodes)
 			{
@@ -116,6 +120,19 @@ namespace VEntityFramework.XML
 					var item = CastFromStringHelper.GetValueForPropertyTypeFromString(listBaseMemberName, node.InnerText);
 					list.Add(item);
 				}
+			}
+		}
+
+		Type GetGenericTypeArgument(Type type)
+		{
+			var hasGenericType = type.GetGenericArguments().Length > 0;
+			if (hasGenericType)
+			{
+				return type.GetGenericArguments()[0];
+			}
+			else
+			{
+				return GetGenericTypeArgument(type.BaseType);
 			}
 		}
 

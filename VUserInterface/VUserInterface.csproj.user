@@ -47,13 +47,13 @@
     <Compile Update="CommonControls\VLabel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="CommonControls\VLoadList.cs">
+    <Compile Update="CommonControls\VSelectList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="CommonControls\DPIScaling\DPIPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="CommonControls\VSelectList.cs">
+    <Compile Update="CommonControls\LoadList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="CommonControls\VTextBox.cs">
@@ -101,10 +101,13 @@
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="UnitConfigurationControl.cs">
+    <Compile Update="UnitsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UnitControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UnitSelectList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UpgradeControl.cs">

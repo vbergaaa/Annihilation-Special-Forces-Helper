@@ -39,9 +39,7 @@ namespace VUserInterface
 			this.RankDropBox = new VUserInterface.CommonControls.VDropBox();
 			this.KillIncrementor = new VUserInterface.CommonControls.VIncrementor();
 			this.IsLimitBrokenCheckBox = new VCheckControl();
-			this.UnitTypeLabel = new VLabel();
 			this.TitleLabel = new VLabel();
-			this.AddButton = new DPIButton();
 			this.SpecCheckBox = new VCheckControl();
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
 			this.SuspendLayout();
@@ -65,15 +63,6 @@ namespace VUserInterface
 			this.UnitTypeDropBox.Size = DPIScalingHelper.GetScaledSize(150, 29);
 			this.UnitTypeDropBox.Visible = true;
 			// 
-			// UnitTypeLabel
-			// 
-			this.UnitTypeLabel.Caption = "Type: ";
-			this.UnitTypeLabel.DataBindings.Add("Text", BindingSource, "UnitData.Type");
-			this.UnitTypeLabel.Location = DPIScalingHelper.GetScaledPoint(106, 30);
-			this.UnitTypeLabel.Name = "UnitTypeLabel";
-			this.UnitTypeLabel.Size = DPIScalingHelper.GetScaledSize(211, 29);
-			this.UnitTypeLabel.Visible = false;
-			// 
 			// BindingSource
 			// 
 			this.BindingSource.DataSource = typeof(VBusiness.Units.Unit);
@@ -87,7 +76,6 @@ namespace VUserInterface
 			this.InfusionIncrementor.Name = "InfusionIncrementor";
 			this.InfusionIncrementor.TabIndex = 1;
 			this.InfusionIncrementor.Value = 0;
-			//this.InfusionIncrementor.ValueChanged += UpdateUnitsListBindings;
 			// 
 			// RankDropBox
 			// 
@@ -99,7 +87,6 @@ namespace VUserInterface
 			this.RankDropBox.Name = "RankDropBox";
 			this.RankDropBox.Size = DPIScalingHelper.GetScaledSize(150, 29);
 			this.RankDropBox.TabIndex = 2;
-			//this.RankDropBox.SelectedValueChanged += UpdateUnitsListBindings;
 			// 
 			// KillIncrementor
 			// 
@@ -128,14 +115,6 @@ namespace VUserInterface
 			this.IsLimitBrokenCheckBox.Location = DPIScalingHelper.GetScaledPoint(106, 180);
 			this.IsLimitBrokenCheckBox.Name = "IsLimitBrokenCheckBox";
 			// 
-			// AddButton
-			// 
-			this.AddButton.Location = DPIScalingHelper.GetScaledPoint(106, 210);
-			this.AddButton.Name = "AddButton";
-			this.AddButton.TabIndex = 4;
-			this.AddButton.Text = "Add";
-			this.AddButton.Click += AddButton_Click;
-			// 
 			// UnitControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -146,8 +125,6 @@ namespace VUserInterface
 			this.Controls.Add(this.InfusionIncrementor);
 			this.Controls.Add(this.UnitTypeDropBox);
 			this.Controls.Add(this.TitleLabel);
-			this.Controls.Add(this.UnitTypeLabel);
-			this.Controls.Add(this.AddButton);
 			this.Controls.Add(this.SpecCheckBox);
 			this.Controls.Add(this.IsLimitBrokenCheckBox);
 			this.Name = "UnitControl";
@@ -165,8 +142,6 @@ namespace VUserInterface
 		private CommonControls.VIncrementor KillIncrementor;
 		private CommonControls.VCheckControl IsLimitBrokenCheckBox;
 		System.Windows.Forms.BindingSource BindingSource;
-		VLabel UnitTypeLabel;
-		System.Windows.Forms.Button AddButton;
 		VCheckControl SpecCheckBox;
 	}
 }

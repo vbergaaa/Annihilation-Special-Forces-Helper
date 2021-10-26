@@ -100,7 +100,6 @@ namespace Tests
 
 		void PopulateOtherProperties(Loadout loadout)
 		{
-			loadout.UseUnitStats = true;
 			loadout.UnitSpec = UnitType.Templar;
 			loadout.Name = "XMLTEST";
 			loadout.Slot = 9999;

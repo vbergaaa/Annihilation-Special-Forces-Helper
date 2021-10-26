@@ -17,17 +17,6 @@ namespace VUserInterface
 			InitializeComponent();
 		}
 
-		#region ChangeDisplayState
-
-		public void ChangeDisplayState(bool isModifiable)
-		{
-			UnitTypeLabel.Visible = !isModifiable;
-			UnitTypeDropBox.Visible = isModifiable;
-			AddButton.Visible = isModifiable;
-		}
-
-		#endregion
-
 		#region Unit
 
 		public VUnit Unit
@@ -42,11 +31,6 @@ namespace VUserInterface
 						fUnit.DescriptionChanged -= UpdateUnitsListBindings;
 					}
 					value.DescriptionChanged += UpdateUnitsListBindings;
-					var isFirstSet = false;
-					if (fUnit == null)
-					{
-						isFirstSet = true;
-					}
 					var loadout = value.Loadout;
 					fUnit = value;
 					isSettingUnit = true;
@@ -54,10 +38,6 @@ namespace VUserInterface
 					if (loadout.CurrentUnit != fUnit)
 					{
 						loadout.CurrentUnit = fUnit;
-					}
-					if (isFirstSet)
-					{
-						ChangeDisplayState(fUnit.UnitData.Type == UnitType.None);
 					}
 					OnUnitChanged();
 					isSettingUnit = false;
@@ -124,24 +104,11 @@ namespace VUserInterface
 
 		#endregion
 
-		#region UnitChanged
-
 		public event EventHandler UnitChanged;
 		void OnUnitChanged()
 		{
 			UnitChanged?.Invoke(this, new EventArgs());
 		}
-
-		#endregion
-
-		#region AddButton_Click
-
-		private void AddButton_Click(object sender, System.EventArgs e)
-		{
-			ChangeDisplayState(false);
-		}
-
-		#endregion
 
 		List<object> GetUnitTypes()
 		{

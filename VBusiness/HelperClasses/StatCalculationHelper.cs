@@ -14,7 +14,7 @@ namespace VBusiness.HelperClasses
 
 		public static double GetToughness(VLoadout loadout)
 		{
-			if (loadout.UseUnitStats && loadout.CurrentUnit.UnitData.Type != UnitType.None)
+			if (loadout.UseUnitStats)
 			{
 				var rawEnemyDamages = GetEnemyCompositionStats(loadout, CompositionOptions.Defence);
 
@@ -83,7 +83,7 @@ namespace VBusiness.HelperClasses
 
 		public static double GetDamage(VLoadout loadout)
 		{
-			if (loadout.UseUnitStats && loadout.CurrentUnit.UnitData.Type != UnitType.None)
+			if (loadout.UseUnitStats)
 			{
 				using (loadout.CurrentUnit.UnitData.ApplyPassiveEffect(loadout))
 				{
