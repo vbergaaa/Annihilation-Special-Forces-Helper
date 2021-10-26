@@ -1,6 +1,4 @@
-﻿
-using VBusiness;
-using VEntityFramework.Model;
+﻿using VEntityFramework.Model;
 
 namespace VUserInterface
 {
@@ -38,6 +36,7 @@ namespace VUserInterface
 			this.ShieldsArmorIncrementor = new VUserInterface.CommonControls.VIncrementor();
 			this.HealthIncrementor = new VUserInterface.CommonControls.VIncrementor();
 			this.HealthArmorIncrementor = new VUserInterface.CommonControls.VIncrementor();
+			this.IncludeUpgradesInLoadoutCost = new VUserInterface.CommonControls.VCheckControl();
 			this.BindingSource = new VBindingSource();
 			this.SuspendLayout();
 			//
@@ -105,6 +104,14 @@ namespace VUserInterface
 			this.HealthArmorIncrementor.Size = DPIScalingHelper.GetScaledSize(193, 28);
 			this.HealthArmorIncrementor.TabIndex = 5;
 			// 
+			// IncludeUpgradesInLoadoutCost
+			// 
+			this.IncludeUpgradesInLoadoutCost.Caption = "Include upgrades cost in loadout cost:";
+			this.IncludeUpgradesInLoadoutCost.DataBindings.Add("Checked", BindingSource, "IncludeUpgradesInLoadoutCost");
+			this.IncludeUpgradesInLoadoutCost.Location = DPIScalingHelper.GetScaledPoint(220, 190);
+			this.IncludeUpgradesInLoadoutCost.Name = "IncludeUpgradesInLoadoutCost";
+			this.IncludeUpgradesInLoadoutCost.TabIndex = 6;
+			// 
 			// UpgradeControl
 			// 
 			this.Controls.Add(this.HealthArmorIncrementor);
@@ -113,6 +120,7 @@ namespace VUserInterface
 			this.Controls.Add(this.ShieldsIncrementor);
 			this.Controls.Add(this.AttackSpeedIncrementor);
 			this.Controls.Add(this.AttackIncrementor);
+			this.Controls.Add(this.IncludeUpgradesInLoadoutCost);
 			this.Name = "UpgradeControl";
 			this.Size = DPIScalingHelper.GetScaledSize(250, 233);
 			this.ResumeLayout(false);
@@ -127,6 +135,7 @@ namespace VUserInterface
 		private CommonControls.VIncrementor ShieldsArmorIncrementor;
 		private CommonControls.VIncrementor HealthIncrementor;
 		private CommonControls.VIncrementor HealthArmorIncrementor;
+		private CommonControls.VCheckControl IncludeUpgradesInLoadoutCost;
 		private System.Windows.Forms.BindingSource BindingSource;
 	}
 }

@@ -168,6 +168,23 @@ namespace VEntityFramework.Model
 
 		public virtual double UpgradesCost { get; }
 
+		[VXML(true)]
+		public bool IncludeUpgradesInLoadoutCost
+		{
+			get => fIncludeUpgradesInLoadoutCost;
+			set
+			{
+				if (value != fIncludeUpgradesInLoadoutCost)
+				{
+					fIncludeUpgradesInLoadoutCost = value;
+					HasChanges = true;
+					OnPropertyChanged(nameof(IncludeUpgradesInLoadoutCost));
+					Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.LoadoutMineralCost));
+				}
+			}
+		}
+		bool fIncludeUpgradesInLoadoutCost;
+
 		#endregion
 
 		#region Implementation

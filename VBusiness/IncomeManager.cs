@@ -82,7 +82,10 @@ namespace VBusiness
 		UnitCost GetFullLoadoutCost()
 		{
 			var unitCosts = new UnitCostHelper(Loadout).GetUnitCost(Loadout.Units);
-			unitCosts.Minerals += Loadout.Upgrades.UpgradesCost;
+			if (Loadout.Upgrades.IncludeUpgradesInLoadoutCost)
+			{
+				unitCosts.Minerals += Loadout.Upgrades.UpgradesCost;
+			}
 			return unitCosts;
 		}
 
