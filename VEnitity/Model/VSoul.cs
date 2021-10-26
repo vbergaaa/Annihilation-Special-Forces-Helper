@@ -248,7 +248,7 @@ namespace VEntityFramework.Model
 
 		#region UniqueName
 
-		public string UniqueName => IsUnique ? $"{Rarity} Soul of {Type.GetDescription()}" : $"Regular {Rarity} Soul";
+		public string UniqueName => IsUnique ? $"{Rarity.GetDescription()} Soul of {Type.GetDescription()}" : $"Regular {Rarity.GetDescription()} Soul";
 
 		#endregion
 
@@ -290,6 +290,6 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		public const SoulType HighestNonUniqueSoul = SoulType.HalfPitchBlack; 
+		public const SoulType HighestNonUniqueSoul = SoulType.HalfPitchBlack;
 	}
 }
