@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using VBusiness.HelperClasses;
 using VBusiness.Rooms;
 using VEntityFramework;
@@ -26,20 +25,7 @@ namespace VBusiness
 		}
 		public abstract RoomNumber RoomNumber { get; }
 		public IEnumerable<EnemyQuantity> Buildings => GetBuildings();
-		public IEnumerable<EnemyQuantity> EnemiesPerWave
-		{
-			get
-			{
-				var enemiesFromThisRoom = GetEnemies();
-
-				var enemiesFromAdditionalRooms = AdditionalOpenRooms != RoomNumber.None
-					? Room.New(AdditionalOpenRooms).GetEnemies()
-					: Array.Empty<EnemyQuantity>();
-
-				return enemiesFromThisRoom
-					.Union(enemiesFromAdditionalRooms);
-			}
-		}
+		public IEnumerable<EnemyQuantity> EnemiesPerWave => GetEnemies();
 
 		public bool HasBoss => GetBoss != EnemyType.None;
 		public virtual EnemyType GetBoss => EnemyType.None;

@@ -32,6 +32,12 @@ namespace VBusiness.HelperClasses
 			var tierUp = loadout.UnitConfiguration.Difficulty.UnitTierIncrease + loadout.Mods.Tier.CurrentLevel / 10.0;
 
 			var units = Room.New(loadout.IncomeManager.FarmRoom).EnemiesPerWave.TierUp(tierUp).ToList();
+
+			if (loadout.IncomeManager.AdditionalFarmRoom != Rooms.RoomNumber.None)
+			{
+				units.AddRange(Room.New(loadout.IncomeManager.AdditionalFarmRoom).EnemiesPerWave.TierUp(tierUp).ToList());
+			}
+
 			units.AddRange(units.SelectRecursive(e => e.Type.GetAdditionalSpawns(loadout.UnitConfiguration.Difficulty.UnitTierIncrease, loadout.IncomeManager.FarmRoom).Multiply(e.Quantity)));
 
 			IEnumerable<EnemyQuantity> infSpawnerUnits = loadout.IncomeManager.HasInfinitySpawner

@@ -327,8 +327,6 @@ namespace VEntityFramework.Model
 
 		#region Persistent Properties
 
-		#region FarmRoom
-
 		[VXML(true)]
 		public virtual RoomNumber FarmRoom
 		{
@@ -345,7 +343,21 @@ namespace VEntityFramework.Model
 		}
 		RoomNumber fFarmRoom;
 
-		#endregion
+		[VXML(true)]
+		public virtual RoomNumber AdditionalFarmRoom
+		{
+			get => fAdditionalFarmRoom;
+			set
+			{
+				if (value != fAdditionalFarmRoom)
+				{
+					fAdditionalFarmRoom = value;
+					HasChanges = true;
+					OnPropertyChanged(nameof(AdditionalFarmRoom));
+				}
+			}
+		}
+		RoomNumber fAdditionalFarmRoom;
 
 		#region BrutaliskOverride
 

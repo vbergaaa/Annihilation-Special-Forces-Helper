@@ -5,17 +5,17 @@ namespace VBusiness.Rooms
 	public enum RoomNumber
 	{
 		None,
-		[Description("Very Easy Room 1")]
+		[Description("VE Right Room 1")]
 		Room1,
-		[Description("Very Easy Room 2")]
+		[Description("VE Right Room 2")]
 		Room2,
-		[Description("Very Easy Room 3")]
+		[Description("VE Left Room 1")]
 		Room3,
-		[Description("Very Easy Room 4")]
+		[Description("VE Left Room 2")]
 		Room4,
-		[Description("Very Easy Room 5")]
+		[Description("VE Double Hatch Room")]
 		Room5,
-		[Description("Very Easy Room 6")]
+		[Description("VE Last Room")]
 		Room6,
 		[Description("Easy Room 1")]
 		Room7,

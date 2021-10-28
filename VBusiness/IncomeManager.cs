@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using VBusiness.HelperClasses;
 using VBusiness.Rooms;
 using VBusiness.Units;
@@ -54,8 +56,6 @@ namespace VBusiness
 
 		#endregion
 
-		#region FarmRoom
-
 		public override RoomNumber FarmRoom
 		{
 			get => base.FarmRoom;
@@ -68,11 +68,54 @@ namespace VBusiness
 
 				RefreshPropertyBinding(nameof(MineralsPerMinute));
 				RefreshPropertyBinding(nameof(KillsPerMinute));
+				RefreshPropertyBinding(nameof(AdditionalFarmRoom_Visible));
+				RefreshPropertyBinding(nameof(AdditionalRoomsLookup));
 				BrutaliskOverride.RefreshAllBrutas();
 			}
 		}
 
-		#endregion
+		public override RoomNumber AdditionalFarmRoom
+		{
+			get
+			{
+				if (AdditionalRoomsLookup.Contains(base.AdditionalFarmRoom))
+				{
+					return base.AdditionalFarmRoom;
+				}
+				return RoomNumber.None;
+			}
+			set
+			{
+				if (AdditionalRoomsLookup.Contains(value))
+				{
+					base.AdditionalFarmRoom = value;
+				}
+
+				RefreshPropertyBinding(nameof(MineralsPerMinute));
+				RefreshPropertyBinding(nameof(KillsPerMinute));
+			}
+		}
+
+		public IEnumerable<RoomNumber> AdditionalRoomsLookup
+		{
+			get
+			{
+				yield return RoomNumber.None;
+
+				if (FarmRoom == RoomNumber.Room1 || FarmRoom == RoomNumber.Room2)
+				{
+					yield return RoomNumber.Room3;
+					yield return RoomNumber.Room4;
+				}
+
+				if (FarmRoom == RoomNumber.Room7)
+				{
+					yield return RoomNumber.Room8;
+				}
+			}
+		}
+
+		public bool AdditionalFarmRoom_Visible => FarmRoom == RoomNumber.Room1 || FarmRoom == RoomNumber.Room2 || FarmRoom == RoomNumber.Room7;
 
 		#region UnitCost
 
