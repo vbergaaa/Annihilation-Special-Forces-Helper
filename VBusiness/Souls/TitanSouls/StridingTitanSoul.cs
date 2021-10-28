@@ -13,19 +13,17 @@ namespace VBusiness.Souls
 		public override void ActivateUniqueEffect()
 		{
 			Loadout.Stats.Attack += 20;
-			Loadout.Stats.UpdateAttackSpeed("stitan", 20);
 			Loadout.Stats.UpdateHealth("Core", 20);
 			Loadout.Stats.UpdateShields("Core", 20);
-			VEntityFramework.ErrorReporter.ReportDebug("Check how this works for health and shields.");
-			VEntityFramework.ErrorReporter.ReportDebug("Check how this works for acceleration");
+			Loadout.Stats.UpdateAcceleration("stitan", 20); // this also updates attack speed, haven't fully tested this.
 		}
 
 		public override void DeactivateUniqueEffect()
 		{
 			Loadout.Stats.Attack -= 20;
-			Loadout.Stats.UpdateAttackSpeed("stitan", -20);
 			Loadout.Stats.UpdateShields("Core", -20);
 			Loadout.Stats.UpdateHealth("Core", -20);
+			Loadout.Stats.UpdateAcceleration("stitan", -20);
 		}
 	}
 }

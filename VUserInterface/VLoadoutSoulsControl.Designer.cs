@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms;
 using VBusiness.Profile;
-using VBusiness.Souls;
 using VEntityFramework.Model;
 using VUserInterface.CommonControls;
 
@@ -36,6 +35,9 @@ namespace VUserInterface
 		{
 			components = new System.ComponentModel.Container();
 			this.bindingSource = new VBindingSource();
+			this.SoulsCostLabel = new VLabel();
+			this.TotalCostLabel = new VLabel();
+			this.RemainingCostLabel = new VLabel();
 			this.Soul1Control = new SoulControl();
 			this.Soul2Control = new SoulControl();
 			this.Soul3Control = new SoulControl();
@@ -48,18 +50,43 @@ namespace VUserInterface
 			//
 			this.bindingSource.DataSource = typeof(VLoadoutSouls);
 			//
+			// PageCostLabel;
+			//
+			this.SoulsCostLabel.DataBindings.Add("Text", bindingSource, "SoulCosts");
+			this.SoulsCostLabel.Caption = "Cost of Souls:";
+			this.SoulsCostLabel.Location = DPIScalingHelper.GetScaledPoint(100, 0);
+			this.SoulsCostLabel.Name = "PageCostLabel";
+			this.SoulsCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			//
+			// TotalCostLabel;
+			//
+			this.TotalCostLabel.DataBindings.Add("Text", bindingSource, "Loadout.PerkPointsCost");
+			this.TotalCostLabel.Caption = "Total Loadout Cost:";
+			this.TotalCostLabel.Location = DPIScalingHelper.GetScaledPoint(300, 0);
+			this.TotalCostLabel.Name = "TotalCostLabel";
+			this.TotalCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			//
+			// RemainingCostLabel;
+			//
+			this.RemainingCostLabel.DataBindings.Add("Text", bindingSource, "Loadout.RemainingPerkPoints");
+			this.RemainingCostLabel.Caption = "Available PP:";
+			this.RemainingCostLabel.Location = DPIScalingHelper.GetScaledPoint(500, 0);
+			this.RemainingCostLabel.Name = "RemainingCostLabel";
+			this.RemainingCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			//
 			// Soul1Control
 			//
 			this.Soul1Control.DataBindings.Add("Soul", bindingSource, "Soul1");
 			this.Soul1Control.DataBindings.Add("SoulCollection", bindingSource, ".");
-			this.Soul1Control.Location = DPIScalingHelper.GetScaledPoint(35, 20);
+			this.Soul1Control.Location = DPIScalingHelper.GetScaledPoint(85, 30);
 			this.Soul1Control.OnSoulChanged += Soul1Control_OnSoulChanged;
 			//
 			// Soul2Control
 			//
 			this.Soul2Control.DataBindings.Add("Soul", bindingSource, "Soul2");
 			this.Soul2Control.DataBindings.Add("SoulCollection", bindingSource, ".");
-			this.Soul2Control.Location = DPIScalingHelper.GetScaledPoint(208, 20);
+			this.Soul2Control.Enabled = Profile.GetProfile().Rank >= PlayerRank.SuperCrusader;
+			this.Soul2Control.Location = DPIScalingHelper.GetScaledPoint(85, 90);
 			this.Soul2Control.OnSoulChanged += Soul2Control_OnSoulChanged;
 			//
 			// Soul3Control
@@ -67,15 +94,14 @@ namespace VUserInterface
 			this.Soul3Control.DataBindings.Add("Soul", bindingSource, "Soul3");
 			this.Soul3Control.DataBindings.Add("SoulCollection", bindingSource, ".");
 			this.Soul3Control.Enabled = false;
-			this.Soul3Control.Location = DPIScalingHelper.GetScaledPoint(381, 20);
+			this.Soul3Control.Location = DPIScalingHelper.GetScaledPoint(85, 150);
 			this.Soul3Control.OnSoulChanged += Soul3Control_OnSoulChanged;
-			this.Soul3Control.Visible = false;
 			//
 			// SoulPowerButton
 			//
 			this.SoulPowerButton.Click += VLoadoutSoulsControl_Click;
 			this.SoulPowerButton.Size = DPIScalingHelper.GetScaledSize(150, 30);
-			this.SoulPowerButton.Location = DPIScalingHelper.GetScaledPoint(420, 40);
+			this.SoulPowerButton.Location = DPIScalingHelper.GetScaledPoint(85, 220);
 			this.SoulPowerButton.Name = "SoulPowerButton";
 			this.SoulPowerButton.Text = "Soul Powers";
 			//
@@ -83,27 +109,30 @@ namespace VUserInterface
 			//
 			this.SoulPower1Label.Caption = "Soul Power 1:";
 			this.SoulPower1Label.DataBindings.Add("Text", bindingSource, "SoulPower1");
-			this.SoulPower1Label.Location = DPIScalingHelper.GetScaledPoint(470, 100);
+			this.SoulPower1Label.Location = DPIScalingHelper.GetScaledPoint(170, 260);
 			this.SoulPower1Label.Name = "SoulPowerButton";
 			this.SoulPower1Label.Visible = Profile.GetProfile().SoulCollection.PowerSoulsCount > 0;
 			//
-			// SoulPower1Label
+			// SoulPower2Label
 			//
 			this.SoulPower2Label.Caption = "Soul Power 2:";
 			this.SoulPower2Label.DataBindings.Add("Text", bindingSource, "SoulPower2");
-			this.SoulPower2Label.Location = DPIScalingHelper.GetScaledPoint(470, 130);
+			this.SoulPower2Label.Location = DPIScalingHelper.GetScaledPoint(170, 290);
 			this.SoulPower2Label.Name = "SoulPowerButton";
 			this.SoulPower2Label.Visible = Profile.GetProfile().SoulCollection.PowerSoulsCount > 1;
 			//
 			// VSoulCollectionControl
 			//
+			this.Controls.Add(TotalCostLabel);
+			this.Controls.Add(SoulsCostLabel);
+			this.Controls.Add(RemainingCostLabel);
 			this.Controls.Add(Soul1Control);
 			this.Controls.Add(Soul2Control);
 			this.Controls.Add(Soul3Control);
 			this.Controls.Add(SoulPowerButton);
 			this.Controls.Add(SoulPower1Label);
 			this.Controls.Add(SoulPower2Label);
-			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
+			this.Size = DPIScalingHelper.GetScaledSize(589, 330);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
 
@@ -116,5 +145,8 @@ namespace VUserInterface
 		DPIButton SoulPowerButton;
 		VLabel SoulPower1Label;
 		VLabel SoulPower2Label;
+		VLabel SoulsCostLabel;
+		VLabel TotalCostLabel;
+		VLabel RemainingCostLabel;
 	}
 }

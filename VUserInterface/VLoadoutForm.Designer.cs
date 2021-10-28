@@ -206,7 +206,7 @@ namespace VUserInterface
 			//
 			// SoulsControl
 			//
-			this.SoulsControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
+			this.SoulsControl.Location = DPIScalingHelper.GetScaledPoint(0, 10);
 			this.SoulsControl.DataBindings.Add("Souls", this.bindingSource, "Souls");
 			this.SoulsControl.Text = "Soul";
 			//
