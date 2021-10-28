@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using VBusiness.HelperClasses;
 using VBusiness.Rooms;
 using VBusiness.Units;
@@ -96,26 +95,28 @@ namespace VBusiness
 			}
 		}
 
-		public IEnumerable<RoomNumber> AdditionalRoomsLookup
+		public override List<object> AdditionalRoomsLookup
 		{
 			get
 			{
-				yield return RoomNumber.None;
+				var list = new List<object>() { RoomNumber.None };
 
 				if (FarmRoom == RoomNumber.Room1 || FarmRoom == RoomNumber.Room2)
 				{
-					yield return RoomNumber.Room3;
-					yield return RoomNumber.Room4;
+					list.Add(RoomNumber.Room3);
+					list.Add(RoomNumber.Room4);
 				}
 
 				if (FarmRoom == RoomNumber.Room7)
 				{
-					yield return RoomNumber.Room8;
+					list.Add(RoomNumber.Room8);
 				}
+
+				return list;
 			}
 		}
 
-		public bool AdditionalFarmRoom_Visible => FarmRoom == RoomNumber.Room1 || FarmRoom == RoomNumber.Room2 || FarmRoom == RoomNumber.Room7;
+		public override bool AdditionalFarmRoom_Visible => FarmRoom == RoomNumber.Room1 || FarmRoom == RoomNumber.Room2 || FarmRoom == RoomNumber.Room7;
 
 		#region UnitCost
 

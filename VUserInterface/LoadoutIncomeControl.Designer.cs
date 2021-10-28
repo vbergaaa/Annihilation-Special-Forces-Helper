@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
-using VBusiness.Loadouts;
+﻿using System.Windows.Forms;
+using VBusiness;
 using VUserInterface.CommonControls;
 
 namespace VUserInterface
@@ -36,6 +35,7 @@ namespace VUserInterface
 			components = new System.ComponentModel.Container();
 			this.BindingSource = new VBindingSource();
 			this.FarmRoomDropBox = new VDropBox();
+			this.AdditionalFarmRoomDropBox = new VDropBox();
 			this.BrutaliskOverrideControl = new BrutaliskOverrideControl();
 			this.BrutaliskOverrideCheckBox = new VCheckControl();
 			this.InfinitySpawnerCheckBox = new VCheckControl();
@@ -43,35 +43,47 @@ namespace VUserInterface
 			//
 			// BindingSource
 			//
-			this.BindingSource.DataSource = typeof(Loadout);
+			this.BindingSource.DataSource = typeof(IncomeManager);
 			//
 			// FarmRoomComboBox
 			//
-			this.FarmRoomDropBox.DataBindings.Add("SelectedValue", BindingSource, "IncomeManager.FarmRoom");
-			this.FarmRoomDropBox.List = FarmRoomList;
-			this.FarmRoomDropBox.Location = DPIScalingHelper.GetScaledPoint(125, 20);
 			this.FarmRoomDropBox.Caption = "Farming Room:";
+			this.FarmRoomDropBox.DataBindings.Add("SelectedValue", BindingSource, "FarmRoom");
+			this.FarmRoomDropBox.List = FarmRoomList;
+			this.FarmRoomDropBox.Location = DPIScalingHelper.GetScaledPoint(175, 20);
+			this.FarmRoomDropBox.Size = DPIScalingHelper.GetScaledSize(175, 30);
+			//
+			// AdditionalFarmRoomComboBox
+			//
+			this.AdditionalFarmRoomDropBox.AllowSelectionOfStrings = true;
+			this.AdditionalFarmRoomDropBox.Caption = "Additional Farming Room:";
+			this.AdditionalFarmRoomDropBox.DataBindings.Add("SelectedValue", BindingSource, "AdditionalFarmRoom");
+			this.AdditionalFarmRoomDropBox.DataBindings.Add("List", BindingSource, "AdditionalRoomsLookup");
+			this.AdditionalFarmRoomDropBox.DataBindings.Add("Visible", BindingSource, "AdditionalFarmRoom_Visible");
+			this.AdditionalFarmRoomDropBox.Location = DPIScalingHelper.GetScaledPoint(175, 50);
+			this.AdditionalFarmRoomDropBox.Name = "AdditionalFarmRoomDropBox";
+			this.AdditionalFarmRoomDropBox.Size = DPIScalingHelper.GetScaledSize(175, 30);
 			//
 			// BrutaliskOverrideControl
 			//
 			this.BrutaliskOverrideControl.Caption = "Brutalisks";
-			this.BrutaliskOverrideControl.DataBindings.Add("BrutaliskOverride", BindingSource, "IncomeManager.BrutaliskOverride");
+			this.BrutaliskOverrideControl.DataBindings.Add("BrutaliskOverride", BindingSource, "BrutaliskOverride");
 			this.BrutaliskOverrideControl.Enabled = false;
-			this.BrutaliskOverrideControl.Location = DPIScalingHelper.GetScaledPoint(125, 50);
+			this.BrutaliskOverrideControl.Location = DPIScalingHelper.GetScaledPoint(175, 80);
 			this.BrutaliskOverrideControl.Name = "BrutaliskOverrideControl";
 			//
 			// BrutaliskOverrideCheckBox
 			//
-			this.BrutaliskOverrideCheckBox.DataBindings.Add("Checked", BindingSource, "IncomeManager.BrutaliskOverride.ShouldOverrideBrutalisks");
-			this.BrutaliskOverrideCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 80);
+			this.BrutaliskOverrideCheckBox.DataBindings.Add("Checked", BindingSource, "BrutaliskOverride.ShouldOverrideBrutalisks");
+			this.BrutaliskOverrideCheckBox.Location = DPIScalingHelper.GetScaledPoint(175, 110);
 			this.BrutaliskOverrideCheckBox.Caption = "Override Brutalisks";
 			this.BrutaliskOverrideCheckBox.Name = "BrutaliskOverrideCheckBox";
 			this.BrutaliskOverrideCheckBox.CheckedChanged += BrutaliskOverrideCheckBox_CheckedChanged;
 			//
 			// InfinitySpawnerCheckBox
 			//
-			this.InfinitySpawnerCheckBox.DataBindings.Add("Checked", BindingSource, "IncomeManager.HasInfinitySpawner");
-			this.InfinitySpawnerCheckBox.Location = DPIScalingHelper.GetScaledPoint(125, 110);
+			this.InfinitySpawnerCheckBox.DataBindings.Add("Checked", BindingSource, "HasInfinitySpawner");
+			this.InfinitySpawnerCheckBox.Location = DPIScalingHelper.GetScaledPoint(175, 140);
 			this.InfinitySpawnerCheckBox.Caption = "Infinity Spawner";
 			this.InfinitySpawnerCheckBox.Name = "InfinitySpawnerCheckBox";
 			//
@@ -81,6 +93,7 @@ namespace VUserInterface
 			this.Controls.Add(BrutaliskOverrideControl);
 			this.Controls.Add(BrutaliskOverrideCheckBox);
 			this.Controls.Add(InfinitySpawnerCheckBox);
+			this.Controls.Add(AdditionalFarmRoomDropBox);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 272);
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).EndInit();
 		}
@@ -89,6 +102,7 @@ namespace VUserInterface
 
 		BindingSource BindingSource;
 		VDropBox FarmRoomDropBox;
+		VDropBox AdditionalFarmRoomDropBox;
 		BrutaliskOverrideControl BrutaliskOverrideControl;
 		VCheckControl BrutaliskOverrideCheckBox;
 		VCheckControl InfinitySpawnerCheckBox;

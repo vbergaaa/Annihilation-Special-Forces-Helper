@@ -1,4 +1,5 @@
-﻿using VBusiness.Rooms;
+﻿using System.Collections.Generic;
+using VBusiness.Rooms;
 using VEntityFramework.Data;
 
 namespace VEntityFramework.Model
@@ -358,6 +359,9 @@ namespace VEntityFramework.Model
 			}
 		}
 		RoomNumber fAdditionalFarmRoom;
+
+		public virtual List<object> AdditionalRoomsLookup { get; }
+		public virtual bool AdditionalFarmRoom_Visible { get; }
 
 		#region BrutaliskOverride
 

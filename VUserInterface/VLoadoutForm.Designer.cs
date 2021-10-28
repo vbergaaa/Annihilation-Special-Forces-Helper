@@ -225,7 +225,7 @@ namespace VUserInterface
 			// LoadoutIncomeControl
 			//
 			this.LoadoutIncomeControl.Location = DPIScalingHelper.GetScaledPoint(5, 40);
-			this.LoadoutIncomeControl.DataBindings.Add("Loadout", this.bindingSource, ".");
+			this.LoadoutIncomeControl.DataBindings.Add("IncomeManager", this.bindingSource, "IncomeManager");
 			this.LoadoutIncomeControl.Name = "LoadoutConfigurationControl";
 			//
 			// ModsControl

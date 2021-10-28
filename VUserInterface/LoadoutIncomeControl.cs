@@ -1,11 +1,12 @@
-﻿using System;
+﻿using EnumsNET;
+using System;
 using System.Collections.Generic;
-using VBusiness.HelperClasses;
-using VUserInterface.CommonControls;
-using EnumsNET;
 using System.Linq;
-using VBusiness.Loadouts;
+using VBusiness;
+using VBusiness.HelperClasses;
 using VBusiness.Rooms;
+using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
@@ -16,19 +17,19 @@ namespace VUserInterface
 			InitializeComponent();
 		}
 
-		public Loadout Loadout
+		public VIncomeManager IncomeManager
 		{
-			get => fLoadout;
+			get => fIncomeManager;
 			set
 			{
-				if (fLoadout != value)
+				if (fIncomeManager != value)
 				{
-					fLoadout = value;
+					fIncomeManager = value;
 					UpdateBindingIfDataSourceChanged();
 				}
 			}
 		}
-		Loadout fLoadout;
+		VIncomeManager fIncomeManager;
 
 		protected override void OnBindingContextChanged(EventArgs e)
 		{
@@ -44,9 +45,9 @@ namespace VUserInterface
 
 		void UpdateBindingIfDataSourceChanged()
 		{
-			if (Loadout != null && Loadout != BindingSource.DataSource)
+			if (IncomeManager != null && IncomeManager != BindingSource.DataSource)
 			{
-				BindingSource.DataSource = Loadout;
+				BindingSource.DataSource = IncomeManager;
 				BindingSource.ResetBindings(false);
 			}
 		}

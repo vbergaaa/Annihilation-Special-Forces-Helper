@@ -19,8 +19,17 @@ namespace VUserInterface.CommonControls
 			{
 				if (fList != value)
 				{
+					var selectedItem = ComboBox.SelectedItem;
+					isResettingList = true;
 					fList = value;
 					this.ComboBox.DataSource = value;
+
+					isResettingList = false;
+
+					if (selectedItem != null && value.Contains(ComboBox.SelectedItem))
+					{
+						SelectedIndex = value.IndexOf(selectedItem);
+					}
 
 					// I don't understand why this is needed, but it appears there is some 
 					// cases where ComboBox.Items doesn't update to the datasource, and this
@@ -30,6 +39,7 @@ namespace VUserInterface.CommonControls
 			}
 		}
 		List<object> fList;
+		bool isResettingList;
 
 		public int SelectedIndex
 		{
@@ -73,21 +83,24 @@ namespace VUserInterface.CommonControls
 
 		void ComboBox_SelectedValueChanged(object sender, EventArgs e)
 		{
-			if (!AllowSelectionOfStrings && ComboBox.SelectedItem is string)
+			if (!isResettingList)
 			{
-				if (oldIndex <= ComboBox.SelectedIndex)
+				if (!AllowSelectionOfStrings && ComboBox.SelectedItem is string)
 				{
-					ComboBox.SelectedIndex++;
+					if (oldIndex <= ComboBox.SelectedIndex)
+					{
+						ComboBox.SelectedIndex++;
+					}
+					else
+					{
+						ComboBox.SelectedIndex--;
+					}
 				}
 				else
 				{
-					ComboBox.SelectedIndex--;
+					oldIndex = ComboBox.SelectedIndex;
+					SelectedValueChanged?.Invoke(sender, e);
 				}
-			}
-			else
-			{
-				oldIndex = ComboBox.SelectedIndex;
-				SelectedValueChanged?.Invoke(sender, e);
 			}
 		}
 		int oldIndex;
