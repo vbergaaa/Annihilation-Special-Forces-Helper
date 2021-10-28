@@ -51,7 +51,8 @@ namespace VUserInterface
 			this.FarmRoomDropBox.DataBindings.Add("SelectedValue", BindingSource, "FarmRoom");
 			this.FarmRoomDropBox.List = FarmRoomList;
 			this.FarmRoomDropBox.Location = DPIScalingHelper.GetScaledPoint(175, 20);
-			this.FarmRoomDropBox.Size = DPIScalingHelper.GetScaledSize(175, 30);
+			this.FarmRoomDropBox.Name = "FarmRoomDropBox";
+			this.FarmRoomDropBox.Size = DPIScalingHelper.GetScaledSize(180, 30);
 			//
 			// AdditionalFarmRoomComboBox
 			//
@@ -62,7 +63,7 @@ namespace VUserInterface
 			this.AdditionalFarmRoomDropBox.DataBindings.Add("Visible", BindingSource, "AdditionalFarmRoom_Visible");
 			this.AdditionalFarmRoomDropBox.Location = DPIScalingHelper.GetScaledPoint(175, 50);
 			this.AdditionalFarmRoomDropBox.Name = "AdditionalFarmRoomDropBox";
-			this.AdditionalFarmRoomDropBox.Size = DPIScalingHelper.GetScaledSize(175, 30);
+			this.AdditionalFarmRoomDropBox.Size = DPIScalingHelper.GetScaledSize(180, 30);
 			//
 			// BrutaliskOverrideControl
 			//

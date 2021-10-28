@@ -7,17 +7,17 @@ namespace VBusiness.Rooms
 		None,
 		[Description("VE Right Room 1")]
 		Room1,
-		[Description("VE Right Room 2")]
+		[Description("VE Right Room 2 (Art1)")]
 		Room2,
 		[Description("VE Left Room 1")]
 		Room3,
 		[Description("VE Left Room 2")]
 		Room4,
-		[Description("VE Double Hatch Room")]
+		[Description("VE Double Hatch Room (Art2)")]
 		Room5,
 		[Description("VE Last Room")]
 		Room6,
-		[Description("Easy Room 1")]
+		[Description("Easy Room 1 (Art3)")]
 		Room7,
 		[Description("Easy Room 2")]
 		Room8,
@@ -27,7 +27,7 @@ namespace VBusiness.Rooms
 		Room10,
 		[Description("Normal Room 2")]
 		Room11,
-		[Description("Normal Room 3")]
+		[Description("Normal Room 3 (Art4)")]
 		Room12,
 		[Description("Hard Room 1")]
 		Room13,
@@ -35,7 +35,7 @@ namespace VBusiness.Rooms
 		Room14,
 		[Description("Hard Room 3")]
 		Room15,
-		[Description("Hard Room 4")]
+		[Description("Hard Room 4 (Art5)")]
 		Room16,
 		[Description("Insane Room 1")]
 		Room17,
