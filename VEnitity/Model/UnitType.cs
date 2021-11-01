@@ -60,6 +60,8 @@ namespace VEntityFramework.Model
 		TerminatorWarpLord,
 		[Description("Paradox Striker")]
 		ParadoxStriker,
+		[Description("Duplicator Adept")]
+		DuplicatorAdept,
 
 		// Hidden
 		Dragoon,

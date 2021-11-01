@@ -114,6 +114,11 @@ namespace Tests
 		public static VLoadout SetFarmRoom(this VLoadout loadout, RoomNumber room)
 		{
 			loadout.IncomeManager.FarmRoom = room;
+
+			if (room == RoomNumber.Room7)
+			{
+				loadout.IncomeManager.AdditionalFarmRoom = RoomNumber.Room8;
+			}
 			return loadout;
 		}
 	}

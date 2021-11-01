@@ -12,7 +12,7 @@ namespace Tests.Stats_Tests
 		// are added or squashed
 		[TestCase(DifficultyLevel.Brutal, 478819113, 199373199)]
 		[TestCase(DifficultyLevel.Divine, 110259189, 2601555)]
-		[TestCase(DifficultyLevel.Easy, 672847251, 199373199)]
+		[TestCase(DifficultyLevel.Easy, 672830304, 199373199)]
 		[TestCase(DifficultyLevel.Hard, 569247640, 199373199)]
 		[TestCase(DifficultyLevel.Hell, 268720925, 188366064)]
 		[TestCase(DifficultyLevel.Impossible, 44760877, 580488)]

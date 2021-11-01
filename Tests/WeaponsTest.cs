@@ -27,6 +27,7 @@ namespace Tests
 		[TestCase(UnitType.Dominator, 11533)]
 		[TestCase(UnitType.Dragoon, 669)]
 		[TestCase(UnitType.Dreadnought, 2105)]
+		[TestCase(UnitType.DuplicatorAdept, 10533)]
 		[TestCase(UnitType.EvolutionProbe, 1193)]
 		[TestCase(UnitType.ForgedAdept, 3075)]
 		[TestCase(UnitType.GalacticOrbiter, 6342105)]

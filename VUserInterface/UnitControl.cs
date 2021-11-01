@@ -136,6 +136,7 @@ namespace VUserInterface
 				UnitType.LightAdept,
 				UnitType.ForgedAdept,
 				UnitType.SplitterAdept,
+				UnitType.DuplicatorAdept,
 				string.Empty,
 				UnitType.DarkShadow,
 				UnitType.DarkAvenger,
