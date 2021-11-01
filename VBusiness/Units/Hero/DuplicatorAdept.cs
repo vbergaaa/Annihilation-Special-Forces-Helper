@@ -48,5 +48,7 @@ namespace VBusiness.Units
 				yield return new DuplicatorAdeptBasicWeapon();
 			}
 		}
+
+		public override ITemporaryBuffAbility OffensiveBuffAbility => new DuplicatorAdeptPrecisionTargetting();
 	}
 }

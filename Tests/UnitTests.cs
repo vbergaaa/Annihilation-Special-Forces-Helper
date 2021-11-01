@@ -23,11 +23,11 @@ namespace Tests
 				var unitDataType = unit.UnitData.GetType();
 
 				Assert.That(() => unit.UnitData.GetType().GetProperty("BaseHealth", BindingFlags.Public | BindingFlags.Instance).GetValue(unit.UnitData), Throws.Nothing, $"{unitType}.BaseHealth");
-				//Assert.That(() => unit.UnitData.GetType().GetProperty("BaseHealthArmor", BindingFlags.Public | BindingFlags.Instance).GetValue(unit.UnitData), Throws.Nothing, $"{unitType}.BaseHealthArmor");
+				Assert.That(() => unit.UnitData.GetType().GetProperty("BaseHealthArmor", BindingFlags.Public | BindingFlags.Instance).GetValue(unit.UnitData), Throws.Nothing, $"{unitType}.BaseHealthArmor");
 				//Assert.That(() => unit.UnitData.GetType().GetProperty("BaseHealthRegen", BindingFlags.Public | BindingFlags.Instance).GetValue(unit.UnitData), Throws.Nothing, $"{unitType}.BaseHealthRegen");
 				Assert.That(() => unit.UnitData.GetType().GetProperty("BaseShields", BindingFlags.Public | BindingFlags.Instance).GetValue(unit.UnitData), Throws.Nothing, $"{unitType}.BaseShields");
 				Assert.That(() => unit.UnitData.GetType().GetProperty("BaseShieldsArmor", BindingFlags.Public | BindingFlags.Instance).GetValue(unit.UnitData), Throws.Nothing, $"{unitType}.BaseShieldsArmor");
-				Assert.That(() => unit.UnitData.GetType().GetProperty("BaseShieldsRegen", BindingFlags.Public | BindingFlags.Instance).GetValue(unit.UnitData), Throws.Nothing, $"{unitType}.BaseShieldsRegen");
+				//Assert.That(() => unit.UnitData.GetType().GetProperty("BaseShieldsRegen", BindingFlags.Public | BindingFlags.Instance).GetValue(unit.UnitData), Throws.Nothing, $"{unitType}.BaseShieldsRegen");
 				Assert.That(() => unit.UnitData.GetType().GetProperty("HealthIncrement", BindingFlags.Public | BindingFlags.Instance).GetValue(unit.UnitData), Throws.Nothing, $"{unitType}.HealthIncrement");
 				//Assert.That(() => unit.UnitData.GetType().GetProperty("HealthRegenIncrement", BindingFlags.Public | BindingFlags.Instance).GetValue(unit.UnitData), Throws.Nothing, $"{unitType}.HealthRegenIncrement");
 				Assert.That(() => unit.UnitData.GetType().GetProperty("HealthArmorIncrement", BindingFlags.Public | BindingFlags.Instance).GetValue(unit.UnitData), Throws.Nothing, $"{unitType}.HealthArmorIncrement");
