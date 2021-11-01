@@ -14,12 +14,7 @@ It also contains economy data, such as:
   - Income data, for any room on any difficulty, configured to your current perks and souls.
 
 ## Download Instructions
-For most users, it's recommended you [download the most recent release](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/download/v1.3.3/ASFv1.3.3.zip), extract it, and run the installer Setup.exe, following the prompts to complete installation. However, some users have reported issues installing .NET runtime libraries through the automatic installer. If you also have this problem, you can download a version that contains the .NET runtime library contained in the package. To do this, head [here](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/tag/v1.3.3) and find the zip that includes your operating system in it's name. If your operatating system isn't listed, please request it by creating an issue [here](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/issues), or contacting me via the ASF discord.
-
-This program makes use of Microsoft .NET Core 3 runtime libraries. If you don't already have them on your machine, the installer should download them the first time you run it.
-
-Once you have installed the program, there will be a shortcut on your destop named 'ASF Companion App'. Use this as the main entry point for the app.
-The app can also be found as an excutable in 'C:/Program Files (x86)/vbergaaa/ASF Companion App/', or wherever you specified the install.
+For most users, it's recommended you go to the [latest release page](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/tag/v1.3.4), and download the release for your operating system type. If your operation system type isn't there, please raise an issue and I'll add it. For those people who know they have .NET Core SDKs installed on their machines, they can instead install the 'light' version to run an installer and avoid having duplicate binaries. Once you download your version, extract it and run the .exe in the location to launch the app
 
 If you find an issue or wish to request a feature, please create a new issue [here](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/issues), or contact me through the ASF discord, available via the map in SC2.
 
