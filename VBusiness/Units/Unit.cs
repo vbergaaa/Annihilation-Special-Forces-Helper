@@ -76,7 +76,7 @@ namespace VBusiness.Units
 			get
 			{
 				return IsLimitBroken && MaximumKills >= 3000
-					? 10 + Math.Max((MaximumKills - 2000) / 1000, 3)
+					? 10 + Math.Min((MaximumKills - 2000) / 1000, 3)
 					: MaximumKills >= 2000 ? 10 : MaximumKills / 200;
 			}
 		}
