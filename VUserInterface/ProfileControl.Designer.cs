@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using VEntityFramework.Model;
+﻿using System.Windows.Forms;
 using VUserInterface.CommonControls;
 
 namespace VUserInterface
@@ -68,6 +66,7 @@ namespace VUserInterface
 			this.ProfileTitleLabel.Location = DPIScalingHelper.GetScaledPoint(120, 22);
 			this.ProfileTitleLabel.Text = "Profile";
 			this.ProfileTitleLabel.Font = new System.Drawing.Font(this.ProfileTitleLabel.Font.FontFamily, 14);
+			this.ProfileTitleLabel.Height = DPIScalingHelper.GetScaledY(30);
 			// 
 			// NameTextBox
 			// 

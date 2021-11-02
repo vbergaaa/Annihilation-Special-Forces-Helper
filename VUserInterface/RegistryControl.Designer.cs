@@ -52,6 +52,7 @@ namespace VUserInterface
 			this.TitleLabel.Location = DPIScalingHelper.GetScaledPoint(120, 22);
 			this.TitleLabel.Text = "Settings";
 			this.TitleLabel.Font = new System.Drawing.Font(this.TitleLabel.Font.FontFamily, 14);
+			this.TitleLabel.Height = DPIScalingHelper.GetScaledY(30);
 			//
 			// VersionLabel
 			//
