@@ -24,20 +24,23 @@ namespace VBusiness.Perks
 
 		protected override void OnLevelChanged(int difference)
 		{
-			var superRushBonus = 1 + ((PerkCollection)PerkCollection).SuperRush.DesiredLevel / 10.0;
-
-			PerkCollection.Loadout.Stats.Attack += 10.0 / 15 * difference * superRushBonus;
-			PerkCollection.Loadout.Stats.UpdateAttackSpeed("AdrenalineRush", 10.0 / 15 * difference * superRushBonus);
-			PerkCollection.Loadout.Stats.CriticalChance += 5.0 / 15 * difference * superRushBonus;
-
-			var hasCache = ((PerkCollection)PerkCollection).UpgradeCache.DesiredLevel > 0;
-			if (DesiredLevel == MaxLevel && hasCache)
+			if (PerkCollection.Loadout.CurrentUnit.UnitData.Type > 0)
 			{
-				PerkCollection.Loadout.Stats.CriticalChance += 5.0 * superRushBonus;
-			}
-			else if (DesiredLevel - difference == MaxLevel && hasCache)
-			{
-				PerkCollection.Loadout.Stats.CriticalChance -= 5.0 * superRushBonus;
+				var superRushBonus = 1 + ((PerkCollection)PerkCollection).SuperRush.DesiredLevel / 10.0;
+
+				PerkCollection.Loadout.Stats.Attack += 10.0 / 15 * difference * superRushBonus;
+				PerkCollection.Loadout.Stats.UpdateAttackSpeed("AdrenalineRush", 10.0 / 15 * difference * superRushBonus);
+				PerkCollection.Loadout.Stats.CriticalChance += 5.0 / 15 * difference * superRushBonus;
+
+				var hasCache = ((PerkCollection)PerkCollection).UpgradeCache.DesiredLevel > 0;
+				if (DesiredLevel == MaxLevel && hasCache)
+				{
+					PerkCollection.Loadout.Stats.CriticalChance += 5.0 * superRushBonus;
+				}
+				else if (DesiredLevel - difference == MaxLevel && hasCache)
+				{
+					PerkCollection.Loadout.Stats.CriticalChance -= 5.0 * superRushBonus;
+				}
 			}
 		}
 	}

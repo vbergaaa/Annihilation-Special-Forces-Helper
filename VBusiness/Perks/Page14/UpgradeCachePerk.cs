@@ -62,7 +62,7 @@ DNA Start: +1 base dna1 infuse";
 
 		void ApplyAdrenalineRushBonus(int difference, PerkCollection perks)
 		{
-			if (perks.AdrenalineRush.DesiredLevel == perks.AdrenalineRush.MaxLevel)
+			if (perks.AdrenalineRush.DesiredLevel == perks.AdrenalineRush.MaxLevel && PerkCollection.Loadout.CurrentUnit.UnitData.Type > 0)
 			{
 				var superRushMultipler = 1 + perks.SuperRush.DesiredLevel * 1.0 / perks.SuperRush.MaxLevel;
 				PerkCollection.Loadout.Stats.CriticalChance += 5 * superRushMultipler * difference;

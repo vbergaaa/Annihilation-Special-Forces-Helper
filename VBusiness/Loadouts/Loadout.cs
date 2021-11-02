@@ -142,6 +142,7 @@ namespace VBusiness.Loadouts
 				unit.UpdateStatsFromInfuse(-unit.CurrentInfusion);
 				unit.UpdateStatsFromEssence(-unit.EssenceStacks);
 				unit.RemoveStatsFromSpec(unit.HasUnitSpec);
+				unit.RemoveStatsFromAdrenalineRush();
 				if (unit.IsLimitBroken)
 				{
 					unit.UpdateStatsFromEssence(-unit.LimitlessEssenceStacks);
@@ -157,6 +158,7 @@ namespace VBusiness.Loadouts
 				unit.UpdateStatsFromInfuse(unit.CurrentInfusion);
 				unit.UpdateStatsFromEssence(unit.EssenceStacks);
 				unit.AddStatsFromSpec();
+				unit.AddStatsFromAdrenalineRush();
 				if (unit.IsLimitBroken)
 				{
 					unit.UpdateStatsFromEssence(unit.LimitlessEssenceStacks);

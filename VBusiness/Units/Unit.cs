@@ -163,6 +163,42 @@ namespace VBusiness.Units
 			}
 		}
 
+		public void RemoveStatsFromAdrenalineRush()
+		{
+			if (this.UnitData.Type != UnitType.None)
+			{
+				var adrenalineRush = Loadout.Perks.AdrenalineRush.DesiredLevel;
+				var superRushBonus = 1 + Loadout.Perks.SuperRush.DesiredLevel / 10.0;
+
+				Loadout.Stats.Attack -= 10.0 / 15 * adrenalineRush * superRushBonus;
+				Loadout.Stats.UpdateAttackSpeed("AdrenalineRush", -10.0 / 15 * adrenalineRush * superRushBonus);
+				Loadout.Stats.CriticalChance -= 5.0 / 15 * adrenalineRush * superRushBonus;
+
+				if (adrenalineRush == Loadout.Perks.AdrenalineRush.MaxLevel && Loadout.Perks.UpgradeCache.DesiredLevel > 0)
+				{
+					Loadout.Stats.CriticalChance -= 5.0 * superRushBonus;
+				}
+			}
+		}
+
+		public void AddStatsFromAdrenalineRush()
+		{
+			if (this.UnitData.Type != UnitType.None)
+			{
+				var adrenalineRush = Loadout.Perks.AdrenalineRush.DesiredLevel;
+				var superRushBonus = 1 + Loadout.Perks.SuperRush.DesiredLevel / 10.0;
+
+				Loadout.Stats.Attack += 10.0 / 15 * adrenalineRush * superRushBonus;
+				Loadout.Stats.UpdateAttackSpeed("AdrenalineRush", +10.0 / 15 * adrenalineRush * superRushBonus);
+				Loadout.Stats.CriticalChance += 5.0 / 15 * adrenalineRush * superRushBonus;
+
+				if (adrenalineRush == Loadout.Perks.AdrenalineRush.MaxLevel && Loadout.Perks.UpgradeCache.DesiredLevel > 0)
+				{
+					Loadout.Stats.CriticalChance += 5.0 * superRushBonus;
+				}
+			}
+		}
+
 		internal void RemoveStatsFromSpec(bool shouldRemove = true)
 		{
 			if (shouldRemove)
