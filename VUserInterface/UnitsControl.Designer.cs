@@ -48,7 +48,7 @@ namespace VUserInterface
 			this.UnitsLoadList.DataBindings.Add("CurrentUnit", bindingSource, "CurrentUnit", true, DataSourceUpdateMode.OnPropertyChanged);
 			this.UnitsLoadList.Location = DPIScalingHelper.GetScaledPoint(20, 30);
 			this.UnitsLoadList.Name = "UnitsLoadList";
-			this.UnitsLoadList.Size = DPIScalingHelper.GetScaledSize(280, 160);
+			this.UnitsLoadList.Size = DPIScalingHelper.GetScaledSize(330, 160);
 			this.UnitsLoadList.TabIndex = 0;
 			this.UnitsLoadList.Text = "Units";
 			//
@@ -56,7 +56,7 @@ namespace VUserInterface
 			//
 			this.CurrentUnitControl.DataBindings.Add("Unit", bindingSource, "CurrentUnit");
 			this.CurrentUnitControl.Name = "CurrentUserControl";
-			this.CurrentUnitControl.Location = DPIScalingHelper.GetScaledPoint(290, 30);
+			this.CurrentUnitControl.Location = DPIScalingHelper.GetScaledPoint(330, 30);
 			//
 			// VSoulCollectionControl
 			//

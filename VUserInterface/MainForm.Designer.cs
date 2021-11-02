@@ -58,7 +58,7 @@ namespace VUserInterface
 			this.LoadoutsLoadList.BizoType = typeof(VBusiness.Loadouts.Loadout);
 			this.LoadoutsLoadList.Location = DPIScalingHelper.GetScaledPoint(50, 30);
 			this.LoadoutsLoadList.Name = "LoadoutsLoadList";
-			this.LoadoutsLoadList.Size = DPIScalingHelper.GetScaledSize(280, 160);
+			this.LoadoutsLoadList.Size = DPIScalingHelper.GetScaledSize(330, 160);
 			this.LoadoutsLoadList.TabIndex = 0;
 			this.LoadoutsLoadList.Text = "Loadouts";
 			// 
@@ -67,7 +67,7 @@ namespace VUserInterface
 			this.SoulsLoadList.BizoType = typeof(VBusiness.Souls.Soul);
 			this.SoulsLoadList.Location = DPIScalingHelper.GetScaledPoint(50, 30);
 			this.SoulsLoadList.Name = "SoulsLoadList";
-			this.SoulsLoadList.Size = DPIScalingHelper.GetScaledSize(280, 160);
+			this.SoulsLoadList.Size = DPIScalingHelper.GetScaledSize(330, 160);
 			this.SoulsLoadList.TabIndex = 0;
 			this.SoulsLoadList.Text = "Souls";
 			// 

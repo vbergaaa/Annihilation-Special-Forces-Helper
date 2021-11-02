@@ -41,7 +41,7 @@
 			this.ListBox.ItemHeight = 15;
 			this.ListBox.Location = DPIScalingHelper.GetScaledPoint(2, 30);
 			this.ListBox.Name = "ListBox";
-			this.ListBox.Size = DPIScalingHelper.GetScaledSize(275, 94);
+			this.ListBox.Size = DPIScalingHelper.GetScaledSize(325, 94);
 			this.ListBox.TabIndex = 0;
 			this.ListBox.SelectedValueChanged += SelectedIndex_Changed; ;
 			// 
@@ -57,7 +57,7 @@
 			this.NewButton.Click += New_Click;
 			this.NewButton.Location = DPIScalingHelper.GetScaledPoint(1, 131);
 			this.NewButton.Name = "NewButton";
-			this.NewButton.Size = DPIScalingHelper.GetScaledSize(85, 23);
+			this.NewButton.Size = DPIScalingHelper.GetScaledSize(100, 23);
 			this.NewButton.TabIndex = 2;
 			this.NewButton.Text = "New";
 			this.NewButton.UseVisualStyleBackColor = true;
@@ -65,9 +65,9 @@
 			// OpenButton
 			// 
 			this.OpenButton.Click += Open_Click;
-			this.OpenButton.Location = DPIScalingHelper.GetScaledPoint(96, 131);
+			this.OpenButton.Location = DPIScalingHelper.GetScaledPoint(110, 131);
 			this.OpenButton.Name = "OpenButton";
-			this.OpenButton.Size = DPIScalingHelper.GetScaledSize(85, 23);
+			this.OpenButton.Size = DPIScalingHelper.GetScaledSize(100, 23);
 			this.OpenButton.TabIndex = 2;
 			this.OpenButton.Text = "Open";
 			this.OpenButton.UseVisualStyleBackColor = true;
@@ -75,9 +75,9 @@
 			// DeleteButton
 			// 
 			this.DeleteButton.Click += Delete_Click;
-			this.DeleteButton.Location = DPIScalingHelper.GetScaledPoint(191, 131);
+			this.DeleteButton.Location = DPIScalingHelper.GetScaledPoint(221, 131);
 			this.DeleteButton.Name = "DeleteButton";
-			this.DeleteButton.Size = DPIScalingHelper.GetScaledSize(85, 23);
+			this.DeleteButton.Size = DPIScalingHelper.GetScaledSize(100, 23);
 			this.DeleteButton.TabIndex = 2;
 			this.DeleteButton.Text = "Delete";
 			this.DeleteButton.UseVisualStyleBackColor = true;
