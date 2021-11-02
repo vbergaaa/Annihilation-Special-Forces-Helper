@@ -14,7 +14,7 @@
 
 		protected override int MaxBounces => 4;
 
-		protected override double BounceDamagePercentage => 90;
+		protected override double BounceDamagePercentage => 85;
 
 		protected override bool IncludeTransferInDamageCalcs => false;
 
