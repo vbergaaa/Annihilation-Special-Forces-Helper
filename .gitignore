@@ -2,5 +2,5 @@
 bin/
 obj/
 .vs/
-/ASFSetup/Debug/
-/ASFSetup/Release/
+/Setup/Debug/
+/Setup/Release/
