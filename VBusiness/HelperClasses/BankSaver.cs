@@ -35,7 +35,7 @@ namespace VBusiness
 
 		private static string GetRPString()
 		{
-			var rp = 1173050;// Profile.Profile.GetProfile().RankPoints;
+			var rp = Profile.Profile.GetProfile().RankPoints;
 			var bankFrequency = Registry.Instance.BackupFrequency;
 			if (bankFrequency == 0) { return string.Empty; }
 
@@ -80,7 +80,10 @@ namespace VBusiness
 
 			try
 			{
-				File.Copy(sourceFile, targetFile, true);
+				if (!File.Exists(targetFile))
+				{
+					File.Copy(sourceFile, targetFile, true);
+				}
 			}
 			catch (Exception ex)
 			{
