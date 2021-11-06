@@ -69,6 +69,22 @@ namespace VEntityFramework.Model
 		bool fSyncSoulsWithBank;
 
 		[VXML(true)]
+		public virtual int BackupFrequency
+		{
+			get => fBackupFrequency;
+			set
+			{
+				if (fBackupFrequency != value)
+				{
+					fBackupFrequency = value;
+					HasChanges = true;
+					OnPropertyChanged(nameof(BackupFrequency));
+				}
+			}
+		}
+		int fBackupFrequency;
+
+		[VXML(true)]
 		public string BankFileOverride
 		{
 			get => fBankFileOverride;

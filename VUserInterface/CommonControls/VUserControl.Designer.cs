@@ -58,7 +58,7 @@ namespace VUserInterface.CommonControls
 			//
 			this.Controls.Add(CaptionLabel);
 			this.Controls.Add(CoreControl);
-			this.MaximumSize = DPIScalingHelper.GetScaledSize(500, 29);
+			this.MaximumSize = DPIScalingHelper.GetScaledSize(500, 100);
 			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 		}
