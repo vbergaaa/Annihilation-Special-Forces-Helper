@@ -24,7 +24,7 @@ namespace VBusiness
 
 		public override int BackupFrequency
 		{
-			get => base.BackupFrequency;
+			get => BackupFrequency_Editable ? base.BackupFrequency : 0;
 			set
 			{
 				if (value <= 0)
@@ -41,5 +41,7 @@ namespace VBusiness
 				}
 			}
 		}
+
+		public bool BackupFrequency_Editable => SyncProfileWithBank;
 	}
 }

@@ -39,6 +39,7 @@ namespace VUserInterface
 			this.SyncLoadoutBankCheckControl = new VCheckControl();
 			this.SyncSoulBankCheckControl = new VCheckControl();
 			this.BankBackupFrequencyDescription = new VLabel();
+			this.BankBackupFrequencyUnitsLabel = new VLabel();
 			this.BankBackupFrequencyTextBox = new VTextBox();
 			this.TitleLabel = new VLabel();
 			this.VersionLabel = new VLabel();
@@ -97,16 +98,23 @@ namespace VUserInterface
 			//
 			this.BankBackupFrequencyTextBox.Caption = "Bank back-up frequency:";
 			this.BankBackupFrequencyTextBox.DataBindings.Add("Text", BindingSource, "BackupFrequency");
+			this.BankBackupFrequencyTextBox.DataBindings.Add("Enabled", BindingSource, "BackupFrequency_Editable");
 			this.BankBackupFrequencyTextBox.Location = DPIScalingHelper.GetScaledPoint(200, 135);
 			this.BankBackupFrequencyTextBox.Name = "BankBackupFrequencyTextBox";
-			this.BankBackupFrequencyTextBox.Size = DPIScalingHelper.GetScaledSize(100, 25);
+			this.BankBackupFrequencyTextBox.Size = DPIScalingHelper.GetScaledSize(50, 25);
 			//
 			// BankBackupFrequencyDescription
 			//
 			this.BankBackupFrequencyDescription.Location = DPIScalingHelper.GetScaledPoint(10, 160);
 			this.BankBackupFrequencyDescription.Name = "BankBackupFrequencyDescription";
-			this.BankBackupFrequencyDescription.Size = DPIScalingHelper.GetScaledSize(350, 50);
-			this.BankBackupFrequencyDescription.Text = "Setting this will create a backup of your bank file to:\r\n%AppData%/AnnihilationSpecialForcesHelper/Backups/\r\nwhen opening this app. Set this to zero to disable";
+			this.BankBackupFrequencyDescription.Size = DPIScalingHelper.GetScaledSize(350, 65);
+			this.BankBackupFrequencyDescription.Text = "Setting this will create a backup of your bank file to:\r\n%AppData%/AnnihilationSpecialForcesHelper/Backups/\r\nwhen opening this app. Set this to zero to disable.\r\nRequires Profile Syncing to be enabled.";
+			//
+			// BankBackupFrequencyUnitsLabel
+			//
+			this.BankBackupFrequencyUnitsLabel.Location = DPIScalingHelper.GetScaledPoint(250, 136);
+			this.BankBackupFrequencyUnitsLabel.Name = "BankBackupFrequencyUnitsLabel";
+			this.BankBackupFrequencyUnitsLabel.Text = "RP";
 			//
 			// RegistryControl
 			//
@@ -115,6 +123,7 @@ namespace VUserInterface
 			this.Controls.Add(SyncSoulBankCheckControl);
 			this.Controls.Add(BankBackupFrequencyTextBox);
 			this.Controls.Add(BankBackupFrequencyDescription);
+			this.Controls.Add(BankBackupFrequencyUnitsLabel);
 			this.Controls.Add(VersionLabel);
 			this.Controls.Add(SaveButton);
 			this.Controls.Add(TitleLabel);
@@ -129,6 +138,7 @@ namespace VUserInterface
 		VCheckControl SyncSoulBankCheckControl;
 		VTextBox BankBackupFrequencyTextBox;
 		VLabel BankBackupFrequencyDescription;
+		VLabel BankBackupFrequencyUnitsLabel;
 		VLabel TitleLabel;
 		VButton SaveButton;
 		VLabel VersionLabel;
