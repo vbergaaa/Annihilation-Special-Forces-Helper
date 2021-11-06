@@ -12,7 +12,9 @@ namespace VBusiness
 		public static void CopyBankFile()
 		{
 			var bankFileDirectory = $"{ASFBankDecoder.GetDefaultBankFilePath()}";
-			var backupDirectory = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\{DirectoryManager.ApplicationName}\\Backups\\{GetBackupName()}.SC2Bank";
+			var backupDirectory = string.IsNullOrEmpty(Registry.Instance.BankFileOverride)
+				? $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\{DirectoryManager.ApplicationName}\\Backups\\{GetBackupName()}.SC2Bank"
+				: Registry.Instance.BankFileOverride;
 
 			CopyFile(bankFileDirectory, backupDirectory);
 		}
