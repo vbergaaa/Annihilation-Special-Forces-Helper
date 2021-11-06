@@ -38,6 +38,9 @@ namespace VUserInterface
 			this.SyncProfileBankCheckControl = new VCheckControl();
 			this.SyncLoadoutBankCheckControl = new VCheckControl();
 			this.SyncSoulBankCheckControl = new VCheckControl();
+			this.BankBackupFrequencyDescription = new VLabel();
+			this.BankBackupFrequencyUnitsLabel = new VLabel();
+			this.BankBackupFrequencyTextBox = new VTextBox();
 			this.TitleLabel = new VLabel();
 			this.VersionLabel = new VLabel();
 			this.SaveButton = new VButton();
@@ -57,7 +60,7 @@ namespace VUserInterface
 			// VersionLabel
 			//
 			this.VersionLabel.Name = "VersionLabel";
-			this.VersionLabel.Location = DPIScalingHelper.GetScaledPoint(120, 220);
+			this.VersionLabel.Location = DPIScalingHelper.GetScaledPoint(120, 230);
 			this.VersionLabel.Text = "Version Date: " + VersionHelper.GetVersionBuildDate().ToString("dd-MMM-yyyy");
 			// 
 			// SaveEditButton
@@ -74,28 +77,53 @@ namespace VUserInterface
 			//
 			this.SyncProfileBankCheckControl.Caption = "Sync Profile on app start:";
 			this.SyncProfileBankCheckControl.DataBindings.Add("Checked", BindingSource, "SyncProfileWithBank");
-			this.SyncProfileBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 70);
-			this.SyncProfileBankCheckControl.Name = "SyncBankControl";
+			this.SyncProfileBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 60);
+			this.SyncProfileBankCheckControl.Name = "SyncProfileBankCheckControl";
 			//
 			// SyncLoadoutBankControl
 			//
 			this.SyncLoadoutBankCheckControl.Caption = "Sync all loadouts on app start:";
 			this.SyncLoadoutBankCheckControl.DataBindings.Add("Checked", BindingSource, "SyncLoadoutsWithBank");
-			this.SyncLoadoutBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 100);
-			this.SyncLoadoutBankCheckControl.Name = "SyncBankControl";
+			this.SyncLoadoutBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 85);
+			this.SyncLoadoutBankCheckControl.Name = "SyncLoadoutBankCheckControl";
 			//
 			// SyncSoulBankControl
 			//
 			this.SyncSoulBankCheckControl.Caption = "Sync all souls on app start:";
 			this.SyncSoulBankCheckControl.DataBindings.Add("Checked", BindingSource, "SyncSoulsWithBank");
-			this.SyncSoulBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 130);
-			this.SyncSoulBankCheckControl.Name = "SyncBankControl";
+			this.SyncSoulBankCheckControl.Location = DPIScalingHelper.GetScaledPoint(200, 110);
+			this.SyncSoulBankCheckControl.Name = "SyncSoulBankCheckControl";
+			//
+			// BankBackupFrequencyTextBox
+			//
+			this.BankBackupFrequencyTextBox.Caption = "Bank back-up frequency:";
+			this.BankBackupFrequencyTextBox.DataBindings.Add("Text", BindingSource, "BackupFrequency");
+			this.BankBackupFrequencyTextBox.DataBindings.Add("Enabled", BindingSource, "BackupFrequency_Editable");
+			this.BankBackupFrequencyTextBox.Location = DPIScalingHelper.GetScaledPoint(200, 135);
+			this.BankBackupFrequencyTextBox.Name = "BankBackupFrequencyTextBox";
+			this.BankBackupFrequencyTextBox.Size = DPIScalingHelper.GetScaledSize(50, 25);
+			//
+			// BankBackupFrequencyDescription
+			//
+			this.BankBackupFrequencyDescription.Location = DPIScalingHelper.GetScaledPoint(10, 160);
+			this.BankBackupFrequencyDescription.Name = "BankBackupFrequencyDescription";
+			this.BankBackupFrequencyDescription.Size = DPIScalingHelper.GetScaledSize(350, 65);
+			this.BankBackupFrequencyDescription.Text = "Setting this will create a backup of your bank file to:\r\n%AppData%/AnnihilationSpecialForcesHelper/Backups/\r\nwhen opening this app. Set this to zero to disable.\r\nRequires Profile Syncing to be enabled.";
+			//
+			// BankBackupFrequencyUnitsLabel
+			//
+			this.BankBackupFrequencyUnitsLabel.Location = DPIScalingHelper.GetScaledPoint(250, 136);
+			this.BankBackupFrequencyUnitsLabel.Name = "BankBackupFrequencyUnitsLabel";
+			this.BankBackupFrequencyUnitsLabel.Text = "RP";
 			//
 			// RegistryControl
 			//
 			this.Controls.Add(SyncProfileBankCheckControl);
 			this.Controls.Add(SyncLoadoutBankCheckControl);
 			this.Controls.Add(SyncSoulBankCheckControl);
+			this.Controls.Add(BankBackupFrequencyTextBox);
+			this.Controls.Add(BankBackupFrequencyDescription);
+			this.Controls.Add(BankBackupFrequencyUnitsLabel);
 			this.Controls.Add(VersionLabel);
 			this.Controls.Add(SaveButton);
 			this.Controls.Add(TitleLabel);
@@ -108,6 +136,9 @@ namespace VUserInterface
 		VCheckControl SyncProfileBankCheckControl;
 		VCheckControl SyncLoadoutBankCheckControl;
 		VCheckControl SyncSoulBankCheckControl;
+		VTextBox BankBackupFrequencyTextBox;
+		VLabel BankBackupFrequencyDescription;
+		VLabel BankBackupFrequencyUnitsLabel;
 		VLabel TitleLabel;
 		VButton SaveButton;
 		VLabel VersionLabel;

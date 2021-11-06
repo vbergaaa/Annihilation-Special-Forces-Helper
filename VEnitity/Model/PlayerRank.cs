@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using EnumsNET;
+using System.ComponentModel;
 
 namespace VEntityFramework.Model
 {
@@ -40,5 +41,13 @@ namespace VEntityFramework.Model
 		ArchDestroyer,
 		[Description("Exalted Destroyer")]
 		ExaltedDestroyer,
+	}
+
+	public static class PlayerRankExtentions
+	{
+		public static string GetDescription(this PlayerRank type)
+		{
+			return type.AsString(EnumFormat.Description, EnumFormat.Name);
+		}
 	}
 }

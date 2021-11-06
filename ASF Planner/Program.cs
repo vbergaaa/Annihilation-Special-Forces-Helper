@@ -16,17 +16,31 @@ namespace ASFLauncher
 		[STAThread]
 		static void Main()
 		{
-			try
-			{
-				Log.Info("Begin Initialising files from bank file.");
-				InitialiseFilesFromBank();
-				Log.Info("Finished initialising files from bank.");
-			}
-			catch (Exception ex)
-			{
-				Log.Error("Failed to sync bank file", ex);
-			}
+			ReadBankFile();
+			BackUpBank();
+			LaunchApplication();
 
+		}
+
+		private static void BackUpBank()
+		{
+			if (Registry.Instance.BackupFrequency > 0 && Registry.Instance.SyncProfileWithBank && Profile.GetProfile().RankPoints >= 1000)
+			{
+				try
+				{
+					Log.Info("Begin Cloning Bank File.");
+					BankSaver.CopyBankFile();
+					Log.Info("Finished Cloning bank.");
+				}
+				catch (Exception ex)
+				{
+					Log.Error("Failed to clone bank file", ex);
+				}
+			}
+		}
+
+		private static void LaunchApplication()
+		{
 			try
 			{
 				AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(ReportError);
@@ -39,6 +53,20 @@ namespace ASFLauncher
 			catch (Exception ex)
 			{
 				Log.Error("A fatal error occured", ex);
+			}
+		}
+
+		private static void ReadBankFile()
+		{
+			try
+			{
+				Log.Info("Begin Initialising files from bank file.");
+				InitialiseFilesFromBank();
+				Log.Info("Finished initialising files from bank.");
+			}
+			catch (Exception ex)
+			{
+				Log.Error("Failed to sync bank file", ex);
 			}
 		}
 

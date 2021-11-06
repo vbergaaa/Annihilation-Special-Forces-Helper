@@ -7,8 +7,10 @@ using VEntityFramework.Data;
 
 namespace VEntityFramework
 {
-    internal static class DirectoryManager
+	public static class DirectoryManager
 	{
+		public const string ApplicationName = "AnnihilationSpecialForcesHelper";
+
 		internal static string GetFullPathWithExtension<T>(string fileName)
 		{
 			var path = GetFullPath<T>(fileName);
@@ -35,7 +37,7 @@ namespace VEntityFramework
 			if (atr != null)
 			{
 				var pathHint = atr.PathHint;
-				var rootDirectory = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\AnnihilationSpecialForcesHelper";
+				var rootDirectory = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\{ApplicationName}";
 #if DEBUG
 				rootDirectory = Directory.GetCurrentDirectory();
 #endif
@@ -59,8 +61,8 @@ namespace VEntityFramework
 			return File.Exists(GetFullPathWithExtension<T>(fileName));
 		}
 
-        static void EnsureDirectoryExists(string desiredPath)
-        {
+		public static void EnsureDirectoryExists(string desiredPath)
+		{
 			if (!Directory.Exists(desiredPath))
 			{
 				try
@@ -73,5 +75,5 @@ namespace VEntityFramework
 				}
 			}
 		}
-    }
+	}
 }

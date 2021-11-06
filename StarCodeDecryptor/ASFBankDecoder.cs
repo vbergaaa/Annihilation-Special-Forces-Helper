@@ -119,7 +119,7 @@ namespace StarCodeDecryptor
 
 		string fBankPathOverride = null;
 
-		string GetDefaultBankFilePath()
+		public static string GetDefaultBankFilePath()
 		{
 			var rootLocation = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\StarCraft II\\Accounts";
 			var files = Directory.GetFiles(rootLocation, "TDUHOK.SC2Bank", SearchOption.AllDirectories);
