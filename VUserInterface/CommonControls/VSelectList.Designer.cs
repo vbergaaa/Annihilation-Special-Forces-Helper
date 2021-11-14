@@ -39,7 +39,7 @@
 			this.ListBox.DataSource = this.Collection;
 			this.ListBox.FormattingEnabled = true;
 			this.ListBox.ItemHeight = 15;
-			this.ListBox.Location = DPIScalingHelper.GetScaledPoint(2, 30);
+			this.ListBox.Location = DPIScalingHelper.GetScaledPoint(2, 27);
 			this.ListBox.Name = "ListBox";
 			this.ListBox.Size = DPIScalingHelper.GetScaledSize(325, 94);
 			this.ListBox.TabIndex = 0;
@@ -50,6 +50,7 @@
 			this.Label.AutoSize = true;
 			this.Label.Location = DPIScalingHelper.GetScaledPoint(4, 1);
 			this.Label.Name = "Label";
+			this.Label.MaximumSize = DPIScalingHelper.GetScaledSize(325, 25);
 			this.Label.TabIndex = 1;
 			// 
 			// NewButton
