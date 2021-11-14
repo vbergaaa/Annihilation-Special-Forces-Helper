@@ -157,13 +157,14 @@ namespace VBusiness
 		{
 			get
 			{
-				var baseModifier = Loadout.UnitConfiguration.Difficulty.BaseUpgradeCost / 100;
-				var cost = VCalculator.Calculate(500 * baseModifier, 100, 0, AttackUpgrade);
-				cost += VCalculator.Calculate(1000 * baseModifier, 1500, 0, AttackSpeedUpgrade);
-				cost += VCalculator.Calculate(400 * baseModifier, 50, 0, HealthUpgrade);
-				cost += VCalculator.Calculate(400 * baseModifier, 70, 0, HealthArmorUpgrade);
-				cost += VCalculator.Calculate(400 * baseModifier, 50, 0, ShieldsUpgrade);
-				cost += VCalculator.Calculate(400 * baseModifier, 70, 0, ShieldsArmorUpgrade);
+				var baseModifier = Loadout.UnitConfiguration.Difficulty.BaseUpgradeCost;
+				var modifier = baseModifier > 0 ? baseModifier / 100 : 1;
+				var cost = VCalculator.Calculate(500 * modifier, 100, 0, AttackUpgrade);
+				cost += VCalculator.Calculate(1000 * modifier, 1500, 0, AttackSpeedUpgrade);
+				cost += VCalculator.Calculate(400 * modifier, 50, 0, HealthUpgrade);
+				cost += VCalculator.Calculate(400 * modifier, 70, 0, HealthArmorUpgrade);
+				cost += VCalculator.Calculate(400 * modifier, 50, 0, ShieldsUpgrade);
+				cost += VCalculator.Calculate(400 * modifier, 70, 0, ShieldsArmorUpgrade);
 				return cost;
 			}
 		}
