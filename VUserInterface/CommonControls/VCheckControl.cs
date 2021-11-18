@@ -56,8 +56,8 @@ namespace VUserInterface.CommonControls
 
 		public override bool AutoSize
 		{
-			set { base.AutoSize = false; }
-			get { return base.AutoSize; }
+			set => base.AutoSize = false;
+			get => base.AutoSize;
 		}
 
 		protected override void OnPaint(PaintEventArgs e)

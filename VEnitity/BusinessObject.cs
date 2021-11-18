@@ -154,12 +154,8 @@ namespace VEntityFramework.Data
 
 		public virtual bool HasChanges
 		{
-			get
-			{
-				return fHasChanges || Children.Any(child => child.HasChanges);
-			}
-			set
-			{
+			get => fHasChanges || Children.Any(child => child.HasChanges);
+			set {
 				if (!IsSettingHasChangesSuspended && fHasChanges != value)
 				{
 					fHasChanges = value;
