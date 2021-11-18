@@ -40,7 +40,7 @@ namespace VBusiness.HelperClasses
 
 			units.AddRange(units.SelectRecursive(e => e.Type.GetAdditionalSpawns(loadout.UnitConfiguration.Difficulty.UnitTierIncrease, loadout.IncomeManager.FarmRoom).Multiply(e.Quantity)));
 
-			IEnumerable<EnemyQuantity> infSpawnerUnits = loadout.IncomeManager.HasInfinitySpawner
+			var infSpawnerUnits = loadout.IncomeManager.HasInfinitySpawner
 				? new[] { new EnemyQuantity(EnemyType.InfestedTerran, 20) }.TierUp(tierUp)
 				: Array.Empty<EnemyQuantity>();
 

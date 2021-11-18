@@ -21,7 +21,7 @@ namespace VBusiness
 
 		static string GetBackupName()
 		{
-			string rank = GetRankString();
+			var rank = GetRankString();
 			var rp = GetRPString();
 			return $"{rp}_{rank}";
 		}
