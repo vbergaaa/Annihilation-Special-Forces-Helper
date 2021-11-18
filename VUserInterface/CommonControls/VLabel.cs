@@ -16,10 +16,7 @@ namespace VUserInterface.CommonControls
 		public ContentAlignment TextAlign
 		{
 			get => Label.TextAlign;
-			set
-			{
-				Label.TextAlign = value;
-			}
+			set => Label.TextAlign = value;
 		}
 
 		public new object Text

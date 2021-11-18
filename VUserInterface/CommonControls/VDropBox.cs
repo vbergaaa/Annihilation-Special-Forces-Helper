@@ -58,12 +58,8 @@ namespace VUserInterface.CommonControls
 
 		public object SelectedValue
 		{
-			get
-			{
-				return ComboBox.SelectedValue;
-			}
-			set
-			{
+			get => ComboBox.SelectedValue;
+			set {
 				if (value != null && ComboBox.Items.Contains(value) && !isSettingIndexOnBaseComboBox)
 				{
 					var index = ComboBox.Items.IndexOf(value);
