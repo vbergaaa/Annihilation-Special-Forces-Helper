@@ -480,7 +480,7 @@ namespace VEntityFramework.Model
 
 		protected override void OnPropertyChanged(string bindingName)
 		{
-			if (!shouldPreventRefreshBinding)
+			if (!ShouldPreventRefreshBinding())
 			{
 				base.OnPropertyChanged(bindingName);
 			}
@@ -498,7 +498,10 @@ namespace VEntityFramework.Model
 		}
 
 		int suspendRefreshBindingCounter;
-		bool shouldPreventRefreshBinding => suspendRefreshBindingCounter > 0;
+		bool ShouldPreventRefreshBinding()
+		{
+			return suspendRefreshBindingCounter > 0;
+		}
 
 		#endregion
 	}
