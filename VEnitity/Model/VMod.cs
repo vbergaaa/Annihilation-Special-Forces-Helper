@@ -65,7 +65,7 @@ namespace VEntityFramework.Model
 
 		short fCurrentLevel;
 
-		public short MaxValue => 10;
+		public static short MaxValue => 10;
 
 		#endregion
 

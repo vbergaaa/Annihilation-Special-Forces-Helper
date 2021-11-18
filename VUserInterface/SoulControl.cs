@@ -67,7 +67,7 @@ namespace VUserInterface
 				{
 					var souls = new List<string>();
 					souls.Add("None");
-					souls.AddRange(OrderHelper.OrderNamesByKey(VDataContext.Instance.GetAllFileNames<Soul>()));
+					souls.AddRange(OrderHelper.OrderNamesByKey(VDataContext.GetAllFileNames<Soul>()));
 					fSoulList = souls;
 				}
 				return fSoulList;

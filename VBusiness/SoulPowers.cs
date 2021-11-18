@@ -13,7 +13,7 @@ namespace VBusiness
 		public override List<SoulType> ActiveSouls => fActiveSouls ??= new List<SoulType>();
 		List<SoulType> fActiveSouls;
 
-		VSoulCollection SoulCollection => Profile.Profile.GetProfile().SoulCollection;
+        static VSoulCollection SoulCollection => Profile.Profile.GetProfile().SoulCollection;
 
 		public override bool GetBindingValue(SoulType soul)
 		{

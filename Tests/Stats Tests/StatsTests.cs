@@ -248,7 +248,7 @@ namespace Tests
 			Assert.That(loadout.Stats.UnitShieldsArmor, Is.EqualTo(77.272));
 		}
 
-		VLoadout GetTestLoadout()
+        static VLoadout GetTestLoadout()
 		{
 			var loadout = new Loadout();
 			loadout.ShouldRestrict = false;

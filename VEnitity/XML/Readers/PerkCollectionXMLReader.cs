@@ -15,7 +15,7 @@ namespace VEntityFramework.XML
 			return base.GetPropertyFromXML(type, child);
 		}
 
-		PropertyInfo GetPerkFromCode(Type type, XmlNode node)
+        static PropertyInfo GetPerkFromCode(Type type, XmlNode node)
 		{
 			var code = "";
 			foreach (XmlNode child in node.ChildNodes)
@@ -30,7 +30,7 @@ namespace VEntityFramework.XML
 			return GetPerkFromCode(type, code);
 		}
 
-		internal PropertyInfo GetPerkFromCode(Type type, string code)
+		internal static PropertyInfo GetPerkFromCode(Type type, string code)
 		{
 			return code switch
 			{
@@ -133,8 +133,7 @@ namespace VEntityFramework.XML
 	{
 		public static PropertyInfo TestGetPerkFromCode(Type type, string code)
 		{
-			var reader = new PerkCollectionXMLReader();
-			return reader.GetPerkFromCode(type, code);
+			return PerkCollectionXMLReader.GetPerkFromCode(type, code);
 		}
 	}
 }

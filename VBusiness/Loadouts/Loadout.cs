@@ -126,15 +126,15 @@ namespace VBusiness.Loadouts
 				{
 					using (Stats.SuspendRefreshingStatBindings())
 					{
-						RemoveStats(base.CurrentUnit);
+                        RemoveStats(base.CurrentUnit);
 						base.CurrentUnit = value;
-						AddStats(base.CurrentUnit);
+                        AddStats(base.CurrentUnit);
 					}
 				}
 			}
 		}
 
-		void RemoveStats(VUnit currentUnit)
+        static void RemoveStats(VUnit currentUnit)
 		{
 			if (currentUnit is Unit unit)
 			{
@@ -150,7 +150,7 @@ namespace VBusiness.Loadouts
 			}
 		}
 
-		void AddStats(VUnit currentUnit)
+        static void AddStats(VUnit currentUnit)
 		{
 			if (currentUnit is Unit unit)
 			{

@@ -8,7 +8,7 @@ namespace VBusiness.Weapons
 	{
 		public virtual double AttackCount => 1;
 
-		public double AttackPeriodIncrement => 0.94;
+		public static double AttackPeriodIncrement => 0.94;
 
 		public abstract double BaseAttack { get; }
 

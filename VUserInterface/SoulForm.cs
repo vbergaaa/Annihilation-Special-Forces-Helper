@@ -83,7 +83,7 @@ namespace VUserInterface
 
 		List<object> fSoulTypesList;
 
-		List<object> GetOrderedSoulsList()
+        static List<object> GetOrderedSoulsList()
 		{
 			var list = new List<object>();
 			list.Add(SoulType.None);

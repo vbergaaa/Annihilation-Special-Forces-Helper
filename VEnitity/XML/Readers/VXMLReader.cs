@@ -14,7 +14,7 @@ namespace VEntityFramework.XML
 	{
 		#region GetAllNames
 
-		internal string[] GetAllFilenames<T>() where T : BusinessObject
+		internal static string[] GetAllFilenames<T>() where T : BusinessObject
 		{
 			var directory = DirectoryManager.GetFullDirectory<T>();
 			var files = Directory.GetFiles(directory);
@@ -25,7 +25,7 @@ namespace VEntityFramework.XML
 
 		#region Read
 
-		internal T Read<T>(string fileName) where T : BusinessObject
+		internal static T Read<T>(string fileName) where T : BusinessObject
 		{
 			if (DirectoryManager.CheckFileExists<T>(fileName))
 			{
@@ -34,7 +34,7 @@ namespace VEntityFramework.XML
 			return null;
 		}
 
-		T ReadXML<T>(string fileName) where T : BusinessObject
+		static T ReadXML<T>(string fileName) where T : BusinessObject
 		{
 			try
 			{
@@ -53,7 +53,7 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		internal BusinessObject CreateBizoFromXML(Type type, XmlElement documentElement)
+		internal static BusinessObject CreateBizoFromXML(Type type, XmlElement documentElement)
 		{
 			var bizo = CreateInstance(type, documentElement);
 			var reader = GetXmlReader(type);
@@ -77,7 +77,7 @@ namespace VEntityFramework.XML
 			};
 		}
 
-		BusinessObject CreateInstance(Type type, XmlElement documentElement)
+        static BusinessObject CreateInstance(Type type, XmlElement documentElement)
 		{
 			if (typeof(VSoul).IsAssignableFrom(type))
 			{
@@ -87,7 +87,7 @@ namespace VEntityFramework.XML
 			return BizoCreator.Create(type);
 		}
 
-		string GetSoulName(XmlElement documentElement)
+        static string GetSoulName(XmlElement documentElement)
 		{
 			foreach (XmlNode xmlNode in documentElement.ChildNodes)
 			{

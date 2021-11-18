@@ -24,7 +24,7 @@ namespace VEntityFramework.XML
 			bizo.XmlLocation = fullFilePath;
 		}
 
-		string RenameFileIfNeccessary(BusinessObject bizo)
+        static string RenameFileIfNeccessary(BusinessObject bizo)
 		{
 			var newNameWithPath = GetFileNameWithExtension(bizo);
 
@@ -36,7 +36,7 @@ namespace VEntityFramework.XML
 			return newNameWithPath;
 		}
 
-		XmlWriter GetXmlWriter(Stream stream)
+        static XmlWriter GetXmlWriter(Stream stream)
 		{
 			var xmlSettings = new XmlWriterSettings();
 			xmlSettings.Indent = true;
@@ -66,7 +66,7 @@ namespace VEntityFramework.XML
 							}
 							else
 							{
-								WriteXmlObject(writer, (IXmlObject)property.GetValue(bizo));
+                                WriteXmlObject(writer, (IXmlObject)property.GetValue(bizo));
 							}
 						}
 						else if (typeof(IList).IsAssignableFrom(property.PropertyType))
@@ -117,7 +117,7 @@ namespace VEntityFramework.XML
 {bizo1ForStackOverflowReport} > {bizo2ForStackOverflowReport} > {bizo3ForStackOverflowReport} > {bizo4ForStackOverflowReport} > {bizo5ForStackOverflowReport};";
 		}
 
-		void WriteXmlObject(XmlWriter writer, IXmlObject xmlObject)
+        static void WriteXmlObject(XmlWriter writer, IXmlObject xmlObject)
 		{
 			foreach (var proprety in xmlObject.GetType().GetProperties())
 			{
@@ -154,7 +154,7 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		string GetFileNameWithExtension(BusinessObject bizo)
+        static string GetFileNameWithExtension(BusinessObject bizo)
 		{
 			return DirectoryManager.GetFullDirectory(bizo.GetType()) + bizo.GetSaveNameForXML() + ".xml";
 		}
