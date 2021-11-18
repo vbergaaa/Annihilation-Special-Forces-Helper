@@ -18,7 +18,7 @@ namespace VUserInterface
 			base.OnBindingContextChanged(e);
 			if (Gems != null)
 			{
-				this.BindingSource.DataSource = Gems;
+				BindingSource.DataSource = Gems;
 			}
 		}
 	}

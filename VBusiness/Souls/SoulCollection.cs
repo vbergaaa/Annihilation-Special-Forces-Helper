@@ -25,7 +25,7 @@ namespace VBusiness.Souls
 			{
 				DiscoveredSouls.Add(soulType);
 			}
-			this.HasChanges = false;
+			HasChanges = false;
 		}
 
 		List<SoulType> savedStateList;

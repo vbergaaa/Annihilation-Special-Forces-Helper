@@ -69,8 +69,8 @@ namespace VUserInterface
 		{
 			if (Parent != null)
 			{
-				this.BindingSource.DataSource = Parent;
-				this.BindingSource.ResetBindings(false);
+				BindingSource.DataSource = Parent;
+				BindingSource.ResetBindings(false);
 			}
 		}
 

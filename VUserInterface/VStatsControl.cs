@@ -17,7 +17,7 @@ namespace VUserInterface
 			base.OnBindingContextChanged(e);
 			if (Stats != null)
 			{
-				this.statsBindingSource.DataSource = Stats;
+				statsBindingSource.DataSource = Stats;
 			}
 		}
 

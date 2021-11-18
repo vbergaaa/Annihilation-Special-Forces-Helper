@@ -52,10 +52,10 @@ namespace VUserInterface
 
 		void UpdateBindingIfDataSourceChanged()
 		{
-			if (Soul != null && Soul != this.BindingSource.DataSource)
+			if (Soul != null && Soul != BindingSource.DataSource)
 			{
-				this.BindingSource.DataSource = Soul;
-				this.BindingSource.ResetBindings(true);
+				BindingSource.DataSource = Soul;
+				BindingSource.ResetBindings(true);
 			}
 		}
 

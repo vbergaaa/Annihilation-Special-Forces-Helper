@@ -25,7 +25,7 @@ namespace VUserInterface
 			base.OnBindingContextChanged(e);
 			if (Perks != null)
 			{
-				this.perksBindingSource.DataSource = Perks;
+				perksBindingSource.DataSource = Perks;
 				SetButtonReadonlyStatus();
 				RestrictPerkPageButtons();
 			}
@@ -33,7 +33,7 @@ namespace VUserInterface
 
 		internal void RefreshBindings()
 		{
-			this.perksBindingSource.ResetBindings(false);
+			perksBindingSource.ResetBindings(false);
 		}
 
 
