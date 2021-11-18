@@ -35,7 +35,7 @@ namespace VBusiness.Units
 
 		public override double ShieldArmorIncrement => 0.2;
 
-		public override UnitType[] SpecTypes => new UnitType[0];
+		public override UnitType[] SpecTypes => System.Array.Empty<UnitType>();
 
 		public override UnitType BasicType => Type;
 

@@ -89,7 +89,7 @@ namespace VUserInterface
 		void AddNewSoulButton_Click(object sender, EventArgs e)
 		{
 			var oldSoul = Soul;
-			var soul = BizoCreator.Create(typeof(Soul), new object[0]);
+			var soul = BizoCreator.Create(typeof(Soul), Array.Empty<object>());
 			var soulForm = new SoulForm(soul);
 			soulForm.SoulCollection = SoulCollection;
 			soulForm.ShowDialog();
