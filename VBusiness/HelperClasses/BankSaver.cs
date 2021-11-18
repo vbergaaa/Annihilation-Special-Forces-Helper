@@ -72,7 +72,7 @@ namespace VBusiness
 			var words = rankName.Split(" ");
 			return words.Length == 1
 				? words.Last().Substring(0, 3)
-				: words.First().Substring(0, 1) + words.Last().Substring(0, 3);
+				: string.Concat(words.First().AsSpan(0, 1), words.Last().AsSpan(0, 3));
 		}
 
 		static void CopyFile(string sourceFile, string targetFile)
