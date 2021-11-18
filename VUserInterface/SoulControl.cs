@@ -95,7 +95,7 @@ namespace VUserInterface
 			soulForm.SoulCollection = SoulCollection;
 			soulForm.ShowDialog();
 
-			if (!(soulForm.Parent is EmptySoul) && soulForm.Parent.ExistsInXML)
+			if (soulForm.Parent is not EmptySoul && soulForm.Parent.ExistsInXML)
 			{
 				var bindingField = DataBindings.GetBindingField("Soul");
 				fSoulList = null;
