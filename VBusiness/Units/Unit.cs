@@ -165,7 +165,7 @@ namespace VBusiness.Units
 
 		public void RemoveStatsFromAdrenalineRush()
 		{
-			if (this.UnitData.Type != UnitType.None)
+			if (UnitData.Type != UnitType.None)
 			{
 				var adrenalineRush = Loadout.Perks.AdrenalineRush.DesiredLevel;
 				var superRushBonus = 1 + Loadout.Perks.SuperRush.DesiredLevel / 10.0;
@@ -183,7 +183,7 @@ namespace VBusiness.Units
 
 		public void AddStatsFromAdrenalineRush()
 		{
-			if (this.UnitData.Type != UnitType.None)
+			if (UnitData.Type != UnitType.None)
 			{
 				var adrenalineRush = Loadout.Perks.AdrenalineRush.DesiredLevel;
 				var superRushBonus = 1 + Loadout.Perks.SuperRush.DesiredLevel / 10.0;

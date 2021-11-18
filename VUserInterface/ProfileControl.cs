@@ -29,7 +29,7 @@ namespace VUserInterface
 			base.OnBindingContextChanged(e);
 			if (Profile != null)
 			{
-				this.BindingSource.DataSource = Profile;
+				BindingSource.DataSource = Profile;
 			}
 		}
 

@@ -43,9 +43,9 @@ namespace VUserInterface
 
 		void UpdateBindingIfDataSourceChanged()
 		{
-			if (ChallengePoint != null && ChallengePoint != this.bindingSource.DataSource)
+			if (ChallengePoint != null && ChallengePoint != bindingSource.DataSource)
 			{
-				this.bindingSource.DataSource = ChallengePoint;
+				bindingSource.DataSource = ChallengePoint;
 				RefreshBinding(true);
 			}
 		}
@@ -64,7 +64,7 @@ namespace VUserInterface
 
 		public void RefreshBinding(bool updateSchema)
 		{
-			this.bindingSource.ResetBindings(updateSchema);
+			bindingSource.ResetBindings(updateSchema);
 		}
 
 		#endregion

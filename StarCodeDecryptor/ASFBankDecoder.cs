@@ -10,7 +10,7 @@ namespace StarCodeDecryptor
 	{
 		public ASFBankDecoder(string bankPathOverride)
 		{
-			this.fBankPathOverride = bankPathOverride;
+			fBankPathOverride = bankPathOverride;
 		}
 
 		#region Key

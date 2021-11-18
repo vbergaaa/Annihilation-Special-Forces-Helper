@@ -58,7 +58,7 @@ namespace VUserInterface
 				fParent = value;
 				if (fParent != null)
 				{
-					this.BindingSource.DataSource = fParent;
+					BindingSource.DataSource = fParent;
 				}
 			}
 		}
@@ -115,8 +115,8 @@ namespace VUserInterface
 		{
 			if (SaveButton != null && CancelButton != null)
 			{
-				this.SaveButton.Location = new Point(this.ClientSize.Width - DPIScalingHelper.GetScaledX(180), this.ClientSize.Height - DPIScalingHelper.GetScaledY(30));
-				this.CancelButton.Location = new Point(this.ClientSize.Width - DPIScalingHelper.GetScaledX(90), this.ClientSize.Height - DPIScalingHelper.GetScaledY(30));
+				SaveButton.Location = new Point(ClientSize.Width - DPIScalingHelper.GetScaledX(180), ClientSize.Height - DPIScalingHelper.GetScaledY(30));
+				CancelButton.Location = new Point(ClientSize.Width - DPIScalingHelper.GetScaledX(90), ClientSize.Height - DPIScalingHelper.GetScaledY(30));
 			}
 		}
 

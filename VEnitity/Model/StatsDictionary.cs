@@ -75,11 +75,11 @@ namespace VEntityFramework.Model
 				var mainDictKey = key + MultipleKeyDict[key];
 
 				ErrorReporter.ReportDebug(MultipleKeyDict[key] == 0, $"Zero Keys shouldn't exist, we shouldn't try to remove them. Key={key}, quantity={quantity}, i={i}");
-				ErrorReporter.ReportDebug(!this.ContainsKey(mainDictKey), $"We shouldn't be trying to remove values that don't exist Key={key}, quantity={quantity}, i={i}");
+				ErrorReporter.ReportDebug(!ContainsKey(mainDictKey), $"We shouldn't be trying to remove values that don't exist Key={key}, quantity={quantity}, i={i}");
 
-				if (this.ContainsKey(mainDictKey))
+				if (ContainsKey(mainDictKey))
 				{
-					this.Remove(mainDictKey);
+					Remove(mainDictKey);
 					MultipleKeyDict[key]--;
 				}
 			}
