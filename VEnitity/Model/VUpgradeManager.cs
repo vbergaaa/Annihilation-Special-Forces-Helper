@@ -157,12 +157,12 @@ namespace VEntityFramework.Model
 
 		#region MaxValues
 
-		public int MaxAttack => 100;
-		public int MaxAttackSpeed => 15;
-		public int MaxHealth => 100;
-		public int MaxHealthArmor => 100;
-		public int MaxShields => 100;
-		public int MaxShieldsArmor => 100;
+		public static int MaxAttack => 100;
+		public static int MaxAttackSpeed => 15;
+		public static int MaxHealth => 100;
+		public static int MaxHealthArmor => 100;
+		public static int MaxShields => 100;
+		public static int MaxShieldsArmor => 100;
 
 		#endregion
 

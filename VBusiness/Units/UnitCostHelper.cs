@@ -184,7 +184,7 @@ namespace VBusiness.Units
 			return (cost, excessKills);
 		}
 
-		int UnitsRequiredForInfuse(double infuse, double infuseDiscount)
+		static int UnitsRequiredForInfuse(double infuse, double infuseDiscount)
 		{
 			var x = (infuse + 1) / 2;
 			var unitsRequired = (int)(Math.Floor(x) * Math.Floor(x + 0.5));

@@ -39,18 +39,6 @@ namespace VBusiness.Ranks
 
 		#region Buffs
 
-		#region MegaBuffs
-
-		public void ActivateMegaBuff() { }
-
-		public void ActivateSuperMegaBuff() { }
-
-		public void DeactivateMegaBuff() { }
-
-		public void DeactivateSuperMegaBuff() { }
-
-		#endregion
-
 		#region God Buffs
 
 		public void ActivateGodBuff()
@@ -76,18 +64,6 @@ namespace VBusiness.Ranks
 			Loadout.Stats.CriticalChance -= 10;
 			Loadout.Stats.CriticalDamage -= 20;
 		}
-
-		#endregion
-
-		#region DivineBuffs
-
-		public void ActivateDivineBuff() { }
-
-		public void ActivateSuperDivineBuff() { }
-
-		public void DeactivateDivineBuff() { }
-
-		public void DeactivateSuperDivineBuff() { }
 
 		#endregion
 
@@ -143,14 +119,6 @@ namespace VBusiness.Ranks
 
 		#endregion
 
-		#region QuasarBuffs
-
-		public void ActivateQuasarBuff() { }
-
-		public void DeactivateQuasarBuff() { }
-
-		#endregion
-
 		#region VoidBuffs
 
 		public void ActivateVoidBuff()
@@ -179,11 +147,11 @@ namespace VBusiness.Ranks
 			{
 				if (Rank >= UnitRankType.SSS)
 				{
-					ActivateSuperMegaBuff();
+                    ActivateSuperMegaBuff();
 				}
 				else
 				{
-					ActivateMegaBuff();
+                    ActivateMegaBuff();
 				}
 			}
 		}
@@ -217,11 +185,11 @@ namespace VBusiness.Ranks
 			{
 				if (Rank >= UnitRankType.SZ)
 				{
-					ActivateSuperDivineBuff();
+                    ActivateSuperDivineBuff();
 				}
 				else
 				{
-					ActivateDivineBuff();
+                    ActivateDivineBuff();
 				}
 			}
 		}
@@ -253,7 +221,7 @@ namespace VBusiness.Ranks
 		{
 			if (Rank >= UnitRankType.SXDZ)
 			{
-				ActivateQuasarBuff();
+                ActivateQuasarBuff();
 			}
 			if (Rank >= UnitRankType.XYZ)
 			{
@@ -275,11 +243,11 @@ namespace VBusiness.Ranks
 			{
 				if (Rank >= UnitRankType.SSS)
 				{
-					DeactivateSuperMegaBuff();
+                    DeactivateSuperMegaBuff();
 				}
 				else
 				{
-					DeactivateMegaBuff();
+                    DeactivateMegaBuff();
 				}
 			}
 		}
@@ -313,11 +281,11 @@ namespace VBusiness.Ranks
 			{
 				if (Rank >= UnitRankType.SZ)
 				{
-					DeactivateSuperDivineBuff();
+                    DeactivateSuperDivineBuff();
 				}
 				else
 				{
-					DeactivateDivineBuff();
+                    DeactivateDivineBuff();
 				}
 			}
 		}
@@ -349,7 +317,7 @@ namespace VBusiness.Ranks
 		{
 			if (Rank >= UnitRankType.SXDZ)
 			{
-				DeactivateQuasarBuff();
+                DeactivateQuasarBuff();
 			}
 			if (Rank >= UnitRankType.XYZ)
 			{

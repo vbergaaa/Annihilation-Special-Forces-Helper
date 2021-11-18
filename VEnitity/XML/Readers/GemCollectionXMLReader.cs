@@ -13,7 +13,7 @@ namespace VEntityFramework.XML
 				: base.GetPropertyFromXML(type, child);
 		}
 
-		PropertyInfo GetGem(Type type, XmlNode node)
+        static PropertyInfo GetGem(Type type, XmlNode node)
 		{
 			var name = "";
 			foreach (XmlNode child in node.ChildNodes)

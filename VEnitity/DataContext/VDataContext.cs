@@ -15,7 +15,7 @@ namespace VEntityFramework.Data
 		static VDataContext fInstance;
 		public static VDataContext Instance = fInstance ??= new VDataContext();
 
-		public void SaveAsXML(BusinessObject bizo)
+		public static void SaveAsXML(BusinessObject bizo)
 		{
 			new VXMLWriter().Write(bizo);
 			var cache = BizoCache.Instance;
@@ -25,12 +25,12 @@ namespace VEntityFramework.Data
 			}
 		}
 
-		public T ReadFromXML<T>(string fileName) where T : BusinessObject
+		public static T ReadFromXML<T>(string fileName) where T : BusinessObject
 		{
-			return new VXMLReader().Read<T>(fileName);
+			return VXMLReader.Read<T>(fileName);
 		}
 
-		public T ReadFromXMLWithCache<T>(string fileName) where T : BusinessObject
+		public static T ReadFromXMLWithCache<T>(string fileName) where T : BusinessObject
 		{
 			var cache = BizoCache.Instance;
 			if (cache.Exists(typeof(T), fileName))
@@ -43,7 +43,7 @@ namespace VEntityFramework.Data
 		}
 
 		// Gets any matching bizo otherwise creates a new one
-		public T Get<T>() where T : BusinessObject
+		public static T Get<T>() where T : BusinessObject
 		{
 			var existingBizo = ReadFirstWithCache<T>();
 			if (existingBizo != null)
@@ -55,13 +55,13 @@ namespace VEntityFramework.Data
 		}
 
 		// Creates New Business Object
-		public T NewWithoutCache<T>() where T : BusinessObject
+		public static T NewWithoutCache<T>() where T : BusinessObject
 		{
 			var bizo = (T)BizoCreator.Create(typeof(T));
 			return bizo;
 		}
 
-		public T ReadFirstWithCache<T>() where T : BusinessObject
+		public static T ReadFirstWithCache<T>() where T : BusinessObject
 		{
 			var cache = BizoCache.Instance;
 			if (cache.Exists(typeof(T), null))
@@ -71,7 +71,7 @@ namespace VEntityFramework.Data
 			var fileNames = GetAllFileNames<T>();
 			if (fileNames.Any())
 			{
-				var loadedBizo = new VXMLReader().Read<T>(fileNames.First());
+				var loadedBizo = VXMLReader.Read<T>(fileNames.First());
 				cache.Add(loadedBizo);
 				return loadedBizo;
 			}
@@ -80,17 +80,17 @@ namespace VEntityFramework.Data
 
 		public string[] GetAllFileNames(Type bizoType)
 		{
-			var method = typeof(VDataContext).GetMethod(nameof(GetAllFileNames), new Type[] { });
+			var method = typeof(VDataContext).GetMethod(nameof(GetAllFileNames), Array.Empty<Type>());
 			var generic = method.MakeGenericMethod(bizoType);
 			return (string[])generic.Invoke(this, null);
 		}
 
-		public string[] GetAllFileNames<T>() where T : BusinessObject
+		public static string[] GetAllFileNames<T>() where T : BusinessObject
 		{
-			return new VXMLReader().GetAllFilenames<T>();
+			return VXMLReader.GetAllFilenames<T>();
 		}
 
-		public void Delete<T>(string fileName) where T : BusinessObject
+		public static void Delete<T>(string fileName) where T : BusinessObject
 		{
 			var path = DirectoryManager.GetFullPathWithExtension<T>(fileName);
 			if (File.Exists(path))

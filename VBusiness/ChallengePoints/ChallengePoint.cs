@@ -33,7 +33,7 @@ namespace VBusiness.ChallengePoints
 			}
 		}
 
-		int GetCPDifference(int newValue, int oldValue)
+        static int GetCPDifference(int newValue, int oldValue)
 		{
 			var diff = 0;
 			if (newValue > oldValue)

@@ -64,12 +64,12 @@ namespace VBusiness
 
 			if (loadoutName != null)
 			{
-				VDataContext.Instance.ReadFromXML<Loadout>(loadoutName);
+                VDataContext.ReadFromXML<Loadout>(loadoutName);
 				Log.Info($"loaded loadout {loadoutName} into the cache, triggering a synchronisation if required.");
 				return;
 			}
 
-			var loadout = VDataContext.Instance.NewWithoutCache<Loadout>();
+			var loadout = VDataContext.NewWithoutCache<Loadout>();
 
 			loadout.Slot = i;
 			UpdateLoadout(loadout); ;
@@ -77,7 +77,7 @@ namespace VBusiness
 
 		static string GetLoadoutNameAndDeleteDuplicates(int i)
 		{
-			var loadoutNames = VDataContext.Instance.GetAllFileNames<Loadout>().Where(x => x.StartsWith($"{i}-"));
+			var loadoutNames = VDataContext.GetAllFileNames<Loadout>().Where(x => x.StartsWith($"{i}-"));
 
 			if (loadoutNames.Count() > 1)
 			{
@@ -94,7 +94,7 @@ namespace VBusiness
 
 				foreach (var loadout in loadoutNames.Where(x => x != matchingLoadout))
 				{
-					VDataContext.Instance.Delete<Loadout>(loadout);
+                    VDataContext.Delete<Loadout>(loadout);
 				}
 				return matchingLoadout;
 			}
@@ -164,7 +164,7 @@ namespace VBusiness
 
 		static void UpdateSoul(int saveSlot)
 		{
-			var soulNames = VDataContext.Instance.GetAllFileNames<Soul>();
+			var soulNames = VDataContext.GetAllFileNames<Soul>();
 			var soulName = soulNames.FirstOrDefault(x => x.StartsWith($"{saveSlot}-"));
 
 			var soulString = decoder.GetSoulString(saveSlot);
@@ -214,11 +214,11 @@ namespace VBusiness
 			Soul soul;
 			if (soulName != null)
 			{
-				soul = VDataContext.Instance.ReadFromXML<Soul>(soulName);
+				soul = VDataContext.ReadFromXML<Soul>(soulName);
 
 				if (soul.Type != soulType)
 				{
-					VDataContext.Instance.Delete<Soul>(soulName);
+                    VDataContext.Delete<Soul>(soulName);
 					soul = Soul.New(soulType, null);
 				}
 			}

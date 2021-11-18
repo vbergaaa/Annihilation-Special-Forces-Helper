@@ -212,7 +212,7 @@ namespace VBusiness.Mods
 					score = (int)(score * (1.0 + .0249 * Difficulty.CurrentLevel));
 				}
 
-				var maxModBonuses = AllMods.Count(x => x.CurrentLevel == x.MaxValue);
+				var maxModBonuses = AllMods.Count(x => x.CurrentLevel == VMod.MaxValue);
 
 				if (difficulty >= DifficultyLevel.Impossible && Tier.CurrentLevel == 10)
 				{

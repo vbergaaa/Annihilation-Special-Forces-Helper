@@ -36,7 +36,7 @@ namespace VUserInterface.CommonControls
 			}
 		}
 
-		string GetSuffixedNumber(string value)
+        static string GetSuffixedNumber(string value)
 		{
 			if (!double.TryParse(value, out var number))
 			{

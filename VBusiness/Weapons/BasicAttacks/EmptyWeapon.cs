@@ -5,11 +5,11 @@ namespace VBusiness.Weapons
 {
 	public class EmptyWeapon : IWeaponData
 	{
-		public double AttackCount => 0;
+		public static double AttackCount => 0;
 
 		public double AttackIncrement => 0;
 
-		public double AttackPeriodIncrement => 0;
+		public static double AttackPeriodIncrement => 0;
 
 		public double BaseAttack => 0;
 

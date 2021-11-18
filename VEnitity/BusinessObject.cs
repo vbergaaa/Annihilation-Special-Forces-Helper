@@ -45,7 +45,7 @@ namespace VEntityFramework.Data
 
 		#region DataContext
 
-		public VDataContext Context => VDataContext.Instance;
+		public static VDataContext Context => VDataContext.Instance;
 
 		#endregion
 
@@ -54,7 +54,7 @@ namespace VEntityFramework.Data
 		public void Save()
 		{
 			OnSaving();
-			Context.SaveAsXML(this);
+			VDataContext.SaveAsXML(this);
 			OnSaved();
 		}
 

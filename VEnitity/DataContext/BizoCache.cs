@@ -83,9 +83,9 @@ namespace VEntityFramework.DataContext
 			return null;
 		}
 
-		#endregion
+        #endregion
 
-		Type GetStorageType(Type type)
+        static Type GetStorageType(Type type)
 		{
 			if (typeof(BusinessObject).IsAssignableFrom(type) && type != typeof(BusinessObject))
 			{
