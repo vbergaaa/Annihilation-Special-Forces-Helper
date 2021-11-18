@@ -116,8 +116,7 @@ namespace StarCodeDecryptor
 			}
 		}
 		XmlDocument fBank;
-
-		string fBankPathOverride = null;
+		readonly string fBankPathOverride = null;
 
 		public static string GetDefaultBankFilePath()
 		{
