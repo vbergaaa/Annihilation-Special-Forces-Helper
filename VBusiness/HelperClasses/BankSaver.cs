@@ -70,7 +70,7 @@ namespace VBusiness
 		{
 			var rankName = rank.GetDescription();
 			var words = rankName.Split(" ");
-			return words.Count() == 1
+			return words.Length == 1
 				? words.Last().Substring(0, 3)
 				: words.First().Substring(0, 1) + words.Last().Substring(0, 3);
 		}

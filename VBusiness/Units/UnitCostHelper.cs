@@ -255,7 +255,7 @@ namespace VBusiness.Units
 				var refundAmount = GetKillRecycleRefund(orderedCosts[0].UnitCost);
 
 				// sacrificed unit refund
-				if (orderedCosts.Count() > 1)
+				if (orderedCosts.Count > 1)
 				{
 					refundAmount += GetKillRecycleRefund(orderedCosts[1].UnitCost);
 				}
