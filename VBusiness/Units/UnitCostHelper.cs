@@ -393,7 +393,7 @@ namespace VBusiness.Units
 				if (!hasAlerted && firstDNAStart != UnitType.None && firstDNAStart.GetBasicUnitMineralCost(emptyLoadout) < unitData.BasicType.GetBasicUnitMineralCost(emptyLoadout))
 				{
 					hasAlerted = true;
-					var message = $"DNA start should have used the most expensive DNA. It was used on the DNA with a {firstDNAStart} as a base unit instead of a {unitData.BasicType} as the base unit. Consider changing the recepe order to ensure this occurs.";
+					_ = $"DNA start should have used the most expensive DNA. It was used on the DNA with a {firstDNAStart} as a base unit instead of a {unitData.BasicType} as the base unit. Consider changing the recepe order to ensure this occurs.";
 					Debugger.Break(); // I don't want to exception here as this isn't actually a problem. this is less invasive
 				}
 				firstDNAStart = firstDNAStart != UnitType.None ? firstDNAStart : unitData.BasicType;
