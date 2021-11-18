@@ -107,12 +107,12 @@ namespace VBusiness.Units
 
 				var material = new UnitRecepePiece(unitData.BasicType, (int)unitData.Evolution, UnitRankType.None, 1);
 				var materialCost = GetRawUnitCost(material);
-				var mainUnitFeedCost = GetFeedCost(infusion, unitData.Type, excessKills, infuseDiscount);
+				var (Cost, ExcessKills) = GetFeedCost(infusion, unitData.Type, excessKills, infuseDiscount);
 				var materialQty = UnitsRequiredForInfuse(infusion, infuseDiscount);
 				var killRecycleRefund = GetKillRecycleRefund(materialCost, infusion, infuseDiscount, materialQty);
 				var infuseRecycleRefund = GetInfuseRecycleRefund(infusion, infuseDiscount);
-				var totalKillCost = materialCost.Kills * materialQty + mainUnitFeedCost.Cost - infuseRecycleRefund - killRecycleRefund;
-				return new UnitCost(materialCost.Minerals * materialQty, totalKillCost, mainUnitFeedCost.ExcessKills);
+				var totalKillCost = materialCost.Kills * materialQty + Cost - infuseRecycleRefund - killRecycleRefund;
+				return new UnitCost(materialCost.Minerals * materialQty, totalKillCost, ExcessKills);
 			}
 			else
 			{
