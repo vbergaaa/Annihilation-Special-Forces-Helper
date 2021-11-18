@@ -24,16 +24,10 @@ namespace VBusiness.Enemies
 
 		public override int MineralBounty => 25000;
 
-		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath
-		{
-			get
-			{
-				return new[]
+		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[]
 				{
 					new EnemyQuantity(EnemyType.GiantAbberation, 20),
 					new EnemyQuantity(EnemyType.GreatQueen, 4)
 				};
-			}
-		}
 	}
 }

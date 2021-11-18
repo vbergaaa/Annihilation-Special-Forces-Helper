@@ -300,21 +300,15 @@ namespace VBusiness.Souls
 			}
 		}
 
-#endregion
+		#endregion
 
-#region IsUnique
+		#region IsUnique
 
-		protected override bool IsUnique
-		{
-			get
-			{
-				return Type != Rarity;
-			}
-		}
+		protected override bool IsUnique => Type != Rarity;
 
-#endregion
+		#endregion
 
-#region SaveSlot
+		#region SaveSlot
 
 		public override int SaveSlot
 		{

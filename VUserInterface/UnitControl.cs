@@ -52,20 +52,14 @@ namespace VUserInterface
 
 		#region Units Type
 
-		internal List<object> UnitsTypesList
-		{
-			get => fUnitsTypesList ??= GetUnitTypes();
-		}
+		internal List<object> UnitsTypesList => fUnitsTypesList ??= GetUnitTypes();
 		List<object> fUnitsTypesList;
 
 		#endregion
 
 		#region Rank
 
-		List<object> RanksList
-		{
-			get => fRankList ??= BindingHelper<UnitRankType>.ConvertForBinding(Enums.GetValues<UnitRankType>().ToList());
-		}
+		List<object> RanksList => fRankList ??= BindingHelper<UnitRankType>.ConvertForBinding(Enums.GetValues<UnitRankType>().ToList());
 		List<object> fRankList;
 
 		#endregion

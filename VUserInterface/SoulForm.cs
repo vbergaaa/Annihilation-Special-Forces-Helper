@@ -76,10 +76,7 @@ namespace VUserInterface
 
 		#region Soul Type
 
-		List<object> SoulTypesList
-		{
-			get => fSoulTypesList ??= GetOrderedSoulsList();
-		}
+		List<object> SoulTypesList => fSoulTypesList ??= GetOrderedSoulsList();
 
 		List<object> fSoulTypesList;
 

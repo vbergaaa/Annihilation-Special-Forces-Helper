@@ -92,10 +92,7 @@ namespace VEntityFramework.Data
 
 		#region Notifications
 
-		public NotificationManager Notifications
-		{
-			get => fNotifications ??= new NotificationManager();
-		}
+		public NotificationManager Notifications => fNotifications ??= new NotificationManager();
 		NotificationManager fNotifications;
 
 		#endregion
