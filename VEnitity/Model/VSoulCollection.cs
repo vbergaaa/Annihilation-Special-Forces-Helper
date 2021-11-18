@@ -21,7 +21,7 @@ namespace VEntityFramework.Model
 
 		#region TotalUniques
 
-		public int TotalUniques => DiscoveredSouls.Count();
+		public int TotalUniques => DiscoveredSouls.Count;
 
 		#endregion
 
