@@ -10,7 +10,7 @@ namespace VUserInterface
 	{
 		public SoulForm(BusinessObject bizo) : base(bizo)
 		{
-			if (bizo != null && !(bizo is Soul))
+			if (bizo != null && bizo is not Soul)
 			{
 				throw new InvalidOperationException("Soul form must only accept a soul bizo");
 			}
