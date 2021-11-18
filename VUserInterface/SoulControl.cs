@@ -65,8 +65,10 @@ namespace VUserInterface
 			{
 				if (fSoulList == null)
 				{
-					var souls = new List<string>();
-					souls.Add("None");
+					var souls = new List<string>
+					{
+						"None"
+					};
 					souls.AddRange(OrderHelper.OrderNamesByKey(VDataContext.GetAllFileNames<Soul>()));
 					fSoulList = souls;
 				}

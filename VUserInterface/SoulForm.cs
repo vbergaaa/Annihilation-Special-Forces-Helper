@@ -82,8 +82,10 @@ namespace VUserInterface
 
         static List<object> GetOrderedSoulsList()
 		{
-			var list = new List<object>();
-			list.Add(SoulType.None);
+			var list = new List<object>
+			{
+				SoulType.None
+			};
 			for (var i = 1; i <= (int)VSoul.HighestNonUniqueSoul; i++)
 			{
 				list.Add("");
