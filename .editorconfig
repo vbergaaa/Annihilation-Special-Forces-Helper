@@ -125,3 +125,4 @@ dotnet_style_qualification_for_property = false:suggestion
 dotnet_diagnostic.IDE0057.severity=none
 dotnet_diagnostic.IDE0040.severity=none
 dotnet_diagnostic.IDE0017.severity=none
+dotnet_diagnostic.CS7035.severity=none
