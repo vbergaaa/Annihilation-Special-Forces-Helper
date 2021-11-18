@@ -148,7 +148,7 @@ namespace VBusiness.HelperClasses
 			public double Kills { get; set; }
 			public double Minerals { get; set; }
 
-			public static Resources operator +(Resources a, Resources b) => new Resources(a.Minerals + b.Minerals, a.Kills + b.Kills);
+			public static Resources operator +(Resources a, Resources b) => new(a.Minerals + b.Minerals, a.Kills + b.Kills);
 		}
 	}
 }

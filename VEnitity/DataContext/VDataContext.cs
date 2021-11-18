@@ -80,7 +80,7 @@ namespace VEntityFramework.Data
 
 		public string[] GetAllFileNames(Type bizoType)
 		{
-			var method = typeof(VDataContext).GetMethod(nameof(GetAllFileNames), Array.Empty<Type>());
+			var method = typeof(VDataContext).GetMethod(nameof(GetAllFileNames), new Type[] { });
 			var generic = method.MakeGenericMethod(bizoType);
 			return (string[])generic.Invoke(this, null);
 		}
