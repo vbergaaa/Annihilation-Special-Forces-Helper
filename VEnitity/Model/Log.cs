@@ -15,7 +15,11 @@ namespace VEntityFramework.Model
 #endif
 		}
 
-		public static void Info(string message) => Report(message, LogState.Info);
+		public static void Info(string message)
+		{
+			Report(message, LogState.Info);
+		}
+
 		public static void Report(string message, LogState state, Exception ex = null)
 		{
 			var requiredState = VRegistry.Instance.LogVerbosity;

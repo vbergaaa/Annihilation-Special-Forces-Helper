@@ -7,6 +7,9 @@
 
 		public override double AOEDamagePercent => 20;
 
-		protected override BasicAttackWeapon GetNewBaseWeapon() => new PrisonerBasicWeapon();
+		protected override BasicAttackWeapon GetNewBaseWeapon()
+		{
+			return new PrisonerBasicWeapon();
+		}
 	}
 }

@@ -24,9 +24,15 @@ namespace VEntityFramework.Model
 
 		public string PowerSoulsCountCaption => "Remaining Souls:";
 
-		public virtual bool GetBindingValue(SoulType soul) => false;
+		public virtual bool GetBindingValue(SoulType soul)
+		{
+			return false;
+		}
 
-		public virtual bool GetBindingVisibility(SoulType soul) => false;
+		public virtual bool GetBindingVisibility(SoulType soul)
+		{
+			return false;
+		}
 
 		public virtual void ToggleSoul(SoulType soul)
 		{
