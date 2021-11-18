@@ -23,7 +23,7 @@ namespace VBusiness.Weapons
 		public virtual double GetDamageToEnemy(VLoadout loadout, IEnemyStatCard enemy)
 		{
 			// get damage of weapon scaled with damage increase and damage reduction
-			double rawDamage = GetWeaponDamage(loadout);
+			var rawDamage = GetWeaponDamage(loadout);
 			rawDamage *= loadout.Stats.Attack / 100;
 			rawDamage *= 1 + loadout.Stats.DamageIncrease / 100;
 			rawDamage *= (1 - enemy.DamageReduction / 100);

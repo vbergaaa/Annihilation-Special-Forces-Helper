@@ -43,7 +43,7 @@ namespace Tests
 
 			foreach (var unitType in Enums.GetValues<UnitType>())
 			{
-				VUnit unit = VUnit.New(unitType, loadout);
+				var unit = VUnit.New(unitType, loadout);
 
 				if (speclessUnitTypes().Contains(unitType))
 				{

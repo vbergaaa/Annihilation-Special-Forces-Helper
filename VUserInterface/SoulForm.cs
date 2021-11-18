@@ -46,7 +46,7 @@ namespace VUserInterface
 			get => (Soul)base.Parent;
 			set
 			{
-				int oldSaveSlot = GetSaveSlotFromTextBoxSafe();
+				var oldSaveSlot = GetSaveSlotFromTextBoxSafe();
 				base.Parent = value;
 				if (base.Parent != null && isParentInitialised)
 				{

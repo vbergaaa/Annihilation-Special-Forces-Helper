@@ -50,7 +50,7 @@ namespace VBusiness.Units
 
 		UnitCost GetRawUnitCost(UnitType unitType, int infuse, UnitRankType rank, bool isLimitBroken)
 		{
-			IUnitData unitData = VUnit.GetUnitData(unitType);
+			var unitData = VUnit.GetUnitData(unitType);
 
 			// theres some horrible spaghetti with the logic for adding two UnitCost structs because we don't want to sum the ExcessKills.
 			// It takes the Excess Kills from the element on the right side of the '+' operator.
