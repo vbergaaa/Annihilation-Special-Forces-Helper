@@ -6,6 +6,9 @@
 
 		public override double AOEDamagePercent => 50;
 
-		protected override BasicAttackWeapon GetNewBaseWeapon() => new BerserkerWarpLordBasicWeapon();
+		protected override BasicAttackWeapon GetNewBaseWeapon()
+		{
+			return new BerserkerWarpLordBasicWeapon();
+		}
 	}
 }

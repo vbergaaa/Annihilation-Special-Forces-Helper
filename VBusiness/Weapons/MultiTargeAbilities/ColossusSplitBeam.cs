@@ -12,6 +12,9 @@
 
 		protected override double TargetsHit => BaseWeapon.AttackCount * 2; // original beam sends two beams, this sends 4
 
-		protected override BasicAttackWeapon GetBaseWeapon() => new ColossusBasicWeapon();
+		protected override BasicAttackWeapon GetBaseWeapon()
+		{
+			return new ColossusBasicWeapon();
+		}
 	}
 }

@@ -319,7 +319,10 @@ namespace VEntityFramework.Model
 
 		#region GetSaveNameForXML
 
-		protected internal override string GetSaveNameForXML() => $"{Slot}-{Name}";
+		protected internal override string GetSaveNameForXML()
+		{
+			return $"{Slot}-{Name}";
+		}
 
 		#endregion
 

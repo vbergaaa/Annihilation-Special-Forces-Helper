@@ -136,7 +136,10 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		bool IsKey(XmlNode childNode) => XmlKey == childNode.Name;
+		bool IsKey(XmlNode childNode)
+		{
+			return XmlKey == childNode.Name;
+		}
 
 		protected virtual string XmlKey => "Key";
 

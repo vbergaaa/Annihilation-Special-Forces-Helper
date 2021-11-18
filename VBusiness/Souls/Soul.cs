@@ -463,7 +463,10 @@ namespace VBusiness.Souls
 			};
 		}
 
-		protected override string GetSaveNameForXML() => $"{SaveSlot}-{UniqueName}";
+		protected override string GetSaveNameForXML()
+		{
+			return $"{SaveSlot}-{UniqueName}";
+		}
 
 		protected override void OnSaving()
 		{

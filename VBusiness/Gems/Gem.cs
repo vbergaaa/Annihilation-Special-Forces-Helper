@@ -64,9 +64,15 @@ namespace VBusiness.Gems
 
 		#region GetCostOfNextLevel
 
-		public override int GetCostOfNextLevel() => GetCostOfLevel(CurrentLevel);
+		public override int GetCostOfNextLevel()
+		{
+			return GetCostOfLevel(CurrentLevel);
+		}
 
-		int GetCostOfLevel(int level) => (int)(BaseCost + IncrementCost * level);
+		int GetCostOfLevel(int level)
+		{
+			return (int)(BaseCost + IncrementCost * level);
+		}
 
 		#endregion
 

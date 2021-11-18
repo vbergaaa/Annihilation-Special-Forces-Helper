@@ -81,9 +81,15 @@ namespace VEntityFramework.Model
 			}
 		}
 
-		public bool GetBindingValue(SoulType soul) => DiscoveredSouls.Any(s => s == soul);
+		public bool GetBindingValue(SoulType soul)
+		{
+			return DiscoveredSouls.Any(s => s == soul);
+		}
 
-		public bool GetBindingVisibility(SoulType soul) => soul != SoulType.None;
+		public bool GetBindingVisibility(SoulType soul)
+		{
+			return soul != SoulType.None;
+		}
 
 		public string PowerSoulsCountCaption => "Available Souls:";
 
