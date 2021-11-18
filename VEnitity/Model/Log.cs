@@ -43,7 +43,7 @@ namespace VEntityFramework.Model
 
 		protected internal override string GetSaveNameForXML()
 		{
-			return $"{State}_{DateTime.Now.ToString("yyyyMMdd_hhmmss")}_{LogNumber++}";
+			return $"{State}_{DateTime.Now:yyyyMMdd_hhmmss}_{LogNumber++}";
 		}
 
 		[VXML(true)]
