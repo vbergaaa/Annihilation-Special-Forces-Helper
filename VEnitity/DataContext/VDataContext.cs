@@ -13,7 +13,7 @@ namespace VEntityFramework.Data
 		}
 
 		static VDataContext fInstance;
-		public static VDataContext Instance = fInstance ??= new VDataContext();
+		public static VDataContext Instance => fInstance ??= new VDataContext();
 
 		public static void SaveAsXML(BusinessObject bizo)
 		{
