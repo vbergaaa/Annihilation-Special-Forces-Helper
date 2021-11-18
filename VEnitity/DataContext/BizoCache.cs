@@ -12,7 +12,7 @@ namespace VEntityFramework.DataContext
 		public static BizoCache Instance => fInstance ??= new BizoCache();
 		static BizoCache fInstance;
 
-		Dictionary<Type, Dictionary<string, BusinessObject>> fCache = new Dictionary<Type, Dictionary<string, BusinessObject>>();
+		Dictionary<Type, Dictionary<string, BusinessObject>> fCache = new();
 
 		#region Exists
 

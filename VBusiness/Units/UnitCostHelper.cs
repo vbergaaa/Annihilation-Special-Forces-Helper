@@ -184,7 +184,7 @@ namespace VBusiness.Units
 			return (cost, excessKills);
 		}
 
-		static int UnitsRequiredForInfuse(double infuse, double infuseDiscount)
+        static int UnitsRequiredForInfuse(double infuse, double infuseDiscount)
 		{
 			var x = (infuse + 1) / 2;
 			var unitsRequired = (int)(Math.Floor(x) * Math.Floor(x + 0.5));
@@ -421,10 +421,10 @@ namespace VBusiness.Units
 		public double Kills { get; set; }
 		public int CurrentUnitKills { get; set; }
 
-		public static UnitCost operator -(UnitCost a) => new UnitCost(-a.Minerals, -a.Kills, a.CurrentUnitKills);
-		public static UnitCost operator +(UnitCost a, UnitCost b) => new UnitCost(a.Minerals + b.Minerals, a.Kills + b.Kills, b.CurrentUnitKills);
+		public static UnitCost operator -(UnitCost a) => new(-a.Minerals, -a.Kills, a.CurrentUnitKills);
+		public static UnitCost operator +(UnitCost a, UnitCost b) => new(a.Minerals + b.Minerals, a.Kills + b.Kills, b.CurrentUnitKills);
 		public static UnitCost operator -(UnitCost a, UnitCost b) => a += (-b);
-		public static UnitCost operator *(UnitCost a, double b) => new UnitCost(a.Minerals * b, a.Kills * b, a.CurrentUnitKills);
-		public static UnitCost operator /(UnitCost a, (double, double) b) => new UnitCost(a.Minerals / b.Item1, a.Kills / b.Item2, a.CurrentUnitKills);
+		public static UnitCost operator *(UnitCost a, double b) => new(a.Minerals * b, a.Kills * b, a.CurrentUnitKills);
+		public static UnitCost operator /(UnitCost a, (double, double) b) => new(a.Minerals / b.Item1, a.Kills / b.Item2, a.CurrentUnitKills);
 	}
 }

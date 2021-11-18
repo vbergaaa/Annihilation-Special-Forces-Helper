@@ -11,8 +11,7 @@ namespace VBusiness
 {
 	public static class BankFileSyncroniser
 	{
-
-		static readonly ASFBankDecoder decoder = new ASFBankDecoder(Registry.Instance.BankFileOverride);
+		static readonly ASFBankDecoder decoder = new(Registry.Instance.BankFileOverride);
 
 		public static void UpdateProfile(VProfile profile = null)
 		{

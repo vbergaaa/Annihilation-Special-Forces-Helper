@@ -110,7 +110,7 @@ namespace VUserInterface
 			UnitChanged?.Invoke(this, new EventArgs());
 		}
 
-        static List<object> GetUnitTypes()
+        List<object> GetUnitTypes()
 		{
 			var list = new List<object>
 			{
