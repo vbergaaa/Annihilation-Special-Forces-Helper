@@ -204,10 +204,7 @@ namespace VBusiness.Loadouts
 
 		#region PerkPointsCost
 
-		public override long PerkPointsCost
-		{
-			get => Perks.TotalCost + Souls.SoulCosts;
-		}
+		public override long PerkPointsCost => Perks.TotalCost + Souls.SoulCosts;
 
 		#endregion
 
@@ -230,13 +227,7 @@ namespace VBusiness.Loadouts
 			}
 		}
 
-		public override bool CanAffordCurrentLoadout
-		{
-			get
-			{
-				return RemainingPerkPoints >= 0 && Gems.RemainingGems >= 0 && ChallengePoints.RemainingCP >= 0;
-			}
-		}
+		public override bool CanAffordCurrentLoadout => RemainingPerkPoints >= 0 && Gems.RemainingGems >= 0 && ChallengePoints.RemainingCP >= 0;
 
 		#endregion
 

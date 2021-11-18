@@ -65,10 +65,7 @@ namespace VUserInterface
 
 		#region FarmRoom
 
-		List<object> FarmRoomList
-		{
-			get => fFarmRoomList ??= BindingHelper<RoomNumber>.ConvertForBinding(Enums.GetValues<RoomNumber>().ToList());
-		}
+		List<object> FarmRoomList => fFarmRoomList ??= BindingHelper<RoomNumber>.ConvertForBinding(Enums.GetValues<RoomNumber>().ToList());
 		List<object> fFarmRoomList;
 
 		#endregion

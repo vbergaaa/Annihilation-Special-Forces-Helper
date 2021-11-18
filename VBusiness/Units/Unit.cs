@@ -71,15 +71,9 @@ namespace VBusiness.Units
 
 		#region MaximumInfuse
 
-		public override int MaximumInfusion
-		{
-			get
-			{
-				return IsLimitBroken && MaximumKills >= 3000
+		public override int MaximumInfusion => IsLimitBroken && MaximumKills >= 3000
 					? 10 + Math.Min((MaximumKills - 2000) / 1000, 3)
 					: MaximumKills >= 2000 ? 10 : MaximumKills / 200;
-			}
-		}
 
 		#endregion
 
@@ -239,10 +233,7 @@ namespace VBusiness.Units
 
 		#region MaximumKills
 
-		public override int MaximumKills
-		{
-			get => GetMaxKills() / 100 * 100;
-		}
+		public override int MaximumKills => GetMaxKills() / 100 * 100;
 
 		int GetMaxKills()
 		{
