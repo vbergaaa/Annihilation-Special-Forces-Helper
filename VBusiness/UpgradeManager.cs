@@ -22,8 +22,8 @@ namespace VBusiness
 				var correctedValue = value < 0
 					? 0
 					: value > MaxAttack
-						? MaxAttack
-						: value;
+                        ? MaxAttack
+                        : value;
 
 				base.AttackUpgrade = correctedValue;
 
@@ -45,8 +45,8 @@ namespace VBusiness
 				var correctedValue = value < 0
 					? 0
 					: value > MaxAttackSpeed
-						? MaxAttackSpeed
-						: value;
+                        ? MaxAttackSpeed
+                        : value;
 
 				base.AttackSpeedUpgrade = correctedValue;
 
@@ -67,8 +67,8 @@ namespace VBusiness
 				var correctedValue = value < 0
 					? 0
 					: value > MaxHealth
-						? MaxHealth
-						: value;
+                        ? MaxHealth
+                        : value;
 
 				base.HealthUpgrade = correctedValue;
 
@@ -91,8 +91,8 @@ namespace VBusiness
 				var correctedValue = value < 0
 					? 0
 					: value > MaxHealthArmor
-						? MaxHealthArmor
-						: value;
+                        ? MaxHealthArmor
+                        : value;
 
 				base.HealthArmorUpgrade = correctedValue;
 
@@ -114,8 +114,8 @@ namespace VBusiness
 				var correctedValue = value < 0
 					? 0
 					: value > MaxShields
-						? MaxShields
-						: value;
+                        ? MaxShields
+                        : value;
 
 				base.ShieldsUpgrade = correctedValue;
 
@@ -138,8 +138,8 @@ namespace VBusiness
 				var correctedValue = value < 0
 					? 0
 					: value > MaxShieldsArmor
-						? MaxShieldsArmor
-						: value;
+                        ? MaxShieldsArmor
+                        : value;
 
 				base.ShieldsArmorUpgrade = correctedValue;
 

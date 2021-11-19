@@ -22,7 +22,7 @@ namespace VBusiness.ChallengePoints
 		public override VChallengePoint Attack
 		{
 			get => base.Attack ??= new AttackCP(this);
-			set { base.Attack = value; }
+			set => base.Attack = value;
 		}
 
 		#endregion
@@ -32,7 +32,7 @@ namespace VBusiness.ChallengePoints
 		public override VChallengePoint AttackSpeed
 		{
 			get => base.AttackSpeed ??= new AttackSpeedCP(this);
-			set { base.AttackSpeed = value; }
+			set => base.AttackSpeed = value;
 		}
 
 		#endregion
@@ -42,7 +42,7 @@ namespace VBusiness.ChallengePoints
 		public override VChallengePoint CriticalChance
 		{
 			get => base.CriticalChance ??= new CriticalChanceCP(this);
-			set { base.CriticalChance = value; }
+			set => base.CriticalChance = value;
 		}
 
 		#endregion
@@ -52,7 +52,7 @@ namespace VBusiness.ChallengePoints
 		public override VChallengePoint CriticalDamage
 		{
 			get => base.CriticalDamage ??= new CriticalDamageCP(this);
-			set { base.CriticalDamage = value; }
+			set => base.CriticalDamage = value;
 		}
 
 		#endregion
@@ -62,7 +62,7 @@ namespace VBusiness.ChallengePoints
 		public override VChallengePoint Health
 		{
 			get => base.Health ??= new HealthCP(this);
-			set { base.Health = value; }
+			set => base.Health = value;
 		}
 
 		#endregion
@@ -72,7 +72,7 @@ namespace VBusiness.ChallengePoints
 		public override VChallengePoint Shields
 		{
 			get => base.Shields ??= new ShieldsCP(this);
-			set { base.Shields = value; }
+			set => base.Shields = value;
 		}
 
 		#endregion
@@ -213,10 +213,7 @@ namespace VBusiness.ChallengePoints
 
 		#region Lookups
 
-		List<VChallengePoint> AllCP
-		{
-			get => fAllCP ??= GetAllCPs();
-		}
+		List<VChallengePoint> AllCP => fAllCP ??= GetAllCPs();
 		List<VChallengePoint> fAllCP;
 
 		List<VChallengePoint> GetAllCPs()

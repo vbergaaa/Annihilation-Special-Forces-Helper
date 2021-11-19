@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VBusiness;
 using VBusiness.HelperClasses;
 using VBusiness.Rooms;
 using VEntityFramework.Model;
@@ -65,10 +64,7 @@ namespace VUserInterface
 
 		#region FarmRoom
 
-		List<object> FarmRoomList
-		{
-			get => fFarmRoomList ??= BindingHelper<RoomNumber>.ConvertForBinding(Enums.GetValues<RoomNumber>().ToList());
-		}
+		List<object> FarmRoomList => fFarmRoomList ??= BindingHelper<RoomNumber>.ConvertForBinding(Enums.GetValues<RoomNumber>().ToList());
 		List<object> fFarmRoomList;
 
 		#endregion

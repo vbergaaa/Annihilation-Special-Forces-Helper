@@ -24,9 +24,9 @@ namespace VUserInterface
 
 		void UpdateBindingIfDataSourceChanged()
 		{
-			if (Gem != null && Gem != this.gemBindingSource.DataSource)
+			if (Gem != null && Gem != gemBindingSource.DataSource)
 			{
-				this.gemBindingSource.DataSource = Gem;
+				gemBindingSource.DataSource = Gem;
 				RefreshBinding(true);
 			}
 		}

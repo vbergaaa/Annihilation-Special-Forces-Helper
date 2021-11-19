@@ -11,8 +11,7 @@ namespace VEntityFramework.DataContext
 
 		public static BizoCache Instance => fInstance ??= new BizoCache();
 		static BizoCache fInstance;
-
-		Dictionary<Type, Dictionary<string, BusinessObject>> fCache = new Dictionary<Type, Dictionary<string, BusinessObject>>();
+		readonly Dictionary<Type, Dictionary<string, BusinessObject>> fCache = new();
 
 		#region Exists
 
@@ -83,9 +82,9 @@ namespace VEntityFramework.DataContext
 			return null;
 		}
 
-		#endregion
+        #endregion
 
-		Type GetStorageType(Type type)
+        static Type GetStorageType(Type type)
 		{
 			if (typeof(BusinessObject).IsAssignableFrom(type) && type != typeof(BusinessObject))
 			{

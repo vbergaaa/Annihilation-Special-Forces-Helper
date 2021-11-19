@@ -17,20 +17,11 @@ namespace VBusiness.Perks
 
 		#region Cost
 
-		public override int RemainingCost
-		{
-			get => this.GetRemainingCost();
-		}
+		public override int RemainingCost => this.GetRemainingCost();
 
-		public override int CurrentCost
-		{
-			get => this.GetCurrentCost();
-		}
+		public override int CurrentCost => this.GetCurrentCost();
 
-		public override int TotalCost
-		{
-			get => this.GetTotalCost();
-		}
+		public override int TotalCost => this.GetTotalCost();
 
 		#endregion
 

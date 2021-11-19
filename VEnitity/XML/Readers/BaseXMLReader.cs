@@ -35,7 +35,7 @@ namespace VEntityFramework.XML
 			{
 				if (matchingProperty.IsBusinessObject())
 				{
-					PopulateBusinessObject(bizo, childNode, matchingProperty);
+                    PopulateBusinessObject(bizo, childNode, matchingProperty);
 				}
 				else
 				{
@@ -67,7 +67,7 @@ namespace VEntityFramework.XML
 			return true;
 		}
 
-		void PopulateBusinessObject(BusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
+        static void PopulateBusinessObject(BusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
 		{
 			if (matchingProperty.GetValue(bizo) is BusinessObject childBizo)
 			{
@@ -75,7 +75,7 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		void PopulateBusinessObject(BusinessObject childBizo, XmlNode childNode)
+		static void PopulateBusinessObject(BusinessObject childBizo, XmlNode childNode)
 		{
 			var reader = VXMLReader.GetXmlReader(childBizo.GetType());
 			reader.PopulateFromXML(childBizo, childNode);
@@ -136,7 +136,10 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		bool IsKey(XmlNode childNode) => XmlKey == childNode.Name;
+		bool IsKey(XmlNode childNode)
+		{
+			return XmlKey == childNode.Name;
+		}
 
 		protected virtual string XmlKey => "Key";
 
@@ -146,7 +149,7 @@ namespace VEntityFramework.XML
 			return (property?.IncludeInVXml() ?? false) ? property : null;
 		}
 
-		XmlNode GetKeyNode(XmlNode node)
+		static XmlNode GetKeyNode(XmlNode node)
 		{
 			foreach (XmlNode child in node)
 			{
