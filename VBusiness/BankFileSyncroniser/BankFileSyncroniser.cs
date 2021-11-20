@@ -4,6 +4,7 @@ using System.Linq;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
 using VBusiness.Souls;
+using VEntityFramework;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
 
@@ -24,7 +25,7 @@ namespace VBusiness
 				profile.RankPoints = decoder.RankPoints;
 				profile.AchievementCount = decoder.AchievementCount;
 				profile.Gems = decoder.Gems;
-				profile.ModScore = GetTotalModScoresFromString(decoder.ModScores);
+				SetTotalModScoresFromString(profile.PlayerMods, decoder.ModScores);
 				profile.Save();
 				Log.Info("Successfully Updated Profile From Bank");
 			}
@@ -34,20 +35,39 @@ namespace VBusiness
 			}
 		}
 
-		static int GetTotalModScoresFromString(string modScores)
+		static void SetTotalModScoresFromString(VPlayerMods mods, string modScores)
 		{
-			var totalScore = 0;
-			while (modScores.Length > 0)
+			mods.VeryEasy = GetNextValueFromString(ref modScores);
+			mods.Easy = GetNextValueFromString(ref modScores);
+			mods.Normal = GetNextValueFromString(ref modScores);
+			mods.Hard = GetNextValueFromString(ref modScores);
+			mods.VeryHard = GetNextValueFromString(ref modScores);
+			mods.Insane = GetNextValueFromString(ref modScores);
+			mods.Brutal = GetNextValueFromString(ref modScores);
+			mods.Nightmare = GetNextValueFromString(ref modScores);
+			mods.Torment = GetNextValueFromString(ref modScores);
+			mods.Hell = GetNextValueFromString(ref modScores);
+			mods.Titanic = GetNextValueFromString(ref modScores);
+			mods.Mythic = GetNextValueFromString(ref modScores);
+			mods.Divine = GetNextValueFromString(ref modScores);
+			mods.Impossible = GetNextValueFromString(ref modScores);
+			mods.ZeroV = GetNextValueFromString(ref modScores);
+			mods.ZeroX = GetNextValueFromString(ref modScores);
+			mods.PureBlack = GetNextValueFromString(ref modScores);
+			mods.Annihilation = GetNextValueFromString(ref modScores);
+		}
+
+		private static int GetNextValueFromString(ref string modScores)
+		{
+			var score = modScores.Substring(0, 7);
+			if (score == "?%465gd")
 			{
-				var score = modScores.Substring(0, 7);
-				if (score == "?%465gd")
-				{
-					break;
-				}
-				totalScore += int.Parse(score);
-				modScores = modScores.Substring(7);
+				return 0;
 			}
-			return totalScore;
+
+			var value = int.Parse(score);
+			modScores = modScores.Substring(7);
+			return value;
 		}
 
 		public static void UpdateAllLoadouts()
@@ -64,7 +84,7 @@ namespace VBusiness
 
 			if (loadoutName != null)
 			{
-                VDataContext.ReadFromXML<Loadout>(loadoutName);
+				VDataContext.ReadFromXML<Loadout>(loadoutName);
 				Log.Info($"loaded loadout {loadoutName} into the cache, triggering a synchronisation if required.");
 				return;
 			}
@@ -94,7 +114,7 @@ namespace VBusiness
 
 				foreach (var loadout in loadoutNames.Where(x => x != matchingLoadout))
 				{
-                    VDataContext.Delete<Loadout>(loadout);
+					VDataContext.Delete<Loadout>(loadout);
 				}
 				return matchingLoadout;
 			}
@@ -218,7 +238,7 @@ namespace VBusiness
 
 				if (soul.Type != soulType)
 				{
-                    VDataContext.Delete<Soul>(soulName);
+					VDataContext.Delete<Soul>(soulName);
 					soul = Soul.New(soulType, null);
 				}
 			}

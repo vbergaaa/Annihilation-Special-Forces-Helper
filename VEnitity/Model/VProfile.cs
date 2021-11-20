@@ -57,22 +57,7 @@ namespace VEntityFramework.Model
 		}
 		PlayerRank fRank;
 
-
-		[VXML(true)]
-		public int ModScore
-		{
-			get => fModifierScore;
-			set
-			{
-				if (fModifierScore != value)
-				{
-					fModifierScore = value;
-					HasChanges = true;
-					OnPropertyChanged(nameof(ModScore));
-				}
-			}
-		}
-		int fModifierScore;
+		public virtual int ModScore { get; } 
 
 
 		[VXML(true)]
@@ -124,6 +109,8 @@ namespace VEntityFramework.Model
 		public virtual long PerkPoints { get; }
 
 		public virtual VSoulCollection SoulCollection { get; }
+
+		public virtual VPlayerMods PlayerMods { get; }
 
 		#endregion
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using VBusiness.Mods;
 using VBusiness.PlayerRanks;
 using VBusiness.Souls;
 using VEntityFramework;
@@ -41,7 +42,6 @@ namespace VBusiness.Profile
 		{
 			get
 			{
-
 				if (fSoulCollection == null)
 				{
 					fSoulCollection = new SoulCollection(this);
@@ -50,6 +50,18 @@ namespace VBusiness.Profile
 			}
 		}
 		VSoulCollection fSoulCollection;
+
+		public override VPlayerMods PlayerMods => fPlayerMods ??= new PlayerMods(this);
+		VPlayerMods fPlayerMods;
+
+		public override int ModScore =>
+#if DEBUG
+			fTempModScore ?? PlayerMods.TotalScore;
+
+		int? fTempModScore;
+#else
+			PlayerMods.TotalScore;
+#endif
 
 		#endregion
 
@@ -69,9 +81,9 @@ namespace VBusiness.Profile
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region Implementation
+#region Implementation
 
 		protected override string GetSaveNameForXML()
 		{
@@ -83,7 +95,7 @@ namespace VBusiness.Profile
 			return Rank.GetRecommendedDifficulty();
 		}
 
-		#endregion
+#endregion
 
 #if DEBUG
 		public DisposableAction TemporarilyModifyProfile(int rp, int modScore)
@@ -91,12 +103,12 @@ namespace VBusiness.Profile
 			var oldRp = RankPoints;
 			var oldModScore = ModScore;
 			RankPoints = rp;
-			ModScore = modScore;
+			fTempModScore = modScore;
 
 			return new DisposableAction(() =>
 			{
 				RankPoints = oldRp;
-				ModScore = oldModScore;
+				fTempModScore = null;
 			});
 		}
 #endif
