@@ -13,8 +13,6 @@ namespace StarCodeDecryptor
 			fBankPathOverride = bankPathOverride;
 		}
 
-		#region Key
-
 		public string Key
 		{
 			get
@@ -43,10 +41,6 @@ namespace StarCodeDecryptor
 
 		string fKey;
 
-		#endregion
-
-		#region RankPoints
-
 		public int RankPoints
 		{
 			get
@@ -57,9 +51,15 @@ namespace StarCodeDecryptor
 			}
 		}
 
-		#endregion
-
-		#region Gems
+		public int AchievementCount
+		{
+			get 
+			{
+				var count = ExtractValueFromXml("FTW", "?^?^");
+				count = Starcode.Decrypt(count, Key, 3);
+				return Convert.ToInt32(count);			
+			}
+		}
 
 		public int Gems
 		{
@@ -71,33 +71,48 @@ namespace StarCodeDecryptor
 			}
 		}
 
-		#endregion
-
-		#region Saves
-
 		public string GetPerksStringAtSaveSlot(int slot)
 		{
 			var bankString = ExtractValueFromXml("Loads", $"Save{slot}");
 			return Starcode.Decrypt(bankString, Key, 3);
 		}
 
-		#endregion
-
-		#region ModScores
-
 		public string ModScores
 		{
-			get
-			{
+			get {
 				var gems = ExtractValueFromXml("534G%#", "H*H");
 				gems = Starcode.Decrypt(gems, Key, 2);
 				return gems;
 			}
 		}
 
-		#endregion
+		public bool[][] GetAchievements()
+		{
+			var diffs = new[]
+			{
+				"101",
+				"102",
+				"103",
+				"201",
+				"202",
+				"301",
+				"400",
+				"499",
+				"598",
+				"699",
+				"800",
+				"999",
+				"505",
+				"000",
+				"808",
+				"555",
+				"123",
+				"321"  
+			};
 
-		#region Bank
+			var pages = diffs.Select(x => Starcode.Decrypt(ExtractValueFromXml(x, "?^^?"), Key, 2));
+			return pages.Select(page => Enumerable.Range(0, 15).Select(x => page.Substring(x * 6, 6) == "857548").ToArray()).ToArray();
+		}
 
 		public XmlDocument Bank
 		{
@@ -140,6 +155,10 @@ namespace StarCodeDecryptor
 			{ "$RS?e%D?uJd5rsYd5H?JytDYSR"      ,"EZ%?R?UEuhes45e57E%?Y%" }
 		};
 
-		#endregion
+		// "685$TYSHS", "YGSDG%$" -modscore codes, e.g, 77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ55XDZ55XDZ444XZ444XZ111SZ555SS00000000000000056d$%54eyh%?
+
+		// "Kappa", "????" - no idea.. ?$%yAtu6ruyhTdzgWR%EYe 
+
+		// "BPR", "bleP" - experience, eg. 6095
 	}
 }

@@ -26,8 +26,6 @@ namespace VBusiness.Profile
 
 		#region Properties
 
-		#region Perk Points
-
 		public override long PerkPoints
 		{
 			get
@@ -38,10 +36,6 @@ namespace VBusiness.Profile
 				return RankPoints + modBonus;
 			}
 		}
-
-		#endregion
-
-		#region SoulCollection
 
 		public override VSoulCollection SoulCollection
 		{
@@ -56,8 +50,6 @@ namespace VBusiness.Profile
 			}
 		}
 		VSoulCollection fSoulCollection;
-
-		#endregion
 
 		#endregion
 

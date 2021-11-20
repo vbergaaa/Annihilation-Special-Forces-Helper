@@ -22,6 +22,7 @@ namespace VBusiness
 					profile = Profile.Profile.GetProfile();
 				}
 				profile.RankPoints = decoder.RankPoints;
+				profile.AchievementCount = decoder.AchievementCount;
 				profile.Gems = decoder.Gems;
 				profile.ModScore = GetTotalModScoresFromString(decoder.ModScores);
 				profile.Save();

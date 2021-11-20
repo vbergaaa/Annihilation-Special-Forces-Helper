@@ -2,6 +2,9 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="AchievementsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Architecture\VBindingSource.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -13,6 +16,9 @@
     </Compile>
     <Compile Update="ChallengePointControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="CommonControls\DPIScaling\DPIForm.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="CommonControls\DPIScaling\DPIGroupBox.cs">
       <SubType>Component</SubType>
@@ -95,10 +101,10 @@
     <Compile Update="SoulControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="SoulForm.cs">
+    <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="MainForm.cs">
+    <Compile Update="SoulForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UnitsControl.cs">

@@ -4,10 +4,11 @@ using System.Windows.Forms;
 using VBusiness.Loadouts;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
+using VUserInterface.CommonControls;
 
 namespace VUserInterface
 {
-	public abstract partial class VForm : Form
+	public abstract partial class VForm : DPIForm
 	{
 		protected VForm(BusinessObject parent) : this()
 		{
@@ -118,10 +119,6 @@ namespace VUserInterface
 				SaveButton.Location = new Point(ClientSize.Width - DPIScalingHelper.GetScaledX(180), ClientSize.Height - DPIScalingHelper.GetScaledY(30));
 				CancelButton.Location = new Point(ClientSize.Width - DPIScalingHelper.GetScaledX(90), ClientSize.Height - DPIScalingHelper.GetScaledY(30));
 			}
-		}
-
-		protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
-		{
 		}
 
 		public event EventHandler<EventArgs> OnSaved;

@@ -69,5 +69,11 @@ namespace VUserInterface
 				Profile.Rank = rank;
 			}
 		}
+
+		private void AchievementsButton_Click(object sender, System.EventArgs e)
+		{
+			var form = new AchievementsForm();
+			form.ShowDialog();
+		}
 	}
 }
