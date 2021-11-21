@@ -1,6 +1,5 @@
 ﻿using EnumsNET;
 using System.Collections.Generic;
-using VEntityFramework.Data;
 using VEntityFramework.Model;
 
 namespace VBusiness.Souls
@@ -55,7 +54,7 @@ namespace VBusiness.Souls
 				{
 					if (SavedSouls.TryGetValue(value, out var soulName))
 					{
-						soul = VDataContext.ReadFromXMLWithCache<Soul>(soulName);
+						soul = Context.ReadFromXMLWithCache<Soul>(soulName);
 						soul.Parent = this;
 					}
 				}
@@ -88,7 +87,7 @@ namespace VBusiness.Souls
 				{
 					if (SavedSouls.TryGetValue(value, out var soulName))
 					{
-						soul = VDataContext.ReadFromXMLWithCache<Soul>(soulName);
+						soul = Context.ReadFromXMLWithCache<Soul>(soulName);
 						soul.Parent = this;
 					}
 				}
@@ -121,7 +120,7 @@ namespace VBusiness.Souls
 				{
 					if (SavedSouls.TryGetValue(value, out var soulName))
 					{
-						soul = VDataContext.ReadFromXMLWithCache<Soul>(soulName);
+						soul = Context.ReadFromXMLWithCache<Soul>(soulName);
 						soul.Parent = this;
 					}
 				}
@@ -152,7 +151,7 @@ namespace VBusiness.Souls
 				if (fSouls == null)
 				{
 					var souls = new Dictionary<int, string>();
-					foreach (var soulName in VDataContext.GetAllFileNames<Soul>())
+					foreach (var soulName in Context.GetAllFileNames<Soul>())
 					{
 						souls.Add(int.Parse(soulName.Split('-')[0]), soulName);
 					}

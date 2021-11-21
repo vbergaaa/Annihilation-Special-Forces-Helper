@@ -68,7 +68,10 @@ namespace VEntityFramework.Model
 		public virtual VPerkCollection Perks
 		{
 			get => fPerks;
-			set => fPerks = value;
+			set
+			{
+				fPerks = value;
+			}
 		}
 		VPerkCollection fPerks;
 
@@ -79,7 +82,10 @@ namespace VEntityFramework.Model
 		public virtual VLoadoutSouls Souls
 		{
 			get => fSouls;
-			set => fSouls = value;
+			set
+			{
+				fSouls = value;
+			}
 		}
 		VLoadoutSouls fSouls;
 
@@ -105,7 +111,10 @@ namespace VEntityFramework.Model
 		public virtual VGemCollection Gems
 		{
 			get => fGems;
-			set => fGems = value;
+			set
+			{
+				fGems = value;
+			}
 		}
 		VGemCollection fGems;
 
@@ -116,7 +125,10 @@ namespace VEntityFramework.Model
 		public virtual VChallengePointCollection ChallengePoints
 		{
 			get => fChallengePoints;
-			set => fChallengePoints = value;
+			set
+			{
+				fChallengePoints = value;
+			}
 		}
 		VChallengePointCollection fChallengePoints;
 
@@ -127,7 +139,10 @@ namespace VEntityFramework.Model
 		public virtual VUnitConfiguration UnitConfiguration
 		{
 			get => fUnitConfiguration;
-			set => fUnitConfiguration = value;
+			set
+			{
+				fUnitConfiguration = value;
+			}
 		}
 		VUnitConfiguration fUnitConfiguration;
 
@@ -304,10 +319,7 @@ namespace VEntityFramework.Model
 
 		#region GetSaveNameForXML
 
-		protected internal override string GetSaveNameForXML()
-		{
-			return $"{Slot}-{Name}";
-		}
+		protected internal override string GetSaveNameForXML() => $"{Slot}-{Name}";
 
 		#endregion
 

@@ -23,8 +23,8 @@ namespace VUserInterface
 			base.OnBindingContextChanged(e);
 			if (Souls != null)
 			{
-				bindingSource.DataSource = Souls;
-				bindingSource.ResetBindings(true);
+				this.bindingSource.DataSource = Souls;
+				this.bindingSource.ResetBindings(true);
 			}
 		}
 

@@ -75,7 +75,7 @@ namespace VBusiness.HelperClasses
 				}
 			}
 
-			var totalUnitCount = newComp.Sum(kvp => kvp.Value);
+			double totalUnitCount = newComp.Sum(kvp => kvp.Value);
 
 			return newComp.Select(kvp => (kvp.Key, kvp.Value / totalUnitCount));
 		}

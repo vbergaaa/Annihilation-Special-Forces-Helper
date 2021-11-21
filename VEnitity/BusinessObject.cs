@@ -45,7 +45,7 @@ namespace VEntityFramework.Data
 
 		#region DataContext
 
-		public static VDataContext Context => VDataContext.Instance;
+		public VDataContext Context => VDataContext.Instance;
 
 		#endregion
 
@@ -54,7 +54,7 @@ namespace VEntityFramework.Data
 		public void Save()
 		{
 			OnSaving();
-			VDataContext.SaveAsXML(this);
+			Context.SaveAsXML(this);
 			OnSaved();
 		}
 
@@ -92,7 +92,10 @@ namespace VEntityFramework.Data
 
 		#region Notifications
 
-		public NotificationManager Notifications => fNotifications ??= new NotificationManager();
+		public NotificationManager Notifications
+		{
+			get => fNotifications ??= new NotificationManager();
+		}
 		NotificationManager fNotifications;
 
 		#endregion
@@ -154,8 +157,12 @@ namespace VEntityFramework.Data
 
 		public virtual bool HasChanges
 		{
-			get => fHasChanges || Children.Any(child => child.HasChanges);
-			set {
+			get
+			{
+				return fHasChanges || Children.Any(child => child.HasChanges);
+			}
+			set
+			{
 				if (!IsSettingHasChangesSuspended && fHasChanges != value)
 				{
 					fHasChanges = value;

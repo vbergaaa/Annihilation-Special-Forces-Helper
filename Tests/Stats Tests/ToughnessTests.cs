@@ -42,7 +42,7 @@ namespace Tests.Stats_Tests
 		public void TestToughness_Difficulty(DifficultyLevel difficulty, double expected)
 		{
 			var loadout = GetLoadout();
-            SetBasicLingComposition();
+			SetBasicLingComposition();
 			loadout.UnitConfiguration.DifficultyLevel = difficulty;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.01));
 		}
@@ -52,7 +52,7 @@ namespace Tests.Stats_Tests
 		[TestCase(200, 12000 + 814.81)]
 		public void TestToughness_HealthArmor(int additionalArmor, double expected)
 		{
-            SetBasicLingComposition();
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.Gems.HealthArmorGem.CurrentLevel = (short)additionalArmor;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.02));
@@ -64,7 +64,7 @@ namespace Tests.Stats_Tests
 		[TestCase(1000, 444.444 * 11 + 814.81)]
 		public void TestToughness_Health(int additionalHealth, double expected)
 		{
-            SetBasicLingComposition();
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.Gems.HealthGem.CurrentLevel = (short)additionalHealth;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.02));
@@ -75,7 +75,7 @@ namespace Tests.Stats_Tests
 		[TestCase(200, 444.44 + 22000)]
 		public void TestToughness_ShieldsArmor(int additionalArmor, double expected)
 		{
-            SetBasicLingComposition();
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.Gems.ShieldsArmorGem.CurrentLevel = (short)additionalArmor;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.02));
@@ -88,7 +88,7 @@ namespace Tests.Stats_Tests
 		[TestCase(1000, 444.444 + 814.815 * 11)]
 		public void TestToughness_Shields(int additionalShields, double expected)
 		{
-            SetBasicLingComposition();
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.Gems.ShieldsGem.CurrentLevel = (short)additionalShields;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.02));
@@ -99,7 +99,7 @@ namespace Tests.Stats_Tests
 		[TestCase(50, 4857.14)]
 		public void TestToughness_DamageReduction(int dr, double expected)
 		{
-            SetBasicLingComposition();
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.Stats.UpdateDamageReduction("Test", dr);
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.01));
@@ -112,7 +112,7 @@ namespace Tests.Stats_Tests
 		[TestCase(10, 4857.14)]
 		public void TestToughness_Infusion(int infuse, double expected)
 		{
-            SetBasicLingComposition();
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.CurrentUnit.CurrentInfusion = infuse;
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.01));
@@ -125,7 +125,7 @@ namespace Tests.Stats_Tests
 		[TestCase(25, 7403.23)]
 		public void TestToughness_EssenceStacks(int essence, double expected)
 		{
-            SetBasicLingComposition();
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.CurrentUnit.EssenceStacks = essence;
 
@@ -136,7 +136,7 @@ namespace Tests.Stats_Tests
 		[TestCase(UnitType.Striker, 1272.97)]
 		public void TestToughness_CurrentUnit(UnitType unit, double expected)
 		{
-            SetBasicLingComposition();
+			SetBasicLingComposition();
 			var loadout = GetLoadout();
 			loadout.CurrentUnit = VUnit.New(unit, loadout);
 
@@ -180,7 +180,7 @@ namespace Tests.Stats_Tests
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expected).Within(0.01));
 		}
 
-        static VLoadout GetLoadout()
+		VLoadout GetLoadout()
 		{
 			// loadout with 1 WL, 
 			// 19.5 armor,
@@ -209,7 +209,7 @@ namespace Tests.Stats_Tests
 			StatCalculationHelper.UnitCompOverride = null;
 		}
 
-        static void SetBasicLingComposition()
+		void SetBasicLingComposition()
 		{
 			StatCalculationHelper.UnitCompOverride = new List<(EnemyType, double)> { (EnemyType.Zergling, 1) };
 		}

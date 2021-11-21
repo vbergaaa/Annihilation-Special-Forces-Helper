@@ -52,14 +52,20 @@ namespace VUserInterface
 
 		#region Units Type
 
-		internal List<object> UnitsTypesList => fUnitsTypesList ??= GetUnitTypes();
+		internal List<object> UnitsTypesList
+		{
+			get => fUnitsTypesList ??= GetUnitTypes();
+		}
 		List<object> fUnitsTypesList;
 
 		#endregion
 
 		#region Rank
 
-		List<object> RanksList => fRankList ??= BindingHelper<UnitRankType>.ConvertForBinding(Enums.GetValues<UnitRankType>().ToList());
+		List<object> RanksList
+		{
+			get => fRankList ??= BindingHelper<UnitRankType>.ConvertForBinding(Enums.GetValues<UnitRankType>().ToList());
+		}
 		List<object> fRankList;
 
 		#endregion
@@ -104,7 +110,7 @@ namespace VUserInterface
 			UnitChanged?.Invoke(this, new EventArgs());
 		}
 
-        static List<object> GetUnitTypes()
+		List<object> GetUnitTypes()
 		{
 			var list = new List<object>
 			{

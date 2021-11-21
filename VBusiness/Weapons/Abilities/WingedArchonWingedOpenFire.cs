@@ -22,19 +22,10 @@
 
 		protected override double AbilityCooldown => 15;
 
-		protected override BasicAttackWeapon GetNewBaseWeapon()
-		{
-			return new WingedArchonBasicWeapon();
-		}
+		protected override BasicAttackWeapon GetNewBaseWeapon() => new WingedArchonBasicWeapon();
 
-		protected override BasicAbilityWeapon GetNewStormWeapon()
-		{
-			return new WingedArchonWingedStorm();
-		}
+		protected override BasicAbilityWeapon GetNewStormWeapon() => new WingedArchonWingedStorm();
 
-		protected override BasicAOEAttackWeapon GetNewAOEWeapon()
-		{
-			return new WingedArchonBasicAttackAOE();
-		}
+		protected override BasicAOEAttackWeapon GetNewAOEWeapon() => new WingedArchonBasicAttackAOE();
 	}
 }

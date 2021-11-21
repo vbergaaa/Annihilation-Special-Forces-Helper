@@ -2,7 +2,7 @@
 
 namespace VEntityFramework
 {
-	public sealed class DisposableAction : IDisposable
+	public class DisposableAction : IDisposable
 	{
 		public DisposableAction(Action action)
 		{

@@ -40,7 +40,7 @@ namespace VBusiness.HelperClasses
 
 			units.AddRange(units.SelectRecursive(e => e.Type.GetAdditionalSpawns(loadout.UnitConfiguration.Difficulty.UnitTierIncrease, loadout.IncomeManager.FarmRoom).Multiply(e.Quantity)));
 
-			var infSpawnerUnits = loadout.IncomeManager.HasInfinitySpawner
+			IEnumerable<EnemyQuantity> infSpawnerUnits = loadout.IncomeManager.HasInfinitySpawner
 				? new[] { new EnemyQuantity(EnemyType.InfestedTerran, 20) }.TierUp(tierUp)
 				: Array.Empty<EnemyQuantity>();
 
@@ -148,7 +148,7 @@ namespace VBusiness.HelperClasses
 			public double Kills { get; set; }
 			public double Minerals { get; set; }
 
-			public static Resources operator +(Resources a, Resources b) => new(a.Minerals + b.Minerals, a.Kills + b.Kills);
+			public static Resources operator +(Resources a, Resources b) => new Resources(a.Minerals + b.Minerals, a.Kills + b.Kills);
 		}
 	}
 }

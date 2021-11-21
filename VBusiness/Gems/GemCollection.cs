@@ -204,7 +204,9 @@ namespace VBusiness.Gems
 
 		#region Gems
 
-		public override VGem[] Gems => new VGem[] {
+		public override VGem[] Gems
+		{
+			get => new VGem[] {
 				AttackGem,
 				AttackSpeedGem,
 				ShieldsGem,
@@ -214,13 +216,14 @@ namespace VBusiness.Gems
 				CritChanceGem,
 				CritDamageGem,
 				EconomyGem
-			}; // caching this is awkward because we need the Economy gem to change at times
+			};
+		} // caching this is awkward because we need the Economy gem to change at times
 
 		#endregion
 
 		#region RemainingGems
 
-		public override int RemainingGems => Loadout.Profile.Gems - TotalCost;
+		public override int RemainingGems { get => Loadout.Profile.Gems - TotalCost; }
 
 		#endregion
 

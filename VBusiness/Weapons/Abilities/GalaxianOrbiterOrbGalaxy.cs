@@ -25,10 +25,7 @@ namespace VBusiness.Weapons
 
 		protected override int DurationAbilityEffectAppliesFor => 20;
 
-		protected override CommonOrbAttack GetBasicOrbWeapon()
-		{
-			return new GalaxianOrbiterBasicWeapon();
-		}
+		protected override CommonOrbAttack GetBasicOrbWeapon() => new GalaxianOrbiterBasicWeapon();
 
 		protected override IEnumerable<CommonOrbAbility> GetOrbAbilities()
 		{

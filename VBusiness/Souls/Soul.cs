@@ -2,7 +2,6 @@
 using System;
 using System.Linq;
 using VEntityFramework;
-using VEntityFramework.Data;
 using VEntityFramework.Model;
 
 namespace VBusiness.Souls
@@ -300,15 +299,21 @@ namespace VBusiness.Souls
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region IsUnique
+#region IsUnique
 
-		protected override bool IsUnique => Type != Rarity;
+		protected override bool IsUnique
+		{
+			get
+			{
+				return Type != Rarity;
+			}
+		}
 
-		#endregion
+#endregion
 
-		#region SaveSlot
+#region SaveSlot
 
 		public override int SaveSlot
 		{
@@ -416,7 +421,7 @@ namespace VBusiness.Souls
 
 		bool CheckIfDuplicateSaveSlot()
 		{
-			var usedSoulSlots = VDataContext.GetAllFileNames<Soul>().Select(name => int.Parse(name.Split('-')[0]));
+			var usedSoulSlots = Context.GetAllFileNames<Soul>().Select(name => int.Parse(name.Split('-')[0]));
 			var hasSoulInSpot = usedSoulSlots.Contains(SaveSlot);
 			return hasSoulInSpot && (!ExistsInXML || saveSlotHasChanges);
 		}
@@ -457,10 +462,7 @@ namespace VBusiness.Souls
 			};
 		}
 
-		protected override string GetSaveNameForXML()
-		{
-			return $"{SaveSlot}-{UniqueName}";
-		}
+		protected override string GetSaveNameForXML() => $"{SaveSlot}-{UniqueName}";
 
 		protected override void OnSaving()
 		{
@@ -471,10 +473,10 @@ namespace VBusiness.Souls
 
 		void DeleteSoulsInSaveSlot()
 		{
-			var soulsNamesToDelete = VDataContext.GetAllFileNames<Soul>().Where(name => int.Parse(name.Split('-')[0]) == SaveSlot);
+			var soulsNamesToDelete = Context.GetAllFileNames<Soul>().Where(name => int.Parse(name.Split('-')[0]) == SaveSlot);
 			foreach (var name in soulsNamesToDelete)
 			{
-                VDataContext.Delete<Soul>(name);
+				Context.Delete<Soul>(name);
 			}
 		}
 

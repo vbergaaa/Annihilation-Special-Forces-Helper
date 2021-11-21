@@ -36,9 +36,9 @@ namespace VUserInterface.CommonControls
 			isSettingCaption = true;
 			var widthChanged = CaptionLabel.Width - fOldCaptionWidth;
 			widthChanged += fOldCaptionWidth == 0 ? 5 : 0;
-			Width += widthChanged;
-			Left -= widthChanged;
-			CoreControl.Left += widthChanged;
+			this.Width += widthChanged;
+			this.Left -= widthChanged;
+			this.CoreControl.Left += widthChanged;
 			isSettingCaption = false;
 		}
 
@@ -69,7 +69,7 @@ namespace VUserInterface.CommonControls
 			{
 				isResizing = true;
 				var captionWidth = Caption != null ? CaptionLabel.Width + 5 : 0;
-				Width += captionWidth;
+				this.Width += captionWidth;
 				CoreControl.Size = new Size(Size.Width - captionWidth, Size.Height);
 				isResizing = false;
 			}
@@ -87,7 +87,7 @@ namespace VUserInterface.CommonControls
 			{
 				isRelocating = true;
 				var captionWidth = Caption != null ? CaptionLabel.Width + 5 : 0;
-				Left -= captionWidth;
+				this.Left -= captionWidth;
 				isRelocating = false;
 			}
 		}

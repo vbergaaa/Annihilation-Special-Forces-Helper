@@ -222,16 +222,8 @@ namespace VBusiness.HelperClasses
 			return stats;
 		}
 
-		static double GetTitanicDR(EnemyType type)
-		{
-			return type.IsHeroic() ? 0.6 : 0.8;
-		}
-
-		static double GetTitanicDRChance(EnemyType type)
-		{
-			return type.IsHeroic() ? 0.3 : 0.2;
-		}
-
+		static double GetTitanicDR(EnemyType type) => type.IsHeroic() ? 0.6 : 0.8;
+		static double GetTitanicDRChance(EnemyType type) => type.IsHeroic() ? 0.3 : 0.2;
 		static double GetEnemyDamage(EnemyUnit unit, bool isTitanic, VLoadout loadout)
 		{
 			var difficulty = loadout.UnitConfiguration.Difficulty;
@@ -322,10 +314,7 @@ namespace VBusiness.HelperClasses
 			}
 
 #if DEBUG // this is for debugging display - DebuggerDisplayAttribute doesn't appear to work for nested classes
-			public override string ToString()
-			{
-				return $"{Type} - tit:{IsTitan}, Arm:{Armor}, DR:{DamageReduction}";
-			}
+			public override string ToString() => $"{Type} - tit:{IsTitan}, Arm:{Armor}, DR:{DamageReduction}";
 #endif
 		}
 

@@ -12,10 +12,10 @@
 
 		public static string Decrypt(string s, string key)
 		{
-			var ls = s.Length;
-			var lk = key.Length;
-			var ret = "";
-			for (var i = 0; i < ls; ++i)
+			int ls = s.Length;
+			int lk = key.Length;
+			string ret = "";
+			for (int i = 0; i < ls; ++i)
 			{
 				ret += shiftBackward(s.Substring(i, 1), key.Substring(i % lk, 1));
 			}
@@ -39,7 +39,7 @@
 
 		static string shiftBackward(string s, string k)
 		{
-			var c = ord(s) - ord(k);
+			int c = ord(s) - ord(k);
 			return c < 0
 				? chr((c + fAlphabet.Length) % fAlphabet.Length)
 				: chr(c % fAlphabet.Length);

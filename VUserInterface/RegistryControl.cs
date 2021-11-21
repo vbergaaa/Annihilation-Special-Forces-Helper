@@ -24,7 +24,7 @@ namespace VUserInterface
 			base.OnBindingContextChanged(e);
 			if (Registry != null)
 			{
-				BindingSource.DataSource = Registry;
+				this.BindingSource.DataSource = Registry;
 			}
 		}
 

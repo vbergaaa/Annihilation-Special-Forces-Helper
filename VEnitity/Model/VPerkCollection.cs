@@ -117,7 +117,10 @@ namespace VEntityFramework.Model
 		public VLoadout Loadout
 		{
 			get => fLoadout;
-			private set => fLoadout = value;
+			private set
+			{
+				fLoadout = value;
+			}
 		}
 		VLoadout fLoadout;
 
@@ -132,8 +135,12 @@ namespace VEntityFramework.Model
 
 		public virtual int Page
 		{
-			get => fPage;
-			set {
+			get
+			{
+				return fPage;
+			}
+			set
+			{
 				if (fPage != value)
 				{
 					fPage = value;

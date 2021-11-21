@@ -7,9 +7,6 @@
 
 		public override double AOEDamagePercent => 80;
 
-		protected override BasicAttackWeapon GetNewBaseWeapon()
-		{
-			return new ReaverBasicWeapon();
-		}
+		protected override BasicAttackWeapon GetNewBaseWeapon() => new ReaverBasicWeapon();
 	}
 }

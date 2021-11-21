@@ -56,7 +56,8 @@ namespace Tests
 			var xmlDoc = new XmlDocument();
 			xmlDoc.LoadXml(xmlToRead);
 
-			var loadout = (Loadout)VXMLReader.CreateBizoFromXML(typeof(Loadout), xmlDoc.DocumentElement);
+			var reader = new VXMLReader();
+			var loadout = (Loadout)reader.CreateBizoFromXML(typeof(Loadout), xmlDoc.DocumentElement);
 			Assert.That(loadout.Units.ToArray(), Has.Length.EqualTo(3));
 		}
 
@@ -71,7 +72,7 @@ namespace Tests
 			xml.Load(xmlPath);
 			var firstXml = xml.DocumentElement.InnerText;
 
-			var loadout2 = VDataContext.ReadFromXML<Loadout>("9999-XMLTEST");
+			var loadout2 = VDataContext.Instance.ReadFromXML<Loadout>("9999-XMLTEST");
 			loadout2.Save();
 
 			xml = new XmlDocument();
@@ -81,23 +82,23 @@ namespace Tests
 			Assert.That(firstXml, Is.EqualTo(secondXml), "if these are different, then the xml import > export doesn't work correctly");
 		}
 
-        #region	GetFullyPopulatedLoadout
+		#region	GetFullyPopulatedLoadout
 
-        static VLoadout GetFullyPopulatedLoadout()
+		VLoadout GetFullyPopulatedLoadout()
 		{
 			var loadout = new Loadout();
 			loadout.ShouldRestrict = false;
-            AddMaxPerks(loadout);
-            AddCP(loadout);
-            AddMaxGems(loadout);
-            AddUnits(loadout);
-            AddUpgrades(loadout);
-            AddSouls(loadout);
-            PopulateOtherProperties(loadout);
+			AddMaxPerks(loadout);
+			AddCP(loadout);
+			AddMaxGems(loadout);
+			AddUnits(loadout);
+			AddUpgrades(loadout);
+			AddSouls(loadout);
+			PopulateOtherProperties(loadout);
 			return loadout;
 		}
 
-        static void PopulateOtherProperties(Loadout loadout)
+		void PopulateOtherProperties(Loadout loadout)
 		{
 			loadout.UnitSpec = UnitType.Templar;
 			loadout.Name = "XMLTEST";
@@ -105,14 +106,14 @@ namespace Tests
 			loadout.IncomeManager.FarmRoom = VBusiness.Rooms.RoomNumber.Room5;
 		}
 
-		private static void AddSouls(Loadout loadout)
+		private void AddSouls(Loadout loadout)
 		{
 			loadout.Souls.SoulSlot1 = 1;
 			loadout.Souls.SoulSlot2 = 2;
 			loadout.Souls.SoulSlot3 = 3;
 		}
 
-        static void AddUpgrades(Loadout loadout)
+		void AddUpgrades(Loadout loadout)
 		{
 			loadout.Upgrades.AttackSpeedUpgrade = 15;
 			loadout.Upgrades.AttackUpgrade = 20;
@@ -122,7 +123,7 @@ namespace Tests
 			loadout.Upgrades.ShieldsUpgrade = 99;
 		}
 
-        static void AddUnits(Loadout loadout)
+		void AddUnits(Loadout loadout)
 		{
 			var unit = VUnit.New(UnitType.WarpLord, loadout);
 			unit.EssenceStacks = 15;
@@ -137,7 +138,7 @@ namespace Tests
 			loadout.Units.Add(unit);
 		}
 
-        static void AddMaxGems(Loadout loadout)
+		void AddMaxGems(Loadout loadout)
 		{
 			loadout.Gems.AttackGem.CurrentLevel = 10;
 			loadout.Gems.AttackSpeedGem.CurrentLevel = 20;
@@ -151,7 +152,7 @@ namespace Tests
 			loadout.Gems.TripleWarpGem.CurrentLevel = 100;
 		}
 
-        static void AddCP(Loadout loadout)
+		void AddCP(Loadout loadout)
 		{
 			loadout.ChallengePoints.Attack.CurrentLevel = 1;
 			loadout.ChallengePoints.AttackSpeed.CurrentLevel = 2;
@@ -167,7 +168,7 @@ namespace Tests
 			loadout.ChallengePoints.Acceleration.CurrentLevel = 2;
 		}
 
-        static void AddMaxPerks(Loadout loadout)
+		void AddMaxPerks(Loadout loadout)
 		{
 			var perks = (PerkCollection)loadout.Perks;
 			foreach (var perk in perks.AllPerks)
