@@ -46,6 +46,7 @@ namespace VUserInterface.CommonControls
 			//
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScaleDimensions = DPIScalingHelper.AutoSizeDimensions;
+			this.MaximumSize = DPIScalingHelper.GetScaledSize(200, 30);
 			this.CoreControl.Controls.Add(ComboBox);
 			this.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
 		}
