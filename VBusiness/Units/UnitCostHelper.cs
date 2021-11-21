@@ -50,7 +50,7 @@ namespace VBusiness.Units
 
 		UnitCost GetRawUnitCost(UnitType unitType, int infuse, UnitRankType rank, bool isLimitBroken)
 		{
-			var unitData = VUnit.GetUnitData(unitType);
+			IUnitData unitData = VUnit.GetUnitData(unitType);
 
 			// theres some horrible spaghetti with the logic for adding two UnitCost structs because we don't want to sum the ExcessKills.
 			// It takes the Excess Kills from the element on the right side of the '+' operator.
@@ -107,12 +107,12 @@ namespace VBusiness.Units
 
 				var material = new UnitRecepePiece(unitData.BasicType, (int)unitData.Evolution, UnitRankType.None, 1);
 				var materialCost = GetRawUnitCost(material);
-				var (Cost, ExcessKills) = GetFeedCost(infusion, unitData.Type, excessKills, infuseDiscount);
+				var mainUnitFeedCost = GetFeedCost(infusion, unitData.Type, excessKills, infuseDiscount);
 				var materialQty = UnitsRequiredForInfuse(infusion, infuseDiscount);
 				var killRecycleRefund = GetKillRecycleRefund(materialCost, infusion, infuseDiscount, materialQty);
 				var infuseRecycleRefund = GetInfuseRecycleRefund(infusion, infuseDiscount);
-				var totalKillCost = materialCost.Kills * materialQty + Cost - infuseRecycleRefund - killRecycleRefund;
-				return new UnitCost(materialCost.Minerals * materialQty, totalKillCost, ExcessKills);
+				var totalKillCost = materialCost.Kills * materialQty + mainUnitFeedCost.Cost - infuseRecycleRefund - killRecycleRefund;
+				return new UnitCost(materialCost.Minerals * materialQty, totalKillCost, mainUnitFeedCost.ExcessKills);
 			}
 			else
 			{
@@ -184,7 +184,7 @@ namespace VBusiness.Units
 			return (cost, excessKills);
 		}
 
-        static int UnitsRequiredForInfuse(double infuse, double infuseDiscount)
+		int UnitsRequiredForInfuse(double infuse, double infuseDiscount)
 		{
 			var x = (infuse + 1) / 2;
 			var unitsRequired = (int)(Math.Floor(x) * Math.Floor(x + 0.5));
@@ -255,7 +255,7 @@ namespace VBusiness.Units
 				var refundAmount = GetKillRecycleRefund(orderedCosts[0].UnitCost);
 
 				// sacrificed unit refund
-				if (orderedCosts.Count > 1)
+				if (orderedCosts.Count() > 1)
 				{
 					refundAmount += GetKillRecycleRefund(orderedCosts[1].UnitCost);
 				}
@@ -393,7 +393,7 @@ namespace VBusiness.Units
 				if (!hasAlerted && firstDNAStart != UnitType.None && firstDNAStart.GetBasicUnitMineralCost(emptyLoadout) < unitData.BasicType.GetBasicUnitMineralCost(emptyLoadout))
 				{
 					hasAlerted = true;
-					_ = $"DNA start should have used the most expensive DNA. It was used on the DNA with a {firstDNAStart} as a base unit instead of a {unitData.BasicType} as the base unit. Consider changing the recepe order to ensure this occurs.";
+					var message = $"DNA start should have used the most expensive DNA. It was used on the DNA with a {firstDNAStart} as a base unit instead of a {unitData.BasicType} as the base unit. Consider changing the recepe order to ensure this occurs.";
 					Debugger.Break(); // I don't want to exception here as this isn't actually a problem. this is less invasive
 				}
 				firstDNAStart = firstDNAStart != UnitType.None ? firstDNAStart : unitData.BasicType;
@@ -421,10 +421,10 @@ namespace VBusiness.Units
 		public double Kills { get; set; }
 		public int CurrentUnitKills { get; set; }
 
-		public static UnitCost operator -(UnitCost a) => new(-a.Minerals, -a.Kills, a.CurrentUnitKills);
-		public static UnitCost operator +(UnitCost a, UnitCost b) => new(a.Minerals + b.Minerals, a.Kills + b.Kills, b.CurrentUnitKills);
+		public static UnitCost operator -(UnitCost a) => new UnitCost(-a.Minerals, -a.Kills, a.CurrentUnitKills);
+		public static UnitCost operator +(UnitCost a, UnitCost b) => new UnitCost(a.Minerals + b.Minerals, a.Kills + b.Kills, b.CurrentUnitKills);
 		public static UnitCost operator -(UnitCost a, UnitCost b) => a += (-b);
-		public static UnitCost operator *(UnitCost a, double b) => new(a.Minerals * b, a.Kills * b, a.CurrentUnitKills);
-		public static UnitCost operator /(UnitCost a, (double, double) b) => new(a.Minerals / b.Item1, a.Kills / b.Item2, a.CurrentUnitKills);
+		public static UnitCost operator *(UnitCost a, double b) => new UnitCost(a.Minerals * b, a.Kills * b, a.CurrentUnitKills);
+		public static UnitCost operator /(UnitCost a, (double, double) b) => new UnitCost(a.Minerals / b.Item1, a.Kills / b.Item2, a.CurrentUnitKills);
 	}
 }

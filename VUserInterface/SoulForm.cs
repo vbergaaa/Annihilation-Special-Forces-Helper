@@ -10,7 +10,7 @@ namespace VUserInterface
 	{
 		public SoulForm(BusinessObject bizo) : base(bizo)
 		{
-			if (bizo != null && bizo is not Soul)
+			if (bizo != null && !(bizo is Soul))
 			{
 				throw new InvalidOperationException("Soul form must only accept a soul bizo");
 			}
@@ -46,7 +46,7 @@ namespace VUserInterface
 			get => (Soul)base.Parent;
 			set
 			{
-				var oldSaveSlot = GetSaveSlotFromTextBoxSafe();
+				int oldSaveSlot = GetSaveSlotFromTextBoxSafe();
 				base.Parent = value;
 				if (base.Parent != null && isParentInitialised)
 				{
@@ -69,23 +69,24 @@ namespace VUserInterface
 		{
 			if (Parent != null)
 			{
-				BindingSource.DataSource = Parent;
-				BindingSource.ResetBindings(false);
+				this.BindingSource.DataSource = Parent;
+				this.BindingSource.ResetBindings(false);
 			}
 		}
 
 		#region Soul Type
 
-		List<object> SoulTypesList => fSoulTypesList ??= GetOrderedSoulsList();
+		List<object> SoulTypesList
+		{
+			get => fSoulTypesList ??= GetOrderedSoulsList();
+		}
 
 		List<object> fSoulTypesList;
 
-        static List<object> GetOrderedSoulsList()
+		List<object> GetOrderedSoulsList()
 		{
-			var list = new List<object>
-			{
-				SoulType.None
-			};
+			var list = new List<object>();
+			list.Add(SoulType.None);
 			for (var i = 1; i <= (int)VSoul.HighestNonUniqueSoul; i++)
 			{
 				list.Add("");

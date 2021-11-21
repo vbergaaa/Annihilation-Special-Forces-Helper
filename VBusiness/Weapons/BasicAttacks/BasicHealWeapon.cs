@@ -6,9 +6,9 @@ namespace VBusiness.Weapons
 {
 	public abstract class BasicHealWeapon : IWeaponData
 	{
-		public static double AttackCount => 1;
+		public double AttackCount => 1;
 
-		public static double AttackPeriodIncrement => 0.94;
+		public double AttackPeriodIncrement => 0.94;
 
 		public abstract double BaseAttack { get; }
 

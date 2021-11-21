@@ -7,9 +7,6 @@
 
 		public override double AOEDamagePercent => 50;
 
-		protected override BasicAttackWeapon GetNewBaseWeapon()
-		{
-			return new ArchonBasicWeapon();
-		}
+		protected override BasicAttackWeapon GetNewBaseWeapon() => new ArchonBasicWeapon();
 	}
 }

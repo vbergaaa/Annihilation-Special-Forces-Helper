@@ -12,8 +12,8 @@ namespace VUserInterface
 
 		public ISoulCollectable SoulCollectable
 		{
-			get => SoulCollectionControl.Souls;
-			set => SoulCollectionControl.Souls = value;
+			get => this.SoulCollectionControl.Souls;
+			set => this.SoulCollectionControl.Souls = value;
 		}
 	}
 }

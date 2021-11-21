@@ -12,7 +12,7 @@ namespace VEntityFramework.Model
 			{
 				if (fInstance == null)
 				{
-					fInstance = VDataContext.Get<VRegistry>();
+					fInstance = VDataContext.Instance.Get<VRegistry>();
 				}
 				return fInstance;
 			}

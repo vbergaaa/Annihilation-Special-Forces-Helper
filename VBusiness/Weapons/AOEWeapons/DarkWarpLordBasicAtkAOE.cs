@@ -3,10 +3,7 @@
 	class DarkWarpLordBasicAtkAOE : BasicAOEAttackWeapon
 	{
 		//25% radius 1
-		protected override BasicAttackWeapon GetNewBaseWeapon()
-		{
-			return new DarkWarpLordBasicWeapon();
-		}
+		protected override BasicAttackWeapon GetNewBaseWeapon() => new DarkWarpLordBasicWeapon();
 
 		public override double AOERadius => 1;
 

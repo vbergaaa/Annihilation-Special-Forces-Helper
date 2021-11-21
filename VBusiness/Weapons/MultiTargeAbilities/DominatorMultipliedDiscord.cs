@@ -13,9 +13,6 @@
 
 		protected override double ProcChance => 35;
 
-		protected override BasicAttackWeapon GetBaseWeapon()
-		{
-			return new DominatorBasicWeapon();
-		}
+		protected override BasicAttackWeapon GetBaseWeapon() => new DominatorBasicWeapon();
 	}
 }

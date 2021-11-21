@@ -10,7 +10,7 @@ namespace StarCodeDecryptor
 	{
 		public ASFBankDecoder(string bankPathOverride)
 		{
-			fBankPathOverride = bankPathOverride;
+			this.fBankPathOverride = bankPathOverride;
 		}
 
 		#region Key
@@ -116,7 +116,8 @@ namespace StarCodeDecryptor
 			}
 		}
 		XmlDocument fBank;
-		readonly string fBankPathOverride = null;
+
+		string fBankPathOverride = null;
 
 		public static string GetDefaultBankFilePath()
 		{
@@ -131,8 +132,8 @@ namespace StarCodeDecryptor
 			return node.Attributes[0].Value;
 		}
 
-		readonly Dictionary<string, string> keyMappings = new()
-        {
+		readonly Dictionary<string, string> keyMappings = new Dictionary<string, string>
+		{
 			{ "E%YRTHty5e54h84t75ysthD?Y%U"     ,"T$EY5hd54g4wy%YHDTrst4yu5" },
 			{ "E$Z%?yh54drt6YEH%YUZJ"           ,"E$Y%eht47568W4yzZUHT" },
 			{ "$E?%E$YHDZEY$%Z$?T%EYHWUYSYFJH"  ,"$EZYUjtdn5z4tw4zyrdU%YHD" },

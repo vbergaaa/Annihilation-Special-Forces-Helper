@@ -21,7 +21,7 @@ namespace VBusiness
 
 		static string GetBackupName()
 		{
-			var rank = GetRankString();
+			string rank = GetRankString();
 			var rp = GetRPString();
 			return $"{rp}_{rank}";
 		}
@@ -70,9 +70,9 @@ namespace VBusiness
 		{
 			var rankName = rank.GetDescription();
 			var words = rankName.Split(" ");
-			return words.Length == 1
+			return words.Count() == 1
 				? words.Last().Substring(0, 3)
-				: string.Concat(words.First().AsSpan(0, 1), words.Last().AsSpan(0, 3));
+				: words.First().Substring(0, 1) + words.Last().Substring(0, 3);
 		}
 
 		static void CopyFile(string sourceFile, string targetFile)

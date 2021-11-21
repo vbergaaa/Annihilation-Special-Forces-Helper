@@ -49,7 +49,7 @@ namespace VEntityFramework.Model
 
 		#region TotalCost
 
-		public int TotalCost => Gems.Sum(g => g.GetTotalCost());
+		public int TotalCost { get => Gems.Sum(g => g.GetTotalCost()); }
 
 		#endregion
 

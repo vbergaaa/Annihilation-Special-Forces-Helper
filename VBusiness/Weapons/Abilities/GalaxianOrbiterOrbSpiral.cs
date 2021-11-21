@@ -11,9 +11,6 @@
 
 		protected override double AbilityCooldown => 10;
 
-		protected override CommonOrbAttack GetBasicOrbWeapon()
-		{
-			return new GalaxianOrbiterBasicWeapon();
-		}
+		protected override CommonOrbAttack GetBasicOrbWeapon() => new GalaxianOrbiterBasicWeapon();
 	}
 }

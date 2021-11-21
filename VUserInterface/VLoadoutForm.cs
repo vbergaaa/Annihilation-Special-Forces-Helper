@@ -20,17 +20,17 @@ namespace VUserInterface
 		{
 			if (Loadout.ExistsInXML)
 			{
-				Text = $"Edit Loadout: {Loadout.Name}";
+				this.Text = $"Edit Loadout: {Loadout.Name}";
 			}
 			else
 			{
-				Text = "Create new loadout";
+				this.Text = "Create new loadout";
 			}
 		}
 
 		void AddNewBindings()
 		{
-			bindingSource.DataSource = Loadout;
+			this.bindingSource.DataSource = Loadout;
 		}
 
 		public Loadout Loadout
@@ -124,7 +124,7 @@ namespace VUserInterface
 
 		void RefreshPageLimits(object sender, EventArgs e)
 		{
-			var perksControl = Controls.Find("PerkPageControl", true)[0];
+			var perksControl = this.Controls.Find("PerkPageControl", true)[0];
 			if (perksControl is VPerkCollectionControl control)
 			{
 				control.RestrictPerkPageButtons();

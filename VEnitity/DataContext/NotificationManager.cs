@@ -4,10 +4,16 @@ namespace VEntityFramework.Data
 {
 	public class NotificationManager
 	{
-		public List<string> Errors => fErrors ??= new List<string>();
+		public List<string> Errors
+		{
+			get => fErrors ??= new List<string>();
+		}
 		List<string> fErrors;
 
-		public List<string> Prompts => fPrompts ??= new List<string>();
+		public List<string> Prompts
+		{
+			get => fPrompts ??= new List<string>();
+		}
 		List<string> fPrompts;
 
 		public void AddError(string error)

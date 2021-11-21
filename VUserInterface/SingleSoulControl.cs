@@ -61,7 +61,7 @@ namespace VUserInterface
 			base.OnPaint(e);
 
 			// add the border
-			var rect = new Rectangle(new Point(0, 0), new Size(Width - 1, Height - 1));
+			var rect = new Rectangle(new Point(0, 0), new Size(this.Width - 1, this.Height - 1));
 
 			if (Selected)
 			{

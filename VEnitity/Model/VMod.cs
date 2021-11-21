@@ -32,8 +32,9 @@ namespace VEntityFramework.Model
 		[VXML(true)]
 		public virtual short CurrentLevel
 		{
-			get => fCurrentLevel;
-			set {
+			get { return fCurrentLevel; }
+			set
+			{
 				if (value != fCurrentLevel)
 				{
 					var oldValue = fCurrentLevel;
@@ -64,7 +65,7 @@ namespace VEntityFramework.Model
 
 		short fCurrentLevel;
 
-		public static short MaxValue => 10;
+		public short MaxValue => 10;
 
 		#endregion
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using VEntityFramework.Model;
 using VUserInterface.CommonControls;
 
@@ -16,7 +17,7 @@ namespace VUserInterface
 			base.OnBindingContextChanged(e);
 			if (Stats != null)
 			{
-				statsBindingSource.DataSource = Stats;
+				this.statsBindingSource.DataSource = Stats;
 			}
 		}
 

@@ -14,9 +14,6 @@ namespace VBusiness.Gems
 
 		protected override decimal BaseCost => 1.4m;
 
-		protected override void OnPerkLevelChanged(int difference)
-		{
-			GemCollection.Loadout.Stats.Attack += difference;
-		}
+		protected override void OnPerkLevelChanged(int difference) => GemCollection.Loadout.Stats.Attack += difference;
 	}
 }

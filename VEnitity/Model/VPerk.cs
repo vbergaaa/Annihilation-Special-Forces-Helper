@@ -39,8 +39,9 @@ namespace VEntityFramework.Model
 		[VXML(true)]
 		public virtual short DesiredLevel
 		{
-			get => fDesiredLevel;
-			set {
+			get { return fDesiredLevel; }
+			set
+			{
 				if (value != fDesiredLevel)
 				{
 					var oldValue = fDesiredLevel;

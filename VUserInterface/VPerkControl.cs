@@ -28,9 +28,9 @@ namespace VUserInterface
 
 		void UpdateBindingIfDataSourceChanged()
 		{
-			if (Perk != null && Perk != perkBindingSource.DataSource)
+			if (Perk != null && Perk != this.perkBindingSource.DataSource)
 			{
-				perkBindingSource.DataSource = Perk;
+				this.perkBindingSource.DataSource = Perk;
 				RefreshBinding(true);
 			}
 		}
@@ -49,7 +49,7 @@ namespace VUserInterface
 
 		void RefreshParentsBinding()
 		{
-			if (Parent is VPerkCollectionControl parent)
+			if (this.Parent is VPerkCollectionControl parent)
 			{
 				parent.RefreshBindings();
 			}
@@ -57,7 +57,7 @@ namespace VUserInterface
 
 		public void RefreshBinding(bool updateSchema)
 		{
-			perkBindingSource.ResetBindings(updateSchema);
+			this.perkBindingSource.ResetBindings(updateSchema);
 		}
 
 		#region ToolTip

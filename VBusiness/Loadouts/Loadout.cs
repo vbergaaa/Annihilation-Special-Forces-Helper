@@ -126,15 +126,15 @@ namespace VBusiness.Loadouts
 				{
 					using (Stats.SuspendRefreshingStatBindings())
 					{
-                        RemoveStats(base.CurrentUnit);
+						RemoveStats(base.CurrentUnit);
 						base.CurrentUnit = value;
-                        AddStats(base.CurrentUnit);
+						AddStats(base.CurrentUnit);
 					}
 				}
 			}
 		}
 
-        static void RemoveStats(VUnit currentUnit)
+		void RemoveStats(VUnit currentUnit)
 		{
 			if (currentUnit is Unit unit)
 			{
@@ -150,7 +150,7 @@ namespace VBusiness.Loadouts
 			}
 		}
 
-        static void AddStats(VUnit currentUnit)
+		void AddStats(VUnit currentUnit)
 		{
 			if (currentUnit is Unit unit)
 			{
@@ -204,7 +204,10 @@ namespace VBusiness.Loadouts
 
 		#region PerkPointsCost
 
-		public override long PerkPointsCost => Perks.TotalCost + Souls.SoulCosts;
+		public override long PerkPointsCost
+		{
+			get => Perks.TotalCost + Souls.SoulCosts;
+		}
 
 		#endregion
 
@@ -227,7 +230,13 @@ namespace VBusiness.Loadouts
 			}
 		}
 
-		public override bool CanAffordCurrentLoadout => RemainingPerkPoints >= 0 && Gems.RemainingGems >= 0 && ChallengePoints.RemainingCP >= 0;
+		public override bool CanAffordCurrentLoadout
+		{
+			get
+			{
+				return RemainingPerkPoints >= 0 && Gems.RemainingGems >= 0 && ChallengePoints.RemainingCP >= 0;
+			}
+		}
 
 		#endregion
 

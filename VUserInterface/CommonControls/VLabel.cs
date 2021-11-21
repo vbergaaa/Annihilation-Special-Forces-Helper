@@ -1,6 +1,5 @@
 ﻿using EnumsNET;
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Windows.Forms;
 using VEntityFramework;
@@ -17,10 +16,12 @@ namespace VUserInterface.CommonControls
 		public ContentAlignment TextAlign
 		{
 			get => Label.TextAlign;
-			set => Label.TextAlign = value;
+			set
+			{
+				Label.TextAlign = value;
+			}
 		}
 
-		[SuppressMessage("Design", "CA1061:Do not hide base class methods", Justification = "we don't have a use for 'Text' on a VUserControl, and if we name this something else, it'll cause confusion/bugs when consuming it.")]
 		public new object Text
 		{
 			get => Label.Text;
@@ -35,7 +36,7 @@ namespace VUserInterface.CommonControls
 			}
 		}
 
-        static string GetSuffixedNumber(string value)
+		string GetSuffixedNumber(string value)
 		{
 			if (!double.TryParse(value, out var number))
 			{

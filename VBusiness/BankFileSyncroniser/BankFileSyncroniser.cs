@@ -11,7 +11,8 @@ namespace VBusiness
 {
 	public static class BankFileSyncroniser
 	{
-		static readonly ASFBankDecoder decoder = new(Registry.Instance.BankFileOverride);
+
+		static readonly ASFBankDecoder decoder = new ASFBankDecoder(Registry.Instance.BankFileOverride);
 
 		public static void UpdateProfile(VProfile profile = null)
 		{
@@ -63,12 +64,12 @@ namespace VBusiness
 
 			if (loadoutName != null)
 			{
-                VDataContext.ReadFromXML<Loadout>(loadoutName);
+				VDataContext.Instance.ReadFromXML<Loadout>(loadoutName);
 				Log.Info($"loaded loadout {loadoutName} into the cache, triggering a synchronisation if required.");
 				return;
 			}
 
-			var loadout = VDataContext.NewWithoutCache<Loadout>();
+			var loadout = VDataContext.Instance.NewWithoutCache<Loadout>();
 
 			loadout.Slot = i;
 			UpdateLoadout(loadout); ;
@@ -76,7 +77,7 @@ namespace VBusiness
 
 		static string GetLoadoutNameAndDeleteDuplicates(int i)
 		{
-			var loadoutNames = VDataContext.GetAllFileNames<Loadout>().Where(x => x.StartsWith($"{i}-"));
+			var loadoutNames = VDataContext.Instance.GetAllFileNames<Loadout>().Where(x => x.StartsWith($"{i}-"));
 
 			if (loadoutNames.Count() > 1)
 			{
@@ -93,7 +94,7 @@ namespace VBusiness
 
 				foreach (var loadout in loadoutNames.Where(x => x != matchingLoadout))
 				{
-                    VDataContext.Delete<Loadout>(loadout);
+					VDataContext.Instance.Delete<Loadout>(loadout);
 				}
 				return matchingLoadout;
 			}
@@ -163,7 +164,7 @@ namespace VBusiness
 
 		static void UpdateSoul(int saveSlot)
 		{
-			var soulNames = VDataContext.GetAllFileNames<Soul>();
+			var soulNames = VDataContext.Instance.GetAllFileNames<Soul>();
 			var soulName = soulNames.FirstOrDefault(x => x.StartsWith($"{saveSlot}-"));
 
 			var soulString = decoder.GetSoulString(saveSlot);
@@ -213,11 +214,11 @@ namespace VBusiness
 			Soul soul;
 			if (soulName != null)
 			{
-				soul = VDataContext.ReadFromXML<Soul>(soulName);
+				soul = VDataContext.Instance.ReadFromXML<Soul>(soulName);
 
 				if (soul.Type != soulType)
 				{
-                    VDataContext.Delete<Soul>(soulName);
+					VDataContext.Instance.Delete<Soul>(soulName);
 					soul = Soul.New(soulType, null);
 				}
 			}
