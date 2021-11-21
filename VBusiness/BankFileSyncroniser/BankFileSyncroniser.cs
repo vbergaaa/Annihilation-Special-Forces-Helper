@@ -26,12 +26,27 @@ namespace VBusiness
 				profile.AchievementCount = decoder.AchievementCount;
 				profile.Gems = decoder.Gems;
 				SetTotalModScoresFromString(profile.PlayerMods, decoder.ModScores);
+				SetSoulCollection(profile.SoulCollection, decoder.SoulCollection);
 				profile.Save();
 				Log.Info("Successfully Updated Profile From Bank");
 			}
 			catch (Exception ex)
 			{
 				Log.Error("Failed to update profile from bank.", ex);
+			}
+		}
+
+		private static void SetSoulCollection(VSoulCollection soulCollection, bool[] soulsInBank)
+		{
+			soulCollection.DiscoveredSouls.Clear();
+			var uniqueSouls = Enum.GetValues<SoulType>().Where(x => x > VSoul.HighestNonUniqueSoul).ToArray();
+
+			for (var i = 0; i < uniqueSouls.Length; i++)
+			{
+				if (soulsInBank[i])
+				{
+					soulCollection.DiscoveredSouls.Add(uniqueSouls[i]);
+				}
 			}
 		}
 

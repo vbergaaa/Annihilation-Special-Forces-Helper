@@ -157,8 +157,15 @@ namespace StarCodeDecryptor
 		{
 			get
 			{
-				var souls = GetValue("745%GD", "CoC", 2);
-				return Enumerable.Range(0, 54).Select(x => souls.Substring(x * 3, 3) == "?5?").ToArray();
+				try
+				{
+					var souls = GetValue("745%GD", "CoC", 2);
+					return Enumerable.Range(0, 54).Select(x => souls.Substring(x * 3, 3) == "?5?").ToArray();
+				}
+				catch
+				{
+					return new bool[54];
+				}
 			}
 		}
 
