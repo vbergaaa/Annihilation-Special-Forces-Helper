@@ -72,7 +72,7 @@ namespace VUserInterface
 
 		bool isUpdatingControls;
 
-		SoulType GetSoulTypeFromPosition(int page, int position)
+        static SoulType GetSoulTypeFromPosition(int page, int position)
 		{
 			var highestNonUnique = (int)VSoul.HighestNonUniqueSoul;
 			var highestUnique = (int)Enums.GetValues<SoulType>().Last();

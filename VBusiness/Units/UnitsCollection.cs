@@ -10,7 +10,7 @@ namespace VBusiness.Units
 		{
 		}
 
-		VLoadout loadout => this.parent as VLoadout;
+		VLoadout loadout => parent as VLoadout;
 
 		public override void Add(VUnit item)
 		{

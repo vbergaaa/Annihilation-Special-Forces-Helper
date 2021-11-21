@@ -14,6 +14,9 @@ namespace VBusiness.Weapons
 			return 20 + 1.5 * loadout.Upgrades.AttackUpgrade;
 		}
 
-		protected override BasicAttackWeapon GetNewBaseWeapon() => new AnnihilationDreadnoughtBasicWeapon();
+		protected override BasicAttackWeapon GetNewBaseWeapon()
+		{
+			return new AnnihilationDreadnoughtBasicWeapon();
+		}
 	}
 }

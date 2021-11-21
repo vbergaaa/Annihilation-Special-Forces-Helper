@@ -15,7 +15,7 @@ namespace VBusiness.Profile
 		{
 			if (fProfile == null)
 			{
-				fProfile = VDataContext.Instance.Get<Profile>();
+				fProfile = VDataContext.Get<Profile>();
 			}
 			return fProfile;
 		}

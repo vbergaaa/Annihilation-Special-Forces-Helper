@@ -22,7 +22,7 @@ namespace VUserInterface.CommonControls
 					var selectedItem = ComboBox.SelectedItem;
 					isResettingList = true;
 					fList = value;
-					this.ComboBox.DataSource = value;
+					ComboBox.DataSource = value;
 
 					isResettingList = false;
 
@@ -34,7 +34,7 @@ namespace VUserInterface.CommonControls
 					// I don't understand why this is needed, but it appears there is some 
 					// cases where ComboBox.Items doesn't update to the datasource, and this
 					// is the only way I can make this happen on demand.
-					this.ComboBox.CreateControl();
+					ComboBox.CreateControl();
 				}
 			}
 		}
@@ -58,12 +58,8 @@ namespace VUserInterface.CommonControls
 
 		public object SelectedValue
 		{
-			get
-			{
-				return ComboBox.SelectedValue;
-			}
-			set
-			{
+			get => ComboBox.SelectedValue;
+			set {
 				if (value != null && ComboBox.Items.Contains(value) && !isSettingIndexOnBaseComboBox)
 				{
 					var index = ComboBox.Items.IndexOf(value);

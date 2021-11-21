@@ -29,7 +29,7 @@ namespace VUserInterface
 			base.OnBindingContextChanged(e);
 			if (Profile != null)
 			{
-				this.BindingSource.DataSource = Profile;
+				BindingSource.DataSource = Profile;
 			}
 		}
 
@@ -59,10 +59,7 @@ namespace VUserInterface
 			}
 		}
 
-		List<object> PlayerRankList
-		{
-			get => fPlayerRankList ??= BindingHelper<PlayerRank>.ConvertForBinding(Enums.GetValues<PlayerRank>().ToList());
-		}
+		List<object> PlayerRankList => fPlayerRankList ??= BindingHelper<PlayerRank>.ConvertForBinding(Enums.GetValues<PlayerRank>().ToList());
 		List<object> fPlayerRankList;
 
 		void PlayerRankChanged(object sender, EventArgs e)

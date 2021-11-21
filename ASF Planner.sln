@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29709.97
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASFLauncher", "ASF Planner\ASFLauncher.csproj", "{201BD686-933C-4ADD-9D48-790DF87085FE}"
 EndProject
@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarCodeDecryptor", "StarCodeDecryptor\StarCodeDecryptor.csproj", "{9840E494-7314-4111-AB7F-4C496276C4E8}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{80E9E79C-F6A6-4C1F-897A-C52864EF5411}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EEE89C0A-0400-4BA5-AF36-E572B92C3C42}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup1\Setup1.vdproj", "{454610BA-B422-41D6-941B-C7BC4A255CB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,10 +77,10 @@ Global
 		{9840E494-7314-4111-AB7F-4C496276C4E8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9840E494-7314-4111-AB7F-4C496276C4E8}.Release|x86.ActiveCfg = Release|Any CPU
 		{9840E494-7314-4111-AB7F-4C496276C4E8}.Release|x86.Build.0 = Release|Any CPU
-		{80E9E79C-F6A6-4C1F-897A-C52864EF5411}.Debug|Any CPU.ActiveCfg = Debug
-		{80E9E79C-F6A6-4C1F-897A-C52864EF5411}.Debug|x86.ActiveCfg = Debug
-		{80E9E79C-F6A6-4C1F-897A-C52864EF5411}.Release|Any CPU.ActiveCfg = Release
-		{80E9E79C-F6A6-4C1F-897A-C52864EF5411}.Release|x86.ActiveCfg = Release
+		{454610BA-B422-41D6-941B-C7BC4A255CB8}.Debug|Any CPU.ActiveCfg = Debug
+		{454610BA-B422-41D6-941B-C7BC4A255CB8}.Debug|x86.ActiveCfg = Debug
+		{454610BA-B422-41D6-941B-C7BC4A255CB8}.Release|Any CPU.ActiveCfg = Release
+		{454610BA-B422-41D6-941B-C7BC4A255CB8}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

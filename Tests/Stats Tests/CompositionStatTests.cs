@@ -32,7 +32,7 @@ namespace Tests.Stats_Tests
 			Assert.That(loadout.Stats.Toughness, Is.EqualTo(expectedToughness).Within(1));
 		}
 
-		VLoadout LoadMaxPage14()
+        static VLoadout LoadMaxPage14()
 		{
 			var loadout = TestHelper.GetTestLoadout();
 			var perks = loadout.Perks as PerkCollection;

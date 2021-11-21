@@ -32,9 +32,8 @@ namespace VEntityFramework.Model
 		[VXML(true)]
 		public virtual short CurrentLevel
 		{
-			get { return fCurrentLevel; }
-			set
-			{
+			get => fCurrentLevel;
+			set {
 				if (value != fCurrentLevel)
 				{
 					var oldValue = fCurrentLevel;
