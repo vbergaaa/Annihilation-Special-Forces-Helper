@@ -15,6 +15,15 @@ namespace Tests
 			Assert.That(() => decoder.GetSoulString(9), Throws.Nothing);
 			Assert.That(() => decoder.GetAchievements(), Throws.Nothing);
 			Assert.That(() => decoder.AchievementCount, Is.InRange(1, 500));
+			Assert.That(() => decoder.SoulCollection, Throws.Nothing);
+		}
+
+		[Test]
+		public void TestGetString()
+		{
+			var decoder = new ASFBankDecoder(null);
+			var x = decoder.GetValue("745%GD", "CoC", 2);
+			Assert.That(x, Is.EqualTo(""));
 		}
 	}
 }

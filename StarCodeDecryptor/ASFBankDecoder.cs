@@ -140,10 +140,26 @@ namespace StarCodeDecryptor
 			return files.FirstOrDefault();
 		}
 
-		string ExtractValueFromXml(string section, string key)
+		public string ExtractValueFromXml(string section, string key)
 		{
 			var node = Bank.SelectSingleNode($"//Section[@name=\"{section}\"]/Key[@name=\"{key}\"]/Value");
 			return node.Attributes[0].Value;
+		}
+
+		public string GetValue(string key1, string key2, int validates)
+		{
+			var count = ExtractValueFromXml(key1, key2); 
+			count = Starcode.Decrypt(count, Key, validates);
+			return count;
+		}
+
+		public bool[] SoulCollection
+		{
+			get
+			{
+				var souls = GetValue("745%GD", "CoC", 2);
+				return Enumerable.Range(0, 54).Select(x => souls.Substring(x * 3, 3) == "?5?").ToArray();
+			}
 		}
 
 		readonly Dictionary<string, string> keyMappings = new()
