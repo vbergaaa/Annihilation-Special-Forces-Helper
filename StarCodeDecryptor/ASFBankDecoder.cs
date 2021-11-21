@@ -169,6 +169,54 @@ namespace StarCodeDecryptor
 			}
 		}
 
+		public bool[,] Challenges
+		{
+			get
+			{
+				try
+				{
+					var codes = new[]
+					{
+						"O00",
+						"0OO",
+						"0o0",
+						"EXL",
+						"ARC",
+						"PSG",
+						"SPR",
+						"(((",
+						")))",
+						"JJJ",
+						"QQQ",
+						"CRB"
+					};
+					var strings = codes.Select(x => GetValue(x, "%?%?", 2)).ToArray();
+
+					var array2 = new bool[45, 4];
+
+					for (var i = 0; i <= 3; i++)
+					{
+						for (var j = 0; j <= 2; j++)
+						{
+							for (var k = 0; k < 15; k++)
+							{
+								if (strings[(i) * 3 + j].Substring(k * 6, 6) == "%$#?y4")
+								{
+									array2[j * 15 + k, i] = true;
+								}
+							}
+						}
+					}
+
+					return array2;
+				}
+				catch
+				{
+					return new bool[45,4];
+				}
+			}
+		}
+
 		readonly Dictionary<string, string> keyMappings = new()
         {
 			{ "E%YRTHty5e54h84t75ysthD?Y%U"     ,"T$EY5hd54g4wy%YHDTrst4yu5" },
@@ -180,8 +228,10 @@ namespace StarCodeDecryptor
 
 		// "685$TYSHS", "YGSDG%$" -modscore codes, e.g, 77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ55XDZ55XDZ444XZ444XZ111SZ555SS00000000000000056d$%54eyh%?
 
-		// "Kappa", "????" - no idea.. ?$%yAtu6ruyhTdzgWR%EYe 
+		// "Kappa", "????" - no idea.. ?$%yAtu6ruyhTdzgWR%EYe -- probably a rank
 
 		// "BPR", "bleP" - experience, eg. 6095
+
+		// var x = decoder.GetValue("6H7dRT", "HoH", 2); //3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$?%465gd%Y
 	}
 }

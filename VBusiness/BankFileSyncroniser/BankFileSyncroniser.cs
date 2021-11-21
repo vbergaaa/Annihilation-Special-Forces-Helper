@@ -27,6 +27,7 @@ namespace VBusiness
 				profile.Gems = decoder.Gems;
 				SetTotalModScoresFromString(profile.PlayerMods, decoder.ModScores);
 				SetSoulCollection(profile.SoulCollection, decoder.SoulCollection);
+				profile.ChallengePoints = GetChallengePointCount(decoder.Challenges);
 				profile.Save();
 				Log.Info("Successfully Updated Profile From Bank");
 			}
@@ -34,6 +35,25 @@ namespace VBusiness
 			{
 				Log.Error("Failed to update profile from bank.", ex);
 			}
+		}
+
+		private static int GetChallengePointCount(bool[,] challenges)
+		{
+			var cp = 0;
+			var i = 0;
+			foreach (var x in challenges)
+			{
+				i++;
+				if (x)
+				{
+					cp++;
+					if (i % 4 == 3)
+					{
+						cp++;
+					}
+				}
+			}
+			return cp;
 		}
 
 		private static void SetSoulCollection(VSoulCollection soulCollection, bool[] soulsInBank)
