@@ -241,7 +241,7 @@ namespace VBusiness.Units
 
 		public override int MaximumKills
 		{
-			get => GetMaxKills();
+			get => GetMaxKills() / 100 * 100;
 		}
 
 		int GetMaxKills()
