@@ -52,6 +52,7 @@ namespace VUserInterface
 			this.SaveEditButton = new VUserInterface.CommonControls.VButton();
 			this.AchievementsLabel = new VLabel();
 			this.AchievementsButton = new VButton();
+			this.ModsButton = new VButton();
 			this.ProfileTitleLabel = new VLabel();
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
 			this.EditPanel.SuspendLayout();
@@ -267,6 +268,15 @@ namespace VUserInterface
 			this.AchievementsButton.Text = "Achievements";
 			this.AchievementsButton.Click += AchievementsButton_Click;
 			// 
+			// ModsButton
+			// 
+			this.ModsButton.Location = DPIScalingHelper.GetScaledPoint(250, 140);
+			this.ModsButton.Name = "ModsButton";
+			this.ModsButton.Size = DPIScalingHelper.GetScaledSize(100, 23);
+			this.ModsButton.TabIndex = 0;
+			this.ModsButton.Text = "Mods";
+			this.ModsButton.Click += ModsButton_Click;
+			// 
 			// AchievementsLabel
 			// 			
 			this.AchievementsLabel.Caption = "Achievements";
@@ -284,8 +294,10 @@ namespace VUserInterface
 			this.Controls.Add(this.ProfileTitleLabel);
 			this.Controls.Add(this.AchievementsButton);
 			this.Controls.Add(this.AchievementsLabel);
+			this.Controls.Add(this.ModsButton);
 			this.Controls.SetChildIndex(this.AchievementsButton, 0);
 			this.Controls.SetChildIndex(this.AchievementsLabel, 0);
+			this.Controls.SetChildIndex(this.ModsButton, 0);
 			this.Name = "ProfileControl";
 			this.Size = DPIScalingHelper.GetScaledSize(400, 400);
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).EndInit();
@@ -318,5 +330,6 @@ namespace VUserInterface
 		private VLabel ProfileTitleLabel;
 		private VButton AchievementsButton;
 		private VLabel AchievementsLabel;
+		private VButton ModsButton;
 	}
 }

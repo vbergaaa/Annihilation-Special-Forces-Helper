@@ -18,7 +18,7 @@ namespace VEntityFramework
 		public virtual int TotalScore { get; }
 		
 		[VXML(true)]
-		public int VeryEasy
+		public virtual int VeryEasy
 		{
 			get => fVeryEasy;
 			set {
@@ -34,7 +34,7 @@ namespace VEntityFramework
 		int fVeryEasy;
 
 		[VXML(true)]
-		public int Easy
+		public virtual int Easy
 		{
 			get => fEasy;
 			set {
@@ -51,7 +51,7 @@ namespace VEntityFramework
 
 
 		[VXML(true)]
-		public int Normal
+		public virtual int Normal
 		{
 			get => fNormal;
 			set {
@@ -67,7 +67,7 @@ namespace VEntityFramework
 		int fNormal;
 
 		[VXML(true)]
-		public int Hard
+		public virtual int Hard
 		{
 			get => fHard;
 			set {
@@ -83,7 +83,7 @@ namespace VEntityFramework
 		int fHard;
 
 		[VXML(true)]
-		public int VeryHard
+		public virtual int VeryHard
 		{
 			get => fVeryHard;
 			set {
@@ -99,7 +99,7 @@ namespace VEntityFramework
 		int fVeryHard;
 
 		[VXML(true)]
-		public int Insane
+		public virtual int Insane
 		{
 			get => fInsane;
 			set {
@@ -115,7 +115,7 @@ namespace VEntityFramework
 		int fInsane;
 
 		[VXML(true)]
-		public int Brutal
+		public virtual int Brutal
 		{
 			get => fBrutal;
 			set {
@@ -131,7 +131,7 @@ namespace VEntityFramework
 		int fBrutal;
 
 		[VXML(true)]
-		public int Nightmare
+		public virtual int Nightmare
 		{
 			get => fNightmare;
 			set {
@@ -147,7 +147,7 @@ namespace VEntityFramework
 		int fNightmare;
 
 		[VXML(true)]
-		public int Torment
+		public virtual int Torment
 		{
 			get => fTorment;
 			set {
@@ -163,7 +163,7 @@ namespace VEntityFramework
 		int fTorment;
 
 		[VXML(true)]
-		public int Hell
+		public virtual int Hell
 		{
 			get => fHell;
 			set {
@@ -179,7 +179,7 @@ namespace VEntityFramework
 		int fHell;
 
 		[VXML(true)]
-		public int Titanic
+		public virtual int Titanic
 		{
 			get => fTitanic;
 			set {
@@ -195,7 +195,7 @@ namespace VEntityFramework
 		int fTitanic;
 
 		[VXML(true)]
-		public int Mythic
+		public virtual int Mythic
 		{
 			get => fMythic;
 			set {
@@ -211,7 +211,7 @@ namespace VEntityFramework
 		int fMythic;
 
 		[VXML(true)]
-		public int Divine
+		public virtual int Divine
 		{
 			get => fDivine;
 			set {
@@ -227,7 +227,7 @@ namespace VEntityFramework
 		int fDivine;
 
 		[VXML(true)]
-		public int Impossible
+		public virtual int Impossible
 		{
 			get => fImpossible;
 			set {
@@ -243,7 +243,7 @@ namespace VEntityFramework
 		int fImpossible;
 
 		[VXML(true)]
-		public int ZeroV
+		public virtual int ZeroV
 		{
 			get => fZeroV;
 			set {
@@ -259,7 +259,7 @@ namespace VEntityFramework
 		int fZeroV;
 
 		[VXML(true)]
-		public int ZeroX
+		public virtual int ZeroX
 		{
 			get => fZeroX;
 			set {
@@ -275,7 +275,7 @@ namespace VEntityFramework
 		int fZeroX;
 
 		[VXML(true)]
-		public int PureBlack
+		public virtual int PureBlack
 		{
 			get => fPureBlack;
 			set {
@@ -291,7 +291,7 @@ namespace VEntityFramework
 		int fPureBlack;
 
 		[VXML(true)]
-		public int Annihilation
+		public virtual int Annihilation
 		{
 			get => fAnnihilation;
 			set {

@@ -80,6 +80,12 @@
     <Compile Update="ModCollectionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="PlayerModsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="PlayerModsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="PowerSoulForm.cs">
       <SubType>Form</SubType>
     </Compile>
