@@ -26,7 +26,7 @@ namespace VBusiness.Enemies
 
 		public override int MineralBounty => 35;
 
-		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Roach, 8) };
+		protected override IEnumerable<EnemyQuantity> UnitsSpawnedOnDeath => new[] { new EnemyQuantity(EnemyType.Roach, 4) };
 
 		internal override IEnumerable<EnemyQuantity> GetUnitsSpawnedOnDeath(double tierUpLevels, RoomNumber room)
 		{
