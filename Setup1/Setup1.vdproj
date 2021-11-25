@@ -210,7 +210,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ASF App"
         "ProductCode" = "8:{CB090319-AD4F-4B46-B612-342B7E85CF0F}"
-        "PackageCode" = "8:{FD70BC8B-69F5-4890-84D9-C03D996D4768}"
+        "PackageCode" = "8:{C2DF3555-E177-4972-9D4D-65C97013ABA5}"
         "UpgradeCode" = "8:{8A25DE77-A39A-42C9-8CD9-2FD3B2E7F97A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -341,7 +341,7 @@
             "Target" = "8:_277454C7D2764499915D922979F36EE9"
             "Folder" = "8:_1C6CD0B5B74644D5A4D52CC8CC061CD3"
             "WorkingFolder" = "8:_3DF2C75EFE184F0EA74D7289177B37D6"
-            "Icon" = "8:"
+            "Icon" = "8:_3881FBE987EA49C3857F94BDA642794B"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EF903F72BE194064BFE5EAC625FA4D41"
@@ -355,7 +355,7 @@
             "Target" = "8:_277454C7D2764499915D922979F36EE9"
             "Folder" = "8:_9759DD33D40D4D5F86C71B25F79A50B8"
             "WorkingFolder" = "8:_3DF2C75EFE184F0EA74D7289177B37D6"
-            "Icon" = "8:"
+            "Icon" = "8:_3881FBE987EA49C3857F94BDA642794B"
             "Feature" = "8:"
             }
         }
