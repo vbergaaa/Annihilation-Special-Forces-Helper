@@ -52,10 +52,10 @@ namespace VUserInterface
 
 		void UpdateBindingIfDataSourceChanged()
 		{
-			if (Soul != null && Soul != this.BindingSource.DataSource)
+			if (Soul != null && Soul != BindingSource.DataSource)
 			{
-				this.BindingSource.DataSource = Soul;
-				this.BindingSource.ResetBindings(true);
+				BindingSource.DataSource = Soul;
+				BindingSource.ResetBindings(true);
 			}
 		}
 
@@ -65,9 +65,11 @@ namespace VUserInterface
 			{
 				if (fSoulList == null)
 				{
-					var souls = new List<string>();
-					souls.Add("None");
-					souls.AddRange(OrderHelper.OrderNamesByKey(VDataContext.Instance.GetAllFileNames<Soul>()));
+					var souls = new List<string>
+					{
+						"None"
+					};
+					souls.AddRange(OrderHelper.OrderNamesByKey(VDataContext.GetAllFileNames<Soul>()));
 					fSoulList = souls;
 				}
 				return fSoulList;
@@ -88,13 +90,12 @@ namespace VUserInterface
 
 		void AddNewSoulButton_Click(object sender, EventArgs e)
 		{
-			var oldSoul = Soul;
-			var soul = BizoCreator.Create(typeof(Soul), new object[0]);
+			var soul = BizoCreator.Create(typeof(Soul), Array.Empty<object>());
 			var soulForm = new SoulForm(soul);
 			soulForm.SoulCollection = SoulCollection;
 			soulForm.ShowDialog();
 
-			if (!(soulForm.Parent is EmptySoul) && soulForm.Parent.ExistsInXML)
+			if (soulForm.Parent is not EmptySoul && soulForm.Parent.ExistsInXML)
 			{
 				var bindingField = DataBindings.GetBindingField("Soul");
 				fSoulList = null;

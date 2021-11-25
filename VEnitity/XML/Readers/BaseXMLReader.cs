@@ -35,7 +35,7 @@ namespace VEntityFramework.XML
 			{
 				if (matchingProperty.IsBusinessObject())
 				{
-					PopulateBusinessObject(bizo, childNode, matchingProperty);
+                    PopulateBusinessObject(bizo, childNode, matchingProperty);
 				}
 				else
 				{
@@ -46,7 +46,8 @@ namespace VEntityFramework.XML
 
 		static bool ShouldReportError(BusinessObject bizo, XmlNode childNode)
 		{
-			if (bizo.GetType().Name == "UnitConfiguration")
+			var bizoName = bizo.GetType().Name;
+			if (bizoName == "UnitConfiguration")
 			{
 				return false;  // we depreciated lots of UnitConfig stuff, so until I flush out my local xmls, ignore these
 			}
@@ -54,20 +55,25 @@ namespace VEntityFramework.XML
 			{
 				return false; // the Key for unit is used in the construction of the class, we don't need to set it anywhere else
 			}
-			else if (bizo.GetType().Name == "Unit" && (childNode.Name == "HasUnitSpec" || childNode.Name == "Key"))
+			else if (bizoName == "Unit" && (childNode.Name == "HasUnitSpec" || childNode.Name == "Key"))
 			{
 				// HasUnitSpec is now calculated from the spec on the loadout, not stored against a unit
 				// Key is now read before creating the Unit, it no longer sets the unit type after creating an empty unit
 				return false;
 			}
-			else if (bizo.GetType().Name == "Loadout" && (childNode.Name == "UseUnitStats" || childNode.Name == "UseSingleUnitEco"))
+			else if (bizoName == "Loadout" && (childNode.Name == "UseUnitStats" || childNode.Name == "UseSingleUnitEco"))
 			{
 				return false; // UseUnitStats is now calculated depending if the current unit is selected or not
+			}
+			else if (bizoName == "Profile" && childNode.Name == "ModScore")
+			{
+				return false;
+				// mods are now saved per difficulty, not as a clump
 			}
 			return true;
 		}
 
-		void PopulateBusinessObject(BusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
+        static void PopulateBusinessObject(BusinessObject bizo, XmlNode childNode, PropertyInfo matchingProperty)
 		{
 			if (matchingProperty.GetValue(bizo) is BusinessObject childBizo)
 			{
@@ -75,7 +81,7 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		void PopulateBusinessObject(BusinessObject childBizo, XmlNode childNode)
+		static void PopulateBusinessObject(BusinessObject childBizo, XmlNode childNode)
 		{
 			var reader = VXMLReader.GetXmlReader(childBizo.GetType());
 			reader.PopulateFromXML(childBizo, childNode);
@@ -136,7 +142,10 @@ namespace VEntityFramework.XML
 			}
 		}
 
-		bool IsKey(XmlNode childNode) => XmlKey == childNode.Name;
+		bool IsKey(XmlNode childNode)
+		{
+			return XmlKey == childNode.Name;
+		}
 
 		protected virtual string XmlKey => "Key";
 
@@ -146,7 +155,7 @@ namespace VEntityFramework.XML
 			return (property?.IncludeInVXml() ?? false) ? property : null;
 		}
 
-		XmlNode GetKeyNode(XmlNode node)
+		static XmlNode GetKeyNode(XmlNode node)
 		{
 			foreach (XmlNode child in node)
 			{

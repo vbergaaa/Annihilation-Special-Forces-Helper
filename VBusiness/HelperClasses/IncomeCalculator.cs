@@ -38,9 +38,9 @@ namespace VBusiness.HelperClasses
 				units.AddRange(Room.New(loadout.IncomeManager.AdditionalFarmRoom).EnemiesPerWave.TierUp(tierUp).ToList());
 			}
 
-			units.AddRange(units.SelectRecursive(e => e.Type.GetAdditionalSpawns(loadout.UnitConfiguration.Difficulty.UnitTierIncrease, loadout.IncomeManager.FarmRoom).Multiply(e.Quantity)));
+			units.AddRange(units.SelectRecursive(e => e.Type.GetAdditionalSpawns(tierUp, loadout.IncomeManager.FarmRoom).Multiply(e.Quantity)));
 
-			IEnumerable<EnemyQuantity> infSpawnerUnits = loadout.IncomeManager.HasInfinitySpawner
+			var infSpawnerUnits = loadout.IncomeManager.HasInfinitySpawner
 				? new[] { new EnemyQuantity(EnemyType.InfestedTerran, 20) }.TierUp(tierUp)
 				: Array.Empty<EnemyQuantity>();
 
@@ -67,7 +67,10 @@ namespace VBusiness.HelperClasses
 
 			spawnsPerMinute = 60.0 / 9.0; // 9 secounds looks like the first bruta wave period
 
-			foreach (var unit in GetBrutaWaves())
+			var baseBrutaWaves = GetBrutaWaves();
+			var tieredUpBrutaWaves = baseBrutaWaves.TierUp(tierUp).ToList();
+			tieredUpBrutaWaves.AddRange(tieredUpBrutaWaves.SelectRecursive(e => e.Type.GetAdditionalSpawns(tierUp, loadout.IncomeManager.FarmRoom).Multiply(e.Quantity)));
+			foreach (var unit in tieredUpBrutaWaves)
 			{
 				var enemy = EnemyUnit.New(unit.Type);
 				totalKills += (enemy.KillBounty + killsPerKill) * unit.Quantity * spawnsPerMinute;
@@ -148,7 +151,7 @@ namespace VBusiness.HelperClasses
 			public double Kills { get; set; }
 			public double Minerals { get; set; }
 
-			public static Resources operator +(Resources a, Resources b) => new Resources(a.Minerals + b.Minerals, a.Kills + b.Kills);
+			public static Resources operator +(Resources a, Resources b) => new(a.Minerals + b.Minerals, a.Kills + b.Kills);
 		}
 	}
 }

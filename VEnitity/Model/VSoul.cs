@@ -23,7 +23,7 @@ namespace VEntityFramework.Model
 		public new VLoadoutSouls Parent { get; set; }
 
 		[VXML(false)]
-		public VLoadout Loadout { get => Parent?.Loadout; }
+		public VLoadout Loadout => Parent?.Loadout;
 
 		#endregion
 

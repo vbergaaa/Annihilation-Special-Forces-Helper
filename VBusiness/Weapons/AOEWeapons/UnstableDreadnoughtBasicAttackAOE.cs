@@ -14,6 +14,9 @@ namespace VBusiness.Weapons
 			return 15 + 1.2 * loadout.Upgrades.AttackUpgrade;
 		}
 
-		protected override BasicAttackWeapon GetNewBaseWeapon() => new UnstableDreadnoughtBasicWeapon();
+		protected override BasicAttackWeapon GetNewBaseWeapon()
+		{
+			return new UnstableDreadnoughtBasicWeapon();
+		}
 	}
 }

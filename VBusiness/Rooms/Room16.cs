@@ -25,7 +25,6 @@ namespace VBusiness.Rooms
 		{
 			return new List<EnemyQuantity>()
 			{
-				new EnemyQuantity(EnemyType.Roach, 18),
 				new EnemyQuantity(EnemyType.GiantAbberation, 8),
 			};
 		}

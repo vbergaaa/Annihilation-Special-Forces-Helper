@@ -77,8 +77,8 @@ namespace VEntityFramework.Model
 
 		// Demonic
 		Draining,
-		Alacrity,
 		Stats,
+		Alacrity,
 
 		// Titan
 		[Description("The Striding Titan")]

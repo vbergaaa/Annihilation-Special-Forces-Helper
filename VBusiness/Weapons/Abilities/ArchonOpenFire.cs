@@ -4,10 +4,19 @@
 	{
 		// passive: damaged enemies are marked for 3s
 		// active: atk all marked enemies with basic atk
-		protected override BasicAOEAttackWeapon GetNewAOEWeapon() => new ArchonBasicAttackAOE();
+		protected override BasicAOEAttackWeapon GetNewAOEWeapon()
+		{
+			return new ArchonBasicAttackAOE();
+		}
 
-		protected override BasicAttackWeapon GetNewBaseWeapon() => new ArchonBasicWeapon();
+		protected override BasicAttackWeapon GetNewBaseWeapon()
+		{
+			return new ArchonBasicWeapon();
+		}
 
-		protected override BasicAbilityWeapon GetNewStormWeapon() => new TemplarStorm();
+		protected override BasicAbilityWeapon GetNewStormWeapon()
+		{
+			return new TemplarStorm();
+		}
 	}
 }

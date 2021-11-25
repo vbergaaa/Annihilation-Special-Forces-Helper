@@ -15,7 +15,11 @@ namespace VEntityFramework.Model
 #endif
 		}
 
-		public static void Info(string message) => Report(message, LogState.Info);
+		public static void Info(string message)
+		{
+			Report(message, LogState.Info);
+		}
+
 		public static void Report(string message, LogState state, Exception ex = null)
 		{
 			var requiredState = VRegistry.Instance.LogVerbosity;
@@ -39,7 +43,7 @@ namespace VEntityFramework.Model
 
 		protected internal override string GetSaveNameForXML()
 		{
-			return $"{State}_{DateTime.Now.ToString("yyyyMMdd_hhmmss")}_{LogNumber++}";
+			return $"{State}_{DateTime.Now:yyyyMMdd_hhmmss}_{LogNumber++}";
 		}
 
 		[VXML(true)]

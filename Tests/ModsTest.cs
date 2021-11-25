@@ -53,11 +53,11 @@ namespace Tests
 		{
 			var loadout = TestHelper.GetEmptyLoadout();
 			loadout.UnitConfiguration.DifficultyLevel = testValues.Diff;
-			PopulateFromTestCase(loadout.Mods, testValues);
+            PopulateFromTestCase(loadout.Mods, testValues);
 			Assert.That(loadout.Mods.TotalModScore, Is.EqualTo(testValues.Expected));
 		}
 
-		void PopulateFromTestCase(VModsCollection mods, ModScoreTest testValues)
+        static void PopulateFromTestCase(VModsCollection mods, ModScoreTest testValues)
 		{
 			mods.Damage.CurrentLevel = (short)testValues.Damage;
 			mods.Health.CurrentLevel = (short)testValues.Health;

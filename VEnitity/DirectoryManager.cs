@@ -56,7 +56,7 @@ namespace VEntityFramework
 			return fileName;
 		}
 
-		static internal bool CheckFileExists<T>(string fileName)
+		internal static bool CheckFileExists<T>(string fileName)
 		{
 			return File.Exists(GetFullPathWithExtension<T>(fileName));
 		}

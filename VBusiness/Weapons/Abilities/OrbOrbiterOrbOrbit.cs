@@ -10,7 +10,10 @@ namespace VBusiness.Weapons
 
 		protected override double AbilityCooldown => 15;
 
-		protected override CommonOrbAttack GetBasicOrbWeapon() => new OrbOrbiterBasicWeapon();
+		protected override CommonOrbAttack GetBasicOrbWeapon()
+		{
+			return new OrbOrbiterBasicWeapon();
+		}
 
 		protected override IEnumerable<CommonOrbAbility> GetOrbAbilities()
 		{

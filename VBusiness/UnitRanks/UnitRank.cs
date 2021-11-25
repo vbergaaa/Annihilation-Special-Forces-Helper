@@ -39,18 +39,6 @@ namespace VBusiness.Ranks
 
 		#region Buffs
 
-		#region MegaBuffs
-
-		public void ActivateMegaBuff() { }
-
-		public void ActivateSuperMegaBuff() { }
-
-		public void DeactivateMegaBuff() { }
-
-		public void DeactivateSuperMegaBuff() { }
-
-		#endregion
-
 		#region God Buffs
 
 		public void ActivateGodBuff()
@@ -76,18 +64,6 @@ namespace VBusiness.Ranks
 			Loadout.Stats.CriticalChance -= 10;
 			Loadout.Stats.CriticalDamage -= 20;
 		}
-
-		#endregion
-
-		#region DivineBuffs
-
-		public void ActivateDivineBuff() { }
-
-		public void ActivateSuperDivineBuff() { }
-
-		public void DeactivateDivineBuff() { }
-
-		public void DeactivateSuperDivineBuff() { }
 
 		#endregion
 
@@ -143,14 +119,6 @@ namespace VBusiness.Ranks
 
 		#endregion
 
-		#region QuasarBuffs
-
-		public void ActivateQuasarBuff() { }
-
-		public void DeactivateQuasarBuff() { }
-
-		#endregion
-
 		#region VoidBuffs
 
 		public void ActivateVoidBuff()
@@ -171,25 +139,6 @@ namespace VBusiness.Ranks
 
 		#region Activate
 
-		#region MegaBuffs
-
-		void ActivateMegaBuffs()
-		{
-			if (Rank >= UnitRankType.SS)
-			{
-				if (Rank >= UnitRankType.SSS)
-				{
-					ActivateSuperMegaBuff();
-				}
-				else
-				{
-					ActivateMegaBuff();
-				}
-			}
-		}
-
-		#endregion
-
 		#region GodBuffs
 
 		void ActivateGodBuffs()
@@ -203,25 +152,6 @@ namespace VBusiness.Ranks
 				else
 				{
 					ActivateGodBuff();
-				}
-			}
-		}
-
-		#endregion
-
-		#region Divine Buffs
-
-		void ActivateDivineBuffs()
-		{
-			if (Rank >= UnitRankType.SXD)
-			{
-				if (Rank >= UnitRankType.SZ)
-				{
-					ActivateSuperDivineBuff();
-				}
-				else
-				{
-					ActivateDivineBuff();
 				}
 			}
 		}
@@ -251,10 +181,6 @@ namespace VBusiness.Ranks
 
 		void ActivateVoidBuffs()
 		{
-			if (Rank >= UnitRankType.SXDZ)
-			{
-				ActivateQuasarBuff();
-			}
 			if (Rank >= UnitRankType.XYZ)
 			{
 				ActivateVoidBuff();
@@ -266,25 +192,6 @@ namespace VBusiness.Ranks
 		#endregion
 
 		#region Deactivate
-
-		#region MegaBuffs
-
-		void DeactivateMegaBuffs()
-		{
-			if (Rank >= UnitRankType.SS)
-			{
-				if (Rank >= UnitRankType.SSS)
-				{
-					DeactivateSuperMegaBuff();
-				}
-				else
-				{
-					DeactivateMegaBuff();
-				}
-			}
-		}
-
-		#endregion
 
 		#region GodBuffs
 
@@ -299,25 +206,6 @@ namespace VBusiness.Ranks
 				else
 				{
 					DeactivateGodBuff();
-				}
-			}
-		}
-
-		#endregion
-
-		#region Divine Buffs
-
-		void DeactivateDivineBuffs()
-		{
-			if (Rank >= UnitRankType.SXD)
-			{
-				if (Rank >= UnitRankType.SZ)
-				{
-					DeactivateSuperDivineBuff();
-				}
-				else
-				{
-					DeactivateDivineBuff();
 				}
 			}
 		}
@@ -347,10 +235,6 @@ namespace VBusiness.Ranks
 
 		void DeactivateVoidBuffs()
 		{
-			if (Rank >= UnitRankType.SXDZ)
-			{
-				DeactivateQuasarBuff();
-			}
 			if (Rank >= UnitRankType.XYZ)
 			{
 				DeactivateVoidBuff();
@@ -427,9 +311,7 @@ namespace VBusiness.Ranks
 				Loadout.Stats.UpdateCooldownSpeed("Rank", Speed);
 				Loadout.Stats.MoveSpeed += Speed;
 
-				ActivateMegaBuffs();
 				ActivateGodBuffs();
-				ActivateDivineBuffs();
 				ActivateOmegaBuffs();
 				ActivateVoidBuffs();
 				ActivateTrifectaPower();
@@ -455,9 +337,7 @@ namespace VBusiness.Ranks
 				Loadout.Stats.UpdateCooldownSpeed("Rank", -Speed);
 				Loadout.Stats.MoveSpeed -= Speed;
 
-				DeactivateMegaBuffs();
 				DeactivateGodBuffs();
-				DeactivateDivineBuffs();
 				DeactivateOmegaBuffs();
 				DeactivateVoidBuffs();
 				DeactivateTrifectaPower();

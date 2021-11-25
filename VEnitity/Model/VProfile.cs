@@ -8,8 +8,6 @@ namespace VEntityFramework.Model
 	{
 		#region Properties
 
-		#region Name
-
 		[VXML(true)]
 		public string Name
 		{
@@ -25,10 +23,6 @@ namespace VEntityFramework.Model
 			}
 		}
 		string fName;
-
-		#endregion
-
-		#region RankPoints
 
 
 		[VXML(true)]
@@ -47,10 +41,6 @@ namespace VEntityFramework.Model
 		}
 		long fRankPoints;
 
-		#endregion
-
-		#region Rank
-
 		[VXML(true)]
 		public PlayerRank Rank
 		{
@@ -67,30 +57,7 @@ namespace VEntityFramework.Model
 		}
 		PlayerRank fRank;
 
-		#endregion
-
-		#region ModifierScore
-
-
-		[VXML(true)]
-		public int ModScore
-		{
-			get => fModifierScore;
-			set
-			{
-				if (fModifierScore != value)
-				{
-					fModifierScore = value;
-					HasChanges = true;
-					OnPropertyChanged(nameof(ModScore));
-				}
-			}
-		}
-		int fModifierScore;
-
-		#endregion
-
-		#region Gems
+		public virtual int ModScore { get; } 
 
 
 		[VXML(true)]
@@ -109,17 +76,11 @@ namespace VEntityFramework.Model
 		}
 		int fGems;
 
-		#endregion
-
-		#region ChallengePoints
-
-
 		[VXML(true)]
 		public int ChallengePoints
 		{
 			get => fChallengePoints;
-			set
-			{
+			set {
 				if (fChallengePoints != value)
 				{
 					fChallengePoints = value;
@@ -130,19 +91,26 @@ namespace VEntityFramework.Model
 		}
 		int fChallengePoints;
 
-		#endregion
-
-		#region PerkPoints
+		[VXML(true)]
+		public int AchievementCount
+		{
+			get => fAchievementCount;
+			set {
+				if (fAchievementCount != value)
+				{
+					fAchievementCount = value;
+					HasChanges = true;
+					OnPropertyChanged(nameof(AchievementCount));
+				}
+			}
+		}
+		int fAchievementCount;
 
 		public virtual long PerkPoints { get; }
 
-		#endregion
-
-		#region SoulCollection
-
 		public virtual VSoulCollection SoulCollection { get; }
 
-		#endregion
+		public virtual VPlayerMods PlayerMods { get; }
 
 		#endregion
 

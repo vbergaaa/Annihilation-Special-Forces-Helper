@@ -7,10 +7,12 @@ namespace Tests
 {
 	public class IncomeTests
 	{
+		// room7 = 100 lings
 		[TestCase(RoomNumber.Room7, DifficultyLevel.Easy, 9 * 100 * 60.0 / 17.0, 0)]
 		[TestCase(RoomNumber.Room7, DifficultyLevel.Impossible, 5 * 100 * 60.0 / 17, 100 * 60.0 / 17)]
+		// room 5 = 10 abbs (+ units on death)
 		[TestCase(RoomNumber.Room5, DifficultyLevel.Easy, (10 * 20 + 40 * 4) * 60.0 / 17, 0)]
-		[TestCase(RoomNumber.Room5, DifficultyLevel.Impossible, (10 * 35 + 80 * 5) * 60.0 / 17.0, 80 * 60.0 / 17)]
+		[TestCase(RoomNumber.Room5, DifficultyLevel.Impossible, (10 * 35 + 40 * 5) * 60.0 / 17.0, 40 * 60.0 / 17)]
 		public void TestResourcesPerWave(RoomNumber room, DifficultyLevel diff, double expectedMinerals, double expectedKills)
 		{
 			var loadout = TestHelper.GetTestLoadout();

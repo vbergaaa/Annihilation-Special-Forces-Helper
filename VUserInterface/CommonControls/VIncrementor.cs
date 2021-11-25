@@ -19,7 +19,7 @@ namespace VUserInterface.CommonControls
 			get => fValue;
 			set
 			{
-				this.ValueLabel.Text = value.ToString();
+				ValueLabel.Text = value.ToString();
 				fValue = value;
 				OnValueChanged();
 				RefreshButtons();
@@ -116,8 +116,8 @@ namespace VUserInterface.CommonControls
 				ValueLabel.Left -= DPIScalingHelper.GetScaledX(5);
 				IncrementButton.Left -= DPIScalingHelper.GetScaledX(30);
 				CoreControl.Width -= DPIScalingHelper.GetScaledX(30);
-				this.Width -= DPIScalingHelper.GetScaledX(30);
-				this.Left += DPIScalingHelper.GetScaledX(30);
+				Width -= DPIScalingHelper.GetScaledX(30);
+				Left += DPIScalingHelper.GetScaledX(30);
 			}
 			if (value == IncrementorStyle.Normal)
 			{
@@ -125,8 +125,8 @@ namespace VUserInterface.CommonControls
 				ValueLabel.Left += DPIScalingHelper.GetScaledX(5);
 				IncrementButton.Left += DPIScalingHelper.GetScaledX(30);
 				CoreControl.Width += DPIScalingHelper.GetScaledX(30);
-				this.Width += DPIScalingHelper.GetScaledX(30);
-				this.Left -= DPIScalingHelper.GetScaledX(30);
+				Width += DPIScalingHelper.GetScaledX(30);
+				Left -= DPIScalingHelper.GetScaledX(30);
 			}
 		}
 
