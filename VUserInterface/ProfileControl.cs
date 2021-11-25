@@ -69,5 +69,17 @@ namespace VUserInterface
 				Profile.Rank = rank;
 			}
 		}
+
+		private void AchievementsButton_Click(object sender, System.EventArgs e)
+		{
+			var form = new AchievementsForm();
+			form.Show();
+		}
+
+		private void ModsButton_Click(object sender, System.EventArgs e)
+		{
+			var form = new PlayerModsForm(Profile.PlayerMods);
+			form.Show();
+		}
 	}
 }

@@ -13,8 +13,6 @@ namespace StarCodeDecryptor
 			fBankPathOverride = bankPathOverride;
 		}
 
-		#region Key
-
 		public string Key
 		{
 			get
@@ -43,10 +41,6 @@ namespace StarCodeDecryptor
 
 		string fKey;
 
-		#endregion
-
-		#region RankPoints
-
 		public int RankPoints
 		{
 			get
@@ -57,9 +51,15 @@ namespace StarCodeDecryptor
 			}
 		}
 
-		#endregion
-
-		#region Gems
+		public int AchievementCount
+		{
+			get 
+			{
+				var count = ExtractValueFromXml("FTW", "?^?^");
+				count = Starcode.Decrypt(count, Key, 3);
+				return Convert.ToInt32(count);			
+			}
+		}
 
 		public int Gems
 		{
@@ -71,33 +71,48 @@ namespace StarCodeDecryptor
 			}
 		}
 
-		#endregion
-
-		#region Saves
-
 		public string GetPerksStringAtSaveSlot(int slot)
 		{
 			var bankString = ExtractValueFromXml("Loads", $"Save{slot}");
 			return Starcode.Decrypt(bankString, Key, 3);
 		}
 
-		#endregion
-
-		#region ModScores
-
 		public string ModScores
 		{
-			get
-			{
+			get {
 				var gems = ExtractValueFromXml("534G%#", "H*H");
 				gems = Starcode.Decrypt(gems, Key, 2);
 				return gems;
 			}
 		}
 
-		#endregion
+		public bool[][] GetAchievements()
+		{
+			var diffs = new[]
+			{
+				"101",
+				"102",
+				"103",
+				"201",
+				"202",
+				"301",
+				"400",
+				"499",
+				"598",
+				"699",
+				"800",
+				"999",
+				"505",
+				"000",
+				"808",
+				"555",
+				"123",
+				"321"  
+			};
 
-		#region Bank
+			var pages = diffs.Select(x => Starcode.Decrypt(ExtractValueFromXml(x, "?^^?"), Key, 2));
+			return pages.Select(page => Enumerable.Range(0, 15).Select(x => page.Substring(x * 6, 6) == "857548").ToArray()).ToArray();
+		}
 
 		public XmlDocument Bank
 		{
@@ -125,10 +140,81 @@ namespace StarCodeDecryptor
 			return files.FirstOrDefault();
 		}
 
-		string ExtractValueFromXml(string section, string key)
+		public string ExtractValueFromXml(string section, string key)
 		{
 			var node = Bank.SelectSingleNode($"//Section[@name=\"{section}\"]/Key[@name=\"{key}\"]/Value");
 			return node.Attributes[0].Value;
+		}
+
+		public string GetValue(string key1, string key2, int validates)
+		{
+			var count = ExtractValueFromXml(key1, key2); 
+			count = Starcode.Decrypt(count, Key, validates);
+			return count;
+		}
+
+		public bool[] SoulCollection
+		{
+			get
+			{
+				try
+				{
+					var souls = GetValue("745%GD", "CoC", 2);
+					return Enumerable.Range(0, 54).Select(x => souls.Substring(x * 3, 3) == "?5?").ToArray();
+				}
+				catch
+				{
+					return new bool[54];
+				}
+			}
+		}
+
+		public bool[,] Challenges
+		{
+			get
+			{
+				try
+				{
+					var codes = new[]
+					{
+						"O00",
+						"0OO",
+						"0o0",
+						"EXL",
+						"ARC",
+						"PSG",
+						"SPR",
+						"(((",
+						")))",
+						"JJJ",
+						"QQQ",
+						"CRB"
+					};
+					var strings = codes.Select(x => GetValue(x, "%?%?", 2)).ToArray();
+
+					var array2 = new bool[45, 4];
+
+					for (var i = 0; i <= 3; i++)
+					{
+						for (var j = 0; j <= 2; j++)
+						{
+							for (var k = 0; k < 15; k++)
+							{
+								if (strings[(i) * 3 + j].Substring(k * 6, 6) == "%$#?y4")
+								{
+									array2[j * 15 + k, i] = true;
+								}
+							}
+						}
+					}
+
+					return array2;
+				}
+				catch
+				{
+					return new bool[45,4];
+				}
+			}
 		}
 
 		readonly Dictionary<string, string> keyMappings = new()
@@ -140,6 +226,12 @@ namespace StarCodeDecryptor
 			{ "$RS?e%D?uJd5rsYd5H?JytDYSR"      ,"EZ%?R?UEuhes45e57E%?Y%" }
 		};
 
-		#endregion
+		// "685$TYSHS", "YGSDG%$" -modscore codes, e.g, 77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ77XYZ55XDZ55XDZ444XZ444XZ111SZ555SS00000000000000056d$%54eyh%?
+
+		// "Kappa", "????" - no idea.. ?$%yAtu6ruyhTdzgWR%EYe -- probably a rank
+
+		// "BPR", "bleP" - experience, eg. 6095
+
+		// var x = decoder.GetValue("6H7dRT", "HoH", 2); //3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$3g$?%465gd%Y
 	}
 }

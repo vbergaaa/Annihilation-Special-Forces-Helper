@@ -17,7 +17,7 @@ namespace Tests
 			loadout.UnitConfiguration.DifficultyLevel = diff;
 			foreach (var mod in loadout.Mods.AllMods)
 			{
-				mod.CurrentLevel = VMod.MaxValue;
+				mod.CurrentLevel = mod.MaxValue;
 			}
 			((ModsCollection)loadout.Mods).PreventRoundingModscoreForTest = true;
 			Assert.That(loadout.Mods.TotalModScore, Is.EqualTo(expectedScore));

@@ -4,6 +4,7 @@ using System.Linq;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
 using VBusiness.Souls;
+using VEntityFramework;
 using VEntityFramework.Data;
 using VEntityFramework.Model;
 
@@ -22,8 +23,11 @@ namespace VBusiness
 					profile = Profile.Profile.GetProfile();
 				}
 				profile.RankPoints = decoder.RankPoints;
+				profile.AchievementCount = decoder.AchievementCount;
 				profile.Gems = decoder.Gems;
-				profile.ModScore = GetTotalModScoresFromString(decoder.ModScores);
+				SetTotalModScoresFromString(profile.PlayerMods, decoder.ModScores);
+				SetSoulCollection(profile.SoulCollection, decoder.SoulCollection);
+				profile.ChallengePoints = GetChallengePointCount(decoder.Challenges);
 				profile.Save();
 				Log.Info("Successfully Updated Profile From Bank");
 			}
@@ -33,20 +37,72 @@ namespace VBusiness
 			}
 		}
 
-		static int GetTotalModScoresFromString(string modScores)
+		private static int GetChallengePointCount(bool[,] challenges)
 		{
-			var totalScore = 0;
-			while (modScores.Length > 0)
+			var cp = 0;
+			var i = 0;
+			foreach (var x in challenges)
 			{
-				var score = modScores.Substring(0, 7);
-				if (score == "?%465gd")
+				i++;
+				if (x)
 				{
-					break;
+					cp++;
+					if (i % 4 == 3)
+					{
+						cp++;
+					}
 				}
-				totalScore += int.Parse(score);
-				modScores = modScores.Substring(7);
 			}
-			return totalScore;
+			return cp;
+		}
+
+		private static void SetSoulCollection(VSoulCollection soulCollection, bool[] soulsInBank)
+		{
+			soulCollection.DiscoveredSouls.Clear();
+			var uniqueSouls = Enum.GetValues<SoulType>().Where(x => x > VSoul.HighestNonUniqueSoul).ToArray();
+
+			for (var i = 0; i < uniqueSouls.Length; i++)
+			{
+				if (soulsInBank[i])
+				{
+					soulCollection.DiscoveredSouls.Add(uniqueSouls[i]);
+				}
+			}
+		}
+
+		static void SetTotalModScoresFromString(VPlayerMods mods, string modScores)
+		{
+			mods.VeryEasy = GetNextValueFromString(ref modScores);
+			mods.Easy = GetNextValueFromString(ref modScores);
+			mods.Normal = GetNextValueFromString(ref modScores);
+			mods.Hard = GetNextValueFromString(ref modScores);
+			mods.VeryHard = GetNextValueFromString(ref modScores);
+			mods.Insane = GetNextValueFromString(ref modScores);
+			mods.Brutal = GetNextValueFromString(ref modScores);
+			mods.Nightmare = GetNextValueFromString(ref modScores);
+			mods.Torment = GetNextValueFromString(ref modScores);
+			mods.Hell = GetNextValueFromString(ref modScores);
+			mods.Titanic = GetNextValueFromString(ref modScores);
+			mods.Mythic = GetNextValueFromString(ref modScores);
+			mods.Divine = GetNextValueFromString(ref modScores);
+			mods.Impossible = GetNextValueFromString(ref modScores);
+			mods.ZeroV = GetNextValueFromString(ref modScores);
+			mods.ZeroX = GetNextValueFromString(ref modScores);
+			mods.PureBlack = GetNextValueFromString(ref modScores);
+			mods.Annihilation = GetNextValueFromString(ref modScores);
+		}
+
+		private static int GetNextValueFromString(ref string modScores)
+		{
+			var score = modScores.Substring(0, 7);
+			if (score == "?%465gd")
+			{
+				return 0;
+			}
+
+			var value = int.Parse(score);
+			modScores = modScores.Substring(7);
+			return value;
 		}
 
 		public static void UpdateAllLoadouts()
@@ -63,7 +119,7 @@ namespace VBusiness
 
 			if (loadoutName != null)
 			{
-                VDataContext.ReadFromXML<Loadout>(loadoutName);
+				VDataContext.ReadFromXML<Loadout>(loadoutName);
 				Log.Info($"loaded loadout {loadoutName} into the cache, triggering a synchronisation if required.");
 				return;
 			}
@@ -93,7 +149,7 @@ namespace VBusiness
 
 				foreach (var loadout in loadoutNames.Where(x => x != matchingLoadout))
 				{
-                    VDataContext.Delete<Loadout>(loadout);
+					VDataContext.Delete<Loadout>(loadout);
 				}
 				return matchingLoadout;
 			}
@@ -217,7 +273,7 @@ namespace VBusiness
 
 				if (soul.Type != soulType)
 				{
-                    VDataContext.Delete<Soul>(soulName);
+					VDataContext.Delete<Soul>(soulName);
 					soul = Soul.New(soulType, null);
 				}
 			}
