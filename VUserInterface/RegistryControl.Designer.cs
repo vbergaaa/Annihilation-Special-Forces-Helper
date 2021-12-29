@@ -41,6 +41,7 @@ namespace VUserInterface
 			this.BankBackupFrequencyDescription = new VLabel();
 			this.BankBackupFrequencyUnitsLabel = new VLabel();
 			this.BankBackupFrequencyTextBox = new VTextBox();
+			this.BankBackupFrequencyInfoButton = new VButton();
 			this.TitleLabel = new VLabel();
 			this.VersionLabel = new VLabel();
 			this.SaveButton = new VButton();
@@ -103,17 +104,19 @@ namespace VUserInterface
 			this.BankBackupFrequencyTextBox.Name = "BankBackupFrequencyTextBox";
 			this.BankBackupFrequencyTextBox.Size = DPIScalingHelper.GetScaledSize(50, 25);
 			//
-			// BankBackupFrequencyDescription
+			// BankBackupFrequencyInfoButton
 			//
-			this.BankBackupFrequencyDescription.Location = DPIScalingHelper.GetScaledPoint(10, 160);
-			this.BankBackupFrequencyDescription.Name = "BankBackupFrequencyDescription";
-			this.BankBackupFrequencyDescription.Size = DPIScalingHelper.GetScaledSize(350, 65);
-			this.BankBackupFrequencyDescription.Text = "Setting this will create a backup of your bank file to:\r\n%AppData%/AnnihilationSpecialForcesHelper/Backups/\r\nwhen opening this app. Set this to zero to disable.\r\nRequires Profile Syncing to be enabled.";
+			this.BankBackupFrequencyInfoButton.Click += BankBackupFrequencyInfoButton_Click;
+			this.BankBackupFrequencyInfoButton.Location = DPIScalingHelper.GetScaledPoint(275, 135);
+			this.BankBackupFrequencyInfoButton.Name = "BankBackupFrequencyInfoButton";
+			this.BankBackupFrequencyInfoButton.Size = DPIScalingHelper.GetScaledSize(25, 25);
+			this.BankBackupFrequencyInfoButton.Text = "?";
 			//
 			// BankBackupFrequencyUnitsLabel
 			//
 			this.BankBackupFrequencyUnitsLabel.Location = DPIScalingHelper.GetScaledPoint(250, 136);
 			this.BankBackupFrequencyUnitsLabel.Name = "BankBackupFrequencyUnitsLabel";
+			this.BankBackupFrequencyUnitsLabel.Size = DPIScalingHelper.GetScaledSize(25, 30);
 			this.BankBackupFrequencyUnitsLabel.Text = "RP";
 			//
 			// RegistryControl
@@ -124,6 +127,7 @@ namespace VUserInterface
 			this.Controls.Add(BankBackupFrequencyTextBox);
 			this.Controls.Add(BankBackupFrequencyDescription);
 			this.Controls.Add(BankBackupFrequencyUnitsLabel);
+			this.Controls.Add(BankBackupFrequencyInfoButton);
 			this.Controls.Add(VersionLabel);
 			this.Controls.Add(SaveButton);
 			this.Controls.Add(TitleLabel);
@@ -142,5 +146,6 @@ namespace VUserInterface
 		VLabel TitleLabel;
 		VButton SaveButton;
 		VLabel VersionLabel;
+		VButton BankBackupFrequencyInfoButton;
 	}
 }
