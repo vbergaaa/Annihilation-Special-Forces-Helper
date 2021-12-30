@@ -15,20 +15,13 @@ namespace VEntityFramework.Model
 
 		#region Properties
 
-		#region GemCollection
+		[VXML(false)]
+		public VLoadout Loadout => GemCollection.Loadout;
 
 		[VXML(false)]
 		public VGemCollection GemCollection { get; private set; }
 
-		#endregion
-
-		#region MaxValue
-
 		public virtual short MaxValue { get; }
-
-		#endregion
-
-		#region CurrentLevel
 
 		[VXML(true)]
 		public virtual short CurrentLevel
@@ -66,22 +59,10 @@ namespace VEntityFramework.Model
 		}
 		short fCurrentLevel;
 
-		#endregion
-
-		#region Key
-
 		[VXML(true)]
 		public string Key => Name;
 
-		#endregion
-
-		#region NextLevelCost
-
 		public int NextLevelCost => GetCostOfNextLevel();
-
-		#endregion
-
-		#region Abstract Properties
 
 		public abstract string Name { get; }
 
@@ -89,7 +70,15 @@ namespace VEntityFramework.Model
 
 		protected abstract decimal IncrementCost { get; }
 
-		#endregion
+		public virtual string IncrementHint
+		{
+			get;
+		}
+
+		public virtual string DecrementHint
+		{
+			get;
+		}
 
 		#endregion
 

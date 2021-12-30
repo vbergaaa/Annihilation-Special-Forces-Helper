@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using VEntityFramework.Model;
 using VUserInterface.CommonControls;
 
@@ -73,6 +74,8 @@ namespace VUserInterface
 			this.CurrentLevelIncrementor.DataBindings.Add("Value", gemBindingSource, "CurrentLevel");
 			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", gemBindingSource, "MaxValue");
 			this.CurrentLevelIncrementor.MinValue = 0;
+			this.CurrentLevelIncrementor.IncrementHint = () => { return Gem.IncrementHint; };
+			this.CurrentLevelIncrementor.DecrementHint = () => { return Gem.DecrementHint; };
 			// 
 			// perkBindingSource
 			// 

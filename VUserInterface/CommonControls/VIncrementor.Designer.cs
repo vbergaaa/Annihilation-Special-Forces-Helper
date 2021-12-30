@@ -1,4 +1,6 @@
-﻿namespace VUserInterface.CommonControls
+﻿using System.Windows.Forms;
+
+namespace VUserInterface.CommonControls
 {
 	partial class VIncrementor
 	{
@@ -30,6 +32,8 @@
 		{
 			this.DecrementButton = new VUserInterface.CommonControls.VButton();
 			this.IncrementButton = new VUserInterface.CommonControls.VButton();
+			this.IncrementToolTip = new ToolTip();
+			this.DecrementToolTip = new ToolTip();
 			this.ValueLabel = new VUserInterface.CommonControls.VLabel();
 			this.SuspendLayout();
 			// 
@@ -52,6 +56,16 @@
 			this.IncrementButton.TabIndex = 2;
 			this.IncrementButton.Text = "+";
 			this.IncrementButton.Click += new System.EventHandler(this.IncrementButton_Click);
+			//
+			// IncrementToolTip
+			//
+			this.IncrementToolTip.SetToolTip(this.IncrementButton, "Test");
+			this.IncrementToolTip.Popup += IncrementToolTip_Popup;
+			//
+			// DecrementToolTip
+			//
+			this.DecrementToolTip.SetToolTip(this.DecrementButton, "Test");
+			this.DecrementToolTip.Popup += DecrementToolTip_Popup;
 			// 
 			// ValueLabel
 			// 
@@ -92,5 +106,7 @@
 		private VButton DecrementButton;
 		private VButton IncrementButton;
 		private VLabel ValueLabel;
+		private ToolTip IncrementToolTip;
+		private ToolTip DecrementToolTip;
 	}
 }

@@ -12,8 +12,6 @@ namespace VUserInterface.CommonControls
 
 		#region Properties
 
-		#region Value
-
 		public int Value
 		{
 			get => fValue;
@@ -27,15 +25,7 @@ namespace VUserInterface.CommonControls
 		}
 		int fValue;
 
-		#endregion
-
-		#region DisableShiftClick
-
 		public bool DisableShiftClick { get; set; }
-
-		#endregion
-
-		#region IncrementorStyle
 
 		public IncrementorStyle IncrementorStyle
 		{
@@ -51,10 +41,6 @@ namespace VUserInterface.CommonControls
 		}
 		IncrementorStyle? fIncrementorStyle;
 
-		#endregion
-
-		#region MaxValue
-
 		public int MaxValue
 		{
 			get => fMaxValue;
@@ -65,10 +51,6 @@ namespace VUserInterface.CommonControls
 			}
 		}
 		int fMaxValue = int.MaxValue;
-
-		#endregion
-
-		#region MinValue
 
 		public int MinValue
 		{
@@ -81,10 +63,6 @@ namespace VUserInterface.CommonControls
 		}
 		int fMinValue;
 
-		#endregion
-
-		#region Increment Amount
-
 		public int IncrementAmount
 		{
 			get => fIncrementAmount;
@@ -92,7 +70,16 @@ namespace VUserInterface.CommonControls
 		}
 		int fIncrementAmount = 1;
 
-		#endregion
+		// as ugly as this design pattern is, it allows for lazy loading, and as generating the tooltip is often expensive and will rarely be used, lazy loading is a requirement.
+		public Func<string> IncrementHint
+		{
+			get; set;
+		}
+
+		public Func<string> DecrementHint
+		{
+			get; set;
+		}
 
 		#endregion
 
@@ -134,8 +121,6 @@ namespace VUserInterface.CommonControls
 
 		#region Event Handling
 
-		#region IncrementButton_Click
-
 		public void IncrementButton_Click(object sender, EventArgs e)
 		{
 			if (!DisableShiftClick && Control.ModifierKeys == Keys.Control)
@@ -152,9 +137,46 @@ namespace VUserInterface.CommonControls
 			}
 		}
 
-		#endregion
+		private void IncrementToolTip_Popup(object sender, PopupEventArgs e)
+		{
+			if (!isSettingToolTip)
+			{
+				isSettingToolTip = true;
+				var info = sender as ToolTip;
 
-		#region DecrementButton_Click
+				if (IncrementHint != null)
+				{
+					var hint = IncrementHint();
+					info.SetToolTip(e.AssociatedControl, hint);
+				}
+				else
+				{
+					info.SetToolTip(e.AssociatedControl, string.Empty);
+				}
+				isSettingToolTip = false;
+			}
+		}
+
+		private void DecrementToolTip_Popup(object sender, PopupEventArgs e)
+		{
+			if (!isSettingToolTip)
+			{
+				isSettingToolTip = true;
+				var info = sender as ToolTip;
+
+				if (DecrementHint != null)
+				{
+					var hint = DecrementHint();
+					info.SetToolTip(e.AssociatedControl, hint);
+				}
+				else
+				{
+					info.SetToolTip(e.AssociatedControl, string.Empty);
+				}
+				isSettingToolTip = false;
+			}
+		}
+		bool isSettingToolTip;
 
 		public void DecrementButton_Click(object sender, EventArgs e)
 		{
@@ -171,8 +193,6 @@ namespace VUserInterface.CommonControls
 				Value -= 1 * IncrementAmount;
 			}
 		}
-
-		#endregion
 
 		#endregion
 
