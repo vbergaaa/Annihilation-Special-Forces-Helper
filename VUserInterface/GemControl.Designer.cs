@@ -74,8 +74,8 @@ namespace VUserInterface
 			this.CurrentLevelIncrementor.DataBindings.Add("Value", gemBindingSource, "CurrentLevel");
 			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", gemBindingSource, "MaxValue");
 			this.CurrentLevelIncrementor.MinValue = 0;
-			this.CurrentLevelIncrementor.IncrementHint = () => { return Gem.IncrementHint; };
-			this.CurrentLevelIncrementor.DecrementHint = () => { return Gem.DecrementHint; };
+			this.CurrentLevelIncrementor.IncrementHint = (x) => { return Gem.GetIncrementHint(x); };
+			this.CurrentLevelIncrementor.DecrementHint = (x) => { return Gem.GetDecrementHint(x); };
 			// 
 			// perkBindingSource
 			// 

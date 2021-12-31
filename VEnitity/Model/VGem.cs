@@ -70,14 +70,14 @@ namespace VEntityFramework.Model
 
 		protected abstract decimal IncrementCost { get; }
 
-		public virtual string IncrementHint
+		public virtual string GetIncrementHint(int x)
 		{
-			get;
+			return string.Empty;
 		}
 
-		public virtual string DecrementHint
+		public virtual string GetDecrementHint(int x)
 		{
-			get;
+			return string.Empty;
 		}
 
 		#endregion

@@ -71,12 +71,12 @@ namespace VUserInterface.CommonControls
 		int fIncrementAmount = 1;
 
 		// as ugly as this design pattern is, it allows for lazy loading, and as generating the tooltip is often expensive and will rarely be used, lazy loading is a requirement.
-		public Func<string> IncrementHint
+		public Func<int, string> IncrementHint
 		{
 			get; set;
 		}
 
-		public Func<string> DecrementHint
+		public Func<int, string> DecrementHint
 		{
 			get; set;
 		}
@@ -123,77 +123,59 @@ namespace VUserInterface.CommonControls
 
 		public void IncrementButton_Click(object sender, EventArgs e)
 		{
-			if (!DisableShiftClick && Control.ModifierKeys == Keys.Control)
-			{
-				Value += 100 * IncrementAmount;
-			}
-			else if (!DisableShiftClick && Control.ModifierKeys == Keys.Shift)
-			{
-				Value += 10 * IncrementAmount;
-			}
-			else
-			{
-				Value += 1 * IncrementAmount;
-			}
+			var modifier = GetModifier();
+			Value += modifier * IncrementAmount;
 		}
-
-		private void IncrementToolTip_Popup(object sender, PopupEventArgs e)
-		{
-			if (!isSettingToolTip)
-			{
-				isSettingToolTip = true;
-				var info = sender as ToolTip;
-
-				if (IncrementHint != null)
-				{
-					var hint = IncrementHint();
-					info.SetToolTip(e.AssociatedControl, hint);
-				}
-				else
-				{
-					info.SetToolTip(e.AssociatedControl, string.Empty);
-				}
-				isSettingToolTip = false;
-			}
-		}
-
-		private void DecrementToolTip_Popup(object sender, PopupEventArgs e)
-		{
-			if (!isSettingToolTip)
-			{
-				isSettingToolTip = true;
-				var info = sender as ToolTip;
-
-				if (DecrementHint != null)
-				{
-					var hint = DecrementHint();
-					info.SetToolTip(e.AssociatedControl, hint);
-				}
-				else
-				{
-					info.SetToolTip(e.AssociatedControl, string.Empty);
-				}
-				isSettingToolTip = false;
-			}
-		}
-		bool isSettingToolTip;
 
 		public void DecrementButton_Click(object sender, EventArgs e)
 		{
+			var modifier = GetModifier();
+			Value -= modifier * IncrementAmount;
+		}
+
+		private int GetModifier()
+		{
+			var modifier = 1;
 			if (!DisableShiftClick && Control.ModifierKeys == Keys.Control)
 			{
-				Value -= 100 * IncrementAmount;
+				modifier = 100;
 			}
 			else if (!DisableShiftClick && Control.ModifierKeys == Keys.Shift)
 			{
-				Value -= 10 * IncrementAmount;
+				modifier = 10;
 			}
-			else
+			return modifier;
+		}
+
+		private void IncrementButton_MouseHover(object sender, System.EventArgs e)
+		{
+			if (IncrementHint != null)
 			{
-				Value -= 1 * IncrementAmount;
+				// popups currently don't work properly when control is held in so if control is held in let's disable the functionality
+				if (Control.ModifierKeys.HasFlag(Keys.Control))
+				{
+					IncrementDecrementToolTip.RemoveAll();
+					return;
+				}
+
+				IncrementDecrementToolTip.Show(IncrementHint(GetModifier()), sender as Control);
 			}
 		}
 
+		private void DecrementButton_MouseHover(object sender, System.EventArgs e)
+		{
+			if (DecrementHint != null)
+			{
+				// popups currently don't work properly when control is held in so if control is held in let's disable the functionality
+				if (Control.ModifierKeys.HasFlag(Keys.Control))
+				{
+					IncrementDecrementToolTip.RemoveAll();
+					return;
+				}
+
+				IncrementDecrementToolTip.Show(DecrementHint(GetModifier()), sender as Control);
+			}
+		}
 		#endregion
 
 		#region Implementation

@@ -41,82 +41,78 @@ namespace VBusiness.Gems
 			return --level;
 		}
 
-		public override string IncrementHint
+		public override string GetIncrementHint(int count)
 		{
-			get {
-				var stats = Loadout.Stats;
-				var damageIncrease = 0.0;
-				var toughnessIncrease = 0.0;
+			var stats = Loadout.Stats;
+			var damageIncrease = 0.0;
+			var toughnessIncrease = 0.0;
 
-				using (stats.SuspendRefreshingStatBindings())
-				{
-					var oldDamage = Loadout.Stats.Damage;
-					var oldToughness = Loadout.Stats.Toughness;
-					OnPerkLevelChanged(1);
-					var newDamage = Loadout.Stats.Damage;
-					var newToughness = Loadout.Stats.Toughness;
-					OnPerkLevelChanged(-1);
+			using (stats.SuspendRefreshingStatBindings())
+			{
+				var oldDamage = Loadout.Stats.Damage;
+				var oldToughness = Loadout.Stats.Toughness;
+				OnPerkLevelChanged(count);
+				var newDamage = Loadout.Stats.Damage;
+				var newToughness = Loadout.Stats.Toughness;
+				OnPerkLevelChanged(-count);
 
-					damageIncrease = (newDamage / oldDamage) * 100 - 100;
-					toughnessIncrease = (newToughness / oldToughness) * 100 - 100;
-				}
-
-				var hint = string.Empty;
-				if (damageIncrease > 0)
-				{
-					hint += $"Damage: +{Math.Round(damageIncrease, 3)}%";
-					hint += "\r\n";
-				}
-				if (toughnessIncrease > 0)
-				{
-					hint += $"Toughness: +{Math.Round(toughnessIncrease, 3)}%";
-					hint += "\r\n";
-				}
-				if (hint == string.Empty)
-				{
-					hint += "This gem will not affect Damage or Toughness for this unit";
-				}
-				return hint;
+				damageIncrease = (newDamage / oldDamage) * 100 - 100;
+				toughnessIncrease = (newToughness / oldToughness) * 100 - 100;
 			}
+
+			var hint = string.Empty;
+			if (damageIncrease > 0)
+			{
+				hint += $"Damage: +{Math.Round(damageIncrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (toughnessIncrease > 0)
+			{
+				hint += $"Toughness: +{Math.Round(toughnessIncrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (hint == string.Empty)
+			{
+				hint += "This gem will not affect Damage or Toughness for this unit";
+			}
+			return hint;
 		}
 
-		public override string DecrementHint
+		public override string GetDecrementHint(int count)
 		{
-			get {
-				var stats = Loadout.Stats;
-				var damageDecrease = 0.0;
-				var toughnessDecrease = 0.0;
+			var stats = Loadout.Stats;
+			var damageDecrease = 0.0;
+			var toughnessDecrease = 0.0;
 
-				using (stats.SuspendRefreshingStatBindings())
-				{
-					var oldDamage = Loadout.Stats.Damage;
-					var oldToughness = Loadout.Stats.Toughness;
-					OnPerkLevelChanged(-1);
-					var newDamage = Loadout.Stats.Damage;
-					var newToughness = Loadout.Stats.Toughness;
-					OnPerkLevelChanged(1);
+			using (stats.SuspendRefreshingStatBindings())
+			{
+				var oldDamage = Loadout.Stats.Damage;
+				var oldToughness = Loadout.Stats.Toughness;
+				OnPerkLevelChanged(-count);
+				var newDamage = Loadout.Stats.Damage;
+				var newToughness = Loadout.Stats.Toughness;
+				OnPerkLevelChanged(count);
 
-					damageDecrease = (newDamage / oldDamage) * 100 - 100;
-					toughnessDecrease = (newToughness / oldToughness) * 100 - 100;
-				}
-
-				var hint = string.Empty;
-				if (damageDecrease > 0)
-				{
-					hint += $"Damage: {Math.Round(damageDecrease, 3)}%";
-					hint += "\r\n";
-				}
-				if (toughnessDecrease > 0)
-				{
-					hint += $"Toughness: {Math.Round(toughnessDecrease, 3)}%";
-					hint += "\r\n";
-				}
-				if (hint == string.Empty)
-				{
-					hint += "This gem will not affect Damage or Toughness for this unit";
-				}
-				return hint;
+				damageDecrease = (newDamage / oldDamage) * 100 - 100;
+				toughnessDecrease = (newToughness / oldToughness) * 100 - 100;
 			}
+
+			var hint = string.Empty;
+			if (damageDecrease > 0)
+			{
+				hint += $"Damage: {Math.Round(damageDecrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (toughnessDecrease > 0)
+			{
+				hint += $"Toughness: {Math.Round(toughnessDecrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (hint == string.Empty)
+			{
+				hint += "This gem will not affect Damage or Toughness for this unit";
+			}
+			return hint;
 		}
 
 		#endregion

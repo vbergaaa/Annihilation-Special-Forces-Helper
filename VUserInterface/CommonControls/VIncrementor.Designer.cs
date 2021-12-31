@@ -32,8 +32,7 @@ namespace VUserInterface.CommonControls
 		{
 			this.DecrementButton = new VUserInterface.CommonControls.VButton();
 			this.IncrementButton = new VUserInterface.CommonControls.VButton();
-			this.IncrementToolTip = new ToolTip();
-			this.DecrementToolTip = new ToolTip();
+			this.IncrementDecrementToolTip = new ToolTip();
 			this.ValueLabel = new VUserInterface.CommonControls.VLabel();
 			this.SuspendLayout();
 			// 
@@ -46,6 +45,7 @@ namespace VUserInterface.CommonControls
 			this.DecrementButton.TabIndex = 1;
 			this.DecrementButton.Text = "-";
 			this.DecrementButton.Click += new System.EventHandler(this.DecrementButton_Click);
+			this.DecrementButton.MouseHover += DecrementButton_MouseHover;
 			// 
 			// IncrementButton
 			// 
@@ -56,16 +56,7 @@ namespace VUserInterface.CommonControls
 			this.IncrementButton.TabIndex = 2;
 			this.IncrementButton.Text = "+";
 			this.IncrementButton.Click += new System.EventHandler(this.IncrementButton_Click);
-			//
-			// IncrementToolTip
-			//
-			this.IncrementToolTip.SetToolTip(this.IncrementButton, "Test");
-			this.IncrementToolTip.Popup += IncrementToolTip_Popup;
-			//
-			// DecrementToolTip
-			//
-			this.DecrementToolTip.SetToolTip(this.DecrementButton, "Test");
-			this.DecrementToolTip.Popup += DecrementToolTip_Popup;
+			this.IncrementButton.MouseHover += IncrementButton_MouseHover;
 			// 
 			// ValueLabel
 			// 
@@ -106,7 +97,6 @@ namespace VUserInterface.CommonControls
 		private VButton DecrementButton;
 		private VButton IncrementButton;
 		private VLabel ValueLabel;
-		private ToolTip IncrementToolTip;
-		private ToolTip DecrementToolTip;
+		private ToolTip IncrementDecrementToolTip;
 	}
 }
