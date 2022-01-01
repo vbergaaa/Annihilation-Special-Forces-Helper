@@ -21,20 +21,10 @@ namespace VEntityFramework.Model
 
 		#region Properties
 
-		#region Name
-
 		public string Name => PerkName;
-
-		#endregion
-
-		#region Code
 
 		[VXML(true)]
 		public string Code => $"{Page}_{Position}";
-
-		#endregion
-
-		#region DesiredLevel
 
 		[VXML(true)]
 		public virtual short DesiredLevel
@@ -62,16 +52,8 @@ namespace VEntityFramework.Model
 		}
 		short fDesiredLevel;
 
-		#endregion
-
-		#region PerkCollection
-
 		[VXML(include:false)]
 		public virtual VPerkCollection PerkCollection { get; internal set; }
-
-		#endregion
-
-		#region Abstract Getters
 
 		protected abstract string PerkName { get; }
 
@@ -97,19 +79,39 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#endregion
-
-		#region OnLevelChanged
-
 		protected virtual void OnLevelChanged(int difference)
 		{
 		}
 
-		#endregion
+		public virtual string GetIncrementHint(int amount)
+		{
+			return string.Empty;
+		}
 
-		#region Methods
+		public virtual string GetDecrementHint(int amount)
+		{
+			return string.Empty;
+		}
 
-		#endregion
+		public virtual double GetProposedDamageIncrease(int amount)
+		{
+			return 0;
+		}
+
+		public virtual double GetProposedToughnessIncrease(int amount)
+		{
+			return 0;
+		}
+
+		public virtual double GetProposedDamageDecrease(int amount)
+		{
+			return 0;
+		}
+
+		public virtual double GetProposedToughnessDecrease(int amount)
+		{
+			return 0;
+		}
 
 		#region Overrides
 

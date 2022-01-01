@@ -42,6 +42,8 @@ namespace VBusiness.Gems
 			return --level;
 		}
 
+		#endregion
+
 		public override string GetIncrementHint(int count)
 		{
 			var damageIncrease = GetProposedDamageIncrease(count);
@@ -125,8 +127,6 @@ namespace VBusiness.Gems
 			}
 			return hint;
 		}
-
-		#endregion
 
 		#region Methods
 
