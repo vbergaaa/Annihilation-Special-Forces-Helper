@@ -1,4 +1,5 @@
 ﻿using System;
+using VBusiness.Loadouts;
 using VEntityFramework.Model;
 
 namespace VBusiness.Gems
@@ -43,22 +44,8 @@ namespace VBusiness.Gems
 
 		public override string GetIncrementHint(int count)
 		{
-			var stats = Loadout.Stats;
-			var damageIncrease = 0.0;
-			var toughnessIncrease = 0.0;
-
-			using (stats.SuspendRefreshingStatBindings())
-			{
-				var oldDamage = Loadout.Stats.Damage;
-				var oldToughness = Loadout.Stats.Toughness;
-				OnPerkLevelChanged(count);
-				var newDamage = Loadout.Stats.Damage;
-				var newToughness = Loadout.Stats.Toughness;
-				OnPerkLevelChanged(-count);
-
-				damageIncrease = (newDamage / oldDamage) * 100 - 100;
-				toughnessIncrease = (newToughness / oldToughness) * 100 - 100;
-			}
+			var damageIncrease = GetProposedDamageIncrease(count);
+			var toughnessIncrease = GetProposedToughnessIncrease(count);
 
 			var hint = string.Empty;
 			if (damageIncrease > 0)
@@ -76,6 +63,30 @@ namespace VBusiness.Gems
 				hint += "This gem will not affect Damage or Toughness for this unit";
 			}
 			return hint;
+		}
+
+		public override double GetProposedToughnessIncrease(int count)
+		{
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				var oldToughness = Loadout.Stats.Toughness;
+				OnPerkLevelChanged(count);
+				var newToughness = Loadout.Stats.Toughness;
+				OnPerkLevelChanged(-count);
+				return (newToughness / oldToughness) * 100 - 100;
+			}
+		}
+
+		public override double GetProposedDamageIncrease(int count)
+		{
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				var oldDamage = Loadout.Stats.Damage;
+				OnPerkLevelChanged(count);
+				var newDamage = Loadout.Stats.Damage;
+				OnPerkLevelChanged(-count);
+				return (newDamage / oldDamage) * 100 - 100;
+			}
 		}
 
 		public override string GetDecrementHint(int count)
@@ -98,12 +109,12 @@ namespace VBusiness.Gems
 			}
 
 			var hint = string.Empty;
-			if (damageDecrease > 0)
+			if (damageDecrease < 0)
 			{
 				hint += $"Damage: {Math.Round(damageDecrease, 3)}%";
 				hint += "\r\n";
 			}
-			if (toughnessDecrease > 0)
+			if (toughnessDecrease < 0)
 			{
 				hint += $"Toughness: {Math.Round(toughnessDecrease, 3)}%";
 				hint += "\r\n";

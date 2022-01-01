@@ -75,6 +75,16 @@ namespace VEntityFramework.Model
 			return string.Empty;
 		}
 
+		public virtual double GetProposedDamageIncrease(int amount)
+		{
+			return 0;
+		}
+
+		public virtual double GetProposedToughnessIncrease(int amount)
+		{
+			return 0;
+		}
+
 		public virtual string GetDecrementHint(int x)
 		{
 			return string.Empty;

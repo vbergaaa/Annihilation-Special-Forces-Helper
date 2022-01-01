@@ -1,4 +1,5 @@
 ﻿using System;
+using VBusiness.Loadouts;
 using VEntityFramework.Model;
 using VUserInterface.CommonControls;
 
@@ -20,6 +21,18 @@ namespace VUserInterface
 			{
 				BindingSource.DataSource = Gems;
 			}
+		}
+
+		void OptimiseForDamageButton_Click(object sender, System.EventArgs e)
+		{
+			var loadout = Gems.Loadout as Loadout;
+			loadout.OptimiseGemsForDamage();
+		}
+
+		private void OptimiseForToughnessButton_Click(object sender, System.EventArgs e)
+		{
+			var loadout = Gems.Loadout as Loadout;
+			loadout.OptimiseGemsForToughness();
 		}
 	}
 }

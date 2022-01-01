@@ -1,4 +1,5 @@
-﻿using VBusiness.ChallengePoints;
+﻿using System.Linq;
+using VBusiness.ChallengePoints;
 using VBusiness.Gems;
 using VBusiness.Mods;
 using VBusiness.Perks;
@@ -201,6 +202,34 @@ namespace VBusiness.Loadouts
 		public override bool UnitSpec_Readonly => Perks.UnitSpecialization.DesiredLevel > 0 && !(Perks.UnitSpecialization.DesiredLevel == Perks.UnitSpecialization.MaxLevel && Perks.UpgradeCache.DesiredLevel > 0);
 
 		#endregion
+
+		public void OptimiseGemsForDamage()
+		{
+			var unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
+			using (Stats.SuspendRefreshingStatBindings())
+			{
+				while (unMaxedGems.Any())
+				{
+					var bestValueGem = unMaxedGems.OrderByDescending(g => g.GetProposedDamageIncrease(1) / g.GetCostOfNextLevel()).First();
+					bestValueGem.CurrentLevel += 1;
+					unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
+				}
+			}
+		}
+
+		public void OptimiseGemsForToughness()
+		{
+			var unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
+			using (Stats.SuspendRefreshingStatBindings())
+			{
+				while (unMaxedGems.Any())
+				{
+					var bestValueGem = unMaxedGems.OrderByDescending(g => g.GetProposedToughnessIncrease(1) / g.GetCostOfNextLevel()).First();
+					bestValueGem.CurrentLevel += 1;
+					unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
+				}
+			}
+		}
 
 		#region PerkPointsCost
 
