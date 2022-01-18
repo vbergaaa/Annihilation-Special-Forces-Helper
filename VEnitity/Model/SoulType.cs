@@ -105,7 +105,11 @@ namespace VEntityFramework.Model
 		[Description("Experimental Ranking")]
 		ExperimentalRanking,
 		[Description("Experimental Evolution")]
-		ExperimentalEvolution
+		ExperimentalEvolution,
+
+		//Event Souls
+		[Description("Christmas Event Soul")]
+		ChristmasEvent
 	}
 
 	public static class SoulTypeExtentions

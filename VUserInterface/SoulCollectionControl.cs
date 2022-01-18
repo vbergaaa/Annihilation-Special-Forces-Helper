@@ -75,7 +75,7 @@ namespace VUserInterface
         static SoulType GetSoulTypeFromPosition(int page, int position)
 		{
 			var highestNonUnique = (int)VSoul.HighestNonUniqueSoul;
-			var highestUnique = (int)Enums.GetValues<SoulType>().Last();
+			var highestUnique = (int)VSoul.FirstEventSoul - 1;
 			var selectedSoul = highestNonUnique + 15 * (page - 1) + position;
 
 			return selectedSoul > highestUnique ? SoulType.None : (SoulType)highestNonUnique + 15 * (page - 1) + position;

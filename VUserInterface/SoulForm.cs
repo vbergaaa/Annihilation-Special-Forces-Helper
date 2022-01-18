@@ -94,6 +94,13 @@ namespace VUserInterface
 				list.Add((SoulType)((i * 3) + (int)VSoul.HighestNonUniqueSoul - 1));
 				list.Add((SoulType)((i * 3) + (int)VSoul.HighestNonUniqueSoul - 0));
 			}
+
+			list.Add("");
+			for (var i = (int)VSoul.FirstEventSoul; i < Enum.GetValues<SoulType>().Length; i++)
+			{
+				list.Add((SoulType)i);
+			}
+
 			return list;
 		}
 
