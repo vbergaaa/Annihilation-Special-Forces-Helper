@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Model;
+﻿using System;
+using VEntityFramework.Model;
 
 namespace VBusiness.ChallengePoints
 {
@@ -13,8 +14,6 @@ namespace VBusiness.ChallengePoints
 		#endregion
 
 		#region Properties
-
-		#region CurrentLevel
 
 		public override int CurrentLevel
 		{
@@ -53,10 +52,6 @@ namespace VBusiness.ChallengePoints
 			return diff;
 		}
 
-		#endregion
-
-		#region MinLevel
-
 		public override int MinValue
 		{
 			get
@@ -76,10 +71,6 @@ namespace VBusiness.ChallengePoints
 		{
 			return ChallengePointCollection.CanSellCP(Tier, Color);
 		}
-
-		#endregion
-
-		#region MaxLevel
 
 		public override int MaxValue
 		{
@@ -115,15 +106,7 @@ namespace VBusiness.ChallengePoints
 			return ChallengePointCollection.HasUnlockedTier(Tier, Color);
 		}
 
-		#endregion
-
-		#region NextLevelCost
-
 		public override int NextLevelCost => 1 + CurrentLevel * CostIncrement;
-
-		#endregion
-
-		#region TotalCost
 
 		public override int TotalCost
 		{
@@ -139,6 +122,103 @@ namespace VBusiness.ChallengePoints
 		}
 
 		#endregion
+
+		#region Proposed Values
+
+		public override string GetIncrementHint(int amount)
+		{
+			var cpChanged = GetCPDifference(base.CurrentLevel + 1, base.CurrentLevel);
+			var damageIncrease = GetProposedDamageIncrease(cpChanged);
+			var toughnessIncrease = GetProposedToughnessIncrease(cpChanged);
+
+			var hint = string.Empty;
+			if (damageIncrease != 0)
+			{
+				hint += $"Damage: +{Math.Round(damageIncrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (toughnessIncrease != 0)
+			{
+				hint += $"Toughness: +{Math.Round(toughnessIncrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (hint == string.Empty)
+			{
+				hint += "This gem will not affect Damage or Toughness for this unit";
+			}
+			return hint;
+		}
+
+		public override string GetDecrementHint(int amount)
+		{
+			var damageDecrease = GetProposedDamageDecrease(amount);
+			var toughnessDecrease = GetProposedToughnessDecrease(amount);
+
+			var hint = string.Empty;
+			if (damageDecrease != 0)
+			{
+				hint += $"Damage: {Math.Round(damageDecrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (toughnessDecrease != 0)
+			{
+				hint += $"Toughness: {Math.Round(toughnessDecrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (hint == string.Empty)
+			{
+				hint += "This gem will not affect Damage or Toughness for this unit";
+			}
+			return hint;
+		}
+
+		public override double GetProposedDamageIncrease(int amount)
+		{
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				var oldDamage = Loadout.Stats.Damage;
+				OnCPLevelChanged(amount);
+				var newDamage = Loadout.Stats.Damage;
+				OnCPLevelChanged(-amount);
+				return (newDamage / oldDamage) * 100 - 100;
+			}
+		}
+
+		public override double GetProposedDamageDecrease(int amount)
+		{
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				var oldDamage = Loadout.Stats.Damage;
+				OnCPLevelChanged(-amount);
+				var newDamage = Loadout.Stats.Damage;
+				OnCPLevelChanged(amount);
+				return (newDamage / oldDamage) * 100 - 100;
+			}
+		}
+
+		public override double GetProposedToughnessIncrease(int amount)
+		{
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				var oldToughness = Loadout.Stats.Toughness;
+				OnCPLevelChanged(amount);
+				var newToughness = Loadout.Stats.Toughness;
+				OnCPLevelChanged(-amount);
+				return (newToughness / oldToughness) * 100 - 100;
+			}
+		}
+
+		public override double GetProposedToughnessDecrease(int amount)
+		{
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				var oldToughness = Loadout.Stats.Toughness;
+				OnCPLevelChanged(-amount);
+				var newToughness = Loadout.Stats.Toughness;
+				OnCPLevelChanged(amount);
+				return (newToughness / oldToughness) * 100 - 100;
+			}
+		}
 
 		#endregion
 	}
