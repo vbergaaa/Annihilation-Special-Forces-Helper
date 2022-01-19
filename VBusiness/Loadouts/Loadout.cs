@@ -214,6 +214,10 @@ namespace VBusiness.Loadouts
 				while (unMaxedGems.Any())
 				{
 					var bestValueGem = unMaxedGems.OrderByDescending(g => g.GetProposedDamageIncrease(1) / g.GetCostOfNextLevel()).First();
+					if (bestValueGem.GetProposedDamageIncrease(1) == 0)
+					{
+						break;
+					}
 					bestValueGem.CurrentLevel += 1;
 					unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
 				}
@@ -228,6 +232,10 @@ namespace VBusiness.Loadouts
 				while (unMaxedGems.Any())
 				{
 					var bestValueGem = unMaxedGems.OrderByDescending(g => g.GetProposedToughnessIncrease(1) / g.GetCostOfNextLevel()).First();
+					if (bestValueGem.GetProposedToughnessIncrease(1) == 0)
+					{
+						break;
+					}
 					bestValueGem.CurrentLevel += 1;
 					unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
 				}
@@ -242,6 +250,10 @@ namespace VBusiness.Loadouts
 				while (unMaxedPerks.Any())
 				{
 					var bestValuePerk = unMaxedPerks.OrderByDescending(p => p.GetProposedDamageIncrease(1) / p.GetCostOfNextLevel()).First();
+					if (bestValuePerk.GetProposedDamageIncrease(1) == 0)
+					{
+						break;
+					}
 					bestValuePerk.DesiredLevel += 1;
 					unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
 				}
@@ -256,6 +268,10 @@ namespace VBusiness.Loadouts
 				while (unMaxedPerks.Any())
 				{
 					var bestValuePerk = unMaxedPerks.OrderByDescending(p => p.GetProposedToughnessIncrease(1) / p.GetCostOfNextLevel()).First();
+					if (bestValuePerk.GetProposedToughnessIncrease(1) == 0)
+					{
+						break;
+					}
 					bestValuePerk.DesiredLevel += 1;
 					unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
 				}
