@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using VBusiness.Loadouts;
 using VBusiness.Perks;
 using VUserInterface.CommonControls;
 
@@ -76,6 +77,18 @@ namespace VUserInterface
 					}
 				}
 			}
+		}
+
+		void OptimiseForDamageButton_Click(object sender, EventArgs e)
+		{
+			var loadout = Perks.Loadout as Loadout;
+			loadout.OptimisePerksForDamage();
+		}
+
+		void OptimiseForToughnessButton_Click(object sender, EventArgs e)
+		{
+			var loadout = Perks.Loadout as Loadout;
+			loadout.OptimisePerksForToughness();
 		}
 	}
 }

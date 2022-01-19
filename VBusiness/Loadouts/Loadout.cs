@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using VBusiness.ChallengePoints;
 using VBusiness.Gems;
+using VBusiness.HelperClasses;
 using VBusiness.Mods;
 using VBusiness.Perks;
 using VBusiness.Souls;
@@ -203,6 +204,8 @@ namespace VBusiness.Loadouts
 
 		#endregion
 
+		#region Optimising Loadout
+
 		public void OptimiseGemsForDamage()
 		{
 			var unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
@@ -230,6 +233,36 @@ namespace VBusiness.Loadouts
 				}
 			}
 		}
+
+		public void OptimisePerksForDamage()
+		{
+			var unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
+			using (Stats.SuspendRefreshingStatBindings())
+			{
+				while (unMaxedPerks.Any())
+				{
+					var bestValuePerk = unMaxedPerks.OrderByDescending(p => p.GetProposedDamageIncrease(1) / p.GetCostOfNextLevel()).First();
+					bestValuePerk.DesiredLevel += 1;
+					unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
+				}
+			}
+		}
+
+		public void OptimisePerksForToughness()
+		{
+			var unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
+			using (Stats.SuspendRefreshingStatBindings())
+			{
+				while (unMaxedPerks.Any())
+				{
+					var bestValuePerk = unMaxedPerks.OrderByDescending(p => p.GetProposedToughnessIncrease(1) / p.GetCostOfNextLevel()).First();
+					bestValuePerk.DesiredLevel += 1;
+					unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
+				}
+			}
+		}
+
+		#endregion
 
 		#region PerkPointsCost
 
