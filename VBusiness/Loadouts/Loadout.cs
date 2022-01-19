@@ -210,6 +210,7 @@ namespace VBusiness.Loadouts
 		{
 			var unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
 			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
 			{
 				while (unMaxedGems.Any())
 				{
@@ -228,6 +229,7 @@ namespace VBusiness.Loadouts
 		{
 			var unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
 			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
 			{
 				while (unMaxedGems.Any())
 				{
@@ -246,6 +248,7 @@ namespace VBusiness.Loadouts
 		{
 			var unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
 			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
 			{
 				while (unMaxedPerks.Any())
 				{
@@ -264,6 +267,7 @@ namespace VBusiness.Loadouts
 		{
 			var unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
 			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
 			{
 				while (unMaxedPerks.Any())
 				{

@@ -11,14 +11,8 @@ namespace VEntityFramework.Model
 	{
 		#region Properties
 
-		#region Profile
-
 		[VXML(false)]
 		public abstract VProfile Profile { get; }
-
-		#endregion
-
-		#region Name
 
 		[VXML(true)]
 		public string Name
@@ -35,10 +29,6 @@ namespace VEntityFramework.Model
 		}
 		string fName;
 
-		#endregion
-
-		#region Slot
-
 		[VXML(true)]
 		public int Slot
 		{
@@ -54,16 +44,8 @@ namespace VEntityFramework.Model
 		}
 		int fSlot;
 
-		#endregion
-
-		#region Stats
-
 		[VXML(false)]
 		public VStats Stats { get; set; }
-
-		#endregion
-
-		#region Perks
 
 		public virtual VPerkCollection Perks
 		{
@@ -72,20 +54,12 @@ namespace VEntityFramework.Model
 		}
 		VPerkCollection fPerks;
 
-		#endregion
-
-		#region Souls
-
 		public virtual VLoadoutSouls Souls
 		{
 			get => fSouls;
 			set => fSouls = value;
 		}
 		VLoadoutSouls fSouls;
-
-		#endregion
-
-		#region Active SoulTypes
 
 		public IEnumerable<SoulType> ActiveSoulTypes
 		{
@@ -98,20 +72,12 @@ namespace VEntityFramework.Model
 			}
 		}
 
-		#endregion
-
-		#region Gems
-
 		public virtual VGemCollection Gems
 		{
 			get => fGems;
 			set => fGems = value;
 		}
 		VGemCollection fGems;
-
-		#endregion
-
-		#region ChallengePoints
 
 		public virtual VChallengePointCollection ChallengePoints
 		{
@@ -120,10 +86,6 @@ namespace VEntityFramework.Model
 		}
 		VChallengePointCollection fChallengePoints;
 
-		#endregion
-
-		#region UnitConfiguration
-
 		public virtual VUnitConfiguration UnitConfiguration
 		{
 			get => fUnitConfiguration;
@@ -131,29 +93,13 @@ namespace VEntityFramework.Model
 		}
 		VUnitConfiguration fUnitConfiguration;
 
-		#endregion
-
-		#region Upgrades
-
 		[VXML(true)]
 		public virtual VUpgradeManager Upgrades { get; }
-
-		#endregion
-
-		#region Income
 
 		[VXML(true)]
 		public virtual VIncomeManager IncomeManager { get; }
 
-		#endregion
-
-		#region Mods
-
 		public virtual VModsCollection Mods { get; }
-
-		#endregion
-
-		#region Units
 
 		public virtual BusinessObjectList<VUnit> Units { get; }
 
@@ -191,27 +137,11 @@ namespace VEntityFramework.Model
 		}
 		public event EventHandler UnitsUpdated;
 
-		#endregion
-
-		#region PerkPointCost
-
 		public virtual long PerkPointsCost { get; }
-
-		#endregion
-
-		#region RemainingPerkPoints
 
 		public virtual long RemainingPerkPoints { get; }
 
-		#endregion
-
-		#region CanAffordCurrentLoadout
-
 		public virtual bool CanAffordCurrentLoadout { get; }
-
-		#endregion
-
-		#region ShouldRestrict
 
 		[VXML(true)]
 		public bool ShouldRestrict
@@ -249,12 +179,8 @@ namespace VEntityFramework.Model
 
 		bool fShouldRestrict;
 
-		#endregion
-
 		public bool UseUnitStats => CurrentUnit != null && CurrentUnit.UnitData.Type != UnitType.None;
 		public bool UseUnitCosts => CurrentUnit != null && CurrentUnit.UnitData.Type != UnitType.None;
-
-		#region UnitSpec
 
 		[VXML(true)]
 		public virtual UnitType UnitSpec
@@ -276,10 +202,6 @@ namespace VEntityFramework.Model
 
 		public virtual bool UnitSpec_Readonly { get; }
 
-		#endregion
-
-		#region SyncWithBank
-
 		[VXML(true)]
 		public bool SyncWithBank
 		{
@@ -296,26 +218,25 @@ namespace VEntityFramework.Model
 		}
 		bool fSyncWithBank;
 
-		#endregion
+		protected DisposableAction BeginOptimisingStatistics()
+		{
+			fIsOptimisingCounter += 1;
+			return new DisposableAction(() => { fIsOptimisingCounter -= 1; });
+		}
+
+		public bool IsOptimisingStatistics => fIsOptimisingCounter > 0;
+		int fIsOptimisingCounter;
 
 		#endregion
 
 		#region Implementation
-
-		#region GetSaveNameForXML
 
 		protected internal override string GetSaveNameForXML()
 		{
 			return $"{Slot}-{Name}";
 		}
 
-		#endregion
-
-		#region BizoName
-
 		public override string BizoName => "Loadout";
-
-		#endregion
 
 		#endregion
 	}

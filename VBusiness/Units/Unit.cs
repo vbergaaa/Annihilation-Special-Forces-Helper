@@ -289,7 +289,7 @@ namespace VBusiness.Units
 			get
 			{
 				var perks = (PerkCollection)Loadout.Perks;
-				var hasAllSpec = perks.UnitSpecialization.DesiredLevel == 10 && perks.UpgradeCache.DesiredLevel == 1 && UnitData.Type != UnitType.None;
+				var hasAllSpec = (perks.UnitSpecialization.DesiredLevel == 10 || Loadout.IsOptimisingStatistics) && perks.UpgradeCache.DesiredLevel == 1 && UnitData.Type != UnitType.None;
 				return UnitData.SpecTypes.Contains(Loadout.UnitSpec)
 					|| hasAllSpec;
 			}
