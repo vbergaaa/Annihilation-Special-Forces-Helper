@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Model;
+﻿using VBusiness.Units;
+using VEntityFramework.Model;
 
 namespace VBusiness.Perks
 {
@@ -27,6 +28,17 @@ Increase maximum kill count and maximum life essence stacks by 50 for limit brok
 		{
 			base.OnLevelChanged(difference);
 
+			var unit = Loadout.CurrentUnit as Unit;
+			var existingMaxKills = unit.MaximumKills;
+			var existingMaxEssence = existingMaxKills / 100;
+
+			PerkCollection.Loadout.Stats.LimitlessEssenceStacks += difference;
+
+			if (existingMaxEssence * 100 == Loadout.CurrentUnit.CurrentKills)
+			{
+				unit.CurrentKills = unit.MaximumKills;
+			}
+
 			if (difference == DesiredLevel || DesiredLevel == 0)
 			{
 				PerkCollection.Loadout.IncomeManager.RefreshPropertyBinding(nameof(PerkCollection.Loadout.IncomeManager.LoadoutKillCost));
@@ -39,7 +51,10 @@ Increase maximum kill count and maximum life essence stacks by 50 for limit brok
 			{
 				PerkCollection.Loadout.Stats.RefreshAllBindings();
 			}
+
 			PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding("MaximumEssence");
 		}
+
+		public override int MinimumIncreaseForOptimise => 2;
 	}
 }

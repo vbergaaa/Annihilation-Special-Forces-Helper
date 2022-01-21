@@ -130,6 +130,10 @@ namespace VBusiness.Units
 
 				if (value > MaximumEssence)
 				{
+					if (IsLoading)
+					{
+						hackyExcessLbStacks = value - MaximumEssence;
+					}
 					base.EssenceStacks = MaximumEssence;
 				}
 				else if (value < 0)
@@ -147,6 +151,8 @@ namespace VBusiness.Units
 				}
 			}
 		}
+
+		int hackyExcessLbStacks;
 
 		public void UpdateStatsFromEssence(int levelDifference)
 		{
@@ -269,7 +275,7 @@ namespace VBusiness.Units
 
 			if (IsLimitBroken)
 			{
-				max += (int)(Loadout.Perks.LimitlessEssence.DesiredLevel / 2.0) * 100;
+				max += (int)(Loadout.Stats.LimitlessEssenceStacks / 2.0) * 100;
 
 				if (activeSouls.Contains(SoulType.BeginnerLimitBreaking))
 				{
@@ -323,6 +329,12 @@ namespace VBusiness.Units
 				{
 					UpdateStatsFromEssence(-(int)LimitlessEssenceStacks);
 				}
+
+				if (IsLoading && value == true && hackyExcessLbStacks > 0)
+				{
+					EssenceStacks += hackyExcessLbStacks;
+				}
+
 				RefreshPropertyBinding(nameof(EssenceStacks));
 
 				Loadout.IncomeManager.RefreshPropertyBinding(nameof(Loadout.IncomeManager.LoadoutKillCost));

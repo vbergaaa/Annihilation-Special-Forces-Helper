@@ -475,6 +475,7 @@ namespace VEntityFramework.Model
 		#endregion
 
 		public VLoadout Loadout { get; }
+
 		public int MaximumPotientialStacks
 		{
 			get => fMaximumPotientialStacks;
@@ -484,6 +485,16 @@ namespace VEntityFramework.Model
 			}
 		}
 		int fMaximumPotientialStacks;
+
+		public int LimitlessEssenceStacks
+		{
+			get => fLimitlessEssenceStacks;
+			set {
+				fLimitlessEssenceStacks = value;
+				RefreshPropertyBinding(nameof(LimitlessEssenceStacks));
+			}
+		}
+		int fLimitlessEssenceStacks;
 
 		#region RefreshBindingSuspension
 
