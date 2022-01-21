@@ -91,11 +91,6 @@ namespace VBusiness.Perks
 
 		public override string GetIncrementHint(int amount)
 		{
-			if (amount < MinimumIncreaseForOptimise)
-			{
-				amount = MinimumIncreaseForOptimise;
-			}
-
 			var damageIncrease = GetProposedDamageIncrease(amount);
 			var toughnessIncrease = GetProposedToughnessIncrease(amount);
 
@@ -142,6 +137,8 @@ namespace VBusiness.Perks
 
 		public override double GetProposedDamageIncrease(int amount)
 		{
+			amount = GetValidAmount(amount);
+
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
 			using (Loadout.BeginOptimisingStatistics())
 			{
@@ -155,6 +152,8 @@ namespace VBusiness.Perks
 
 		public override double GetProposedDamageDecrease(int amount)
 		{
+			amount = GetValidAmount(amount);
+
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
 			using (Loadout.BeginOptimisingStatistics())
 			{
@@ -168,6 +167,8 @@ namespace VBusiness.Perks
 
 		public override double GetProposedToughnessIncrease(int amount)
 		{
+			amount = GetValidAmount(amount);
+
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
 			using (Loadout.BeginOptimisingStatistics())
 			{
@@ -181,6 +182,8 @@ namespace VBusiness.Perks
 
 		public override double GetProposedToughnessDecrease(int amount)
 		{
+			amount = GetValidAmount(amount);
+
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
 			using (Loadout.BeginOptimisingStatistics())
 			{
@@ -190,6 +193,22 @@ namespace VBusiness.Perks
 				OnLevelChanged(amount);
 				return (newToughness / oldToughness) * 100 - 100;
 			}
+		}
+
+		private int GetValidAmount(int amount)
+		{
+			var maxIncrement = MaxLevel - DesiredLevel;
+			if (amount > maxIncrement)
+			{
+				amount = maxIncrement;
+			}
+
+			if (amount < -DesiredLevel)
+			{
+				amount = -DesiredLevel;
+			}
+
+			return amount;
 		}
 	}
 }
