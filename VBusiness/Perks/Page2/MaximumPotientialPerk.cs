@@ -1,8 +1,9 @@
-﻿using VEntityFramework.Model;
+﻿using VBusiness.Units;
+using VEntityFramework.Model;
 
 namespace VBusiness.Perks
 {
-	public class MaximumPotientialPerk : Perk
+	public class MaximumPotientialPerk : BaseMaximumPotentialPerk
 	{
 		public MaximumPotientialPerk(VPerkCollection collection) : base(collection)
 		{
@@ -21,11 +22,5 @@ namespace VBusiness.Perks
 		protected override short MaxLevelCore => 8;
 
 		protected override string PerkName => "Maximum Potiential";
-
-		protected override void OnLevelChanged(int difference)
-		{
-			PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding("MaximumInfusion");
-			PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding("MaximumEssence");
-		}
 	}
 }

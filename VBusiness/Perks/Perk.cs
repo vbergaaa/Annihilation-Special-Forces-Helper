@@ -91,6 +91,11 @@ namespace VBusiness.Perks
 
 		public override string GetIncrementHint(int amount)
 		{
+			if (amount < MinimumIncreaseForOptimise)
+			{
+				amount = MinimumIncreaseForOptimise;
+			}
+
 			var damageIncrease = GetProposedDamageIncrease(amount);
 			var toughnessIncrease = GetProposedToughnessIncrease(amount);
 
@@ -138,6 +143,7 @@ namespace VBusiness.Perks
 		public override double GetProposedDamageIncrease(int amount)
 		{
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			using (Loadout.BeginOptimisingStatistics())
 			{
 				var oldDamage = Loadout.Stats.Damage;
 				OnLevelChanged(amount);
@@ -150,6 +156,7 @@ namespace VBusiness.Perks
 		public override double GetProposedDamageDecrease(int amount)
 		{
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			using (Loadout.BeginOptimisingStatistics())
 			{
 				var oldDamage = Loadout.Stats.Damage;
 				OnLevelChanged(-amount);
@@ -162,6 +169,7 @@ namespace VBusiness.Perks
 		public override double GetProposedToughnessIncrease(int amount)
 		{
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			using (Loadout.BeginOptimisingStatistics())
 			{
 				var oldToughness = Loadout.Stats.Toughness;
 				OnLevelChanged(amount);
@@ -174,6 +182,7 @@ namespace VBusiness.Perks
 		public override double GetProposedToughnessDecrease(int amount)
 		{
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			using (Loadout.BeginOptimisingStatistics())
 			{
 				var oldToughness = Loadout.Stats.Toughness;
 				OnLevelChanged(-amount);

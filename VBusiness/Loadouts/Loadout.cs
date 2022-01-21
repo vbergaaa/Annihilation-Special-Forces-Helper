@@ -252,12 +252,12 @@ namespace VBusiness.Loadouts
 			{
 				while (unMaxedPerks.Any())
 				{
-					var bestValuePerk = unMaxedPerks.OrderByDescending(p => p.GetProposedDamageIncrease(1) / p.GetCostOfNextLevel()).First();
-					if (bestValuePerk.GetProposedDamageIncrease(1) == 0)
+					var bestValuePerk = unMaxedPerks.OrderByDescending(p => p.GetProposedDamageIncrease(p.MinimumIncreaseForOptimise) / p.GetCostOfNextLevels(p.MinimumIncreaseForOptimise)).First();
+					if (bestValuePerk.GetProposedDamageIncrease(bestValuePerk.MinimumIncreaseForOptimise) == 0)
 					{
 						break;
 					}
-					bestValuePerk.DesiredLevel += 1;
+					bestValuePerk.DesiredLevel += (short)bestValuePerk.MinimumIncreaseForOptimise;
 					unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
 				}
 			}
@@ -271,12 +271,12 @@ namespace VBusiness.Loadouts
 			{
 				while (unMaxedPerks.Any())
 				{
-					var bestValuePerk = unMaxedPerks.OrderByDescending(p => p.GetProposedToughnessIncrease(1) / p.GetCostOfNextLevel()).First();
-					if (bestValuePerk.GetProposedToughnessIncrease(1) == 0)
+					var bestValuePerk = unMaxedPerks.OrderByDescending(p => p.GetProposedToughnessIncrease(p.MinimumIncreaseForOptimise) / p.GetCostOfNextLevels(p.MinimumIncreaseForOptimise)).First();
+					if (bestValuePerk.GetProposedToughnessIncrease(bestValuePerk.MinimumIncreaseForOptimise) == 0)
 					{
 						break;
 					}
-					bestValuePerk.DesiredLevel += 1;
+					bestValuePerk.DesiredLevel += (short)bestValuePerk.MinimumIncreaseForOptimise;
 					unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
 				}
 			}

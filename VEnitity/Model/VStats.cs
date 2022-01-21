@@ -475,6 +475,15 @@ namespace VEntityFramework.Model
 		#endregion
 
 		public VLoadout Loadout { get; }
+		public int MaximumPotientialStacks
+		{
+			get => fMaximumPotientialStacks;
+			set {
+				fMaximumPotientialStacks = value;
+				RefreshPropertyBinding(nameof(MaximumPotientialStacks));
+			}
+		}
+		int fMaximumPotientialStacks;
 
 		#region RefreshBindingSuspension
 

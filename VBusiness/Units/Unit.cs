@@ -71,9 +71,14 @@ namespace VBusiness.Units
 
 		#region MaximumInfuse
 
-		public override int MaximumInfusion => IsLimitBroken && MaximumKills >= 3000
-					? 10 + Math.Min((MaximumKills - 2000) / 1000, 3)
-					: MaximumKills >= 2000 ? 10 : MaximumKills / 200;
+		public override int MaximumInfusion => GetMaxInfusion(MaximumKills);
+
+		public int GetMaxInfusion(int kills)
+		{
+			return IsLimitBroken && kills >= 3000
+					? 10 + Math.Min((kills - 2000) / 1000, 3)
+					: kills >= 2000 ? 10 : kills / 200;
+		}
 
 		#endregion
 
@@ -243,13 +248,7 @@ namespace VBusiness.Units
 			}
 
 			var max = 600;
-			if (Loadout.Perks is PerkCollection perks)
-			{
-				max += perks.MaximumPotiential.DesiredLevel * 50;
-				max += perks.MaximumPotiential2.DesiredLevel * 50;
-				max += perks.MaximumPotiental3.DesiredLevel * 50;
-				max += perks.MaximumPotential4.DesiredLevel * 50;
-			}
+			max += 50 * Loadout.Stats.MaximumPotientialStacks;
 			var activeSouls = Loadout.ActiveSoulTypes;
 
 			var allowBoth = max >= 2000;
@@ -277,7 +276,8 @@ namespace VBusiness.Units
 					max += 400;
 				}
 			}
-			return max;
+
+			return Math.Max(600, max);
 		}
 
 		#endregion
@@ -289,7 +289,7 @@ namespace VBusiness.Units
 			get
 			{
 				var perks = (PerkCollection)Loadout.Perks;
-				var hasAllSpec = (perks.UnitSpecialization.DesiredLevel == 10 || Loadout.IsOptimisingStatistics) && perks.UpgradeCache.DesiredLevel == 1 && UnitData.Type != UnitType.None;
+				var hasAllSpec = (perks.UnitSpecialization.DesiredLevel == 10) && perks.UpgradeCache.DesiredLevel == 1 && UnitData.Type != UnitType.None;
 				return UnitData.SpecTypes.Contains(Loadout.UnitSpec)
 					|| hasAllSpec;
 			}

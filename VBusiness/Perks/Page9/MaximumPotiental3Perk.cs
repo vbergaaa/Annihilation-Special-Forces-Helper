@@ -2,7 +2,7 @@
 
 namespace VBusiness.Perks
 {
-	public class MaximumPotiental3Perk : Perk
+	public class MaximumPotiental3Perk : BaseMaximumPotentialPerk
 	{
 		public MaximumPotiental3Perk(VPerkCollection collection) : base(collection)
 		{
@@ -21,11 +21,5 @@ namespace VBusiness.Perks
 		protected override short MaxLevelCore => 10;
 
 		protected override string PerkName => "Maximum Potiental III";
-
-		protected override void OnLevelChanged(int difference)
-		{
-			PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding("MaximumInfusion");
-			PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding("MaximumEssence");
-		}
 	}
 }

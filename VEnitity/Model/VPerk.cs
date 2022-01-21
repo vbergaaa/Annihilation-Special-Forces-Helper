@@ -122,6 +122,8 @@ namespace VEntityFramework.Model
 
 		public override string BizoName => "Perk";
 
+		public virtual int MinimumIncreaseForOptimise => 1;
+
 		#endregion
 	}
 }

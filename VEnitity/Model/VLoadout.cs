@@ -218,13 +218,13 @@ namespace VEntityFramework.Model
 		}
 		bool fSyncWithBank;
 
-		protected DisposableAction BeginOptimisingStatistics()
+		public DisposableAction BeginOptimisingStatistics()
 		{
 			fIsOptimisingCounter += 1;
 			return new DisposableAction(() => { fIsOptimisingCounter -= 1; });
 		}
 
-		public bool IsOptimisingStatistics => fIsOptimisingCounter > 0;
+		public bool IsProposingStatistics => fIsOptimisingCounter > 0;
 		int fIsOptimisingCounter;
 
 		#endregion
