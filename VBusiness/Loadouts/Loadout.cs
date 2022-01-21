@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using VBusiness.ChallengePoints;
 using VBusiness.Gems;
 using VBusiness.HelperClasses;
@@ -246,7 +247,7 @@ namespace VBusiness.Loadouts
 
 		public void OptimisePerksForDamage()
 		{
-			var unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
+			var unMaxedPerks = GetUnmaxedPerks();
 			using (Stats.SuspendRefreshingStatBindings())
 			using (BeginOptimisingStatistics())
 			{
@@ -258,14 +259,19 @@ namespace VBusiness.Loadouts
 						break;
 					}
 					bestValuePerk.DesiredLevel += (short)bestValuePerk.MinimumIncreaseForOptimise;
-					unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
+					unMaxedPerks = GetUnmaxedPerks();
 				}
 			}
 		}
 
+		private IEnumerable<VPerk> GetUnmaxedPerks()
+		{
+			return ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel && p.Page <= Perks.MaxPage);
+		}
+
 		public void OptimisePerksForToughness()
 		{
-			var unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
+			var unMaxedPerks = GetUnmaxedPerks();
 			using (Stats.SuspendRefreshingStatBindings())
 			using (BeginOptimisingStatistics())
 			{
@@ -277,7 +283,7 @@ namespace VBusiness.Loadouts
 						break;
 					}
 					bestValuePerk.DesiredLevel += (short)bestValuePerk.MinimumIncreaseForOptimise;
-					unMaxedPerks = ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel);
+					unMaxedPerks = GetUnmaxedPerks();
 				}
 			}
 		}
