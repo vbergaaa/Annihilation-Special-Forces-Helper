@@ -152,7 +152,7 @@ namespace VBusiness.Perks
 
 		public override double GetProposedDamageDecrease(int amount)
 		{
-			amount = GetValidAmount(amount);
+			amount = -GetValidAmount(-amount);
 
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
 			using (Loadout.BeginOptimisingStatistics())
@@ -182,7 +182,7 @@ namespace VBusiness.Perks
 
 		public override double GetProposedToughnessDecrease(int amount)
 		{
-			amount = GetValidAmount(amount);
+			amount = -GetValidAmount(-amount);
 
 			using (Loadout.Stats.SuspendRefreshingStatBindings())
 			using (Loadout.BeginOptimisingStatistics())

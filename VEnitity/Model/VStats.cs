@@ -496,6 +496,16 @@ namespace VEntityFramework.Model
 		}
 		int fLimitlessEssenceStacks;
 
+		public int OverInfuseStacks
+		{
+			get => fOverInfuseStacks;
+			set {
+				fOverInfuseStacks = value;
+				RefreshPropertyBinding(nameof(OverInfuseStacks));
+			}
+		}
+		int fOverInfuseStacks;
+
 		#region RefreshBindingSuspension
 
 		protected override void OnPropertyChanged(string bindingName)

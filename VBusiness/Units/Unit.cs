@@ -75,9 +75,15 @@ namespace VBusiness.Units
 
 		public int GetMaxInfusion(int kills)
 		{
-			return IsLimitBroken && kills >= 3000
-					? 10 + Math.Min((kills - 2000) / 1000, 3)
-					: kills >= 2000 ? 10 : kills / 200;
+			if (!IsLimitBroken || kills < 3000)
+			{
+				return Math.Min(kills / 200, 10);
+			}
+			else
+			{
+				var extraInfuse = Math.Min((kills - 2000) / 1000, Loadout.Stats.OverInfuseStacks);
+				return 10 + extraInfuse;
+			}
 		}
 
 		#endregion
