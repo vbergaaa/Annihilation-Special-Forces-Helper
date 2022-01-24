@@ -40,9 +40,9 @@ namespace VEntityFramework.Model
 		Hunger,
 
 		// Mid
-		Luck,
 		Greed,
 		Sharing,
+		Luck,
 
 		// High
 		Convenience,
