@@ -46,6 +46,11 @@ namespace VBusiness.Gems
 
 		public override string GetIncrementHint(int count)
 		{
+			if (Loadout.CurrentUnit?.UnitData?.Type == UnitType.None)
+			{
+				return "Please select a unit to enable this functionality";
+			}
+
 			var damageIncrease = GetProposedDamageIncrease(count);
 			var toughnessIncrease = GetProposedToughnessIncrease(count);
 
@@ -93,6 +98,11 @@ namespace VBusiness.Gems
 
 		public override string GetDecrementHint(int count)
 		{
+			if (Loadout.CurrentUnit?.UnitData?.Type == UnitType.None)
+			{
+				return "Please select a unit to enable this functionality";
+			}
+
 			var stats = Loadout.Stats;
 			var damageDecrease = 0.0;
 			var toughnessDecrease = 0.0;

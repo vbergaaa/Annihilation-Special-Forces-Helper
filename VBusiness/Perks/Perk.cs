@@ -91,6 +91,11 @@ namespace VBusiness.Perks
 
 		public override string GetIncrementHint(int amount)
 		{
+			if (Loadout.CurrentUnit?.UnitData?.Type == UnitType.None)
+			{
+				return "Please select a unit to enable this functionality";
+			}
+
 			var damageIncrease = GetProposedDamageIncrease(amount);
 			var toughnessIncrease = GetProposedToughnessIncrease(amount);
 
@@ -114,6 +119,11 @@ namespace VBusiness.Perks
 
 		public override string GetDecrementHint(int amount)
 		{
+			if (Loadout.CurrentUnit?.UnitData?.Type == UnitType.None)
+			{
+				return "Please select a unit to enable this functionality";
+			}
+
 			var damageDecrease = GetProposedDamageDecrease(amount);
 			var toughnessDecrease = GetProposedToughnessDecrease(amount);
 

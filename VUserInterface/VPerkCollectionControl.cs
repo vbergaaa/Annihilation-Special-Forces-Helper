@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using VBusiness.Loadouts;
 using VBusiness.Perks;
 using VUserInterface.CommonControls;
+using VUserInterface.Helpers;
 
 namespace VUserInterface
 {
@@ -82,12 +83,36 @@ namespace VUserInterface
 		void OptimiseForDamageButton_Click(object sender, EventArgs e)
 		{
 			var loadout = Perks.Loadout as Loadout;
+
+			if (loadout.CurrentUnit?.UnitData?.Type == VEntityFramework.Model.UnitType.None)
+			{
+				MessageBox.Show("Please select a unit to enable this functionality");
+				return;
+			}
+
+			if (MessageBox.Show(CaptionProvider.GetOptimiseLoadoutCaption("perk points", "damage"), "Confirmation", MessageBoxButtons.OKCancel) != DialogResult.OK)
+			{
+				return;
+			}
+
 			loadout.OptimisePerksForDamage();
 		}
 
 		void OptimiseForToughnessButton_Click(object sender, EventArgs e)
 		{
 			var loadout = Perks.Loadout as Loadout;
+
+			if (loadout.CurrentUnit?.UnitData?.Type == VEntityFramework.Model.UnitType.None)
+			{
+				MessageBox.Show("Please select a unit to enable this functionality");
+				return;
+			}
+
+			if (MessageBox.Show(CaptionProvider.GetOptimiseLoadoutCaption("perk points", "toughness"), "Confirmation", MessageBoxButtons.OKCancel) != DialogResult.OK)
+			{
+				return;
+			}
+
 			loadout.OptimisePerksForToughness();
 		}
 	}

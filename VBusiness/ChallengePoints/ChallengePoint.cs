@@ -127,6 +127,11 @@ namespace VBusiness.ChallengePoints
 
 		public override string GetIncrementHint(int amount)
 		{
+			if (Loadout.CurrentUnit?.UnitData?.Type == UnitType.None)
+			{
+				return "Please select a unit to enable this functionality";
+			}
+
 			var cpChanged = GetCPDifference(base.CurrentLevel + 1, base.CurrentLevel);
 			var damageIncrease = GetProposedDamageIncrease(cpChanged);
 			var toughnessIncrease = GetProposedToughnessIncrease(cpChanged);
@@ -151,6 +156,11 @@ namespace VBusiness.ChallengePoints
 
 		public override string GetDecrementHint(int amount)
 		{
+			if (Loadout.CurrentUnit?.UnitData?.Type == UnitType.None)
+			{
+				return "Please select a unit to enable this functionality";
+			}
+
 			var damageDecrease = GetProposedDamageDecrease(amount);
 			var toughnessDecrease = GetProposedToughnessDecrease(amount);
 
