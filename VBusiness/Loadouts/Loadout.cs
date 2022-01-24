@@ -201,7 +201,7 @@ namespace VBusiness.Loadouts
 			}
 		}
 
-		public override bool UnitSpec_Readonly => Perks.UnitSpecialization.DesiredLevel > 0 && !(Perks.UnitSpecialization.DesiredLevel == Perks.UnitSpecialization.MaxLevel && Perks.UpgradeCache.DesiredLevel > 0);
+		public override bool UnitSpec_Readonly => !(Perks.UnitSpecialization.DesiredLevel == Perks.UnitSpecialization.MaxLevel && Perks.UpgradeCache.DesiredLevel > 0);
 
 		#endregion
 
