@@ -1,5 +1,6 @@
 ﻿using System;
 using VBusiness.ChallengePoints;
+using VBusiness.Loadouts;
 using VUserInterface.CommonControls;
 
 namespace VUserInterface
@@ -45,6 +46,18 @@ namespace VUserInterface
 				bindingSource.DataSource = ChallengePointCollection;
 				bindingSource.ResetBindings(false);
 			}
+		}
+
+		void OptimiseForDamageButton_Click(object sender, System.EventArgs e)
+		{
+			var loadout = ChallengePointCollection.Loadout as Loadout;
+			loadout.OptimiseCPForDamage();
+		}
+
+		private void OptimiseForToughnessButton_Click(object sender, System.EventArgs e)
+		{
+			var loadout = ChallengePointCollection.Loadout as Loadout;
+			loadout.OptimiseCPForToughness();
 		}
 	}
 }

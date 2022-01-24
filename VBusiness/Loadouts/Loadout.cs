@@ -245,6 +245,50 @@ namespace VBusiness.Loadouts
 			}
 		}
 
+		public void OptimiseCPForDamage()
+		{
+			var unMaxedCP = GetUnmaxedCP();
+			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
+			{
+				while (unMaxedCP.Any())
+				{
+					var bestValueCP = unMaxedCP.OrderByDescending(cp => cp.GetProposedDamageIncrease(1) / cp.NextLevelCost).First();
+					if (bestValueCP.GetProposedDamageIncrease(1) == 0)
+					{
+						break;
+					}
+					bestValueCP.CurrentLevel += 1;
+					unMaxedCP = GetUnmaxedCP();
+				}
+			}
+		}
+
+		public void OptimiseCPForToughness()
+		{
+			var unMaxedCP = GetUnmaxedCP();
+			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
+			{
+				while (unMaxedCP.Any())
+				{
+					var bestValueCP = unMaxedCP.OrderByDescending(cp => cp.GetProposedToughnessIncrease(1) / cp.NextLevelCost).First();
+					if (bestValueCP.GetProposedToughnessIncrease(1) == 0)
+					{
+						break;
+					}
+					bestValueCP.CurrentLevel += 1;
+					unMaxedCP = GetUnmaxedCP();
+				}
+			}
+		}
+
+		public IEnumerable<VChallengePoint> GetUnmaxedCP()
+		{
+			var challengePoints = ChallengePoints as ChallengePointCollection;
+			return challengePoints.AllCP.Where(cp => cp.CurrentLevel < cp.MaxValue);
+		}
+
 		public void OptimisePerksForDamage()
 		{
 			var unMaxedPerks = GetUnmaxedPerks();
