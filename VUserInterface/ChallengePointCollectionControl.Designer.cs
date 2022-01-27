@@ -48,6 +48,8 @@ namespace VUserInterface
 			this.AccelCPControl = new ChallengePointControl();
 			this.AvailableChallengePointsLabel = new VLabel();
 			this.RemainingChallengePointsLabel = new VLabel();
+			this.OptimiseForDamageButton = new VButton();
+			this.OptimiseForToughnessButton = new VButton();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
 			//
 			// bindingSource
@@ -60,7 +62,7 @@ namespace VUserInterface
 			this.AvailableChallengePointsLabel.DataBindings.Add("Text", bindingSource, "TotalCost");
 			this.AvailableChallengePointsLabel.Location = DPIScalingHelper.GetScaledPoint(200, 0);
 			this.AvailableChallengePointsLabel.Name = "AvailableChallengePointsLabel";
-			this.AvailableChallengePointsLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			this.AvailableChallengePointsLabel.Size = DPIScalingHelper.GetScaledSize(100, 25);
 			//
 			// RemainingChallengePointsLabel
 			//
@@ -68,7 +70,7 @@ namespace VUserInterface
 			this.RemainingChallengePointsLabel.DataBindings.Add("Text", bindingSource, "RemainingCP");
 			this.RemainingChallengePointsLabel.Location = DPIScalingHelper.GetScaledPoint(450, 0);
 			this.RemainingChallengePointsLabel.Name = "RemainingChallengePointsLabel";
-			this.RemainingChallengePointsLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			this.RemainingChallengePointsLabel.Size = DPIScalingHelper.GetScaledSize(100, 25);
 			//
 			// AttackCPControl
 			//
@@ -142,6 +144,22 @@ namespace VUserInterface
 			this.AccelCPControl.DataBindings.Add("ChallengePoint", bindingSource, "Acceleration");
 			this.AccelCPControl.Location = DPIScalingHelper.GetScaledPoint(381, 230);
 			//
+			// OptimiseForDamageButton
+			//
+			this.OptimiseForDamageButton.Click += OptimiseForDamageButton_Click;
+			this.OptimiseForDamageButton.Name = "OptimiseForDamageButton";
+			this.OptimiseForDamageButton.Text = "Maximise Damage";
+			this.OptimiseForDamageButton.Location = DPIScalingHelper.GetScaledPoint(70, 25);
+			this.OptimiseForDamageButton.Size = DPIScalingHelper.GetScaledSize(150, 25);
+			//
+			// OptimiseForToughnessButton
+			//
+			this.OptimiseForToughnessButton.Click += OptimiseForToughnessButton_Click;
+			this.OptimiseForToughnessButton.Name = "OptimiseForToughnessButton";
+			this.OptimiseForToughnessButton.Text = "Maximise Toughness";
+			this.OptimiseForToughnessButton.Location = DPIScalingHelper.GetScaledPoint(350, 25);
+			this.OptimiseForToughnessButton.Size = DPIScalingHelper.GetScaledSize(150, 25);
+			//
 			// ChallengePointCollectionControl
 			//
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -160,6 +178,8 @@ namespace VUserInterface
 			this.Controls.Add(KillsCPControl);
 			this.Controls.Add(VeterancyCPControl);
 			this.Controls.Add(AccelCPControl);
+			this.Controls.Add(OptimiseForDamageButton);
+			this.Controls.Add(OptimiseForToughnessButton);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 292);
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
 		}
@@ -179,6 +199,8 @@ namespace VUserInterface
 		private ChallengePointControl KillsCPControl;
 		private ChallengePointControl VeterancyCPControl;
 		private ChallengePointControl AccelCPControl;
+		private VButton OptimiseForDamageButton;
+		private VButton OptimiseForToughnessButton;
 		VLabel AvailableChallengePointsLabel;
 		VLabel RemainingChallengePointsLabel;
 	}

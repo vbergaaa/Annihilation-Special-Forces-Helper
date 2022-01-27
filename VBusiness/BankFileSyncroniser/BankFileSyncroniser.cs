@@ -59,7 +59,7 @@ namespace VBusiness
 		private static void SetSoulCollection(VSoulCollection soulCollection, bool[] soulsInBank)
 		{
 			soulCollection.DiscoveredSouls.Clear();
-			var uniqueSouls = Enum.GetValues<SoulType>().Where(x => x > VSoul.HighestNonUniqueSoul).ToArray();
+			var uniqueSouls = Enum.GetValues<SoulType>().Where(x => x > VSoul.HighestNonUniqueSoul && x < VSoul.FirstEventSoul).ToArray();
 
 			for (var i = 0; i < uniqueSouls.Length; i++)
 			{
@@ -297,7 +297,17 @@ namespace VBusiness
 				"RA" => VSoul.HighestNonUniqueSoul + (tier * 3 - 2),
 				"RB" => VSoul.HighestNonUniqueSoul + (tier * 3 - 1),
 				"RC" => VSoul.HighestNonUniqueSoul + (tier * 3 - 0),
+				"EA" => GetEventSoul(tier),
 				_ => SoulType.None
+			};
+		}
+
+		private static SoulType GetEventSoul(int tier)
+		{
+			return tier switch
+			{
+				99 => SoulType.ChristmasEvent,
+				_ => SoulType.None,
 			};
 		}
 	}

@@ -63,6 +63,31 @@ namespace Tests
 				Assert.That(!string.IsNullOrEmpty(perk.Description), $"Add a description for {perk.Name} Perk");
 			}
 		}
+
+		[Test]
+		public void TestProposedValues_DontChangeState()
+		{
+			var loadout = TestHelper.GetEmptyLoadout();
+			loadout.CurrentUnit = VUnit.New(UnitType.Striker, loadout);
+			loadout.UnitConfiguration.DifficultyLevel = DifficultyLevel.VeryEasy;
+			loadout.CurrentUnit.CurrentInfusion = loadout.CurrentUnit.MaximumInfusion;
+			loadout.CurrentUnit.CurrentKills = loadout.CurrentUnit.MaximumKills;
+
+			var oldDamage = loadout.Stats.Damage;
+			var oldToughness = loadout.Stats.Toughness;
+			var perks = loadout.Perks as PerkCollection;
+
+			foreach(var perk in perks.AllPerks)
+			{
+				perk.GetIncrementHint(perk.MinimumIncreaseForOptimise);
+				Assert.That(loadout.Stats.Damage, Is.EqualTo(oldDamage), $"{perk.Name} Perk permanently modifies damage when getting it's increment hint");
+				Assert.That(loadout.Stats.Toughness, Is.EqualTo(oldToughness), $"{perk.Name} Perk permanently modifies toughness when getting it's increment hint");
+
+				perk.GetDecrementHint(perk.MinimumIncreaseForOptimise);
+				Assert.That(loadout.Stats.Damage, Is.EqualTo(oldDamage), $"{perk.Name} Perk permanently modifies damage when getting it's decrement hint");
+				Assert.That(loadout.Stats.Toughness, Is.EqualTo(oldToughness), $"{perk.Name} Perk permanently modifies toughness when getting it's decrement hint");
+			}
+		}
 	}
 
 	class PerkCollectionForTest : PerkCollection

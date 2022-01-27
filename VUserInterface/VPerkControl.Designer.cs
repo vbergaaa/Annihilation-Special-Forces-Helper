@@ -67,6 +67,8 @@ namespace VUserInterface
 			this.CurrentLevelIncrementor.Location = DPIScalingHelper.GetScaledPoint(27, 30);
 			this.CurrentLevelIncrementor.DataBindings.Add("Value", perkBindingSource, "DesiredLevel");
 			this.CurrentLevelIncrementor.DataBindings.Add("MaxValue", perkBindingSource, "MaxLevel");
+			this.CurrentLevelIncrementor.IncrementHint = (x) => Perk.GetIncrementHint(x);
+			this.CurrentLevelIncrementor.DecrementHint = (x) => Perk.GetDecrementHint(x);
 			//
 			// perkInfo
 			//

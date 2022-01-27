@@ -60,6 +60,8 @@ namespace VUserInterface
 			this.CurrentLevelIncrementor.DisableShiftClick = true;
 			this.CurrentLevelIncrementor.IncrementorStyle = IncrementorStyle.Compact;
 			this.CurrentLevelIncrementor.MinValue = 0;
+			this.CurrentLevelIncrementor.IncrementHint = (x) => ChallengePoint.GetIncrementHint(x);
+			this.CurrentLevelIncrementor.DecrementHint = (x) => ChallengePoint.GetDecrementHint(x);
 			// 
 			// ChallengePointBindingSource
 			// 

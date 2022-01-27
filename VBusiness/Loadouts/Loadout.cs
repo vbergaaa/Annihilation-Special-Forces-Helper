@@ -1,5 +1,8 @@
-﻿using VBusiness.ChallengePoints;
+﻿using System.Collections.Generic;
+using System.Linq;
+using VBusiness.ChallengePoints;
 using VBusiness.Gems;
+using VBusiness.HelperClasses;
 using VBusiness.Mods;
 using VBusiness.Perks;
 using VBusiness.Souls;
@@ -198,7 +201,136 @@ namespace VBusiness.Loadouts
 			}
 		}
 
-		public override bool UnitSpec_Readonly => Perks.UnitSpecialization.DesiredLevel > 0 && !(Perks.UnitSpecialization.DesiredLevel == Perks.UnitSpecialization.MaxLevel && Perks.UpgradeCache.DesiredLevel > 0);
+		public override bool UnitSpec_Readonly => !(Perks.UnitSpecialization.DesiredLevel == Perks.UnitSpecialization.MaxLevel && Perks.UpgradeCache.DesiredLevel > 0);
+
+		#endregion
+
+		#region Optimising Loadout
+
+		public void OptimiseGemsForDamage()
+		{
+			var unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
+			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
+			{
+				while (unMaxedGems.Any())
+				{
+					var bestValueGem = unMaxedGems.OrderByDescending(g => g.GetProposedDamageIncrease(1) / g.GetCostOfNextLevel()).First();
+					if (bestValueGem.GetProposedDamageIncrease(1) == 0)
+					{
+						break;
+					}
+					bestValueGem.CurrentLevel += 1;
+					unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
+				}
+			}
+		}
+
+		public void OptimiseGemsForToughness()
+		{
+			var unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
+			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
+			{
+				while (unMaxedGems.Any())
+				{
+					var bestValueGem = unMaxedGems.OrderByDescending(g => g.GetProposedToughnessIncrease(1) / g.GetCostOfNextLevel()).First();
+					if (bestValueGem.GetProposedToughnessIncrease(1) == 0)
+					{
+						break;
+					}
+					bestValueGem.CurrentLevel += 1;
+					unMaxedGems = Gems.Gems.Where(g => g.CurrentLevel < g.MaxValue);
+				}
+			}
+		}
+
+		public void OptimiseCPForDamage()
+		{
+			var unMaxedCP = GetUnmaxedCP();
+			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
+			{
+				while (unMaxedCP.Any())
+				{
+					var bestValueCP = unMaxedCP.OrderByDescending(cp => cp.GetProposedDamageIncrease(1) / cp.NextLevelCost).First();
+					if (bestValueCP.GetProposedDamageIncrease(1) == 0)
+					{
+						break;
+					}
+					bestValueCP.CurrentLevel += 1;
+					unMaxedCP = GetUnmaxedCP();
+				}
+			}
+		}
+
+		public void OptimiseCPForToughness()
+		{
+			var unMaxedCP = GetUnmaxedCP();
+			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
+			{
+				while (unMaxedCP.Any())
+				{
+					var bestValueCP = unMaxedCP.OrderByDescending(cp => cp.GetProposedToughnessIncrease(1) / cp.NextLevelCost).First();
+					if (bestValueCP.GetProposedToughnessIncrease(1) == 0)
+					{
+						break;
+					}
+					bestValueCP.CurrentLevel += 1;
+					unMaxedCP = GetUnmaxedCP();
+				}
+			}
+		}
+
+		public IEnumerable<VChallengePoint> GetUnmaxedCP()
+		{
+			var challengePoints = ChallengePoints as ChallengePointCollection;
+			return challengePoints.AllCP.Where(cp => cp.CurrentLevel < cp.MaxValue);
+		}
+
+		public void OptimisePerksForDamage()
+		{
+			var unMaxedPerks = GetUnmaxedPerks();
+			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
+			{
+				while (unMaxedPerks.Any())
+				{
+					var bestValuePerk = unMaxedPerks.OrderByDescending(p => p.GetProposedDamageIncrease(p.MinimumIncreaseForOptimise) / p.GetCostOfNextLevels(p.MinimumIncreaseForOptimise)).First();
+					if (bestValuePerk.GetProposedDamageIncrease(bestValuePerk.MinimumIncreaseForOptimise) == 0)
+					{
+						break;
+					}
+					bestValuePerk.DesiredLevel += (short)bestValuePerk.MinimumIncreaseForOptimise;
+					unMaxedPerks = GetUnmaxedPerks();
+				}
+			}
+		}
+
+		private IEnumerable<VPerk> GetUnmaxedPerks()
+		{
+			return ((PerkCollection)Perks).AllPerks.Where(p => p.DesiredLevel < p.MaxLevel && p.Page <= Perks.MaxPage);
+		}
+
+		public void OptimisePerksForToughness()
+		{
+			var unMaxedPerks = GetUnmaxedPerks();
+			using (Stats.SuspendRefreshingStatBindings())
+			using (BeginOptimisingStatistics())
+			{
+				while (unMaxedPerks.Any())
+				{
+					var bestValuePerk = unMaxedPerks.OrderByDescending(p => p.GetProposedToughnessIncrease(p.MinimumIncreaseForOptimise) / p.GetCostOfNextLevels(p.MinimumIncreaseForOptimise)).First();
+					if (bestValuePerk.GetProposedToughnessIncrease(bestValuePerk.MinimumIncreaseForOptimise) == 0)
+					{
+						break;
+					}
+					bestValuePerk.DesiredLevel += (short)bestValuePerk.MinimumIncreaseForOptimise;
+					unMaxedPerks = GetUnmaxedPerks();
+				}
+			}
+		}
 
 		#endregion
 

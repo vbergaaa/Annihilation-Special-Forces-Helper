@@ -1581,103 +1581,19 @@ namespace VBusiness.Perks
 
 		void PopulateAllPerks()
 		{
-			var perks = new List<VPerk>
-			{
-				Attack,
-				AttackSpeed,
-				Health,
-				HealthArmor,
-				Shields,
-				ShieldsArmor,
-				KillEfficiency,
-				KillRecycle,
-				MaximumPotiential,
-				Veterancy,
-				Rank,
-				InfusionRecycle,
-				DoubleWarp,
-				StartingMinerals,
-				MasterTrainer,
-				ExtraSupply,
-				MineralJackpot,
-				AutomaticRefinery,
-				AdrenalineRush,
-				CriticalChance,
-				CriticalDamage,
-				DamageReduction,
-				OverSpeed,
-				UnitSpecialization,
-				KillEfficiency2,
-				MaximumGather,
-				MaximumPotiential2,
-				QuickStart,
-				RankRevision,
-				Veterancy2,
-				BuildingRecycle,
-				CriticalCollection,
-				CriticalHarvest,
-				DoubleWarp2,
-				ExpertMiner,
-				MineralJackpot2,
-				AcceleratedFusion,
-				FastLearner,
-				MiningExpertise,
-				TrainingCenter,
-				TrifectaPower,
-				UnitStorage,
-				Alacrity,
-				BalancedTraining,
-				CooldownSpeed,
-				CriticalChance2,
-				CriticalDamage2,
-				RedCrits,
-				InfusionRecycle2,
-				KillHarvest,
-				MaximumPotiental3,
-				MaximumGather2,
-				RankRevision2,
-				Veterancy3,
-				AutomaticRefinery2,
-				CriticalHarvest2,
-				DoubleWarp3,
-				MineralJackpot3,
-				SuperJackpot,
-				TripleWarp,
-				BalancedTraining2,
-				CriticalChance3,
-				CriticalDamage3,
-				DamageReduction2,
-				SuperRush,
-				Alacrity2,
-				InfusionRecycle3,
-				MaximumPotential4,
-				Veterancy4,
-				KillRecycle2,
-				DNAStart,
-				RankRevision3,
-				DoubleWarp4,
-				TripleWarp2,
-				SuperJackpot2,
-				StartingMinerals2,
-				MasterTrainer2,
-				ExtraSupply2,
-				BlackCrits,
-				BlackMarket,
-				DominatorDamage,
-				DominatorSpeed,
-				Fearless,
-				UpgradeCache,
-				DestroyerVitals,
-				DestroyerArmor,
-				LimitlessEssence,
-				OverInfuse,
-				DestroyerWarp,
-				DestroyerRankRevision,
-			}
-			.OrderBy(x => x.Page)
-			.ThenBy(x => x.Position);
+			var type = GetType();
+			var properties = type.GetProperties();
+			var perkProperties = properties.Where(p => p.PropertyType.IsAssignableTo(typeof(VPerk)) && !p.Name.StartsWith("Perk"));
 
-			allPerks = perks;
+			var perks = new List<VPerk>();
+			foreach(var propertyInfo in perkProperties)
+			{
+				perks.Add(propertyInfo.GetValue(this) as VPerk);
+			}
+
+			allPerks = perks
+				.OrderBy(x => x.Page)
+				.ThenBy(x => x.Position);
 		}
 
 		#endregion

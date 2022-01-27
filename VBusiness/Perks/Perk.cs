@@ -1,4 +1,7 @@
-﻿using VBusiness.HelperClasses;
+﻿using System;
+using VBusiness.HelperClasses;
+using VBusiness.Loadouts;
+using VEntityFramework.Data;
 using VEntityFramework.Model;
 
 namespace VBusiness.Perks
@@ -15,15 +18,14 @@ namespace VBusiness.Perks
 
 		#region Properties
 
-		#region Cost
+		[VXML(false)]
+		public Loadout Loadout => PerkCollection.Loadout as Loadout;
 
 		public override int RemainingCost => this.GetRemainingCost();
 
 		public override int CurrentCost => this.GetCurrentCost();
 
 		public override int TotalCost => this.GetTotalCost();
-
-		#endregion
 
 		#region MaxLevel
 
@@ -65,8 +67,6 @@ namespace VBusiness.Perks
 
 		#endregion
 
-		#region DesiredLevel
-
 		public override short DesiredLevel
 		{
 			get => base.DesiredLevel;
@@ -89,6 +89,136 @@ namespace VBusiness.Perks
 
 		#endregion
 
-		#endregion
+		public override string GetIncrementHint(int amount)
+		{
+			if (Loadout.CurrentUnit?.UnitData?.Type == UnitType.None)
+			{
+				return "Please select a unit to enable this functionality";
+			}
+
+			var damageIncrease = GetProposedDamageIncrease(amount);
+			var toughnessIncrease = GetProposedToughnessIncrease(amount);
+
+			var hint = string.Empty;
+			if (damageIncrease != 0)
+			{
+				hint += $"Damage: +{Math.Round(damageIncrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (toughnessIncrease != 0)
+			{
+				hint += $"Toughness: +{Math.Round(toughnessIncrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (hint == string.Empty)
+			{
+				hint += "This gem will not affect Damage or Toughness for this unit";
+			}
+			return hint;
+		}
+
+		public override string GetDecrementHint(int amount)
+		{
+			if (Loadout.CurrentUnit?.UnitData?.Type == UnitType.None)
+			{
+				return "Please select a unit to enable this functionality";
+			}
+
+			var damageDecrease = GetProposedDamageDecrease(amount);
+			var toughnessDecrease = GetProposedToughnessDecrease(amount);
+
+			var hint = string.Empty;
+			if (damageDecrease != 0)
+			{
+				hint += $"Damage: {Math.Round(damageDecrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (toughnessDecrease != 0)
+			{
+				hint += $"Toughness: {Math.Round(toughnessDecrease, 3)}%";
+				hint += "\r\n";
+			}
+			if (hint == string.Empty)
+			{
+				hint += "This gem will not affect Damage or Toughness for this unit";
+			}
+			return hint;
+		}
+
+		public override double GetProposedDamageIncrease(int amount)
+		{
+			amount = GetValidAmount(amount);
+
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			using (Loadout.BeginOptimisingStatistics())
+			{
+				var oldDamage = Loadout.Stats.Damage;
+				OnLevelChanged(amount);
+				var newDamage = Loadout.Stats.Damage;
+				OnLevelChanged(-amount);
+				return (newDamage / oldDamage) * 100 - 100;
+			}
+		}
+
+		public override double GetProposedDamageDecrease(int amount)
+		{
+			amount = -GetValidAmount(-amount);
+
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			using (Loadout.BeginOptimisingStatistics())
+			{
+				var oldDamage = Loadout.Stats.Damage;
+				OnLevelChanged(-amount);
+				var newDamage = Loadout.Stats.Damage;
+				OnLevelChanged(amount);
+				return (newDamage / oldDamage) * 100 - 100;
+			}
+		}
+
+		public override double GetProposedToughnessIncrease(int amount)
+		{
+			amount = GetValidAmount(amount);
+
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			using (Loadout.BeginOptimisingStatistics())
+			{
+				var oldToughness = Loadout.Stats.Toughness;
+				OnLevelChanged(amount);
+				var newToughness = Loadout.Stats.Toughness;
+				OnLevelChanged(-amount);
+				return (newToughness / oldToughness) * 100 - 100;
+			}
+		}
+
+		public override double GetProposedToughnessDecrease(int amount)
+		{
+			amount = -GetValidAmount(-amount);
+
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			using (Loadout.BeginOptimisingStatistics())
+			{
+				var oldToughness = Loadout.Stats.Toughness;
+				OnLevelChanged(-amount);
+				var newToughness = Loadout.Stats.Toughness;
+				OnLevelChanged(amount);
+				return (newToughness / oldToughness) * 100 - 100;
+			}
+		}
+
+		private int GetValidAmount(int amount)
+		{
+			var maxIncrement = MaxLevel - DesiredLevel;
+			if (amount > maxIncrement)
+			{
+				amount = maxIncrement;
+			}
+
+			if (amount < -DesiredLevel)
+			{
+				amount = -DesiredLevel;
+			}
+
+			return amount;
+		}
 	}
 }

@@ -44,6 +44,8 @@ namespace VUserInterface
 			this.CriticalDamageGemControl = new GemControl();
 			this.DoubleWarpGemControl = new GemControl();
 			this.BindingSource = new VBindingSource();
+			this.OptimiseForDamageButton = new VButton();
+			this.OptimiseForToughnessButton = new VButton();
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
 			//
 			// TotalGemsLabel;
@@ -52,7 +54,7 @@ namespace VUserInterface
 			this.TotalGemsLabel.Caption = "Total Gems:";
 			this.TotalGemsLabel.Location = DPIScalingHelper.GetScaledPoint(200, 0);
 			this.TotalGemsLabel.Name = "TotalGemsLabel";
-			this.TotalGemsLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			this.TotalGemsLabel.Size = DPIScalingHelper.GetScaledSize(100, 25);
 			//
 			// RemainingGemsLabel;
 			//
@@ -60,7 +62,7 @@ namespace VUserInterface
 			this.RemainingGemsLabel.Caption = "Remaining Gems:";
 			this.RemainingGemsLabel.Location = DPIScalingHelper.GetScaledPoint(450, 0);
 			this.RemainingGemsLabel.Name = "RemainingGemsLabel";
-			this.RemainingGemsLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			this.RemainingGemsLabel.Size = DPIScalingHelper.GetScaledSize(100, 25);
 			//
 			// AttackControl
 			//
@@ -115,6 +117,22 @@ namespace VUserInterface
 			this.DoubleWarpGemControl.Location = DPIScalingHelper.GetScaledPoint(381, 217);
 			this.DoubleWarpGemControl.DataBindings.Add("Gem", this.BindingSource, "EconomyGem");
 			this.DoubleWarpGemControl.TabIndex = 10;
+			//
+			// OptimiseForDamageButton
+			//
+			this.OptimiseForDamageButton.Click += OptimiseForDamageButton_Click;
+			this.OptimiseForDamageButton.Name = "OptimiseForDamageButton";
+			this.OptimiseForDamageButton.Text = "Maximise Damage";
+			this.OptimiseForDamageButton.Location = DPIScalingHelper.GetScaledPoint(70, 25);
+			this.OptimiseForDamageButton.Size = DPIScalingHelper.GetScaledSize(150, 25);
+			//
+			// OptimiseForToughnessButton
+			//
+			this.OptimiseForToughnessButton.Click += OptimiseForToughnessButton_Click;
+			this.OptimiseForToughnessButton.Name = "OptimiseForToughnessButton";
+			this.OptimiseForToughnessButton.Text = "Maximise Toughness";
+			this.OptimiseForToughnessButton.Location = DPIScalingHelper.GetScaledPoint(350, 25);
+			this.OptimiseForToughnessButton.Size = DPIScalingHelper.GetScaledSize(150, 25);
 			// 
 			// gemsBindingSource
 			// 
@@ -133,6 +151,8 @@ namespace VUserInterface
 			this.Controls.Add(DoubleWarpGemControl);
 			this.Controls.Add(TotalGemsLabel);
 			this.Controls.Add(RemainingGemsLabel);
+			this.Controls.Add(OptimiseForDamageButton);
+			this.Controls.Add(OptimiseForToughnessButton);
 			this.Size = DPIScalingHelper.GetScaledSize(589, 302);
 			((System.ComponentModel.ISupportInitialize)(this.BindingSource)).EndInit();
 		}
@@ -151,5 +171,7 @@ namespace VUserInterface
 		private GemControl CriticalChanceGemControl;
 		private GemControl CriticalDamageGemControl;
 		private GemControl DoubleWarpGemControl;
+		private VButton OptimiseForDamageButton;
+		private VButton OptimiseForToughnessButton;
 	}
 }

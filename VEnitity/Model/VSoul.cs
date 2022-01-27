@@ -291,5 +291,6 @@ namespace VEntityFramework.Model
 		#endregion
 
 		public const SoulType HighestNonUniqueSoul = SoulType.HalfPitchBlack;
+		public const SoulType FirstEventSoul = SoulType.ChristmasEvent;
 	}
 }

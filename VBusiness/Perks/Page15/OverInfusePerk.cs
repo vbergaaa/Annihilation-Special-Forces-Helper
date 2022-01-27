@@ -1,4 +1,5 @@
-﻿using VEntityFramework.Model;
+﻿using VBusiness.Units;
+using VEntityFramework.Model;
 
 namespace VBusiness.Perks
 {
@@ -25,7 +26,17 @@ namespace VBusiness.Perks
 		protected override void OnLevelChanged(int difference)
 		{
 			base.OnLevelChanged(difference);
+
+			var unit = Loadout.CurrentUnit as Unit;
+			var oldMaximumInfusion = unit.GetMaxInfusion(unit.MaximumKills);
+			Loadout.Stats.OverInfuseStacks += difference;
+
+			if (oldMaximumInfusion == Loadout.CurrentUnit.CurrentInfusion)
+			{
+				unit.CurrentInfusion = unit.MaximumInfusion;
+			}
+
 			PerkCollection.Loadout.CurrentUnit.RefreshPropertyBinding(nameof(PerkCollection.Loadout.CurrentUnit.MaximumInfusion));
 		}
-	}
+	} 
 }

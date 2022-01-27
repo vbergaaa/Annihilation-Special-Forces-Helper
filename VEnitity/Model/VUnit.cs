@@ -108,11 +108,7 @@ namespace VEntityFramework.Model
 
 		#endregion
 
-		#region MaximumKills
-
 		public virtual int MaximumKills { get; }
-
-		#endregion
 
 		#region Rank
 

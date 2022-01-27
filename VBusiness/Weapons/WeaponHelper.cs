@@ -54,12 +54,12 @@ namespace VBusiness.Weapons
 			{
 				var remainingChance = 1.0;
 
-				var blackCritChance = perks.BlackCrits.DesiredLevel > 0 ? stats.CriticalChance / 300.0 : 0;
+				var blackCritChance = stats.HasBlackCrits ? stats.CriticalChance / 300.0 : 0;
 				blackCritChance = blackCritChance > 1 ? 1 : blackCritChance;
 				critChances.BlackChance = blackCritChance;
 				remainingChance -= blackCritChance;
 
-				var redCritChance = perks.RedCrits.DesiredLevel > 0 ? remainingChance * stats.CriticalChance / 200 : 0;
+				var redCritChance = stats.HasRedCrits ? remainingChance * stats.CriticalChance / 200 : 0;
 				redCritChance = redCritChance > remainingChance ? remainingChance : redCritChance;
 				critChances.RedChance = redCritChance;
 				remainingChance -= redCritChance;

@@ -213,7 +213,7 @@ namespace VBusiness.ChallengePoints
 
 		#region Lookups
 
-		List<VChallengePoint> AllCP => fAllCP ??= GetAllCPs();
+		public List<VChallengePoint> AllCP => fAllCP ??= GetAllCPs();
 		List<VChallengePoint> fAllCP;
 
 		List<VChallengePoint> GetAllCPs()

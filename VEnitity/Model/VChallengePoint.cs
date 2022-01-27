@@ -15,14 +15,14 @@ namespace VEntityFramework.Model
 
 		#region Properties
 
-		#region Loadout
+		[VXML(false)]
+		public VChallengePointCollection ChallengePointCollection
+		{
+			get; private set;
+		}
 
 		[VXML(false)]
-		public VChallengePointCollection ChallengePointCollection { get; private set; }
-
-		#endregion
-
-		#region CurrentLevel
+		public VLoadout Loadout => ChallengePointCollection.Loadout;
 
 		[VXML(true)]
 		public virtual int CurrentLevel
@@ -38,69 +38,54 @@ namespace VEntityFramework.Model
 				}
 			}
 		}
-
-		#endregion
-
-		#region MinValue
+		int fCurrentLevel;
 
 		public virtual int MinValue { get; }
-
-		#endregion
-
-		#region MaxValue
-
 		public virtual int MaxValue { get; }
-
-		#endregion
-
-		#region CostIncrement
-
 		public virtual int CostIncrement => 1;
-
-		#endregion
-
-		#region NextLevelCost
-
 		public virtual int NextLevelCost { get; }
-
-		#endregion
-
-		#region TotalCost
-
 		public virtual int TotalCost { get; }
-
-		#endregion
-
-		#region Color
-
 		public abstract CPColor Color { get; }
-
-		#endregion
-
-		#region Tier
-
 		public abstract CPTier Tier { get; }
-
-		#endregion
-
-		#region Name
-
 		public abstract string Name { get; }
-
 		[VXML(true)]
 		public string Key => Name;
 
 		#endregion
 
-		#endregion
-
 		#region Methods
-
-		#region CPLevelChanged
 
 		public abstract void OnCPLevelChanged(int difference);
 
-		#endregion
+		public virtual string GetIncrementHint(int amount)
+		{
+			return string.Empty;
+		}
+
+		public virtual string GetDecrementHint(int amount)
+		{
+			return string.Empty;
+		}
+
+		public virtual double GetProposedDamageIncrease(int amount)
+		{
+			return 0;
+		}
+
+		public virtual double GetProposedToughnessIncrease(int amount)
+		{
+			return 0;
+		}
+
+		public virtual double GetProposedDamageDecrease(int amount)
+		{
+			return 0;
+		}
+
+		public virtual double GetProposedToughnessDecrease(int amount)
+		{
+			return 0;
+		}
 
 		#endregion
 
@@ -109,8 +94,6 @@ namespace VEntityFramework.Model
 		public override string BizoName => "ChallengePoint";
 
 		#endregion
-
-		int fCurrentLevel;
 	}
 
 	public enum CPColor

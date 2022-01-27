@@ -94,6 +94,16 @@
                     "Name" = "8:.NET Runtime 6.0.0 (x64)"
                     "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.6.0.x64"
                     }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.3.1.x64"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 3.1.21 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.3.1.x64"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.6.0.x64"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 6.0.0 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.6.0.x64"
+                    }
                 }
             }
         }
@@ -215,14 +225,14 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ASF App"
         "ProductCode" = "8:{8488BF4C-2914-4E1D-8815-99F9EA8340F7}"
-        "PackageCode" = "8:{1A0289CC-BB80-4D31-B409-3F048D5B5B0C}"
+        "PackageCode" = "8:{4322242D-A8F6-47C1-B953-1BE3430C4CCB}"
         "UpgradeCode" = "8:{8A25DE77-A39A-42C9-8CD9-2FD3B2E7F97A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.4.0"
+        "ProductVersion" = "8:1.5"
         "Manufacturer" = "8:vbergaaa"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/vbergaaa"

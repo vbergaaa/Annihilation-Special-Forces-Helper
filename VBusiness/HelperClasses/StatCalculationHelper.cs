@@ -29,43 +29,24 @@ namespace VBusiness.HelperClasses
 		{
 			var enemyDamages = ApplyPlayerDamageReduction(loadout, rawEnemyDamages);
 			var maxDamage = enemyDamages.Max(x => x.Enemy);
-			if (maxDamage < stats.UnitShieldsArmor)
-			{
-				return GetMaxedOutDefensiveValue(stats.UnitShieldsArmor, stats.UnitShields, stats.DamageReduction);
-			}
-			else
-			{
-				var hitsTillDeath = GetHitsTillDeath(enemyDamages, stats.UnitShieldsArmor, stats.UnitShields);
-				var totalDamageTillDeath = hitsTillDeath * rawEnemyDamages.Sum(x => (x.Chance * x.Enemy.Damage));
-				return totalDamageTillDeath;
-			}
+				
+			var hitsTillDeath = GetHitsTillDeath(enemyDamages, stats.UnitShieldsArmor, stats.UnitShields);
+			var totalDamageTillDeath = hitsTillDeath * rawEnemyDamages.Sum(x => (x.Chance * x.Enemy.Damage));
+			return totalDamageTillDeath;
 		}
 
 		static double GetHealthToughness(VLoadout loadout, IEnumerable<(double Chance, EnemyStatCard Enemy)> rawEnemyDamages, VStats stats)
 		{
 			var enemyDamages = ApplyPlayerDamageReduction(loadout, rawEnemyDamages);
 			var maxDamage = enemyDamages.Max(x => x.Enemy);
-			if (maxDamage < stats.UnitHealthArmor)
-			{
-				return GetMaxedOutDefensiveValue(stats.UnitHealthArmor, stats.UnitHealth, stats.DamageReduction);
-			}
-			else
-			{
-				var hitsTillDeath = GetHitsTillDeath(enemyDamages, stats.UnitHealthArmor, stats.UnitHealth);
-				var totalDamageTillDeath = hitsTillDeath * rawEnemyDamages.Sum(x => (x.Chance * x.Enemy.Damage));
-				return totalDamageTillDeath;
-			}
+			var hitsTillDeath = GetHitsTillDeath(enemyDamages, stats.UnitHealthArmor, stats.UnitHealth);
+			var totalDamageTillDeath = hitsTillDeath * rawEnemyDamages.Sum(x => (x.Chance * x.Enemy.Damage));
+			return totalDamageTillDeath;
 		}
 
 		static IEnumerable<(double Chance, double Enemy)> ApplyPlayerDamageReduction(VLoadout loadout, IEnumerable<(double Chance, EnemyStatCard Enemy)> rawEnemyDamages)
 		{
 			return rawEnemyDamages.Select(x => (x.Chance, x.Enemy.Damage * (1 - loadout.Stats.DamageReduction / 100)));
-		}
-
-		static double GetMaxedOutDefensiveValue(double armor, double unitShields, double damageReduction)
-		{
-			var mostDamageTaken = 2 * (armor + 0.5) * unitShields;
-			return mostDamageTaken / (1 - damageReduction / 100);
 		}
 
 		static double GetHitsTillDeath(IEnumerable<(double Chance, double Damage)> enemyDamages, double armor, double amount)

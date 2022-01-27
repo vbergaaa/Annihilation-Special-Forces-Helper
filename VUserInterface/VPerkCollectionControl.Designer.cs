@@ -35,6 +35,8 @@ namespace VUserInterface
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
+			this.OptimiseForDamageButton = new VButton();
+			this.OptimiseForToughnessButton = new VButton();
 			this.Perk1Control = new VPerkControl();
 			this.Perk2Control = new VPerkControl();
 			this.Perk3Control = new VPerkControl();
@@ -64,6 +66,22 @@ namespace VUserInterface
 			this.previousPageButton = new VUserInterface.CommonControls.VButton();
 			this.nextPageButton = new VUserInterface.CommonControls.VButton();
 			((System.ComponentModel.ISupportInitialize)(this.perksBindingSource)).BeginInit();
+			//
+			// OptimiseForDamageButton
+			//
+			this.OptimiseForDamageButton.Click += OptimiseForDamageButton_Click;
+			this.OptimiseForDamageButton.Name = "OptimiseForDamageButton";
+			this.OptimiseForDamageButton.Text = "Maximise Damage";
+			this.OptimiseForDamageButton.Location = DPIScalingHelper.GetScaledPoint(70, 25);
+			this.OptimiseForDamageButton.Size = DPIScalingHelper.GetScaledSize(150, 25);
+			//
+			// OptimiseForToughnessButton
+			//
+			this.OptimiseForToughnessButton.Click += OptimiseForToughnessButton_Click;
+			this.OptimiseForToughnessButton.Name = "OptimiseForToughnessButton";
+			this.OptimiseForToughnessButton.Text = "Maximise Toughness";
+			this.OptimiseForToughnessButton.Location = DPIScalingHelper.GetScaledPoint(350, 25);
+			this.OptimiseForToughnessButton.Size = DPIScalingHelper.GetScaledSize(150, 25);
 			//
 			// Perk1Control
 			//
@@ -111,7 +129,7 @@ namespace VUserInterface
 			this.PageCostLabel.Caption = "Cost of Page:";
 			this.PageCostLabel.Location = DPIScalingHelper.GetScaledPoint(100, 0);
 			this.PageCostLabel.Name = "PageCostLabel";
-			this.PageCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			this.PageCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 25);
 			//
 			// TotalCostLabel;
 			//
@@ -119,7 +137,7 @@ namespace VUserInterface
 			this.TotalCostLabel.Caption = "Total Cost:";
 			this.TotalCostLabel.Location = DPIScalingHelper.GetScaledPoint(300, 0);
 			this.TotalCostLabel.Name = "TotalCostLabel";
-			this.TotalCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			this.TotalCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 25);
 			//
 			// RemainingCostLabel;
 			//
@@ -127,7 +145,7 @@ namespace VUserInterface
 			this.RemainingCostLabel.Caption = "Available PP:";
 			this.RemainingCostLabel.Location = DPIScalingHelper.GetScaledPoint(500, 0);
 			this.RemainingCostLabel.Name = "RemainingCostLabel";
-			this.TotalCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 30);
+			this.TotalCostLabel.Size = DPIScalingHelper.GetScaledSize(100, 25);
 			//
 			// page1Button
 			//
@@ -268,7 +286,7 @@ namespace VUserInterface
 			// MainGroupBox
 			//
 			this.MainGroupBox.Name = "MainGroupBox";
-			this.MainGroupBox.Location = DPIScalingHelper.GetScaledPoint(0, 30);
+			this.MainGroupBox.Location = DPIScalingHelper.GetScaledPoint(0, 50);
 			this.MainGroupBox.Text = "Perks";
 			this.MainGroupBox.Controls.Add(Perk1Control);
 			this.MainGroupBox.Controls.Add(Perk2Control);
@@ -299,9 +317,11 @@ namespace VUserInterface
 			//
 			this.Controls.Add(PageCostLabel);
 			this.Controls.Add(TotalCostLabel);
+			this.Controls.Add(OptimiseForDamageButton);
+			this.Controls.Add(OptimiseForToughnessButton);
 			this.Controls.Add(RemainingCostLabel);
 			this.Controls.Add(MainGroupBox);
-			this.Size = DPIScalingHelper.GetScaledSize(589, 302);
+			this.Size = DPIScalingHelper.GetScaledSize(589, 322);
 			((System.ComponentModel.ISupportInitialize)(this.perksBindingSource)).EndInit();
 		}
 
@@ -335,5 +355,7 @@ namespace VUserInterface
 		private VLabel TotalCostLabel;
 		private VLabel RemainingCostLabel;
 		private DPIGroupBox MainGroupBox;
+		private VButton OptimiseForDamageButton;
+		private VButton OptimiseForToughnessButton;
 	}
 }

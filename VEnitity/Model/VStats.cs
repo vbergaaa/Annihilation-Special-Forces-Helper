@@ -476,6 +476,36 @@ namespace VEntityFramework.Model
 
 		public VLoadout Loadout { get; }
 
+		public int MaximumPotientialStacks
+		{
+			get => fMaximumPotientialStacks;
+			set {
+				fMaximumPotientialStacks = value;
+				RefreshPropertyBinding(nameof(MaximumPotientialStacks));
+			}
+		}
+		int fMaximumPotientialStacks;
+
+		public int LimitlessEssenceStacks
+		{
+			get => fLimitlessEssenceStacks;
+			set {
+				fLimitlessEssenceStacks = value;
+				RefreshPropertyBinding(nameof(LimitlessEssenceStacks));
+			}
+		}
+		int fLimitlessEssenceStacks;
+
+		public int OverInfuseStacks
+		{
+			get => fOverInfuseStacks;
+			set {
+				fOverInfuseStacks = value;
+				RefreshPropertyBinding(nameof(OverInfuseStacks));
+			}
+		}
+		int fOverInfuseStacks;
+
 		#region RefreshBindingSuspension
 
 		protected override void OnPropertyChanged(string bindingName)
