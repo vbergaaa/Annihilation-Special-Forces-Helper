@@ -1594,8 +1594,6 @@ namespace VBusiness.Perks
 			allPerks = perks
 				.OrderBy(x => x.Page)
 				.ThenBy(x => x.Position);
-
-			allPerks = perks;
 		}
 
 		#endregion
