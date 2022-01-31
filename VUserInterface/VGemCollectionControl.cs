@@ -35,6 +35,12 @@ namespace VUserInterface
 				return;
 			}
 
+			if (!loadout.ShouldRestrict)
+			{
+				MessageBox.Show(CaptionProvider.GetShouldRestrictCaption("gem", "damage"));
+				return;
+			}
+
 			if (MessageBox.Show(CaptionProvider.GetOptimiseLoadoutCaption("gems", "damage"), "Confirmation", MessageBoxButtons.OKCancel) != DialogResult.OK)
 			{
 				return;
@@ -50,6 +56,12 @@ namespace VUserInterface
 			if (loadout.CurrentUnit?.UnitData?.Type == VEntityFramework.Model.UnitType.None)
 			{
 				MessageBox.Show("Please select a unit to enable this functionality");
+				return;
+			}
+
+			if (!loadout.ShouldRestrict)
+			{
+				MessageBox.Show(CaptionProvider.GetShouldRestrictCaption("gem", "toughness"));
 				return;
 			}
 

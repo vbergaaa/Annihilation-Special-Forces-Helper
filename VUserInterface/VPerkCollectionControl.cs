@@ -90,6 +90,12 @@ namespace VUserInterface
 				return;
 			}
 
+			if (!loadout.ShouldRestrict)
+			{
+				MessageBox.Show(CaptionProvider.GetShouldRestrictCaption("perk", "damage"));
+				return;
+			}
+
 			if (MessageBox.Show(CaptionProvider.GetOptimiseLoadoutCaption("perk points", "damage"), "Confirmation", MessageBoxButtons.OKCancel) != DialogResult.OK)
 			{
 				return;
@@ -105,6 +111,12 @@ namespace VUserInterface
 			if (loadout.CurrentUnit?.UnitData?.Type == VEntityFramework.Model.UnitType.None)
 			{
 				MessageBox.Show("Please select a unit to enable this functionality");
+				return;
+			}
+
+			if (!loadout.ShouldRestrict)
+			{
+				MessageBox.Show(CaptionProvider.GetShouldRestrictCaption("perk", "toughness"));
 				return;
 			}
 
