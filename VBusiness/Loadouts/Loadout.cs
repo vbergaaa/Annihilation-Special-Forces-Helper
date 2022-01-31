@@ -372,6 +372,7 @@ namespace VBusiness.Loadouts
 			CheckLoadoutName();
 			CheckSlotNumber();
 			CheckCanAfford();
+			CheckIsSavingPerksThatWillBeOverriden();
 		}
 
 		void CheckCanAfford()
@@ -395,6 +396,16 @@ namespace VBusiness.Loadouts
 			if (Name == "")
 			{
 				Notifications.AddError("Please enter a name for this loadout.");
+			}
+		}
+
+		void CheckIsSavingPerksThatWillBeOverriden()
+		{
+			if (SyncWithBank && Perks.HasChanges && Slot <= 10)
+			{
+				Notifications.AddPrompt("It looks like you are attempting to edit perks on a loadout that will sync it's perks with the bank file whenever you open it. " +
+					"This means the changes you have made to your perks will be overriden when you next open the loadout. To prevent this, untick 'Sync loadout on opening' " +
+					"on the loadout's details tab, or change the loadout save slot to a number greater than 10.");
 			}
 		}
 
