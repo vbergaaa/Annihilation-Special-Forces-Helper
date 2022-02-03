@@ -1,7 +1,7 @@
 # Annihilation Special Forces Companion App
 
 ## Download Link
-[latest Version](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/download/v1.4.1/ASFv1.4.1.zip)
+[latest safe Version](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/download/v1.5/setup.zip)
 
 ## About
 This is a program used to assist players who play the SC2 Custom Arcade Game, "Annihilation Special Forces" created by <Cruxis>jessy. 
