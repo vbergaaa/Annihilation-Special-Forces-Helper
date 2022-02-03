@@ -52,15 +52,12 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA1;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new DisruptorBasicWeapon();
-				yield return new DisruptorBasicAttackAOE();
-				yield return new DisruptorDisplacementNova();
-				yield return new DisruptorPurificationNova();
-			}
+			yield return new DisruptorBasicWeapon();
+			yield return new DisruptorBasicAttackAOE();
+			yield return new DisruptorDisplacementNova();
+			yield return new DisruptorPurificationNova();
 		}
 	}
 }

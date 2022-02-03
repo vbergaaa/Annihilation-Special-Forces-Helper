@@ -52,13 +52,10 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA2;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new StonePrisonerBasicWeapon();
-				yield return new StonePrisonerBerserkerAOE();
-			}
+			yield return new StonePrisonerBasicWeapon();
+			yield return new StonePrisonerBerserkerAOE();
 		}
 
 		public override IDisposable ApplyPassiveEffect(VLoadout loadout)

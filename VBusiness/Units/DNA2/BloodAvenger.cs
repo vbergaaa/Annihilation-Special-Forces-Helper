@@ -44,13 +44,10 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA2;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new BloodAvengerBasicWeapon();
-				yield return new BloodAvengerBloodHarvest();
-			}
+			yield return new BloodAvengerBasicWeapon();
+			yield return new BloodAvengerBloodHarvest();
 		}
 	}
 }

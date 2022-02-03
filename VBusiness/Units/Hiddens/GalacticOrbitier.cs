@@ -50,15 +50,12 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.Hero;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new GalaxianOrbiterBasicWeapon();
-				yield return new GalaxianOrbiterOrbSpiral();
-				yield return new GalaxianOrbiterOrbGalaxy();
-				yield return new GalaxianOrbiterGalacticResonance();
-			}
+			yield return new GalaxianOrbiterBasicWeapon();
+			yield return new GalaxianOrbiterOrbSpiral();
+			yield return new GalaxianOrbiterOrbGalaxy();
+			yield return new GalaxianOrbiterGalacticResonance();
 		}
 
 		public override IDisposable ApplyPassiveEffect(VLoadout loadout)
