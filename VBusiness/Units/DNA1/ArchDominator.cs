@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using VBusiness.Weapons;
 using VEntityFramework;
 using VEntityFramework.Model;
@@ -47,8 +48,16 @@ namespace VBusiness.Units
 
 		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			yield return new ArchDominatorBasicWeapon();
-			yield return new ArchDominatorDuplicatedDiscord();
+			if (loadout.ActiveSoulTypes.Contains(SoulType.Domination))
+			{
+				yield return new ArchDominatorUpgradedBasicWeapon();
+				yield return new ArchDominatorUpgradedDuplicatedDiscord();
+			}
+			else
+			{
+				yield return new ArchDominatorBasicWeapon();
+				yield return new ArchDominatorDuplicatedDiscord();
+			}
 		}
 
 		public override IDisposable ApplyPassiveEffect(VLoadout loadout)
