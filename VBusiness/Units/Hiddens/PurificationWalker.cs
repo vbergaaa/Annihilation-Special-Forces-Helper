@@ -52,16 +52,13 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.Hero;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new PurificationWalkerBasicWeapon();
-				yield return new PurificationWalkerPurificationBeam();
-				yield return new DisruptorDisplacementNova(); // yes, this is right
-				yield return new PurificationWalkerBasicAttackAOE();
-				yield return new PurificationWalkerAutomatedTaldarimBeams();
-			}
+			yield return new PurificationWalkerBasicWeapon();
+			yield return new PurificationWalkerPurificationBeam();
+			yield return new DisruptorDisplacementNova(); // yes, this is right
+			yield return new PurificationWalkerBasicAttackAOE();
+			yield return new PurificationWalkerAutomatedTaldarimBeams();
 		}
 	}
 }

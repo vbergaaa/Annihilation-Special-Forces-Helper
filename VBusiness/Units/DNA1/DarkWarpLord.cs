@@ -44,14 +44,11 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA1;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new DarkWarpLordBasicWeapon();
-				yield return new DarkWarpLordBasicAtkAOE();
-				yield return new DarkWarpLordDarkWarpAnnihilation();
-			}
+			yield return new DarkWarpLordBasicWeapon();
+			yield return new DarkWarpLordBasicAtkAOE();
+			yield return new DarkWarpLordDarkWarpAnnihilation();
 		}
 	}
 }

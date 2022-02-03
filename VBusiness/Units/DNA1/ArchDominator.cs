@@ -45,13 +45,10 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA1;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new ArchDominatorBasicWeapon();
-				yield return new ArchDominatorDuplicatedDiscord();
-			}
+			yield return new ArchDominatorBasicWeapon();
+			yield return new ArchDominatorDuplicatedDiscord();
 		}
 
 		public override IDisposable ApplyPassiveEffect(VLoadout loadout)

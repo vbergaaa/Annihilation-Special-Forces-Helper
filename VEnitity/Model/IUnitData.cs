@@ -25,7 +25,7 @@ namespace VEntityFramework.Model
 		UnitType BasicType { get; }
 		IEnumerable<UnitRecepePiece> Recepe { get; }
 		Evolution Evolution { get; }
-		IEnumerable<IWeaponData> Weapons { get; }
+		IEnumerable<IWeaponData> GetWeapons(VLoadout loadout);
 		IDisposable ApplyPassiveEffect(VLoadout loadout);
 		ITemporaryBuffAbility OffensiveBuffAbility { get; }
 	}

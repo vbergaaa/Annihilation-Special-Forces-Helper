@@ -44,14 +44,11 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA1;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new UnstableDreadnoughtBasicWeapon();
-				yield return new UnstableDreadnoughtBasicAttackAOE();
-				yield return new UnstableDreadnoughtUnstableCore();
-			}
+			yield return new UnstableDreadnoughtBasicWeapon();
+			yield return new UnstableDreadnoughtBasicAttackAOE();
+			yield return new UnstableDreadnoughtUnstableCore();
 		}
 	}
 }

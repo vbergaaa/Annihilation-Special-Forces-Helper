@@ -43,15 +43,12 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.Hero;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new TerminatorWarpLordBasicWeapon();
-				yield return new TerminatorWarpLordBasicAtkAOE();
-				yield return new TerminatorWarpLordTerminatorWarpAnnihilation();
-				yield return new TerminatorWarpLordTerminate();
-			}
+			yield return new TerminatorWarpLordBasicWeapon();
+			yield return new TerminatorWarpLordBasicAtkAOE();
+			yield return new TerminatorWarpLordTerminatorWarpAnnihilation();
+			yield return new TerminatorWarpLordTerminate();
 		}
 	}
 }

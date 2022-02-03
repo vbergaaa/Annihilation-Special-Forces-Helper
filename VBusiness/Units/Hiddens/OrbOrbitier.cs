@@ -50,14 +50,11 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.Hero;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new OrbOrbiterBasicWeapon();
-				yield return new OrbOrbiterOrbWave();
-				yield return new OrbOrbiterOrbOrbit();
-			}
+			yield return new OrbOrbiterBasicWeapon();
+			yield return new OrbOrbiterOrbWave();
+			yield return new OrbOrbiterOrbOrbit();
 		}
 
 		public override IDisposable ApplyPassiveEffect(VLoadout loadout)

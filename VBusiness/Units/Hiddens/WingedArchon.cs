@@ -52,16 +52,13 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.SuperHero;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new WingedArchonBasicWeapon();
-				yield return new WingedArchonBasicAttackAOE();
-				yield return new WingedArchonWingedStorm();
-				yield return new WingedArchonWingedOpenFire();
-				yield return new WingedArchonWingedPower();
-			}
+			yield return new WingedArchonBasicWeapon();
+			yield return new WingedArchonBasicAttackAOE();
+			yield return new WingedArchonWingedStorm();
+			yield return new WingedArchonWingedOpenFire();
+			yield return new WingedArchonWingedPower();
 		}
 	}
 }
