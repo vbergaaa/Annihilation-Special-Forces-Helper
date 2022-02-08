@@ -8,6 +8,40 @@ namespace VBusiness.Souls
 		{
 		}
 
-		public override VEntityFramework.Model.SoulType Type => VEntityFramework.Model.SoulType.PowerWarping;
+		public override SoulType Type => SoulType.PowerWarping;
+
+		public override void ActivateUniqueEffect()
+		{
+			base.ActivateUniqueEffect();
+
+			var bonusDoubleWarp = 0;
+
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				var unit = Loadout.CurrentUnit;
+				Loadout.CurrentUnit = VUnit.New(UnitType.None, Loadout);
+				bonusDoubleWarp = (int)(Loadout.Stats.Attack - 100) / 10;
+				Loadout.CurrentUnit = unit;
+			}
+
+			Loadout.IncomeManager.DoubleWarp += 5 + bonusDoubleWarp;
+		}
+
+		public override void DeactivateUniqueEffect()
+		{
+			base.DeactivateUniqueEffect();
+
+			var bonusDoubleWarp = 0;
+
+			using (Loadout.Stats.SuspendRefreshingStatBindings())
+			{
+				var unit = Loadout.CurrentUnit;
+				Loadout.CurrentUnit = VUnit.New(UnitType.None, Loadout);
+				bonusDoubleWarp = (int)(Loadout.Stats.Attack - 100) / 10;
+				Loadout.CurrentUnit = unit;
+			}
+
+			Loadout.IncomeManager.DoubleWarp -= 5 + bonusDoubleWarp;
+		}
 	}
 }

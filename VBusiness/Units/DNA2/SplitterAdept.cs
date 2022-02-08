@@ -44,12 +44,9 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA2;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new SplitterAdeptBasicWeapon();
-			}
+			yield return new SplitterAdeptBasicWeapon();
 		}
 
 		public override ITemporaryBuffAbility OffensiveBuffAbility => new SplitterAdeptPrecisionTargetting();

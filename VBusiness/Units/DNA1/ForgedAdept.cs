@@ -44,12 +44,9 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA1;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new ForgedAdeptBasicWeapon();
-			}
+			yield return new ForgedAdeptBasicWeapon();
 		}
 	}
 }

@@ -45,13 +45,10 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA1;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new DarkShieldBatteryBasicWeapon();
-				yield return new ShieldBatteryDestablisingShield();
-			}
+			yield return new DarkShieldBatteryBasicWeapon();
+			yield return new ShieldBatteryDestablisingShield();
 		}
 
 		public override IDisposable ApplyPassiveEffect(VLoadout loadout)

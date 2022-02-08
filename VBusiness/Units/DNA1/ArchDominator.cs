@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using VBusiness.Weapons;
 using VEntityFramework;
 using VEntityFramework.Model;
@@ -45,9 +46,14 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA1;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
+			if (loadout.ActiveSoulTypes.Contains(SoulType.Domination))
+			{
+				yield return new ArchDominatorUpgradedBasicWeapon();
+				yield return new ArchDominatorUpgradedDuplicatedDiscord();
+			}
+			else
 			{
 				yield return new ArchDominatorBasicWeapon();
 				yield return new ArchDominatorDuplicatedDiscord();

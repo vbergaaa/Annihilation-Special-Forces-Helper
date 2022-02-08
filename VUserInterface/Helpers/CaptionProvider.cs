@@ -25,5 +25,12 @@ To make this as accurate as possible, please ensure that you have correctly assi
 
 All of these things will effect which {points} get selected, so having them as accurate as possible is important before hitting 'OK'.";
 		}
+
+		public static string GetShouldRestrictCaption(string points, string stat)
+		{
+			return @$"You are attempting to maximise the loadout's {stat} with 'Remove loadout restrictions' ticked.
+This will cause the application to buy {points}s until every {points} is at it's max value. It will take a very long time and the results will not be realistic.
+To use this feature, please untick 'Remove loadout restrictions' on the loadout's details tab.";
+		}
 	}
 }

@@ -44,13 +44,10 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA2;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new MirrorStrikerBasicWeapon();
-				yield return new MirrorStrikerGreaterMulti();
-			}
+			yield return new MirrorStrikerBasicWeapon();
+			yield return new MirrorStrikerGreaterMulti();
 		}
 	}
 }
