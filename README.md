@@ -1,7 +1,10 @@
 # Annihilation Special Forces Companion App
 
 ## Download Link
-[latest safe Version](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/download/v1.5/setup.zip)
+[latest safe Version](https://github.com/vbergaaa/Annihilation-Special-Forces-Helper/releases/download/v1.5.2/ASFv1.5.2.zip)
+
+### Installation Instructions
+Download the .zip file above, extract it to a location on your PC, wade through all the files to find one named `ASFLauncher.exe`. Create a shortcut from this file, and place the shortcut in a convenient location. Use this shortcut when opening the desktop app.
 
 ## About
 This is a program used to assist players who play the SC2 Custom Arcade Game, "Annihilation Special Forces" created by <Cruxis>jessy. 
