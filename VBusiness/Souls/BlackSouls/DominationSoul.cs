@@ -9,5 +9,17 @@ namespace VBusiness.Souls
 		}
 
 		public override SoulType Type => SoulType.Domination;
+
+		public override void ActivateUniqueEffect()
+		{
+			base.ActivateUniqueEffect();
+			Loadout.Stats.RefreshPropertyBinding(nameof(Loadout.Stats.Damage));
+		}
+
+		public override void DeactivateUniqueEffect()
+		{
+			base.ActivateUniqueEffect();
+			Loadout.Stats.RefreshPropertyBinding(nameof(Loadout.Stats.Damage));
+		}
 	}
 }

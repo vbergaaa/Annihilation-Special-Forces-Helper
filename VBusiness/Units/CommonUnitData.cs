@@ -24,7 +24,7 @@ namespace VBusiness.Units
 		public abstract UnitType BasicType { get; }
 		public abstract IEnumerable<UnitRecepePiece> Recepe { get; }
 		public abstract Evolution Evolution { get; }
-		public abstract IEnumerable<IWeaponData> Weapons { get; }
+		public abstract IEnumerable<IWeaponData> GetWeapons(VLoadout loadout);
 
 		public virtual IDisposable ApplyPassiveEffect(VLoadout loadout)
 		{

@@ -41,12 +41,9 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.Hero;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new DuplicatorAdeptBasicWeapon();
-			}
+			yield return new DuplicatorAdeptBasicWeapon();
 		}
 
 		public override ITemporaryBuffAbility OffensiveBuffAbility => new DuplicatorAdeptPrecisionTargetting();

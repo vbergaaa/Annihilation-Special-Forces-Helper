@@ -52,15 +52,12 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.Hero;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new CrimsonArchonBasicWeapon();
-				yield return new CrimsonArchonBasicAttackAOE();
-				yield return new HighTemplarStorm();
-				yield return new CrimsonArchonOpenFire();
-			}
+			yield return new CrimsonArchonBasicWeapon();
+			yield return new CrimsonArchonBasicAttackAOE();
+			yield return new HighTemplarStorm();
+			yield return new CrimsonArchonOpenFire();
 		}
 	}
 }

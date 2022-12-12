@@ -52,13 +52,10 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.Hero;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new BladeMasterBasicWeapon();
-				yield return new BladeMasterFusedAssault();
-			}
+			yield return new BladeMasterBasicWeapon();
+			yield return new BladeMasterFusedAssault();
 		}
 
 		public override IDisposable ApplyPassiveEffect(VLoadout loadout)

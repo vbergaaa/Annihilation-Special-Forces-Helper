@@ -43,14 +43,11 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.DNA1;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new TemplarBasicWeapon();
-				yield return new HighTemplarStorm();
-				yield return new HighTemplarAutoStorm();
-			}
+			yield return new TemplarBasicWeapon();
+			yield return new HighTemplarStorm();
+			yield return new HighTemplarAutoStorm();
 		}
 	}
 }

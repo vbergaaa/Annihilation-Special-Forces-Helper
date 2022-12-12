@@ -54,13 +54,10 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.SuperHero;
 
-		public override IEnumerable<IWeaponData> Weapons
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
 		{
-			get
-			{
-				yield return new OmniBladerBasicWeapon();
-				yield return new OmniBladerUnboundAssault();
-			}
+			yield return new OmniBladerBasicWeapon();
+			yield return new OmniBladerUnboundAssault();
 		}
 
 		public override IDisposable ApplyPassiveEffect(VLoadout loadout)

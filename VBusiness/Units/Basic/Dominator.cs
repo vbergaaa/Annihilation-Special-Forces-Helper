@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using VBusiness.Weapons;
 using VEntityFramework.Model;
 
@@ -42,9 +43,14 @@ namespace VBusiness.Units
 
 		public override Evolution Evolution => Evolution.Basic;
 
-		public override IEnumerable<IWeaponData> Weapons
-		{
-			get
+		public override IEnumerable<IWeaponData> GetWeapons(VLoadout loadout)
+		{	
+			if (loadout.ActiveSoulTypes.Contains(SoulType.Domination))
+			{
+				yield return new DominatorUpgradedBasicWeapon();
+				yield return new DominatorUpgradedMultipliedDiscord();
+			}
+			else
 			{
 				yield return new DominatorBasicWeapon();
 				yield return new DominatorMultipliedDiscord();

@@ -80,7 +80,7 @@ namespace VBusiness.HelperClasses
 						using (loadout.CurrentUnit.UnitData.OffensiveBuffAbility.ApplyTemporaryBuff(loadout))
 						{
 							WeaponHelper.RefreshCritChances(loadout);
-							foreach (var weapon in loadout.CurrentUnit.UnitData.Weapons)
+							foreach (var weapon in loadout.CurrentUnit.UnitData.GetWeapons(loadout))
 							{
 								var damages = composition.Select(x => (x.Chance, Damage: weapon.GetDamageToEnemy(loadout, x.Enemy)));
 								var avgDamage = damages.Sum(x => (x.Chance * x.Damage));
@@ -92,7 +92,7 @@ namespace VBusiness.HelperClasses
 					}
 
 					WeaponHelper.RefreshCritChances(loadout);
-					foreach (var weapon in loadout.CurrentUnit.UnitData.Weapons)
+					foreach (var weapon in loadout.CurrentUnit.UnitData.GetWeapons(loadout))
 					{
 						var damages = composition.Select(x => (x.Chance, Damage: weapon.GetDamageToEnemy(loadout, x.Enemy)));
 						var avgDamage = damages.Sum(x => (x.Chance * x.Damage));
