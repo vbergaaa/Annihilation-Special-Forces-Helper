@@ -1,0 +1,8 @@
+1. right click ASFLaunch.csproj in VS
+2. click publish
+3. find net6-win-x64.pubxml profile
+4. hit publish
+5. navigate to \ASF Planner\bin\Release\net6.0-windows\publish\win-x64
+7. zip folder contents, rename with version number
+8. Upload .zip as new release
+9. Update link in readme to point to newest release
